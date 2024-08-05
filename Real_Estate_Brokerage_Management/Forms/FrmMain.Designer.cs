@@ -57,7 +57,7 @@ namespace DoctorERP
             this.PageViewCardsHome = new Telerik.WinControls.UI.RadPageView();
             this.radPageViewPage1 = new Telerik.WinControls.UI.RadPageViewPage();
             this.overviewMainContainer = new Telerik.WinControls.UI.RadPanel();
-            this.OverviewLandsView = new Telerik.WinControls.UI.RadListView();
+            this.BtnRefresh = new Telerik.WinControls.UI.RadListView();
             this.MenuStripOverviewLandsView = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MenuShowLandCard = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuShowCalc = new System.Windows.Forms.ToolStripMenuItem();
@@ -176,6 +176,8 @@ namespace DoctorERP
             this.MenuImportFromExcel = new Telerik.WinControls.UI.RadMenuItem();
             this.MenuImportLand = new Telerik.WinControls.UI.RadMenuItem();
             this.MenuImportBuyer = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuButtonItem1 = new Telerik.WinControls.UI.RadMenuButtonItem();
+            this.radOffice2007ScreenTipElement1 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
             this.CompanyNameLabel = new System.Windows.Forms.Label();
             this.PicLogo = new System.Windows.Forms.PictureBox();
             this.MenuTools = new Telerik.WinControls.UI.RadToolbarFormMenuItem();
@@ -199,7 +201,7 @@ namespace DoctorERP
             this.radPageViewPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.overviewMainContainer)).BeginInit();
             this.overviewMainContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.OverviewLandsView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BtnRefresh)).BeginInit();
             this.MenuStripOverviewLandsView.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radRadioButton1)).BeginInit();
@@ -379,16 +381,16 @@ namespace DoctorERP
             ((Telerik.WinControls.UI.RadPageViewStripElement)(this.PageViewCardsHome.GetChildAt(0))).EnableElementShadow = true;
             ((Telerik.WinControls.UI.RadPageViewStripElement)(this.PageViewCardsHome.GetChildAt(0))).EnableRippleAnimation = true;
             ((Telerik.WinControls.UI.RadPageViewStripElement)(this.PageViewCardsHome.GetChildAt(0))).CustomFont = "Roboto";
-            ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(0))).ToolTipText = "انتقل الي الصفحة اليسري";
+            ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(0))).ToolTipText = "إغلاق الصفحات المفتوحة";
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(0))).Enabled = true;
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(0))).Visibility = Telerik.WinControls.ElementVisibility.Visible;
-            ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(1))).ToolTipText = "إغلاق الصفحات المفتوحة";
+            ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(1))).ToolTipText = "انتقل الي الصفحة اليسري";
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(1))).Enabled = true;
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(1))).Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
-            ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(2))).ToolTipText = "انتقل الي الصفحة اليمني";
+            ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(2))).ToolTipText = "إغلاق الصفحات المفتوحة";
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(2))).Enabled = false;
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(2))).Visibility = Telerik.WinControls.ElementVisibility.Visible;
-            ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(3))).ToolTipText = "إغلاق الصفحات المفتوحة";
+            ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(3))).ToolTipText = "انتقل الي الصفحة اليمني";
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(3))).Enabled = false;
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(3))).Visibility = Telerik.WinControls.ElementVisibility.Visible;
             ((Telerik.WinControls.UI.RadPageViewLabelElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(2))).Text = "الرئيسية";
@@ -408,7 +410,7 @@ namespace DoctorERP
             // overviewMainContainer
             // 
             this.overviewMainContainer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.overviewMainContainer.Controls.Add(this.OverviewLandsView);
+            this.overviewMainContainer.Controls.Add(this.BtnRefresh);
             this.overviewMainContainer.Controls.Add(this.panel2);
             this.overviewMainContainer.Controls.Add(this.bubbleBar1);
             this.overviewMainContainer.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -418,21 +420,21 @@ namespace DoctorERP
             this.overviewMainContainer.Size = new System.Drawing.Size(1021, 402);
             this.overviewMainContainer.TabIndex = 22;
             // 
-            // OverviewLandsView
+            // BtnRefresh
             // 
-            this.OverviewLandsView.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.OverviewLandsView.ContextMenuStrip = this.MenuStripOverviewLandsView;
-            this.OverviewLandsView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.OverviewLandsView.GroupItemSize = new System.Drawing.Size(200, 36);
-            this.OverviewLandsView.ItemSize = new System.Drawing.Size(200, 36);
-            this.OverviewLandsView.Location = new System.Drawing.Point(0, 138);
-            this.OverviewLandsView.MultiSelect = true;
-            this.OverviewLandsView.Name = "OverviewLandsView";
-            this.OverviewLandsView.Size = new System.Drawing.Size(1021, 264);
-            this.OverviewLandsView.TabIndex = 34;
-            this.OverviewLandsView.ThemeName = "Material";
-            this.OverviewLandsView.ItemMouseClick += new Telerik.WinControls.UI.ListViewItemEventHandler(this.OverviewLandsView_ItemMouseClick);
-            this.OverviewLandsView.VisualItemCreating += new Telerik.WinControls.UI.ListViewVisualItemCreatingEventHandler(this.OverviewLandsView_VisualItemCreating);
+            this.BtnRefresh.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.BtnRefresh.ContextMenuStrip = this.MenuStripOverviewLandsView;
+            this.BtnRefresh.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BtnRefresh.GroupItemSize = new System.Drawing.Size(200, 36);
+            this.BtnRefresh.ItemSize = new System.Drawing.Size(200, 36);
+            this.BtnRefresh.Location = new System.Drawing.Point(0, 138);
+            this.BtnRefresh.MultiSelect = true;
+            this.BtnRefresh.Name = "BtnRefresh";
+            this.BtnRefresh.Size = new System.Drawing.Size(1021, 264);
+            this.BtnRefresh.TabIndex = 34;
+            this.BtnRefresh.ThemeName = "Material";
+            this.BtnRefresh.ItemMouseClick += new Telerik.WinControls.UI.ListViewItemEventHandler(this.OverviewLandsView_ItemMouseClick);
+            this.BtnRefresh.VisualItemCreating += new Telerik.WinControls.UI.ListViewVisualItemCreatingEventHandler(this.OverviewLandsView_VisualItemCreating);
             // 
             // MenuStripOverviewLandsView
             // 
@@ -694,10 +696,11 @@ namespace DoctorERP
             this.MenuActions,
             this.MenuPay,
             this.MenuReports,
-            this.radMenuItem11});
+            this.radMenuItem11,
+            this.radMenuButtonItem1});
             this.radMenu1.Location = new System.Drawing.Point(243, 0);
             this.radMenu1.Name = "radMenu1";
-            this.radMenu1.Size = new System.Drawing.Size(790, 37);
+            this.radMenu1.Size = new System.Drawing.Size(790, 45);
             this.radMenu1.TabIndex = 26;
             this.radMenu1.ThemeName = "Material";
             // 
@@ -1359,9 +1362,38 @@ namespace DoctorERP
             this.MenuImportBuyer.Text = "إستيراد العملاء";
             this.MenuImportBuyer.Click += new System.EventHandler(this.MenuImportBuyer_Click);
             // 
+            // radMenuButtonItem1
+            // 
+            // 
+            // 
+            // 
+            this.radMenuButtonItem1.ButtonElement.ShowBorder = false;
+            this.radMenuButtonItem1.CustomFont = "Roboto";
+            this.radMenuButtonItem1.EnableElementShadow = false;
+            this.radMenuButtonItem1.EnableRippleAnimation = true;
+            this.radMenuButtonItem1.Image = global::DoctorERP.Properties.Resources.BtnRefresh_16;
+            this.radMenuButtonItem1.KeyTip = "F5";
+            this.radMenuButtonItem1.Name = "radMenuButtonItem1";
+            this.radMenuButtonItem1.ScreenTip = this.radOffice2007ScreenTipElement1;
+            this.radMenuButtonItem1.Text = "(F5) تحديث";
+            this.radMenuButtonItem1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.radMenuButtonItem1.Click += new System.EventHandler(this.radMenuButtonItem1_Click);
+            // 
+            // radOffice2007ScreenTipElement1
+            // 
+            this.radOffice2007ScreenTipElement1.Description = "Override this property and provide custom screentip template description in Desig" +
+    "nTime.";
+            this.radOffice2007ScreenTipElement1.Name = "radOffice2007ScreenTipElement1";
+            this.radOffice2007ScreenTipElement1.TemplateType = null;
+            this.radOffice2007ScreenTipElement1.TipSize = new System.Drawing.Size(0, 0);
+            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement1.GetChildAt(2).GetChildAt(0))).Text = "";
+            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement1.GetChildAt(2).GetChildAt(1))).TextAlignment = System.Drawing.ContentAlignment.TopRight;
+            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement1.GetChildAt(2).GetChildAt(1))).Text = "تحديث البيانات";
+            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement1.GetChildAt(2).GetChildAt(1))).RightToLeft = true;
+            // 
             // CompanyNameLabel
             // 
-            this.CompanyNameLabel.BackColor = System.Drawing.Color.White;
+            this.CompanyNameLabel.BackColor = System.Drawing.Color.Transparent;
             this.CompanyNameLabel.Dock = System.Windows.Forms.DockStyle.Left;
             this.CompanyNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CompanyNameLabel.Location = new System.Drawing.Point(59, 0);
@@ -1465,7 +1497,7 @@ namespace DoctorERP
             this.radPageViewPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.overviewMainContainer)).EndInit();
             this.overviewMainContainer.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.OverviewLandsView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BtnRefresh)).EndInit();
             this.MenuStripOverviewLandsView.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -1644,8 +1676,10 @@ namespace DoctorERP
         private Telerik.WinControls.Themes.TelerikMetroTheme telerikMetroTheme1;
         private Telerik.WinControls.Themes.TelerikMetroBlueTheme telerikMetroBlueTheme1;
         private Telerik.WinControls.Themes.TelerikMetroTouchTheme telerikMetroTouchTheme1;
-        private Telerik.WinControls.UI.RadListView OverviewLandsView;
+        private Telerik.WinControls.UI.RadListView BtnRefresh;
         private System.Windows.Forms.Timer TmrStatic;
+        private Telerik.WinControls.UI.RadMenuButtonItem radMenuButtonItem1;
+        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement1;
     }
 }
 

@@ -140,6 +140,7 @@
             this.kryptonButton1.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kryptonButton1.TabIndex = 27;
             this.kryptonButton1.Values.Text = "تحديث قاعدة البيانات";
+            this.kryptonButton1.Visible = false;
             this.kryptonButton1.Click += new System.EventHandler(this.kryptonButton1_Click);
             // 
             // FrmLogin

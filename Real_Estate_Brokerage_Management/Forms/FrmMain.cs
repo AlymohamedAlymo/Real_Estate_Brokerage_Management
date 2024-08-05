@@ -14,9 +14,7 @@ using Telerik.Windows.Diagrams.Core;
 using System.Threading;
 using System.ComponentModel;
 using Telerik.WinControls.Data;
-using DevExpress.Utils.Extensions;
 using DoctorERP.User_Controls;
-using SmartArabXLSX.Wordprocessing;
 
 namespace DoctorERP
 {
@@ -95,38 +93,36 @@ namespace DoctorERP
             item.ButtonsPanel.PinButton.Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
 
             ////// Icon List View ////////////////////
-            this.OverviewLandsView.ShowGroups = false;
-            this.OverviewLandsView.EnableGrouping = true;
+            this.BtnRefresh.ShowGroups = false;
+            this.BtnRefresh.EnableGrouping = true;
             GroupDescriptor groupByValue = new GroupDescriptor(new SortDescriptor[]
             {
                 new SortDescriptor("blocknumber", ListSortDirection.Ascending)
             });
 
-            this.OverviewLandsView.GroupDescriptors.Add(groupByValue);
+            this.BtnRefresh.GroupDescriptors.Add(groupByValue);
 
-            this.OverviewLandsView.ViewType = ListViewType.IconsView;
-            this.OverviewLandsView.ItemSize = new System.Drawing.Size(50, 50);
+            this.BtnRefresh.ViewType = ListViewType.IconsView;
+            this.BtnRefresh.ItemSize = new System.Drawing.Size(50, 50);
 
-            this.OverviewLandsView.ItemSpacing = 8;
-            this.OverviewLandsView.AllowEdit = false;
-            this.OverviewLandsView.EnableFiltering = true;
-            this.OverviewLandsView.HotTracking = true;
+            this.BtnRefresh.ItemSpacing = 8;
+            this.BtnRefresh.AllowEdit = false;
+            this.BtnRefresh.EnableFiltering = true;
+            this.BtnRefresh.HotTracking = true;
 
-            this.OverviewLandsView.RootElement.BackColor = System.Drawing.Color.Transparent;
-            this.OverviewLandsView.BackColor = System.Drawing.Color.Transparent;
+            this.BtnRefresh.RootElement.BackColor = System.Drawing.Color.Transparent;
+            this.BtnRefresh.BackColor = System.Drawing.Color.Transparent;
             this.PageViewCardsHome.PageBackColor = System.Drawing.Color.Transparent;
 
+            this.BtnRefresh.ListViewElement.DrawFill = false;
+            this.BtnRefresh.ListViewElement.ViewElement.BackColor = System.Drawing.Color.Transparent;
+            this.BtnRefresh.ListViewElement.Padding = new System.Windows.Forms.Padding(15, 8, 8, 8);
 
-
-            this.OverviewLandsView.ListViewElement.DrawFill = false;
-            this.OverviewLandsView.ListViewElement.ViewElement.BackColor = System.Drawing.Color.Transparent;
-            this.OverviewLandsView.ListViewElement.Padding = new System.Windows.Forms.Padding(15, 8, 8, 8);
-
-            this.OverviewLandsView.RootElement.EnableElementShadow = false;
+            this.BtnRefresh.RootElement.EnableElementShadow = false;
             this.overviewMainContainer.BackgroundImage = Properties.Resources.Background;
             this.overviewMainContainer.BackgroundImageLayout = ImageLayout.Stretch;
             this.overviewMainContainer.PanelElement.PanelFill.Visibility = ElementVisibility.Collapsed;
-            this.OverviewLandsView.GroupItemSize = new System.Drawing.Size(0, 25);
+            this.BtnRefresh.GroupItemSize = new System.Drawing.Size(0, 25);
             ////////////////////////////////////
             ///
             LabelDataBase.TextAlignment = ContentAlignment.MiddleCenter;
@@ -212,10 +208,10 @@ namespace DoctorERP
             DataLandList = tbLand.lstData.OrderBy(u => u.number).ToList();
             if (DataHasChanged)
             {
-                OverviewLandsView.DataSource = DataLandList;
-                OverviewLandsView.DisplayMember = "number";
-                OverviewLandsView.ValueMember = "guid";
-                OverviewLandsView.SelectedItem = null;
+                BtnRefresh.DataSource = DataLandList;
+                BtnRefresh.DisplayMember = "number";
+                BtnRefresh.ValueMember = "guid";
+                BtnRefresh.SelectedItem = null;
 
             }
 
@@ -368,30 +364,30 @@ namespace DoctorERP
         {
             if (radRadioButton1.CheckState == CheckState.Checked)
             {
-                this.OverviewLandsView.DataSource = null;
+                this.BtnRefresh.DataSource = null;
 
-                this.OverviewLandsView.DataSource = DataLandList.OrderBy(u => u.blocknumber).ToList();
+                this.BtnRefresh.DataSource = DataLandList.OrderBy(u => u.blocknumber).ToList();
 
-                this.OverviewLandsView.DisplayMember = "blocknumber";
-                this.OverviewLandsView.ValueMember = "guid";
+                this.BtnRefresh.DisplayMember = "blocknumber";
+                this.BtnRefresh.ValueMember = "guid";
 
-                OverviewLandsView.SelectedItem = null;
-                this.OverviewLandsView.ShowGroups = true;
+                BtnRefresh.SelectedItem = null;
+                this.BtnRefresh.ShowGroups = true;
 
             }
             if (radRadioButton1.CheckState == CheckState.Unchecked)
             {
-                this.OverviewLandsView.DataSource = null;
+                this.BtnRefresh.DataSource = null;
 
-                this.OverviewLandsView.DataSource = DataLandList.OrderBy(u => u.number).ToList();
+                this.BtnRefresh.DataSource = DataLandList.OrderBy(u => u.number).ToList();
 
-                this.OverviewLandsView.DisplayMember = "number";
-                this.OverviewLandsView.ValueMember = "guid";
+                this.BtnRefresh.DisplayMember = "number";
+                this.BtnRefresh.ValueMember = "guid";
 
-                OverviewLandsView.SelectedItem = null;
+                BtnRefresh.SelectedItem = null;
 
 
-                this.OverviewLandsView.ShowGroups = false;
+                this.BtnRefresh.ShowGroups = false;
 
             }
 
@@ -538,7 +534,7 @@ namespace DoctorERP
                     return;
                 }
                 tbLand land = new tbLand();
-                if (OverviewLandsView.SelectedItem != null) { land = DataLandList.Where(u => u.guid == (Guid)OverviewLandsView.SelectedItem.Value).FirstOrDefault(); }
+                if (BtnRefresh.SelectedItem != null) { land = DataLandList.Where(u => u.guid == (Guid)BtnRefresh.SelectedItem.Value).FirstOrDefault(); }
                 RadPageViewPage enumerableIterator = PageViewCardsHome.Pages.Where(u => u.Name == "LandsCard").FirstOrDefault();
                 if (enumerableIterator == null)
                 {
@@ -552,6 +548,9 @@ namespace DoctorERP
                     radPageViewPage.Controls.Add(uCLands);
                     PageViewCardsHome.Pages.Add(radPageViewPage);
                     PageViewCardsHome.SelectedPage = radPageViewPage;
+                    radPageViewPage.Item.ButtonsPanel.CloseButton.ToolTipText = "إغلاق الصفحة";
+                    radPageViewPage.Item.ButtonsPanel.PinButton.ToolTipText = "تثبيت الصفحة";
+
                 }
                 else
                 {
@@ -560,21 +559,21 @@ namespace DoctorERP
                     PageViewCardsHome.SelectedPage = enumerableIterator;
 
                 }
-                OverviewLandsView.SelectedItems.Clear();
+                BtnRefresh.SelectedItems.Clear();
             }
             else if (e.ClickedItem.Name == "MenuShowCalc")
             {
-                vwSelectLand land = vwSelectLand.FindBy("Number", OverviewLandsView.SelectedItem.Text);
+                vwSelectLand land = vwSelectLand.FindBy("Number", BtnRefresh.SelectedItem.Text);
                 FrmCalc frm = new FrmCalc(land);
                 frm.Show();
-                OverviewLandsView.SelectedItems.Clear();
+                BtnRefresh.SelectedItems.Clear();
 
             }
             else if (e.ClickedItem.Name == "MenuSendLandToSell")
             {
                 List<tbLand> lst = new List<tbLand>();
 
-                foreach (var item in OverviewLandsView.SelectedItems)
+                foreach (var item in BtnRefresh.SelectedItems)
                 {
                     tbLand land = DataLandList.Where(u => u.guid == (Guid)item.Value).FirstOrDefault();
                     lst.Add(land);
@@ -608,14 +607,14 @@ namespace DoctorERP
                 FrmBillHeader frm = new FrmBillHeader(Guid.Empty, true, 0, lst);
                 frm.Owner = this;
                 frm.Show();
-                OverviewLandsView.SelectedItems.Clear();
+                BtnRefresh.SelectedItems.Clear();
 
             }
             else if (e.ClickedItem.Name == "MenuExtraContract")
             {
                 List<tbLand> lst = new List<tbLand>();
 
-                foreach (var item in OverviewLandsView.SelectedItems)
+                foreach (var item in BtnRefresh.SelectedItems)
                 {
                     tbLand land = DataLandList.Where(u => u.guid == (Guid)item.Value).FirstOrDefault();
                     lst.Add(land);
@@ -629,7 +628,7 @@ namespace DoctorERP
                 FrmBillHeader frm = new FrmBillHeader(Guid.Empty, true, 2, lst);
                 frm.Owner = this;
                 frm.Show();
-                OverviewLandsView.SelectedItems.Clear();
+                BtnRefresh.SelectedItems.Clear();
 
             }
 
@@ -663,7 +662,7 @@ namespace DoctorERP
                         MenuStripOverviewLandsView.Items["MenuShowCalc"].Visible = true;
                         MenuStripOverviewLandsView.Items["MenuSendLandToSell"].Visible = true;
 
-                        if (OverviewLandsView.SelectedItems.Count > 1)
+                        if (BtnRefresh.SelectedItems.Count > 1)
                         {
                             MenuStripOverviewLandsView.Items["MenuSendLandToSell"].Text = "بيع الأراضي المحددة";
                             MenuStripOverviewLandsView.Items["MenuExtraContract"].Visible = false;
@@ -697,7 +696,7 @@ namespace DoctorERP
 
                 }
 
-                OverviewLandsView.SelectedItem = e.Item;
+                BtnRefresh.SelectedItem = e.Item;
 
 
             }
@@ -1676,5 +1675,13 @@ namespace DoctorERP
 
         }
 
+        private void radMenuButtonItem1_Click(object sender, EventArgs e)
+        {
+            RadMessageBox.Show("يرجى إعادة تشغيل البرنامج ليتم تطبيق إعدادات الإتصال الجديدة", Application.ProductName, MessageBoxButtons.OK);
+            RadMessageBoxForm form = new RadMessageBoxForm();
+            form.ShowDialog();
+            form.ShowDetails();
+
+        }
     }
 }
