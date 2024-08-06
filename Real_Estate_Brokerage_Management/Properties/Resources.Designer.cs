@@ -682,16 +682,19 @@ namespace DoctorERP.Properties {
         ///DELETE FROM realestatebrokeragemanagement.[dbo].tbAccount
         ///INSERT INTO realestatebrokeragemanagement.[dbo].tbAccount
         ///SELECT * FROM [almalqa2023abha].[dbo].tbAccount
+        ///Go
         ///
         ///DELETE FROM realestatebrokeragemanagement.[dbo].tbLog
         ///INSERT INTO realestatebrokeragemanagement.[dbo].tbLog
         ///SELECT * FROM [almalqa2023abha].[dbo].tbLog
+        ///Go
         ///
         ///DELETE FROM realestatebrokeragemanagement.[dbo].tbAgent
         ///INSERT INTO realestatebrokeragemanagement.[dbo].tbAgent
         ///SELECT  *, &apos; &apos; FROM [almalqa2023abha].[dbo].tbAgent
+        ///Go
         ///
-        ///DELETE FROM rea [rest of string was truncated]&quot;;.
+        ///DEL [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string insert_into {
             get {

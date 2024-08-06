@@ -155,7 +155,8 @@ namespace DoctorERP
                 FrmConnection connection = new FrmConnection();
                 if (connection.ShowDialog() == DialogResult.OK)
                 {
-                    MessageBox.Show("يرجى إعادة تشغيل البرنامج ليتم تطبيق إعدادات الإتصال الجديدة", Application.ProductName, MessageBoxButtons.OK);
+                    MessageBox.Show("سوف يتم إعادة تشغيل البرنامج ليتم تطبيق إعدادات الإتصال الجديدة", Application.ProductName, MessageBoxButtons.OK);
+                    Application.Restart();
                 }
 
                 Application.Exit();

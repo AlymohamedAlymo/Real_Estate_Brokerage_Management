@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
@@ -118,18 +120,28 @@ namespace DoctorERP
         {
             try
             {
-                if (DBConnect.CreateNewDataBase("RealEstateBrokerageManagement", "RealEstateBrokerageManagement"))
+
+                if (DBConnect.CreateNewDataBase("realestatebrokeragemanagement", "realestatebrokeragemanagement"))
                 {
                     DataBase db = new DataBase
                     {
                         Description = "realestatebrokeragemanagement",
-                        FileLocation = "C:\\Program Files\\Microsoft SQL Server\\MSSQL14.MSSQLSERVER\\MSSQL\\DATA\\realestatebrokeragemanagement.mdf",
+                        FileLocation = AppSetting.DataBasePath,
+                        //FileLocation = "C:\\Program Files\\Microsoft SQL Server\\MSSQL14.MSSQLSERVER\\MSSQL\\DATA\\realestatebrokeragemanagement.mdf",
                         IsDef = false,
                         SqlName = "realestatebrokeragemanagement"
                     };
                     File.WriteAllText(AppSetting.GetAppPath() + DBConnect.DataBaseDefFile, db.SqlName);
 
-                    MessageBox.Show("تم تحديث قاعدة البيانات بنجاح", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                   if (DBConnect.TryToConnect("realestatebrokeragemanagement"))
+                    {
+                        MessageBox.Show("تم تحديث قاعدة البيانات بنجاح", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    }
+                   else
+                    {
+                        MessageBox.Show("حدثت مشكلة", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
 
             }
@@ -138,5 +150,59 @@ namespace DoctorERP
         }
 
 
+        private void kryptonButton2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                List<string> databasesToDelete = new List<string>();
+
+                var server = new Server("(LocalDb)\\AccountDB"); // Can use overload that specifies 
+
+                foreach (Database db in server.Databases)
+                {
+                    if (db.Name.ToLower().Contains("realestatebrokeragemanagement"))
+                    {
+                        databasesToDelete.Add(db.Name);
+                    }
+                }
+                databasesToDelete.ForEach(x =>
+                {
+                    Database db = new Database(server, x);
+
+                    db.Refresh();
+                    db.Drop();
+                });
+
+
+                if (DBConnect.CreateNewDataBase("realestatebrokeragemanagement", "realestatebrokeragemanagement"))
+                {
+                    DataBase db = new DataBase
+                    {
+                        Description = "realestatebrokeragemanagement",
+                        FileLocation = AppSetting.DataBasePath,
+
+                        //FileLocation = "F:\\SQL Data\\realestatebrokeragemanagement.mdf",
+                        IsDef = false,
+                        SqlName = "realestatebrokeragemanagement"
+                    };
+                    File.WriteAllText(AppSetting.GetAppPath() + DBConnect.DataBaseDefFile, db.SqlName);
+
+
+                    if (DBConnect.TryToConnect("realestatebrokeragemanagement"))
+                    {
+                        MessageBox.Show("تم تحديث قاعدة البيانات بنجاح", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("حدثت مشكلة", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+
+        }
     }
 }

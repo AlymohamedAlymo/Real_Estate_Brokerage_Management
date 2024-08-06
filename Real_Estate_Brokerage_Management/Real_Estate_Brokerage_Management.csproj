@@ -1083,6 +1083,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Map-icon.svg.ico" />
+    <None Include="Resources\insert into Local.sql" />
     <None Include="Resources\BtnSketch_16.png" />
     <None Include="Resources\BtnClipboard_16.png" />
     <None Include="Resources\BtnRefresh_16.png" />

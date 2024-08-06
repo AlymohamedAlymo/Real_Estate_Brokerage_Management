@@ -5,6 +5,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Data;
+using System.Windows;
 
 class InitSchema
 {
@@ -48,8 +49,9 @@ class InitSchema
                     DBConnect.DBCommand = new SqlCommand(strQuery, DBConnect.DBConnection);
                     DBConnect.DBCommand.ExecuteNonQuery();
                 }
-                catch
+                catch 
                 {
+                    //MessageBox.Show(ex.Message);
                 }
             }
         }

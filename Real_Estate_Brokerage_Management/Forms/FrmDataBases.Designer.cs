@@ -41,6 +41,7 @@
             this.BtnCancel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.BtnOk = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.kryptonButton1 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ملفToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuCreateNewDatabase = new System.Windows.Forms.ToolStripMenuItem();
@@ -154,7 +155,7 @@
             this.LblFileLocation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LblFileLocation.Location = new System.Drawing.Point(197, 57);
             this.LblFileLocation.Name = "LblFileLocation";
-            this.LblFileLocation.Size = new System.Drawing.Size(69, 69);
+            this.LblFileLocation.Size = new System.Drawing.Size(69, 71);
             this.LblFileLocation.TabIndex = 1;
             this.LblFileLocation.Text = "موقع الملف:";
             this.LblFileLocation.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -202,6 +203,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.kryptonButton1);
             this.panel2.Controls.Add(this.BtnOk);
             this.panel2.Controls.Add(this.BtnCancel);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -209,6 +211,18 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(828, 44);
             this.panel2.TabIndex = 8;
+            // 
+            // kryptonButton1
+            // 
+            this.kryptonButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.kryptonButton1.Location = new System.Drawing.Point(380, 10);
+            this.kryptonButton1.Name = "kryptonButton1";
+            this.kryptonButton1.Size = new System.Drawing.Size(68, 25);
+            this.kryptonButton1.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonButton1.TabIndex = 8;
+            this.kryptonButton1.Values.Text = "موافق";
+            this.kryptonButton1.Visible = false;
+            this.kryptonButton1.Click += new System.EventHandler(this.kryptonButton1_Click);
             // 
             // menuStrip1
             // 
@@ -474,7 +488,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.00001F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(269, 126);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(269, 128);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // FrmDataBases
@@ -557,5 +571,6 @@
         private System.Windows.Forms.ToolStripMenuItem MenuSetAsDefault;
         private ComponentFactory.Krypton.Toolkit.KryptonButton BtnSetAsDefault;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton kryptonButton1;
     }
 }

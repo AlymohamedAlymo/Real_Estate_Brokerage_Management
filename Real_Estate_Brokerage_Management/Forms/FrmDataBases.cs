@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -9,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
+using Microsoft.SqlServer.Management.Smo;
 
 
 namespace DoctorERP
@@ -550,6 +552,38 @@ namespace DoctorERP
                 }
 
             }
+        }
+
+        private void kryptonButton1_Click(object sender, EventArgs e)
+        {
+
+
+            //List<string> databasesToDelete = new List<string>();
+
+            //var server = new Server("(LocalDb)\\AccountDB"); // Can use overload that specifies 
+
+            //foreach (Database db in server.Databases)
+            //{
+            //    if (db.Name.ToLower().Contains("realestatebrokeragemanagement"))
+            //    {
+            //        databasesToDelete.Add(db.Name);
+            //    }
+            //}
+            //databasesToDelete.ForEach(x =>
+            //{
+            //    Database db = new Database(server, x);
+
+            //    db.Refresh();
+            //    db.Drop();
+            //});
+
+            //server.AttachDatabase("almalqa2023abha", new StringCollection {
+            //    "F:\\SQL Data\\almalqa2023abha.mdf",
+            //    "F:\\SQL Data\\almalqa2023abha_log.ldf"
+            //}, AttachOptions.None);
+
+
+
         }
     }
 }
