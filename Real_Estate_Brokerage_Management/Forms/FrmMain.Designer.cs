@@ -282,7 +282,7 @@ namespace DoctorERP
             this.MenuItemExit});
             this.SplitButtonUSER.Name = "SplitButtonUSER";
             this.radStatusStrip1.SetSpring(this.SplitButtonUSER, false);
-            this.SplitButtonUSER.Text = "radSplitButtonElement1";
+            this.SplitButtonUSER.Text = null;
             // 
             // MenuHeaderCurrentUser
             // 
@@ -334,7 +334,7 @@ namespace DoctorERP
             // 
             this.LabelServer.Name = "LabelServer";
             this.radStatusStrip1.SetSpring(this.LabelServer, false);
-            this.LabelServer.Text = "radLabelElement2";
+            this.LabelServer.Text = null;
             this.LabelServer.TextAlignment = System.Drawing.ContentAlignment.TopRight;
             this.LabelServer.TextWrap = true;
             // 
@@ -351,7 +351,7 @@ namespace DoctorERP
             // 
             this.LabelDataBase.Name = "LabelDataBase";
             this.radStatusStrip1.SetSpring(this.LabelDataBase, false);
-            this.LabelDataBase.Text = "radLabelElement3";
+            this.LabelDataBase.Text = null;
             this.LabelDataBase.TextAlignment = System.Drawing.ContentAlignment.TopRight;
             this.LabelDataBase.TextWrap = true;
             // 
@@ -381,16 +381,16 @@ namespace DoctorERP
             ((Telerik.WinControls.UI.RadPageViewStripElement)(this.PageViewCardsHome.GetChildAt(0))).EnableElementShadow = true;
             ((Telerik.WinControls.UI.RadPageViewStripElement)(this.PageViewCardsHome.GetChildAt(0))).EnableRippleAnimation = true;
             ((Telerik.WinControls.UI.RadPageViewStripElement)(this.PageViewCardsHome.GetChildAt(0))).CustomFont = "Roboto";
-            ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(0))).ToolTipText = "انتقل الي الصفحة اليمني";
+            ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(0))).ToolTipText = "انتقل الي الصفحة اليسري";
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(0))).Enabled = true;
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(0))).Visibility = Telerik.WinControls.ElementVisibility.Visible;
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(1))).ToolTipText = "إغلاق الصفحات المفتوحة";
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(1))).Enabled = true;
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(1))).Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
-            ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(2))).ToolTipText = "إغلاق الصفحات المفتوحة";
+            ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(2))).ToolTipText = "انتقل الي الصفحة اليمني";
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(2))).Enabled = false;
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(2))).Visibility = Telerik.WinControls.ElementVisibility.Visible;
-            ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(3))).ToolTipText = "انتقل الي الصفحة اليسري";
+            ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(3))).ToolTipText = "إغلاق الصفحات المفتوحة";
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(3))).Enabled = false;
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(3))).Visibility = Telerik.WinControls.ElementVisibility.Visible;
             ((Telerik.WinControls.UI.RadPageViewLabelElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(2))).Text = "الرئيسية";
@@ -1447,7 +1447,7 @@ namespace DoctorERP
             this.CompanyNameBarLabel.CustomFontSize = 15F;
             this.CompanyNameBarLabel.CustomFontStyle = System.Drawing.FontStyle.Bold;
             this.CompanyNameBarLabel.Name = "CompanyNameBarLabel";
-            this.CompanyNameBarLabel.Text = "اسم الشركة";
+            this.CompanyNameBarLabel.Text = "";
             this.CompanyNameBarLabel.TextAlignment = System.Drawing.ContentAlignment.TopRight;
             this.CompanyNameBarLabel.TextWrap = true;
             // 

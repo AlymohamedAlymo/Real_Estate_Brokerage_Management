@@ -207,11 +207,11 @@ class DBConnect
                 else if (AppSetting.SqlType == 1)
                     InitSchema.CreateDataBase(dbName, string.Empty);
             }
-            else
-            {
-                MessageBox.Show("يوجد قاعدة بيانات سابقة بنفس الاسم" + Environment.NewLine + dbName + Environment.NewLine + "يرجى إختيار اسم آخر", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return false;
-            }
+            //else
+            //{
+            //    //MessageBox.Show("يوجد قاعدة بيانات سابقة بنفس الاسم" + Environment.NewLine + dbName + Environment.NewLine + "يرجى إختيار اسم آخر", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //    //return false;
+            //}
 
             if (dbDescription.Trim().Length > 0)
                 InitSchema.InitSchemaScript(dbName, dbDescription);

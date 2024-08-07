@@ -11,7 +11,6 @@ class InitSchema
 {
     private static string strScript = global::DoctorERP.Properties.Resources.db;
     private static string strJobScript = string.Empty;// global::DoctorERP.Properties.Resources.backjob;
-    private static string strScript2 = global::DoctorERP.Properties.Resources.insert_into;
 
     public static void InitSchemaScript(string DataBase, string Description)
     {
@@ -33,25 +32,7 @@ class InitSchema
                 }
                 catch
                 {
-                }
-            }
-        }
-        strScript2 = strScript2.Replace("%DatabaseDescription%", Description);
-        IEnumerable<string> commandStrings2 = Regex.Split(strScript2, @"^\s*GO\s*$", RegexOptions.Multiline | RegexOptions.IgnoreCase);
-
-        foreach (string strQuery in commandStrings2)
-        {
-            if (strQuery.Trim().Length > 0)
-            {
-
-                try
-                {
-                    DBConnect.DBCommand = new SqlCommand(strQuery, DBConnect.DBConnection);
-                    DBConnect.DBCommand.ExecuteNonQuery();
-                }
-                catch 
-                {
-                    //MessageBox.Show(ex.Message);
+                    continue;
                 }
             }
         }

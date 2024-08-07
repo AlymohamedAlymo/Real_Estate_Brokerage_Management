@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
+using DoctorERP.Forms;
 using Microsoft.SqlServer.Management.Smo;
 
 namespace DoctorERP
@@ -118,91 +119,100 @@ namespace DoctorERP
 
         private void kryptonButton1_Click(object sender, EventArgs e)
         {
-            try
-            {
+            //try
+            //{
 
-                if (DBConnect.CreateNewDataBase("realestatebrokeragemanagement", "realestatebrokeragemanagement"))
-                {
-                    DataBase db = new DataBase
-                    {
-                        Description = "realestatebrokeragemanagement",
-                        FileLocation = AppSetting.DataBasePath,
-                        //FileLocation = "C:\\Program Files\\Microsoft SQL Server\\MSSQL14.MSSQLSERVER\\MSSQL\\DATA\\realestatebrokeragemanagement.mdf",
-                        IsDef = false,
-                        SqlName = "realestatebrokeragemanagement"
-                    };
-                    File.WriteAllText(AppSetting.GetAppPath() + DBConnect.DataBaseDefFile, db.SqlName);
+            //    if (DBConnect.CreateNewDataBase("realestatebrokeragemanagement", "realestatebrokeragemanagement"))
+            //    {
+            //        DataBase db = new DataBase
+            //        {
+            //            Description = "realestatebrokeragemanagement",
+            //            FileLocation = AppSetting.DataBasePath,
+            //            //FileLocation = "C:\\Program Files\\Microsoft SQL Server\\MSSQL14.MSSQLSERVER\\MSSQL\\DATA\\realestatebrokeragemanagement.mdf",
+            //            IsDef = false,
+            //            SqlName = "realestatebrokeragemanagement"
+            //        };
+            //        File.WriteAllText(AppSetting.GetAppPath() + DBConnect.DataBaseDefFile, db.SqlName);
 
-                   if (DBConnect.TryToConnect("realestatebrokeragemanagement"))
-                    {
-                        MessageBox.Show("تم تحديث قاعدة البيانات بنجاح", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //       if (DBConnect.TryToConnect("realestatebrokeragemanagement"))
+            //        {
+            //            MessageBox.Show("تم تحديث قاعدة البيانات بنجاح", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    }
-                   else
-                    {
-                        MessageBox.Show("حدثت مشكلة", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                }
+            //        }
+            //       else
+            //        {
+            //            MessageBox.Show("حدثت مشكلة", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //        }
+            //    }
 
-            }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
+            //}
+            //catch (Exception ex) { MessageBox.Show(ex.Message); }
 
         }
 
 
         private void kryptonButton2_Click(object sender, EventArgs e)
         {
-            try
-            {
+            //try
+            //{
+            //    try
+            //    {
+            //        List<string> databasesToDelete = new List<string>();
 
-                List<string> databasesToDelete = new List<string>();
+            //        var server = new Server("(LocalDb)\\AccountDB");
 
-                var server = new Server("(LocalDb)\\AccountDB"); // Can use overload that specifies 
+            //        foreach (Database db in server.Databases)
+            //        {
+            //            if (db.Name.ToLower().Contains("realestatebrokeragemanagement"))
+            //            {
+            //                databasesToDelete.Add(db.Name);
+            //            }
+            //        }
+            //        databasesToDelete.ForEach(x =>
+            //        {
+            //            Database db = new Database(server, x);
+            //            db.Refresh();
+            //            db.Drop();
+            //        });
 
-                foreach (Database db in server.Databases)
-                {
-                    if (db.Name.ToLower().Contains("realestatebrokeragemanagement"))
-                    {
-                        databasesToDelete.Add(db.Name);
-                    }
-                }
-                databasesToDelete.ForEach(x =>
-                {
-                    Database db = new Database(server, x);
+            //    }
+            //    catch { }
 
-                    db.Refresh();
-                    db.Drop();
-                });
+            //    if (DBConnect.CreateNewDataBase("data2024new", "data2024new"))
+            //    {
+            //        DataBase db = new DataBase
+            //        {
+            //            Description = "data2024new",
+            //            FileLocation = AppSetting.DataBasePath,
 
-
-                if (DBConnect.CreateNewDataBase("realestatebrokeragemanagement", "realestatebrokeragemanagement"))
-                {
-                    DataBase db = new DataBase
-                    {
-                        Description = "realestatebrokeragemanagement",
-                        FileLocation = AppSetting.DataBasePath,
-
-                        //FileLocation = "F:\\SQL Data\\realestatebrokeragemanagement.mdf",
-                        IsDef = false,
-                        SqlName = "realestatebrokeragemanagement"
-                    };
-                    File.WriteAllText(AppSetting.GetAppPath() + DBConnect.DataBaseDefFile, db.SqlName);
+            //            //FileLocation = "F:\\SQL Data\\realestatebrokeragemanagement.mdf",
+            //            IsDef = false,
+            //            SqlName = "data2024new"
+            //        };
+            //        File.WriteAllText(AppSetting.GetAppPath() + DBConnect.DataBaseDefFile, db.SqlName);
 
 
-                    if (DBConnect.TryToConnect("realestatebrokeragemanagement"))
-                    {
-                        MessageBox.Show("تم تحديث قاعدة البيانات بنجاح", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //        if (DBConnect.TryToConnect("data2024new"))
+            //        {
+            //            MessageBox.Show("تم تحديث قاعدة البيانات بنجاح", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    }
-                    else
-                    {
-                        MessageBox.Show("حدثت مشكلة", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                }
+            //        }
+            //        else
+            //        {
+            //            MessageBox.Show("حدثت مشكلة", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //        }
+            //    }
 
-            }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
+            //}
+            //catch (Exception ex) { MessageBox.Show(ex.Message); }
 
+        }
+
+        private void kryptonButton1_Click_1(object sender, EventArgs e)
+        {
+            TransferData transferData = new TransferData();
+            transferData.ShowDialog();
+            transferData.Dispose();
         }
     }
 }

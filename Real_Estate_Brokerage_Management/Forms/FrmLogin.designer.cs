@@ -38,7 +38,6 @@
             this.kryptonLabel1 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.kryptonButton1 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.kryptonButton2 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.SuspendLayout();
             // 
             // BtnOk
@@ -135,30 +134,19 @@
             // 
             // kryptonButton1
             // 
-            this.kryptonButton1.Location = new System.Drawing.Point(12, 148);
+            this.kryptonButton1.Location = new System.Drawing.Point(6, 162);
             this.kryptonButton1.Name = "kryptonButton1";
-            this.kryptonButton1.Size = new System.Drawing.Size(131, 25);
+            this.kryptonButton1.Size = new System.Drawing.Size(104, 25);
             this.kryptonButton1.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kryptonButton1.TabIndex = 27;
-            this.kryptonButton1.Values.Text = "نقل البيانات شبكة";
-            this.kryptonButton1.Click += new System.EventHandler(this.kryptonButton1_Click);
-            // 
-            // kryptonButton2
-            // 
-            this.kryptonButton2.Location = new System.Drawing.Point(12, 179);
-            this.kryptonButton2.Name = "kryptonButton2";
-            this.kryptonButton2.Size = new System.Drawing.Size(131, 25);
-            this.kryptonButton2.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonButton2.TabIndex = 28;
-            this.kryptonButton2.Values.Text = "نقل البيانات محلي";
-            this.kryptonButton2.Click += new System.EventHandler(this.kryptonButton2_Click);
+            this.kryptonButton1.Values.Text = "نقل البيانات";
+            this.kryptonButton1.Click += new System.EventHandler(this.kryptonButton1_Click_1);
             // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(296, 214);
-            this.Controls.Add(this.kryptonButton2);
+            this.ClientSize = new System.Drawing.Size(277, 203);
             this.Controls.Add(this.kryptonButton1);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.comboBox1);
@@ -194,6 +182,5 @@
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel1;
         private System.Windows.Forms.CheckBox checkBox1;
         private ComponentFactory.Krypton.Toolkit.KryptonButton kryptonButton1;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton kryptonButton2;
     }
 }
