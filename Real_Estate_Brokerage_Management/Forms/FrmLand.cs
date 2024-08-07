@@ -857,7 +857,6 @@ namespace DoctorERP
                 DataGridAttachments.DataSource = tbAttachment.dtData;
                 this.Cursor = Cursors.Arrow;
 
-
             }
         }
 

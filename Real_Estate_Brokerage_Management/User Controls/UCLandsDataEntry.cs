@@ -81,6 +81,7 @@ namespace DoctorERP.User_Controls
             }
             Binding SearchBinding = new System.Windows.Forms.Binding("Text", Bs, "number", false);
 
+
             if (IsNew) { BtnNew.PerformClick(); return; }
 
             if (!guid.Equals(Guid.Empty))
@@ -288,13 +289,12 @@ namespace DoctorERP.User_Controls
                 if (MessageBox.Show("هل أنت متاكد من التعديل ؟", Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.No)
                     return false;
             }
-
-            decimal amount = Txtamount.Value;
-            tbLand land = (tbLand)Bs.Current;
-
-            if (land.amount != amount)
+            Guid CurrentGuid = ((tbLand)Bs.Current).guid;
+            tbLand land = tbLand.lstData.Where(u => u.guid == CurrentGuid).FirstOrDefault();
+            decimal Total = Txttotal.Value;
+            if (land.total != Total)
             {
-                FrmPriceLog frm = new FrmPriceLog(Guid.Empty, land.guid, land.amount, amount);
+                FrmPriceLog frm = new FrmPriceLog(Guid.Empty, land.guid, land.amount, Total);
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
 
@@ -322,7 +322,7 @@ namespace DoctorERP.User_Controls
             land.north = Txtnorth.Text;
             land.northdesc = Txtnorthdesc.Text;
             land.note = Txtnote.Text;
-            land.planguid = (Guid)CmbPlanGuid.SelectedValue;
+            land.planguid = tbPlanInfo.lstData.Where(u => u.name == CmbPlanGuid.Text).FirstOrDefault().guid;
             land.reservereason = Txtreservereason.Text;
             land.south = Txtsouth.Text;
             land.southdesc = Txtsouthdesc.Text;
@@ -670,6 +670,8 @@ namespace DoctorERP.User_Controls
                 BtnEdit.Text = "(F2) حفظ";
                 BtnEdit.ScreenTip.Text = "حفظ التعديلات";
                 BtnEdit.Image = Properties.Resources.GlyphCheck_small;
+                BtnAttachment.Enabled = true;
+                BtnScanner.Enabled = true;
                 IsDirty = true;
                 guid = land.guid;
                 SetReadOnly(false);
@@ -681,6 +683,8 @@ namespace DoctorERP.User_Controls
                 BtnEdit.Text = "(F2) تعديل";
                 BtnEdit.ScreenTip.Text = "تعديل بيانات بطاقة الأرض";
                 BtnEdit.Image = Properties.Resources.edit;
+                BtnAttachment.Enabled = false;
+                BtnScanner.Enabled = false;
                 SetReadOnly(true);
                 IsDirty = false;
                 IsNew = false;
@@ -876,6 +880,15 @@ namespace DoctorERP.User_Controls
         {
             tbAttachment.Fill("ParentGuid", parentguid);
             DataGridAttachments.DataSource = tbAttachment.dtData;
+
+            DataGridAttachments.Columns[0].IsVisible = false;
+            DataGridAttachments.Columns[1].IsVisible = false;
+
+            DataGridAttachments.Columns[2].HeaderText = "الاسم";
+            DataGridAttachments.Columns[3].HeaderText = "اسم الملف";
+            DataGridAttachments.Columns[4].HeaderText = "الحجم";
+            DataGridAttachments.Columns[5].HeaderText = "الملف";
+
         }
 
         private void AddAttachments(Guid parentguid)
@@ -1082,6 +1095,18 @@ namespace DoctorERP.User_Controls
         {
             tbPriceLog.Fill("ParentGuid", landGuid);
             DataGridPriceLog.DataSource = tbPriceLog.dtData;
+
+            DataGridPriceLog.Columns[0].IsVisible = false;
+            DataGridPriceLog.Columns[1].IsVisible = false;
+
+            DataGridPriceLog.Columns[2].HeaderText = "المستخدم";
+            DataGridPriceLog.Columns[3].HeaderText = "وقت الحركة";
+            DataGridPriceLog.Columns[4].HeaderText = "السعر القديم";
+            DataGridPriceLog.Columns[5].HeaderText = "السعر الجديد";
+
+            DataGridPriceLog.Columns[6].IsVisible = false;
+            DataGridPriceLog.Columns[7].IsVisible = false;
+
         }
         private void DataGridPriceLog_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -1091,6 +1116,7 @@ namespace DoctorERP.User_Controls
             {
                 return;
             }
+            if (DataGridPriceLog.Rows.Count == 0) { return; }
             Guid guid = (Guid)DataGridPriceLog.Rows[0].Cells[2].Value;
             tbPriceLog pricel = tbPriceLog.FindBy("Guid", guid);
             FrmPriceLog frmtable = new FrmPriceLog(guid, land.guid, pricel.oldprice, pricel.newprice);

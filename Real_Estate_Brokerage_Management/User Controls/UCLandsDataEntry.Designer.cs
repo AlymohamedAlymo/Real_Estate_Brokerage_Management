@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Telerik.WinControls.UI.RadValidationRule radValidationRule4 = new Telerik.WinControls.UI.RadValidationRule();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn19 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn20 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn21 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn22 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn23 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn24 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition10 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition11 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition12 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.RadValidationRule radValidationRule2 = new Telerik.WinControls.UI.RadValidationRule();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn7 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn8 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn9 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn10 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn11 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn12 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition4 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition5 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition6 = new Telerik.WinControls.UI.TableViewDefinition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCLandsDataEntry));
             this.tbLogBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.almalqa2023abhaDataSet = new DoctorERP.almalqa2023abhaDataSet();
@@ -194,6 +194,8 @@
             this.radOffice2007ScreenTipElement16 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
             this.radOffice2007ScreenTipElement18 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
             this.radOffice2007ScreenTipElement19 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
+            this.BtnAttachment = new Telerik.WinControls.UI.RadButton();
+            this.BtnScanner = new Telerik.WinControls.UI.RadButton();
             ((System.ComponentModel.ISupportInitialize)(this.tbLogBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.almalqa2023abhaDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radValidationProvider1)).BeginInit();
@@ -262,6 +264,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.radScrollablePanel2)).BeginInit();
             this.radScrollablePanel2.PanelContainer.SuspendLayout();
             this.radScrollablePanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BtnAttachment)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BtnScanner)).BeginInit();
             this.SuspendLayout();
             // 
             // tbLogBindingSource
@@ -276,9 +280,9 @@
             // 
             // radValidationProvider1
             // 
-            radValidationRule4.Operator = Telerik.WinControls.Data.FilterOperator.IsEqualTo;
+            radValidationRule2.Operator = Telerik.WinControls.Data.FilterOperator.IsEqualTo;
             this.radValidationProvider1.ValidationRules.AddRange(new Telerik.WinControls.Data.FilterDescriptor[] {
-            radValidationRule4});
+            radValidationRule2});
             // 
             // Txtnumber
             // 
@@ -816,46 +820,46 @@
             this.CmbPlanGuid.EditorControl.MasterTemplate.AllowAddNewRow = false;
             this.CmbPlanGuid.EditorControl.MasterTemplate.AllowCellContextMenu = false;
             this.CmbPlanGuid.EditorControl.MasterTemplate.AllowColumnChooser = false;
-            gridViewTextBoxColumn19.DataType = typeof(System.Guid);
-            gridViewTextBoxColumn19.FieldName = "guid";
-            gridViewTextBoxColumn19.HeaderText = "guid";
-            gridViewTextBoxColumn19.IsAutoGenerated = true;
-            gridViewTextBoxColumn19.IsVisible = false;
-            gridViewTextBoxColumn19.Name = "guid";
-            gridViewTextBoxColumn20.FieldName = "name";
-            gridViewTextBoxColumn20.HeaderText = "اسم المخطط";
-            gridViewTextBoxColumn20.IsAutoGenerated = true;
-            gridViewTextBoxColumn20.Name = "name";
-            gridViewTextBoxColumn21.DataType = typeof(System.Guid);
-            gridViewTextBoxColumn21.FieldName = "ownerguid";
-            gridViewTextBoxColumn21.HeaderText = "ownerguid";
-            gridViewTextBoxColumn21.IsAutoGenerated = true;
-            gridViewTextBoxColumn21.IsVisible = false;
-            gridViewTextBoxColumn21.Name = "ownerguid";
-            gridViewTextBoxColumn22.FieldName = "city";
-            gridViewTextBoxColumn22.HeaderText = "المدينة";
-            gridViewTextBoxColumn22.IsAutoGenerated = true;
-            gridViewTextBoxColumn22.Name = "city";
-            gridViewTextBoxColumn23.FieldName = "location";
-            gridViewTextBoxColumn23.HeaderText = "الموقع";
-            gridViewTextBoxColumn23.IsAutoGenerated = true;
-            gridViewTextBoxColumn23.Name = "location";
-            gridViewTextBoxColumn24.FieldName = "number";
-            gridViewTextBoxColumn24.HeaderText = "رقم المخطط";
-            gridViewTextBoxColumn24.IsAutoGenerated = true;
-            gridViewTextBoxColumn24.Name = "number";
+            gridViewTextBoxColumn7.DataType = typeof(System.Guid);
+            gridViewTextBoxColumn7.FieldName = "guid";
+            gridViewTextBoxColumn7.HeaderText = "guid";
+            gridViewTextBoxColumn7.IsAutoGenerated = true;
+            gridViewTextBoxColumn7.IsVisible = false;
+            gridViewTextBoxColumn7.Name = "guid";
+            gridViewTextBoxColumn8.FieldName = "name";
+            gridViewTextBoxColumn8.HeaderText = "اسم المخطط";
+            gridViewTextBoxColumn8.IsAutoGenerated = true;
+            gridViewTextBoxColumn8.Name = "name";
+            gridViewTextBoxColumn9.DataType = typeof(System.Guid);
+            gridViewTextBoxColumn9.FieldName = "ownerguid";
+            gridViewTextBoxColumn9.HeaderText = "ownerguid";
+            gridViewTextBoxColumn9.IsAutoGenerated = true;
+            gridViewTextBoxColumn9.IsVisible = false;
+            gridViewTextBoxColumn9.Name = "ownerguid";
+            gridViewTextBoxColumn10.FieldName = "city";
+            gridViewTextBoxColumn10.HeaderText = "المدينة";
+            gridViewTextBoxColumn10.IsAutoGenerated = true;
+            gridViewTextBoxColumn10.Name = "city";
+            gridViewTextBoxColumn11.FieldName = "location";
+            gridViewTextBoxColumn11.HeaderText = "الموقع";
+            gridViewTextBoxColumn11.IsAutoGenerated = true;
+            gridViewTextBoxColumn11.Name = "location";
+            gridViewTextBoxColumn12.FieldName = "number";
+            gridViewTextBoxColumn12.HeaderText = "رقم المخطط";
+            gridViewTextBoxColumn12.IsAutoGenerated = true;
+            gridViewTextBoxColumn12.Name = "number";
             this.CmbPlanGuid.EditorControl.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn19,
-            gridViewTextBoxColumn20,
-            gridViewTextBoxColumn21,
-            gridViewTextBoxColumn22,
-            gridViewTextBoxColumn23,
-            gridViewTextBoxColumn24});
+            gridViewTextBoxColumn7,
+            gridViewTextBoxColumn8,
+            gridViewTextBoxColumn9,
+            gridViewTextBoxColumn10,
+            gridViewTextBoxColumn11,
+            gridViewTextBoxColumn12});
             this.CmbPlanGuid.EditorControl.MasterTemplate.DataSource = this.tbPlanInfoBindingSource;
             this.CmbPlanGuid.EditorControl.MasterTemplate.EnableFiltering = true;
             this.CmbPlanGuid.EditorControl.MasterTemplate.EnableGrouping = false;
             this.CmbPlanGuid.EditorControl.MasterTemplate.ShowFilteringRow = false;
-            this.CmbPlanGuid.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition10;
+            this.CmbPlanGuid.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition4;
             this.CmbPlanGuid.EditorControl.Name = "NestedRadGridView";
             this.CmbPlanGuid.EditorControl.ReadOnly = true;
             this.CmbPlanGuid.EditorControl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -1194,25 +1198,38 @@
             // 
             // PageAttachments
             // 
+            this.PageAttachments.Controls.Add(this.BtnScanner);
+            this.PageAttachments.Controls.Add(this.BtnAttachment);
             this.PageAttachments.Controls.Add(this.DataGridAttachments);
             this.PageAttachments.Image = global::DoctorERP.Properties.Resources.attachment25;
             this.PageAttachments.ItemSize = new System.Drawing.SizeF(91F, 55F);
             this.PageAttachments.Location = new System.Drawing.Point(6, 6);
             this.PageAttachments.Name = "PageAttachments";
-            this.PageAttachments.Size = new System.Drawing.Size(1063, 595);
+            this.PageAttachments.Size = new System.Drawing.Size(1162, 597);
             this.PageAttachments.Text = "مرفقات";
             // 
             // DataGridAttachments
             // 
-            this.DataGridAttachments.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DataGridAttachments.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.DataGridAttachments.Location = new System.Drawing.Point(0, 0);
             // 
             // 
             // 
-            this.DataGridAttachments.MasterTemplate.ViewDefinition = tableViewDefinition11;
+            this.DataGridAttachments.MasterTemplate.AllowAddNewRow = false;
+            this.DataGridAttachments.MasterTemplate.AllowDeleteRow = false;
+            this.DataGridAttachments.MasterTemplate.AllowEditRow = false;
+            this.DataGridAttachments.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
+            this.DataGridAttachments.MasterTemplate.EnableGrouping = false;
+            this.DataGridAttachments.MasterTemplate.ViewDefinition = tableViewDefinition5;
             this.DataGridAttachments.Name = "DataGridAttachments";
-            this.DataGridAttachments.Size = new System.Drawing.Size(1063, 595);
+            this.DataGridAttachments.ShowGroupPanel = false;
+            this.DataGridAttachments.ShowGroupPanelScrollbars = false;
+            this.DataGridAttachments.Size = new System.Drawing.Size(1159, 517);
             this.DataGridAttachments.TabIndex = 0;
+            this.DataGridAttachments.TitleText = "المرفقات";
+            this.DataGridAttachments.VirtualMode = true;
             this.DataGridAttachments.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DataGridAttachment_MouseDown);
             // 
             // PagePricingLog
@@ -1223,7 +1240,7 @@
             this.PagePricingLog.ItemSize = new System.Drawing.SizeF(151F, 55F);
             this.PagePricingLog.Location = new System.Drawing.Point(6, 6);
             this.PagePricingLog.Name = "PagePricingLog";
-            this.PagePricingLog.Size = new System.Drawing.Size(1063, 595);
+            this.PagePricingLog.Size = new System.Drawing.Size(1162, 597);
             this.PagePricingLog.Text = "سجل تعديل الأسعار";
             this.PagePricingLog.Title = "سجل تعديل سعر الأرض";
             // 
@@ -1234,10 +1251,19 @@
             // 
             // 
             // 
-            this.DataGridPriceLog.MasterTemplate.ViewDefinition = tableViewDefinition12;
+            this.DataGridPriceLog.MasterTemplate.AllowAddNewRow = false;
+            this.DataGridPriceLog.MasterTemplate.AllowDeleteRow = false;
+            this.DataGridPriceLog.MasterTemplate.AllowEditRow = false;
+            this.DataGridPriceLog.MasterTemplate.AllowSearchRow = true;
+            this.DataGridPriceLog.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
+            this.DataGridPriceLog.MasterTemplate.EnableGrouping = false;
+            this.DataGridPriceLog.MasterTemplate.ViewDefinition = tableViewDefinition6;
             this.DataGridPriceLog.Name = "DataGridPriceLog";
-            this.DataGridPriceLog.Size = new System.Drawing.Size(1063, 595);
+            this.DataGridPriceLog.ShowGroupPanel = false;
+            this.DataGridPriceLog.ShowGroupPanelScrollbars = false;
+            this.DataGridPriceLog.Size = new System.Drawing.Size(1162, 597);
             this.DataGridPriceLog.TabIndex = 1;
+            this.DataGridPriceLog.TitleText = "سجل تعديل الأسعار";
             this.DataGridPriceLog.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.DataGridPriceLog_MouseDoubleClick);
             // 
             // BindingNavigatorLands
@@ -2245,6 +2271,30 @@
             ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement19.GetChildAt(2).GetChildAt(1))).Text = "إستيراد البيانات من ملف إكسيل";
             ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement19.GetChildAt(2).GetChildAt(1))).RightToLeft = true;
             // 
+            // BtnAttachment
+            // 
+            this.BtnAttachment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnAttachment.Enabled = false;
+            this.BtnAttachment.Location = new System.Drawing.Point(1028, 539);
+            this.BtnAttachment.Name = "BtnAttachment";
+            this.BtnAttachment.Size = new System.Drawing.Size(120, 36);
+            this.BtnAttachment.TabIndex = 1;
+            this.BtnAttachment.Text = "إضافة مرفق";
+            this.BtnAttachment.ThemeName = "Material";
+            this.BtnAttachment.Click += new System.EventHandler(this.BtnAddAttachment_Click);
+            // 
+            // BtnScanner
+            // 
+            this.BtnScanner.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnScanner.Enabled = false;
+            this.BtnScanner.Location = new System.Drawing.Point(774, 539);
+            this.BtnScanner.Name = "BtnScanner";
+            this.BtnScanner.Size = new System.Drawing.Size(229, 36);
+            this.BtnScanner.TabIndex = 2;
+            this.BtnScanner.Text = "جلب من الماسح الضوئي";
+            this.BtnScanner.ThemeName = "Material";
+            this.BtnScanner.Click += new System.EventHandler(this.BtnScanner_Click);
+            // 
             // UCLandsDataEntry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2330,6 +2380,8 @@
             this.radScrollablePanel2.PanelContainer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radScrollablePanel2)).EndInit();
             this.radScrollablePanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.BtnAttachment)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BtnScanner)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2490,5 +2542,7 @@
         private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement28;
         private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement29;
         private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement30;
+        private Telerik.WinControls.UI.RadButton BtnScanner;
+        private Telerik.WinControls.UI.RadButton BtnAttachment;
     }
 }
