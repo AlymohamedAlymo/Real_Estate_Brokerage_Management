@@ -141,6 +141,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Deve Tools\CSharp\SQL2014SDK\Microsoft.SqlServer.XEvent.Linq.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Toolkit.Uwp.Notifications, Version=7.0.0.0, Culture=neutral, PublicKeyToken=4aff67a105548ee2" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="SmartArabXLSX, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -178,6 +179,7 @@
     <Reference Include="Telerik.WinControls.RadDiagram, Version=2023.1.117.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
     <Reference Include="Telerik.WinControls.RadMap, Version=2023.1.117.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
     <Reference Include="Telerik.WinControls.RadSpreadsheet, Version=2023.1.117.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.RadToastNotification, Version=2023.1.117.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
     <Reference Include="Telerik.WinControls.RichTextEditor, Version=2023.1.117.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
     <Reference Include="Telerik.WinControls.Scheduler, Version=2023.1.117.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
     <Reference Include="Telerik.WinControls.Themes.Fluent, Version=2023.1.117.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
@@ -281,6 +283,15 @@
     <Compile Include="DAL\vwWorkFee.cs" />
     <Compile Include="DAL\vwWorkFeeVAT.cs" />
     <Compile Include="DAL\vwWorkFeeVatTotals.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs" />
+    <Compile Include="Form11.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Form1.resx</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmAccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -812,6 +823,10 @@
     <Compile Include="User Controls\UCLandsDataEntry.Designer.cs">
       <DependentUpon>UCLandsDataEntry.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Form1.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Form11.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmAccount.resx">
       <DependentUpon>FrmAccount.cs</DependentUpon>
     </EmbeddedResource>
@@ -1092,6 +1107,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Map-icon.svg.ico" />
+    <None Include="Resources\information50.png" />
+    <None Include="Resources\information30.png" />
     <None Include="Resources\insert into Local.sql" />
     <None Include="Resources\BtnSketch_16.png" />
     <None Include="Resources\BtnClipboard_16.png" />

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using Telerik.RadToastNotificationManager;
 using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
@@ -38,6 +39,8 @@ namespace DoctorERP.User_Controls
             radLabel7.TextAlignment = ContentAlignment.TopLeft;
             radLabel10.TextAlignment = ContentAlignment.TopLeft;
             radTotalText.TextAlignment = ContentAlignment.TopLeft;
+            radDesktopAlert1.Popup.RootElement.RightToLeft = true;
+
             SetData();
         }
 
@@ -142,7 +145,6 @@ namespace DoctorERP.User_Controls
             SetReadOnly(true);
         }
 
-
         private void NewFill()
         {
             IsNew = true;
@@ -209,7 +211,7 @@ namespace DoctorERP.User_Controls
 
             if (ShowConfirmMSG)
             {
-                if (MessageBox.Show("هل أنت متاكد من الإضافة ؟", Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.No)
+                if (!ShowWarning("هل أنت متاكد من الإضافة ؟", "إضافة بطاقة أرض جديدة", "إذا ضغت علي زر نعم سوف يتم إضافة بطاقة الأرض الجديدة"))
                     return false;
             }
 
@@ -286,7 +288,7 @@ namespace DoctorERP.User_Controls
 
             if (ShowConfirmMSG)
             {
-                if (MessageBox.Show("هل أنت متاكد من التعديل ؟", Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.No)
+                if (!ShowWarning("هل أنت متاكد من التعديل ؟", "تعديل بطاقة أرض", "إذا ضغت علي زر نعم سوف يتم تعديل بيانات بطاقة الأرض"))
                     return false;
             }
             Guid CurrentGuid = ((tbLand)Bs.Current).guid;
@@ -406,6 +408,7 @@ namespace DoctorERP.User_Controls
 
         private void ShowConfirm()
         {
+            radToastNotificationManager1.ShowNotification(0);
             FrmConfirm frmconfirm = new FrmConfirm();
             frmconfirm.ShowDialog();
             FrmMain.DataHasChanged = true;
@@ -489,7 +492,84 @@ namespace DoctorERP.User_Controls
             }
 
         }
+        private bool ShowWarning(string WarningHeading, string WarningText, string WarningFootNote)
+        {
+            RadTaskDialogPage page = new RadTaskDialogPage()
+            {
 
+                Caption = " ",
+                Heading = WarningHeading,
+                Text = WarningText,
+                RightToLeft = true,
+                CustomFont = "Robot",
+                Icon = RadTaskDialogIcon.ShieldWarningYellowBar,
+                AllowCancel = true,
+                Footnote = new RadTaskDialogFootnote("ملحوظة: " + WarningFootNote),
+                CommandAreaButtons = {
+                    RadTaskDialogButton.Yes,
+                    RadTaskDialogButton.No
+                }
+
+            };
+            page.CommandAreaButtons[0].Text = "نعم";
+            page.CommandAreaButtons[1].Text = "لا";
+
+            //RadTaskDialog.CurrentForm.ThemeName ="Material";
+            RadTaskDialogButton result = RadTaskDialog.ShowDialog(page, RadTaskDialogStartupLocation.CenterScreen);
+            if (result == null || result == RadTaskDialogButton.No)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private void TackAction()
+        {
+            bool Confirm = ShowWarning("بطاقات الأراضي", "هل تريد حفظ التغيرات ؟", "إذا ضغت علي زر نعم سوف يتم حفظ البيان المفتوح");
+            if (Confirm)
+            {
+                ShowConfirmMSG = false;
+                if (BtnNew.Text == "(F1) حفظ")
+                {
+                    if (!Add())
+                    {
+                        //return true;
+                    }
+                }
+                else if (BtnEdit.Text == "(F2) حفظ")
+                {
+                    if (!Edit())
+                    {
+
+                        //return true;
+                    }
+                }
+            }
+            //else if (!Confirm)
+            //{
+            //    return false;
+            //}
+
+        }
+
+        private void ShowDesktopAlert(string Header, string Content, string Footer)
+        {
+
+            this.radDesktopAlert1.CaptionText = "<html><b>\nبطاقات الأراضي";
+            this.radDesktopAlert1.ContentText = "<html><i>" +
+                Header +
+                "</i><b><span><color=Blue>" +
+                "\n" + Content + "\n" +
+                "</span></b>" +
+                Footer;
+            this.radDesktopAlert1.ContentImage = Properties.Resources.information50;
+            radDesktopAlert1.Opacity = 0.9f;
+            this.radDesktopAlert1.Show();
+
+        }
         #endregion
 
         #region Buttons
@@ -497,9 +577,7 @@ namespace DoctorERP.User_Controls
         {
             if (IsDirty)
             {
-                MessageBox.Show("يجب إتخاذ إجراء في العملية الحالية أولاَ", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-
+                TackAction();
             }
 
             tbLand land = (tbLand)Bs.Current;
@@ -532,6 +610,7 @@ namespace DoctorERP.User_Controls
 
         }
 
+
         private void BtnReservation_Click(object sender, EventArgs e)
         {
             if (IsDirty)
@@ -557,7 +636,10 @@ namespace DoctorERP.User_Controls
 
             if (land.status.Equals("متاح"))
             {
-                if (MessageBox.Show("هل أنت متأكد من حجز هذا الصنف ؟", Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.No)
+
+
+
+                if (!ShowWarning("حجز بطاقة أرض", "هل أنت متأكد من حجز هذا الصنف ؟", "إذا ضغت علي زر نعم سوف يتم تسجيل بطاقة الأرض بحالة محجوز"))
                     return;
 
                 FrmReservereason frm = new FrmReservereason(Txtreservereason.Text);
@@ -1086,6 +1168,26 @@ namespace DoctorERP.User_Controls
             {
                 MessageBox.Show("لم يتم إضافة المرفق", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+        }
+
+        private void PageAttachments_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Txtamount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!IsDirty)
+            {
+                ShowDesktopAlert(".أولآ تعديل زر علي الضغط يجب", "البيانات  تعديل يمكنك ذلك بعد", "التعديل لحفظ حفظ زر علي الضغط ثم");
+
+            }
+        }
+
+        private void radDesktopAlert1_Opening(object sender, System.ComponentModel.CancelEventArgs args)
+        {
+            //var arg = args as RadPopupOpeningEventArgs;
+            //arg.CustomLocation = new Point(1951, 967);
         }
 
         #endregion

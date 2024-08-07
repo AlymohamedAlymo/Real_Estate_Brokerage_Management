@@ -678,23 +678,39 @@ namespace DoctorERP.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap information50 {
+            get {
+                object obj = ResourceManager.GetObject("information50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 
-        ///DELETE FROM realestatebrokeragemanagement.[dbo].tbAccount
-        ///INSERT INTO realestatebrokeragemanagement.[dbo].tbAccount
-        ///SELECT * FROM [almalqa2023abha].[dbo].tbAccount
+        ///DELETE FROM dataNew.[dbo].tbAccount
+        ///INSERT INTO dataNew.[dbo].tbAccount
+        ///SELECT * FROM dataOld.[dbo].tbAccount
         ///Go
         ///
-        ///DELETE FROM realestatebrokeragemanagement.[dbo].tbLog
-        ///INSERT INTO realestatebrokeragemanagement.[dbo].tbLog
-        ///SELECT * FROM [almalqa2023abha].[dbo].tbLog
+        ///DELETE FROM dataNew.[dbo].tbLog
+        ///INSERT INTO dataNew.[dbo].tbLog
+        ///SELECT * FROM data2024.[dbo].tbLog
         ///Go
         ///
-        ///DELETE FROM realestatebrokeragemanagement.[dbo].tbAgent
-        ///INSERT INTO realestatebrokeragemanagement.[dbo].tbAgent
-        ///SELECT  *, &apos; &apos; FROM [almalqa2023abha].[dbo].tbAgent
+        ///DELETE FROM dataNew.[dbo].tbAgent
+        ///INSERT INTO dataNew.[dbo].tbAgent
+        ///SELECT  *, &apos; &apos; FROM dataOld.[dbo].tbAgent
         ///Go
         ///
-        ///DEL [rest of string was truncated]&quot;;.
+        ///DELETE FROM dataNew.[dbo].tbAppInfo
+        ///INSERT INTO dataNew.[dbo].tbAppInfo
+        ///SELECT * FROM dataOld.[dbo].tbAppInfo
+        ///Go
+        ///
+        ///DELETE FROM dataNew.[dbo].tbAttachment
+        ///INSER [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string insert_into {
             get {
