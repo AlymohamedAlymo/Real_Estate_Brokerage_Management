@@ -621,13 +621,9 @@ namespace DoctorERP.User_Controls
                 var content = e.Content as FlyoutInteractiveContent;
                 if (content != null)
                 {
-
                     tbLand land = (tbLand)Bs.Current;
-
-
                     RadCallout callout = new RadCallout();
                     callout.ArrowDirection = Telerik.WinControls.ArrowDirection.Up;
-                    //callout.ThemeName = this.CurrentThemeName;
                     if (content.Result == DialogResult.OK)
                     {
                         DBConnect.StartTransAction();
@@ -679,39 +675,21 @@ namespace DoctorERP.User_Controls
                 {
                     return;
                 }
-
                 RadFlyoutManager.Show(this, typeof(FlyoutInteractiveContent));
-
-
-                //FrmReservereason frm = new FrmReservereason(Txtreservereason.Text);
-                //if (frm.ShowDialog() == DialogResult.OK)
-                //{
-                //    DBConnect.StartTransAction();
-                //    Txtstatus.Text = land.status = "محجوز";
-                //    BtnReservation.Text = "إلغاء الحجز";
-                //    Txtreservereason.Visible = Txtreservereason.Visible = true;
-                //    land.reservereason = frm.reservereason;
-                //    Txtreservereason.Text = frm.reservereason;
-                //    land.Update();
-                //    if (DBConnect.CommitTransAction())
-                //    {
-                //        ShowConfirm();
-                //    }
-                //}
             }
             else if (land.status.Equals("مباع"))
             {
-                MessageBox.Show("لا يمكن حجز الصنف المباع", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageException("بطاقات الأراضي", "لا يمكن حجز الصنف المباع", "لا يمكن حجز صنف مباع مسبقاَ");
                 return;
             }
             else if (land.status.Equals("أمر بيع"))
             {
-                MessageBox.Show("لا يمكن حجز الصنف مضاف لأمر البيع", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageException("بطاقات الأراضي", "لا يمكن حجز الصنف مضاف لأمر البيع", "لا يمكن حجز صنف مضاف لأمر البيع مسبقاً");
                 return;
             }
             else if (land.status.Equals("محجوز"))
             {
-                if (MessageBox.Show("هل أنت متأكد من إلغاء حجز هذا الصنف ؟", Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.No)
+                if (!MessageWarning("بطاقات الأراضي", "هل أنت متأكد من إلغاء حجز هذا الصنف ؟", "إذا ضغط علي زر نعم سوف يتم إلغاء حجز بطاقة الأرض"))
                     return;
 
                 DBConnect.StartTransAction();
@@ -733,6 +711,9 @@ namespace DoctorERP.User_Controls
         {
             if (!CheckifOprAllow(new tbLand(), OperationType.OperationIs.Add))
             {
+                MessageException("بطاقات الأراضي", "لا يمكن حجز الصنف مضاف لأمر البيع", "لا يمكن حجز صنف مضاف لأمر البيع مسبقاً");
+
+
                 MessageBox.Show("ليس لديك صلاحية", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }

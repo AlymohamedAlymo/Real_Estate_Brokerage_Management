@@ -151,8 +151,6 @@ namespace DoctorERP
         #region Main Events
         public void FrmMain_Load(object sender, EventArgs e)
         {
-            //RadOverlayManager.Show(this);
-
             if (!DBConnect.TryToConnect(AppSetting.DataBase))
             {
                 FrmConnection connection = new FrmConnection();
@@ -164,9 +162,6 @@ namespace DoctorERP
 
                 Application.Exit();
             }
-
-            //RadFlyoutManager.Close();
-
             if (ChangeDataBase(true))
             {
                 this.Visible = true;
@@ -175,8 +170,6 @@ namespace DoctorERP
             {
                 Application.Exit();
             }
-
-
         }
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -246,7 +239,7 @@ namespace DoctorERP
                 }
 
                 FrmLogin frmlog = new FrmLogin();
-                if (frmlog.ShowDialog() == DialogResult.OK)
+                if (frmlog.ShowDialog(this) == DialogResult.OK)
                 {
                     CurrentUser = frmlog.user;
                     LoadSettings();
