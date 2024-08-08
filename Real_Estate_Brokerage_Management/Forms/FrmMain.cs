@@ -32,6 +32,7 @@ namespace DoctorERP
 
         public FrmMain()
         {
+
             InitializeComponent();
             this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
 
@@ -150,6 +151,8 @@ namespace DoctorERP
         #region Main Events
         public void FrmMain_Load(object sender, EventArgs e)
         {
+            //RadOverlayManager.Show(this);
+
             if (!DBConnect.TryToConnect(AppSetting.DataBase))
             {
                 FrmConnection connection = new FrmConnection();
@@ -162,6 +165,8 @@ namespace DoctorERP
                 Application.Exit();
             }
 
+            //RadFlyoutManager.Close();
+
             if (ChangeDataBase(true))
             {
                 this.Visible = true;
@@ -170,6 +175,7 @@ namespace DoctorERP
             {
                 Application.Exit();
             }
+
 
         }
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -984,6 +990,8 @@ namespace DoctorERP
                 MessageBox.Show("لا تملك صلاحية للقيام بهذا العمل", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
+            RadOverlayManager.Show(this);
+
             RadPageViewPage enumerableIterator = PageViewCardsHome.Pages.Where(u => u.Name == "LandsCard").FirstOrDefault();
             if (enumerableIterator == null)
             {
@@ -1004,6 +1012,8 @@ namespace DoctorERP
                 PageViewCardsHome.SelectedPage = enumerableIterator;
 
             }
+
+            RadOverlayManager.Close();
 
         }
 
@@ -1682,6 +1692,11 @@ namespace DoctorERP
             RadMessageBoxForm form = new RadMessageBoxForm();
             form.ShowDialog();
             form.ShowDetails();
+
+        }
+
+        private void FrmMain_Shown(object sender, EventArgs e)
+        {
 
         }
     }

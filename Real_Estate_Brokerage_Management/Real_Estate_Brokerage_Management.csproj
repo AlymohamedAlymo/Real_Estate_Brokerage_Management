@@ -283,15 +283,6 @@
     <Compile Include="DAL\vwWorkFee.cs" />
     <Compile Include="DAL\vwWorkFeeVAT.cs" />
     <Compile Include="DAL\vwWorkFeeVatTotals.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs" />
-    <Compile Include="Form11.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Form1.resx</DependentUpon>
-    </Compile>
     <Compile Include="Forms\FrmAccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -796,7 +787,7 @@
     <Compile Include="Helpers\NumberToWords.cs" />
     <Compile Include="Helpers\Enums\OperationType.cs" />
     <Compile Include="Helpers\Printers.cs" />
-    <Compile Include="CustomElements\LandIconListViewVisualItem.cs" />
+    <Compile Include="CustomElements\ImageListView\LandIconListViewVisualItem.cs" />
     <Compile Include="Helpers\SendSMS.cs" />
     <Compile Include="Helpers\ToWord.cs" />
     <Compile Include="Helpers\WinformsDirtyTracking.cs" />
@@ -811,6 +802,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="CustomElements\Flyout\FlyoutStaticContent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomElements\Flyout\FlyoutStaticContent.Designer.cs">
+      <DependentUpon>FlyoutStaticContent.cs</DependentUpon>
+    </Compile>
     <Compile Include="User Controls\UCLands.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -823,10 +820,12 @@
     <Compile Include="User Controls\UCLandsDataEntry.Designer.cs">
       <DependentUpon>UCLandsDataEntry.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Form1.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Form11.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <Compile Include="CustomElements\Flyout\FlyoutInteractiveContent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomElements\Flyout\FlyoutInteractiveContent.Designer.cs">
+      <DependentUpon>FlyoutInteractiveContent.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\FrmAccount.resx">
       <DependentUpon>FrmAccount.cs</DependentUpon>
     </EmbeddedResource>
@@ -1078,6 +1077,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="User Controls\UCLandsDataEntry.resx">
       <DependentUpon>UCLandsDataEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomElements\Flyout\FlyoutInteractiveContent.resx">
+      <DependentUpon>FlyoutInteractiveContent.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="almalqa2023abhaDataSet.xsc">
       <DependentUpon>almalqa2023abhaDataSet.xsd</DependentUpon>

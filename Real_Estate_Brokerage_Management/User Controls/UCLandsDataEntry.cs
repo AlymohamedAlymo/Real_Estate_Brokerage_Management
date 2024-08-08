@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using Telerik.RadToastNotificationManager;
 using Telerik.WinControls;
 using Telerik.WinControls.UI;
+using Telerik.WinControls.UI.SplashScreen;
 
 namespace DoctorERP.User_Controls
 {
@@ -23,14 +24,22 @@ namespace DoctorERP.User_Controls
         private int CurrentPosition = 0;
         public UCLandsDataEntry(Guid _guid, bool _isNew, string _BlockNumber)
         {
+
             InitializeComponent();
+
             guid = _guid;
             BlockNumber = _BlockNumber;
             IsNew = _isNew;
+            BtnSentToPrinter.Click -= BtnPrint_Click;
             BtnSentToPrinter.Click += BtnPrint_Click;
+            BtnPreview.Click -= MenuPreview_Click;
             BtnPreview.Click += MenuPreview_Click;
+            BtnDesign.Click -= MenuDesign_Click;
             BtnDesign.Click += MenuDesign_Click;
+            BtnImportExcel.Click -= BtnImport_Click;
             BtnImportExcel.Click += BtnImport_Click;
+            RadFlyoutManager.FlyoutClosed -= this.RadFlyoutManager_FlyoutClosed;
+            RadFlyoutManager.FlyoutClosed += this.RadFlyoutManager_FlyoutClosed;
             radLabel8.TextAlignment = ContentAlignment.BottomLeft;
             radLabel2.TextAlignment = ContentAlignment.TopLeft;
             radLabel1.TextAlignment = ContentAlignment.TopLeft;
@@ -42,6 +51,8 @@ namespace DoctorERP.User_Controls
             radDesktopAlert1.Popup.RootElement.RightToLeft = true;
 
             SetData();
+
+
         }
 
         #region Main Events
@@ -603,6 +614,48 @@ namespace DoctorERP.User_Controls
 
         }
 
+        private void RadFlyoutManager_FlyoutClosed(FlyoutClosedEventArgs e)
+        {
+            Action action = new Action(() =>
+            {
+                var content = e.Content as FlyoutInteractiveContent;
+                if (content != null)
+                {
+
+                    tbLand land = (tbLand)Bs.Current;
+
+
+                    RadCallout callout = new RadCallout();
+                    callout.ArrowDirection = Telerik.WinControls.ArrowDirection.Up;
+                    //callout.ThemeName = this.CurrentThemeName;
+                    if (content.Result == DialogResult.OK)
+                    {
+                        DBConnect.StartTransAction();
+                        Txtstatus.Text = land.status = "محجوز";
+                        BtnReservation.Text = "إلغاء الحجز";
+                        Txtreservereason.Visible = Txtreservereason.Visible = true;
+                        land.reservereason = content.FirstName;
+                        Txtreservereason.Text = content.FirstName;
+                        land.Update();
+                        if (DBConnect.CommitTransAction())
+                        {
+                            ShowConfirm();
+                        }
+
+                        string fullName = $"{content.FirstName} {content.LastName}";
+                        RadCallout.Show(callout, this.BtnReservation, $"The student {fullName} was registered!", "Success");
+                    }
+                    else
+                    {
+                        RadCallout.Show(callout, this.BtnReservation, "The student was not registered!", "Cancelled");
+                    }
+                }
+
+            });
+
+            this.Invoke(action);
+        }
+
 
         private void BtnReservation_Click(object sender, EventArgs e)
         {
@@ -627,21 +680,24 @@ namespace DoctorERP.User_Controls
                     return;
                 }
 
-                FrmReservereason frm = new FrmReservereason(Txtreservereason.Text);
-                if (frm.ShowDialog() == DialogResult.OK)
-                {
-                    DBConnect.StartTransAction();
-                    Txtstatus.Text = land.status = "محجوز";
-                    BtnReservation.Text = "إلغاء الحجز";
-                    Txtreservereason.Visible = Txtreservereason.Visible = true;
-                    land.reservereason = frm.reservereason;
-                    Txtreservereason.Text = frm.reservereason;
-                    land.Update();
-                    if (DBConnect.CommitTransAction())
-                    {
-                        ShowConfirm();
-                    }
-                }
+                RadFlyoutManager.Show(this, typeof(FlyoutInteractiveContent));
+
+
+                //FrmReservereason frm = new FrmReservereason(Txtreservereason.Text);
+                //if (frm.ShowDialog() == DialogResult.OK)
+                //{
+                //    DBConnect.StartTransAction();
+                //    Txtstatus.Text = land.status = "محجوز";
+                //    BtnReservation.Text = "إلغاء الحجز";
+                //    Txtreservereason.Visible = Txtreservereason.Visible = true;
+                //    land.reservereason = frm.reservereason;
+                //    Txtreservereason.Text = frm.reservereason;
+                //    land.Update();
+                //    if (DBConnect.CommitTransAction())
+                //    {
+                //        ShowConfirm();
+                //    }
+                //}
             }
             else if (land.status.Equals("مباع"))
             {
