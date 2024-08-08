@@ -211,7 +211,7 @@ namespace DoctorERP.User_Controls
 
             if (ShowConfirmMSG)
             {
-                if (!ShowWarning("هل أنت متاكد من الإضافة ؟", "إضافة بطاقة أرض جديدة", "إذا ضغت علي زر نعم سوف يتم إضافة بطاقة الأرض الجديدة"))
+                if (!MessageWarning("هل أنت متاكد من الإضافة ؟", "إضافة بطاقة أرض جديدة", "إذا ضغت علي زر نعم سوف يتم إضافة بطاقة الأرض الجديدة"))
                     return false;
             }
 
@@ -288,7 +288,7 @@ namespace DoctorERP.User_Controls
 
             if (ShowConfirmMSG)
             {
-                if (!ShowWarning("هل أنت متاكد من التعديل ؟", "تعديل بطاقة أرض", "إذا ضغت علي زر نعم سوف يتم تعديل بيانات بطاقة الأرض"))
+                if (!MessageWarning("هل أنت متاكد من التعديل ؟", "تعديل بطاقة أرض", "إذا ضغت علي زر نعم سوف يتم تعديل بيانات بطاقة الأرض"))
                     return false;
             }
             Guid CurrentGuid = ((tbLand)Bs.Current).guid;
@@ -492,19 +492,19 @@ namespace DoctorERP.User_Controls
             }
 
         }
-        private bool ShowWarning(string WarningHeading, string WarningText, string WarningFootNote)
+        private bool MessageWarning(string Heading, string Body, string FootNote)
         {
             RadTaskDialogPage page = new RadTaskDialogPage()
             {
 
                 Caption = " ",
-                Heading = WarningHeading,
-                Text = WarningText,
+                Heading = Heading,
+                Text = Body,
                 RightToLeft = true,
                 CustomFont = "Robot",
                 Icon = RadTaskDialogIcon.ShieldWarningYellowBar,
                 AllowCancel = true,
-                Footnote = new RadTaskDialogFootnote("ملحوظة: " + WarningFootNote),
+                Footnote = new RadTaskDialogFootnote("ملحوظة: " + FootNote),
                 CommandAreaButtons = {
                     RadTaskDialogButton.Yes,
                     RadTaskDialogButton.No
@@ -513,8 +513,6 @@ namespace DoctorERP.User_Controls
             };
             page.CommandAreaButtons[0].Text = "نعم";
             page.CommandAreaButtons[1].Text = "لا";
-
-            //RadTaskDialog.CurrentForm.ThemeName ="Material";
             RadTaskDialogButton result = RadTaskDialog.ShowDialog(page, RadTaskDialogStartupLocation.CenterScreen);
             if (result == null || result == RadTaskDialogButton.No)
             {
@@ -526,48 +524,53 @@ namespace DoctorERP.User_Controls
             }
         }
 
+        private bool MessageException(string Heading, string Body, string FootNote)
+        {
+            RadTaskDialogPage page = new RadTaskDialogPage()
+            {
+
+                Caption = " ",
+                Heading = Heading,
+                Text = Body,
+                RightToLeft = true,
+                CustomFont = "Robot",
+                Icon = RadTaskDialogIcon.ShieldErrorRedBar,
+                //AllowCancel = true,
+                Footnote = new RadTaskDialogFootnote("ملحوظة: " + FootNote),
+                CommandAreaButtons = {
+                    RadTaskDialogButton.OK,
+                }
+
+            };
+            page.CommandAreaButtons[0].Text = "موافق";
+            RadTaskDialogButton result = RadTaskDialog.ShowDialog(page, RadTaskDialogStartupLocation.CenterScreen);
+            return true;
+        }
+
         private void TackAction()
         {
-            bool Confirm = ShowWarning("بطاقات الأراضي", "هل تريد حفظ التغيرات ؟", "إذا ضغت علي زر نعم سوف يتم حفظ البيان المفتوح");
+            bool Confirm = MessageWarning("بطاقات الأراضي", "هل تريد حفظ التغيرات ؟", "إذا ضغت علي زر نعم سوف يتم حفظ البيان المفتوح");
             if (Confirm)
             {
                 ShowConfirmMSG = false;
-                if (BtnNew.Text == "(F1) حفظ")
-                {
-                    if (!Add())
-                    {
-                        //return true;
-                    }
-                }
-                else if (BtnEdit.Text == "(F2) حفظ")
-                {
-                    if (!Edit())
-                    {
-
-                        //return true;
-                    }
-                }
+                if (BtnNew.Text == "(F1) حفظ") { Add(); }
+                else if (BtnEdit.Text == "(F2) حفظ") { Edit(); }
             }
-            //else if (!Confirm)
-            //{
-            //    return false;
-            //}
-
         }
 
         private void ShowDesktopAlert(string Header, string Content, string Footer)
         {
 
-            this.radDesktopAlert1.CaptionText = "<html><b>\nبطاقات الأراضي";
-            this.radDesktopAlert1.ContentText = "<html><i>" +
+            radDesktopAlert1.CaptionText = "<html><b>\nبطاقات الأراضي";
+            radDesktopAlert1.ContentText = "<html><i>" +
                 Header +
                 "</i><b><span><color=Blue>" +
                 "\n" + Content + "\n" +
                 "</span></b>" +
                 Footer;
-            this.radDesktopAlert1.ContentImage = Properties.Resources.information50;
+            radDesktopAlert1.ContentImage = Properties.Resources.information50;
             radDesktopAlert1.Opacity = 0.9f;
-            this.radDesktopAlert1.Show();
+            radDesktopAlert1.Show();
 
         }
         #endregion
@@ -575,36 +578,26 @@ namespace DoctorERP.User_Controls
         #region Buttons
         private void BtnContract_Click(object sender, EventArgs e)
         {
-            if (IsDirty)
-            {
-                TackAction();
-            }
-
+            if (IsDirty) { TackAction(); }
             tbLand land = (tbLand)Bs.Current;
-
             if (land is null || land.guid.Equals(Guid.Empty))
             {
-                MessageBox.Show("يجب حفظ البطاقة أولا", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageException("بطاقات الأراضي", "يجب حفظ البطاقة أولا", "قم بحفظ بطاقة الأرض أولاَ و بعد ذلك يمكنك اصدار عقد البيع");
                 return;
             }
-
             if (land.status.Equals("مباع"))
             {
-                MessageBox.Show("الأرض مباعة مسبقاً", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageException("بطاقات الأراضي", "الأرض مباعة مسبقاً", "لا يمكن اصدار عقد بيع لبطاقة أرض مباعة مسبقاَ");
                 return;
 
             }
-
             if (land.status.Equals("محجوز"))
             {
-                MessageBox.Show("الأرض محجوزة مسبقاً، يجب فك الحجز قبل بيعها", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageException("بطاقات الأراضي", "الأرض محجوزة مسبقاً", "الأرض محجوزة مسبقاً، يجب فك الحجز قبل بيعها");
                 return;
-
             }
-            List<tbLand> lst = new List<tbLand>
-            {
-                land
-            };
+
+            List<tbLand> lst = new List<tbLand> { land };
             FrmBillHeader frm = new FrmBillHeader(Guid.Empty, true, 0, lst);
             frm.Show();
 
@@ -613,39 +606,30 @@ namespace DoctorERP.User_Controls
 
         private void BtnReservation_Click(object sender, EventArgs e)
         {
-            if (IsDirty)
-            {
-                MessageBox.Show("يجب إتخاذ إجراء في العملية الحالية أولاَ", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-
-            }
+            if (IsDirty) { TackAction(); }
 
             if (Bs.Current == null)
             {
-                MessageBox.Show("يجب حفظ البطاقة أولا", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageException("بطاقات الأراضي", "يجب حفظ البطاقة أولا", "قم بحفظ بطاقة الأرض أولاَ و بعد ذلك يمكنك حجز البطاقة");
                 return;
             }
-
             tbLand land = (tbLand)Bs.Current;
-
             if (land is null || land.guid.Equals(Guid.Empty))
             {
-                MessageBox.Show("يجب حفظ البطاقة أولا", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageException("بطاقات الأراضي", "يجب حفظ البطاقة أولا", "قم بحفظ بطاقة الأرض أولاَ و بعد ذلك يمكنك حجز البطاقة");
                 return;
             }
 
             if (land.status.Equals("متاح"))
             {
-
-
-
-                if (!ShowWarning("حجز بطاقة أرض", "هل أنت متأكد من حجز هذا الصنف ؟", "إذا ضغت علي زر نعم سوف يتم تسجيل بطاقة الأرض بحالة محجوز"))
+                if (!MessageWarning("حجز بطاقة أرض", "هل أنت متأكد من حجز هذا الصنف ؟", "إذا ضغت علي زر نعم سوف يتم تسجيل بطاقة الأرض بحالة محجوز"))
+                {
                     return;
+                }
 
                 FrmReservereason frm = new FrmReservereason(Txtreservereason.Text);
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
-
                     DBConnect.StartTransAction();
                     Txtstatus.Text = land.status = "محجوز";
                     BtnReservation.Text = "إلغاء الحجز";
