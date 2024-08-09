@@ -6,7 +6,6 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using Telerik.RadToastNotificationManager;
 using Telerik.WinControls;
 using Telerik.WinControls.UI;
 using Telerik.WinControls.UI.SplashScreen;
@@ -18,10 +17,12 @@ namespace DoctorERP.User_Controls
 
         private Guid guid;
         public BindingSource Bs;
-        public bool IsDirty = false;
+        public bool IsDirty = false, IsLoad = true;
         private bool IsNew = false, ShowConfirmMSG = true, IsProgrammatic = false;
         private readonly string BlockNumber;
         private int CurrentPosition = 0;
+       
+
         public UCLandsDataEntry(Guid _guid, bool _isNew, string _BlockNumber)
         {
 
@@ -38,6 +39,12 @@ namespace DoctorERP.User_Controls
             BtnDesign.Click += MenuDesign_Click;
             BtnImportExcel.Click -= BtnImport_Click;
             BtnImportExcel.Click += BtnImport_Click;
+            MenuPreviewAttachment.Click -= MenuPreviewAttach_Click;
+            MenuPreviewAttachment.Click += MenuPreviewAttach_Click;
+            MenuExtractAttachement.Click -= MenuExtractAttachment_Click;
+            MenuExtractAttachement.Click += MenuExtractAttachment_Click;
+            MenuDeleteAttachment.Click -= MenuDeleteAttachment_Click;
+            MenuDeleteAttachment.Click += MenuDeleteAttachment_Click;
             RadFlyoutManager.FlyoutClosed -= this.RadFlyoutManager_FlyoutClosed;
             RadFlyoutManager.FlyoutClosed += this.RadFlyoutManager_FlyoutClosed;
             radLabel8.TextAlignment = ContentAlignment.BottomLeft;
@@ -48,12 +55,18 @@ namespace DoctorERP.User_Controls
             radLabel7.TextAlignment = ContentAlignment.TopLeft;
             radLabel10.TextAlignment = ContentAlignment.TopLeft;
             radTotalText.TextAlignment = ContentAlignment.TopLeft;
+            radLabel13.TextAlignment = ContentAlignment.TopLeft;
+            radLabel12.TextAlignment = ContentAlignment.TopLeft;
+            radLabel9.TextAlignment = ContentAlignment.TopLeft;
+            radLabel4.TextAlignment = ContentAlignment.TopLeft;
+            radLabel3.TextAlignment = ContentAlignment.TopLeft;
             radDesktopAlert1.Popup.RootElement.RightToLeft = true;
 
             SetData();
 
-
+            IsLoad = false;
         }
+
 
         #region Main Events
 
@@ -427,7 +440,7 @@ namespace DoctorERP.User_Controls
 
         private void CalcTotal()
         {
-
+            //radCallout1.Close();
             tbTaxDiscount.Fill();
             tbTaxDiscount TaxDiscount = tbTaxDiscount.lstData[0];
 
@@ -455,6 +468,24 @@ namespace DoctorERP.User_Controls
             };
             Txttotal.Value = total;
             radTotalText.Text = toWord.ConvertToArabic();
+
+            //radCallout1.CalloutForm.Controls[0].Text = "تم احتساب علي ";
+            //radCallout1.Show(radTotalText);
+
+            //if (!IsLoad)
+            //{
+            //    RadCallout radCallout = new RadCallout();
+            //    radCallout.AssociatedControl = this.radLabel11;
+            //    radLabel11.Text = "تم إحتساب الحافز بناءَ علي : قيمة الأرض + قيمة ضريبة التصرفات العقارية + قيمة عمولة السعي + القيمة المضافة لعمولة السعي";
+            //    radCallout.CalloutType = Telerik.WinControls.UI.Callout.CalloutType.RoundedRectangle;
+            //    radCallout.ArrowDirection = Telerik.WinControls.ArrowDirection.Up;
+            //    radCallout.ArrowType = Telerik.WinControls.UI.Callout.CalloutArrowType.Triangle;
+            //    radCallout.AutoClose = false;
+            //    radCallout.DropShadow = true;
+            //    radCallout.Show(this.radTotalText);
+
+            //}
+
 
         }
 
@@ -730,6 +761,7 @@ namespace DoctorERP.User_Controls
                 BtnNew.Text = "(F1) حفظ";
                 BtnNew.ScreenTip.Text = "حفظ بطاقة الأرض الجديدة";
                 BtnNew.Image = Properties.Resources.GlyphCheck_small;
+                radPageView1.SelectedPage = PageHome;
                 IsDirty = true;
                 guid = Guid.Empty;
                 Bs.AddNew();
@@ -1081,35 +1113,40 @@ namespace DoctorERP.User_Controls
         {
             try
             {
+                if (BtnEdit.Text == "(F2) حفظ") { MenuDeleteAttachment.Enabled = true; }
+                else if (BtnEdit.Text != "(F2) حفظ") { MenuDeleteAttachment.Enabled = false; }
+
                 if (e.Button == MouseButtons.Right)
                 {
-                    //var hit = DataGridAttachments.HitTest(e.X, e.Y);
-                    //DataGridAttachments.CurrentCell = DataGridAttachments[hit.ColumnIndex, hit.RowIndex];
-                    //DataGridAttachments.ContextMenuStrip = ConMenuAttachments;
-
+                    if (DataGridAttachments.CurrentCell != null)
+                    {
+                        this.radContextMenuManager1.SetRadContextMenu(this.DataGridAttachments, this.AttachmentsContextMenu);
+                    }
+                    else if (DataGridAttachments.CurrentCell == null)
+                    {
+                        this.radContextMenuManager1.SetRadContextMenu(this.DataGridAttachments, null);
+                    }
                 }
             }
             catch
             {
-                DataGridAttachments.ContextMenuStrip = null;
-
+                this.radContextMenuManager1.SetRadContextMenu(this.DataGridAttachments, null);
             }
         }
 
         private void MenuPreviewAttach_Click(object sender, EventArgs e)
         {
-            //byte[] bfiles = (byte[])DataGridAttachments.rows[0].cell, DataGridAttachments.CurrentRow.Index].Value;
-            //Guid guid = new Guid(DataGridAttachments[colguid.Name, DataGridAttachments.CurrentRow.Index].Value.ToString());
-            //string filename = (string)DataGridAttachments[colfilename.Name, DataGridAttachments.CurrentRow.Index].Value;
 
+            byte[] bfiles = (byte[])DataGridAttachments.CurrentRow.Cells[5].Value;
+            Guid guid = new Guid(DataGridAttachments.CurrentRow.Cells[0].Value.ToString());
+            string filename = DataGridAttachments.CurrentRow.Cells[3].Value.ToString();
 
-            //tbAttachment attach = tbAttachment.FindByFull("guid", guid);
+            tbAttachment attach = tbAttachment.FindByFull("guid", guid);
 
-            //if (bfiles.Length <= 1)
-            //    FileHelper.RunFile(attach.FileName, attach.FileData);
-            //else
-            //    FileHelper.RunFile(filename, bfiles);
-
+            if (bfiles.Length <= 1)
+                FileHelper.RunFile(attach.FileName, attach.FileData);
+            else
+                FileHelper.RunFile(filename, bfiles);
 
         }
 
@@ -1127,27 +1164,26 @@ namespace DoctorERP.User_Controls
             sfd.RestoreDirectory = true;
             sfd.Filter = "All Files (*.*)|*.*";
 
-            //byte[] bfiles = (byte[])DataGridAttachments[colfiledata.Name, DataGridAttachments.CurrentRow.Index].Value;
-            //Guid guid = new Guid(DataGridAttachments[colguid.Name, DataGridAttachments.CurrentRow.Index].Value.ToString());
-            //tbAttachment attach = tbAttachment.FindByFull("guid", guid);
-            //sfd.FileName = attach.Name;
+            byte[] bfiles = (byte[])DataGridAttachments.CurrentRow.Cells[5].Value;
+            Guid guid = new Guid(DataGridAttachments.CurrentRow.Cells[0].Value.ToString());
+            tbAttachment attach = tbAttachment.FindByFull("guid", guid);
+            sfd.FileName = attach.Name;
 
-
-            //if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            //{
-            //    try
-            //    {
-            //        if (bfiles.Length <= 1)
-            //            FileHelper.ByteArraytoFile(attach.FileData, sfd.FileName);
-            //        else
-            //            FileHelper.ByteArraytoFile(bfiles, sfd.FileName);
-            //        ShowConfirm();
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    }
-            //}
+            if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                try
+                {
+                    if (bfiles.Length <= 1)
+                        FileHelper.ByteArraytoFile(attach.FileData, sfd.FileName);
+                    else
+                        FileHelper.ByteArraytoFile(bfiles, sfd.FileName);
+                    ShowConfirm();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void MenuDeleteAttachment_Click(object sender, EventArgs e)
@@ -1159,8 +1195,6 @@ namespace DoctorERP.User_Controls
             }
 
             DataGridAttachments.Rows.RemoveAt(DataGridAttachments.CurrentRow.Index);
-
-
         }
 
         private void BtnScanner_Click(object sender, EventArgs e)
@@ -1191,25 +1225,6 @@ namespace DoctorERP.User_Controls
             }
         }
 
-        private void PageAttachments_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void Txtamount_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!IsDirty)
-            {
-                ShowDesktopAlert(".أولآ تعديل زر علي الضغط يجب", "البيانات  تعديل يمكنك ذلك بعد", "التعديل لحفظ حفظ زر علي الضغط ثم");
-
-            }
-        }
-
-        private void radDesktopAlert1_Opening(object sender, System.ComponentModel.CancelEventArgs args)
-        {
-            //var arg = args as RadPopupOpeningEventArgs;
-            //arg.CustomLocation = new Point(1951, 967);
-        }
 
         #endregion
 
@@ -1231,25 +1246,193 @@ namespace DoctorERP.User_Controls
             DataGridPriceLog.Columns[7].IsVisible = false;
 
         }
-        private void DataGridPriceLog_MouseDoubleClick(object sender, MouseEventArgs e)
+
+        private void Txtnumber_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Txtdeednumber_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Txtwest_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Txtwestdesc_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Txteast_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Txteastdesc_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Txtsouthdesc_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Txtsouth_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MainPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Txtnorthdesc_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Txtnote_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radTotalText_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radSpinEditor2_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radSpinEditor1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Cmblandtype_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CmbPlanGuid_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radWorkFeeWithVat_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Txtstatus_TextChanged(object sender, EventArgs e)
+        {
+            if (Txtstatus.Text == "متاح") { Txtstatus.BackColor = Color.FromArgb(0, 255, 1); }
+            else if (Txtstatus.Text == "مباع") { Txtstatus.BackColor = Color.FromArgb(254, 0, 0); }
+            else if (Txtstatus.Text == "محجوز") { Txtstatus.BackColor = Color.FromArgb(255, 255, 0); }
+
+            //if (Txtstatus.Text == "متاح") { Txtstatus.ForeColor = Color.Green; }
+            //else if (Txtstatus.Text == "مباع") { Txtstatus.ForeColor = Color.Red; }
+            //else if (Txtstatus.Text == "محجوز") { Txtstatus.ForeColor = Color.Yellow; }
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.radCallout1.CalloutForm.Controls[0].Text = "تجربة ؤشمم خعف";
+            this.radCallout1.Show(this.radTotalText);
+
+        }
+
+        private void radButton1_Click(object sender, EventArgs e)
+        {
+
+
+            // radCallout.CalloutForm.Controls[0].Text = "تجربة ؤشمم خعف";
+
+            //radCallout1.Close();
+            //this.radCallout1.CalloutForm.Controls[0].Text = "تجربة ؤشمم خعف";
+            //this.radCallout1.Show(this.radTotalText);
+
+        }
+
+        private void radLabel3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radLabel9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radSpinEditor5_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void radTotalText_MouseDown(object sender, MouseEventArgs e)
+        {
+            RadCallout radCallout = new RadCallout();
+            radCallout.AssociatedControl = this.radLabel11;
+            radLabel11.Text = "تم إحتساب الحافز بناءَ علي : قيمة الأرض + قيمة ضريبة التصرفات العقارية + قيمة عمولة السعي + القيمة المضافة لعمولة السعي";
+            radCallout.CalloutType = Telerik.WinControls.UI.Callout.CalloutType.RoundedRectangle;
+            radCallout.ArrowDirection = Telerik.WinControls.ArrowDirection.Up;
+            radCallout.ArrowType = Telerik.WinControls.UI.Callout.CalloutArrowType.Triangle;
+            radCallout.AutoClose = true;
+            radCallout.DropShadow = true;
+            radCallout.Show(this.radTotalText);
+
+        }
+
+        private void BtnImport_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnExport_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Txtreservereason_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DataGridPriceLog_CellDoubleClick(object sender, GridViewCellEventArgs e)
         {
             tbLand land = (tbLand)Bs.Current;
-
-            if (land is null || land.guid.Equals(Guid.Empty))
-            {
-                return;
-            }
+            if (land is null || land.guid.Equals(Guid.Empty)) { return; }
             if (DataGridPriceLog.Rows.Count == 0) { return; }
-            Guid guid = (Guid)DataGridPriceLog.Rows[0].Cells[2].Value;
+            Guid guid = (Guid)DataGridPriceLog.Rows[0].Cells[0].Value;
             tbPriceLog pricel = tbPriceLog.FindBy("Guid", guid);
             FrmPriceLog frmtable = new FrmPriceLog(guid, land.guid, pricel.oldprice, pricel.newprice);
             frmtable.ShowDialog();
             FillGridLog(land.guid);
-
         }
 
         #endregion
 
+        private void Txtamount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!IsDirty)
+            {
+                ShowDesktopAlert(".أولآ تعديل زر علي الضغط يجب", "البيانات  تعديل يمكنك ذلك بعد", "التعديل لحفظ حفظ زر علي الضغط ثم");
+            }
+        }
 
 
     }

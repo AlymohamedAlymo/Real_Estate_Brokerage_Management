@@ -533,6 +533,8 @@ namespace DoctorERP
                     MessageBox.Show("لا تملك صلاحية للقيام بهذا العمل", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
+                RadOverlayManager.Show(this);
+
                 tbLand land = new tbLand();
                 if (BtnRefresh.SelectedItem != null) { land = DataLandList.Where(u => u.guid == (Guid)BtnRefresh.SelectedItem.Value).FirstOrDefault(); }
                 RadPageViewPage enumerableIterator = PageViewCardsHome.Pages.Where(u => u.Name == "LandsCard").FirstOrDefault();
@@ -559,7 +561,11 @@ namespace DoctorERP
                     PageViewCardsHome.SelectedPage = enumerableIterator;
 
                 }
+                this.TopMost = true;
+                RadOverlayManager.Close();
                 BtnRefresh.SelectedItems.Clear();
+                this.TopMost = false;
+
             }
             else if (e.ClickedItem.Name == "MenuShowCalc")
             {
@@ -1005,8 +1011,10 @@ namespace DoctorERP
                 PageViewCardsHome.SelectedPage = enumerableIterator;
 
             }
+            this.TopMost = true;
 
             RadOverlayManager.Close();
+            this.TopMost = false;
 
         }
 
