@@ -193,6 +193,26 @@ namespace DoctorERP.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BtnExport_16 {
+            get {
+                object obj = ResourceManager.GetObject("BtnExport_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BtnExport_19 {
+            get {
+                object obj = ResourceManager.GetObject("BtnExport_19", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BtnRefresh_16 {
             get {
                 object obj = ResourceManager.GetObject("BtnRefresh_16", resourceCulture);

@@ -1,5 +1,10 @@
-﻿using DoctorERP.Helpers;
+﻿using DevExpress.XtraPrinting;
+using DoctorERP.CustomElements.Flyout;
+using DoctorERP.Helpers;
 using DoctorERP.Helpers.NumberToWord;
+using FastReport.Messaging.Xmpp;
+using SmartArab;
+using SmartArabXLSX.Vml.Office;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -39,6 +44,15 @@ namespace DoctorERP.User_Controls
             BtnDesign.Click += MenuDesign_Click;
             BtnImportExcel.Click -= BtnImport_Click;
             BtnImportExcel.Click += BtnImport_Click;
+            BtnEcelExport.Click -= BtnExportExcel_Click;
+            BtnEcelExport.Click += BtnExportExcel_Click;
+            BtnPdfExport.Click -= BtnExportPdf_Click;
+            BtnPdfExport.Click += BtnExportPdf_Click;
+            BtnEmailExport.Click -= BtnSendEmail_Click;
+            BtnEmailExport.Click += BtnSendEmail_Click;
+
+            
+
             MenuPreviewAttachment.Click -= MenuPreviewAttach_Click;
             MenuPreviewAttachment.Click += MenuPreviewAttach_Click;
             MenuExtractAttachement.Click -= MenuExtractAttachment_Click;
@@ -130,17 +144,12 @@ namespace DoctorERP.User_Controls
                 if (IsNew)
                 {
                     Bs.MoveLast();
-                    if (IsDirty)
-                    {
-                        MessageBox.Show("يجب إتخاذ إجراء في العملية الحالية أولاَ", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        return;
-
-                    }
+                    if (IsDirty) { TackAction(); }
                 }
 
                 IsProgrammatic = true;
                 Bs.Position = CurrentPosition - 1;
-                MessageBox.Show("يجب إتخاذ إجراء في العملية الحالية أولاَ", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                TackAction();
                 IsProgrammatic = false;
             }
 
@@ -174,7 +183,7 @@ namespace DoctorERP.User_Controls
             IsNew = true;
             BtnDelete.Enabled = false;
             BtnEdit.Enabled = false;
-            BtnNew.Text = "(F1) حفظ";
+            BtnNew.Text = "حفظ";
             BtnNew.ScreenTip.Text = "حفظ بطاقة الصنف الجديدة";
             BtnNew.Image = Properties.Resources.GlyphCheck_small;
             Txtreservereason.Visible = false;
@@ -430,17 +439,10 @@ namespace DoctorERP.User_Controls
             }
         }
 
-        private void ShowConfirm()
-        {
-            radToastNotificationManager1.ShowNotification(0);
-            FrmConfirm frmconfirm = new FrmConfirm();
-            frmconfirm.ShowDialog();
-            FrmMain.DataHasChanged = true;
-        }
 
         private void CalcTotal()
         {
-            //radCallout1.Close();
+
             tbTaxDiscount.Fill();
             tbTaxDiscount TaxDiscount = tbTaxDiscount.lstData[0];
 
@@ -466,7 +468,18 @@ namespace DoctorERP.User_Controls
                 ArabicPrefixText = string.Empty,
                 EnglishSuffixText = string.Empty
             };
+
+            radSpinEditor1.Value = Amount + (Amount * TaxDiscount.salesfee / 100) + (Amount * TaxDiscount.buildingfee / 100);
+            radSpinEditor2.Value = Amount + (Amount * TaxDiscount.salesfee / 100) + (Amount * TaxDiscount.workfee / 100);
+            radSpinEditor3.Value = Amount + (Amount * TaxDiscount.salesfee / 100) + (Amount * TaxDiscount.workfee / 100) + 
+                ((Amount * TaxDiscount.workfee / 100) * TaxDiscount.vat / 100);
+            radSpinEditor4.Value = Amount + (Amount * TaxDiscount.salesfee / 100) + (Amount * TaxDiscount.buildingfee / 100) + 
+                (Amount * TaxDiscount.workfee / 100);
+            radSpinEditor5.Value = Amount + (Amount * TaxDiscount.salesfee / 100) + (Amount * TaxDiscount.buildingfee / 100) +
+                (Amount * TaxDiscount.workfee / 100) + ((Amount * TaxDiscount.workfee / 100) * TaxDiscount.vat / 100);
+
             Txttotal.Value = total;
+
             radTotalText.Text = toWord.ConvertToArabic();
 
             //radCallout1.CalloutForm.Controls[0].Text = "تم احتساب علي ";
@@ -529,7 +542,7 @@ namespace DoctorERP.User_Controls
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (IsDirty) { CurrentPosition = Bs.Position; }
+                if (IsDirty) { TackAction(); }
 
             }
 
@@ -589,15 +602,53 @@ namespace DoctorERP.User_Controls
             return true;
         }
 
-        private void TackAction()
+        public void TackAction()
         {
             bool Confirm = MessageWarning("بطاقات الأراضي", "هل تريد حفظ التغيرات ؟", "إذا ضغت علي زر نعم سوف يتم حفظ البيان المفتوح");
             if (Confirm)
             {
                 ShowConfirmMSG = false;
-                if (BtnNew.Text == "(F1) حفظ") { Add(); }
-                else if (BtnEdit.Text == "(F2) حفظ") { Edit(); }
+                if (BtnNew.Text == "حفظ") { BtnNew.PerformClick(); }
+                else if (BtnEdit.Text == "حفظ") { BtnEdit.PerformClick(); }
             }
+            else if (!Confirm) 
+            {
+                if (BtnNew.Text == "حفظ") 
+                {
+                    IsProgrammatic = true;
+                    Bs.MoveLast();
+                    BtnNew.Text = "جديد";
+                    BtnNew.ScreenTip.Text = "إضافة بطاقة أرض جديدة";
+                    BtnNew.Image = Properties.Resources.plus;
+                    SetReadOnly(true);
+                    IsProgrammatic = false;
+                    IsDirty = false;
+                    IsNew = false;
+                }
+                else if (BtnEdit.Text == "حفظ") 
+                {
+                    IsProgrammatic = true;
+                    Bs.CancelEdit();
+                    BtnEdit.Text = "تعديل";
+                    BtnEdit.ScreenTip.Text = "تعديل بيانات بطاقة الأرض";
+                    BtnEdit.Image = Properties.Resources.edit;
+                    BtnAttachment.Enabled = false;
+                    BtnScanner.Enabled = false;
+                    SetReadOnly(true);
+                    IsProgrammatic = false;
+                    IsDirty = false;
+                    IsNew = false;
+                    //guid = land.guid;
+                    //SetData();
+                }
+            }
+        }
+
+        private void ShowConfirm()
+        {
+            radToastNotificationManager1.ShowNotification(0);
+            ShowDesktopAlert(".أولآ تعديل زر علي الضغط يجب", "البيانات  تعديل يمكنك ذلك بعد", "التعديل لحفظ حفظ زر علي الضغط ثم");
+            FrmMain.DataHasChanged = true;
         }
 
         private void ShowDesktopAlert(string Header, string Content, string Footer)
@@ -644,45 +695,6 @@ namespace DoctorERP.User_Controls
             frm.Show();
 
         }
-
-        private void RadFlyoutManager_FlyoutClosed(FlyoutClosedEventArgs e)
-        {
-            Action action = new Action(() =>
-            {
-                var content = e.Content as FlyoutInteractiveContent;
-                if (content != null)
-                {
-                    tbLand land = (tbLand)Bs.Current;
-                    RadCallout callout = new RadCallout();
-                    callout.ArrowDirection = Telerik.WinControls.ArrowDirection.Up;
-                    if (content.Result == DialogResult.OK)
-                    {
-                        DBConnect.StartTransAction();
-                        Txtstatus.Text = land.status = "محجوز";
-                        BtnReservation.Text = "إلغاء الحجز";
-                        Txtreservereason.Visible = Txtreservereason.Visible = true;
-                        land.reservereason = content.FirstName;
-                        Txtreservereason.Text = content.FirstName;
-                        land.Update();
-                        if (DBConnect.CommitTransAction())
-                        {
-                            ShowConfirm();
-                        }
-
-                        string fullName = $"{content.FirstName} {content.LastName}";
-                        RadCallout.Show(callout, this.BtnReservation, $"The student {fullName} was registered!", "Success");
-                    }
-                    else
-                    {
-                        RadCallout.Show(callout, this.BtnReservation, "The student was not registered!", "Cancelled");
-                    }
-                }
-
-            });
-
-            this.Invoke(action);
-        }
-
 
         private void BtnReservation_Click(object sender, EventArgs e)
         {
@@ -749,16 +761,11 @@ namespace DoctorERP.User_Controls
                 return;
             }
 
-            if (BtnNew.Text == "(F1) جديد")
+            if (BtnNew.Text == "جديد")
             {
-                if (IsDirty)
-                {
-                    MessageBox.Show("يجب إتخاذ إجراء في العملية الحالية أولاَ", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    return;
+                if (IsDirty) { TackAction(); }
 
-                }
-
-                BtnNew.Text = "(F1) حفظ";
+                BtnNew.Text = "حفظ";
                 BtnNew.ScreenTip.Text = "حفظ بطاقة الأرض الجديدة";
                 BtnNew.Image = Properties.Resources.GlyphCheck_small;
                 radPageView1.SelectedPage = PageHome;
@@ -768,10 +775,10 @@ namespace DoctorERP.User_Controls
                 Bs.MoveLast();
                 NewFill();
             }
-            else if (BtnNew.Text == "(F1) حفظ")
+            else if (BtnNew.Text == "حفظ")
             {
                 Add();
-                BtnNew.Text = "(F1) جديد";
+                BtnNew.Text = "جديد";
                 BtnNew.ScreenTip.Text = "إضافة بطاقة أرض جديدة";
                 BtnNew.Image = Properties.Resources.plus;
                 SetReadOnly(true);
@@ -793,16 +800,11 @@ namespace DoctorERP.User_Controls
                 return;
             }
 
-            if (BtnEdit.Text == "(F2) تعديل")
+            if (BtnEdit.Text == "تعديل")
             {
-                if (IsDirty)
-                {
-                    MessageBox.Show("يجب إتخاذ إجراء في العملية الحالية أولاَ", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    return;
+                if (IsDirty) { TackAction(); }
 
-                }
-
-                BtnEdit.Text = "(F2) حفظ";
+                BtnEdit.Text = "حفظ";
                 BtnEdit.ScreenTip.Text = "حفظ التعديلات";
                 BtnEdit.Image = Properties.Resources.GlyphCheck_small;
                 BtnAttachment.Enabled = true;
@@ -812,10 +814,10 @@ namespace DoctorERP.User_Controls
                 SetReadOnly(false);
                 Txtarea.Focus();
             }
-            else if (BtnEdit.Text == "(F2) حفظ")
+            else if (BtnEdit.Text == "حفظ")
             {
                 Edit();
-                BtnEdit.Text = "(F2) تعديل";
+                BtnEdit.Text = "تعديل";
                 BtnEdit.ScreenTip.Text = "تعديل بيانات بطاقة الأرض";
                 BtnEdit.Image = Properties.Resources.edit;
                 BtnAttachment.Enabled = false;
@@ -831,12 +833,7 @@ namespace DoctorERP.User_Controls
 
         private void BtnDelete_Click(object sender, EventArgs e)
         {
-            if (IsDirty)
-            {
-                MessageBox.Show("يجب إتخاذ إجراء في العملية الحالية أولاَ", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-
-            }
+            if (IsDirty) { TackAction(); }
 
             tbLand land = (tbLand)Bs.Current;
             if (!CheckifOprAllow(land, OperationType.OperationIs.Delete))
@@ -886,12 +883,7 @@ namespace DoctorERP.User_Controls
 
         private void BtnImport_Click(object sender, EventArgs e)
         {
-            if (IsDirty)
-            {
-                MessageBox.Show("يجب إتخاذ إجراء في العملية الحالية أولاَ", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-
-            }
+            if (IsDirty) { TackAction(); }
 
             if (!CheckifOprAllow(new tbLand(), OperationType.OperationIs.Add))
             {
@@ -902,19 +894,71 @@ namespace DoctorERP.User_Controls
             frm.ShowDialog();
 
         }
+        private void BtnExportExcel_Click(object sender, EventArgs e)
+        {
+            if (IsDirty) { TackAction(); }
+
+            if (!CheckifOprAllow(new tbLand(), OperationType.OperationIs.Add))
+            {
+                MessageBox.Show("لا تملك صلاحية للقيام بهذا العمل", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            tbLand.Fill();
+            ExcelXLSX.ExportToExcelFromDataTable(tbLand.dtData);
+
+        }
+
+        private void BtnSendEmail_Click(object sender, EventArgs e)
+        {
+            if (IsDirty) { TackAction(); }
+
+            if (!CheckifOprAllow(new tbLand(), OperationType.OperationIs.Add))
+            {
+                MessageBox.Show("لا تملك صلاحية للقيام بهذا العمل", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            RadFlyoutManager.Show(this, typeof(FlyoutEmailContent));
+
+
+        }
+
+
+        private void BtnExportPdf_Click(object sender, EventArgs e)
+        {
+            if (IsDirty) { TackAction(); }
+
+            if (!CheckifOprAllow(new tbLand(), OperationType.OperationIs.Add))
+            {
+                MessageBox.Show("لا تملك صلاحية للقيام بهذا العمل", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            FastReport.Report report = new FastReport.Report();
+            if (Readyreport(report))
+            {
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Title = "تصدير البيانات إلى ملف pdf";
+                sfd.Filter = "Pdf Files|*.pdf";
+                sfd.RestoreDirectory = true;
+                sfd.OverwritePrompt = true;
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    report.Prepare();
+                    // create an instance of HTML export filter
+                    FastReport.Export.Pdf.PDFExport export = new FastReport.Export.Pdf.PDFExport();
+                    // show the export options dialog and do the export
+                    if (export.ShowDialog())
+                        report.Export(export, sfd.FileName);
+                }
+
+            }
+
+        }
+
 
         private void BtnResfresh_Click(object sender, EventArgs e)
         {
-            if (IsDirty)
-            {
-                DialogResult msgboxres = MessageBox.Show("هل تريد حفظ التغيرات", Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
-                if (msgboxres == DialogResult.Yes)
-                {
-                    ShowConfirmMSG = false;
-                    if (IsNew) { Add(); }
-                    else if (!IsNew) { Edit(); }
-                }
-            }
+            if (IsDirty) { TackAction(); }
 
             guid = Guid.Empty;
             SetData();
@@ -924,24 +968,11 @@ namespace DoctorERP.User_Controls
 
         private void NavigatorBtn_Click(object sender, EventArgs e)
         {
-            tbLand land = (tbLand)Bs.Current;
-            if (IsDirty) 
-            {
-                CurrentPosition = land.number;
-                //MessageBox.Show("يجب إتخاذ إجراء في العملية الحالية أولاَ", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-            }
-
+            if (IsDirty) { TackAction(); }
         }
         private void MenuDesign_Click(object sender, EventArgs e)
         {
-            if (IsDirty)
-            {
-                MessageBox.Show("يجب إتخاذ إجراء في العملية الحالية أولاَ", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-
-            }
-
+            if (IsDirty) { TackAction(); }
             FastReport.Report report = new FastReport.Report();
             if (Readyreport(report))
                 Reports.DesignReport(report);
@@ -949,12 +980,7 @@ namespace DoctorERP.User_Controls
 
         private void MenuPreview_Click(object sender, EventArgs e)
         {
-            if (IsDirty)
-            {
-                MessageBox.Show("يجب إتخاذ إجراء في العملية الحالية أولاَ", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-
-            }
+            if (IsDirty) { TackAction(); }
 
             FastReport.Report report = new FastReport.Report();
             if (Readyreport(report))
@@ -963,11 +989,7 @@ namespace DoctorERP.User_Controls
 
         private void BtnPrint_Click(object sender, EventArgs e)
         {
-            if (IsDirty)
-            {
-                MessageBox.Show("يجب إتخاذ إجراء في العملية الحالية أولاَ", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
+            if (IsDirty) { TackAction(); }
 
             FastReport.Report report = new FastReport.Report();
             if (Readyreport(report))
@@ -1113,8 +1135,8 @@ namespace DoctorERP.User_Controls
         {
             try
             {
-                if (BtnEdit.Text == "(F2) حفظ") { MenuDeleteAttachment.Enabled = true; }
-                else if (BtnEdit.Text != "(F2) حفظ") { MenuDeleteAttachment.Enabled = false; }
+                if (BtnEdit.Text == "حفظ") { MenuDeleteAttachment.Enabled = true; }
+                else if (BtnEdit.Text != "حفظ") { MenuDeleteAttachment.Enabled = false; }
 
                 if (e.Button == MouseButtons.Right)
                 {
@@ -1245,170 +1267,12 @@ namespace DoctorERP.User_Controls
             DataGridPriceLog.Columns[6].IsVisible = false;
             DataGridPriceLog.Columns[7].IsVisible = false;
 
-        }
+            foreach (var row in DataGridPriceLog.Rows)
+            {
+                row.Cells[4].Value = string.Format("{0:0.00}", double.Parse(row.Cells[4].Value.ToString()));
+                row.Cells[5].Value = string.Format("{0:0.00}", double.Parse(row.Cells[5].Value.ToString()));
 
-        private void Txtnumber_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Txtdeednumber_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Txtwest_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Txtwestdesc_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Txteast_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Txteastdesc_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Txtsouthdesc_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Txtsouth_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void MainPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void Txtnorthdesc_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Txtnote_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radTotalText_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radSpinEditor2_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radSpinEditor1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Cmblandtype_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void CmbPlanGuid_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radWorkFeeWithVat_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Txtstatus_TextChanged(object sender, EventArgs e)
-        {
-            if (Txtstatus.Text == "متاح") { Txtstatus.BackColor = Color.FromArgb(0, 255, 1); }
-            else if (Txtstatus.Text == "مباع") { Txtstatus.BackColor = Color.FromArgb(254, 0, 0); }
-            else if (Txtstatus.Text == "محجوز") { Txtstatus.BackColor = Color.FromArgb(255, 255, 0); }
-
-            //if (Txtstatus.Text == "متاح") { Txtstatus.ForeColor = Color.Green; }
-            //else if (Txtstatus.Text == "مباع") { Txtstatus.ForeColor = Color.Red; }
-            //else if (Txtstatus.Text == "محجوز") { Txtstatus.ForeColor = Color.Yellow; }
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.radCallout1.CalloutForm.Controls[0].Text = "تجربة ؤشمم خعف";
-            this.radCallout1.Show(this.radTotalText);
-
-        }
-
-        private void radButton1_Click(object sender, EventArgs e)
-        {
-
-
-            // radCallout.CalloutForm.Controls[0].Text = "تجربة ؤشمم خعف";
-
-            //radCallout1.Close();
-            //this.radCallout1.CalloutForm.Controls[0].Text = "تجربة ؤشمم خعف";
-            //this.radCallout1.Show(this.radTotalText);
-
-        }
-
-        private void radLabel3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radLabel9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radSpinEditor5_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void radTotalText_MouseDown(object sender, MouseEventArgs e)
-        {
-            RadCallout radCallout = new RadCallout();
-            radCallout.AssociatedControl = this.radLabel11;
-            radLabel11.Text = "تم إحتساب الحافز بناءَ علي : قيمة الأرض + قيمة ضريبة التصرفات العقارية + قيمة عمولة السعي + القيمة المضافة لعمولة السعي";
-            radCallout.CalloutType = Telerik.WinControls.UI.Callout.CalloutType.RoundedRectangle;
-            radCallout.ArrowDirection = Telerik.WinControls.ArrowDirection.Up;
-            radCallout.ArrowType = Telerik.WinControls.UI.Callout.CalloutArrowType.Triangle;
-            radCallout.AutoClose = true;
-            radCallout.DropShadow = true;
-            radCallout.Show(this.radTotalText);
-
-        }
-
-        private void BtnImport_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void BtnExport_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Txtreservereason_TextChanged(object sender, EventArgs e)
-        {
+            }
 
         }
 
@@ -1430,10 +1294,132 @@ namespace DoctorERP.User_Controls
         {
             if (!IsDirty)
             {
-                ShowDesktopAlert(".أولآ تعديل زر علي الضغط يجب", "البيانات  تعديل يمكنك ذلك بعد", "التعديل لحفظ حفظ زر علي الضغط ثم");
+                RadCallout callout = new RadCallout();
+                callout.ArrowType = Telerik.WinControls.UI.Callout.CalloutArrowType.Triangle;
+                callout.AssociatedControl = radLabel11;
+                callout.ArrowDirection = Telerik.WinControls.ArrowDirection.Right;
+                callout.AutoClose = true;
+                callout.CalloutType = Telerik.WinControls.UI.Callout.CalloutType.RoundedRectangle;
+                callout.DropShadow = true;
+                var cn = sender as RadControl;
+
+                RadCallout.Show(callout, cn, "لقد تم إرسال الملف Lands.pdf \n عبر الإيميل بنجاح", "تمت العملية", "sdfsdfs");
+
+               // ShowDesktopAlert(".أولآ تعديل زر علي الضغط يجب", "البيانات  تعديل يمكنك ذلك بعد", "التعديل لحفظ حفظ زر علي الضغط ثم");
             }
         }
 
+        private void radTotalText_MouseDown(object sender, MouseEventArgs e)
+        {
+            RadCallout radCallout = new RadCallout();
+            radCallout.AssociatedControl = this.radLabel11;
+            radLabel11.Text = "تم إحتساب الحافز بناءَ علي : قيمة الأرض + قيمة ضريبة التصرفات العقارية + قيمة عمولة السعي + القيمة المضافة لعمولة السعي";
+            radCallout.CalloutType = Telerik.WinControls.UI.Callout.CalloutType.RoundedRectangle;
+            radCallout.ArrowDirection = Telerik.WinControls.ArrowDirection.Up;
+            radCallout.ArrowType = Telerik.WinControls.UI.Callout.CalloutArrowType.Triangle;
+            radCallout.AutoClose = true;
+            radCallout.DropShadow = true;
+            radCallout.Show(this.radTotalText);
+
+        }
+        private void Txtstatus_TextChanged(object sender, EventArgs e)
+        {
+            if (Txtstatus.Text == "متاح") { Txtstatus.BackColor = Color.FromArgb(0, 255, 1); }
+            else if (Txtstatus.Text == "مباع") { Txtstatus.BackColor = Color.FromArgb(254, 0, 0); }
+            else if (Txtstatus.Text == "محجوز") { Txtstatus.BackColor = Color.FromArgb(255, 255, 0); }
+
+            //if (Txtstatus.Text == "متاح") { Txtstatus.ForeColor = Color.Green; }
+            //else if (Txtstatus.Text == "مباع") { Txtstatus.ForeColor = Color.Red; }
+            //else if (Txtstatus.Text == "محجوز") { Txtstatus.ForeColor = Color.Yellow; }
+
+        }
+
+        private void RadFlyoutManager_FlyoutClosed(FlyoutClosedEventArgs e)
+        {
+            Action action = new Action(() =>
+            {
+                if (e.Content is FlyoutInteractiveContent) 
+                {
+                    FlyoutInteractiveContent content = e.Content as FlyoutInteractiveContent;
+                    if (content != null)
+                    {
+                        tbLand land = (tbLand)Bs.Current;
+                        RadCallout callout = new RadCallout();
+                        callout.ArrowDirection = Telerik.WinControls.ArrowDirection.Up;
+                        if (content.Result == DialogResult.OK)
+                        {
+                            DBConnect.StartTransAction();
+                            Txtstatus.Text = land.status = "محجوز";
+                            BtnReservation.Text = "إلغاء الحجز";
+                            Txtreservereason.Visible = Txtreservereason.Visible = true;
+                            land.reservereason = content.FirstName;
+                            Txtreservereason.Text = content.FirstName;
+                            land.Update();
+                            if (DBConnect.CommitTransAction())
+                            {
+                                ShowConfirm();
+                            }
+
+                            string fullName = $"{content.FirstName}";
+                            RadCallout.Show(callout, this.BtnReservation, $"The student {fullName} was registered!", "Success");
+                        }
+                        else
+                        {
+                            RadCallout.Show(callout, this.BtnReservation, "The student was not registered!", "Cancelled");
+                        }
+                    }
+
+                }
+                else if (e.Content is FlyoutEmailContent)
+                {
+
+                    FlyoutEmailContent content = e.Content as FlyoutEmailContent;
+                    RadCallout callout = new RadCallout();
+
+                    if (content != null)
+                    {
+
+                        FastReport.Export.Email.EmailExport email = new FastReport.Export.Email.EmailExport();
+
+
+                        FastReport.Report report = new FastReport.Report();
+                        if (Readyreport(report))
+                        {
+                            report.Prepare();
+                            // create an instance of HTML export filter
+                            FastReport.Export.Pdf.PDFExport export = new FastReport.Export.Pdf.PDFExport();
+                            // show the export options dialog and do the export
+                            report.Export(export, Application.ExecutablePath + "Lands.pdf");
+
+
+                            MemoryStream ms = new MemoryStream();
+                            using (FileStream file = new FileStream(Application.ExecutablePath + "Lands.pdf", FileMode.Open, FileAccess.Read))
+                                file.CopyTo(ms);
+                            DynamicAttachement dynamicAttachement = new DynamicAttachement
+                            {
+                                attachData = ms,
+                                attachFileName = Application.ExecutablePath + "Lands.pdf"
+                            };
+
+                            tbAttachment tbAttachment = new tbAttachment();
+
+                            SendEmail.SendMail(content.ToMail, "subject", "messagebody", dynamicAttachement, new tbAttachment(), "ali", content.FromMail, content.PassWord
+                                , "smtp-mail.outlook.com", 587, true);
+
+                        }
+
+                        RadCallout.Show(callout, this.BtnEmailExport, $"لقد تم إرسال الملف Lands.pdf \n عبر الإيميل بنجاح", "تمت العملية");
+                    }
+                    else
+                    {
+                        RadCallout.Show(callout, this.BtnReservation, "The student was not registered!", "Cancelled");
+                    }
+
+                }
+            });
+
+            this.Invoke(action);
+        }
 
     }
 }

@@ -405,10 +405,8 @@ namespace DoctorERP
                 UCLandsDataEntry ucLand = e.Page.Controls[0] as UCLandsDataEntry;
                 if (ucLand.IsDirty)
                 {
-                    MessageBox.Show("يجب إتخاذ إجراء في العملية الحالية أولاَ", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    e.Cancel = true;
+                    ucLand.TackAction();
                     return;
-
                 }
                 
             }
