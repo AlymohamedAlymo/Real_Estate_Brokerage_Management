@@ -458,10 +458,10 @@ namespace DoctorERP.User_Controls
             Txtvat.Value = Vatfee;
             Txtworkfee.Value = Workfee;
             Txtbuildingfee.Value = Buildingfee;
-            radWorkFeeValue.Text = (Amount * Workfee / 100).ToString("000,0.00");
-            radBuildingFeeValue.Text = (Amount * Buildingfee / 100).ToString("000,0.00");
-            radVatValue.Text = ((Amount * Workfee / 100) * Vatfee / 100).ToString("000,0.00");
-            radWorkFeeWithVat.Text = ((Amount * Workfee / 100) + ((Amount * Workfee / 100) * Vatfee / 100)).ToString("000,0.00");
+            radWorkFeeValue.Text = (Amount * Workfee / 100).ToString("0.00");
+            radBuildingFeeValue.Text = (Amount * Buildingfee / 100).ToString("0.00");
+            radVatValue.Text = ((Amount * Workfee / 100) * Vatfee / 100).ToString("0.00");
+            radWorkFeeWithVat.Text = ((Amount * Workfee / 100) + ((Amount * Workfee / 100) * Vatfee / 100)).ToString("0.00");
             Helpers.NumberToWord.CurrencyInfo currency = new CurrencyInfo(CurrencyInfo.Currencies.SaudiArabia);
             ToWord toWord = new ToWord(total, currency)
             {
@@ -469,10 +469,10 @@ namespace DoctorERP.User_Controls
                 EnglishSuffixText = string.Empty
             };
 
-            radSpinEditor1.Value = Amount + (Amount * TaxDiscount.salesfee / 100) + (Amount * TaxDiscount.buildingfee / 100);
-            radSpinEditor2.Value = Amount + (Amount * TaxDiscount.salesfee / 100) + (Amount * TaxDiscount.workfee / 100);
-            radSpinEditor3.Value = Amount + (Amount * TaxDiscount.salesfee / 100) + (Amount * TaxDiscount.workfee / 100) + 
-                ((Amount * TaxDiscount.workfee / 100) * TaxDiscount.vat / 100);
+            radAmountBuildingfee.Text = (Amount + (Amount * TaxDiscount.salesfee / 100) + (Amount * TaxDiscount.buildingfee / 100)).ToString("0.00");
+            radLandWorkfee.Text = (Amount + (Amount * TaxDiscount.salesfee / 100) + (Amount * TaxDiscount.workfee / 100).ToString("0.00");
+            radlandfee.Text = (Amount + (Amount * TaxDiscount.salesfee / 100) + (Amount * TaxDiscount.workfee / 100) + 
+                ((Amount * TaxDiscount.workfee / 100) * TaxDiscount.vat / 100)).ToString("0.00");
             radSpinEditor4.Value = Amount + (Amount * TaxDiscount.salesfee / 100) + (Amount * TaxDiscount.buildingfee / 100) + 
                 (Amount * TaxDiscount.workfee / 100);
             radSpinEditor5.Value = Amount + (Amount * TaxDiscount.salesfee / 100) + (Amount * TaxDiscount.buildingfee / 100) +
@@ -1307,6 +1307,21 @@ namespace DoctorERP.User_Controls
 
                // ShowDesktopAlert(".أولآ تعديل زر علي الضغط يجب", "البيانات  تعديل يمكنك ذلك بعد", "التعديل لحفظ حفظ زر علي الضغط ثم");
             }
+        }
+
+        private void radSpinEditor1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MainPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void radLandWorkfee_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void radTotalText_MouseDown(object sender, MouseEventArgs e)

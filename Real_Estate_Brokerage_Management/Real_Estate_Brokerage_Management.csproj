@@ -817,16 +817,16 @@
     <Compile Include="CustomElements\Flyout\FlyoutStaticContent.Designer.cs">
       <DependentUpon>FlyoutStaticContent.cs</DependentUpon>
     </Compile>
-    <Compile Include="User Controls\UCLands.cs">
+    <Compile Include="UserControls\UCLands.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="User Controls\UCLands.Designer.cs">
+    <Compile Include="UserControls\UCLands.Designer.cs">
       <DependentUpon>UCLands.cs</DependentUpon>
     </Compile>
-    <Compile Include="User Controls\UCLandsDataEntry.cs">
+    <Compile Include="UserControls\UCLandsDataEntry.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="User Controls\UCLandsDataEntry.Designer.cs">
+    <Compile Include="UserControls\UCLandsDataEntry.Designer.cs">
       <DependentUpon>UCLandsDataEntry.cs</DependentUpon>
     </Compile>
     <Compile Include="CustomElements\Flyout\FlyoutInteractiveContent.cs">
@@ -1081,13 +1081,13 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="User Controls\UCLands.ar-EG.resx">
+    <EmbeddedResource Include="UserControls\UCLands.ar-EG.resx">
       <DependentUpon>UCLands.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User Controls\UCLands.resx">
+    <EmbeddedResource Include="UserControls\UCLands.resx">
       <DependentUpon>UCLands.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User Controls\UCLandsDataEntry.resx">
+    <EmbeddedResource Include="UserControls\UCLandsDataEntry.resx">
       <DependentUpon>UCLandsDataEntry.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomElements\Flyout\FlyoutInteractiveContent.resx">

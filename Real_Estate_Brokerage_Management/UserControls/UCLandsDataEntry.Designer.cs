@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Telerik.WinControls.UI.RadValidationRule radValidationRule2 = new Telerik.WinControls.UI.RadValidationRule();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition4 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition5 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition6 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.RadValidationRule radValidationRule1 = new Telerik.WinControls.UI.RadValidationRule();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition3 = new Telerik.WinControls.UI.TableViewDefinition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCLandsDataEntry));
-            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification4 = new Telerik.RadToastNotificationManager.RadToastNotification();
-            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification5 = new Telerik.RadToastNotificationManager.RadToastNotification();
-            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification6 = new Telerik.RadToastNotificationManager.RadToastNotification();
+            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification1 = new Telerik.RadToastNotificationManager.RadToastNotification();
+            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification2 = new Telerik.RadToastNotificationManager.RadToastNotification();
+            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification3 = new Telerik.RadToastNotificationManager.RadToastNotification();
             this.materialTheme1 = new Telerik.WinControls.Themes.MaterialTheme();
             this.radValidationProvider1 = new Telerik.WinControls.UI.RadValidationProvider(this.components);
             this.Txtnumber = new Telerik.WinControls.UI.RadTextBox();
@@ -72,11 +72,8 @@
             this.radBuildingFeeValue = new Telerik.WinControls.UI.RadTextBox();
             this.radWorkFeeValue = new Telerik.WinControls.UI.RadTextBox();
             this.radVatValue = new Telerik.WinControls.UI.RadTextBox();
-            this.radSpinEditor1 = new Telerik.WinControls.UI.RadSpinEditor();
             this.radLabel3 = new Telerik.WinControls.UI.RadLabel();
-            this.radSpinEditor2 = new Telerik.WinControls.UI.RadSpinEditor();
             this.radLabel4 = new Telerik.WinControls.UI.RadLabel();
-            this.radSpinEditor3 = new Telerik.WinControls.UI.RadSpinEditor();
             this.radLabel9 = new Telerik.WinControls.UI.RadLabel();
             this.radSpinEditor4 = new Telerik.WinControls.UI.RadSpinEditor();
             this.radLabel12 = new Telerik.WinControls.UI.RadLabel();
@@ -92,9 +89,6 @@
             this.PageHome = new Telerik.WinControls.UI.RadPageViewPage();
             this.MainPanel = new System.Windows.Forms.Panel();
             this.radLayoutControl2 = new Telerik.WinControls.UI.RadLayoutControl();
-            this.layoutControlItem2 = new Telerik.WinControls.UI.LayoutControlItem();
-            this.layoutControlItem3 = new Telerik.WinControls.UI.LayoutControlItem();
-            this.layoutControlItem4 = new Telerik.WinControls.UI.LayoutControlItem();
             this.layoutControlItem36 = new Telerik.WinControls.UI.LayoutControlItem();
             this.layoutControlItem37 = new Telerik.WinControls.UI.LayoutControlItem();
             this.radLabel11 = new Telerik.WinControls.UI.RadLabel();
@@ -225,6 +219,17 @@
             this.radOffice2007ScreenTipElement33 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
             this.radCallout1 = new Telerik.WinControls.UI.RadCallout();
             this.radOffice2007ScreenTipElement34 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
+            this.layoutControlItem38 = new Telerik.WinControls.UI.LayoutControlItem();
+            this.layoutControlItem39 = new Telerik.WinControls.UI.LayoutControlItem();
+            this.layoutControlItem40 = new Telerik.WinControls.UI.LayoutControlItem();
+            this.layoutControlItem41 = new Telerik.WinControls.UI.LayoutControlItem();
+            this.layoutControlItem42 = new Telerik.WinControls.UI.LayoutControlItem();
+            this.radAmountBuildingfee = new Telerik.WinControls.UI.RadTextBox();
+            this.layoutControlItem2 = new Telerik.WinControls.UI.LayoutControlItem();
+            this.radLandWorkfee = new Telerik.WinControls.UI.RadTextBox();
+            this.layoutControlItem3 = new Telerik.WinControls.UI.LayoutControlItem();
+            this.radlandfee = new Telerik.WinControls.UI.RadTextBox();
+            this.layoutControlItem4 = new Telerik.WinControls.UI.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.radValidationProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txtnumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cmblandtype)).BeginInit();
@@ -267,20 +272,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.radBuildingFeeValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radWorkFeeValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radVatValue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radSpinEditor1)).BeginInit();
-            this.radSpinEditor1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radSpinEditor2)).BeginInit();
-            this.radSpinEditor2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radSpinEditor3)).BeginInit();
-            this.radSpinEditor3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radSpinEditor4)).BeginInit();
-            this.radSpinEditor4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radSpinEditor5)).BeginInit();
-            this.radSpinEditor5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel23)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel19)).BeginInit();
@@ -310,13 +307,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.radScrollablePanel2)).BeginInit();
             this.radScrollablePanel2.PanelContainer.SuspendLayout();
             this.radScrollablePanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radAmountBuildingfee)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLandWorkfee)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radlandfee)).BeginInit();
             this.SuspendLayout();
             // 
             // radValidationProvider1
             // 
-            radValidationRule2.Operator = Telerik.WinControls.Data.FilterOperator.IsEqualTo;
+            radValidationRule1.Operator = Telerik.WinControls.Data.FilterOperator.IsEqualTo;
             this.radValidationProvider1.ValidationRules.AddRange(new Telerik.WinControls.Data.FilterDescriptor[] {
-            radValidationRule2});
+            radValidationRule1});
             // 
             // Txtnumber
             // 
@@ -839,7 +839,7 @@
             this.CmbPlanGuid.EditorControl.MasterTemplate.EnableFiltering = true;
             this.CmbPlanGuid.EditorControl.MasterTemplate.EnableGrouping = false;
             this.CmbPlanGuid.EditorControl.MasterTemplate.ShowFilteringRow = false;
-            this.CmbPlanGuid.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition4;
+            this.CmbPlanGuid.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.CmbPlanGuid.EditorControl.Name = "NestedRadGridView";
             this.CmbPlanGuid.EditorControl.ReadOnly = true;
             this.CmbPlanGuid.EditorControl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -924,65 +924,19 @@
             this.radVatValue.ThemeName = "Material";
             this.radValidationProvider1.SetValidationRule(this.radVatValue, null);
             // 
-            // radSpinEditor1
-            // 
-            this.radSpinEditor1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.radSpinEditor1.AutoSize = false;
-            this.radSpinEditor1.Controls.Add(this.radLabel3);
-            this.radSpinEditor1.DecimalPlaces = 2;
-            this.radSpinEditor1.EnableNullValueInput = true;
-            this.radSpinEditor1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radSpinEditor1.Location = new System.Drawing.Point(3, 3);
-            this.radSpinEditor1.Maximum = new decimal(new int[] {
-            1661992960,
-            1808227885,
-            5,
-            0});
-            this.radSpinEditor1.Name = "radSpinEditor1";
-            this.radSpinEditor1.Padding = new System.Windows.Forms.Padding(5, 20, 5, 0);
-            this.radSpinEditor1.ReadOnly = true;
-            this.radSpinEditor1.Size = new System.Drawing.Size(235, 65);
-            this.radSpinEditor1.TabIndex = 1401;
-            this.radSpinEditor1.ThemeName = "Material";
-            this.radSpinEditor1.ThousandsSeparator = true;
-            this.radValidationProvider1.SetValidationRule(this.radSpinEditor1, null);
-            // 
             // radLabel3
             // 
             this.radLabel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.radLabel3.AutoSize = false;
             this.radLabel3.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radLabel3.ForeColor = System.Drawing.Color.Gray;
-            this.radLabel3.Location = new System.Drawing.Point(3, 1);
+            this.radLabel3.Location = new System.Drawing.Point(123, 3);
             this.radLabel3.Name = "radLabel3";
-            this.radLabel3.Size = new System.Drawing.Size(229, 37);
+            this.radLabel3.Size = new System.Drawing.Size(115, 65);
             this.radLabel3.TabIndex = 1300;
             this.radLabel3.Text = "قيمة الأرض + ضريبة التصرفات";
             this.radLabel3.TextAlignment = System.Drawing.ContentAlignment.TopRight;
             this.radLabel3.ThemeName = "Material";
-            // 
-            // radSpinEditor2
-            // 
-            this.radSpinEditor2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.radSpinEditor2.AutoSize = false;
-            this.radSpinEditor2.Controls.Add(this.radLabel4);
-            this.radSpinEditor2.DecimalPlaces = 2;
-            this.radSpinEditor2.EnableNullValueInput = true;
-            this.radSpinEditor2.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radSpinEditor2.Location = new System.Drawing.Point(3, 74);
-            this.radSpinEditor2.Maximum = new decimal(new int[] {
-            1661992960,
-            1808227885,
-            5,
-            0});
-            this.radSpinEditor2.Name = "radSpinEditor2";
-            this.radSpinEditor2.Padding = new System.Windows.Forms.Padding(5, 20, 5, 0);
-            this.radSpinEditor2.ReadOnly = true;
-            this.radSpinEditor2.Size = new System.Drawing.Size(235, 60);
-            this.radSpinEditor2.TabIndex = 1402;
-            this.radSpinEditor2.ThemeName = "Material";
-            this.radSpinEditor2.ThousandsSeparator = true;
-            this.radValidationProvider1.SetValidationRule(this.radSpinEditor2, null);
             // 
             // radLabel4
             // 
@@ -990,36 +944,13 @@
             this.radLabel4.AutoSize = false;
             this.radLabel4.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radLabel4.ForeColor = System.Drawing.Color.Gray;
-            this.radLabel4.Location = new System.Drawing.Point(3, 2);
+            this.radLabel4.Location = new System.Drawing.Point(123, 74);
             this.radLabel4.Name = "radLabel4";
-            this.radLabel4.Size = new System.Drawing.Size(229, 37);
+            this.radLabel4.Size = new System.Drawing.Size(115, 60);
             this.radLabel4.TabIndex = 1300;
             this.radLabel4.Text = "قيمة الأرض + عمولة السعي";
             this.radLabel4.TextAlignment = System.Drawing.ContentAlignment.TopRight;
             this.radLabel4.ThemeName = "Material";
-            // 
-            // radSpinEditor3
-            // 
-            this.radSpinEditor3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.radSpinEditor3.AutoSize = false;
-            this.radSpinEditor3.Controls.Add(this.radLabel9);
-            this.radSpinEditor3.DecimalPlaces = 2;
-            this.radSpinEditor3.EnableNullValueInput = true;
-            this.radSpinEditor3.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radSpinEditor3.Location = new System.Drawing.Point(3, 140);
-            this.radSpinEditor3.Maximum = new decimal(new int[] {
-            1661992960,
-            1808227885,
-            5,
-            0});
-            this.radSpinEditor3.Name = "radSpinEditor3";
-            this.radSpinEditor3.Padding = new System.Windows.Forms.Padding(5, 20, 5, 0);
-            this.radSpinEditor3.ReadOnly = true;
-            this.radSpinEditor3.Size = new System.Drawing.Size(235, 66);
-            this.radSpinEditor3.TabIndex = 1403;
-            this.radSpinEditor3.ThemeName = "Material";
-            this.radSpinEditor3.ThousandsSeparator = true;
-            this.radValidationProvider1.SetValidationRule(this.radSpinEditor3, null);
             // 
             // radLabel9
             // 
@@ -1027,9 +958,9 @@
             this.radLabel9.AutoSize = false;
             this.radLabel9.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radLabel9.ForeColor = System.Drawing.Color.Gray;
-            this.radLabel9.Location = new System.Drawing.Point(3, 0);
+            this.radLabel9.Location = new System.Drawing.Point(123, 140);
             this.radLabel9.Name = "radLabel9";
-            this.radLabel9.Size = new System.Drawing.Size(229, 37);
+            this.radLabel9.Size = new System.Drawing.Size(115, 66);
             this.radLabel9.TabIndex = 1300;
             this.radLabel9.Text = "القيمة + عمولة السعي + القيمة المضافة للعمولة";
             this.radLabel9.TextAlignment = System.Drawing.ContentAlignment.TopRight;
@@ -1039,7 +970,6 @@
             // 
             this.radSpinEditor4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.radSpinEditor4.AutoSize = false;
-            this.radSpinEditor4.Controls.Add(this.radLabel12);
             this.radSpinEditor4.DecimalPlaces = 2;
             this.radSpinEditor4.EnableNullValueInput = true;
             this.radSpinEditor4.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1052,7 +982,7 @@
             this.radSpinEditor4.Name = "radSpinEditor4";
             this.radSpinEditor4.Padding = new System.Windows.Forms.Padding(5, 20, 5, 0);
             this.radSpinEditor4.ReadOnly = true;
-            this.radSpinEditor4.Size = new System.Drawing.Size(235, 71);
+            this.radSpinEditor4.Size = new System.Drawing.Size(114, 71);
             this.radSpinEditor4.TabIndex = 1404;
             this.radSpinEditor4.ThemeName = "Material";
             this.radSpinEditor4.ThousandsSeparator = true;
@@ -1064,9 +994,9 @@
             this.radLabel12.AutoSize = false;
             this.radLabel12.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radLabel12.ForeColor = System.Drawing.Color.Gray;
-            this.radLabel12.Location = new System.Drawing.Point(3, 1);
+            this.radLabel12.Location = new System.Drawing.Point(123, 212);
             this.radLabel12.Name = "radLabel12";
-            this.radLabel12.Size = new System.Drawing.Size(229, 37);
+            this.radLabel12.Size = new System.Drawing.Size(115, 71);
             this.radLabel12.TabIndex = 1300;
             this.radLabel12.Text = "قيمة الأرض + ضريبة التصرفات + عمولة السعي";
             this.radLabel12.TextAlignment = System.Drawing.ContentAlignment.TopRight;
@@ -1076,7 +1006,6 @@
             // 
             this.radSpinEditor5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.radSpinEditor5.AutoSize = false;
-            this.radSpinEditor5.Controls.Add(this.radLabel13);
             this.radSpinEditor5.DecimalPlaces = 2;
             this.radSpinEditor5.EnableNullValueInput = true;
             this.radSpinEditor5.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1089,7 +1018,7 @@
             this.radSpinEditor5.Name = "radSpinEditor5";
             this.radSpinEditor5.Padding = new System.Windows.Forms.Padding(5, 20, 5, 0);
             this.radSpinEditor5.ReadOnly = true;
-            this.radSpinEditor5.Size = new System.Drawing.Size(235, 65);
+            this.radSpinEditor5.Size = new System.Drawing.Size(114, 65);
             this.radSpinEditor5.TabIndex = 1405;
             this.radSpinEditor5.ThemeName = "Material";
             this.radSpinEditor5.ThousandsSeparator = true;
@@ -1101,9 +1030,9 @@
             this.radLabel13.AutoSize = false;
             this.radLabel13.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radLabel13.ForeColor = System.Drawing.Color.Gray;
-            this.radLabel13.Location = new System.Drawing.Point(3, -3);
+            this.radLabel13.Location = new System.Drawing.Point(123, 289);
             this.radLabel13.Name = "radLabel13";
-            this.radLabel13.Size = new System.Drawing.Size(229, 37);
+            this.radLabel13.Size = new System.Drawing.Size(115, 65);
             this.radLabel13.TabIndex = 1300;
             this.radLabel13.Text = "قيمة الأرض + ضريبة التصرفات + العمولة + القيمة المضافة للعمولة";
             this.radLabel13.TextAlignment = System.Drawing.ContentAlignment.TopRight;
@@ -1258,58 +1187,48 @@
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(1162, 597);
             this.MainPanel.TabIndex = 175;
+            this.MainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPanel_Paint);
             // 
             // radLayoutControl2
             // 
             this.radLayoutControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.radLayoutControl2.Controls.Add(this.radSpinEditor1);
-            this.radLayoutControl2.Controls.Add(this.radSpinEditor2);
-            this.radLayoutControl2.Controls.Add(this.radSpinEditor3);
             this.radLayoutControl2.Controls.Add(this.radSpinEditor4);
             this.radLayoutControl2.Controls.Add(this.radSpinEditor5);
+            this.radLayoutControl2.Controls.Add(this.radLabel3);
+            this.radLayoutControl2.Controls.Add(this.radLabel4);
+            this.radLayoutControl2.Controls.Add(this.radLabel9);
+            this.radLayoutControl2.Controls.Add(this.radLabel12);
+            this.radLayoutControl2.Controls.Add(this.radLabel13);
+            this.radLayoutControl2.Controls.Add(this.radAmountBuildingfee);
+            this.radLayoutControl2.Controls.Add(this.radLandWorkfee);
+            this.radLayoutControl2.Controls.Add(this.radlandfee);
             this.radLayoutControl2.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.layoutControlItem36,
+            this.layoutControlItem37,
+            this.layoutControlItem38,
+            this.layoutControlItem39,
+            this.layoutControlItem40,
+            this.layoutControlItem41,
+            this.layoutControlItem42,
             this.layoutControlItem2,
             this.layoutControlItem3,
-            this.layoutControlItem4,
-            this.layoutControlItem36,
-            this.layoutControlItem37});
+            this.layoutControlItem4});
             this.radLayoutControl2.Location = new System.Drawing.Point(450, 80);
             this.radLayoutControl2.Name = "radLayoutControl2";
             this.radLayoutControl2.Size = new System.Drawing.Size(241, 357);
             this.radLayoutControl2.TabIndex = 1409;
             // 
-            // layoutControlItem2
-            // 
-            this.layoutControlItem2.AssociatedControl = this.radSpinEditor1;
-            this.layoutControlItem2.Bounds = new System.Drawing.Rectangle(0, 0, 241, 71);
-            this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Text = "0.00";
-            // 
-            // layoutControlItem3
-            // 
-            this.layoutControlItem3.AssociatedControl = this.radSpinEditor2;
-            this.layoutControlItem3.Bounds = new System.Drawing.Rectangle(0, 71, 241, 66);
-            this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Text = "layoutControlItem3";
-            // 
-            // layoutControlItem4
-            // 
-            this.layoutControlItem4.AssociatedControl = this.radSpinEditor3;
-            this.layoutControlItem4.Bounds = new System.Drawing.Rectangle(0, 137, 241, 72);
-            this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Text = "layoutControlItem4";
-            // 
             // layoutControlItem36
             // 
             this.layoutControlItem36.AssociatedControl = this.radSpinEditor4;
-            this.layoutControlItem36.Bounds = new System.Drawing.Rectangle(0, 209, 241, 77);
+            this.layoutControlItem36.Bounds = new System.Drawing.Rectangle(0, 209, 120, 77);
             this.layoutControlItem36.Name = "layoutControlItem36";
             this.layoutControlItem36.Text = "layoutControlItem36";
             // 
             // layoutControlItem37
             // 
             this.layoutControlItem37.AssociatedControl = this.radSpinEditor5;
-            this.layoutControlItem37.Bounds = new System.Drawing.Rectangle(0, 286, 241, 71);
+            this.layoutControlItem37.Bounds = new System.Drawing.Rectangle(0, 286, 120, 71);
             this.layoutControlItem37.Name = "layoutControlItem37";
             this.layoutControlItem37.Text = "layoutControlItem37";
             // 
@@ -1494,7 +1413,7 @@
             this.DataGridAttachments.MasterTemplate.AllowEditRow = false;
             this.DataGridAttachments.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
             this.DataGridAttachments.MasterTemplate.EnableGrouping = false;
-            this.DataGridAttachments.MasterTemplate.ViewDefinition = tableViewDefinition5;
+            this.DataGridAttachments.MasterTemplate.ViewDefinition = tableViewDefinition2;
             this.DataGridAttachments.Name = "DataGridAttachments";
             this.DataGridAttachments.ShowGroupPanel = false;
             this.DataGridAttachments.ShowGroupPanelScrollbars = false;
@@ -1533,7 +1452,7 @@
             this.DataGridPriceLog.MasterTemplate.AllowRowHeaderContextMenu = false;
             this.DataGridPriceLog.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
             this.DataGridPriceLog.MasterTemplate.EnableGrouping = false;
-            this.DataGridPriceLog.MasterTemplate.ViewDefinition = tableViewDefinition6;
+            this.DataGridPriceLog.MasterTemplate.ViewDefinition = tableViewDefinition3;
             this.DataGridPriceLog.Name = "DataGridPriceLog";
             this.DataGridPriceLog.ShowGroupPanel = false;
             this.DataGridPriceLog.ShowGroupPanelScrollbars = false;
@@ -2532,28 +2451,28 @@
             // 
             // radToastNotificationManager1
             // 
-            radToastNotification4.BindingData = null;
-            radToastNotification4.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
-            radToastNotification4.Name = "ToastNews1";
-            radToastNotification4.Tag = null;
-            radToastNotification4.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastNews;
-            radToastNotification4.Xml = resources.GetString("radToastNotification4.Xml");
-            radToastNotification5.BindingData = null;
-            radToastNotification5.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
-            radToastNotification5.Name = "ToastLegacy1";
-            radToastNotification5.Tag = null;
-            radToastNotification5.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastLegacy;
-            radToastNotification5.Xml = resources.GetString("radToastNotification5.Xml");
-            radToastNotification6.BindingData = null;
-            radToastNotification6.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
-            radToastNotification6.Name = "ToastGeneric1";
-            radToastNotification6.Tag = null;
-            radToastNotification6.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastGeneric;
-            radToastNotification6.Xml = "<toast>\n  <visual>\n    <binding template=\"ToastGeneric\"></binding>\n  </visual>\n</" +
+            radToastNotification1.BindingData = null;
+            radToastNotification1.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
+            radToastNotification1.Name = "ToastNews1";
+            radToastNotification1.Tag = null;
+            radToastNotification1.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastNews;
+            radToastNotification1.Xml = resources.GetString("radToastNotification1.Xml");
+            radToastNotification2.BindingData = null;
+            radToastNotification2.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
+            radToastNotification2.Name = "ToastLegacy1";
+            radToastNotification2.Tag = null;
+            radToastNotification2.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastLegacy;
+            radToastNotification2.Xml = resources.GetString("radToastNotification2.Xml");
+            radToastNotification3.BindingData = null;
+            radToastNotification3.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
+            radToastNotification3.Name = "ToastGeneric1";
+            radToastNotification3.Tag = null;
+            radToastNotification3.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastGeneric;
+            radToastNotification3.Xml = "<toast>\n  <visual>\n    <binding template=\"ToastGeneric\"></binding>\n  </visual>\n</" +
     "toast>";
-            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification4);
-            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification5);
-            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification6);
+            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification1);
+            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification2);
+            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification3);
             // 
             // radDesktopAlert1
             // 
@@ -2652,6 +2571,114 @@
             this.radOffice2007ScreenTipElement34.TemplateType = null;
             this.radOffice2007ScreenTipElement34.TipSize = new System.Drawing.Size(0, 0);
             // 
+            // layoutControlItem38
+            // 
+            this.layoutControlItem38.AssociatedControl = this.radLabel3;
+            this.layoutControlItem38.Bounds = new System.Drawing.Rectangle(120, 0, 121, 71);
+            this.layoutControlItem38.Name = "layoutControlItem38";
+            this.layoutControlItem38.Text = "layoutControlItem38";
+            // 
+            // layoutControlItem39
+            // 
+            this.layoutControlItem39.AssociatedControl = this.radLabel4;
+            this.layoutControlItem39.Bounds = new System.Drawing.Rectangle(120, 71, 121, 66);
+            this.layoutControlItem39.Name = "layoutControlItem39";
+            this.layoutControlItem39.Text = "layoutControlItem39";
+            // 
+            // layoutControlItem40
+            // 
+            this.layoutControlItem40.AssociatedControl = this.radLabel9;
+            this.layoutControlItem40.Bounds = new System.Drawing.Rectangle(120, 137, 121, 72);
+            this.layoutControlItem40.Name = "layoutControlItem40";
+            this.layoutControlItem40.Text = "layoutControlItem40";
+            // 
+            // layoutControlItem41
+            // 
+            this.layoutControlItem41.AssociatedControl = this.radLabel12;
+            this.layoutControlItem41.Bounds = new System.Drawing.Rectangle(120, 209, 121, 77);
+            this.layoutControlItem41.Name = "layoutControlItem41";
+            this.layoutControlItem41.Text = "layoutControlItem41";
+            // 
+            // layoutControlItem42
+            // 
+            this.layoutControlItem42.AssociatedControl = this.radLabel13;
+            this.layoutControlItem42.Bounds = new System.Drawing.Rectangle(120, 286, 121, 71);
+            this.layoutControlItem42.Name = "layoutControlItem42";
+            this.layoutControlItem42.Text = "layoutControlItem42";
+            // 
+            // radAmountBuildingfee
+            // 
+            this.radAmountBuildingfee.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.radAmountBuildingfee.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radAmountBuildingfee.Location = new System.Drawing.Point(3, 15);
+            this.radAmountBuildingfee.Name = "radAmountBuildingfee";
+            this.radAmountBuildingfee.NullText = "0.00";
+            this.radAmountBuildingfee.ReadOnly = true;
+            this.radAmountBuildingfee.ShowEmbeddedLabel = true;
+            this.radAmountBuildingfee.ShowNullText = true;
+            this.radAmountBuildingfee.Size = new System.Drawing.Size(114, 40);
+            this.radAmountBuildingfee.TabIndex = 199;
+            this.radAmountBuildingfee.Text = "0.00";
+            this.radAmountBuildingfee.ThemeName = "Material";
+            this.radValidationProvider1.SetValidationRule(this.radAmountBuildingfee, null);
+            // 
+            // layoutControlItem2
+            // 
+            this.layoutControlItem2.AssociatedControl = this.radAmountBuildingfee;
+            this.layoutControlItem2.Bounds = new System.Drawing.Rectangle(0, 0, 120, 71);
+            this.layoutControlItem2.ControlVerticalAlignment = Telerik.WinControls.UI.RadVerticalAlignment.Center;
+            this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.Text = "layoutControlItem2";
+            // 
+            // radLandWorkfee
+            // 
+            this.radLandWorkfee.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.radLandWorkfee.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLandWorkfee.Location = new System.Drawing.Point(3, 84);
+            this.radLandWorkfee.Name = "radLandWorkfee";
+            this.radLandWorkfee.NullText = "0.00";
+            this.radLandWorkfee.ReadOnly = true;
+            this.radLandWorkfee.ShowEmbeddedLabel = true;
+            this.radLandWorkfee.ShowNullText = true;
+            this.radLandWorkfee.Size = new System.Drawing.Size(114, 40);
+            this.radLandWorkfee.TabIndex = 1410;
+            this.radLandWorkfee.Text = "0.00";
+            this.radLandWorkfee.ThemeName = "Material";
+            this.radValidationProvider1.SetValidationRule(this.radLandWorkfee, null);
+            this.radLandWorkfee.TextChanged += new System.EventHandler(this.radLandWorkfee_TextChanged);
+            // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.AssociatedControl = this.radLandWorkfee;
+            this.layoutControlItem3.Bounds = new System.Drawing.Rectangle(0, 71, 120, 66);
+            this.layoutControlItem3.ControlVerticalAlignment = Telerik.WinControls.UI.RadVerticalAlignment.Center;
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Text = "layoutControlItem3";
+            // 
+            // radlandfee
+            // 
+            this.radlandfee.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.radlandfee.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radlandfee.Location = new System.Drawing.Point(3, 153);
+            this.radlandfee.Name = "radlandfee";
+            this.radlandfee.NullText = "0.00";
+            this.radlandfee.ReadOnly = true;
+            this.radlandfee.ShowEmbeddedLabel = true;
+            this.radlandfee.ShowNullText = true;
+            this.radlandfee.Size = new System.Drawing.Size(114, 40);
+            this.radlandfee.TabIndex = 1411;
+            this.radlandfee.Text = "0.00";
+            this.radlandfee.ThemeName = "Material";
+            this.radValidationProvider1.SetValidationRule(this.radlandfee, null);
+            // 
+            // layoutControlItem4
+            // 
+            this.layoutControlItem4.AssociatedControl = this.radlandfee;
+            this.layoutControlItem4.Bounds = new System.Drawing.Rectangle(0, 137, 120, 72);
+            this.layoutControlItem4.ControlVerticalAlignment = Telerik.WinControls.UI.RadVerticalAlignment.Center;
+            this.layoutControlItem4.Name = "layoutControlItem4";
+            this.layoutControlItem4.Text = "layoutControlItem4";
+            // 
             // UCLandsDataEntry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2709,25 +2736,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.radBuildingFeeValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radWorkFeeValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radVatValue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radSpinEditor1)).EndInit();
-            this.radSpinEditor1.ResumeLayout(false);
-            this.radSpinEditor1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radSpinEditor2)).EndInit();
-            this.radSpinEditor2.ResumeLayout(false);
-            this.radSpinEditor2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radSpinEditor3)).EndInit();
-            this.radSpinEditor3.ResumeLayout(false);
-            this.radSpinEditor3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radSpinEditor4)).EndInit();
-            this.radSpinEditor4.ResumeLayout(false);
-            this.radSpinEditor4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radSpinEditor5)).EndInit();
-            this.radSpinEditor5.ResumeLayout(false);
-            this.radSpinEditor5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel23)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel19)).EndInit();
@@ -2738,6 +2752,7 @@
             this.MainPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radLayoutControl2)).EndInit();
             this.radLayoutControl2.ResumeLayout(false);
+            this.radLayoutControl2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Chkisvat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel8)).EndInit();
@@ -2759,6 +2774,9 @@
             this.radScrollablePanel2.PanelContainer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radScrollablePanel2)).EndInit();
             this.radScrollablePanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.radAmountBuildingfee)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLandWorkfee)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radlandfee)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2925,11 +2943,8 @@
         private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement31;
         private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement32;
         private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement33;
-        private Telerik.WinControls.UI.RadSpinEditor radSpinEditor2;
         private Telerik.WinControls.UI.RadLabel radLabel4;
-        private Telerik.WinControls.UI.RadSpinEditor radSpinEditor1;
         private Telerik.WinControls.UI.RadLabel radLabel3;
-        private Telerik.WinControls.UI.RadSpinEditor radSpinEditor3;
         private Telerik.WinControls.UI.RadLabel radLabel9;
         private Telerik.WinControls.UI.RadCallout radCallout1;
         private Telerik.WinControls.UI.RadLabel radLabel11;
@@ -2939,9 +2954,6 @@
         private Telerik.WinControls.UI.RadSpinEditor radSpinEditor5;
         private Telerik.WinControls.UI.RadLabel radLabel13;
         private Telerik.WinControls.UI.RadLayoutControl radLayoutControl2;
-        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem2;
-        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem3;
-        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem4;
         private Telerik.WinControls.UI.LayoutControlItem layoutControlItem36;
         private Telerik.WinControls.UI.LayoutControlItem layoutControlItem37;
         private Telerik.WinControls.UI.CommandBarSeparator commandBarSeparator5;
@@ -2953,5 +2965,16 @@
         private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement36;
         private Telerik.WinControls.UI.RadMenuItem BtnPdfExport;
         private Telerik.WinControls.UI.RadMenuItem BtnEmailExport;
+        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem38;
+        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem39;
+        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem40;
+        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem41;
+        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem42;
+        private Telerik.WinControls.UI.RadTextBox radAmountBuildingfee;
+        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem2;
+        private Telerik.WinControls.UI.RadTextBox radLandWorkfee;
+        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem3;
+        private Telerik.WinControls.UI.RadTextBox radlandfee;
+        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem4;
     }
 }
