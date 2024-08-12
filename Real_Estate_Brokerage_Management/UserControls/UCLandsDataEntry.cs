@@ -26,7 +26,7 @@ namespace DoctorERP.User_Controls
         private bool IsNew = false, ShowConfirmMSG = true, IsProgrammatic = false;
         private readonly string BlockNumber;
         private int CurrentPosition = 0;
-       
+        private decimal TotalLand;
 
         public UCLandsDataEntry(Guid _guid, bool _isNew, string _BlockNumber)
         {
@@ -50,9 +50,6 @@ namespace DoctorERP.User_Controls
             BtnPdfExport.Click += BtnExportPdf_Click;
             BtnEmailExport.Click -= BtnSendEmail_Click;
             BtnEmailExport.Click += BtnSendEmail_Click;
-
-            
-
             MenuPreviewAttachment.Click -= MenuPreviewAttach_Click;
             MenuPreviewAttachment.Click += MenuPreviewAttach_Click;
             MenuExtractAttachement.Click -= MenuExtractAttachment_Click;
@@ -62,18 +59,17 @@ namespace DoctorERP.User_Controls
             RadFlyoutManager.FlyoutClosed -= this.RadFlyoutManager_FlyoutClosed;
             RadFlyoutManager.FlyoutClosed += this.RadFlyoutManager_FlyoutClosed;
             radLabel8.TextAlignment = ContentAlignment.BottomLeft;
-            radLabel2.TextAlignment = ContentAlignment.TopLeft;
-            radLabel1.TextAlignment = ContentAlignment.TopLeft;
-            radLabel6.TextAlignment = ContentAlignment.TopLeft;
-            radLabel5.TextAlignment = ContentAlignment.TopLeft;
-            radLabel7.TextAlignment = ContentAlignment.TopLeft;
-            radLabel10.TextAlignment = ContentAlignment.TopLeft;
+            radLabel2.TextAlignment = ContentAlignment.MiddleLeft;
+            radLabel1.TextAlignment = ContentAlignment.MiddleLeft;
+            radLabel17.TextAlignment = ContentAlignment.MiddleLeft;
+            radLabel16.TextAlignment = ContentAlignment.MiddleLeft;
+            radLabel15.TextAlignment = ContentAlignment.MiddleLeft;
+            radLabel14.TextAlignment = ContentAlignment.MiddleLeft;
+            radLabel3.TextAlignment = ContentAlignment.MiddleLeft;
+            radLabel4.TextAlignment = ContentAlignment.MiddleLeft;
+            radLabel9.TextAlignment = ContentAlignment.MiddleLeft;
+            radLabel12.TextAlignment = ContentAlignment.MiddleLeft;
             radTotalText.TextAlignment = ContentAlignment.TopLeft;
-            radLabel13.TextAlignment = ContentAlignment.TopLeft;
-            radLabel12.TextAlignment = ContentAlignment.TopLeft;
-            radLabel9.TextAlignment = ContentAlignment.TopLeft;
-            radLabel4.TextAlignment = ContentAlignment.TopLeft;
-            radLabel3.TextAlignment = ContentAlignment.TopLeft;
             radDesktopAlert1.Popup.RootElement.RightToLeft = true;
 
             SetData();
@@ -285,7 +281,7 @@ namespace DoctorERP.User_Controls
             land.south = Txtsouth.Text;
             land.southdesc = Txtsouthdesc.Text;
             land.status = Txtstatus.Text;
-            land.total = Txttotal.Value;
+            land.total = TotalLand;
             land.west = Txtwest.Text;
             land.westdesc = Txtwestdesc.Text;
             land.code = land.number;
@@ -326,10 +322,10 @@ namespace DoctorERP.User_Controls
             }
             Guid CurrentGuid = ((tbLand)Bs.Current).guid;
             tbLand land = tbLand.lstData.Where(u => u.guid == CurrentGuid).FirstOrDefault();
-            decimal Total = Txttotal.Value;
-            if (land.total != Total)
+            decimal Amount = Txtamount.Value;
+            if (land.amount != Amount)
             {
-                FrmPriceLog frm = new FrmPriceLog(Guid.Empty, land.guid, land.amount, Total);
+                FrmPriceLog frm = new FrmPriceLog(Guid.Empty, land.guid, land.amount, Amount);
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
 
@@ -362,7 +358,7 @@ namespace DoctorERP.User_Controls
             land.south = Txtsouth.Text;
             land.southdesc = Txtsouthdesc.Text;
             land.status = Txtstatus.Text;
-            land.total = Txttotal.Value;
+            land.total = TotalLand;
             land.west = Txtwest.Text;
             land.westdesc = Txtwestdesc.Text;
 
@@ -414,7 +410,7 @@ namespace DoctorERP.User_Controls
         private void SetReadOnly(bool IsReadOnly)
         {
             List<RadControl> NotUsedControls = new List<RadControl>() 
-            { Txtnumber, radWorkFeeValue, radBuildingFeeValue, radVatValue, radWorkFeeWithVat, Txttotal, Txtlastaction, Txtworkfee,Txtbuildingfee, Txtvat };
+            { Txtnumber, radWorkFeeValue, radBuildingFeeValue, radVatValue, radWorkFeeWithVat, Txtlastaction, Txtworkfee,Txtbuildingfee, Txtvat };
             foreach (RadControl control in MainPanel.Controls)
             {
                 if (NotUsedControls.Contains(control)) { continue; }
@@ -455,49 +451,34 @@ namespace DoctorERP.User_Controls
             decimal total = Amount + (Amount * Salesfee / 100) + (Amount * Buildingfee / 100) +
                 (Amount * Workfee / 100) + ((Amount * Workfee / 100) * Vatfee / 100);
 
-            Txtvat.Value = Vatfee;
-            Txtworkfee.Value = Workfee;
             Txtbuildingfee.Value = Buildingfee;
-            radWorkFeeValue.Text = (Amount * Workfee / 100).ToString("0.00");
+            Txtworkfee.Value = Workfee;
+            Txtvat.Value = Vatfee;
             radBuildingFeeValue.Text = (Amount * Buildingfee / 100).ToString("0.00");
+            radWorkFeeValue.Text = (Amount * Workfee / 100).ToString("0.00");
             radVatValue.Text = ((Amount * Workfee / 100) * Vatfee / 100).ToString("0.00");
             radWorkFeeWithVat.Text = ((Amount * Workfee / 100) + ((Amount * Workfee / 100) * Vatfee / 100)).ToString("0.00");
+
+
+            radAmountBuildingfee.Text = (Amount + (Amount * TaxDiscount.salesfee / 100) + (Amount * TaxDiscount.buildingfee / 100)).ToString("0.00");
+            radLandWorkfee.Text = (Amount + (Amount * TaxDiscount.salesfee / 100) + (Amount * TaxDiscount.workfee / 100)).ToString("0.00");
+            radlandfee.Text = (Amount + (Amount * TaxDiscount.salesfee / 100) + (Amount * TaxDiscount.workfee / 100) + 
+                ((Amount * TaxDiscount.workfee / 100) * TaxDiscount.vat / 100)).ToString("0.00");
+
+            radTextBox1.Text = (Amount + (Amount * TaxDiscount.salesfee / 100) + (Amount * TaxDiscount.workfee / 100) +(Amount * TaxDiscount.buildingfee / 100)+
+    ((Amount * TaxDiscount.workfee / 100) * TaxDiscount.vat / 100)).ToString("0.00");
+
+            TotalLand = total;
+
+
             Helpers.NumberToWord.CurrencyInfo currency = new CurrencyInfo(CurrencyInfo.Currencies.SaudiArabia);
-            ToWord toWord = new ToWord(total, currency)
+            ToWord toWord = new ToWord(Amount, currency)
             {
                 ArabicPrefixText = string.Empty,
                 EnglishSuffixText = string.Empty
             };
 
-            radAmountBuildingfee.Text = (Amount + (Amount * TaxDiscount.salesfee / 100) + (Amount * TaxDiscount.buildingfee / 100)).ToString("0.00");
-            radLandWorkfee.Text = (Amount + (Amount * TaxDiscount.salesfee / 100) + (Amount * TaxDiscount.workfee / 100).ToString("0.00");
-            radlandfee.Text = (Amount + (Amount * TaxDiscount.salesfee / 100) + (Amount * TaxDiscount.workfee / 100) + 
-                ((Amount * TaxDiscount.workfee / 100) * TaxDiscount.vat / 100)).ToString("0.00");
-            radSpinEditor4.Value = Amount + (Amount * TaxDiscount.salesfee / 100) + (Amount * TaxDiscount.buildingfee / 100) + 
-                (Amount * TaxDiscount.workfee / 100);
-            radSpinEditor5.Value = Amount + (Amount * TaxDiscount.salesfee / 100) + (Amount * TaxDiscount.buildingfee / 100) +
-                (Amount * TaxDiscount.workfee / 100) + ((Amount * TaxDiscount.workfee / 100) * TaxDiscount.vat / 100);
-
-            Txttotal.Value = total;
-
             radTotalText.Text = toWord.ConvertToArabic();
-
-            //radCallout1.CalloutForm.Controls[0].Text = "تم احتساب علي ";
-            //radCallout1.Show(radTotalText);
-
-            //if (!IsLoad)
-            //{
-            //    RadCallout radCallout = new RadCallout();
-            //    radCallout.AssociatedControl = this.radLabel11;
-            //    radLabel11.Text = "تم إحتساب الحافز بناءَ علي : قيمة الأرض + قيمة ضريبة التصرفات العقارية + قيمة عمولة السعي + القيمة المضافة لعمولة السعي";
-            //    radCallout.CalloutType = Telerik.WinControls.UI.Callout.CalloutType.RoundedRectangle;
-            //    radCallout.ArrowDirection = Telerik.WinControls.ArrowDirection.Up;
-            //    radCallout.ArrowType = Telerik.WinControls.UI.Callout.CalloutArrowType.Triangle;
-            //    radCallout.AutoClose = false;
-            //    radCallout.DropShadow = true;
-            //    radCallout.Show(this.radTotalText);
-
-            //}
 
 
         }
@@ -590,7 +571,6 @@ namespace DoctorERP.User_Controls
                 RightToLeft = true,
                 CustomFont = "Robot",
                 Icon = RadTaskDialogIcon.ShieldErrorRedBar,
-                //AllowCancel = true,
                 Footnote = new RadTaskDialogFootnote("ملحوظة: " + FootNote),
                 CommandAreaButtons = {
                     RadTaskDialogButton.OK,
@@ -638,8 +618,7 @@ namespace DoctorERP.User_Controls
                     IsProgrammatic = false;
                     IsDirty = false;
                     IsNew = false;
-                    //guid = land.guid;
-                    //SetData();
+                    SetData();
                 }
             }
         }
@@ -1309,17 +1288,17 @@ namespace DoctorERP.User_Controls
             }
         }
 
-        private void radSpinEditor1_ValueChanged(object sender, EventArgs e)
+        private void radLabel12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radLabel15_Click(object sender, EventArgs e)
         {
 
         }
 
         private void MainPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void radLandWorkfee_TextChanged(object sender, EventArgs e)
         {
 
         }
