@@ -701,20 +701,19 @@
       <DependentUpon>TransferData.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\AppSetting.cs" />
-    <Compile Include="Helpers\ArabicNumber.cs" />
     <Compile Include="Helpers\BarCode.cs" />
     <Compile Include="Helpers\CaptureDos.cs" />
     <Compile Include="DAL\tbAttachment.cs" />
     <Compile Include="DAL\tbEmailSettings.cs" />
     <Compile Include="DAL\tbSelectObject.cs" />
     <Compile Include="Helpers\Connect.cs" />
-    <Compile Include="Helpers\CurrencyInfo.cs" />
     <Compile Include="Helpers\DataBase.cs" />
     <Compile Include="Helpers\DataGridColumns.cs" />
     <Compile Include="Helpers\DataGridViewEx.cs" />
     <Compile Include="Helpers\DateTimeHelper.cs" />
     <Compile Include="Helpers\DBFiles.cs" />
     <Compile Include="Helpers\DataGUIAttribute.cs" />
+    <Compile Include="Helpers\Enums\OperationType.cs" />
     <Compile Include="Helpers\ExcelImportHelper.cs" />
     <Compile Include="Helpers\ExcelXLSX.cs" />
     <Compile Include="Helpers\Fatora.cs" />
@@ -794,11 +793,9 @@
     <Compile Include="Helpers\MenuItemsPermessions.cs" />
     <Compile Include="Helpers\Mimes.cs" />
     <Compile Include="Helpers\NumberToWords.cs" />
-    <Compile Include="Helpers\Enums\OperationType.cs" />
     <Compile Include="Helpers\Printers.cs" />
     <Compile Include="CustomElements\ImageListView\LandIconListViewVisualItem.cs" />
     <Compile Include="Helpers\SendSMS.cs" />
-    <Compile Include="Helpers\ToWord.cs" />
     <Compile Include="Helpers\WinformsDirtyTracking.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1121,6 +1118,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Map-icon.svg.ico" />
+    <None Include="Resources\UpdateDataBase.sql" />
+    <None Include="Resources\BtnDelete.png" />
+    <None Include="Resources\BtnConform.png" />
+    <None Include="Resources\BtnAddNew.png" />
+    <None Include="Resources\BtnExit.png" />
+    <None Include="Resources\BtnEdite.png" />
     <None Include="Resources\BtnExport_19.png" />
     <None Include="Resources\BtnExport_16.png" />
     <None Include="Resources\information50.png" />
@@ -1250,6 +1253,12 @@
     <None Include="Resources\calc.png" />
     <None Include="Resources\Restore.sql" />
     <None Include="Resources\db.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Helper\DoctorHelper.csproj">
+      <Project>{a61e2475-f9bf-40d9-8519-217497c625f5}</Project>
+      <Name>DoctorHelper</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,4 +1,4 @@
-
+GO
 DELETE FROM dataNew.[dbo].tbAccount
 INSERT INTO dataNew.[dbo].tbAccount
 SELECT * FROM dataOld.[dbo].tbAccount

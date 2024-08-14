@@ -153,6 +153,16 @@ namespace DoctorERP.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BtnAddNew {
+            get {
+                object obj = ResourceManager.GetObject("BtnAddNew", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BtnAgreement_S19 {
             get {
                 object obj = ResourceManager.GetObject("BtnAgreement_S19", resourceCulture);
@@ -173,6 +183,26 @@ namespace DoctorERP.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BtnConform {
+            get {
+                object obj = ResourceManager.GetObject("BtnConform", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BtnDelete {
+            get {
+                object obj = ResourceManager.GetObject("BtnDelete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BtnDelete_16 {
             get {
                 object obj = ResourceManager.GetObject("BtnDelete_16", resourceCulture);
@@ -183,9 +213,29 @@ namespace DoctorERP.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BtnEdite {
+            get {
+                object obj = ResourceManager.GetObject("BtnEdite", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BtnExcel_16 {
             get {
                 object obj = ResourceManager.GetObject("BtnExcel_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BtnExit {
+            get {
+                object obj = ResourceManager.GetObject("BtnExit", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -708,7 +758,7 @@ namespace DoctorERP.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 
+        ///   Looks up a localized string similar to GO
         ///DELETE FROM dataNew.[dbo].tbAccount
         ///INSERT INTO dataNew.[dbo].tbAccount
         ///SELECT * FROM dataOld.[dbo].tbAccount
@@ -730,7 +780,7 @@ namespace DoctorERP.Properties {
         ///Go
         ///
         ///DELETE FROM dataNew.[dbo].tbAttachment
-        ///INSER [rest of string was truncated]&quot;;.
+        ///INS [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string insert_into {
             get {
@@ -1097,6 +1147,22 @@ namespace DoctorERP.Properties {
             get {
                 object obj = ResourceManager.GetObject("up", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GO
+        ///
+        ///ALTER TABLE [dbo].[tbSaleOrder]
+        ///ADD lastaction varchar(255);
+        ///GO
+        ///
+        ///UPDATE [dbo].[tbSaleOrder] set lastaction = &apos;&apos;
+        ///GO.
+        /// </summary>
+        internal static string UpdateDataBase {
+            get {
+                return ResourceManager.GetString("UpdateDataBase", resourceCulture);
             }
         }
         

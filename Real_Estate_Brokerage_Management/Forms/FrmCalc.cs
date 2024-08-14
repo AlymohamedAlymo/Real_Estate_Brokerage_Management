@@ -21,7 +21,8 @@ using DevExpress.XtraEditors;
 using System.Reflection.Emit;
 using System.Windows.Forms.VisualStyles;
 using Org.BouncyCastle.Crypto;
-using DoctorERP.Helpers.NumberToWord;
+using DoctorERP.Helpers;
+using DoctorHelper.Helpers;
 
 namespace DoctorERP
 {
@@ -337,9 +338,9 @@ namespace DoctorERP
             TxtTotal.Text = total.ToString(DataGUIAttribute.CurrencyFormat);
             TxtWorkFeeWithVat.Text = (workfeevalue + vatvalue).ToString(DataGUIAttribute.CurrencyFormat);
 
-            Helpers.NumberToWord.CurrencyInfo currency = new CurrencyInfo(CurrencyInfo.Currencies.SaudiArabia);
+            CurrencyInfo currency = new CurrencyInfo(CurrencyInfo.Currencies.SaudiArabia);
 
-            ToWord toWord = new ToWord(total, currency);
+            NumberToWord toWord = new NumberToWord(total, currency);
 
             toWord.ArabicPrefixText = string.Empty;
             toWord.EnglishSuffixText = string.Empty;

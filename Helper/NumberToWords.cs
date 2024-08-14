@@ -1,11 +1,10 @@
-﻿using System;
+﻿using DoctorERP.Helpers;
+using System;
 using System.Collections.Generic;
 
-namespace DoctorERP.Helpers.NumberToWord
+namespace DoctorHelper.Helpers
 {
-  
-
-    class ToWord
+   public class NumberToWord
     {
        
 
@@ -65,7 +64,7 @@ namespace DoctorERP.Helpers.NumberToWord
         /// </summary>
         /// <param name="number">Number to be converted</param>
         /// <param name="currency">Currency to use</param>
-        public ToWord(Decimal number, CurrencyInfo currency)
+        public NumberToWord(Decimal number, CurrencyInfo currency)
         {
             InitializeClass(number, currency, String.Empty, "only.", "فقط", "لا غير.");
         }
@@ -79,7 +78,7 @@ namespace DoctorERP.Helpers.NumberToWord
         /// <param name="englishSuffixText">English text to be placed after the generated text</param>
         /// <param name="arabicPrefixText">Arabic text to be placed before the generated text</param>
         /// <param name="arabicSuffixText">Arabic text to be placed after the generated text</param>
-        public ToWord(Decimal number, CurrencyInfo currency, String englishPrefixText, String englishSuffixText, String arabicPrefixText, String arabicSuffixText)
+        public NumberToWord(Decimal number, CurrencyInfo currency, String englishPrefixText, String englishSuffixText, String arabicPrefixText, String arabicSuffixText)
         {
             InitializeClass(number, currency, englishPrefixText, englishSuffixText, arabicPrefixText, arabicSuffixText);
         }

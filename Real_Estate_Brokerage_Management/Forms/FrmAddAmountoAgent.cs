@@ -14,7 +14,8 @@ using FastReport.Data;
 using static System.Runtime.CompilerServices.RuntimeHelpers;
 using System.Diagnostics.Contracts;
 using FastReport;
-using DoctorERP.Helpers.NumberToWord;
+using DoctorERP.Helpers;
+using DoctorHelper.Helpers;
 
 namespace DoctorERP
 {
@@ -255,9 +256,9 @@ namespace DoctorERP
             rpt.RegisterData(tbBank, "tbBank");
             rpt.RegisterData(tbTrans, "tbTrans");
 
-            Helpers.NumberToWord.CurrencyInfo currency = new CurrencyInfo(CurrencyInfo.Currencies.SaudiArabia);
+            CurrencyInfo currency = new CurrencyInfo(CurrencyInfo.Currencies.SaudiArabia);
 
-            ToWord toWord = new ToWord(pay.amount, currency);
+            NumberToWord toWord = new NumberToWord(pay.amount, currency);
 
             toWord.ArabicPrefixText = string.Empty;
             toWord.EnglishSuffixText = string.Empty;

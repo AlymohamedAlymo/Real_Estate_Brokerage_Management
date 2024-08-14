@@ -12,7 +12,7 @@ using System.Xml.Serialization;
 using System.IO;
 using FastReport.Data;
 using DoctorERP.Helpers;
-using DoctorERP.Helpers.NumberToWord;
+using DoctorHelper.Helpers;
 
 namespace DoctorERP
 {
@@ -279,9 +279,9 @@ namespace DoctorERP
             rpt.RegisterData(tbPlanInfo.dtData, "planinfodata");
             rpt.RegisterData(tbAgent.dtData, "ownerdata");
 
-            Helpers.NumberToWord.CurrencyInfo currency = new CurrencyInfo(CurrencyInfo.Currencies.SaudiArabia);
+            CurrencyInfo currency = new CurrencyInfo(CurrencyInfo.Currencies.SaudiArabia);
 
-            ToWord toWord = new ToWord((bank + cash), currency);
+            NumberToWord toWord = new NumberToWord((bank + cash), currency);
 
             toWord.ArabicPrefixText = string.Empty;
             toWord.EnglishSuffixText = string.Empty;

@@ -38,7 +38,8 @@ using SmartArabXLSX.Office2010.CustomUI;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using FastReport;
 using OfficeOpenXml.FormulaParsing.Excel.Functions.Text;
-using DoctorERP.Helpers.NumberToWord;
+using DoctorHelper.Helpers;
+using DoctorERP.Helpers;
 
 
 namespace DoctorERP
@@ -50,9 +51,26 @@ namespace DoctorERP
         Guid guid;
 
         public WinformsDirtyTracking.DirtyTracker dirtytracker;
-        bool isNew;
+        bool isNew = false;
+        tbLand land;
 
+        public FrmSaleOrder(tbLand _land)
+        {
+            InitializeComponent();
 
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+
+            dirtytracker = new WinformsDirtyTracking.DirtyTracker(this);
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+            this.guid = Guid.Empty;
+            BtnEdit.Visible = true;
+            BtnAdd.Visible = false;
+            land = _land;
+            InitReadyGrid();
+            FillCmb();
+            this.isNew = false;
+
+        }
 
         public FrmSaleOrder(Guid guid, bool isNew)
         {
@@ -90,11 +108,18 @@ namespace DoctorERP
             if (isNew)
             {
                 BtnNew.PerformClick();
-
-
                 BtnAdd.Visible = true;
                 BtnEdit.Visible = false;
             }
+            else if (!isNew)
+            {
+                BtnNew.PerformClick();
+                BtnAdd.Visible = true;
+                BtnEdit.Visible = false;
+
+                FillLandInfo(0, land);
+            }
+
 
             dirtytracker.MarkAsClean();
         }
@@ -209,7 +234,7 @@ namespace DoctorERP
                 BtnEdit.Visible = false;
                 BtnAdd.Visible = true;
 
-                isNew = true;
+                //isNew = true;
             }
 
         }
@@ -492,6 +517,9 @@ namespace DoctorERP
 
 
         DataTable privatebillBody = new DataTable();
+
+
+
         void FillGrid(Guid guid)
         {
 
@@ -1360,9 +1388,9 @@ namespace DoctorERP
             rpt.SetParameterValue("HijriDate", DateTimeHelper.ConvertDateCalendar(billheader.regdate, "Hijri", "en-US"));
 
 
-            Helpers.NumberToWord.CurrencyInfo currency = new CurrencyInfo(CurrencyInfo.Currencies.SaudiArabia);
+            CurrencyInfo currency = new CurrencyInfo(CurrencyInfo.Currencies.SaudiArabia);
 
-            ToWord toWord = new ToWord(totalnet, currency);
+            NumberToWord toWord = new NumberToWord(totalnet, currency);
 
             toWord.ArabicPrefixText = string.Empty;
             toWord.EnglishSuffixText = string.Empty;
@@ -1483,9 +1511,9 @@ namespace DoctorERP
 
             rpt.RegisterData(tbPlanInfo.dtData, "planinfodata");
 
-            Helpers.NumberToWord.CurrencyInfo currency = new CurrencyInfo(CurrencyInfo.Currencies.SaudiArabia);
+            CurrencyInfo currency = new CurrencyInfo(CurrencyInfo.Currencies.SaudiArabia);
 
-            ToWord toWord = new ToWord(total, currency);
+            NumberToWord toWord = new NumberToWord(total, currency);
 
             toWord.ArabicPrefixText = string.Empty;
             toWord.EnglishSuffixText = string.Empty;

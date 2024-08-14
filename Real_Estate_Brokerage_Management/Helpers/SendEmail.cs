@@ -13,36 +13,6 @@ public class SendEmail
     string SenderName, string SenderEmail, string password, string SMTPServer, int port, bool ssl)
     {
 
-
-        //MailMessage Mail = new MailMessage();
-        //Mail.From = new MailAddress(SenderEmail, SenderName);
-        //Mail.To.Add(CCEmail);
-        //Mail.Subject = Subject;
-        //Mail.Body = MessageBody + Environment.NewLine + string.Format("أرسلت بواسطة المستخدم:" + DoctorERP.FrmMain.CurrentUser.name);
-        //if (dynamicattach.attachData.Length > 0)
-        //{
-        //    dynamicattach.attachData.Position = 0;
-        //    Attachment attach = new Attachment(dynamicattach.attachData, GetMIMEType(dynamicattach.attachFileName));
-        //    attach.Name = dynamicattach.attachFileName;
-        //    Mail.Attachments.Add(attach);
-        //}
-
-        //SmtpClient SmtpServer = new SmtpClient
-        //{
-        //    Port = 587,
-        //    UseDefaultCredentials = false,
-        //    Credentials = new NetworkCredential(SenderEmail, password, SMTPServer),
-        //    Host = SMTPServer,
-        //    DeliveryMethod = SmtpDeliveryMethod.Network,
-        //    EnableSsl = true
-        //};
-
-        //SmtpServer.Send(Mail);
-        //Mail.Dispose();
-        //Mail = null;
-
-
-
         MailMessage mailmesaage = new MailMessage();
 
         SmtpClient SmtpServer = new SmtpClient(SMTPServer);

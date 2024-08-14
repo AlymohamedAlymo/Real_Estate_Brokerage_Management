@@ -13,7 +13,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using FastReport;
 using FastReport.Data;
 using DoctorERP.Helpers;
-using DoctorERP.Helpers.NumberToWord;
+using DoctorHelper.Helpers;
 
 namespace DoctorERP
 {
@@ -767,9 +767,9 @@ namespace DoctorERP
             rpt.RegisterData(tbBank, "tbBank");
             rpt.RegisterData(tbTrans, "tbTrans");
 
-            Helpers.NumberToWord.CurrencyInfo currency = new CurrencyInfo(CurrencyInfo.Currencies.SaudiArabia);
+            CurrencyInfo currency = new CurrencyInfo(CurrencyInfo.Currencies.SaudiArabia);
 
-            ToWord toWord = new ToWord(pay.amount, currency);
+            NumberToWord toWord = new NumberToWord(pay.amount, currency);
 
             toWord.ArabicPrefixText = string.Empty;
             toWord.EnglishSuffixText = string.Empty;

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DoctorERP.Helpers
+namespace DoctorHelper.Helpers
 {
     public class ArabicNumber
     {

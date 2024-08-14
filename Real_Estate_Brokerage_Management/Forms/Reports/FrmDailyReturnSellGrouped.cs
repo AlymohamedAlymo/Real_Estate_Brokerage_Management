@@ -11,7 +11,8 @@ using DgvFilterPopup;
 using System.Xml.Serialization;
 using System.IO;
 using FastReport.Data;
-using DoctorERP.Helpers.NumberToWord;
+using DoctorHelper.Helpers;
+using DoctorERP.Helpers;
 
 namespace DoctorERP
 {
@@ -279,9 +280,9 @@ namespace DoctorERP
             decimal cash = CalcColumnTotal(DataGridMain, DataGridMain.Columns["cash"]);
 
 
-            Helpers.NumberToWord.CurrencyInfo currency = new CurrencyInfo(CurrencyInfo.Currencies.SaudiArabia);
+            CurrencyInfo currency = new CurrencyInfo(CurrencyInfo.Currencies.SaudiArabia);
 
-            ToWord toWord = new ToWord((bank + cash), currency);
+            NumberToWord toWord = new NumberToWord((bank + cash), currency);
 
             toWord.ArabicPrefixText = string.Empty;
             toWord.EnglishSuffixText = string.Empty;

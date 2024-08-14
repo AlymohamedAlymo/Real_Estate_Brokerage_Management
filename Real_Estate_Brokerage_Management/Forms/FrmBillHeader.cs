@@ -39,7 +39,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using FastReport;
 using OfficeOpenXml.FormulaParsing.Excel.Functions.Text;
 using DoctorERP.Helpers;
-using DoctorERP.Helpers.NumberToWord;
+using DoctorHelper.Helpers;
 namespace DoctorERP
 {
     public partial class FrmBillHeader : XtraForm
@@ -2582,9 +2582,9 @@ namespace DoctorERP
             rpt.SetParameterValue("HijriDate", DateTimeHelper.ConvertDateCalendar(billheader.regdate, "Hijri", "en-US"));
 
 
-            Helpers.NumberToWord.CurrencyInfo currency = new CurrencyInfo(CurrencyInfo.Currencies.SaudiArabia);
+            CurrencyInfo currency = new CurrencyInfo(CurrencyInfo.Currencies.SaudiArabia);
 
-            ToWord toWord = new ToWord(totalnet, currency);
+            NumberToWord toWord = new NumberToWord(totalnet, currency);
 
             toWord.ArabicPrefixText = string.Empty;
             toWord.EnglishSuffixText = string.Empty;
@@ -2592,7 +2592,7 @@ namespace DoctorERP
             rpt.SetParameterValue("TotalNetText", toWord.ConvertToArabic());
 
 
-            toWord = new ToWord(tbBillBody.lstData[0].workfeevalue - tbBillBody.lstData[0].discountfeevalue, currency);
+            toWord = new NumberToWord(tbBillBody.lstData[0].workfeevalue - tbBillBody.lstData[0].discountfeevalue, currency);
 
             toWord.ArabicPrefixText = string.Empty;
             toWord.EnglishSuffixText = string.Empty;
@@ -2600,21 +2600,21 @@ namespace DoctorERP
             rpt.SetParameterValue("workfeevalueText", toWord.ConvertToArabic());
 
 
-            toWord = new ToWord(tbBillBody.lstData[0].vatvalue, currency);
+            toWord = new NumberToWord(tbBillBody.lstData[0].vatvalue, currency);
 
             toWord.ArabicPrefixText = string.Empty;
             toWord.EnglishSuffixText = string.Empty;
             toWord.Number = tbBillBody.lstData[0].vatvalue;
             rpt.SetParameterValue("vatvalueText", toWord.ConvertToArabic());
 
-            toWord = new ToWord(tbBillBody.lstData[0].vatvalue, currency);
+            toWord = new NumberToWord(tbBillBody.lstData[0].vatvalue, currency);
 
             toWord.ArabicPrefixText = string.Empty;
             toWord.EnglishSuffixText = string.Empty;
             toWord.Number = tbBillBody.lstData[0].price;
             rpt.SetParameterValue("priceText", toWord.ConvertToArabic());
 
-            toWord = new ToWord(tbBillBody.lstData[0].vatvalue - tbBillBody.lstData[0].discounttotalvalue, currency);
+            toWord = new NumberToWord(tbBillBody.lstData[0].vatvalue - tbBillBody.lstData[0].discounttotalvalue, currency);
 
             toWord.ArabicPrefixText = string.Empty;
             toWord.EnglishSuffixText = string.Empty;
@@ -2739,9 +2739,9 @@ namespace DoctorERP
 
             rpt.SetParameterValue("HijriDate", DateTimeHelper.ConvertDateCalendar(billheader.regdate, "Hijri", "en-US"));
 
-            Helpers.NumberToWord.CurrencyInfo currency = new CurrencyInfo(CurrencyInfo.Currencies.SaudiArabia);
+            CurrencyInfo currency = new CurrencyInfo(CurrencyInfo.Currencies.SaudiArabia);
 
-            ToWord toWord = new ToWord(tbBillBody.lstData[0].totalnet, currency);
+            NumberToWord toWord = new NumberToWord(tbBillBody.lstData[0].totalnet, currency);
 
             toWord.ArabicPrefixText = string.Empty;
             toWord.EnglishSuffixText = string.Empty;
@@ -2749,7 +2749,7 @@ namespace DoctorERP
             rpt.SetParameterValue("TotalNetText", toWord.ConvertToArabic());
 
 
-            toWord = new ToWord(tbBillBody.lstData[0].workfeevalue - tbBillBody.lstData[0].discountfeevalue, currency);
+            toWord = new NumberToWord(tbBillBody.lstData[0].workfeevalue - tbBillBody.lstData[0].discountfeevalue, currency);
 
             toWord.ArabicPrefixText = string.Empty;
             toWord.EnglishSuffixText = string.Empty;
@@ -2757,7 +2757,7 @@ namespace DoctorERP
             rpt.SetParameterValue("workfeevalueText", toWord.ConvertToArabic());
 
 
-            toWord = new ToWord(tbBillBody.lstData[0].vatvalue, currency);
+            toWord = new NumberToWord(tbBillBody.lstData[0].vatvalue, currency);
 
             toWord.ArabicPrefixText = string.Empty;
             toWord.EnglishSuffixText = string.Empty;
@@ -2765,14 +2765,14 @@ namespace DoctorERP
             rpt.SetParameterValue("vatvalueText", toWord.ConvertToArabic());
 
 
-            toWord = new ToWord(tbBillBody.lstData[0].price, currency);
+            toWord = new NumberToWord(tbBillBody.lstData[0].price, currency);
 
             toWord.ArabicPrefixText = string.Empty;
             toWord.EnglishSuffixText = string.Empty;
             toWord.Number = tbBillBody.lstData[0].price;
             rpt.SetParameterValue("priceText", toWord.ConvertToArabic());
 
-            toWord = new ToWord(tbBillBody.lstData[0].price - tbBillBody.lstData[0].discounttotalvalue, currency);
+            toWord = new NumberToWord(tbBillBody.lstData[0].price - tbBillBody.lstData[0].discounttotalvalue, currency);
 
             toWord.ArabicPrefixText = string.Empty;
             toWord.EnglishSuffixText = string.Empty;
@@ -3085,9 +3085,9 @@ namespace DoctorERP
             rpt.RegisterData(tbPlanInfo.dtData, "planinfodata");
             rpt.RegisterData(tbAgent.dtData, "ownerdata");
 
-            Helpers.NumberToWord.CurrencyInfo currency = new CurrencyInfo(CurrencyInfo.Currencies.SaudiArabia);
+            CurrencyInfo currency = new CurrencyInfo(CurrencyInfo.Currencies.SaudiArabia);
 
-            ToWord toWord = new ToWord(total, currency);
+            NumberToWord toWord = new NumberToWord(total, currency);
 
             toWord.ArabicPrefixText = string.Empty;
             toWord.EnglishSuffixText = string.Empty;

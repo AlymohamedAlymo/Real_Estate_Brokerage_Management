@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DoctorERP.Helpers.NumberToWord
+namespace DoctorERP.Helpers
 {
     public class CurrencyInfo
     {

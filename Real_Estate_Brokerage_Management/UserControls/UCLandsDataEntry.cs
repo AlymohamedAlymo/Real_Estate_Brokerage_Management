@@ -1,10 +1,6 @@
-﻿using DevExpress.XtraPrinting;
-using DoctorERP.CustomElements.Flyout;
+﻿using DoctorERP.CustomElements.Flyout;
 using DoctorERP.Helpers;
-using DoctorERP.Helpers.NumberToWord;
-using FastReport.Messaging.Xmpp;
-using SmartArab;
-using SmartArabXLSX.Vml.Office;
+using DoctorHelper.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -25,17 +21,17 @@ namespace DoctorERP.User_Controls
         public bool IsDirty = false, IsLoad = true;
         private bool IsNew = false, ShowConfirmMSG = true, IsProgrammatic = false;
         private readonly string BlockNumber;
-        private int CurrentPosition = 0;
+        private readonly int CurrentPosition = 0;
         private decimal TotalLand;
 
         public UCLandsDataEntry(Guid _guid, bool _isNew, string _BlockNumber)
         {
-
             InitializeComponent();
 
             guid = _guid;
             BlockNumber = _BlockNumber;
             IsNew = _isNew;
+
             BtnSentToPrinter.Click -= BtnPrint_Click;
             BtnSentToPrinter.Click += BtnPrint_Click;
             BtnPreview.Click -= MenuPreview_Click;
@@ -50,14 +46,24 @@ namespace DoctorERP.User_Controls
             BtnPdfExport.Click += BtnExportPdf_Click;
             BtnEmailExport.Click -= BtnSendEmail_Click;
             BtnEmailExport.Click += BtnSendEmail_Click;
+            BtnSaleOrder.Click -= MenuSaleOrder_Click;
+            BtnSaleOrder.Click += MenuSaleOrder_Click;
+            BtnWordExport.Click -= BtnExportWord_Click;
+            BtnWordExport.Click += BtnExportWord_Click;
             MenuPreviewAttachment.Click -= MenuPreviewAttach_Click;
             MenuPreviewAttachment.Click += MenuPreviewAttach_Click;
             MenuExtractAttachement.Click -= MenuExtractAttachment_Click;
             MenuExtractAttachement.Click += MenuExtractAttachment_Click;
             MenuDeleteAttachment.Click -= MenuDeleteAttachment_Click;
             MenuDeleteAttachment.Click += MenuDeleteAttachment_Click;
+            BtnContract.Click -= BtnContract_Click;
+            BtnContract.Click += BtnContract_Click;
+            BtnReservation.Click -= BtnReservation_Click;
+            BtnReservation.Click += BtnReservation_Click;
+
             RadFlyoutManager.FlyoutClosed -= this.RadFlyoutManager_FlyoutClosed;
             RadFlyoutManager.FlyoutClosed += this.RadFlyoutManager_FlyoutClosed;
+
             radLabel8.TextAlignment = ContentAlignment.BottomLeft;
             radLabel2.TextAlignment = ContentAlignment.MiddleLeft;
             radLabel1.TextAlignment = ContentAlignment.MiddleLeft;
@@ -69,16 +75,256 @@ namespace DoctorERP.User_Controls
             radLabel4.TextAlignment = ContentAlignment.MiddleLeft;
             radLabel9.TextAlignment = ContentAlignment.MiddleLeft;
             radLabel12.TextAlignment = ContentAlignment.MiddleLeft;
+            radLabel5.TextAlignment = ContentAlignment.MiddleCenter;
+            Txtnumber.TextAlignment = ContentAlignment.MiddleCenter;
+            Txtstatus.TextAlignment = ContentAlignment.MiddleCenter;
             radTotalText.TextAlignment = ContentAlignment.TopLeft;
             radDesktopAlert1.Popup.RootElement.RightToLeft = true;
 
             SetData();
-
             IsLoad = false;
         }
 
 
+
         #region Main Events
+
+        private Dictionary<bool, string> CheckifOprAllow(tbLand land, OperationType.OperationIs operation)
+        {
+            bool GoHead = false, IsSoldorInOrder = false;
+            Dictionary<bool, string> Pair = new Dictionary<bool, string>();
+            switch (operation)
+            {
+                case OperationType.OperationIs.Add:
+                    GoHead = FrmMain.CurrentUser.CanAdd;
+                    break;
+                case OperationType.OperationIs.Edit:
+                    GoHead = FrmMain.CurrentUser.CanEdit;
+                    break;
+                case OperationType.OperationIs.Delete:
+                    GoHead = FrmMain.CurrentUser.CanDelete;
+                    break;
+                case OperationType.OperationIs.Print:
+                    GoHead = FrmMain.CurrentUser.CanPrint;
+                    break;
+                default:
+                    break;
+            }
+
+            Pair.Add(GoHead, "ليس لديك صلاحية");
+
+            if (GoHead)
+            {
+                Pair.Clear();
+                IsSoldorInOrder = !tbBillBody.IsExist("LandGuid", land.guid);
+                Pair.Add(IsSoldorInOrder, "تم إنشاء عقد بيع مسبقاً لبطاقة الأرض");
+                if (IsSoldorInOrder)
+                {
+                    Pair.Clear();
+                    IsSoldorInOrder = !tbSaleOrderBody.IsExist("LandGuid", land.guid);
+                    Pair.Add(IsSoldorInOrder, "تم إنشاء أمر بيع مسبقاً لبطاقة الأرض");
+                }
+            }
+            return Pair;
+
+        }
+
+        private void SetReadOnly(bool IsReadOnly)
+        {
+            List<RadControl> NotUsedControls = new List<RadControl>()
+            { Txtnumber, radWorkFeeValue, radBuildingFeeValue, radVatValue, radWorkFeeWithVat, Txtlastaction, Txtworkfee,Txtbuildingfee, Txtvat };
+            foreach (RadControl control in MainPanel.Controls)
+            {
+                if (NotUsedControls.Contains(control)) { continue; }
+                if (control is RadTextBox radTextControl)
+                {
+                    radTextControl.ReadOnly = IsReadOnly;
+                    if (IsReadOnly) { radTextControl.AutoCompleteMode = AutoCompleteMode.None; }
+                    else if (!IsReadOnly) { radTextControl.AutoCompleteMode = AutoCompleteMode.SuggestAppend; }
+                }
+                else if (control is RadSpinEditor radSpinControl)
+                {
+                    radSpinControl.ReadOnly = IsReadOnly;
+                }
+                else if (control is RadMultiColumnComboBox radCmbControl)
+                {
+                    radCmbControl.ReadOnly = IsReadOnly;
+                }
+                else if (control is RadCheckBox radChkControl)
+                {
+                    radChkControl.ReadOnly = IsReadOnly;
+                }
+            }
+        }
+
+        private string FormatingNumber(decimal number)
+        {
+            return $"{number:n}  ريال";
+        }
+
+        private void CalcTotal()
+        {
+
+            tbTaxDiscount.Fill();
+            tbTaxDiscount TaxDiscount = tbTaxDiscount.lstData[0];
+
+            decimal Amount = Txtamount.Value;
+            decimal Salesfee = TaxDiscount.salesfee;
+            decimal Buildingfee = Chkisbuildingfee.Checked ? TaxDiscount.buildingfee : 0;
+            decimal Workfee = Chkisworkfee.Checked ? TaxDiscount.workfee : 0;
+            decimal Vatfee = Chkisvat.Checked ? TaxDiscount.vat : 0;
+
+            decimal total = Amount + (Amount * Salesfee / 100) + (Amount * Buildingfee / 100) +
+                (Amount * Workfee / 100) + ((Amount * Workfee / 100) * Vatfee / 100);
+
+            Txtbuildingfee.Value = Buildingfee;
+            Txtworkfee.Value = Workfee;
+            Txtvat.Value = Vatfee;
+            radBuildingFeeValue.Text = FormatingNumber(Amount * Buildingfee / 100);
+            radWorkFeeValue.Text = FormatingNumber(Amount * Workfee / 100);
+            radVatValue.Text = FormatingNumber((Amount * Workfee / 100) * Vatfee / 100);
+            radWorkFeeWithVat.Text = FormatingNumber((Amount * Workfee / 100) + ((Amount * Workfee / 100) * Vatfee / 100));
+
+
+            radAmountBuildingfee.Text = FormatingNumber(Amount + (Amount * TaxDiscount.salesfee / 100) + (Amount * TaxDiscount.buildingfee / 100));
+            radLandWorkfee.Text = FormatingNumber(Amount + (Amount * TaxDiscount.salesfee / 100) + (Amount * TaxDiscount.workfee / 100));
+            radlandfee.Text = FormatingNumber(Amount + (Amount * TaxDiscount.salesfee / 100) + (Amount * TaxDiscount.workfee / 100) +
+                ((Amount * TaxDiscount.workfee / 100) * TaxDiscount.vat / 100));
+
+            radTextBox1.Text = FormatingNumber(Amount + (Amount * TaxDiscount.salesfee / 100) + (Amount * TaxDiscount.workfee / 100) + (Amount * TaxDiscount.buildingfee / 100) +
+                ((Amount * TaxDiscount.workfee / 100) * TaxDiscount.vat / 100));
+
+            TotalLand = total;
+
+
+            CurrencyInfo currency = new CurrencyInfo(CurrencyInfo.Currencies.SaudiArabia);
+            NumberToWord toWord = new NumberToWord(Amount, currency)
+            {
+                ArabicPrefixText = string.Empty,
+                EnglishSuffixText = string.Empty
+            };
+
+            radTotalText.Text = toWord.ConvertToArabic();
+
+
+        }
+
+        private bool MessageWarning(string Heading, string Body, string FootNote)
+        {
+            RadTaskDialogPage page = new RadTaskDialogPage()
+            {
+
+                Caption = " ",
+                Heading = Heading,
+                Text = Body,
+                RightToLeft = true,
+                CustomFont = "Robot",
+                Icon = RadTaskDialogIcon.ShieldWarningYellowBar,
+                AllowCancel = true,
+                Footnote = new RadTaskDialogFootnote("ملحوظة: " + FootNote),
+                CommandAreaButtons = {
+                    RadTaskDialogButton.Yes,
+                    RadTaskDialogButton.No
+                }
+
+            };
+            page.CommandAreaButtons[0].Text = "نعم";
+            page.CommandAreaButtons[1].Text = "لا";
+            RadTaskDialogButton result = RadTaskDialog.ShowDialog(page, RadTaskDialogStartupLocation.CenterScreen);
+            if (result == null || result == RadTaskDialogButton.No)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        private bool MessageException(string Heading, string Body, string FootNote)
+        {
+            RadTaskDialogPage page = new RadTaskDialogPage()
+            {
+
+                Caption = " ",
+                Heading = Heading,
+                Text = Body,
+                RightToLeft = true,
+                CustomFont = "Robot",
+                Icon = RadTaskDialogIcon.ShieldErrorRedBar,
+                Footnote = new RadTaskDialogFootnote("ملحوظة: " + FootNote),
+                CommandAreaButtons = {
+                    RadTaskDialogButton.OK,
+                }
+
+            };
+            page.CommandAreaButtons[0].Text = "موافق";
+            RadTaskDialogButton result = RadTaskDialog.ShowDialog(page, RadTaskDialogStartupLocation.CenterScreen);
+            return true;
+        }
+        public void TackAction()
+        {
+            bool Confirm = MessageWarning("بطاقات الأراضي", "هل تريد حفظ التغيرات ؟", "إذا ضغت علي زر نعم سوف يتم حفظ البيان المفتوح");
+            if (Confirm)
+            {
+                ShowConfirmMSG = false;
+                if (BtnNew.Text == "حفظ") { BtnNew.PerformClick(); }
+                else if (BtnEdit.Text == "حفظ") { BtnEdit.PerformClick(); }
+            }
+            else if (!Confirm)
+            {
+                if (BtnNew.Text == "حفظ")
+                {
+                    IsProgrammatic = true;
+                    Bs.MoveLast();
+                    BtnNew.Text = "جديد";
+                    BtnNew.ScreenTip.Text = "إضافة بطاقة أرض جديدة";
+                    BtnNew.Image = Properties.Resources.BtnAddNew;
+                    SetReadOnly(true);
+                    IsProgrammatic = false;
+                    IsDirty = false;
+                    IsNew = false;
+                }
+                else if (BtnEdit.Text == "حفظ")
+                {
+                    IsProgrammatic = true;
+                    Bs.CancelEdit();
+                    BtnEdit.Text = "تعديل";
+                    BtnEdit.ScreenTip.Text = "تعديل بيانات بطاقة الأرض";
+                    BtnEdit.Image = Properties.Resources.BtnEdite;
+                    BtnAttachment.Enabled = false;
+                    BtnScanner.Enabled = false;
+                    SetReadOnly(true);
+                    IsProgrammatic = false;
+                    IsDirty = false;
+                    IsNew = false;
+                    SetData();
+                }
+            }
+        }
+        private void ShowConfirm()
+        {
+            radToastNotificationManager1.ShowNotification(0);
+            ShowDesktopAlert(".أولآ تعديل زر علي الضغط يجب", "البيانات  تعديل يمكنك ذلك بعد", "التعديل لحفظ حفظ زر علي الضغط ثم");
+            FrmMain.DataHasChanged = true;
+        }
+        private void ShowDesktopAlert(string Header, string Content, string Footer)
+        {
+
+            radDesktopAlert1.CaptionText = "<html><b>\nبطاقات الأراضي";
+            radDesktopAlert1.ContentText = "<html><i>" +
+                Header +
+                "</i><b><span><color=Blue>" +
+                "\n" + Content + "\n" +
+                "</span></b>" +
+                Footer;
+            radDesktopAlert1.ContentImage = Properties.Resources.information50;
+            radDesktopAlert1.Opacity = 0.9f;
+            radDesktopAlert1.Show();
+
+        }
+
+
+
 
         #region Binding
         private void SetData()
@@ -98,7 +344,6 @@ namespace DoctorERP.User_Controls
 
             Cmblandtype.AutoCompleteCustomSource.AddRange(tbLand.GetUniqueList("LandType").ToArray());
             Txtblocknumber.AutoCompleteCustomSource.AddRange(tbLand.GetUniqueList("blocknumber").ToArray());
-            Txtstatus.AutoCompleteCustomSource.AddRange(tbLand.GetUniqueList("status").ToArray());
             Txtdeednumber.AutoCompleteCustomSource.AddRange(tbLand.GetUniqueList("deednumber").ToArray());
 
             tbPlanInfo.Fill();
@@ -181,7 +426,7 @@ namespace DoctorERP.User_Controls
             BtnEdit.Enabled = false;
             BtnNew.Text = "حفظ";
             BtnNew.ScreenTip.Text = "حفظ بطاقة الصنف الجديدة";
-            BtnNew.Image = Properties.Resources.GlyphCheck_small;
+            BtnNew.Image = Properties.Resources.BtnConform;
             Txtreservereason.Visible = false;
             BtnReservation.Text = "حجز";
 
@@ -271,7 +516,8 @@ namespace DoctorERP.User_Controls
             land.vat = Txtvat.Value;
             land.workfee = Txtworkfee.Value;
             land.landtype = Cmblandtype.Text;
-            land.lastaction = "إضافة" + " " + DateTime.Now.ToString("dd/MM/yyyy HH:mm") + " " + FrmMain.CurrentUser.name;
+            land.lastaction = "عملية إضافة" + " - بتاريخ  " + DateTime.Now.ToString("dd/MM/yyyy") 
+                +" - الساعة  " + DateTime.Now.ToString("hh:mm tt") + " - عن طريق المستخدم  " + FrmMain.CurrentUser.name;
             land.north = Txtnorth.Text;
             land.northdesc = Txtnorthdesc.Text;
             land.note = Txtnote.Text;
@@ -349,7 +595,8 @@ namespace DoctorERP.User_Controls
             land.vat = Txtvat.Value;
             land.workfee = Txtworkfee.Value;
             land.landtype = Cmblandtype.Text;
-            land.lastaction = "تعديل" + " " + DateTime.Now.ToString("dd/MM/yyyy HH:mm") + " " + FrmMain.CurrentUser.name;
+            land.lastaction = "عملية تعديل" + " - بتاريخ  " + DateTime.Now.ToString("dd/MM/yyyy")+
+                " - الساعة  " + DateTime.Now.ToString("hh:mm tt") + " - عن طريق المستخدم  " + FrmMain.CurrentUser.name;
             land.north = Txtnorth.Text;
             land.northdesc = Txtnorthdesc.Text;
             land.note = Txtnote.Text;
@@ -377,111 +624,8 @@ namespace DoctorERP.User_Controls
 
         #endregion
 
-        private bool CheckifOprAllow(tbLand land, OperationType.OperationIs operation)
-        {
-            bool GoHead = false, IsEnable = false;
-
-            switch (operation)
-            {
-                case OperationType.OperationIs.Add:
-                    GoHead = FrmMain.CurrentUser.CanAdd;
-                    break;
-                case OperationType.OperationIs.Edit:
-                    GoHead = FrmMain.CurrentUser.CanEdit;
-                    break;
-                case OperationType.OperationIs.Delete:
-                    GoHead = FrmMain.CurrentUser.CanDelete;
-                    break;
-                case OperationType.OperationIs.Print:
-                    GoHead = FrmMain.CurrentUser.CanPrint;
-                    break;
-                default:
-                    break;
-            }
-
-            if (GoHead)
-            {
-                IsEnable = !tbBillBody.IsExist("LandGuid", land.guid) || tbSaleOrderBody.IsExist("LandGuid", land.guid);
-            }
-            return IsEnable;
-
-        }
-
-        private void SetReadOnly(bool IsReadOnly)
-        {
-            List<RadControl> NotUsedControls = new List<RadControl>() 
-            { Txtnumber, radWorkFeeValue, radBuildingFeeValue, radVatValue, radWorkFeeWithVat, Txtlastaction, Txtworkfee,Txtbuildingfee, Txtvat };
-            foreach (RadControl control in MainPanel.Controls)
-            {
-                if (NotUsedControls.Contains(control)) { continue; }
-                if (control is RadTextBox radTextControl)
-                {
-                    radTextControl.ReadOnly = IsReadOnly;
-                    if (IsReadOnly) { radTextControl.AutoCompleteMode = AutoCompleteMode.None; }
-                    else if (!IsReadOnly) { radTextControl.AutoCompleteMode = AutoCompleteMode.SuggestAppend; }
-                }
-                else if (control is RadSpinEditor radSpinControl)
-                {
-                    radSpinControl.ReadOnly = IsReadOnly;
-                }
-                else if (control is RadMultiColumnComboBox radCmbControl)
-                {
-                    radCmbControl.ReadOnly = IsReadOnly;
-                }
-                else if (control is RadCheckBox radChkControl)
-                {
-                    radChkControl.ReadOnly = IsReadOnly;
-                }
-            }
-        }
 
 
-        private void CalcTotal()
-        {
-
-            tbTaxDiscount.Fill();
-            tbTaxDiscount TaxDiscount = tbTaxDiscount.lstData[0];
-
-            decimal Amount = Txtamount.Value;
-            decimal Salesfee = TaxDiscount.salesfee;
-            decimal Buildingfee = Chkisbuildingfee.Checked ? TaxDiscount.buildingfee : 0;
-            decimal Workfee = Chkisworkfee.Checked ? TaxDiscount.workfee : 0;
-            decimal Vatfee = Chkisvat.Checked ? TaxDiscount.vat : 0;
-
-            decimal total = Amount + (Amount * Salesfee / 100) + (Amount * Buildingfee / 100) +
-                (Amount * Workfee / 100) + ((Amount * Workfee / 100) * Vatfee / 100);
-
-            Txtbuildingfee.Value = Buildingfee;
-            Txtworkfee.Value = Workfee;
-            Txtvat.Value = Vatfee;
-            radBuildingFeeValue.Text = (Amount * Buildingfee / 100).ToString("0.00");
-            radWorkFeeValue.Text = (Amount * Workfee / 100).ToString("0.00");
-            radVatValue.Text = ((Amount * Workfee / 100) * Vatfee / 100).ToString("0.00");
-            radWorkFeeWithVat.Text = ((Amount * Workfee / 100) + ((Amount * Workfee / 100) * Vatfee / 100)).ToString("0.00");
-
-
-            radAmountBuildingfee.Text = (Amount + (Amount * TaxDiscount.salesfee / 100) + (Amount * TaxDiscount.buildingfee / 100)).ToString("0.00");
-            radLandWorkfee.Text = (Amount + (Amount * TaxDiscount.salesfee / 100) + (Amount * TaxDiscount.workfee / 100)).ToString("0.00");
-            radlandfee.Text = (Amount + (Amount * TaxDiscount.salesfee / 100) + (Amount * TaxDiscount.workfee / 100) + 
-                ((Amount * TaxDiscount.workfee / 100) * TaxDiscount.vat / 100)).ToString("0.00");
-
-            radTextBox1.Text = (Amount + (Amount * TaxDiscount.salesfee / 100) + (Amount * TaxDiscount.workfee / 100) +(Amount * TaxDiscount.buildingfee / 100)+
-    ((Amount * TaxDiscount.workfee / 100) * TaxDiscount.vat / 100)).ToString("0.00");
-
-            TotalLand = total;
-
-
-            Helpers.NumberToWord.CurrencyInfo currency = new CurrencyInfo(CurrencyInfo.Currencies.SaudiArabia);
-            ToWord toWord = new ToWord(Amount, currency)
-            {
-                ArabicPrefixText = string.Empty,
-                EnglishSuffixText = string.Empty
-            };
-
-            radTotalText.Text = toWord.ConvertToArabic();
-
-
-        }
 
         private void CommandBarLabel1_TextChanged(object sender, EventArgs e)
         {
@@ -501,7 +645,6 @@ namespace DoctorERP.User_Controls
             if (!Char.IsNumber(e.KeyChar) && !Char.IsControl(e.KeyChar))
                 e.Handled = true;
         }
-
         private void Chkisvat_CheckStateChanged(object sender, EventArgs e)
         {
             radWorkFeeValue.Enabled = Txtworkfee.Enabled = Chkisworkfee.Checked;
@@ -518,7 +661,6 @@ namespace DoctorERP.User_Controls
 
             CalcTotal();
         }
-
         private void RadMenueTxtSearch_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -528,126 +670,172 @@ namespace DoctorERP.User_Controls
             }
 
         }
-        private bool MessageWarning(string Heading, string Body, string FootNote)
+
+        private void Txtamount_KeyPress(object sender, KeyPressEventArgs e)
         {
-            RadTaskDialogPage page = new RadTaskDialogPage()
+            if (!IsDirty)
             {
+                RadCallout callout = new RadCallout();
+                callout.ArrowType = Telerik.WinControls.UI.Callout.CalloutArrowType.Triangle;
+                callout.AssociatedControl = radLabel11;
+                callout.ArrowDirection = Telerik.WinControls.ArrowDirection.Right;
+                callout.AutoClose = true;
+                callout.CalloutType = Telerik.WinControls.UI.Callout.CalloutType.RoundedRectangle;
+                callout.DropShadow = true;
+                var cn = sender as RadControl;
 
-                Caption = " ",
-                Heading = Heading,
-                Text = Body,
-                RightToLeft = true,
-                CustomFont = "Robot",
-                Icon = RadTaskDialogIcon.ShieldWarningYellowBar,
-                AllowCancel = true,
-                Footnote = new RadTaskDialogFootnote("ملحوظة: " + FootNote),
-                CommandAreaButtons = {
-                    RadTaskDialogButton.Yes,
-                    RadTaskDialogButton.No
-                }
+                RadCallout.Show(callout, cn, "لقد تم إرسال الملف Lands.pdf \n عبر الإيميل بنجاح", "تمت العملية", "sdfsdfs");
 
-            };
-            page.CommandAreaButtons[0].Text = "نعم";
-            page.CommandAreaButtons[1].Text = "لا";
-            RadTaskDialogButton result = RadTaskDialog.ShowDialog(page, RadTaskDialogStartupLocation.CenterScreen);
-            if (result == null || result == RadTaskDialogButton.No)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
+                // ShowDesktopAlert(".أولآ تعديل زر علي الضغط يجب", "البيانات  تعديل يمكنك ذلك بعد", "التعديل لحفظ حفظ زر علي الضغط ثم");
             }
         }
 
-        private bool MessageException(string Heading, string Body, string FootNote)
+        private void radTotalText_MouseDown(object sender, MouseEventArgs e)
         {
-            RadTaskDialogPage page = new RadTaskDialogPage()
-            {
+            RadCallout radCallout = new RadCallout();
+            radCallout.AssociatedControl = this.radLabel11;
+            radLabel11.Text = "تم إحتساب الحافز بناءَ علي : قيمة الأرض + قيمة ضريبة التصرفات العقارية + قيمة عمولة السعي + القيمة المضافة لعمولة السعي";
+            radCallout.CalloutType = Telerik.WinControls.UI.Callout.CalloutType.RoundedRectangle;
+            radCallout.ArrowDirection = Telerik.WinControls.ArrowDirection.Up;
+            radCallout.ArrowType = Telerik.WinControls.UI.Callout.CalloutArrowType.Triangle;
+            radCallout.AutoClose = true;
+            radCallout.DropShadow = true;
+            radCallout.Show(this.radTotalText);
 
-                Caption = " ",
-                Heading = Heading,
-                Text = Body,
-                RightToLeft = true,
-                CustomFont = "Robot",
-                Icon = RadTaskDialogIcon.ShieldErrorRedBar,
-                Footnote = new RadTaskDialogFootnote("ملحوظة: " + FootNote),
-                CommandAreaButtons = {
-                    RadTaskDialogButton.OK,
-                }
+        }
+        private void Txtstatus_TextChanged(object sender, EventArgs e)
+        {
+            if (Txtstatus.Text == "متاح") { Txtstatus.BackColor = Color.FromArgb(0, 255, 1); }
+            else if (Txtstatus.Text == "مباع") { Txtstatus.BackColor = Color.FromArgb(254, 0, 0); }
+            else if (Txtstatus.Text == "محجوز") { Txtstatus.BackColor = Color.FromArgb(255, 255, 0); }
 
-            };
-            page.CommandAreaButtons[0].Text = "موافق";
-            RadTaskDialogButton result = RadTaskDialog.ShowDialog(page, RadTaskDialogStartupLocation.CenterScreen);
-            return true;
+            //if (Txtstatus.Text == "متاح") { Txtstatus.ForeColor = Color.Green; }
+            //else if (Txtstatus.Text == "مباع") { Txtstatus.ForeColor = Color.Red; }
+            //else if (Txtstatus.Text == "محجوز") { Txtstatus.ForeColor = Color.Yellow; }
+
         }
 
-        public void TackAction()
+        private void RadFlyoutManager_FlyoutClosed(FlyoutClosedEventArgs e)
         {
-            bool Confirm = MessageWarning("بطاقات الأراضي", "هل تريد حفظ التغيرات ؟", "إذا ضغت علي زر نعم سوف يتم حفظ البيان المفتوح");
-            if (Confirm)
+            Action action = new Action(() =>
             {
-                ShowConfirmMSG = false;
-                if (BtnNew.Text == "حفظ") { BtnNew.PerformClick(); }
-                else if (BtnEdit.Text == "حفظ") { BtnEdit.PerformClick(); }
-            }
-            else if (!Confirm) 
-            {
-                if (BtnNew.Text == "حفظ") 
+                if (e.Content is FlyoutInteractiveContent)
                 {
-                    IsProgrammatic = true;
-                    Bs.MoveLast();
-                    BtnNew.Text = "جديد";
-                    BtnNew.ScreenTip.Text = "إضافة بطاقة أرض جديدة";
-                    BtnNew.Image = Properties.Resources.plus;
-                    SetReadOnly(true);
-                    IsProgrammatic = false;
-                    IsDirty = false;
-                    IsNew = false;
+                    FlyoutInteractiveContent content = e.Content as FlyoutInteractiveContent;
+                    if (content != null)
+                    {
+                        tbLand land = (tbLand)Bs.Current;
+                        RadCallout callout = new RadCallout();
+                        callout.ArrowDirection = Telerik.WinControls.ArrowDirection.Up;
+                        if (content.Result == DialogResult.OK)
+                        {
+                            DBConnect.StartTransAction();
+                            Txtstatus.Text = land.status = "محجوز";
+                            BtnReservation.Text = "إلغاء الحجز";
+                            Txtreservereason.Visible = Txtreservereason.Visible = true;
+                            land.reservereason = content.FirstName;
+                            Txtreservereason.Text = content.FirstName;
+                            land.Update();
+                            if (DBConnect.CommitTransAction())
+                            {
+                                ShowConfirm();
+                            }
+
+                            string fullName = $"{content.FirstName}";
+                            RadCallout.Show(callout, this.BtnReservation, $"The student {fullName} was registered!", "Success");
+                        }
+                        else
+                        {
+                            RadCallout.Show(callout, this.BtnReservation, "The student was not registered!", "Cancelled");
+                        }
+                    }
+
                 }
-                else if (BtnEdit.Text == "حفظ") 
+                else if (e.Content is FlyoutEmailContent)
                 {
-                    IsProgrammatic = true;
-                    Bs.CancelEdit();
-                    BtnEdit.Text = "تعديل";
-                    BtnEdit.ScreenTip.Text = "تعديل بيانات بطاقة الأرض";
-                    BtnEdit.Image = Properties.Resources.edit;
-                    BtnAttachment.Enabled = false;
-                    BtnScanner.Enabled = false;
-                    SetReadOnly(true);
-                    IsProgrammatic = false;
-                    IsDirty = false;
-                    IsNew = false;
-                    SetData();
+
+                    FlyoutEmailContent content = e.Content as FlyoutEmailContent;
+                    RadCallout callout = new RadCallout();
+
+                    if (content != null)
+                    {
+
+                        FastReport.Export.Email.EmailExport email = new FastReport.Export.Email.EmailExport();
+
+
+                        FastReport.Report report = new FastReport.Report();
+                        if (Readyreport(report))
+                        {
+                            report.Prepare();
+                            // create an instance of HTML export filter
+                            FastReport.Export.Pdf.PDFExport export = new FastReport.Export.Pdf.PDFExport();
+                            // show the export options dialog and do the export
+                            report.Export(export, Application.ExecutablePath + "Lands.pdf");
+
+
+                            MemoryStream ms = new MemoryStream();
+                            using (FileStream file = new FileStream(Application.ExecutablePath + "Lands.pdf", FileMode.Open, FileAccess.Read))
+                                file.CopyTo(ms);
+                            DynamicAttachement dynamicAttachement = new DynamicAttachement
+                            {
+                                attachData = ms,
+                                attachFileName = Application.ExecutablePath + "Lands.pdf"
+                            };
+
+                            tbAttachment tbAttachment = new tbAttachment();
+
+                            SendEmail.SendMail(content.ToMail, "subject", "messagebody", dynamicAttachement, new tbAttachment(), "ali", content.FromMail, content.PassWord
+                                , "smtp-mail.outlook.com", 587, true);
+
+                        }
+
+                        RadCallout.Show(callout, this.BtnEmailExport, $"لقد تم إرسال الملف Lands.pdf \n عبر الإيميل بنجاح", "تمت العملية");
+                    }
+                    else
+                    {
+                        RadCallout.Show(callout, this.BtnReservation, "The student was not registered!", "Cancelled");
+                    }
+
                 }
-            }
+            });
+
+            this.Invoke(action);
         }
 
-        private void ShowConfirm()
-        {
-            radToastNotificationManager1.ShowNotification(0);
-            ShowDesktopAlert(".أولآ تعديل زر علي الضغط يجب", "البيانات  تعديل يمكنك ذلك بعد", "التعديل لحفظ حفظ زر علي الضغط ثم");
-            FrmMain.DataHasChanged = true;
-        }
 
-        private void ShowDesktopAlert(string Header, string Content, string Footer)
-        {
-
-            radDesktopAlert1.CaptionText = "<html><b>\nبطاقات الأراضي";
-            radDesktopAlert1.ContentText = "<html><i>" +
-                Header +
-                "</i><b><span><color=Blue>" +
-                "\n" + Content + "\n" +
-                "</span></b>" +
-                Footer;
-            radDesktopAlert1.ContentImage = Properties.Resources.information50;
-            radDesktopAlert1.Opacity = 0.9f;
-            radDesktopAlert1.Show();
-
-        }
         #endregion
 
+
+
         #region Buttons
+
+        private void MenuExit_Click(object sender, EventArgs e)
+        {
+
+            RadPageViewPage parent = this.Parent as RadPageViewPage;
+            this.Dispose();
+            parent.Dispose();
+            GC.Collect();
+
+        }
+
+        private void MenuSaleOrder_Click(object sender, EventArgs e)
+        {
+            if (IsDirty) { TackAction(); }
+
+            tbLand land = (tbLand)Bs.Current;
+
+            var Check = CheckifOprAllow(land, OperationType.OperationIs.Add);
+            if (!Check.Keys.First())
+            {
+                MessageException("أمر بيع", "لا يمكن إنشاء أمر بيع", Check.Values.First());
+                return;
+            }
+
+            FrmSaleOrder frm = new FrmSaleOrder(land);
+            frm.Show(this);
+        }
+
         private void BtnContract_Click(object sender, EventArgs e)
         {
             if (IsDirty) { TackAction(); }
@@ -731,12 +919,9 @@ namespace DoctorERP.User_Controls
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            if (!CheckifOprAllow(new tbLand(), OperationType.OperationIs.Add))
+            if (!CheckifOprAllow(new tbLand(), OperationType.OperationIs.Add).Keys.First())
             {
                 MessageException("بطاقات الأراضي", "لا يمكن حجز الصنف مضاف لأمر البيع", "لا يمكن حجز صنف مضاف لأمر البيع مسبقاً");
-
-
-                MessageBox.Show("ليس لديك صلاحية", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
@@ -746,7 +931,7 @@ namespace DoctorERP.User_Controls
 
                 BtnNew.Text = "حفظ";
                 BtnNew.ScreenTip.Text = "حفظ بطاقة الأرض الجديدة";
-                BtnNew.Image = Properties.Resources.GlyphCheck_small;
+                BtnNew.Image = Properties.Resources.BtnConform;
                 radPageView1.SelectedPage = PageHome;
                 IsDirty = true;
                 guid = Guid.Empty;
@@ -759,7 +944,7 @@ namespace DoctorERP.User_Controls
                 Add();
                 BtnNew.Text = "جديد";
                 BtnNew.ScreenTip.Text = "إضافة بطاقة أرض جديدة";
-                BtnNew.Image = Properties.Resources.plus;
+                BtnNew.Image = Properties.Resources.BtnAddNew;
                 SetReadOnly(true);
                 IsDirty = false;
                 IsNew = false;
@@ -773,7 +958,7 @@ namespace DoctorERP.User_Controls
         private void BtnEdit_Click(object sender, EventArgs e)
         {
             tbLand land = (tbLand)Bs.Current;
-            if (!CheckifOprAllow(land, OperationType.OperationIs.Edit))
+            if (!CheckifOprAllow(land, OperationType.OperationIs.Edit).Keys.First())
             {
                 MessageBox.Show("ليس لديك صلاحية", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
@@ -785,7 +970,7 @@ namespace DoctorERP.User_Controls
 
                 BtnEdit.Text = "حفظ";
                 BtnEdit.ScreenTip.Text = "حفظ التعديلات";
-                BtnEdit.Image = Properties.Resources.GlyphCheck_small;
+                BtnEdit.Image = Properties.Resources.BtnConform;
                 BtnAttachment.Enabled = true;
                 BtnScanner.Enabled = true;
                 IsDirty = true;
@@ -798,7 +983,7 @@ namespace DoctorERP.User_Controls
                 Edit();
                 BtnEdit.Text = "تعديل";
                 BtnEdit.ScreenTip.Text = "تعديل بيانات بطاقة الأرض";
-                BtnEdit.Image = Properties.Resources.edit;
+                BtnEdit.Image = Properties.Resources.BtnEdite;
                 BtnAttachment.Enabled = false;
                 BtnScanner.Enabled = false;
                 SetReadOnly(true);
@@ -815,7 +1000,7 @@ namespace DoctorERP.User_Controls
             if (IsDirty) { TackAction(); }
 
             tbLand land = (tbLand)Bs.Current;
-            if (!CheckifOprAllow(land, OperationType.OperationIs.Delete))
+            if (!CheckifOprAllow(land, OperationType.OperationIs.Delete).Keys.First())
             {
                 MessageBox.Show("ليس لديك صلاحية", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
@@ -864,7 +1049,7 @@ namespace DoctorERP.User_Controls
         {
             if (IsDirty) { TackAction(); }
 
-            if (!CheckifOprAllow(new tbLand(), OperationType.OperationIs.Add))
+            if (!CheckifOprAllow(new tbLand(), OperationType.OperationIs.Add).Keys.First())
             {
                 MessageBox.Show("لا تملك صلاحية للقيام بهذا العمل", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
@@ -875,15 +1060,46 @@ namespace DoctorERP.User_Controls
         }
         private void BtnExportExcel_Click(object sender, EventArgs e)
         {
+            //if (IsDirty) { TackAction(); }
+
+            //if (!CheckifOprAllow(new tbLand(), OperationType.OperationIs.Add))
+            //{
+            //    MessageBox.Show("لا تملك صلاحية للقيام بهذا العمل", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //    return;
+            //}
+            //tbLand.Fill();
+            //ExcelXLSX.ExportToExcelFromDataTable(tbLand.dtData);
+
+
             if (IsDirty) { TackAction(); }
 
-            if (!CheckifOprAllow(new tbLand(), OperationType.OperationIs.Add))
+            if (!CheckifOprAllow(new tbLand(), OperationType.OperationIs.Add).Keys.First())
             {
                 MessageBox.Show("لا تملك صلاحية للقيام بهذا العمل", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            tbLand.Fill();
-            ExcelXLSX.ExportToExcelFromDataTable(tbLand.dtData);
+
+            FastReport.Report report = new FastReport.Report();
+            if (Readyreport(report))
+            {
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Title = "تصدير البيانات إلى ملف pdf";
+                sfd.Filter = "Spreadsheet(.xls,.xlsx) | *.xls; *.xlsx";
+                
+                sfd.RestoreDirectory = true;
+                sfd.OverwritePrompt = true;
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    report.Prepare();
+                    // create an instance of HTML export filter
+                    FastReport.Export.OoXML.Excel2007Export export = new FastReport.Export.OoXML.Excel2007Export();
+                    // show the export options dialog and do the export
+                    if (export.ShowDialog())
+                        report.Export(export, sfd.FileName);
+                }
+
+            }
+
 
         }
 
@@ -891,7 +1107,7 @@ namespace DoctorERP.User_Controls
         {
             if (IsDirty) { TackAction(); }
 
-            if (!CheckifOprAllow(new tbLand(), OperationType.OperationIs.Add))
+            if (!CheckifOprAllow(new tbLand(), OperationType.OperationIs.Add).Keys.First())
             {
                 MessageBox.Show("لا تملك صلاحية للقيام بهذا العمل", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
@@ -901,12 +1117,43 @@ namespace DoctorERP.User_Controls
 
         }
 
+        private void BtnExportWord_Click(object sender, EventArgs e)
+        {
+            if (IsDirty) { TackAction(); }
+
+            if (!CheckifOprAllow(new tbLand(), OperationType.OperationIs.Add).Keys.First())
+            {
+                MessageBox.Show("لا تملك صلاحية للقيام بهذا العمل", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            FastReport.Report report = new FastReport.Report();
+            if (Readyreport(report))
+            {
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Title = "تصدير البيانات إلى ملف pdf";
+                sfd.Filter = "Word File (.docx ,.doc)|*.docx;*.doc";
+                sfd.RestoreDirectory = true;
+                sfd.OverwritePrompt = true;
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    report.Prepare();
+                    // create an instance of HTML export filter
+                    FastReport.Export.OoXML.Word2007Export export = new FastReport.Export.OoXML.Word2007Export();
+                    // show the export options dialog and do the export
+                    if (export.ShowDialog())
+                        report.Export(export, sfd.FileName);
+                }
+
+            }
+
+        }
 
         private void BtnExportPdf_Click(object sender, EventArgs e)
         {
             if (IsDirty) { TackAction(); }
 
-            if (!CheckifOprAllow(new tbLand(), OperationType.OperationIs.Add))
+            if (!CheckifOprAllow(new tbLand(), OperationType.OperationIs.Add).Keys.First())
             {
                 MessageBox.Show("لا تملك صلاحية للقيام بهذا العمل", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
@@ -933,7 +1180,6 @@ namespace DoctorERP.User_Controls
             }
 
         }
-
 
         private void BtnResfresh_Click(object sender, EventArgs e)
         {
@@ -977,6 +1223,9 @@ namespace DoctorERP.User_Controls
 
         #endregion
 
+
+
+
         #region report and print
         private bool Readyreport(FastReport.Report rpt)
         {
@@ -1009,6 +1258,8 @@ namespace DoctorERP.User_Controls
 
 
         #endregion
+
+
 
         #region Attach
 
@@ -1050,7 +1301,6 @@ namespace DoctorERP.User_Controls
 
             UpdateAttachments(parentguid);
         }
-
 
         private void UpdateAttachments(Guid parentguid)
         {
@@ -1229,6 +1479,8 @@ namespace DoctorERP.User_Controls
 
         #endregion
 
+
+
         #region Price Log
         private void FillGridLog(Guid landGuid)
         {
@@ -1269,151 +1521,8 @@ namespace DoctorERP.User_Controls
 
         #endregion
 
-        private void Txtamount_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!IsDirty)
-            {
-                RadCallout callout = new RadCallout();
-                callout.ArrowType = Telerik.WinControls.UI.Callout.CalloutArrowType.Triangle;
-                callout.AssociatedControl = radLabel11;
-                callout.ArrowDirection = Telerik.WinControls.ArrowDirection.Right;
-                callout.AutoClose = true;
-                callout.CalloutType = Telerik.WinControls.UI.Callout.CalloutType.RoundedRectangle;
-                callout.DropShadow = true;
-                var cn = sender as RadControl;
-
-                RadCallout.Show(callout, cn, "لقد تم إرسال الملف Lands.pdf \n عبر الإيميل بنجاح", "تمت العملية", "sdfsdfs");
-
-               // ShowDesktopAlert(".أولآ تعديل زر علي الضغط يجب", "البيانات  تعديل يمكنك ذلك بعد", "التعديل لحفظ حفظ زر علي الضغط ثم");
-            }
-        }
-
-        private void radLabel12_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radLabel15_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void MainPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void radTotalText_MouseDown(object sender, MouseEventArgs e)
-        {
-            RadCallout radCallout = new RadCallout();
-            radCallout.AssociatedControl = this.radLabel11;
-            radLabel11.Text = "تم إحتساب الحافز بناءَ علي : قيمة الأرض + قيمة ضريبة التصرفات العقارية + قيمة عمولة السعي + القيمة المضافة لعمولة السعي";
-            radCallout.CalloutType = Telerik.WinControls.UI.Callout.CalloutType.RoundedRectangle;
-            radCallout.ArrowDirection = Telerik.WinControls.ArrowDirection.Up;
-            radCallout.ArrowType = Telerik.WinControls.UI.Callout.CalloutArrowType.Triangle;
-            radCallout.AutoClose = true;
-            radCallout.DropShadow = true;
-            radCallout.Show(this.radTotalText);
-
-        }
-        private void Txtstatus_TextChanged(object sender, EventArgs e)
-        {
-            if (Txtstatus.Text == "متاح") { Txtstatus.BackColor = Color.FromArgb(0, 255, 1); }
-            else if (Txtstatus.Text == "مباع") { Txtstatus.BackColor = Color.FromArgb(254, 0, 0); }
-            else if (Txtstatus.Text == "محجوز") { Txtstatus.BackColor = Color.FromArgb(255, 255, 0); }
-
-            //if (Txtstatus.Text == "متاح") { Txtstatus.ForeColor = Color.Green; }
-            //else if (Txtstatus.Text == "مباع") { Txtstatus.ForeColor = Color.Red; }
-            //else if (Txtstatus.Text == "محجوز") { Txtstatus.ForeColor = Color.Yellow; }
-
-        }
-
-        private void RadFlyoutManager_FlyoutClosed(FlyoutClosedEventArgs e)
-        {
-            Action action = new Action(() =>
-            {
-                if (e.Content is FlyoutInteractiveContent) 
-                {
-                    FlyoutInteractiveContent content = e.Content as FlyoutInteractiveContent;
-                    if (content != null)
-                    {
-                        tbLand land = (tbLand)Bs.Current;
-                        RadCallout callout = new RadCallout();
-                        callout.ArrowDirection = Telerik.WinControls.ArrowDirection.Up;
-                        if (content.Result == DialogResult.OK)
-                        {
-                            DBConnect.StartTransAction();
-                            Txtstatus.Text = land.status = "محجوز";
-                            BtnReservation.Text = "إلغاء الحجز";
-                            Txtreservereason.Visible = Txtreservereason.Visible = true;
-                            land.reservereason = content.FirstName;
-                            Txtreservereason.Text = content.FirstName;
-                            land.Update();
-                            if (DBConnect.CommitTransAction())
-                            {
-                                ShowConfirm();
-                            }
-
-                            string fullName = $"{content.FirstName}";
-                            RadCallout.Show(callout, this.BtnReservation, $"The student {fullName} was registered!", "Success");
-                        }
-                        else
-                        {
-                            RadCallout.Show(callout, this.BtnReservation, "The student was not registered!", "Cancelled");
-                        }
-                    }
-
-                }
-                else if (e.Content is FlyoutEmailContent)
-                {
-
-                    FlyoutEmailContent content = e.Content as FlyoutEmailContent;
-                    RadCallout callout = new RadCallout();
-
-                    if (content != null)
-                    {
-
-                        FastReport.Export.Email.EmailExport email = new FastReport.Export.Email.EmailExport();
 
 
-                        FastReport.Report report = new FastReport.Report();
-                        if (Readyreport(report))
-                        {
-                            report.Prepare();
-                            // create an instance of HTML export filter
-                            FastReport.Export.Pdf.PDFExport export = new FastReport.Export.Pdf.PDFExport();
-                            // show the export options dialog and do the export
-                            report.Export(export, Application.ExecutablePath + "Lands.pdf");
-
-
-                            MemoryStream ms = new MemoryStream();
-                            using (FileStream file = new FileStream(Application.ExecutablePath + "Lands.pdf", FileMode.Open, FileAccess.Read))
-                                file.CopyTo(ms);
-                            DynamicAttachement dynamicAttachement = new DynamicAttachement
-                            {
-                                attachData = ms,
-                                attachFileName = Application.ExecutablePath + "Lands.pdf"
-                            };
-
-                            tbAttachment tbAttachment = new tbAttachment();
-
-                            SendEmail.SendMail(content.ToMail, "subject", "messagebody", dynamicAttachement, new tbAttachment(), "ali", content.FromMail, content.PassWord
-                                , "smtp-mail.outlook.com", 587, true);
-
-                        }
-
-                        RadCallout.Show(callout, this.BtnEmailExport, $"لقد تم إرسال الملف Lands.pdf \n عبر الإيميل بنجاح", "تمت العملية");
-                    }
-                    else
-                    {
-                        RadCallout.Show(callout, this.BtnReservation, "The student was not registered!", "Cancelled");
-                    }
-
-                }
-            });
-
-            this.Invoke(action);
-        }
 
     }
 }

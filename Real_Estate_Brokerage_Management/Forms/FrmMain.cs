@@ -104,7 +104,7 @@ namespace DoctorERP
             this.BtnRefresh.GroupDescriptors.Add(groupByValue);
 
             this.BtnRefresh.ViewType = ListViewType.IconsView;
-            this.BtnRefresh.ItemSize = new System.Drawing.Size(50, 50);
+            this.BtnRefresh.ItemSize = new System.Drawing.Size(40, 40);
 
             this.BtnRefresh.ItemSpacing = 8;
             this.BtnRefresh.AllowEdit = false;
@@ -395,6 +395,7 @@ namespace DoctorERP
 
         private void PageViewCardsHome_PageRemoving(object sender, Telerik.WinControls.UI.RadPageViewCancelEventArgs e)
         {
+
             if (PageViewCardsHome.Pages.Count == 1)
             {
                 e.Cancel = true;
@@ -402,12 +403,16 @@ namespace DoctorERP
             }
             if (e.Page.Name == "LandsCard")
             {
-                UCLandsDataEntry ucLand = e.Page.Controls[0] as UCLandsDataEntry;
-                if (ucLand.IsDirty)
+                try
                 {
-                    ucLand.TackAction();
-                    return;
+                    UCLandsDataEntry ucLand = e.Page.Controls[0] as UCLandsDataEntry;
+                    if (ucLand.IsDirty)
+                    {
+                        ucLand.TackAction();
+                        return;
+                    }
                 }
+                catch { }
                 
             }
         }

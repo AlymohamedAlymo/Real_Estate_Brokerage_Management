@@ -24,7 +24,8 @@ using OfficeOpenXml.FormulaParsing.Excel.Functions.Logical;
 using OfficeOpenXml.FormulaParsing.Excel.Functions.Text;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using Microsoft.SqlServer.Management.Smo;
-using DoctorERP.Helpers.NumberToWord;
+using DoctorHelper.Helpers;
+using DoctorERP.Helpers;
 
 namespace DoctorERP
 {
@@ -1237,9 +1238,9 @@ namespace DoctorERP
             TxtTotal.Text = total.ToString(DataGUIAttribute.CurrencyFormat);
 
 
-            Helpers.NumberToWord.CurrencyInfo currency = new CurrencyInfo(CurrencyInfo.Currencies.SaudiArabia);
+            CurrencyInfo currency = new CurrencyInfo(CurrencyInfo.Currencies.SaudiArabia);
 
-            ToWord toWord = new ToWord(total, currency);
+            NumberToWord toWord = new NumberToWord(total, currency);
 
             toWord.ArabicPrefixText = string.Empty;
             toWord.EnglishSuffixText = string.Empty;
@@ -1282,9 +1283,9 @@ namespace DoctorERP
             TxtBuildingFeeValue.Text = (amount * buildingfee / 100).ToString(DataGUIAttribute.CurrencyFormat);
             TxtVatFee.Text = ((amount * workfee / 100) * vatfee / 100).ToString(DataGUIAttribute.CurrencyFormat);
             TxtWorkFeeWithVat.Text = ((amount * workfee / 100) + ((amount * workfee / 100) * vatfee / 100)).ToString(DataGUIAttribute.CurrencyFormat);
-            Helpers.NumberToWord.CurrencyInfo currency = new CurrencyInfo(CurrencyInfo.Currencies.SaudiArabia);
+            CurrencyInfo currency = new CurrencyInfo(CurrencyInfo.Currencies.SaudiArabia);
 
-            ToWord toWord = new ToWord(total, currency);
+            NumberToWord toWord = new NumberToWord(total, currency);
 
             toWord.ArabicPrefixText = string.Empty;
             toWord.EnglishSuffixText = string.Empty;

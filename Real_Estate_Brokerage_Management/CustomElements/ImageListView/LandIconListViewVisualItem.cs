@@ -15,7 +15,6 @@ namespace DoctorERP
         }
 
         private LightVisualElement LandID = new LightVisualElement();
-        //private LightVisualElement TotalInfo = new LightVisualElement();
         private StackLayoutElement VerticalContainer = new StackLayoutElement();
         private StackLayoutElement LandHeaderContainer = new StackLayoutElement();
 
@@ -55,8 +54,8 @@ namespace DoctorERP
             //LandID.CustomFont = "Traditional Arabic";
             //LandID.CustomFontSize = 20;
             //LandID.CustomFontStyle = FontStyle.Bold;
-            LandID.Margin = new System.Windows.Forms.Padding(0, 12, 0, 0);
-            LandID.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            LandID.Padding = new System.Windows.Forms.Padding(0, 4, -3, 0);
+            LandID.Margin = new System.Windows.Forms.Padding(0, 4, -2, 0);
 
 
             //TotalInfo.StretchVertically = true;
@@ -138,10 +137,25 @@ namespace DoctorERP
                 screenTip.CaptionLabel.TextAlignment = ContentAlignment.MiddleCenter;
 
 
-                screenTip.MainTextLabel.Text = "القيمة : " + Land.total.ToString("000,0.00") + " ر.س";
-                screenTip.MainTextLabel.Font = new Font("Traditional Arabic", 22, FontStyle.Bold);
+                 decimal WorkFeeWithVat = (Land.amount * Land.workfee / 100) + ((Land.amount * Land.workfee / 100) * Land.vat / 100);
 
-                screenTip.FooterTextLabel.Text = "المساحة : " + Land.area.ToString("0.00") + " م2";
+                decimal WorkFeeValue = (Land.amount * Land.buildingfee / 100);
+
+
+                string Header = "القيمة الدفترية : " + $"{Land.amount:n}  ر.س";
+                string Content = "ضريبة التصرفات : " + $"{WorkFeeValue:n}  ر.س" ;
+                string Footer = "السعي + الضريبة : " + $"{WorkFeeWithVat:n}  ر.س";
+
+                screenTip.MainTextLabel.Text = Header + "\n" +
+                 Content + "\n" +
+                Footer;
+
+                screenTip.MainTextLabel.Font = new Font("Traditional Arabic", 16, FontStyle.Bold);
+               // screenTip.MainTextLabel.ForeColor = Color.DarkBlue;
+                screenTip.MainTextLabel.TextAlignment = ContentAlignment.MiddleCenter;
+                screenTip.FooterTextLabel.Text = "الإجمالي : " + $"{Land.total:n}  ر.س" + "\n"+
+                    "المساحة : " + Land.area.ToString("0.00") + " م2";
+
                 screenTip.FooterTextLabel.Font = new Font("Traditional Arabic", 15, FontStyle.Bold);
 
 
