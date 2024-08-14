@@ -285,6 +285,8 @@ namespace DoctorERP.User_Controls
                     IsProgrammatic = false;
                     IsDirty = false;
                     IsNew = false;
+                    SetData();
+
                 }
                 else if (BtnEdit.Text == "حفظ")
                 {
@@ -340,7 +342,7 @@ namespace DoctorERP.User_Controls
             }
             tbLand land = (tbLand)Bs.Current;
             var Check = CheckifOprAllow(land, OperType);
-            if (!Check.Keys.First())
+            if (!Check.Keys.First() && !Operation.Contains("جديد"))
             {
                 MessageException(Operation, "لا يمكن " + Command, Check.Values.First());
                 return false;
@@ -350,7 +352,7 @@ namespace DoctorERP.User_Controls
                 MessageException(Operation, "يجب حفظ البطاقة أولا", "قم بحفظ بطاقة الأرض أولاَ و بعد ذلك يمكنك " + Command);
                 return false;
             }
-            else if (land.status.Equals("محجوز") && !Operation.Contains("حجز"))
+            else if (land.status.Equals("محجوز") && !Operation.Contains("حجز") && !Operation.Contains("جديد"))
             {
                 MessageException(Operation, "الأرض محجوزة مسبقاً", "الأرض محجوزة مسبقاً، يجب فك الحجز قبل " + Command);
                 return false;
@@ -913,11 +915,10 @@ namespace DoctorERP.User_Controls
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            if (!Check("إضافة جديد", "إضافة بطاقة أرض جديدة", OperationType.OperationIs.Add)) { return; }
 
             if (BtnNew.Text == "جديد")
             {
-                if (IsDirty) { TackAction(); }
+                if (!Check("إضافة جديد", "إضافة بطاقة أرض جديدة", OperationType.OperationIs.Add)) { return; }
 
                 BtnNew.Text = "حفظ";
                 BtnNew.ScreenTip.Text = "حفظ بطاقة الأرض الجديدة";
@@ -947,13 +948,12 @@ namespace DoctorERP.User_Controls
 
         private void BtnEdit_Click(object sender, EventArgs e)
         {
-            if (!Check("تعديل بطاقة", "تعديل بطاقة الأرض", OperationType.OperationIs.Edit)) { return; }
 
             tbLand land = (tbLand)Bs.Current;
 
             if (BtnEdit.Text == "تعديل")
             {
-                if (IsDirty) { TackAction(); }
+                if (!Check("تعديل بطاقة", "تعديل بطاقة الأرض", OperationType.OperationIs.Edit)) { return; }
 
                 BtnEdit.Text = "حفظ";
                 BtnEdit.ScreenTip.Text = "حفظ التعديلات";

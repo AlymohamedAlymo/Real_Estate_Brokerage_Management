@@ -170,6 +170,9 @@ namespace DoctorERP
             {
                 Application.Exit();
             }
+
+            bubbleBar1.Visible = panel2.Visible= true;
+
         }
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -1684,12 +1687,6 @@ namespace DoctorERP
 
         #endregion
 
-        private void radLiveTileElement1_Click(object sender, EventArgs e)
-        {
-
-
-        }
-
         private void radMenuButtonItem1_Click(object sender, EventArgs e)
         {
             RadMessageBox.Show("يرجى إعادة تشغيل البرنامج ليتم تطبيق إعدادات الإتصال الجديدة", Application.ProductName, MessageBoxButtons.OK);
@@ -1699,9 +1696,5 @@ namespace DoctorERP
 
         }
 
-        private void FrmMain_Shown(object sender, EventArgs e)
-        {
-
-        }
     }
 }

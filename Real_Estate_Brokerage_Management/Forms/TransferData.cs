@@ -16,6 +16,9 @@ namespace DoctorERP.Forms
 {
     public partial class TransferData : Form
     {
+        private static string InsertScript = global::DoctorERP.Properties.Resources.insert_into;
+        private static string UpdateScript = global::DoctorERP.Properties.Resources.UpdateDataBase;
+
         public TransferData()
         {
             InitializeComponent();
@@ -59,17 +62,20 @@ namespace DoctorERP.Forms
             comboBox3.DataSource = lstDatabase.ToList();
             comboBox3.DisplayMember = "SqlName";
             comboBox3.SelectedIndex = comboBox3.Items.Count - 1;
+            comboBox1.DataSource = lstDatabase.ToList();
+            comboBox1.DisplayMember = "SqlName";
+            comboBox1.SelectedIndex = comboBox3.Items.Count - 1;
+
         }
-        private static string strScript2 = global::DoctorERP.Properties.Resources.insert_into;
 
         private void kryptonButton2_Click(object sender, EventArgs e)
         {
             try
             {
-                strScript2 = strScript2.Replace("dataNew", comboBox3.Text);
-                strScript2 = strScript2.Replace("dataOld", comboBox2.Text);
+                InsertScript = InsertScript.Replace("dataNew", comboBox3.Text);
+                InsertScript = InsertScript.Replace("dataOld", comboBox2.Text);
 
-                IEnumerable<string> commandStrings2 = Regex.Split(strScript2, @"^\s*GO\s*$", RegexOptions.Multiline | RegexOptions.IgnoreCase);
+                IEnumerable<string> commandStrings2 = Regex.Split(InsertScript, @"^\s*GO\s*$", RegexOptions.Multiline | RegexOptions.IgnoreCase);
 
                 foreach (string strQuery in commandStrings2)
                 {
@@ -122,6 +128,38 @@ namespace DoctorERP.Forms
                         MessageBox.Show("حدثت مشكلة", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
+
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+
+        }
+
+        private void kryptonButton2_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                IEnumerable<string> commandStrings2 = Regex.Split(UpdateScript, @"^\s*GO\s*$", RegexOptions.Multiline | RegexOptions.IgnoreCase);
+
+                foreach (string strQuery in commandStrings2)
+                {
+                    if (strQuery.Trim().Length > 0)
+                    {
+
+                        try
+                        {
+                            DBConnect.DBCommand = new SqlCommand(strQuery, DBConnect.DBConnection);
+                            DBConnect.DBCommand.ExecuteNonQuery();
+                        }
+                        catch
+                        {
+                            continue;
+                            //MessageBox.Show(ex.Message);
+                        }
+                    }
+                }
+
+                MessageBox.Show("تم تحديث قاعدة البيانات بنجاح سوف يتم إعادة تشغيل البرنامج", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Application.Restart();
 
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }

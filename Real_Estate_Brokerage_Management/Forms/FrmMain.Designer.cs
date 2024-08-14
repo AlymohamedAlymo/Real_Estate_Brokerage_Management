@@ -237,7 +237,7 @@ namespace DoctorERP
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 47);
             this.barDockControlTop.Manager = null;
-            this.barDockControlTop.Size = new System.Drawing.Size(1033, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(1298, 0);
             // 
             // radStatusStrip1
             // 
@@ -249,9 +249,9 @@ namespace DoctorERP
             this.commandBarSeparator1,
             this.LabelDataBase,
             this.commandBarSeparator3});
-            this.radStatusStrip1.Location = new System.Drawing.Point(0, 573);
+            this.radStatusStrip1.Location = new System.Drawing.Point(0, 1002);
             this.radStatusStrip1.Name = "radStatusStrip1";
-            this.radStatusStrip1.Size = new System.Drawing.Size(1033, 41);
+            this.radStatusStrip1.Size = new System.Drawing.Size(1298, 41);
             this.radStatusStrip1.TabIndex = 32;
             this.radStatusStrip1.ThemeName = "Material";
             // 
@@ -372,7 +372,7 @@ namespace DoctorERP
             this.PageViewCardsHome.Name = "PageViewCardsHome";
             this.PageViewCardsHome.PageBackColor = System.Drawing.Color.Transparent;
             this.PageViewCardsHome.SelectedPage = this.radPageViewPage1;
-            this.PageViewCardsHome.Size = new System.Drawing.Size(1033, 465);
+            this.PageViewCardsHome.Size = new System.Drawing.Size(1298, 894);
             this.PageViewCardsHome.TabIndex = 0;
             this.PageViewCardsHome.ThemeName = "Material";
             this.PageViewCardsHome.PageRemoving += new System.EventHandler<Telerik.WinControls.UI.RadPageViewCancelEventArgs>(this.PageViewCardsHome_PageRemoving);
@@ -404,7 +404,7 @@ namespace DoctorERP
             this.radPageViewPage1.ItemSize = new System.Drawing.SizeF(109F, 51F);
             this.radPageViewPage1.Location = new System.Drawing.Point(6, 57);
             this.radPageViewPage1.Name = "radPageViewPage1";
-            this.radPageViewPage1.Size = new System.Drawing.Size(1021, 402);
+            this.radPageViewPage1.Size = new System.Drawing.Size(1286, 831);
             this.radPageViewPage1.Text = "الرئيسية";
             // 
             // overviewMainContainer
@@ -417,7 +417,7 @@ namespace DoctorERP
             this.overviewMainContainer.Location = new System.Drawing.Point(0, 0);
             this.overviewMainContainer.Margin = new System.Windows.Forms.Padding(0);
             this.overviewMainContainer.Name = "overviewMainContainer";
-            this.overviewMainContainer.Size = new System.Drawing.Size(1021, 402);
+            this.overviewMainContainer.Size = new System.Drawing.Size(1286, 831);
             this.overviewMainContainer.TabIndex = 22;
             // 
             // BtnRefresh
@@ -430,7 +430,7 @@ namespace DoctorERP
             this.BtnRefresh.Location = new System.Drawing.Point(0, 138);
             this.BtnRefresh.MultiSelect = true;
             this.BtnRefresh.Name = "BtnRefresh";
-            this.BtnRefresh.Size = new System.Drawing.Size(1021, 264);
+            this.BtnRefresh.Size = new System.Drawing.Size(1286, 693);
             this.BtnRefresh.TabIndex = 34;
             this.BtnRefresh.ThemeName = "Material";
             this.BtnRefresh.ItemMouseClick += new Telerik.WinControls.UI.ListViewItemEventHandler(this.OverviewLandsView_ItemMouseClick);
@@ -490,13 +490,14 @@ namespace DoctorERP
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 94);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1021, 44);
+            this.panel2.Size = new System.Drawing.Size(1286, 44);
             this.panel2.TabIndex = 35;
+            this.panel2.Visible = false;
             // 
             // radRadioButton1
             // 
             this.radRadioButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.radRadioButton1.Location = new System.Drawing.Point(769, 14);
+            this.radRadioButton1.Location = new System.Drawing.Point(1034, 14);
             this.radRadioButton1.Name = "radRadioButton1";
             this.radRadioButton1.Size = new System.Drawing.Size(95, 22);
             this.radRadioButton1.TabIndex = 23;
@@ -508,7 +509,7 @@ namespace DoctorERP
             // 
             this.RBallLands.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.RBallLands.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.RBallLands.Location = new System.Drawing.Point(872, 14);
+            this.RBallLands.Location = new System.Drawing.Point(1137, 14);
             this.RBallLands.Name = "RBallLands";
             this.RBallLands.Size = new System.Drawing.Size(134, 22);
             this.RBallLands.TabIndex = 24;
@@ -539,10 +540,11 @@ namespace DoctorERP
             this.btnExit});
             this.bubbleBar1.Location = new System.Drawing.Point(0, 0);
             this.bubbleBar1.Name = "bubbleBar1";
-            this.bubbleBar1.Size = new System.Drawing.Size(1021, 94);
+            this.bubbleBar1.Size = new System.Drawing.Size(1286, 94);
             this.bubbleBar1.TabIndex = 34;
             this.bubbleBar1.Text = "bubbleBar1";
             this.bubbleBar1.ThemeName = "Material";
+            this.bubbleBar1.Visible = false;
             ((DoctorERP.BubbleBarElement)(this.bubbleBar1.GetChildAt(0))).AutoSizeMode = Telerik.WinControls.RadAutoSizeMode.WrapAroundChildren;
             ((Telerik.WinControls.Primitives.FillPrimitive)(this.bubbleBar1.GetChildAt(0).GetChildAt(0))).BackColor2 = System.Drawing.Color.Transparent;
             ((Telerik.WinControls.Primitives.FillPrimitive)(this.bubbleBar1.GetChildAt(0).GetChildAt(0))).BackColor3 = System.Drawing.Color.Transparent;
@@ -684,7 +686,7 @@ namespace DoctorERP
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 47);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1033, 61);
+            this.panel1.Size = new System.Drawing.Size(1298, 61);
             this.panel1.TabIndex = 26;
             // 
             // radMenu1
@@ -700,7 +702,7 @@ namespace DoctorERP
             this.radMenuButtonItem1});
             this.radMenu1.Location = new System.Drawing.Point(243, 0);
             this.radMenu1.Name = "radMenu1";
-            this.radMenu1.Size = new System.Drawing.Size(790, 45);
+            this.radMenu1.Size = new System.Drawing.Size(1055, 45);
             this.radMenu1.TabIndex = 26;
             this.radMenu1.ThemeName = "Material";
             // 
@@ -1466,7 +1468,7 @@ namespace DoctorERP
             this.MainMenu.Name = "MainMenu";
             this.MainMenu.ShowIcon = true;
             this.MainMenu.ShowText = true;
-            this.MainMenu.Size = new System.Drawing.Size(1033, 47);
+            this.MainMenu.Size = new System.Drawing.Size(1298, 47);
             this.MainMenu.TabIndex = 30;
             this.MainMenu.ThemeName = "Material";
             // 
@@ -1476,7 +1478,7 @@ namespace DoctorERP
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1033, 614);
+            this.ClientSize = new System.Drawing.Size(1298, 1043);
             this.Controls.Add(this.PageViewCardsHome);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.radStatusStrip1);
@@ -1492,7 +1494,6 @@ namespace DoctorERP
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             this.Load += new System.EventHandler(this.FrmMain_Load);
-            this.Shown += new System.EventHandler(this.FrmMain_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.radStatusStrip1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PageViewCardsHome)).EndInit();
             this.PageViewCardsHome.ResumeLayout(false);
