@@ -1053,7 +1053,7 @@ namespace DoctorERP.User_Controls
                 SaveFileDialog sfd = new SaveFileDialog
                 {
                     Title = "تصدير البيانات إلى ملف pdf",
-                    Filter = "Spreadsheet(.xls,.xlsx) | *.xls; *.xlsx",
+                    Filter = "Spreadsheet(.xlsx,.xls) | *.xlsx; *.xls",
                     RestoreDirectory = true,
                     OverwritePrompt = true
                 };
@@ -1421,6 +1421,7 @@ namespace DoctorERP.User_Controls
         {
             if (RadOverlayManager.IsActive) { RadOverlayManager.Close(); }
             this.ParentForm.TopMost = false;
+            AlertTimer.Stop();
 
         }
 

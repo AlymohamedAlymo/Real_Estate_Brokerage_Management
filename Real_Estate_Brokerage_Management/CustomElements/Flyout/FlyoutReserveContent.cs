@@ -9,6 +9,7 @@ namespace DoctorERP
         public FlyoutReserveContent()
         {
             InitializeComponent();
+            radLabel3.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.Result = DialogResult.Cancel;
         }
 
