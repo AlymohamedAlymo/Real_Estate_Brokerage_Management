@@ -1,4 +1,5 @@
-﻿using DoctorERP.CustomElements.Flyout;
+﻿using DevExpress.XtraBars.Docking2010.Views.WindowsUI;
+using DoctorERP.CustomElements.Flyout;
 using DoctorERP.Helpers;
 using DoctorHelper.Helpers;
 using System;
@@ -305,20 +306,26 @@ namespace DoctorERP.User_Controls
                 }
             }
         }
-        private void ShowConfirm()
-        {
-            radToastNotificationManager1.ShowNotification(0);
-            ShowDesktopAlert(".أولآ تعديل زر علي الضغط يجب", "البيانات  تعديل يمكنك ذلك بعد", "التعديل لحفظ حفظ زر علي الضغط ثم");
-            FrmMain.DataHasChanged = true;
-        }
-        private void ShowDesktopAlert(string Header, string Content, string Footer)
-        {
+        //private void ShowConfirm()
+        //{
+        //    //string Header, string Content, string Footer
+        //    //radToastNotificationManager1.ShowNotification(0);
+        //    ShowDesktopAlert(".أولآ تعديل زر علي الضغط يجب", "البيانات  تعديل يمكنك ذلك بعد", "التعديل لحفظ حفظ زر علي الضغط ثم");
+        //    FrmMain.DataHasChanged = true;
+        //}
 
-            radDesktopAlert1.CaptionText = "<html><b>\nبطاقات الأراضي";
+        private void ShowDesktopAlert(string Header, string Content, string ContentHighlight, string Footer)
+        {
+            //Header = TextHelper.ReverseText(Header);
+            Content = TextHelper.ReverseText(Content);
+            ContentHighlight = TextHelper.ReverseText(ContentHighlight);
+            Footer = TextHelper.ReverseText(Footer);
+
+            radDesktopAlert1.CaptionText = "<html><b>\n" + Header;
             radDesktopAlert1.ContentText = "<html><i>" +
-                Header +
+                Content +
                 "</i><b><span><color=Blue>" +
-                "\n" + Content + "\n" +
+                "\n" + ContentHighlight + "\n" +
                 "</span></b>" +
                 Footer;
             radDesktopAlert1.ContentImage = Properties.Resources.information50;
@@ -366,6 +373,8 @@ namespace DoctorERP.User_Controls
         #region Binding
         private void SetData()
         {
+
+
             if (FrmMain.PlanGuid != Guid.Empty)
             {
                 tbLand.Fill("PlanGuid", FrmMain.PlanGuid);
@@ -409,7 +418,6 @@ namespace DoctorERP.User_Controls
                 return;
             }
             Bs.MoveLast();
-
         }
 
         private void Bs_PositionChanged(object sender, EventArgs e)
@@ -588,10 +596,22 @@ namespace DoctorERP.User_Controls
 
             if (DBConnect.CommitTransAction())
             {
-                ShowConfirm();
+                ShowNotification("إضافة بطاقة أرض جديدة", "تمت عملية إضافة بطاقة الأرض بنجاح", "عملية إضافة بواسطة المستخدم : " + FrmMain.CurrentUser.name + " بتاريخ : " + DateTime.Now.ToString("yyyy/MM/dd") + " الساعة : " + DateTime.Now.ToString("hh:mm tt"));
+                ShowDesktopAlert("إضافة بطاقة أرض جديدة", "تمت العملية", "تمت عملية إضافة بطاقة الأرض بنجاح", "بطاقة الأرض الجديدة تمت إضافتها يمكن القيام بالعمليات عليها الأن.");
+                FrmMain.DataHasChanged = true;
             }
 
             return true;
+        }
+
+        private void ShowNotification(string Header, string Content, string Note)
+        {
+            radToastNotificationManager1.ToastNotifications[0].Xml = "<toast launch=\"readMoreArg\">\r\n  <visual>\r\n    <binding template=\"ToastGeneric\">\r\n   " +
+    "   <text>"+ Header + "</text>\r\n   " +
+    "   <text>"+ Content + "</text>\r\n  " +
+    "    <text placement=\"attribution\">"+ Note + "</text>\r\n    </binding>\r\n  </visual>\r\n</toast>";
+            radToastNotificationManager1.ShowNotification(0);
+
         }
         private bool Edit()
         {
@@ -653,7 +673,10 @@ namespace DoctorERP.User_Controls
             if (DBConnect.CommitTransAction())
             {
                 FillGridLog(land.guid);
-                ShowConfirm();
+                ShowNotification("تعديل بطاقة أرض جديدة", "تمت عملية تعديل بطاقة الأرض بنجاح", "عملية إضافة بواسطة المستخدم : " + FrmMain.CurrentUser.name + " بتاريخ : " + DateTime.Now.ToString("yyyy/MM/dd") + " الساعة : " + DateTime.Now.ToString("hh:mm tt"));
+                ShowDesktopAlert("تعديل بطاقة أرض جديدة", "تمت العملية", "تمت عملية تعديل بطاقة الأرض بنجاح", "تم تعديل بيانات بطاقة الأرض يمكن القيام بالعمليات عليها الأن.");
+                FrmMain.DataHasChanged = true;
+
             }
 
             return true;
@@ -776,7 +799,8 @@ namespace DoctorERP.User_Controls
                             land.Update();
                             if (DBConnect.CommitTransAction())
                             {
-                                ShowConfirm();
+                                ShowDesktopAlert("حجز بطاقة أرض", "إلغاء حجز بطاقة أرض", "تمت عملية إلغاء حجز البطاقة بنجاح", "تم إلغاء حجز بطاقة الأرض يمكن القيام بالعمليات عليها الأن.");
+                                FrmMain.DataHasChanged = true;
                             }
 
                             string fullName = $"{content.ReserveReason}";
@@ -898,7 +922,8 @@ namespace DoctorERP.User_Controls
                 land.Update();
                 if (DBConnect.CommitTransAction())
                 {
-                    ShowConfirm();
+                    ShowDesktopAlert("حجز بطاقة أرض", "تمت العملية", "تمت عملية حجز بطاقة الأرض بنجاح", "تم حجز بطاقة الأرض لا يمكن القيام بالعمليات عليها الأن.");
+                    FrmMain.DataHasChanged = true;
                 }
             }
             else if (land.status.Equals("متاح"))
@@ -1000,7 +1025,9 @@ namespace DoctorERP.User_Controls
             pricelog.DeleteBy("ParentGuid", land.guid);
             if (DBConnect.CommitTransAction())
             {
-                ShowConfirm();
+                ShowNotification("حذف بطاقة أرض", "تمت عملية حذف بطاقة الأرض بنجاح", "عملية حذف بواسطة المستخدم : " + FrmMain.CurrentUser.name + " بتاريخ : " + DateTime.Now.ToString("yyyy/MM/dd") + " الساعة : " + DateTime.Now.ToString("hh:mm tt"));
+                ShowDesktopAlert("حذف بطاقة أرض", "تمت العملية", "تمت عملية حذف بطاقة الأرض بنجاح", "تم حذف بطاقة الأرض و لا يوجد لها بيانات في قاعدة البيانات الأن.");
+                FrmMain.DataHasChanged = true;
                 IsNew = false;
                 guid = Guid.Empty;
                 SetData();
@@ -1116,11 +1143,18 @@ namespace DoctorERP.User_Controls
 
         private void BtnResfresh_Click(object sender, EventArgs e)
         {
+            this.ParentForm.TopMost = true;
+            RadOverlayManager.Show(this);
+
             if (IsDirty) { TackAction(); }
 
             guid = Guid.Empty;
             SetData();
-            ShowConfirm();
+            ShowDesktopAlert("تحديث البيانات", "تمت العملية", "تمت عملية تحديث البيانات بنجاح", "تم تحديث البيانات و يمكن القيام بالعمليات عليها الأن.");
+
+            AlertTimer.Start();
+            if (RadOverlayManager.IsActive) { RadOverlayManager.Close(); }
+            this.ParentForm.TopMost = false;
 
         }
 
@@ -1361,7 +1395,9 @@ namespace DoctorERP.User_Controls
                         FileHelper.ByteArraytoFile(attach.FileData, sfd.FileName);
                     else
                         FileHelper.ByteArraytoFile(bfiles, sfd.FileName);
-                    ShowConfirm();
+
+                    ShowDesktopAlert("إستخراج المرفقات", "تمت العملية", "تمت إستخراج المرفقات بنجاح", "تم عملية إستخراج المرفقات بنجاح و يمكن القيام بالعمليات عليها الأن.");
+
                 }
                 catch (Exception ex)
                 {
@@ -1379,6 +1415,13 @@ namespace DoctorERP.User_Controls
             }
 
             DataGridAttachments.Rows.RemoveAt(DataGridAttachments.CurrentRow.Index);
+        }
+
+        private void AlertTimer_Tick(object sender, EventArgs e)
+        {
+            if (RadOverlayManager.IsActive) { RadOverlayManager.Close(); }
+            this.ParentForm.TopMost = false;
+
         }
 
         private void BtnScanner_Click(object sender, EventArgs e)
