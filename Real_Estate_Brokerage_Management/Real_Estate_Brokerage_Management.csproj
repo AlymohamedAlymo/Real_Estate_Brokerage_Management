@@ -826,11 +826,11 @@
     <Compile Include="UserControls\UCLandsDataEntry.Designer.cs">
       <DependentUpon>UCLandsDataEntry.cs</DependentUpon>
     </Compile>
-    <Compile Include="CustomElements\Flyout\FlyoutInteractiveContent.cs">
+    <Compile Include="CustomElements\Flyout\FlyoutReserveContent.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CustomElements\Flyout\FlyoutInteractiveContent.Designer.cs">
-      <DependentUpon>FlyoutInteractiveContent.cs</DependentUpon>
+    <Compile Include="CustomElements\Flyout\FlyoutReserveContent.Designer.cs">
+      <DependentUpon>FlyoutReserveContent.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="CustomElements\Flyout\FlyoutEmailContent.resx">
       <DependentUpon>FlyoutEmailContent.cs</DependentUpon>
@@ -1087,8 +1087,8 @@
     <EmbeddedResource Include="UserControls\UCLandsDataEntry.resx">
       <DependentUpon>UCLandsDataEntry.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CustomElements\Flyout\FlyoutInteractiveContent.resx">
-      <DependentUpon>FlyoutInteractiveContent.cs</DependentUpon>
+    <EmbeddedResource Include="CustomElements\Flyout\FlyoutReserveContent.resx">
+      <DependentUpon>FlyoutReserveContent.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="almalqa2023abhaDataSet.xsc">
       <DependentUpon>almalqa2023abhaDataSet.xsd</DependentUpon>

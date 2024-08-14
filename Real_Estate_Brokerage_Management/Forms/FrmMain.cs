@@ -333,7 +333,7 @@ namespace DoctorERP
 
         }
 
-        private bool IsPermissionGranted(string PermissionName)
+        public static bool IsPermissionGranted(string PermissionName)
         {
             if (FrmMain.CurrentUser.IsAdmin)
                 return true;

@@ -4,9 +4,9 @@ using Telerik.WinControls.UI;
 
 namespace DoctorERP
 {
-    public partial class FlyoutInteractiveContent : UserControl
+    public partial class FlyoutReserveContent : UserControl
     {
-        public FlyoutInteractiveContent()
+        public FlyoutReserveContent()
         {
             InitializeComponent();
             this.Result = DialogResult.Cancel;
@@ -17,9 +17,9 @@ namespace DoctorERP
             get; set;
         }
 
-        public string FirstName
+        public string ReserveReason
         {
-            get { return this.radTextBoxFirstName.Text; }
+            get { return this.RadTextboxReserveReason.Text; }
         }
 
         private void RadButtonOK_Click(object sender, EventArgs e)
@@ -41,7 +41,7 @@ namespace DoctorERP
 
         private bool ValidateData()
         {
-            if (string.IsNullOrWhiteSpace(this.FirstName))
+            if (string.IsNullOrWhiteSpace(this.ReserveReason))
             {
                 return false;
             }

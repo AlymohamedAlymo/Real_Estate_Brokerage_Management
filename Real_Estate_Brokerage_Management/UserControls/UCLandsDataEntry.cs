@@ -97,22 +97,24 @@ namespace DoctorERP.User_Controls
             {
                 case OperationType.OperationIs.Add:
                     GoHead = FrmMain.CurrentUser.CanAdd;
+                    Pair.Clear();
+                    Pair.Add(GoHead, "ليس لديك صلاحية الإضافة");
                     break;
                 case OperationType.OperationIs.Edit:
                     GoHead = FrmMain.CurrentUser.CanEdit;
+                    Pair.Add(GoHead, "ليس لديك صلاحية التعديل");
                     break;
                 case OperationType.OperationIs.Delete:
                     GoHead = FrmMain.CurrentUser.CanDelete;
+                    Pair.Add(GoHead, "ليس لديك صلاحية الحذف");
                     break;
                 case OperationType.OperationIs.Print:
                     GoHead = FrmMain.CurrentUser.CanPrint;
+                    Pair.Add(GoHead, "ليس لديك صلاحية الطباعة");
                     break;
                 default:
                     break;
             }
-
-            Pair.Add(GoHead, "ليس لديك صلاحية");
-
             if (GoHead)
             {
                 Pair.Clear();
@@ -323,6 +325,39 @@ namespace DoctorERP.User_Controls
 
         }
 
+        private bool Check(string Operation, string Command, OperationType.OperationIs OperType)
+        {
+            if (IsDirty) { TackAction(); }
+            if (!FrmMain.IsPermissionGranted(Operation))
+            {
+                MessageException(Operation, "لا تملك صلاحية", "لا تملك صلاحية للقيام ب " + Command + " \n تواصل مع المدير.");
+                return false;
+            }
+            if (Bs.Current == null)
+            {
+                MessageException(Operation, "يجب حفظ البطاقة أولا", "قم بحفظ بطاقة الأرض أولاَ و بعد ذلك يمكنك " + Command);
+                return false;
+            }
+            tbLand land = (tbLand)Bs.Current;
+            var Check = CheckifOprAllow(land, OperType);
+            if (!Check.Keys.First())
+            {
+                MessageException(Operation, "لا يمكن " + Command, Check.Values.First());
+                return false;
+            }
+            if (land is null || land.guid.Equals(Guid.Empty))
+            {
+                MessageException(Operation, "يجب حفظ البطاقة أولا", "قم بحفظ بطاقة الأرض أولاَ و بعد ذلك يمكنك " + Command);
+                return false;
+            }
+            else if (land.status.Equals("محجوز") && !Operation.Contains("حجز"))
+            {
+                MessageException(Operation, "الأرض محجوزة مسبقاً", "الأرض محجوزة مسبقاً، يجب فك الحجز قبل " + Command);
+                return false;
+            }
+            return true;
+
+        }
 
 
 
@@ -719,34 +754,35 @@ namespace DoctorERP.User_Controls
         {
             Action action = new Action(() =>
             {
-                if (e.Content is FlyoutInteractiveContent)
+                if (e.Content is FlyoutReserveContent)
                 {
-                    FlyoutInteractiveContent content = e.Content as FlyoutInteractiveContent;
+                    RadCallout callout = new RadCallout();
+                    callout.ArrowDirection = Telerik.WinControls.ArrowDirection.Up;
+
+                    FlyoutReserveContent content = e.Content as FlyoutReserveContent;
                     if (content != null)
                     {
                         tbLand land = (tbLand)Bs.Current;
-                        RadCallout callout = new RadCallout();
-                        callout.ArrowDirection = Telerik.WinControls.ArrowDirection.Up;
                         if (content.Result == DialogResult.OK)
                         {
                             DBConnect.StartTransAction();
                             Txtstatus.Text = land.status = "محجوز";
                             BtnReservation.Text = "إلغاء الحجز";
                             Txtreservereason.Visible = Txtreservereason.Visible = true;
-                            land.reservereason = content.FirstName;
-                            Txtreservereason.Text = content.FirstName;
+                            land.reservereason = content.ReserveReason;
+                            Txtreservereason.Text = content.ReserveReason;
                             land.Update();
                             if (DBConnect.CommitTransAction())
                             {
                                 ShowConfirm();
                             }
 
-                            string fullName = $"{content.FirstName}";
-                            RadCallout.Show(callout, this.BtnReservation, $"The student {fullName} was registered!", "Success");
+                            string fullName = $"{content.ReserveReason}";
+                            RadCallout.Show(callout, this.BtnReservation, $"عملية حجز بطاقة الأرض بسبب حجز {fullName} تمت!", "تمت العملية بنجاح");
                         }
                         else
                         {
-                            RadCallout.Show(callout, this.BtnReservation, "The student was not registered!", "Cancelled");
+                            RadCallout.Show(callout, this.BtnReservation, "فشلت عملية حجز بطاقة الأرض!", "فشلت العملية");
                         }
                     }
 
@@ -759,43 +795,43 @@ namespace DoctorERP.User_Controls
 
                     if (content != null)
                     {
-
-                        FastReport.Export.Email.EmailExport email = new FastReport.Export.Email.EmailExport();
-
-
-                        FastReport.Report report = new FastReport.Report();
-                        if (Readyreport(report))
+                        tbLand land = (tbLand)Bs.Current;
+                        if (content.Result == DialogResult.OK)
                         {
-                            report.Prepare();
-                            // create an instance of HTML export filter
-                            FastReport.Export.Pdf.PDFExport export = new FastReport.Export.Pdf.PDFExport();
-                            // show the export options dialog and do the export
-                            report.Export(export, Application.ExecutablePath + "Lands.pdf");
-
-
-                            MemoryStream ms = new MemoryStream();
-                            using (FileStream file = new FileStream(Application.ExecutablePath + "Lands.pdf", FileMode.Open, FileAccess.Read))
-                                file.CopyTo(ms);
-                            DynamicAttachement dynamicAttachement = new DynamicAttachement
+                            FastReport.Export.Email.EmailExport email = new FastReport.Export.Email.EmailExport();
+                            FastReport.Report report = new FastReport.Report();
+                            if (Readyreport(report))
                             {
-                                attachData = ms,
-                                attachFileName = Application.ExecutablePath + "Lands.pdf"
-                            };
+                                report.Prepare();
+                                // create an instance of HTML export filter
+                                FastReport.Export.Pdf.PDFExport export = new FastReport.Export.Pdf.PDFExport();
+                                // show the export options dialog and do the export
+                                report.Export(export, Application.ExecutablePath + "Lands.pdf");
 
-                            tbAttachment tbAttachment = new tbAttachment();
 
-                            SendEmail.SendMail(content.ToMail, "subject", "messagebody", dynamicAttachement, new tbAttachment(), "ali", content.FromMail, content.PassWord
-                                , "smtp-mail.outlook.com", 587, true);
+                                MemoryStream ms = new MemoryStream();
+                                using (FileStream file = new FileStream(Application.ExecutablePath + "Lands.pdf", FileMode.Open, FileAccess.Read))
+                                    file.CopyTo(ms);
+                                DynamicAttachement dynamicAttachement = new DynamicAttachement
+                                {
+                                    attachData = ms,
+                                    attachFileName = Application.ExecutablePath + "Lands.pdf"
+                                };
 
+                                tbAttachment tbAttachment = new tbAttachment();
+
+                                SendEmail.SendMail(content.ToMail, "subject", "messagebody", dynamicAttachement, new tbAttachment(), "ali", content.FromMail, content.PassWord
+                                    , "smtp-mail.outlook.com", 587, true);
+
+                            }
+
+                            RadCallout.Show(callout, this.BtnEmailExport, $"لقد تم إرسال الملف Lands.pdf \n عبر الإيميل بنجاح", "تمت العملية");
                         }
-
-                        RadCallout.Show(callout, this.BtnEmailExport, $"لقد تم إرسال الملف Lands.pdf \n عبر الإيميل بنجاح", "تمت العملية");
+                        else
+                        {
+                            RadCallout.Show(callout, this.BtnReservation, "فشلت عملية حجز بطاقة الأرض!", "فشلت العملية");
+                        }
                     }
-                    else
-                    {
-                        RadCallout.Show(callout, this.BtnReservation, "The student was not registered!", "Cancelled");
-                    }
-
                 }
             });
 
@@ -819,44 +855,21 @@ namespace DoctorERP.User_Controls
 
         }
 
+
         private void MenuSaleOrder_Click(object sender, EventArgs e)
         {
-            if (IsDirty) { TackAction(); }
-
+            RadMenuItem toolmenu = (RadMenuItem)sender;
+            if (!Check(toolmenu.Text, "إنشاء أمر بيع", OperationType.OperationIs.Add)) { return; }
             tbLand land = (tbLand)Bs.Current;
-
-            var Check = CheckifOprAllow(land, OperationType.OperationIs.Add);
-            if (!Check.Keys.First())
-            {
-                MessageException("أمر بيع", "لا يمكن إنشاء أمر بيع", Check.Values.First());
-                return;
-            }
-
             FrmSaleOrder frm = new FrmSaleOrder(land);
             frm.Show(this);
         }
 
         private void BtnContract_Click(object sender, EventArgs e)
         {
-            if (IsDirty) { TackAction(); }
+            RadMenuItem toolmenu = (RadMenuItem)sender;
+            if (!Check(toolmenu.Text, "إنشاء عقد بيع", OperationType.OperationIs.Add)) { return; }
             tbLand land = (tbLand)Bs.Current;
-            if (land is null || land.guid.Equals(Guid.Empty))
-            {
-                MessageException("بطاقات الأراضي", "يجب حفظ البطاقة أولا", "قم بحفظ بطاقة الأرض أولاَ و بعد ذلك يمكنك اصدار عقد البيع");
-                return;
-            }
-            if (land.status.Equals("مباع"))
-            {
-                MessageException("بطاقات الأراضي", "الأرض مباعة مسبقاً", "لا يمكن اصدار عقد بيع لبطاقة أرض مباعة مسبقاَ");
-                return;
-
-            }
-            if (land.status.Equals("محجوز"))
-            {
-                MessageException("بطاقات الأراضي", "الأرض محجوزة مسبقاً", "الأرض محجوزة مسبقاً، يجب فك الحجز قبل بيعها");
-                return;
-            }
-
             List<tbLand> lst = new List<tbLand> { land };
             FrmBillHeader frm = new FrmBillHeader(Guid.Empty, true, 0, lst);
             frm.Show();
@@ -865,42 +878,15 @@ namespace DoctorERP.User_Controls
 
         private void BtnReservation_Click(object sender, EventArgs e)
         {
-            if (IsDirty) { TackAction(); }
-
-            if (Bs.Current == null)
-            {
-                MessageException("بطاقات الأراضي", "يجب حفظ البطاقة أولا", "قم بحفظ بطاقة الأرض أولاَ و بعد ذلك يمكنك حجز البطاقة");
-                return;
-            }
+            RadMenuItem toolmenu = (RadMenuItem)sender;
+            if (!Check(toolmenu.Text, "حجز بطاقة الأرض", OperationType.OperationIs.Edit)) { return; }
             tbLand land = (tbLand)Bs.Current;
-            if (land is null || land.guid.Equals(Guid.Empty))
+            if (land.status.Equals("محجوز"))
             {
-                MessageException("بطاقات الأراضي", "يجب حفظ البطاقة أولا", "قم بحفظ بطاقة الأرض أولاَ و بعد ذلك يمكنك حجز البطاقة");
-                return;
-            }
-
-            if (land.status.Equals("متاح"))
-            {
-                if (!MessageWarning("حجز بطاقة أرض", "هل أنت متأكد من حجز هذا الصنف ؟", "إذا ضغت علي زر نعم سوف يتم تسجيل بطاقة الأرض بحالة محجوز"))
+                if (!MessageWarning("حجز بطاقة الأرض", "هل أنت متأكد من إلغاء حجز هذه البطاقة ؟", "إذا ضغط علي زر نعم سوف يتم إلغاء حجز بطاقة الأرض \n إذا ضغط علي لا سوف يتم تجاهل التغييرات"))
                 {
                     return;
                 }
-                RadFlyoutManager.Show(this, typeof(FlyoutInteractiveContent));
-            }
-            else if (land.status.Equals("مباع"))
-            {
-                MessageException("بطاقات الأراضي", "لا يمكن حجز الصنف المباع", "لا يمكن حجز صنف مباع مسبقاَ");
-                return;
-            }
-            else if (land.status.Equals("أمر بيع"))
-            {
-                MessageException("بطاقات الأراضي", "لا يمكن حجز الصنف مضاف لأمر البيع", "لا يمكن حجز صنف مضاف لأمر البيع مسبقاً");
-                return;
-            }
-            else if (land.status.Equals("محجوز"))
-            {
-                if (!MessageWarning("بطاقات الأراضي", "هل أنت متأكد من إلغاء حجز هذا الصنف ؟", "إذا ضغط علي زر نعم سوف يتم إلغاء حجز بطاقة الأرض"))
-                    return;
 
                 DBConnect.StartTransAction();
                 Txtstatus.Text = land.status = "متاح";
@@ -911,19 +897,23 @@ namespace DoctorERP.User_Controls
                 if (DBConnect.CommitTransAction())
                 {
                     ShowConfirm();
-
                 }
             }
+            else if (land.status.Equals("متاح"))
+            {
+                if (!MessageWarning("حجز بطاقة الأرض", "هل أنت متأكد من حجز هذه البطاقة ؟", "إذا ضغط علي زر نعم سوف يتم حجز بطاقة الأرض \n إذا ضغط علي لا سوف يتم تجاهل التغييرات"))
+                {
+                    return;
+                }
+                RadFlyoutManager.Show(this, typeof(FlyoutReserveContent));
+            }
+
 
         }
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            if (!CheckifOprAllow(new tbLand(), OperationType.OperationIs.Add).Keys.First())
-            {
-                MessageException("بطاقات الأراضي", "لا يمكن حجز الصنف مضاف لأمر البيع", "لا يمكن حجز صنف مضاف لأمر البيع مسبقاً");
-                return;
-            }
+            if (!Check("إضافة جديد", "إضافة بطاقة أرض جديدة", OperationType.OperationIs.Add)) { return; }
 
             if (BtnNew.Text == "جديد")
             {
@@ -957,12 +947,9 @@ namespace DoctorERP.User_Controls
 
         private void BtnEdit_Click(object sender, EventArgs e)
         {
+            if (!Check("تعديل بطاقة", "تعديل بطاقة الأرض", OperationType.OperationIs.Edit)) { return; }
+
             tbLand land = (tbLand)Bs.Current;
-            if (!CheckifOprAllow(land, OperationType.OperationIs.Edit).Keys.First())
-            {
-                MessageBox.Show("ليس لديك صلاحية", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
 
             if (BtnEdit.Text == "تعديل")
             {
@@ -997,123 +984,69 @@ namespace DoctorERP.User_Controls
 
         private void BtnDelete_Click(object sender, EventArgs e)
         {
-            if (IsDirty) { TackAction(); }
-
-            tbLand land = (tbLand)Bs.Current;
-            if (!CheckifOprAllow(land, OperationType.OperationIs.Delete).Keys.First())
+            if (!Check("حذف بطاقة", "حذف بطاقة الأرض", OperationType.OperationIs.Delete)) { return; }
+            if (!MessageWarning("حذف بطاقة الأرض", "هل أنت متأكد من حذف هذه البطاقة ؟", "إذا ضغط علي زر نعم سوف يتم حذف بطاقة الأرض \n إذا ضغط علي لا سوف يتم تجاهل التغييرات"))
             {
-                MessageBox.Show("ليس لديك صلاحية", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-
-            if (tbBillBody.IsExist("LandGuid", land.guid))
-            {
-                MessageBox.Show("لا يمكن حذف الصنف لأنه مستخدم في العقود", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-
-            }
-
-            if (tbSaleOrderBody.IsExist("LandGuid", land.guid))
-            {
-                MessageBox.Show("لا يمكن حذف الصنف لأنه مستخدم في أوامر البيع", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-
-            }
-
-
-            if (MessageBox.Show("هل أنت متأكد من الحذف ؟", Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                return;
-
-            tbPriceLog pricelog = new tbPriceLog();
-            tbAttachment attach = new tbAttachment();
 
             DBConnect.StartTransAction();
-
+            tbPriceLog pricelog = new tbPriceLog();
+            tbAttachment attach = new tbAttachment();
+            tbLand land = (tbLand)Bs.Current;
             tbLog.AddLog("حذف", this.Text, land.code.ToString());
             attach.DeleteBy("ParentGuid", land.guid);
             land.Delete();
             pricelog.DeleteBy("ParentGuid", land.guid);
-
             if (DBConnect.CommitTransAction())
             {
                 ShowConfirm();
                 IsNew = false;
                 guid = Guid.Empty;
                 SetData();
-
             }
-
         }
 
         private void BtnImport_Click(object sender, EventArgs e)
         {
-            if (IsDirty) { TackAction(); }
-
-            if (!CheckifOprAllow(new tbLand(), OperationType.OperationIs.Add).Keys.First())
-            {
-                MessageBox.Show("لا تملك صلاحية للقيام بهذا العمل", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
+            RadMenuItem toolmenu = (RadMenuItem)sender;
+            if (!Check(toolmenu.Text, "إستيراد البيانات", OperationType.OperationIs.Add)) { return; }
             FrmLandImport frm = new FrmLandImport();
             frm.ShowDialog();
 
         }
         private void BtnExportExcel_Click(object sender, EventArgs e)
         {
-            //if (IsDirty) { TackAction(); }
-
-            //if (!CheckifOprAllow(new tbLand(), OperationType.OperationIs.Add))
-            //{
-            //    MessageBox.Show("لا تملك صلاحية للقيام بهذا العمل", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //    return;
-            //}
-            //tbLand.Fill();
-            //ExcelXLSX.ExportToExcelFromDataTable(tbLand.dtData);
-
-
-            if (IsDirty) { TackAction(); }
-
-            if (!CheckifOprAllow(new tbLand(), OperationType.OperationIs.Add).Keys.First())
-            {
-                MessageBox.Show("لا تملك صلاحية للقيام بهذا العمل", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
+            RadMenuItem toolmenu = (RadMenuItem)sender;
+            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Edit)) { return; }
 
             FastReport.Report report = new FastReport.Report();
             if (Readyreport(report))
             {
-                SaveFileDialog sfd = new SaveFileDialog();
-                sfd.Title = "تصدير البيانات إلى ملف pdf";
-                sfd.Filter = "Spreadsheet(.xls,.xlsx) | *.xls; *.xlsx";
-                
-                sfd.RestoreDirectory = true;
-                sfd.OverwritePrompt = true;
+                SaveFileDialog sfd = new SaveFileDialog
+                {
+                    Title = "تصدير البيانات إلى ملف pdf",
+                    Filter = "Spreadsheet(.xls,.xlsx) | *.xls; *.xlsx",
+                    RestoreDirectory = true,
+                    OverwritePrompt = true
+                };
                 if (sfd.ShowDialog() == DialogResult.OK)
                 {
                     report.Prepare();
-                    // create an instance of HTML export filter
                     FastReport.Export.OoXML.Excel2007Export export = new FastReport.Export.OoXML.Excel2007Export();
-                    // show the export options dialog and do the export
                     if (export.ShowDialog())
+                    {
                         report.Export(export, sfd.FileName);
+                    }
                 }
-
             }
-
-
         }
 
         private void BtnSendEmail_Click(object sender, EventArgs e)
         {
-            if (IsDirty) { TackAction(); }
-
-            if (!CheckifOprAllow(new tbLand(), OperationType.OperationIs.Add).Keys.First())
-            {
-                MessageBox.Show("لا تملك صلاحية للقيام بهذا العمل", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
+            RadMenuItem toolmenu = (RadMenuItem)sender;
+            if (!Check(toolmenu.Text, "إرسال بريد إلكتروني", OperationType.OperationIs.Add)) { return; }
             RadFlyoutManager.Show(this, typeof(FlyoutEmailContent));
-
 
         }
 

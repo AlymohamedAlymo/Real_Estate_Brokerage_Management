@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition3 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition4 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition5 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition6 = new Telerik.WinControls.UI.TableViewDefinition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCLandsDataEntry));
-            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification1 = new Telerik.RadToastNotificationManager.RadToastNotification();
-            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification2 = new Telerik.RadToastNotificationManager.RadToastNotification();
-            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification3 = new Telerik.RadToastNotificationManager.RadToastNotification();
-            Telerik.WinControls.UI.RadValidationRule radValidationRule1 = new Telerik.WinControls.UI.RadValidationRule();
+            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification4 = new Telerik.RadToastNotificationManager.RadToastNotification();
+            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification5 = new Telerik.RadToastNotificationManager.RadToastNotification();
+            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification6 = new Telerik.RadToastNotificationManager.RadToastNotification();
+            Telerik.WinControls.UI.RadValidationRule radValidationRule2 = new Telerik.WinControls.UI.RadValidationRule();
             this.materialTheme1 = new Telerik.WinControls.Themes.MaterialTheme();
             this.Cmblandtype = new Telerik.WinControls.UI.RadTextBox();
             this.Txtblocknumber = new Telerik.WinControls.UI.RadTextBox();
@@ -734,7 +734,7 @@
             this.CmbPlanGuid.EditorControl.MasterTemplate.EnableFiltering = true;
             this.CmbPlanGuid.EditorControl.MasterTemplate.EnableGrouping = false;
             this.CmbPlanGuid.EditorControl.MasterTemplate.ShowFilteringRow = false;
-            this.CmbPlanGuid.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition1;
+            this.CmbPlanGuid.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition4;
             this.CmbPlanGuid.EditorControl.Name = "NestedRadGridView";
             this.CmbPlanGuid.EditorControl.ReadOnly = true;
             this.CmbPlanGuid.EditorControl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -1450,7 +1450,7 @@
             this.DataGridAttachments.MasterTemplate.AllowEditRow = false;
             this.DataGridAttachments.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
             this.DataGridAttachments.MasterTemplate.EnableGrouping = false;
-            this.DataGridAttachments.MasterTemplate.ViewDefinition = tableViewDefinition2;
+            this.DataGridAttachments.MasterTemplate.ViewDefinition = tableViewDefinition5;
             this.DataGridAttachments.Name = "DataGridAttachments";
             this.DataGridAttachments.ShowGroupPanel = false;
             this.DataGridAttachments.ShowGroupPanelScrollbars = false;
@@ -1489,7 +1489,7 @@
             this.DataGridPriceLog.MasterTemplate.AllowRowHeaderContextMenu = false;
             this.DataGridPriceLog.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
             this.DataGridPriceLog.MasterTemplate.EnableGrouping = false;
-            this.DataGridPriceLog.MasterTemplate.ViewDefinition = tableViewDefinition3;
+            this.DataGridPriceLog.MasterTemplate.ViewDefinition = tableViewDefinition6;
             this.DataGridPriceLog.Name = "DataGridPriceLog";
             this.DataGridPriceLog.ShowGroupPanel = false;
             this.DataGridPriceLog.ShowGroupPanelScrollbars = false;
@@ -1577,6 +1577,7 @@
             // 
             // RadMenueTxtSearch
             // 
+            this.RadMenueTxtSearch.BackColor = System.Drawing.SystemColors.Info;
             this.RadMenueTxtSearch.CommandRole = Telerik.WinControls.UI.RadCommandBarRole.PositionItem;
             this.RadMenueTxtSearch.Font = new System.Drawing.Font("Traditional Arabic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RadMenueTxtSearch.Name = "RadMenueTxtSearch";
@@ -2522,28 +2523,28 @@
             // 
             // radToastNotificationManager1
             // 
-            radToastNotification1.BindingData = null;
-            radToastNotification1.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
-            radToastNotification1.Name = "ToastNews1";
-            radToastNotification1.Tag = null;
-            radToastNotification1.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastNews;
-            radToastNotification1.Xml = resources.GetString("radToastNotification1.Xml");
-            radToastNotification2.BindingData = null;
-            radToastNotification2.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
-            radToastNotification2.Name = "ToastLegacy1";
-            radToastNotification2.Tag = null;
-            radToastNotification2.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastLegacy;
-            radToastNotification2.Xml = resources.GetString("radToastNotification2.Xml");
-            radToastNotification3.BindingData = null;
-            radToastNotification3.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
-            radToastNotification3.Name = "ToastGeneric1";
-            radToastNotification3.Tag = null;
-            radToastNotification3.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastGeneric;
-            radToastNotification3.Xml = "<toast>\n  <visual>\n    <binding template=\"ToastGeneric\"></binding>\n  </visual>\n</" +
+            radToastNotification4.BindingData = null;
+            radToastNotification4.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
+            radToastNotification4.Name = "ToastNews1";
+            radToastNotification4.Tag = null;
+            radToastNotification4.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastNews;
+            radToastNotification4.Xml = resources.GetString("radToastNotification4.Xml");
+            radToastNotification5.BindingData = null;
+            radToastNotification5.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
+            radToastNotification5.Name = "ToastLegacy1";
+            radToastNotification5.Tag = null;
+            radToastNotification5.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastLegacy;
+            radToastNotification5.Xml = resources.GetString("radToastNotification5.Xml");
+            radToastNotification6.BindingData = null;
+            radToastNotification6.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
+            radToastNotification6.Name = "ToastGeneric1";
+            radToastNotification6.Tag = null;
+            radToastNotification6.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastGeneric;
+            radToastNotification6.Xml = "<toast>\n  <visual>\n    <binding template=\"ToastGeneric\"></binding>\n  </visual>\n</" +
     "toast>";
-            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification1);
-            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification2);
-            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification3);
+            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification4);
+            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification5);
+            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification6);
             // 
             // radDesktopAlert1
             // 
@@ -2685,9 +2686,9 @@
             // 
             // radValidationProvider1
             // 
-            radValidationRule1.Operator = Telerik.WinControls.Data.FilterOperator.IsEqualTo;
+            radValidationRule2.Operator = Telerik.WinControls.Data.FilterOperator.IsEqualTo;
             this.radValidationProvider1.ValidationRules.AddRange(new Telerik.WinControls.Data.FilterDescriptor[] {
-            radValidationRule1});
+            radValidationRule2});
             // 
             // UCLandsDataEntry
             // 

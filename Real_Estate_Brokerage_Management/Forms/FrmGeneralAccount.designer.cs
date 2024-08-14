@@ -28,24 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PnlMain = new System.Windows.Forms.Panel();
-            this.TxtReserveLands = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.kryptonLabel5 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.TxtRemainLands = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.kryptonLabel4 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.TxtTotalLands = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.kryptonLabel6 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.TxtSalesLand = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.kryptonLabel3 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.TxtRemain = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.kryptonLabel2 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.TxtPayements = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.kryptonLabel1 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.TxtTotalSales = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.kryptonLabel5 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.TxtReserveLands = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.kryptonLabel4 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.TxtPayements = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.kryptonLabel3 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.kryptonLabel6 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.TxtRemain = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.TxtRemainLands = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.kryptonLabel2 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.TxtTotalLands = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.kryptonLabel1 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.TxtSalesLand = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.LblAmount = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.BtnCancel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.PnlBottom = new System.Windows.Forms.Panel();
@@ -63,12 +64,11 @@
             this.ColAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColPayments = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColRemain = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.PnlMain.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.PnlBottom.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridMain)).BeginInit();
-            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // PnlMain
@@ -79,6 +79,64 @@
             this.PnlMain.Name = "PnlMain";
             this.PnlMain.Size = new System.Drawing.Size(763, 258);
             this.PnlMain.TabIndex = 0;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.06684F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 76.93316F));
+            this.tableLayoutPanel1.Controls.Add(this.TxtTotalSales, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.kryptonLabel5, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.TxtReserveLands, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.kryptonLabel4, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.TxtPayements, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.kryptonLabel3, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.kryptonLabel6, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.TxtRemain, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.TxtRemainLands, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.kryptonLabel2, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.TxtTotalLands, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.kryptonLabel1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.TxtSalesLand, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.LblAmount, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 7;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28531F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28531F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28531F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28531F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28531F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28531F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28816F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(763, 258);
+            this.tableLayoutPanel1.TabIndex = 17;
+            // 
+            // TxtTotalSales
+            // 
+            this.TxtTotalSales.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtTotalSales.Location = new System.Drawing.Point(3, 3);
+            this.TxtTotalSales.Name = "TxtTotalSales";
+            this.TxtTotalSales.ReadOnly = true;
+            this.TxtTotalSales.Size = new System.Drawing.Size(582, 27);
+            this.TxtTotalSales.StateCommon.Content.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtTotalSales.StateNormal.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtTotalSales.TabIndex = 2;
+            this.TxtTotalSales.TabStop = false;
+            // 
+            // kryptonLabel5
+            // 
+            this.kryptonLabel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonLabel5.Location = new System.Drawing.Point(591, 219);
+            this.kryptonLabel5.Name = "kryptonLabel5";
+            this.kryptonLabel5.Size = new System.Drawing.Size(169, 36);
+            this.kryptonLabel5.StateCommon.ShortText.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel5.StateNormal.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel5.TabIndex = 16;
+            this.kryptonLabel5.Values.Text = "الأراضي المحجوزة";
             // 
             // TxtReserveLands
             // 
@@ -94,31 +152,6 @@
             this.TxtReserveLands.TabIndex = 2;
             this.TxtReserveLands.TabStop = false;
             // 
-            // kryptonLabel5
-            // 
-            this.kryptonLabel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonLabel5.Location = new System.Drawing.Point(591, 219);
-            this.kryptonLabel5.Name = "kryptonLabel5";
-            this.kryptonLabel5.Size = new System.Drawing.Size(169, 36);
-            this.kryptonLabel5.StateCommon.ShortText.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabel5.StateNormal.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabel5.TabIndex = 16;
-            this.kryptonLabel5.Values.Text = "الأراضي المحجوزة";
-            // 
-            // TxtRemainLands
-            // 
-            this.TxtRemainLands.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtRemainLands.Location = new System.Drawing.Point(3, 183);
-            this.TxtRemainLands.Name = "TxtRemainLands";
-            this.TxtRemainLands.ReadOnly = true;
-            this.TxtRemainLands.Size = new System.Drawing.Size(582, 27);
-            this.TxtRemainLands.StateCommon.Content.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtRemainLands.StateNormal.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtRemainLands.TabIndex = 2;
-            this.TxtRemainLands.TabStop = false;
-            // 
             // kryptonLabel4
             // 
             this.kryptonLabel4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -129,81 +162,6 @@
             this.kryptonLabel4.StateNormal.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kryptonLabel4.TabIndex = 16;
             this.kryptonLabel4.Values.Text = "الأراضي المتبقية";
-            // 
-            // TxtTotalLands
-            // 
-            this.TxtTotalLands.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtTotalLands.Location = new System.Drawing.Point(3, 111);
-            this.TxtTotalLands.Name = "TxtTotalLands";
-            this.TxtTotalLands.ReadOnly = true;
-            this.TxtTotalLands.Size = new System.Drawing.Size(582, 27);
-            this.TxtTotalLands.StateCommon.Content.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtTotalLands.StateNormal.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtTotalLands.TabIndex = 2;
-            this.TxtTotalLands.TabStop = false;
-            // 
-            // kryptonLabel6
-            // 
-            this.kryptonLabel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonLabel6.Location = new System.Drawing.Point(591, 111);
-            this.kryptonLabel6.Name = "kryptonLabel6";
-            this.kryptonLabel6.Size = new System.Drawing.Size(169, 30);
-            this.kryptonLabel6.StateCommon.ShortText.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabel6.StateNormal.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabel6.TabIndex = 16;
-            this.kryptonLabel6.Values.Text = "إجمالي عدد الأراضي";
-            // 
-            // TxtSalesLand
-            // 
-            this.TxtSalesLand.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtSalesLand.Location = new System.Drawing.Point(3, 147);
-            this.TxtSalesLand.Name = "TxtSalesLand";
-            this.TxtSalesLand.ReadOnly = true;
-            this.TxtSalesLand.Size = new System.Drawing.Size(582, 27);
-            this.TxtSalesLand.StateCommon.Content.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtSalesLand.StateNormal.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtSalesLand.TabIndex = 2;
-            this.TxtSalesLand.TabStop = false;
-            // 
-            // kryptonLabel3
-            // 
-            this.kryptonLabel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonLabel3.Location = new System.Drawing.Point(591, 147);
-            this.kryptonLabel3.Name = "kryptonLabel3";
-            this.kryptonLabel3.Size = new System.Drawing.Size(169, 30);
-            this.kryptonLabel3.StateCommon.ShortText.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabel3.StateNormal.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabel3.TabIndex = 16;
-            this.kryptonLabel3.Values.Text = "الأراضي المباعة";
-            // 
-            // TxtRemain
-            // 
-            this.TxtRemain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtRemain.Location = new System.Drawing.Point(3, 75);
-            this.TxtRemain.Name = "TxtRemain";
-            this.TxtRemain.ReadOnly = true;
-            this.TxtRemain.Size = new System.Drawing.Size(582, 27);
-            this.TxtRemain.StateCommon.Content.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtRemain.StateNormal.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtRemain.TabIndex = 2;
-            this.TxtRemain.TabStop = false;
-            // 
-            // kryptonLabel2
-            // 
-            this.kryptonLabel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonLabel2.Location = new System.Drawing.Point(591, 75);
-            this.kryptonLabel2.Name = "kryptonLabel2";
-            this.kryptonLabel2.Size = new System.Drawing.Size(169, 30);
-            this.kryptonLabel2.StateCommon.ShortText.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabel2.StateNormal.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabel2.TabIndex = 16;
-            this.kryptonLabel2.Values.Text = "المبالغ المتبقية لدى العملاء";
             // 
             // TxtPayements
             // 
@@ -219,6 +177,81 @@
             this.TxtPayements.TabIndex = 2;
             this.TxtPayements.TabStop = false;
             // 
+            // kryptonLabel3
+            // 
+            this.kryptonLabel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonLabel3.Location = new System.Drawing.Point(591, 147);
+            this.kryptonLabel3.Name = "kryptonLabel3";
+            this.kryptonLabel3.Size = new System.Drawing.Size(169, 30);
+            this.kryptonLabel3.StateCommon.ShortText.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel3.StateNormal.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel3.TabIndex = 16;
+            this.kryptonLabel3.Values.Text = "الأراضي المباعة";
+            // 
+            // kryptonLabel6
+            // 
+            this.kryptonLabel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonLabel6.Location = new System.Drawing.Point(591, 111);
+            this.kryptonLabel6.Name = "kryptonLabel6";
+            this.kryptonLabel6.Size = new System.Drawing.Size(169, 30);
+            this.kryptonLabel6.StateCommon.ShortText.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel6.StateNormal.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel6.TabIndex = 16;
+            this.kryptonLabel6.Values.Text = "إجمالي عدد الأراضي";
+            // 
+            // TxtRemain
+            // 
+            this.TxtRemain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtRemain.Location = new System.Drawing.Point(3, 75);
+            this.TxtRemain.Name = "TxtRemain";
+            this.TxtRemain.ReadOnly = true;
+            this.TxtRemain.Size = new System.Drawing.Size(582, 27);
+            this.TxtRemain.StateCommon.Content.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtRemain.StateNormal.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtRemain.TabIndex = 2;
+            this.TxtRemain.TabStop = false;
+            // 
+            // TxtRemainLands
+            // 
+            this.TxtRemainLands.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtRemainLands.Location = new System.Drawing.Point(3, 183);
+            this.TxtRemainLands.Name = "TxtRemainLands";
+            this.TxtRemainLands.ReadOnly = true;
+            this.TxtRemainLands.Size = new System.Drawing.Size(582, 27);
+            this.TxtRemainLands.StateCommon.Content.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtRemainLands.StateNormal.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtRemainLands.TabIndex = 2;
+            this.TxtRemainLands.TabStop = false;
+            // 
+            // kryptonLabel2
+            // 
+            this.kryptonLabel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonLabel2.Location = new System.Drawing.Point(591, 75);
+            this.kryptonLabel2.Name = "kryptonLabel2";
+            this.kryptonLabel2.Size = new System.Drawing.Size(169, 30);
+            this.kryptonLabel2.StateCommon.ShortText.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel2.StateNormal.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel2.TabIndex = 16;
+            this.kryptonLabel2.Values.Text = "المبالغ المتبقية لدى العملاء";
+            // 
+            // TxtTotalLands
+            // 
+            this.TxtTotalLands.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtTotalLands.Location = new System.Drawing.Point(3, 111);
+            this.TxtTotalLands.Name = "TxtTotalLands";
+            this.TxtTotalLands.ReadOnly = true;
+            this.TxtTotalLands.Size = new System.Drawing.Size(582, 27);
+            this.TxtTotalLands.StateCommon.Content.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtTotalLands.StateNormal.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtTotalLands.TabIndex = 2;
+            this.TxtTotalLands.TabStop = false;
+            // 
             // kryptonLabel1
             // 
             this.kryptonLabel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -230,19 +263,19 @@
             this.kryptonLabel1.TabIndex = 16;
             this.kryptonLabel1.Values.Text = "إجمالي المبالغ النقدية الواصلة";
             // 
-            // TxtTotalSales
+            // TxtSalesLand
             // 
-            this.TxtTotalSales.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.TxtSalesLand.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtTotalSales.Location = new System.Drawing.Point(3, 3);
-            this.TxtTotalSales.Name = "TxtTotalSales";
-            this.TxtTotalSales.ReadOnly = true;
-            this.TxtTotalSales.Size = new System.Drawing.Size(582, 27);
-            this.TxtTotalSales.StateCommon.Content.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtTotalSales.StateNormal.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtTotalSales.TabIndex = 2;
-            this.TxtTotalSales.TabStop = false;
+            this.TxtSalesLand.Location = new System.Drawing.Point(3, 147);
+            this.TxtSalesLand.Name = "TxtSalesLand";
+            this.TxtSalesLand.ReadOnly = true;
+            this.TxtSalesLand.Size = new System.Drawing.Size(582, 27);
+            this.TxtSalesLand.StateCommon.Content.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtSalesLand.StateNormal.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtSalesLand.TabIndex = 2;
+            this.TxtSalesLand.TabStop = false;
             // 
             // LblAmount
             // 
@@ -323,8 +356,8 @@
             this.DataGridMain.AllowUserToAddRows = false;
             this.DataGridMain.AllowUserToDeleteRows = false;
             this.DataGridMain.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.DataGridMain.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.DataGridMain.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.DataGridMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridMain.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColGuid,
@@ -382,8 +415,8 @@
             // ColAmount
             // 
             this.ColAmount.DataPropertyName = "totalnet";
-            dataGridViewCellStyle6.Format = "N2";
-            this.ColAmount.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Format = "N2";
+            this.ColAmount.DefaultCellStyle = dataGridViewCellStyle2;
             this.ColAmount.HeaderText = "القيمة";
             this.ColAmount.Name = "ColAmount";
             this.ColAmount.ReadOnly = true;
@@ -392,8 +425,8 @@
             // ColPayments
             // 
             this.ColPayments.DataPropertyName = "payments";
-            dataGridViewCellStyle7.Format = "N2";
-            this.ColPayments.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Format = "N2";
+            this.ColPayments.DefaultCellStyle = dataGridViewCellStyle3;
             this.ColPayments.HeaderText = "الواصل";
             this.ColPayments.Name = "ColPayments";
             this.ColPayments.ReadOnly = true;
@@ -402,45 +435,12 @@
             // ColRemain
             // 
             this.ColRemain.DataPropertyName = "Remain";
-            dataGridViewCellStyle8.Format = "N2";
-            this.ColRemain.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Format = "N2";
+            this.ColRemain.DefaultCellStyle = dataGridViewCellStyle4;
             this.ColRemain.HeaderText = "المتبقي";
             this.ColRemain.Name = "ColRemain";
             this.ColRemain.ReadOnly = true;
             this.ColRemain.Width = 120;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.06684F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 76.93316F));
-            this.tableLayoutPanel1.Controls.Add(this.TxtTotalSales, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.kryptonLabel5, 0, 6);
-            this.tableLayoutPanel1.Controls.Add(this.TxtReserveLands, 1, 6);
-            this.tableLayoutPanel1.Controls.Add(this.kryptonLabel4, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.TxtPayements, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.kryptonLabel3, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.kryptonLabel6, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.TxtRemain, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.TxtRemainLands, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.kryptonLabel2, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.TxtTotalLands, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.kryptonLabel1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.TxtSalesLand, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.LblAmount, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 7;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28531F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28531F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28531F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28531F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28531F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28531F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28816F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(763, 258);
-            this.tableLayoutPanel1.TabIndex = 17;
             // 
             // FrmGeneralAccount
             // 
@@ -456,11 +456,11 @@
             this.Text = "التقرير المالي للمخطط";
             this.Load += new System.EventHandler(this.FrmTable_Load);
             this.PnlMain.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.PnlBottom.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridMain)).EndInit();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }

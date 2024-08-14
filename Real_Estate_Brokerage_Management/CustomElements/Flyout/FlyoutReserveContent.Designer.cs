@@ -1,6 +1,6 @@
 ﻿namespace DoctorERP
 {
-    partial class FlyoutInteractiveContent
+    partial class FlyoutReserveContent
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.radTextBoxFirstName = new Telerik.WinControls.UI.RadTextBox();
+            this.RadTextboxReserveReason = new Telerik.WinControls.UI.RadTextBox();
             this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
             this.radButtonOK = new Telerik.WinControls.UI.RadButton();
             this.radButtonCancel = new Telerik.WinControls.UI.RadButton();
             this.radLabel3 = new Telerik.WinControls.UI.RadLabel();
             this.doubleBufferedTableLayoutPanel1 = new Telerik.WinControls.UI.DoubleBufferedTableLayoutPanel();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBoxFirstName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RadTextboxReserveReason)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButtonOK)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButtonCancel)).BeginInit();
@@ -42,16 +42,16 @@
             this.doubleBufferedTableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // radTextBoxFirstName
+            // RadTextboxReserveReason
             // 
-            this.radTextBoxFirstName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.doubleBufferedTableLayoutPanel1.SetColumnSpan(this.radTextBoxFirstName, 2);
-            this.radTextBoxFirstName.Location = new System.Drawing.Point(10, 95);
-            this.radTextBoxFirstName.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
-            this.radTextBoxFirstName.Name = "radTextBoxFirstName";
-            this.radTextBoxFirstName.NullText = "ادخل سبب الحجز";
-            this.radTextBoxFirstName.Size = new System.Drawing.Size(176, 20);
-            this.radTextBoxFirstName.TabIndex = 0;
+            this.RadTextboxReserveReason.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.doubleBufferedTableLayoutPanel1.SetColumnSpan(this.RadTextboxReserveReason, 2);
+            this.RadTextboxReserveReason.Location = new System.Drawing.Point(10, 95);
+            this.RadTextboxReserveReason.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
+            this.RadTextboxReserveReason.Name = "RadTextboxReserveReason";
+            this.RadTextboxReserveReason.NullText = "ادخل سبب الحجز";
+            this.RadTextboxReserveReason.Size = new System.Drawing.Size(176, 20);
+            this.RadTextboxReserveReason.TabIndex = 0;
             // 
             // radLabel1
             // 
@@ -99,7 +99,7 @@
             this.radLabel3.Size = new System.Drawing.Size(266, 64);
             this.radLabel3.TabIndex = 3;
             this.radLabel3.Text = "تأكيد حجز بطاقة الأرض";
-            this.radLabel3.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.radLabel3.TextAlignment = System.Drawing.ContentAlignment.TopRight;
             // 
             // doubleBufferedTableLayoutPanel1
             // 
@@ -107,7 +107,7 @@
             this.doubleBufferedTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.doubleBufferedTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
             this.doubleBufferedTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
-            this.doubleBufferedTableLayoutPanel1.Controls.Add(this.radTextBoxFirstName, 1, 1);
+            this.doubleBufferedTableLayoutPanel1.Controls.Add(this.RadTextboxReserveReason, 1, 1);
             this.doubleBufferedTableLayoutPanel1.Controls.Add(this.radButtonCancel, 2, 2);
             this.doubleBufferedTableLayoutPanel1.Controls.Add(this.radLabel3, 0, 0);
             this.doubleBufferedTableLayoutPanel1.Controls.Add(this.radButtonOK, 1, 2);
@@ -122,15 +122,15 @@
             this.doubleBufferedTableLayoutPanel1.Size = new System.Drawing.Size(270, 190);
             this.doubleBufferedTableLayoutPanel1.TabIndex = 6;
             // 
-            // FlyoutInteractiveContent
+            // FlyoutReserveContent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.doubleBufferedTableLayoutPanel1);
-            this.Name = "FlyoutInteractiveContent";
+            this.Name = "FlyoutReserveContent";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.Size = new System.Drawing.Size(270, 190);
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBoxFirstName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RadTextboxReserveReason)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButtonOK)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButtonCancel)).EndInit();
@@ -143,7 +143,7 @@
 
         #endregion
 
-        private Telerik.WinControls.UI.RadTextBox radTextBoxFirstName;
+        private Telerik.WinControls.UI.RadTextBox RadTextboxReserveReason;
         private Telerik.WinControls.UI.RadLabel radLabel1;
         private Telerik.WinControls.UI.RadButton radButtonOK;
         private Telerik.WinControls.UI.RadButton radButtonCancel;
