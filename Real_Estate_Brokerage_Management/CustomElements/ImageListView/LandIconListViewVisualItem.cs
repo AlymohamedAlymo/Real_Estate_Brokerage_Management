@@ -116,19 +116,19 @@ namespace DoctorERP.CustomElements
                 LandID.Text = Land.number.ToString();
 
                 screenTipCustomize.HeaderElement.Text = "أرض رقم:  " + Land.number.ToString();
-                screenTipCustomize.HeaderElement.Font = new Font("Traditional Arabic", 15, FontStyle.Bold);
+                screenTipCustomize.HeaderElement.Font = new Font("Traditional Arabic", 18, FontStyle.Bold);
                 screenTipCustomize.HeaderElement.TextAlignment = ContentAlignment.MiddleCenter;
 
                 decimal WorkFeeWithVat = (Land.amount * Land.workfee / 100) + ((Land.amount * Land.workfee / 100) * Land.vat / 100);
                 decimal WorkFeeValue = (Land.amount * Land.buildingfee / 100);
-                string Header = "القيمة الدفترية :     " + $"{Land.amount:n}  ر.س";
-                string Content = "ضريبة التصرفات :  " + $"{WorkFeeValue:n}  ر.س";
-                string Footer = "السعي + الضريبة : " + $"{WorkFeeWithVat:n}  ر.س";
+                string Header = "القيمة الدفترية :     " + $"{Land.amount:n}  ريال";
+                string Content = "ضريبة التصرفات :  " + $"{WorkFeeValue:n}    ريال";
+                string Footer = "السعي + الضريبة : " + $"{WorkFeeWithVat:n}    ريال";
                 screenTipCustomize.ContentElement.Text = Header + "\n" +
                  Content + "\n" +
                 Footer + "\n" +
-                "الإجمالي الشامل  :  " + $"{Land.total:n}  ر.س" + "\n" +
-                    "المساحة : " + Land.area.ToString("0.00") + " م2";
+                "الإجمالي الشامل  :  " + $"{Land.total:n}  ريال" + "\n" +
+                    "المساحة :            " + Land.area.ToString("0.00") + " م2";
                 screenTipCustomize.ContentElement.Font = new Font("Traditional Arabic", 18, FontStyle.Bold);
                 screenTipCustomize.ContentElement.TextAlignment = ContentAlignment.MiddleLeft;
             }

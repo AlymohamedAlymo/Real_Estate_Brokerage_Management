@@ -15,7 +15,7 @@ class ExcelXLSX
     {
         SaveFileDialog sfd = new SaveFileDialog();
         sfd.Title = "تصدير البيانات إلى ملف إكسل";
-        sfd.Filter = "Excel 2007~2010 file (*.xlsx)|*.xlsx";
+        sfd.Filter = "Excel Files|*.xlsx;*.xlsm;*.xls;*.xls;*.xml |CSV files (*.csv)|*.csv";
         sfd.RestoreDirectory = true;
         sfd.OverwritePrompt = true;
 
