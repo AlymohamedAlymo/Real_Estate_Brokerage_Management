@@ -61,6 +61,8 @@ namespace DoctorERP.User_Controls
             BtnContract.Click += BtnContract_Click;
             BtnReservation.Click -= BtnReservation_Click;
             BtnReservation.Click += BtnReservation_Click;
+            BtnExportExcelData.Click -= BtnExportExcelData_Click;
+            BtnExportExcelData.Click += BtnExportExcelData_Click;
 
             RadFlyoutManager.FlyoutClosed -= this.RadFlyoutManager_FlyoutClosed;
             RadFlyoutManager.FlyoutClosed += this.RadFlyoutManager_FlyoutClosed;
@@ -85,8 +87,6 @@ namespace DoctorERP.User_Controls
             SetData();
             IsLoad = false;
         }
-
-
 
         #region Main Events
 
@@ -1067,6 +1067,18 @@ namespace DoctorERP.User_Controls
                     }
                 }
             }
+        }
+
+
+        private void BtnExportExcelData_Click(object sender, EventArgs e)
+        {
+            RadMenuItem toolmenu = (RadMenuItem)sender;
+            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Edit)) { return; }
+
+            tbLand land = (tbLand)Bs.Current;
+            tbLand.Fill("guid", land.guid);
+            ExcelXLSX.ExportToExcelFromDataTable(tbLand.dtData);
+            
         }
 
         private void BtnSendEmail_Click(object sender, EventArgs e)
