@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition4 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition5 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition6 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition13 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition14 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition15 = new Telerik.WinControls.UI.TableViewDefinition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCLandsDataEntry));
-            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification4 = new Telerik.RadToastNotificationManager.RadToastNotification();
-            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification5 = new Telerik.RadToastNotificationManager.RadToastNotification();
-            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification6 = new Telerik.RadToastNotificationManager.RadToastNotification();
+            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification13 = new Telerik.RadToastNotificationManager.RadToastNotification();
+            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification14 = new Telerik.RadToastNotificationManager.RadToastNotification();
+            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification15 = new Telerik.RadToastNotificationManager.RadToastNotification();
             this.materialTheme1 = new Telerik.WinControls.Themes.MaterialTheme();
             this.Cmblandtype = new Telerik.WinControls.UI.RadTextBox();
             this.Txtblocknumber = new Telerik.WinControls.UI.RadTextBox();
@@ -478,10 +478,11 @@
             this.Txtnorthdesc.RootElement.StretchVertically = true;
             this.Txtnorthdesc.ShowEmbeddedLabel = true;
             this.Txtnorthdesc.ShowNullText = true;
-            this.Txtnorthdesc.Size = new System.Drawing.Size(386, 76);
+            this.Txtnorthdesc.Size = new System.Drawing.Size(363, 76);
             this.Txtnorthdesc.TabIndex = 16;
             this.Txtnorthdesc.ThemeName = "Material";
             this.Txtnorthdesc.WordWrap = false;
+            this.Txtnorthdesc.TextChanged += new System.EventHandler(this.Txtnorthdesc_TextChanged);
             // 
             // Txtsouthdesc
             // 
@@ -501,10 +502,11 @@
             this.Txtsouthdesc.RootElement.StretchVertically = true;
             this.Txtsouthdesc.ShowEmbeddedLabel = true;
             this.Txtsouthdesc.ShowNullText = true;
-            this.Txtsouthdesc.Size = new System.Drawing.Size(386, 76);
+            this.Txtsouthdesc.Size = new System.Drawing.Size(363, 76);
             this.Txtsouthdesc.TabIndex = 18;
             this.Txtsouthdesc.ThemeName = "Material";
             this.Txtsouthdesc.WordWrap = false;
+            this.Txtsouthdesc.TextChanged += new System.EventHandler(this.Txtsouthdesc_TextChanged);
             // 
             // Txteastdesc
             // 
@@ -524,10 +526,11 @@
             this.Txteastdesc.RootElement.StretchVertically = true;
             this.Txteastdesc.ShowEmbeddedLabel = true;
             this.Txteastdesc.ShowNullText = true;
-            this.Txteastdesc.Size = new System.Drawing.Size(386, 76);
+            this.Txteastdesc.Size = new System.Drawing.Size(363, 76);
             this.Txteastdesc.TabIndex = 20;
             this.Txteastdesc.ThemeName = "Material";
             this.Txteastdesc.WordWrap = false;
+            this.Txteastdesc.TextChanged += new System.EventHandler(this.Txteastdesc_TextChanged);
             // 
             // Txtwestdesc
             // 
@@ -547,10 +550,11 @@
             this.Txtwestdesc.RootElement.StretchVertically = true;
             this.Txtwestdesc.ShowEmbeddedLabel = true;
             this.Txtwestdesc.ShowNullText = true;
-            this.Txtwestdesc.Size = new System.Drawing.Size(386, 76);
+            this.Txtwestdesc.Size = new System.Drawing.Size(363, 76);
             this.Txtwestdesc.TabIndex = 22;
             this.Txtwestdesc.ThemeName = "Material";
             this.Txtwestdesc.WordWrap = false;
+            this.Txtwestdesc.TextChanged += new System.EventHandler(this.Txtwestdesc_TextChanged);
             // 
             // Txtreservereason
             // 
@@ -574,13 +578,13 @@
             this.Txtnorth.AutoScroll = true;
             this.Txtnorth.EmbeddedLabelText = "ابعاد الشمال";
             this.Txtnorth.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtnorth.Location = new System.Drawing.Point(406, 163);
+            this.Txtnorth.Location = new System.Drawing.Point(383, 163);
             this.Txtnorth.Name = "Txtnorth";
             this.Txtnorth.NullText = "ادخل ابعاد الشمال";
             this.Txtnorth.ReadOnly = true;
             this.Txtnorth.ShowEmbeddedLabel = true;
             this.Txtnorth.ShowNullText = true;
-            this.Txtnorth.Size = new System.Drawing.Size(143, 59);
+            this.Txtnorth.Size = new System.Drawing.Size(166, 59);
             this.Txtnorth.TabIndex = 15;
             this.Txtnorth.ThemeName = "Material";
             this.Txtnorth.WordWrap = false;
@@ -591,13 +595,13 @@
             this.Txtsouth.AutoScroll = true;
             this.Txtsouth.EmbeddedLabelText = "ابعاد الجنوب";
             this.Txtsouth.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtsouth.Location = new System.Drawing.Point(406, 245);
+            this.Txtsouth.Location = new System.Drawing.Point(383, 245);
             this.Txtsouth.Name = "Txtsouth";
             this.Txtsouth.NullText = "ادخل ابعاد الجنوب";
             this.Txtsouth.ReadOnly = true;
             this.Txtsouth.ShowEmbeddedLabel = true;
             this.Txtsouth.ShowNullText = true;
-            this.Txtsouth.Size = new System.Drawing.Size(143, 59);
+            this.Txtsouth.Size = new System.Drawing.Size(166, 59);
             this.Txtsouth.TabIndex = 17;
             this.Txtsouth.ThemeName = "Material";
             this.Txtsouth.WordWrap = false;
@@ -608,13 +612,13 @@
             this.Txteast.AutoScroll = true;
             this.Txteast.EmbeddedLabelText = "ابعاد الشرق";
             this.Txteast.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txteast.Location = new System.Drawing.Point(406, 327);
+            this.Txteast.Location = new System.Drawing.Point(383, 327);
             this.Txteast.Name = "Txteast";
             this.Txteast.NullText = "ادخل الشرق الجنوب";
             this.Txteast.ReadOnly = true;
             this.Txteast.ShowEmbeddedLabel = true;
             this.Txteast.ShowNullText = true;
-            this.Txteast.Size = new System.Drawing.Size(143, 59);
+            this.Txteast.Size = new System.Drawing.Size(166, 59);
             this.Txteast.TabIndex = 19;
             this.Txteast.ThemeName = "Material";
             this.Txteast.WordWrap = false;
@@ -625,13 +629,13 @@
             this.Txtwest.AutoScroll = true;
             this.Txtwest.EmbeddedLabelText = "ابعاد الغرب";
             this.Txtwest.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtwest.Location = new System.Drawing.Point(406, 409);
+            this.Txtwest.Location = new System.Drawing.Point(383, 409);
             this.Txtwest.Name = "Txtwest";
             this.Txtwest.NullText = "ادخل ابعاد الغرب";
             this.Txtwest.ReadOnly = true;
             this.Txtwest.ShowEmbeddedLabel = true;
             this.Txtwest.ShowNullText = true;
-            this.Txtwest.Size = new System.Drawing.Size(143, 59);
+            this.Txtwest.Size = new System.Drawing.Size(166, 59);
             this.Txtwest.TabIndex = 21;
             this.Txtwest.ThemeName = "Material";
             this.Txtwest.WordWrap = false;
@@ -722,7 +726,7 @@
             this.CmbPlanGuid.EditorControl.MasterTemplate.EnableFiltering = true;
             this.CmbPlanGuid.EditorControl.MasterTemplate.EnableGrouping = false;
             this.CmbPlanGuid.EditorControl.MasterTemplate.ShowFilteringRow = false;
-            this.CmbPlanGuid.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition4;
+            this.CmbPlanGuid.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition13;
             this.CmbPlanGuid.EditorControl.Name = "NestedRadGridView";
             this.CmbPlanGuid.EditorControl.ReadOnly = true;
             this.CmbPlanGuid.EditorControl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -1428,7 +1432,7 @@
             this.DataGridAttachments.MasterTemplate.AllowEditRow = false;
             this.DataGridAttachments.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
             this.DataGridAttachments.MasterTemplate.EnableGrouping = false;
-            this.DataGridAttachments.MasterTemplate.ViewDefinition = tableViewDefinition5;
+            this.DataGridAttachments.MasterTemplate.ViewDefinition = tableViewDefinition14;
             this.DataGridAttachments.Name = "DataGridAttachments";
             this.DataGridAttachments.ShowGroupPanel = false;
             this.DataGridAttachments.ShowGroupPanelScrollbars = false;
@@ -1467,7 +1471,7 @@
             this.DataGridPriceLog.MasterTemplate.AllowRowHeaderContextMenu = false;
             this.DataGridPriceLog.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
             this.DataGridPriceLog.MasterTemplate.EnableGrouping = false;
-            this.DataGridPriceLog.MasterTemplate.ViewDefinition = tableViewDefinition6;
+            this.DataGridPriceLog.MasterTemplate.ViewDefinition = tableViewDefinition15;
             this.DataGridPriceLog.Name = "DataGridPriceLog";
             this.DataGridPriceLog.ShowGroupPanel = false;
             this.DataGridPriceLog.ShowGroupPanelScrollbars = false;
@@ -1786,10 +1790,10 @@
             this.BtnExport.Image = null;
             this.BtnExport.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.BtnEcelExport,
+            this.BtnExportExcelData,
             this.BtnPdfExport,
             this.BtnWordExport,
-            this.BtnEmailExport,
-            this.BtnExportExcelData});
+            this.BtnEmailExport});
             this.BtnExport.Name = "BtnExport";
             this.BtnExport.ScreenTip = this.radOffice2007ScreenTipElement36;
             this.BtnExport.Text = "تصدير";
@@ -2629,28 +2633,28 @@
             // 
             // radToastNotificationManager1
             // 
-            radToastNotification4.BindingData = null;
-            radToastNotification4.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
-            radToastNotification4.Name = "ToastNews1";
-            radToastNotification4.Tag = null;
-            radToastNotification4.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastNews;
-            radToastNotification4.Xml = resources.GetString("radToastNotification4.Xml");
-            radToastNotification5.BindingData = null;
-            radToastNotification5.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
-            radToastNotification5.Name = "ToastLegacy1";
-            radToastNotification5.Tag = null;
-            radToastNotification5.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastLegacy;
-            radToastNotification5.Xml = resources.GetString("radToastNotification5.Xml");
-            radToastNotification6.BindingData = null;
-            radToastNotification6.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
-            radToastNotification6.Name = "ToastGeneric1";
-            radToastNotification6.Tag = null;
-            radToastNotification6.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastGeneric;
-            radToastNotification6.Xml = "<toast>\n  <visual>\n    <binding template=\"ToastGeneric\"></binding>\n  </visual>\n</" +
+            radToastNotification13.BindingData = null;
+            radToastNotification13.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
+            radToastNotification13.Name = "ToastNews1";
+            radToastNotification13.Tag = null;
+            radToastNotification13.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastNews;
+            radToastNotification13.Xml = resources.GetString("radToastNotification13.Xml");
+            radToastNotification14.BindingData = null;
+            radToastNotification14.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
+            radToastNotification14.Name = "ToastLegacy1";
+            radToastNotification14.Tag = null;
+            radToastNotification14.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastLegacy;
+            radToastNotification14.Xml = resources.GetString("radToastNotification14.Xml");
+            radToastNotification15.BindingData = null;
+            radToastNotification15.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
+            radToastNotification15.Name = "ToastGeneric1";
+            radToastNotification15.Tag = null;
+            radToastNotification15.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastGeneric;
+            radToastNotification15.Xml = "<toast>\n  <visual>\n    <binding template=\"ToastGeneric\"></binding>\n  </visual>\n</" +
     "toast>";
-            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification4);
-            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification5);
-            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification6);
+            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification13);
+            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification14);
+            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification15);
             // 
             // radDesktopAlert1
             // 

@@ -1437,6 +1437,26 @@ namespace DoctorERP.User_Controls
 
         }
 
+        private void Txtnorthdesc_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Txtsouthdesc_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Txteastdesc_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Txtwestdesc_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void BtnScanner_Click(object sender, EventArgs e)
         {
 
