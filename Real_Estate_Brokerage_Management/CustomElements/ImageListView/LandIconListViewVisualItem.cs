@@ -2,7 +2,7 @@
 using System.Drawing;
 using Telerik.WinControls.UI;
 
-namespace DoctorERP
+namespace DoctorERP.CustomElements
 {
     public class LandIconListViewVisualItem : IconListViewVisualItem
     {
@@ -83,33 +83,57 @@ namespace DoctorERP
             LandID.TextAlignment = ContentAlignment.MiddleCenter;
             LandID.Font = new Font("Traditional Arabic", 15, FontStyle.Bold);
             tbLand Land = this.Data.DataBoundItem as tbLand;
-            RadOffice2007ScreenTipElement screenTip = new RadOffice2007ScreenTipElement();
+
+            ScreenTipCustomize screenTipCustomize = new ScreenTipCustomize();
+
             if (Land != null)
             {
-                LandID.Padding = new System.Windows.Forms.Padding(0, 4, -Land.number.ToString().Length, 0);
-                LandID.Margin = new System.Windows.Forms.Padding(0, 4, -Land.number.ToString().Length, 0);
+                if (Land.number.ToString().Length == 1)
+                {
+                    LandID.Padding = new System.Windows.Forms.Padding(0, 4, -(Land.number.ToString().Length - 1), 0);
+                    LandID.Margin = new System.Windows.Forms.Padding(0, 4, -(Land.number.ToString().Length - 1), 0);
+
+                }
+                else if (Land.number.ToString().Length == 2)
+                {
+                    LandID.Padding = new System.Windows.Forms.Padding(0, 4, -(Land.number.ToString().Length), 0);
+                    LandID.Margin = new System.Windows.Forms.Padding(0, 4, -(Land.number.ToString().Length), 0);
+
+                }
+                else if (Land.number.ToString().Length == 3)
+                {
+                    LandID.Padding = new System.Windows.Forms.Padding(0, 4, -(Land.number.ToString().Length + 1), 0);
+                    LandID.Margin = new System.Windows.Forms.Padding(0, 4, -(Land.number.ToString().Length + 1), 0);
+
+                }
+                else
+                {
+                    LandID.Padding = new System.Windows.Forms.Padding(0, 4, -(Land.number.ToString().Length + 2), 0);
+                    LandID.Margin = new System.Windows.Forms.Padding(0, 4, -(Land.number.ToString().Length + 2), 0);
+
+                }
+
                 LandID.Text = Land.number.ToString();
 
-                screenTip.RightToLeft = true;
-                screenTip.FooterVisible = true;
-                screenTip.CaptionLabel.Text = "أرض رقم:  " + Land.number.ToString();
-                screenTip.CaptionLabel.Font = new Font("Traditional Arabic", 15, FontStyle.Bold);
-                screenTip.CaptionLabel.TextAlignment = ContentAlignment.MiddleCenter;
-                 decimal WorkFeeWithVat = (Land.amount * Land.workfee / 100) + ((Land.amount * Land.workfee / 100) * Land.vat / 100);
+                screenTipCustomize.HeaderElement.Text = "أرض رقم:  " + Land.number.ToString();
+                screenTipCustomize.HeaderElement.Font = new Font("Traditional Arabic", 15, FontStyle.Bold);
+                screenTipCustomize.HeaderElement.TextAlignment = ContentAlignment.MiddleCenter;
+
+                decimal WorkFeeWithVat = (Land.amount * Land.workfee / 100) + ((Land.amount * Land.workfee / 100) * Land.vat / 100);
                 decimal WorkFeeValue = (Land.amount * Land.buildingfee / 100);
                 string Header = "القيمة الدفترية :     " + $"{Land.amount:n}  ر.س";
                 string Content = "ضريبة التصرفات :  " + $"{WorkFeeValue:n}  ر.س";
                 string Footer = "السعي + الضريبة : " + $"{WorkFeeWithVat:n}  ر.س";
-                screenTip.MainTextLabel.Text = Header + "\n" +
+                screenTipCustomize.ContentElement.Text = Header + "\n" +
                  Content + "\n" +
-                Footer;
-                screenTip.MainTextLabel.Font = new Font("Traditional Arabic", 18, FontStyle.Bold);
-                screenTip.MainTextLabel.TextAlignment = ContentAlignment.MiddleLeft;
-                screenTip.FooterTextLabel.Text = "الإجمالي : " + $"{Land.total:n}  ر.س" + "\n"+
+                Footer + "\n" +
+                "الإجمالي الشامل  :  " + $"{Land.total:n}  ر.س" + "\n" +
                     "المساحة : " + Land.area.ToString("0.00") + " م2";
-                screenTip.FooterTextLabel.Font = new Font("Traditional Arabic", 15, FontStyle.Bold);
-
+                screenTipCustomize.ContentElement.Font = new Font("Traditional Arabic", 18, FontStyle.Bold);
+                screenTipCustomize.ContentElement.TextAlignment = ContentAlignment.MiddleLeft;
             }
+            this.ScreenTip = screenTipCustomize;
+
             RadListViewElement list = this.Parent.Parent.Parent as RadListViewElement;
             
             if (Land.status.ToString().Contains("مباع"))
@@ -156,8 +180,6 @@ namespace DoctorERP
                 LandID.ForeColor = Color.Black;
 
             }
-            this.ScreenTip = screenTip;
-            this.ScreenTip.ShouldApplyTheme = true;
         }
 
     }

@@ -235,6 +235,7 @@
     <Compile Include="CustomElements\Flyout\FlyoutEmailContent.Designer.cs">
       <DependentUpon>FlyoutEmailContent.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomElements\ImageListView\ScreenTipCustomize.cs" />
     <Compile Include="DAL\tbAccount.cs" />
     <Compile Include="DAL\tbAgent.cs" />
     <Compile Include="DAL\tbBanks.cs" />
