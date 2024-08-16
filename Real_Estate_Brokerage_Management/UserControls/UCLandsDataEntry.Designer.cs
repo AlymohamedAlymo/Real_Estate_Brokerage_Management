@@ -73,10 +73,6 @@
             this.radLabel12 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel23 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel19 = new Telerik.WinControls.UI.RadLabel();
-            this.dataLayoutControlItem36 = new Telerik.WinControls.UI.DataLayoutControlItem();
-            this.dataLayoutControlItem1 = new Telerik.WinControls.UI.DataLayoutControlItem();
-            this.dataLayoutControlItem4 = new Telerik.WinControls.UI.DataLayoutControlItem();
-            this.PanelContainer = new Telerik.WinControls.UI.RadScrollablePanelContainer();
             this.radPageView1 = new Telerik.WinControls.UI.RadPageView();
             this.PageHome = new Telerik.WinControls.UI.RadPageViewPage();
             this.Txtstatus = new Telerik.WinControls.UI.RadLabel();
@@ -140,38 +136,6 @@
             this.BtnNew = new Telerik.WinControls.UI.CommandBarButton();
             this.BtnEdit = new Telerik.WinControls.UI.CommandBarButton();
             this.BtnExit = new Telerik.WinControls.UI.CommandBarButton();
-            this.layoutControlItem1 = new Telerik.WinControls.UI.LayoutControlItem();
-            this.layoutControlItem5 = new Telerik.WinControls.UI.LayoutControlItem();
-            this.layoutControlItem6 = new Telerik.WinControls.UI.LayoutControlItem();
-            this.layoutControlItem7 = new Telerik.WinControls.UI.LayoutControlItem();
-            this.layoutControlItem8 = new Telerik.WinControls.UI.LayoutControlItem();
-            this.layoutControlItem9 = new Telerik.WinControls.UI.LayoutControlItem();
-            this.layoutControlItem10 = new Telerik.WinControls.UI.LayoutControlItem();
-            this.layoutControlItem11 = new Telerik.WinControls.UI.LayoutControlItem();
-            this.layoutControlItem12 = new Telerik.WinControls.UI.LayoutControlItem();
-            this.layoutControlItem13 = new Telerik.WinControls.UI.LayoutControlItem();
-            this.layoutControlItem14 = new Telerik.WinControls.UI.LayoutControlItem();
-            this.layoutControlItem15 = new Telerik.WinControls.UI.LayoutControlItem();
-            this.layoutControlItem16 = new Telerik.WinControls.UI.LayoutControlItem();
-            this.layoutControlItem17 = new Telerik.WinControls.UI.LayoutControlItem();
-            this.layoutControlItem18 = new Telerik.WinControls.UI.LayoutControlItem();
-            this.layoutControlItem19 = new Telerik.WinControls.UI.LayoutControlItem();
-            this.layoutControlItem20 = new Telerik.WinControls.UI.LayoutControlItem();
-            this.layoutControlItem21 = new Telerik.WinControls.UI.LayoutControlItem();
-            this.layoutControlItem22 = new Telerik.WinControls.UI.LayoutControlItem();
-            this.layoutControlItem23 = new Telerik.WinControls.UI.LayoutControlItem();
-            this.layoutControlItem24 = new Telerik.WinControls.UI.LayoutControlItem();
-            this.layoutControlItem25 = new Telerik.WinControls.UI.LayoutControlItem();
-            this.layoutControlItem26 = new Telerik.WinControls.UI.LayoutControlItem();
-            this.layoutControlItem27 = new Telerik.WinControls.UI.LayoutControlItem();
-            this.layoutControlItem28 = new Telerik.WinControls.UI.LayoutControlItem();
-            this.layoutControlItem29 = new Telerik.WinControls.UI.LayoutControlItem();
-            this.layoutControlItem30 = new Telerik.WinControls.UI.LayoutControlItem();
-            this.layoutControlItem31 = new Telerik.WinControls.UI.LayoutControlItem();
-            this.layoutControlItem32 = new Telerik.WinControls.UI.LayoutControlItem();
-            this.layoutControlItem33 = new Telerik.WinControls.UI.LayoutControlItem();
-            this.layoutControlItem34 = new Telerik.WinControls.UI.LayoutControlItem();
-            this.layoutControlItem35 = new Telerik.WinControls.UI.LayoutControlItem();
             this.radToastNotificationManager1 = new Telerik.WinControls.UI.RadToastNotificationManager(this.components);
             this.radDesktopAlert1 = new Telerik.WinControls.UI.RadDesktopAlert(this.components);
             this.radContextMenuManager1 = new Telerik.WinControls.UI.RadContextMenuManager();
@@ -181,10 +145,6 @@
             this.radMenuSeparatorItem1 = new Telerik.WinControls.UI.RadMenuSeparatorItem();
             this.MenuDeleteAttachment = new Telerik.WinControls.UI.RadMenuItem();
             this.radCallout1 = new Telerik.WinControls.UI.RadCallout();
-            this.layoutControlItem48 = new Telerik.WinControls.UI.LayoutControlItem();
-            this.layoutControlItem51 = new Telerik.WinControls.UI.LayoutControlItem();
-            this.layoutControlItem36 = new Telerik.WinControls.UI.LayoutControlItem();
-            this.layoutControlItem41 = new Telerik.WinControls.UI.LayoutControlItem();
             this.AlertTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.Cmblandtype)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txtblocknumber)).BeginInit();
@@ -944,54 +904,6 @@
             this.radLabel19.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.radLabel19.TextWrap = false;
             this.radLabel19.ThemeName = "Material";
-            // 
-            // dataLayoutControlItem36
-            // 
-            this.dataLayoutControlItem36.AssociatedControl = null;
-            this.dataLayoutControlItem36.Bounds = new System.Drawing.Rectangle(0, 0, 466, 26);
-            this.dataLayoutControlItem36.ControlVerticalAlignment = Telerik.WinControls.UI.RadVerticalAlignment.Center;
-            this.dataLayoutControlItem36.DisabledTextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.dataLayoutControlItem36.Name = "dataLayoutControlItem36";
-            this.dataLayoutControlItem36.Text = "guid";
-            this.dataLayoutControlItem36.TextFixedSize = 103;
-            this.dataLayoutControlItem36.TextProportionalSize = 0.25F;
-            this.dataLayoutControlItem36.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.dataLayoutControlItem36.TextSizeMode = Telerik.WinControls.UI.LayoutItemTextSizeMode.Fixed;
-            this.dataLayoutControlItem36.UseCompatibleTextRendering = false;
-            // 
-            // dataLayoutControlItem1
-            // 
-            this.dataLayoutControlItem1.AssociatedControl = null;
-            this.dataLayoutControlItem1.Bounds = new System.Drawing.Rectangle(0, 0, 951, 26);
-            this.dataLayoutControlItem1.ControlVerticalAlignment = Telerik.WinControls.UI.RadVerticalAlignment.Center;
-            this.dataLayoutControlItem1.DisabledTextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.dataLayoutControlItem1.Name = "dataLayoutControlItem1";
-            this.dataLayoutControlItem1.Text = "guid";
-            this.dataLayoutControlItem1.TextFixedSize = 103;
-            this.dataLayoutControlItem1.TextProportionalSize = 0.25F;
-            this.dataLayoutControlItem1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.dataLayoutControlItem1.TextSizeMode = Telerik.WinControls.UI.LayoutItemTextSizeMode.Fixed;
-            this.dataLayoutControlItem1.UseCompatibleTextRendering = false;
-            // 
-            // dataLayoutControlItem4
-            // 
-            this.dataLayoutControlItem4.AssociatedControl = null;
-            this.dataLayoutControlItem4.Bounds = new System.Drawing.Rectangle(0, 52, 183, 26);
-            this.dataLayoutControlItem4.DisabledTextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.dataLayoutControlItem4.Name = "dataLayoutControlItem4";
-            this.dataLayoutControlItem4.Text = "number";
-            this.dataLayoutControlItem4.TextFixedSize = 103;
-            this.dataLayoutControlItem4.TextProportionalSize = 0.25F;
-            this.dataLayoutControlItem4.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.dataLayoutControlItem4.TextSizeMode = Telerik.WinControls.UI.LayoutItemTextSizeMode.Fixed;
-            this.dataLayoutControlItem4.UseCompatibleTextRendering = false;
-            // 
-            // PanelContainer
-            // 
-            this.PanelContainer.AutoScroll = false;
-            this.PanelContainer.Dock = System.Windows.Forms.DockStyle.None;
-            this.PanelContainer.Location = new System.Drawing.Point(0, 0);
-            this.PanelContainer.Size = new System.Drawing.Size(1075, 663);
             // 
             // radPageView1
             // 
@@ -1896,262 +1808,6 @@
             this.BtnExit.TextOrientation = System.Windows.Forms.Orientation.Horizontal;
             this.BtnExit.Click += new System.EventHandler(this.MenuExit_Click);
             // 
-            // layoutControlItem1
-            // 
-            this.layoutControlItem1.AssociatedControl = null;
-            this.layoutControlItem1.Bounds = new System.Drawing.Rectangle(0, 0, 200, 100);
-            this.layoutControlItem1.ControlVerticalAlignment = Telerik.WinControls.UI.RadVerticalAlignment.Center;
-            this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Text = "";
-            // 
-            // layoutControlItem5
-            // 
-            this.layoutControlItem5.AssociatedControl = null;
-            this.layoutControlItem5.Bounds = new System.Drawing.Rectangle(9, 33, 165, 26);
-            this.layoutControlItem5.ControlVerticalAlignment = Telerik.WinControls.UI.RadVerticalAlignment.Center;
-            this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Text = "";
-            // 
-            // layoutControlItem6
-            // 
-            this.layoutControlItem6.AssociatedControl = null;
-            this.layoutControlItem6.Bounds = new System.Drawing.Rectangle(146, 33, 46, 26);
-            this.layoutControlItem6.ControlVerticalAlignment = Telerik.WinControls.UI.RadVerticalAlignment.Center;
-            this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Text = "0";
-            // 
-            // layoutControlItem7
-            // 
-            this.layoutControlItem7.AssociatedControl = null;
-            this.layoutControlItem7.Bounds = new System.Drawing.Rectangle(9, 54, 165, 26);
-            this.layoutControlItem7.ControlVerticalAlignment = Telerik.WinControls.UI.RadVerticalAlignment.Center;
-            this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Text = "";
-            // 
-            // layoutControlItem8
-            // 
-            this.layoutControlItem8.AssociatedControl = null;
-            this.layoutControlItem8.Bounds = new System.Drawing.Rectangle(146, 54, 46, 26);
-            this.layoutControlItem8.ControlVerticalAlignment = Telerik.WinControls.UI.RadVerticalAlignment.Center;
-            this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Text = "0";
-            // 
-            // layoutControlItem9
-            // 
-            this.layoutControlItem9.AssociatedControl = null;
-            this.layoutControlItem9.Bounds = new System.Drawing.Rectangle(9, 93, 46, 26);
-            this.layoutControlItem9.ControlVerticalAlignment = Telerik.WinControls.UI.RadVerticalAlignment.Center;
-            this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Text = "";
-            // 
-            // layoutControlItem10
-            // 
-            this.layoutControlItem10.AssociatedControl = null;
-            this.layoutControlItem10.Bounds = new System.Drawing.Rectangle(146, 87, 46, 26);
-            this.layoutControlItem10.ControlVerticalAlignment = Telerik.WinControls.UI.RadVerticalAlignment.Center;
-            this.layoutControlItem10.Name = "layoutControlItem10";
-            this.layoutControlItem10.Text = "0";
-            // 
-            // layoutControlItem11
-            // 
-            this.layoutControlItem11.AssociatedControl = null;
-            this.layoutControlItem11.Bounds = new System.Drawing.Rectangle(9, 119, 46, 26);
-            this.layoutControlItem11.ControlVerticalAlignment = Telerik.WinControls.UI.RadVerticalAlignment.Center;
-            this.layoutControlItem11.Name = "layoutControlItem11";
-            this.layoutControlItem11.Text = "";
-            // 
-            // layoutControlItem12
-            // 
-            this.layoutControlItem12.AssociatedControl = null;
-            this.layoutControlItem12.Bounds = new System.Drawing.Rectangle(9, 139, 165, 26);
-            this.layoutControlItem12.ControlVerticalAlignment = Telerik.WinControls.UI.RadVerticalAlignment.Center;
-            this.layoutControlItem12.Name = "layoutControlItem12";
-            this.layoutControlItem12.Text = "0";
-            // 
-            // layoutControlItem13
-            // 
-            this.layoutControlItem13.AssociatedControl = null;
-            this.layoutControlItem13.Bounds = new System.Drawing.Rectangle(9, 145, 46, 26);
-            this.layoutControlItem13.ControlVerticalAlignment = Telerik.WinControls.UI.RadVerticalAlignment.Center;
-            this.layoutControlItem13.Name = "layoutControlItem13";
-            this.layoutControlItem13.Text = "";
-            // 
-            // layoutControlItem14
-            // 
-            this.layoutControlItem14.AssociatedControl = null;
-            this.layoutControlItem14.Bounds = new System.Drawing.Rectangle(147, 139, 46, 26);
-            this.layoutControlItem14.ControlVerticalAlignment = Telerik.WinControls.UI.RadVerticalAlignment.Center;
-            this.layoutControlItem14.Name = "layoutControlItem14";
-            this.layoutControlItem14.Text = "0";
-            // 
-            // layoutControlItem15
-            // 
-            this.layoutControlItem15.AssociatedControl = null;
-            this.layoutControlItem15.Bounds = new System.Drawing.Rectangle(101, 145, 46, 26);
-            this.layoutControlItem15.ControlVerticalAlignment = Telerik.WinControls.UI.RadVerticalAlignment.Center;
-            this.layoutControlItem15.Name = "layoutControlItem15";
-            this.layoutControlItem15.Text = "";
-            // 
-            // layoutControlItem16
-            // 
-            this.layoutControlItem16.AssociatedControl = null;
-            this.layoutControlItem16.Bounds = new System.Drawing.Rectangle(163, 139, 46, 26);
-            this.layoutControlItem16.ControlVerticalAlignment = Telerik.WinControls.UI.RadVerticalAlignment.Center;
-            this.layoutControlItem16.Name = "layoutControlItem16";
-            this.layoutControlItem16.Text = "0";
-            // 
-            // layoutControlItem17
-            // 
-            this.layoutControlItem17.AssociatedControl = null;
-            this.layoutControlItem17.Bounds = new System.Drawing.Rectangle(-21, 171, 46, 26);
-            this.layoutControlItem17.ControlVerticalAlignment = Telerik.WinControls.UI.RadVerticalAlignment.Center;
-            this.layoutControlItem17.Name = "layoutControlItem17";
-            this.layoutControlItem17.Text = "";
-            // 
-            // layoutControlItem18
-            // 
-            this.layoutControlItem18.AssociatedControl = null;
-            this.layoutControlItem18.Bounds = new System.Drawing.Rectangle(163, 152, 46, 26);
-            this.layoutControlItem18.ControlVerticalAlignment = Telerik.WinControls.UI.RadVerticalAlignment.Center;
-            this.layoutControlItem18.Name = "layoutControlItem18";
-            this.layoutControlItem18.Text = "0";
-            // 
-            // layoutControlItem19
-            // 
-            this.layoutControlItem19.AssociatedControl = null;
-            this.layoutControlItem19.Bounds = new System.Drawing.Rectangle(-67, 191, 258, 26);
-            this.layoutControlItem19.ControlVerticalAlignment = Telerik.WinControls.UI.RadVerticalAlignment.Center;
-            this.layoutControlItem19.Name = "layoutControlItem19";
-            this.layoutControlItem19.Text = "0";
-            // 
-            // layoutControlItem20
-            // 
-            this.layoutControlItem20.AssociatedControl = null;
-            this.layoutControlItem20.Bounds = new System.Drawing.Rectangle(-67, 223, 46, 26);
-            this.layoutControlItem20.ControlVerticalAlignment = Telerik.WinControls.UI.RadVerticalAlignment.Center;
-            this.layoutControlItem20.Name = "layoutControlItem20";
-            this.layoutControlItem20.Text = "";
-            // 
-            // layoutControlItem21
-            // 
-            this.layoutControlItem21.AssociatedControl = null;
-            this.layoutControlItem21.Bounds = new System.Drawing.Rectangle(143, 217, 48, 26);
-            this.layoutControlItem21.ControlVerticalAlignment = Telerik.WinControls.UI.RadVerticalAlignment.Center;
-            this.layoutControlItem21.Name = "layoutControlItem21";
-            this.layoutControlItem21.Text = "0";
-            // 
-            // layoutControlItem22
-            // 
-            this.layoutControlItem22.AssociatedControl = null;
-            this.layoutControlItem22.Bounds = new System.Drawing.Rectangle(-67, 243, 258, 26);
-            this.layoutControlItem22.ControlVerticalAlignment = Telerik.WinControls.UI.RadVerticalAlignment.Center;
-            this.layoutControlItem22.Name = "layoutControlItem22";
-            this.layoutControlItem22.Text = "0";
-            // 
-            // layoutControlItem23
-            // 
-            this.layoutControlItem23.AssociatedControl = null;
-            this.layoutControlItem23.Bounds = new System.Drawing.Rectangle(-67, 243, 134, 26);
-            this.layoutControlItem23.ControlVerticalAlignment = Telerik.WinControls.UI.RadVerticalAlignment.Center;
-            this.layoutControlItem23.Name = "layoutControlItem23";
-            this.layoutControlItem23.Text = "0";
-            // 
-            // layoutControlItem24
-            // 
-            this.layoutControlItem24.AssociatedControl = null;
-            this.layoutControlItem24.Bounds = new System.Drawing.Rectangle(39, 243, 46, 26);
-            this.layoutControlItem24.ControlVerticalAlignment = Telerik.WinControls.UI.RadVerticalAlignment.Center;
-            this.layoutControlItem24.Name = "layoutControlItem24";
-            this.layoutControlItem24.Text = "";
-            // 
-            // layoutControlItem25
-            // 
-            this.layoutControlItem25.AssociatedControl = null;
-            this.layoutControlItem25.Bounds = new System.Drawing.Rectangle(83, 243, 108, 26);
-            this.layoutControlItem25.ControlVerticalAlignment = Telerik.WinControls.UI.RadVerticalAlignment.Center;
-            this.layoutControlItem25.Name = "layoutControlItem25";
-            this.layoutControlItem25.Text = "";
-            // 
-            // layoutControlItem26
-            // 
-            this.layoutControlItem26.AssociatedControl = null;
-            this.layoutControlItem26.Bounds = new System.Drawing.Rectangle(117, 243, 74, 26);
-            this.layoutControlItem26.ControlVerticalAlignment = Telerik.WinControls.UI.RadVerticalAlignment.Center;
-            this.layoutControlItem26.Name = "layoutControlItem26";
-            this.layoutControlItem26.Text = "";
-            // 
-            // layoutControlItem27
-            // 
-            this.layoutControlItem27.AssociatedControl = null;
-            this.layoutControlItem27.Bounds = new System.Drawing.Rectangle(-67, 269, 258, 26);
-            this.layoutControlItem27.ControlVerticalAlignment = Telerik.WinControls.UI.RadVerticalAlignment.Center;
-            this.layoutControlItem27.Name = "layoutControlItem27";
-            this.layoutControlItem27.Text = "";
-            // 
-            // layoutControlItem28
-            // 
-            this.layoutControlItem28.AssociatedControl = null;
-            this.layoutControlItem28.Bounds = new System.Drawing.Rectangle(-67, 295, 258, 26);
-            this.layoutControlItem28.ControlVerticalAlignment = Telerik.WinControls.UI.RadVerticalAlignment.Center;
-            this.layoutControlItem28.Name = "layoutControlItem28";
-            this.layoutControlItem28.Text = "";
-            // 
-            // layoutControlItem29
-            // 
-            this.layoutControlItem29.AssociatedControl = null;
-            this.layoutControlItem29.Bounds = new System.Drawing.Rectangle(-67, 321, 258, 26);
-            this.layoutControlItem29.ControlVerticalAlignment = Telerik.WinControls.UI.RadVerticalAlignment.Center;
-            this.layoutControlItem29.Name = "layoutControlItem29";
-            this.layoutControlItem29.Text = "";
-            // 
-            // layoutControlItem30
-            // 
-            this.layoutControlItem30.AssociatedControl = null;
-            this.layoutControlItem30.Bounds = new System.Drawing.Rectangle(153, 321, 46, 26);
-            this.layoutControlItem30.ControlVerticalAlignment = Telerik.WinControls.UI.RadVerticalAlignment.Center;
-            this.layoutControlItem30.Name = "layoutControlItem30";
-            this.layoutControlItem30.Text = "";
-            // 
-            // layoutControlItem31
-            // 
-            this.layoutControlItem31.AssociatedControl = null;
-            this.layoutControlItem31.Bounds = new System.Drawing.Rectangle(-67, 347, 258, 26);
-            this.layoutControlItem31.ControlVerticalAlignment = Telerik.WinControls.UI.RadVerticalAlignment.Center;
-            this.layoutControlItem31.Name = "layoutControlItem31";
-            this.layoutControlItem31.Text = "";
-            // 
-            // layoutControlItem32
-            // 
-            this.layoutControlItem32.AssociatedControl = null;
-            this.layoutControlItem32.Bounds = new System.Drawing.Rectangle(-67, 373, 258, 26);
-            this.layoutControlItem32.ControlVerticalAlignment = Telerik.WinControls.UI.RadVerticalAlignment.Center;
-            this.layoutControlItem32.Name = "layoutControlItem32";
-            this.layoutControlItem32.Text = "";
-            // 
-            // layoutControlItem33
-            // 
-            this.layoutControlItem33.AssociatedControl = null;
-            this.layoutControlItem33.Bounds = new System.Drawing.Rectangle(-67, 399, 258, 26);
-            this.layoutControlItem33.ControlVerticalAlignment = Telerik.WinControls.UI.RadVerticalAlignment.Center;
-            this.layoutControlItem33.Name = "layoutControlItem33";
-            this.layoutControlItem33.Text = "";
-            // 
-            // layoutControlItem34
-            // 
-            this.layoutControlItem34.AssociatedControl = null;
-            this.layoutControlItem34.Bounds = new System.Drawing.Rectangle(112, 46, 79, 26);
-            this.layoutControlItem34.ControlVerticalAlignment = Telerik.WinControls.UI.RadVerticalAlignment.Center;
-            this.layoutControlItem34.Name = "layoutControlItem34";
-            this.layoutControlItem34.Text = "";
-            // 
-            // layoutControlItem35
-            // 
-            this.layoutControlItem35.AssociatedControl = null;
-            this.layoutControlItem35.Bounds = new System.Drawing.Rectangle(3, 3, 56, 26);
-            this.layoutControlItem35.ControlVerticalAlignment = Telerik.WinControls.UI.RadVerticalAlignment.Center;
-            this.layoutControlItem35.Name = "layoutControlItem35";
-            this.layoutControlItem35.Text = "";
-            // 
             // radToastNotificationManager1
             // 
             radToastNotification1.BindingData = null;
@@ -2234,47 +1890,6 @@
             this.MenuDeleteAttachment.Name = "MenuDeleteAttachment";
             this.MenuDeleteAttachment.RightToLeft = true;
             this.MenuDeleteAttachment.Text = "حذف";
-            // 
-            // layoutControlItem48
-            // 
-            this.layoutControlItem48.AssociatedControl = this.radLabel14;
-            this.layoutControlItem48.Bounds = new System.Drawing.Rectangle(120, 251, 121, 60);
-            this.layoutControlItem48.DisabledTextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.layoutControlItem48.Name = "layoutControlItem48";
-            this.layoutControlItem48.Text = "layoutControlItem47";
-            this.layoutControlItem48.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.layoutControlItem48.UseCompatibleTextRendering = false;
-            // 
-            // layoutControlItem51
-            // 
-            this.layoutControlItem51.AssociatedControl = this.radLabel16;
-            this.layoutControlItem51.Bounds = new System.Drawing.Rectangle(120, 67, 121, 65);
-            this.layoutControlItem51.DisabledTextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.layoutControlItem51.Name = "layoutControlItem51";
-            this.layoutControlItem51.Text = "layoutControlItem50";
-            this.layoutControlItem51.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.layoutControlItem51.UseCompatibleTextRendering = false;
-            // 
-            // layoutControlItem36
-            // 
-            this.layoutControlItem36.AssociatedControl = null;
-            this.layoutControlItem36.Bounds = new System.Drawing.Rectangle(0, 0, 372, 321);
-            this.layoutControlItem36.ControlVerticalAlignment = Telerik.WinControls.UI.RadVerticalAlignment.Center;
-            this.layoutControlItem36.DisabledTextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.layoutControlItem36.Name = "layoutControlItem36";
-            this.layoutControlItem36.Text = "layoutControlItem36";
-            this.layoutControlItem36.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.layoutControlItem36.UseCompatibleTextRendering = false;
-            // 
-            // layoutControlItem41
-            // 
-            this.layoutControlItem41.AssociatedControl = null;
-            this.layoutControlItem41.Bounds = new System.Drawing.Rectangle(176, 0, 196, 321);
-            this.layoutControlItem41.DisabledTextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.layoutControlItem41.Name = "layoutControlItem41";
-            this.layoutControlItem41.Text = "layoutControlItem41";
-            this.layoutControlItem41.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.layoutControlItem41.UseCompatibleTextRendering = false;
             // 
             // AlertTimer
             // 
@@ -2370,47 +1985,12 @@
 
         #endregion
         private Telerik.WinControls.Themes.MaterialTheme materialTheme1;
-        private Telerik.WinControls.UI.DataLayoutControlItem dataLayoutControlItem36;
-        private Telerik.WinControls.UI.DataLayoutControlItem dataLayoutControlItem1;
-        private Telerik.WinControls.UI.DataLayoutControlItem dataLayoutControlItem4;
         private Telerik.WinControls.UI.RadPageView radPageView1;
         private Telerik.WinControls.UI.RadPageViewPage PageAttachments;
         private Telerik.WinControls.UI.RadGridView DataGridAttachments;
         private Telerik.WinControls.UI.RadPageViewPage PagePricingLog;
         private Telerik.WinControls.UI.RadGridView DataGridPriceLog;
         private Telerik.WinControls.UI.RadPageViewPage PageHome;
-        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem1;
-        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem5;
-        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem6;
-        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem7;
-        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem8;
-        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem9;
-        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem10;
-        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem11;
-        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem12;
-        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem13;
-        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem14;
-        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem15;
-        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem16;
-        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem17;
-        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem18;
-        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem19;
-        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem20;
-        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem21;
-        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem22;
-        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem23;
-        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem24;
-        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem25;
-        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem26;
-        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem27;
-        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem28;
-        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem29;
-        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem30;
-        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem31;
-        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem32;
-        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem33;
-        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem34;
-        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem35;
         private Telerik.WinControls.UI.CommandBarRowElement commandBarRowElement1;
         private Telerik.WinControls.UI.CommandBarStripElement commandBarStripElement1;
         private Telerik.WinControls.UI.CommandBarButton BtnFirst;
@@ -2443,7 +2023,6 @@
         private Telerik.WinControls.UI.RadTextBox Txtreservereason;
         private Telerik.WinControls.UI.RadLabel radLabel19;
         private Telerik.WinControls.UI.RadCheckBox Chkisbuildingfee;
-        //private Telerik.WinControls.UI.RadSpinEditor TxtdiscountfeeVal;
         private Telerik.WinControls.UI.RadLabel radLabel23;
         private Telerik.WinControls.UI.CommandBarButton BtnEdit;
         private Telerik.WinControls.UI.RadTextBox Txtwest;
@@ -2457,50 +2036,20 @@
         private Telerik.WinControls.UI.RadSpinEditor Txtvat;
         private Telerik.WinControls.UI.RadMultiColumnComboBox CmbPlanGuid;
         private Telerik.WinControls.UI.RadLabel radLabel8;
-        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement4;
-        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement1;
-        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement3;
-        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement2;
-        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement5;
-        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement6;
-        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement7;
-        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement9;
-        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement8;
-        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement10;
-        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement11;
-        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement12;
-        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement13;
         private Telerik.WinControls.UI.CommandBarSeparator commandBarSeparator7;
-        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement14;
-        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement15;
         private Telerik.WinControls.UI.CommandBarButton BtnResfresh;
-        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement17;
-        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement16;
-        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement19;
-        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement18;
-        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement21;
-        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement20;
-        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement22;
         private Telerik.WinControls.UI.RadTextBox radBuildingFeeValue;
         private Telerik.WinControls.UI.RadTextBox radWorkFeeWithVat;
         private Telerik.WinControls.UI.RadTextBox radVatValue;
         private Telerik.WinControls.UI.RadTextBox radWorkFeeValue;
         private Telerik.WinControls.UI.CommandBarButton BtnNew;
         private Telerik.WinControls.UI.CommandBarButton BtnDelete;
-        ////private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement23;
-        ////private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement24;
         private Telerik.WinControls.UI.CommandBarDropDownButton BtnImport;
         private Telerik.WinControls.UI.RadMenuItem BtnImportExcel;
         private Telerik.WinControls.UI.CommandBarDropDownButton BtnPrint;
-        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement25;
-        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement26;
         private Telerik.WinControls.UI.RadMenuItem BtnSentToPrinter;
         private Telerik.WinControls.UI.RadMenuItem BtnPreview;
-        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement27;
         private Telerik.WinControls.UI.RadMenuItem BtnDesign;
-        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement28;
-        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement29;
-        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement30;
         private Telerik.WinControls.UI.RadButton BtnScanner;
         private Telerik.WinControls.UI.RadButton BtnAttachment;
         private Telerik.WinControls.UI.RadToastNotificationManager radToastNotificationManager1;
@@ -2511,21 +2060,14 @@
         private Telerik.WinControls.UI.RadMenuItem MenuExtractAttachement;
         private Telerik.WinControls.UI.RadMenuSeparatorItem radMenuSeparatorItem1;
         private Telerik.WinControls.UI.RadMenuItem MenuDeleteAttachment;
-        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement31;
-        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement32;
-        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement33;
         private Telerik.WinControls.UI.RadLabel radLabel4;
         private Telerik.WinControls.UI.RadLabel radLabel3;
         private Telerik.WinControls.UI.RadLabel radLabel9;
         private Telerik.WinControls.UI.RadCallout radCallout1;
         private Telerik.WinControls.UI.RadLabel radLabel12;
         private Telerik.WinControls.UI.CommandBarSeparator commandBarSeparator5;
-        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement35;
-        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement34;
         private Telerik.WinControls.UI.CommandBarDropDownButton BtnExport;
         private Telerik.WinControls.UI.RadMenuItem BtnEcelExport;
-        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement37;
-        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement36;
         private Telerik.WinControls.UI.RadMenuItem BtnPdfExport;
         private Telerik.WinControls.UI.RadMenuItem BtnEmailExport;
         private Telerik.WinControls.UI.RadTextBox radAmountBuildingfee;
@@ -2533,13 +2075,9 @@
         private Telerik.WinControls.UI.RadTextBox radlandfee;
         private Telerik.WinControls.UI.RadTextBox radTextBox1;
         private Telerik.WinControls.UI.RadLabel radLabel14;
-        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem48;
         private Telerik.WinControls.UI.RadLabel radLabel16;
         private Telerik.WinControls.UI.RadLabel radLabel17;
-        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem51;
         private Telerik.WinControls.UI.RadPanel radPanel1;
-        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem36;
-        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem41;
         private Telerik.WinControls.UI.RadLabel radLabel5;
         private Telerik.WinControls.UI.RadLabel Txtstatus;
         private Telerik.WinControls.UI.RadLabel Txtnumber;
@@ -2555,14 +2093,6 @@
         private Telerik.WinControls.UI.RadMenuItem BtnWordExport;
         private Telerik.WinControls.UI.RadMenuItem BtnPriceOffer;
         private System.Windows.Forms.Timer AlertTimer;
-        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement38;
-        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement39;
-        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement40;
-        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement41;
-        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement42;
-        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement43;
         private Telerik.WinControls.UI.RadMenuItem BtnExportExcelData;
-        private Telerik.WinControls.UI.RadScrollablePanelContainer PanelContainer;
-        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement44;
     }
 }
