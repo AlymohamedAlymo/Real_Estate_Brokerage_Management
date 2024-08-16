@@ -90,26 +90,26 @@ namespace DoctorERP.CustomElements
             {
                 if (Land.number.ToString().Length == 1)
                 {
-                    LandID.Padding = new System.Windows.Forms.Padding(0, 4, -(Land.number.ToString().Length - 1), 0);
-                    LandID.Margin = new System.Windows.Forms.Padding(0, 4, -(Land.number.ToString().Length - 1), 0);
+                    LandID.Padding = new System.Windows.Forms.Padding(0, 5, -(Land.number.ToString().Length - 2), 0);
+                    LandID.Margin = new System.Windows.Forms.Padding(0, 5, -(Land.number.ToString().Length - 2), 0);
 
                 }
                 else if (Land.number.ToString().Length == 2)
                 {
-                    LandID.Padding = new System.Windows.Forms.Padding(0, 4, -(Land.number.ToString().Length), 0);
-                    LandID.Margin = new System.Windows.Forms.Padding(0, 4, -(Land.number.ToString().Length), 0);
+                    LandID.Padding = new System.Windows.Forms.Padding(0, 5, -(Land.number.ToString().Length - 1), 0);
+                    LandID.Margin = new System.Windows.Forms.Padding(0, 5, -(Land.number.ToString().Length - 1), 0);
 
                 }
                 else if (Land.number.ToString().Length == 3)
                 {
-                    LandID.Padding = new System.Windows.Forms.Padding(0, 4, -(Land.number.ToString().Length + 1), 0);
-                    LandID.Margin = new System.Windows.Forms.Padding(0, 4, -(Land.number.ToString().Length + 1), 0);
+                    LandID.Padding = new System.Windows.Forms.Padding(0, 5, -(Land.number.ToString().Length), 0);
+                    LandID.Margin = new System.Windows.Forms.Padding(0, 5, -(Land.number.ToString().Length), 0);
 
                 }
                 else
                 {
-                    LandID.Padding = new System.Windows.Forms.Padding(0, 4, -(Land.number.ToString().Length + 2), 0);
-                    LandID.Margin = new System.Windows.Forms.Padding(0, 4, -(Land.number.ToString().Length + 2), 0);
+                    LandID.Padding = new System.Windows.Forms.Padding(0, 5, -(Land.number.ToString().Length + 1), 0);
+                    LandID.Margin = new System.Windows.Forms.Padding(0, 5, -(Land.number.ToString().Length + 1), 0);
 
                 }
 

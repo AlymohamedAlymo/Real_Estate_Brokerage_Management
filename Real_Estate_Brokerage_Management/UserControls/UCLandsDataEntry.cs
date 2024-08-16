@@ -84,6 +84,33 @@ namespace DoctorERP.User_Controls
             radTotalText.TextAlignment = ContentAlignment.TopLeft;
             radDesktopAlert1.Popup.RootElement.RightToLeft = true;
 
+
+            List<CommandBarButton> radBarButton = new List<CommandBarButton> {  BtnResfresh, BtnDelete, BtnNew, BtnEdit, BtnExit };
+            foreach(CommandBarButton control in radBarButton)
+            {
+                RadOffice2007ScreenTipElement screenTip = new RadOffice2007ScreenTipElement();
+                screenTip.CaptionLabel.Text = control.Text;
+                screenTip.MainTextLabel.Text = control.Tag.ToString();
+                control.ScreenTip = screenTip;
+            }
+            List<CommandBarDropDownButton> radDropDownButton = new List<CommandBarDropDownButton> { BtnImport, BtnExport, BtnPrint, BtnOperation };
+            foreach (CommandBarDropDownButton control in radDropDownButton)
+            {
+                RadOffice2007ScreenTipElement screenTip = new RadOffice2007ScreenTipElement();
+                screenTip.CaptionLabel.Text = control.Text;
+                screenTip.MainTextLabel.Text = control.Tag.ToString();
+                control.ScreenTip = screenTip;
+            }
+            List<RadMenuItem> radMenuItem = new List<RadMenuItem> { BtnImportExcel, BtnExportExcelData, BtnEcelExport, BtnEmailExport, BtnPdfExport, BtnWordExport, BtnSentToPrinter, BtnDesign, BtnPreview, BtnContract, BtnSaleOrder,BtnReservation, BtnPriceOffer };
+            foreach (RadMenuItem control in radMenuItem)
+            {
+                RadOffice2007ScreenTipElement screenTip = new RadOffice2007ScreenTipElement();
+                screenTip.CaptionLabel.Text = control.Text;
+                screenTip.MainTextLabel.Text = control.Tag.ToString();
+                control.ScreenTip = screenTip;
+            }
+
+
             SetData();
             IsLoad = false;
         }
@@ -1453,6 +1480,51 @@ namespace DoctorERP.User_Controls
         }
 
         private void Txtwestdesc_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Chkisbuildingfee_ToggleStateChanged(object sender, StateChangedEventArgs args)
+        {
+
+        }
+
+        private void Chkisworkfee_ToggleStateChanged(object sender, StateChangedEventArgs args)
+        {
+
+        }
+
+        private void Chkisvat_ToggleStateChanged(object sender, StateChangedEventArgs args)
+        {
+
+        }
+
+        private void Txtreservereason_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Txtlastaction_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radScrollablePanel2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Txtstatus_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnOperation_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnImport_Click_1(object sender, EventArgs e)
         {
 
         }

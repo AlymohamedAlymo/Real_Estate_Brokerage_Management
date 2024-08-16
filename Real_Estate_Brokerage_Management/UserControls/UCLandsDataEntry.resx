@@ -153,7 +153,7 @@
   <metadata name="radToastNotificationManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>143, 22</value>
   </metadata>
-  <data name="radToastNotification13.Xml" xml:space="preserve">
+  <data name="radToastNotification28.Xml" xml:space="preserve">
     <value>&lt;toast launch="readMoreArg"&gt;
   &lt;visual&gt;
     &lt;binding template="ToastGeneric"&gt;
@@ -164,7 +164,7 @@
   &lt;/visual&gt;
 &lt;/toast&gt;</value>
   </data>
-  <data name="radToastNotification14.Xml" xml:space="preserve">
+  <data name="radToastNotification29.Xml" xml:space="preserve">
     <value>&lt;toast&gt;
   &lt;visual&gt;
     &lt;binding template="ToastImageAndText04"&gt;

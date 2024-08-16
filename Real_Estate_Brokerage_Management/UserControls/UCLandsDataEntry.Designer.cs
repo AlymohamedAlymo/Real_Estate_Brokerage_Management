@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition13 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition14 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition15 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition28 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition29 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition30 = new Telerik.WinControls.UI.TableViewDefinition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCLandsDataEntry));
-            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification13 = new Telerik.RadToastNotificationManager.RadToastNotification();
-            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification14 = new Telerik.RadToastNotificationManager.RadToastNotification();
-            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification15 = new Telerik.RadToastNotificationManager.RadToastNotification();
+            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification28 = new Telerik.RadToastNotificationManager.RadToastNotification();
+            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification29 = new Telerik.RadToastNotificationManager.RadToastNotification();
+            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification30 = new Telerik.RadToastNotificationManager.RadToastNotification();
             this.materialTheme1 = new Telerik.WinControls.Themes.MaterialTheme();
             this.Cmblandtype = new Telerik.WinControls.UI.RadTextBox();
             this.Txtblocknumber = new Telerik.WinControls.UI.RadTextBox();
@@ -130,6 +130,8 @@
             this.BtnExport = new Telerik.WinControls.UI.CommandBarDropDownButton();
             this.BtnEcelExport = new Telerik.WinControls.UI.RadMenuItem();
             this.radOffice2007ScreenTipElement37 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
+            this.BtnExportExcelData = new Telerik.WinControls.UI.RadMenuItem();
+            this.radOffice2007ScreenTipElement44 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
             this.BtnPdfExport = new Telerik.WinControls.UI.RadMenuItem();
             this.radOffice2007ScreenTipElement41 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
             this.BtnWordExport = new Telerik.WinControls.UI.RadMenuItem();
@@ -160,7 +162,7 @@
             this.radOffice2007ScreenTipElement23 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
             this.BtnEdit = new Telerik.WinControls.UI.CommandBarButton();
             this.radOffice2007ScreenTipElement12 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
-            this.Exit = new Telerik.WinControls.UI.CommandBarButton();
+            this.BtnExit = new Telerik.WinControls.UI.CommandBarButton();
             this.radOffice2007ScreenTipElement38 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
             this.radOffice2007ScreenTipElement10 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
             this.radOffice2007ScreenTipElement15 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
@@ -233,8 +235,9 @@
             this.layoutControlItem41 = new Telerik.WinControls.UI.LayoutControlItem();
             this.AlertTimer = new System.Windows.Forms.Timer(this.components);
             this.radOffice2007ScreenTipElement40 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
-            this.BtnExportExcelData = new Telerik.WinControls.UI.RadMenuItem();
-            this.radOffice2007ScreenTipElement44 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
+            this.radLayoutControl1 = new Telerik.WinControls.UI.RadLayoutControl();
+            this.layoutControlItem2 = new Telerik.WinControls.UI.LayoutControlItem();
+            this.layoutControlItem3 = new Telerik.WinControls.UI.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.Cmblandtype)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txtblocknumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txtarea)).BeginInit();
@@ -309,6 +312,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.radScrollablePanel2)).BeginInit();
             this.radScrollablePanel2.PanelContainer.SuspendLayout();
             this.radScrollablePanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radLayoutControl1)).BeginInit();
+            this.radLayoutControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // Cmblandtype
@@ -439,7 +444,7 @@
             // 
             // Txtnote
             // 
-            this.Txtnote.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.Txtnote.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Txtnote.AutoScroll = true;
             this.Txtnote.EmbeddedLabelText = "الملاحظات ";
@@ -571,6 +576,7 @@
             this.Txtreservereason.Size = new System.Drawing.Size(262, 59);
             this.Txtreservereason.TabIndex = 24;
             this.Txtreservereason.ThemeName = "Material";
+            this.Txtreservereason.TextChanged += new System.EventHandler(this.Txtreservereason_TextChanged);
             // 
             // Txtnorth
             // 
@@ -726,7 +732,7 @@
             this.CmbPlanGuid.EditorControl.MasterTemplate.EnableFiltering = true;
             this.CmbPlanGuid.EditorControl.MasterTemplate.EnableGrouping = false;
             this.CmbPlanGuid.EditorControl.MasterTemplate.ShowFilteringRow = false;
-            this.CmbPlanGuid.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition13;
+            this.CmbPlanGuid.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition28;
             this.CmbPlanGuid.EditorControl.Name = "NestedRadGridView";
             this.CmbPlanGuid.EditorControl.ReadOnly = true;
             this.CmbPlanGuid.EditorControl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -886,6 +892,7 @@
             this.Txtlastaction.Size = new System.Drawing.Size(262, 123);
             this.Txtlastaction.TabIndex = 194;
             this.Txtlastaction.ThemeName = "Material";
+            this.Txtlastaction.TextChanged += new System.EventHandler(this.Txtlastaction_TextChanged);
             // 
             // radLabel3
             // 
@@ -1028,12 +1035,11 @@
             this.radPageView1.Controls.Add(this.PageHome);
             this.radPageView1.Controls.Add(this.PageAttachments);
             this.radPageView1.Controls.Add(this.PagePricingLog);
-            this.radPageView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radPageView1.Location = new System.Drawing.Point(0, 48);
+            this.radPageView1.Location = new System.Drawing.Point(3, 49);
             this.radPageView1.Name = "radPageView1";
             this.radPageView1.PageBackColor = System.Drawing.SystemColors.Control;
             this.radPageView1.SelectedPage = this.PageHome;
-            this.radPageView1.Size = new System.Drawing.Size(1233, 665);
+            this.radPageView1.Size = new System.Drawing.Size(1227, 661);
             this.radPageView1.TabIndex = 72;
             this.radPageView1.ThemeName = "Material";
             this.radPageView1.ViewMode = Telerik.WinControls.UI.PageViewMode.OfficeNavigationBar;
@@ -1051,7 +1057,7 @@
             this.PageHome.ItemSize = new System.Drawing.SizeF(71F, 55F);
             this.PageHome.Location = new System.Drawing.Point(6, 6);
             this.PageHome.Name = "PageHome";
-            this.PageHome.Size = new System.Drawing.Size(1221, 597);
+            this.PageHome.Size = new System.Drawing.Size(1215, 593);
             this.PageHome.Text = "عام";
             this.PageHome.Title = "البيانات العامة لبطاقة الأرض";
             // 
@@ -1093,7 +1099,7 @@
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainPanel.Location = new System.Drawing.Point(0, 0);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(1221, 597);
+            this.MainPanel.Size = new System.Drawing.Size(1215, 593);
             this.MainPanel.TabIndex = 175;
             // 
             // Txtstatus
@@ -1115,6 +1121,7 @@
             this.Txtstatus.TextWrap = false;
             this.Txtstatus.ThemeName = "Material";
             this.Txtstatus.TextChanged += new System.EventHandler(this.Txtstatus_TextChanged);
+            this.Txtstatus.Click += new System.EventHandler(this.Txtstatus_Click);
             // 
             // Txtnumber
             // 
@@ -1263,6 +1270,7 @@
             this.Chkisvat.Text = "تفعيل القيمة المضافة لعمولة السعي";
             this.Chkisvat.TextWrap = true;
             this.Chkisvat.ThemeName = "Material";
+            this.Chkisvat.ToggleStateChanged += new Telerik.WinControls.UI.StateChangedEventHandler(this.Chkisvat_ToggleStateChanged);
             this.Chkisvat.CheckStateChanged += new System.EventHandler(this.Chkisvat_CheckStateChanged);
             // 
             // radLabel8
@@ -1297,6 +1305,7 @@
             this.Chkisbuildingfee.Text = "تفعيل ضريبة التصرفات العقارية";
             this.Chkisbuildingfee.TextWrap = true;
             this.Chkisbuildingfee.ThemeName = "Material";
+            this.Chkisbuildingfee.ToggleStateChanged += new Telerik.WinControls.UI.StateChangedEventHandler(this.Chkisbuildingfee_ToggleStateChanged);
             this.Chkisbuildingfee.CheckStateChanged += new System.EventHandler(this.Chkisvat_CheckStateChanged);
             // 
             // radCheckBox13
@@ -1305,7 +1314,7 @@
             this.radCheckBox13.Cursor = System.Windows.Forms.Cursors.Hand;
             this.radCheckBox13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.radCheckBox13.ImageAlignment = System.Drawing.ContentAlignment.MiddleRight;
-            this.radCheckBox13.Location = new System.Drawing.Point(1583, 162);
+            this.radCheckBox13.Location = new System.Drawing.Point(1577, 162);
             this.radCheckBox13.Name = "radCheckBox13";
             this.radCheckBox13.Size = new System.Drawing.Size(183, 19);
             this.radCheckBox13.TabIndex = 135;
@@ -1329,6 +1338,7 @@
             this.Chkisworkfee.Text = "تفعيل عمولة السعي";
             this.Chkisworkfee.TextWrap = true;
             this.Chkisworkfee.ThemeName = "Material";
+            this.Chkisworkfee.ToggleStateChanged += new Telerik.WinControls.UI.StateChangedEventHandler(this.Chkisworkfee_ToggleStateChanged);
             this.Chkisworkfee.CheckStateChanged += new System.EventHandler(this.Chkisvat_CheckStateChanged);
             // 
             // radCheckBox3
@@ -1337,7 +1347,7 @@
             this.radCheckBox3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.radCheckBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.radCheckBox3.ImageAlignment = System.Drawing.ContentAlignment.MiddleRight;
-            this.radCheckBox3.Location = new System.Drawing.Point(1583, 245);
+            this.radCheckBox3.Location = new System.Drawing.Point(1577, 245);
             this.radCheckBox3.Name = "radCheckBox3";
             this.radCheckBox3.Size = new System.Drawing.Size(180, 19);
             this.radCheckBox3.TabIndex = 144;
@@ -1347,7 +1357,7 @@
             // 
             // radTotalText
             // 
-            this.radTotalText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.radTotalText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.radTotalText.AutoScroll = true;
             this.radTotalText.AutoSize = false;
             this.radTotalText.BackColor = System.Drawing.Color.White;
@@ -1432,7 +1442,7 @@
             this.DataGridAttachments.MasterTemplate.AllowEditRow = false;
             this.DataGridAttachments.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
             this.DataGridAttachments.MasterTemplate.EnableGrouping = false;
-            this.DataGridAttachments.MasterTemplate.ViewDefinition = tableViewDefinition14;
+            this.DataGridAttachments.MasterTemplate.ViewDefinition = tableViewDefinition29;
             this.DataGridAttachments.Name = "DataGridAttachments";
             this.DataGridAttachments.ShowGroupPanel = false;
             this.DataGridAttachments.ShowGroupPanelScrollbars = false;
@@ -1471,7 +1481,7 @@
             this.DataGridPriceLog.MasterTemplate.AllowRowHeaderContextMenu = false;
             this.DataGridPriceLog.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
             this.DataGridPriceLog.MasterTemplate.EnableGrouping = false;
-            this.DataGridPriceLog.MasterTemplate.ViewDefinition = tableViewDefinition15;
+            this.DataGridPriceLog.MasterTemplate.ViewDefinition = tableViewDefinition30;
             this.DataGridPriceLog.Name = "DataGridPriceLog";
             this.DataGridPriceLog.ShowGroupPanel = false;
             this.DataGridPriceLog.ShowGroupPanelScrollbars = false;
@@ -1483,12 +1493,12 @@
             // BindingNavigatorLands
             // 
             this.BindingNavigatorLands.AutoHandleAddNew = false;
-            this.BindingNavigatorLands.Dock = System.Windows.Forms.DockStyle.Top;
-            this.BindingNavigatorLands.Location = new System.Drawing.Point(0, 0);
+            this.BindingNavigatorLands.AutoScroll = true;
+            this.BindingNavigatorLands.Location = new System.Drawing.Point(3, -1);
             this.BindingNavigatorLands.Name = "BindingNavigatorLands";
             this.BindingNavigatorLands.Rows.AddRange(new Telerik.WinControls.UI.CommandBarRowElement[] {
             this.commandBarRowElement1});
-            this.BindingNavigatorLands.Size = new System.Drawing.Size(1233, 48);
+            this.BindingNavigatorLands.Size = new System.Drawing.Size(1227, 48);
             this.BindingNavigatorLands.TabIndex = 68;
             this.BindingNavigatorLands.ThemeName = "Material";
             // 
@@ -1623,7 +1633,7 @@
             this.commandBarSeparator7,
             this.BtnNew,
             this.BtnEdit,
-            this.Exit});
+            this.BtnExit});
             this.commandBarStripElement2.MinSize = new System.Drawing.Size(0, 0);
             // 
             // 
@@ -1702,6 +1712,7 @@
             this.BtnResfresh.Image = null;
             this.BtnResfresh.Name = "BtnResfresh";
             this.BtnResfresh.ScreenTip = this.radOffice2007ScreenTipElement17;
+            this.BtnResfresh.Tag = "تحديث بيانات الصفحة";
             this.BtnResfresh.Text = "تحديث";
             this.BtnResfresh.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.BtnResfresh.Click += new System.EventHandler(this.BtnResfresh_Click);
@@ -1713,12 +1724,6 @@
             this.radOffice2007ScreenTipElement17.Name = "radOffice2007ScreenTipElement17";
             this.radOffice2007ScreenTipElement17.TemplateType = null;
             this.radOffice2007ScreenTipElement17.TipSize = new System.Drawing.Size(0, 0);
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement17.GetChildAt(2).GetChildAt(0))).TextAlignment = System.Drawing.ContentAlignment.TopRight;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement17.GetChildAt(2).GetChildAt(0))).Text = "تحديث البيانات";
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement17.GetChildAt(2).GetChildAt(0))).RightToLeft = true;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement17.GetChildAt(2).GetChildAt(1))).TextAlignment = System.Drawing.ContentAlignment.TopRight;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement17.GetChildAt(2).GetChildAt(1))).Text = "إضغط لتحديث بيانات الصفحة";
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement17.GetChildAt(2).GetChildAt(1))).RightToLeft = true;
             // 
             // commandBarSeparator5
             // 
@@ -1743,8 +1748,10 @@
             this.BtnImportExcel});
             this.BtnImport.Name = "BtnImport";
             this.BtnImport.ScreenTip = this.radOffice2007ScreenTipElement26;
+            this.BtnImport.Tag = "إستيراد بيانات البطاقة";
             this.BtnImport.Text = "إستيراد";
             this.BtnImport.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.BtnImport.Click += new System.EventHandler(this.BtnImport_Click_1);
             // 
             // BtnImportExcel
             // 
@@ -1754,7 +1761,8 @@
             this.BtnImportExcel.Name = "BtnImportExcel";
             this.BtnImportExcel.RightToLeft = true;
             this.BtnImportExcel.ScreenTip = this.radOffice2007ScreenTipElement25;
-            this.BtnImportExcel.Text = "إستراد من إكسيل ";
+            this.BtnImportExcel.Tag = "إستيراد بيانات البطاقة من ملف إكسيل";
+            this.BtnImportExcel.Text = "إستراد من إكسيل";
             this.BtnImportExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             // 
             // radOffice2007ScreenTipElement25
@@ -1764,8 +1772,6 @@
             this.radOffice2007ScreenTipElement25.Name = "radOffice2007ScreenTipElement25";
             this.radOffice2007ScreenTipElement25.TemplateType = null;
             this.radOffice2007ScreenTipElement25.TipSize = new System.Drawing.Size(0, 0);
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement25.GetChildAt(2).GetChildAt(0))).Text = "إستيراد من إكسيل";
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement25.GetChildAt(2).GetChildAt(1))).Text = "إستيراد بيانات البطاقة\r\n من ملف إكسيل";
             // 
             // radOffice2007ScreenTipElement26
             // 
@@ -1774,12 +1780,6 @@
             this.radOffice2007ScreenTipElement26.Name = "radOffice2007ScreenTipElement26";
             this.radOffice2007ScreenTipElement26.TemplateType = null;
             this.radOffice2007ScreenTipElement26.TipSize = new System.Drawing.Size(0, 0);
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement26.GetChildAt(2).GetChildAt(0))).TextAlignment = System.Drawing.ContentAlignment.TopRight;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement26.GetChildAt(2).GetChildAt(0))).Text = "إستيراد";
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement26.GetChildAt(2).GetChildAt(0))).RightToLeft = true;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement26.GetChildAt(2).GetChildAt(1))).TextAlignment = System.Drawing.ContentAlignment.TopRight;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement26.GetChildAt(2).GetChildAt(1))).Text = "إستيراد بيانات البطاقة";
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement26.GetChildAt(2).GetChildAt(1))).RightToLeft = true;
             // 
             // BtnExport
             // 
@@ -1796,6 +1796,7 @@
             this.BtnEmailExport});
             this.BtnExport.Name = "BtnExport";
             this.BtnExport.ScreenTip = this.radOffice2007ScreenTipElement36;
+            this.BtnExport.Tag = "تصدير بيانات البطاقة";
             this.BtnExport.Text = "تصدير";
             this.BtnExport.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             // 
@@ -1806,7 +1807,8 @@
             this.BtnEcelExport.EnableRippleAnimation = true;
             this.BtnEcelExport.Name = "BtnEcelExport";
             this.BtnEcelExport.ScreenTip = this.radOffice2007ScreenTipElement37;
-            this.BtnEcelExport.Text = "تصدير ملف excel طباعة";
+            this.BtnEcelExport.Tag = "تصدير بيانات البطاقة الي ملف إكسيل علي طريقة الطباعة";
+            this.BtnEcelExport.Text = "تصدير ملف إكسيل طباعة";
             // 
             // radOffice2007ScreenTipElement37
             // 
@@ -1815,17 +1817,27 @@
             this.radOffice2007ScreenTipElement37.Name = "radOffice2007ScreenTipElement37";
             this.radOffice2007ScreenTipElement37.TemplateType = null;
             this.radOffice2007ScreenTipElement37.TipSize = new System.Drawing.Size(0, 0);
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement37.GetChildAt(2).GetChildAt(0))).TextAlignment = System.Drawing.ContentAlignment.TopRight;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement37.GetChildAt(2).GetChildAt(0))).Text = "تصدير الي ملف excel";
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement37.GetChildAt(2).GetChildAt(0))).RightToLeft = true;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement37.GetChildAt(2).GetChildAt(1))).TextAlignment = System.Drawing.ContentAlignment.TopRight;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement37.GetChildAt(2).GetChildAt(1))).Text = "تصدير الطباعة الي ملف excel";
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement37.GetChildAt(2).GetChildAt(1))).RightToLeft = true;
+            // 
+            // BtnExportExcelData
+            // 
+            this.BtnExportExcelData.Name = "BtnExportExcelData";
+            this.BtnExportExcelData.ScreenTip = this.radOffice2007ScreenTipElement44;
+            this.BtnExportExcelData.Tag = "تصدير بيانات البطاقة الي ملف إكسيل علي طريقة البيانات";
+            this.BtnExportExcelData.Text = "تصدير ملف إكسيل بيانات";
+            // 
+            // radOffice2007ScreenTipElement44
+            // 
+            this.radOffice2007ScreenTipElement44.Description = "Override this property and provide custom screentip template description in Desig" +
+    "nTime.";
+            this.radOffice2007ScreenTipElement44.Name = "radOffice2007ScreenTipElement44";
+            this.radOffice2007ScreenTipElement44.TemplateType = null;
+            this.radOffice2007ScreenTipElement44.TipSize = new System.Drawing.Size(0, 0);
             // 
             // BtnPdfExport
             // 
             this.BtnPdfExport.Name = "BtnPdfExport";
             this.BtnPdfExport.ScreenTip = this.radOffice2007ScreenTipElement41;
+            this.BtnPdfExport.Tag = "تصدير بيانات البطاقة الي ملف pdf";
             this.BtnPdfExport.Text = "تصدير pdf";
             // 
             // radOffice2007ScreenTipElement41
@@ -1835,17 +1847,12 @@
             this.radOffice2007ScreenTipElement41.Name = "radOffice2007ScreenTipElement41";
             this.radOffice2007ScreenTipElement41.TemplateType = null;
             this.radOffice2007ScreenTipElement41.TipSize = new System.Drawing.Size(0, 0);
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement41.GetChildAt(2).GetChildAt(0))).TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement41.GetChildAt(2).GetChildAt(0))).Text = "تصدير ملف pdf";
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement41.GetChildAt(2).GetChildAt(0))).RightToLeft = false;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement41.GetChildAt(2).GetChildAt(1))).TextAlignment = System.Drawing.ContentAlignment.TopRight;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement41.GetChildAt(2).GetChildAt(1))).Text = "تصدير بيانات البطاقة الي ملف pdf";
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement41.GetChildAt(2).GetChildAt(1))).RightToLeft = true;
             // 
             // BtnWordExport
             // 
             this.BtnWordExport.Name = "BtnWordExport";
             this.BtnWordExport.ScreenTip = this.radOffice2007ScreenTipElement42;
+            this.BtnWordExport.Tag = "تصدير بيانات البطاقة الي ملف word";
             this.BtnWordExport.Text = "تصدير ملف word";
             // 
             // radOffice2007ScreenTipElement42
@@ -1855,18 +1862,13 @@
             this.radOffice2007ScreenTipElement42.Name = "radOffice2007ScreenTipElement42";
             this.radOffice2007ScreenTipElement42.TemplateType = null;
             this.radOffice2007ScreenTipElement42.TipSize = new System.Drawing.Size(0, 0);
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement42.GetChildAt(2).GetChildAt(0))).TextAlignment = System.Drawing.ContentAlignment.TopRight;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement42.GetChildAt(2).GetChildAt(0))).Text = "تصدير ملف word";
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement42.GetChildAt(2).GetChildAt(0))).RightToLeft = true;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement42.GetChildAt(2).GetChildAt(1))).TextAlignment = System.Drawing.ContentAlignment.TopRight;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement42.GetChildAt(2).GetChildAt(1))).Text = "تصدير بيانات البطاقة الي ملف word";
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement42.GetChildAt(2).GetChildAt(1))).RightToLeft = true;
             // 
             // BtnEmailExport
             // 
             this.BtnEmailExport.Name = "BtnEmailExport";
             this.BtnEmailExport.ScreenTip = this.radOffice2007ScreenTipElement43;
-            this.BtnEmailExport.Text = "إرسال email";
+            this.BtnEmailExport.Tag = "تصدير بيانات البطاقة و ارسالها عبر إيميل";
+            this.BtnEmailExport.Text = "إرسال إيميل";
             // 
             // radOffice2007ScreenTipElement43
             // 
@@ -1875,12 +1877,6 @@
             this.radOffice2007ScreenTipElement43.Name = "radOffice2007ScreenTipElement43";
             this.radOffice2007ScreenTipElement43.TemplateType = null;
             this.radOffice2007ScreenTipElement43.TipSize = new System.Drawing.Size(0, 0);
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement43.GetChildAt(2).GetChildAt(0))).TextAlignment = System.Drawing.ContentAlignment.TopRight;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement43.GetChildAt(2).GetChildAt(0))).Text = "إرسال email";
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement43.GetChildAt(2).GetChildAt(0))).RightToLeft = true;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement43.GetChildAt(2).GetChildAt(1))).TextAlignment = System.Drawing.ContentAlignment.TopRight;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement43.GetChildAt(2).GetChildAt(1))).Text = "إرسال بيانات البطاقة عن طريق email";
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement43.GetChildAt(2).GetChildAt(1))).RightToLeft = true;
             // 
             // radOffice2007ScreenTipElement36
             // 
@@ -1889,12 +1885,6 @@
             this.radOffice2007ScreenTipElement36.Name = "radOffice2007ScreenTipElement36";
             this.radOffice2007ScreenTipElement36.TemplateType = null;
             this.radOffice2007ScreenTipElement36.TipSize = new System.Drawing.Size(0, 0);
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement36.GetChildAt(2).GetChildAt(0))).TextAlignment = System.Drawing.ContentAlignment.TopRight;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement36.GetChildAt(2).GetChildAt(0))).Text = "تصدير";
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement36.GetChildAt(2).GetChildAt(0))).RightToLeft = true;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement36.GetChildAt(2).GetChildAt(1))).TextAlignment = System.Drawing.ContentAlignment.TopRight;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement36.GetChildAt(2).GetChildAt(1))).Text = "تصدير بيانات البطاقة";
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement36.GetChildAt(2).GetChildAt(1))).RightToLeft = true;
             // 
             // commandBarSeparator8
             // 
@@ -1918,6 +1908,7 @@
             this.BtnDelete.Image = global::DoctorERP.Properties.Resources.BtnDelete;
             this.BtnDelete.Name = "BtnDelete";
             this.BtnDelete.ScreenTip = this.radOffice2007ScreenTipElement24;
+            this.BtnDelete.Tag = "حذف البطاقة";
             this.BtnDelete.Text = "حذف";
             this.BtnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.BtnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
@@ -1929,12 +1920,6 @@
             this.radOffice2007ScreenTipElement24.Name = "radOffice2007ScreenTipElement24";
             this.radOffice2007ScreenTipElement24.TemplateType = null;
             this.radOffice2007ScreenTipElement24.TipSize = new System.Drawing.Size(0, 0);
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement24.GetChildAt(2).GetChildAt(0))).TextAlignment = System.Drawing.ContentAlignment.TopRight;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement24.GetChildAt(2).GetChildAt(0))).Text = "حذف";
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement24.GetChildAt(2).GetChildAt(0))).RightToLeft = true;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement24.GetChildAt(2).GetChildAt(1))).TextAlignment = System.Drawing.ContentAlignment.TopRight;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement24.GetChildAt(2).GetChildAt(1))).Text = "حذف البطاقة";
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement24.GetChildAt(2).GetChildAt(1))).RightToLeft = true;
             // 
             // commandBarSeparator9
             // 
@@ -1961,6 +1946,7 @@
             this.BtnDesign});
             this.BtnPrint.Name = "BtnPrint";
             this.BtnPrint.ScreenTip = this.radOffice2007ScreenTipElement27;
+            this.BtnPrint.Tag = "طباعة بيانات البطاقة";
             this.BtnPrint.Text = "طباعة";
             this.BtnPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             // 
@@ -1973,6 +1959,7 @@
             this.BtnSentToPrinter.Name = "BtnSentToPrinter";
             this.BtnSentToPrinter.RightToLeft = true;
             this.BtnSentToPrinter.ScreenTip = this.radOffice2007ScreenTipElement28;
+            this.BtnSentToPrinter.Tag = "إرسال بيانات البطاقة الي الطابعة";
             this.BtnSentToPrinter.Text = "إرسال للطابعة";
             this.BtnSentToPrinter.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             // 
@@ -1993,6 +1980,7 @@
             this.BtnPreview.Name = "BtnPreview";
             this.BtnPreview.RightToLeft = true;
             this.BtnPreview.ScreenTip = this.radOffice2007ScreenTipElement29;
+            this.BtnPreview.Tag = "معاينة الطباعة";
             this.BtnPreview.Text = "معاينة";
             this.BtnPreview.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             // 
@@ -2013,6 +2001,7 @@
             this.BtnDesign.Name = "BtnDesign";
             this.BtnDesign.RightToLeft = true;
             this.BtnDesign.ScreenTip = this.radOffice2007ScreenTipElement30;
+            this.BtnDesign.Tag = "تغيير تصميم الطباعة";
             this.BtnDesign.Text = "تصميم";
             this.BtnDesign.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             // 
@@ -2031,12 +2020,6 @@
             this.radOffice2007ScreenTipElement27.Name = "radOffice2007ScreenTipElement27";
             this.radOffice2007ScreenTipElement27.TemplateType = null;
             this.radOffice2007ScreenTipElement27.TipSize = new System.Drawing.Size(0, 0);
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement27.GetChildAt(2).GetChildAt(0))).TextAlignment = System.Drawing.ContentAlignment.TopRight;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement27.GetChildAt(2).GetChildAt(0))).Text = "طباعة";
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement27.GetChildAt(2).GetChildAt(0))).RightToLeft = true;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement27.GetChildAt(2).GetChildAt(1))).TextAlignment = System.Drawing.ContentAlignment.TopRight;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement27.GetChildAt(2).GetChildAt(1))).Text = "طباعة بيانات بطاقة الأرض";
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement27.GetChildAt(2).GetChildAt(1))).RightToLeft = true;
             // 
             // BtnOperation
             // 
@@ -2056,27 +2039,33 @@
             this.BtnPriceOffer});
             this.BtnOperation.Name = "BtnOperation";
             this.BtnOperation.ScreenTip = this.radOffice2007ScreenTipElement39;
+            this.BtnOperation.Tag = "عمليات علي البطاقة";
             this.BtnOperation.Text = "عمليات";
             this.BtnOperation.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.BtnOperation.Click += new System.EventHandler(this.BtnOperation_Click);
             // 
             // BtnSaleOrder
             // 
             this.BtnSaleOrder.Name = "BtnSaleOrder";
+            this.BtnSaleOrder.Tag = "إصدار أمر بيع للبطاقة";
             this.BtnSaleOrder.Text = "أمر بيع";
             // 
             // BtnContract
             // 
             this.BtnContract.Name = "BtnContract";
+            this.BtnContract.Tag = "إصدار عقد بيع للبطاقة";
             this.BtnContract.Text = "عقد بيع";
             // 
             // BtnReservation
             // 
             this.BtnReservation.Name = "BtnReservation";
+            this.BtnReservation.Tag = "تغير حالة حجز البطاقة";
             this.BtnReservation.Text = "حجز";
             // 
             // BtnPriceOffer
             // 
             this.BtnPriceOffer.Name = "BtnPriceOffer";
+            this.BtnPriceOffer.Tag = "إنشاء عرض سعر للبطاقة";
             this.BtnPriceOffer.Text = "عرض سعر";
             this.BtnPriceOffer.UseCompatibleTextRendering = false;
             // 
@@ -2087,12 +2076,6 @@
             this.radOffice2007ScreenTipElement39.Name = "radOffice2007ScreenTipElement39";
             this.radOffice2007ScreenTipElement39.TemplateType = null;
             this.radOffice2007ScreenTipElement39.TipSize = new System.Drawing.Size(0, 0);
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement39.GetChildAt(2).GetChildAt(0))).TextAlignment = System.Drawing.ContentAlignment.TopRight;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement39.GetChildAt(2).GetChildAt(0))).Text = "العمليات علي بطاقة أرض";
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement39.GetChildAt(2).GetChildAt(0))).RightToLeft = true;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement39.GetChildAt(2).GetChildAt(1))).TextAlignment = System.Drawing.ContentAlignment.TopRight;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement39.GetChildAt(2).GetChildAt(1))).Text = "أمر البيع\r\nعقد البيع\r\nحجز أرض\r\nعرض سعر";
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement39.GetChildAt(2).GetChildAt(1))).RightToLeft = true;
             // 
             // commandBarSeparator7
             // 
@@ -2116,6 +2099,7 @@
             this.BtnNew.Image = global::DoctorERP.Properties.Resources.BtnAddNew;
             this.BtnNew.Name = "BtnNew";
             this.BtnNew.ScreenTip = this.radOffice2007ScreenTipElement23;
+            this.BtnNew.Tag = "إنشاء بطاقة جديدة";
             this.BtnNew.Text = "جديد";
             this.BtnNew.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.BtnNew.TextOrientation = System.Windows.Forms.Orientation.Horizontal;
@@ -2128,12 +2112,6 @@
             this.radOffice2007ScreenTipElement23.Name = "radOffice2007ScreenTipElement23";
             this.radOffice2007ScreenTipElement23.TemplateType = null;
             this.radOffice2007ScreenTipElement23.TipSize = new System.Drawing.Size(0, 0);
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement23.GetChildAt(2).GetChildAt(0))).TextAlignment = System.Drawing.ContentAlignment.TopRight;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement23.GetChildAt(2).GetChildAt(0))).Text = "إضافة جديد";
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement23.GetChildAt(2).GetChildAt(0))).RightToLeft = true;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement23.GetChildAt(2).GetChildAt(1))).TextAlignment = System.Drawing.ContentAlignment.TopRight;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement23.GetChildAt(2).GetChildAt(1))).Text = "إضافة بطاقة أرض جديدة";
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement23.GetChildAt(2).GetChildAt(1))).RightToLeft = true;
             // 
             // BtnEdit
             // 
@@ -2150,6 +2128,7 @@
             this.BtnEdit.Image = global::DoctorERP.Properties.Resources.BtnEdite;
             this.BtnEdit.Name = "BtnEdit";
             this.BtnEdit.ScreenTip = this.radOffice2007ScreenTipElement12;
+            this.BtnEdit.Tag = "تعديل بيانات البطاقة";
             this.BtnEdit.Text = "تعديل";
             this.BtnEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.BtnEdit.TextWrap = false;
@@ -2162,32 +2141,27 @@
             this.radOffice2007ScreenTipElement12.Name = "radOffice2007ScreenTipElement12";
             this.radOffice2007ScreenTipElement12.TemplateType = null;
             this.radOffice2007ScreenTipElement12.TipSize = new System.Drawing.Size(0, 0);
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement12.GetChildAt(2).GetChildAt(0))).TextAlignment = System.Drawing.ContentAlignment.TopRight;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement12.GetChildAt(2).GetChildAt(0))).Text = "تعديل";
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement12.GetChildAt(2).GetChildAt(0))).RightToLeft = true;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement12.GetChildAt(2).GetChildAt(1))).TextAlignment = System.Drawing.ContentAlignment.TopRight;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement12.GetChildAt(2).GetChildAt(1))).Text = "تعديل بطاقة الأرض";
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement12.GetChildAt(2).GetChildAt(1))).RightToLeft = true;
             // 
-            // Exit
+            // BtnExit
             // 
-            this.Exit.CustomFont = "None";
-            this.Exit.DisplayName = "commandBarButton1";
-            this.Exit.DrawText = true;
-            this.Exit.EnableBorderHighlight = true;
-            this.Exit.EnableElementShadow = false;
-            this.Exit.EnableFocusBorder = true;
-            this.Exit.EnableFocusBorderAnimation = true;
-            this.Exit.EnableHighlight = true;
-            this.Exit.EnableRippleAnimation = true;
-            this.Exit.Font = new System.Drawing.Font("Traditional Arabic", 14.25F, System.Drawing.FontStyle.Bold);
-            this.Exit.Image = global::DoctorERP.Properties.Resources.BtnExit;
-            this.Exit.Name = "Exit";
-            this.Exit.ScreenTip = this.radOffice2007ScreenTipElement38;
-            this.Exit.Text = "خروج";
-            this.Exit.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.Exit.TextOrientation = System.Windows.Forms.Orientation.Horizontal;
-            this.Exit.Click += new System.EventHandler(this.MenuExit_Click);
+            this.BtnExit.CustomFont = "None";
+            this.BtnExit.DisplayName = "commandBarButton1";
+            this.BtnExit.DrawText = true;
+            this.BtnExit.EnableBorderHighlight = true;
+            this.BtnExit.EnableElementShadow = false;
+            this.BtnExit.EnableFocusBorder = true;
+            this.BtnExit.EnableFocusBorderAnimation = true;
+            this.BtnExit.EnableHighlight = true;
+            this.BtnExit.EnableRippleAnimation = true;
+            this.BtnExit.Font = new System.Drawing.Font("Traditional Arabic", 14.25F, System.Drawing.FontStyle.Bold);
+            this.BtnExit.Image = global::DoctorERP.Properties.Resources.BtnExit;
+            this.BtnExit.Name = "BtnExit";
+            this.BtnExit.ScreenTip = this.radOffice2007ScreenTipElement38;
+            this.BtnExit.Tag = "تجاهل التغييرات و الخروج من الصفحة";
+            this.BtnExit.Text = "خروج";
+            this.BtnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.BtnExit.TextOrientation = System.Windows.Forms.Orientation.Horizontal;
+            this.BtnExit.Click += new System.EventHandler(this.MenuExit_Click);
             // 
             // radOffice2007ScreenTipElement38
             // 
@@ -2196,12 +2170,6 @@
             this.radOffice2007ScreenTipElement38.Name = "radOffice2007ScreenTipElement38";
             this.radOffice2007ScreenTipElement38.TemplateType = null;
             this.radOffice2007ScreenTipElement38.TipSize = new System.Drawing.Size(0, 0);
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement38.GetChildAt(2).GetChildAt(0))).TextAlignment = System.Drawing.ContentAlignment.TopRight;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement38.GetChildAt(2).GetChildAt(0))).Text = "خروج";
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement38.GetChildAt(2).GetChildAt(0))).RightToLeft = true;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement38.GetChildAt(2).GetChildAt(1))).TextAlignment = System.Drawing.ContentAlignment.TopRight;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement38.GetChildAt(2).GetChildAt(1))).Text = "تجاهل التغييرات الحالية و الخروج من بطاقات الأراضي";
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement38.GetChildAt(2).GetChildAt(1))).RightToLeft = true;
             // 
             // radOffice2007ScreenTipElement10
             // 
@@ -2271,13 +2239,13 @@
             // 
             // radScrollablePanel2.PanelContainer
             // 
-            this.radScrollablePanel2.PanelContainer.Controls.Add(this.radPageView1);
-            this.radScrollablePanel2.PanelContainer.Controls.Add(this.BindingNavigatorLands);
+            this.radScrollablePanel2.PanelContainer.Controls.Add(this.radLayoutControl1);
             this.radScrollablePanel2.PanelContainer.Location = new System.Drawing.Point(0, 0);
             this.radScrollablePanel2.PanelContainer.Size = new System.Drawing.Size(1233, 713);
             this.radScrollablePanel2.Size = new System.Drawing.Size(1233, 713);
             this.radScrollablePanel2.TabIndex = 3;
             this.radScrollablePanel2.ThemeName = "Material";
+            this.radScrollablePanel2.Click += new System.EventHandler(this.radScrollablePanel2_Click);
             // 
             // layoutControlItem1
             // 
@@ -2633,28 +2601,28 @@
             // 
             // radToastNotificationManager1
             // 
-            radToastNotification13.BindingData = null;
-            radToastNotification13.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
-            radToastNotification13.Name = "ToastNews1";
-            radToastNotification13.Tag = null;
-            radToastNotification13.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastNews;
-            radToastNotification13.Xml = resources.GetString("radToastNotification13.Xml");
-            radToastNotification14.BindingData = null;
-            radToastNotification14.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
-            radToastNotification14.Name = "ToastLegacy1";
-            radToastNotification14.Tag = null;
-            radToastNotification14.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastLegacy;
-            radToastNotification14.Xml = resources.GetString("radToastNotification14.Xml");
-            radToastNotification15.BindingData = null;
-            radToastNotification15.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
-            radToastNotification15.Name = "ToastGeneric1";
-            radToastNotification15.Tag = null;
-            radToastNotification15.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastGeneric;
-            radToastNotification15.Xml = "<toast>\n  <visual>\n    <binding template=\"ToastGeneric\"></binding>\n  </visual>\n</" +
+            radToastNotification28.BindingData = null;
+            radToastNotification28.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
+            radToastNotification28.Name = "ToastNews1";
+            radToastNotification28.Tag = null;
+            radToastNotification28.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastNews;
+            radToastNotification28.Xml = resources.GetString("radToastNotification28.Xml");
+            radToastNotification29.BindingData = null;
+            radToastNotification29.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
+            radToastNotification29.Name = "ToastLegacy1";
+            radToastNotification29.Tag = null;
+            radToastNotification29.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastLegacy;
+            radToastNotification29.Xml = resources.GetString("radToastNotification29.Xml");
+            radToastNotification30.BindingData = null;
+            radToastNotification30.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
+            radToastNotification30.Name = "ToastGeneric1";
+            radToastNotification30.Tag = null;
+            radToastNotification30.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastGeneric;
+            radToastNotification30.Xml = "<toast>\n  <visual>\n    <binding template=\"ToastGeneric\"></binding>\n  </visual>\n</" +
     "toast>";
-            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification13);
-            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification14);
-            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification15);
+            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification28);
+            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification29);
+            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification30);
             // 
             // radDesktopAlert1
             // 
@@ -2805,33 +2773,40 @@
             this.radOffice2007ScreenTipElement40.Name = "radOffice2007ScreenTipElement40";
             this.radOffice2007ScreenTipElement40.TemplateType = null;
             this.radOffice2007ScreenTipElement40.TipSize = new System.Drawing.Size(0, 0);
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement40.GetChildAt(2).GetChildAt(0))).Text = "إستيراد من إكسيل";
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement40.GetChildAt(2).GetChildAt(1))).Text = "إستيراد البيانات من ملف إكسيل";
             // 
-            // BtnExportExcelData
+            // radLayoutControl1
             // 
-            this.BtnExportExcelData.Name = "BtnExportExcelData";
-            this.BtnExportExcelData.ScreenTip = this.radOffice2007ScreenTipElement44;
-            this.BtnExportExcelData.Text = "تصدير ملف excel بيانات";
+            this.radLayoutControl1.Controls.Add(this.radPageView1);
+            this.radLayoutControl1.Controls.Add(this.BindingNavigatorLands);
+            this.radLayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.radLayoutControl1.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.layoutControlItem2,
+            this.layoutControlItem3});
+            this.radLayoutControl1.Location = new System.Drawing.Point(0, 0);
+            this.radLayoutControl1.Name = "radLayoutControl1";
+            this.radLayoutControl1.Size = new System.Drawing.Size(1233, 713);
+            this.radLayoutControl1.TabIndex = 1414;
             // 
-            // radOffice2007ScreenTipElement44
+            // layoutControlItem2
             // 
-            this.radOffice2007ScreenTipElement44.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement44.Name = "radOffice2007ScreenTipElement44";
-            this.radOffice2007ScreenTipElement44.TemplateType = null;
-            this.radOffice2007ScreenTipElement44.TipSize = new System.Drawing.Size(0, 0);
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement44.GetChildAt(2).GetChildAt(0))).TextAlignment = System.Drawing.ContentAlignment.TopRight;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement44.GetChildAt(2).GetChildAt(0))).Text = "تصدير الي ملف إكسيل";
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement44.GetChildAt(2).GetChildAt(0))).RightToLeft = true;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement44.GetChildAt(2).GetChildAt(1))).TextAlignment = System.Drawing.ContentAlignment.TopRight;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement44.GetChildAt(2).GetChildAt(1))).Text = "تصدير بيانات البطاقة الي ملف excel";
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radOffice2007ScreenTipElement44.GetChildAt(2).GetChildAt(1))).RightToLeft = true;
+            this.layoutControlItem2.AssociatedControl = this.radPageView1;
+            this.layoutControlItem2.Bounds = new System.Drawing.Rectangle(0, 46, 1233, 667);
+            this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.Text = "";
+            // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.AssociatedControl = this.BindingNavigatorLands;
+            this.layoutControlItem3.Bounds = new System.Drawing.Rectangle(0, 0, 1233, 46);
+            this.layoutControlItem3.ControlVerticalAlignment = Telerik.WinControls.UI.RadVerticalAlignment.Center;
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Text = "layoutControlItem3";
             // 
             // UCLandsDataEntry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.radScrollablePanel2);
             this.Name = "UCLandsDataEntry";
@@ -2914,9 +2889,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.DataGridPriceLog)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BindingNavigatorLands)).EndInit();
             this.radScrollablePanel2.PanelContainer.ResumeLayout(false);
-            this.radScrollablePanel2.PanelContainer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radScrollablePanel2)).EndInit();
             this.radScrollablePanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.radLayoutControl1)).EndInit();
+            this.radLayoutControl1.ResumeLayout(false);
+            this.radLayoutControl1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -3106,7 +3083,7 @@
         private Telerik.WinControls.UI.RadLabel radLabel15;
         private Telerik.WinControls.UI.CommandBarSeparator commandBarSeparator8;
         private Telerik.WinControls.UI.CommandBarSeparator commandBarSeparator9;
-        private Telerik.WinControls.UI.CommandBarButton Exit;
+        private Telerik.WinControls.UI.CommandBarButton BtnExit;
         private Telerik.WinControls.UI.CommandBarDropDownButton BtnOperation;
         private Telerik.WinControls.UI.RadMenuItem BtnSaleOrder;
         private Telerik.WinControls.UI.RadMenuItem BtnContract;
@@ -3122,5 +3099,8 @@
         private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement43;
         private Telerik.WinControls.UI.RadMenuItem BtnExportExcelData;
         private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement44;
+        private Telerik.WinControls.UI.RadLayoutControl radLayoutControl1;
+        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem2;
+        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem3;
     }
 }
