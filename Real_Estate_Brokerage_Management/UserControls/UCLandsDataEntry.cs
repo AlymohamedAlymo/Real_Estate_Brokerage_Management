@@ -332,17 +332,8 @@ namespace DoctorERP.User_Controls
                 }
             }
         }
-        //private void ShowConfirm()
-        //{
-        //    //string Header, string Content, string Footer
-        //    //radToastNotificationManager1.ShowNotification(0);
-        //    ShowDesktopAlert(".أولآ تعديل زر علي الضغط يجب", "البيانات  تعديل يمكنك ذلك بعد", "التعديل لحفظ حفظ زر علي الضغط ثم");
-        //    FrmMain.DataHasChanged = true;
-        //}
-
         private void ShowDesktopAlert(string Header, string Content, string ContentHighlight, string Footer)
         {
-            //Header = TextHelper.ReverseText(Header);
             Content = TextHelper.ReverseText(Content);
             ContentHighlight = TextHelper.ReverseText(ContentHighlight);
             Footer = TextHelper.ReverseText(Footer);
@@ -393,7 +384,6 @@ namespace DoctorERP.User_Controls
             return true;
 
         }
-
 
 
         #region Binding
@@ -721,8 +711,6 @@ namespace DoctorERP.User_Controls
         #endregion
 
 
-
-
         private void CommandBarLabel1_TextChanged(object sender, EventArgs e)
         {
             string NewTxt = commandBarLabel1.Text.Replace("of", "من");
@@ -820,11 +808,6 @@ namespace DoctorERP.User_Controls
             if (Txtstatus.Text == "متاح") { Txtstatus.BackColor = Color.FromArgb(0, 255, 1); }
             else if (Txtstatus.Text == "مباع") { Txtstatus.BackColor = Color.FromArgb(254, 0, 0); }
             else if (Txtstatus.Text == "محجوز") { Txtstatus.BackColor = Color.FromArgb(255, 255, 0); }
-
-            //if (Txtstatus.Text == "متاح") { Txtstatus.ForeColor = Color.Green; }
-            //else if (Txtstatus.Text == "مباع") { Txtstatus.ForeColor = Color.Red; }
-            //else if (Txtstatus.Text == "محجوز") { Txtstatus.ForeColor = Color.Yellow; }
-
         }
 
         private void RadFlyoutManager_FlyoutClosed(FlyoutClosedEventArgs e)
@@ -1120,7 +1103,6 @@ namespace DoctorERP.User_Controls
                 }
             }
         }
-
 
         private void BtnExportExcelData_Click(object sender, EventArgs e)
         {
@@ -1539,6 +1521,11 @@ namespace DoctorERP.User_Controls
         }
 
         private void UCLandsDataEntry_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CmbPlanGuid_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

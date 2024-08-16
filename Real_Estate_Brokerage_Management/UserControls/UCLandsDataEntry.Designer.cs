@@ -658,9 +658,9 @@
             this.CmbPlanGuid.NullText = "اختر المخطط";
             this.CmbPlanGuid.Size = new System.Drawing.Size(128, 38);
             this.CmbPlanGuid.TabIndex = 1;
-            this.CmbPlanGuid.TabStop = false;
             this.CmbPlanGuid.ThemeName = "Material";
             this.CmbPlanGuid.DropDownOpening += new Telerik.WinControls.UI.RadPopupOpeningEventHandler(this.CmbPlanGuid_DropDownOpening);
+            this.CmbPlanGuid.SelectedIndexChanged += new System.EventHandler(this.CmbPlanGuid_SelectedIndexChanged);
             // 
             // radWorkFeeWithVat
             // 
@@ -677,6 +677,7 @@
             this.radWorkFeeWithVat.Text = "0.00";
             this.radWorkFeeWithVat.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.radWorkFeeWithVat.ThemeName = "Material";
+            this.radWorkFeeWithVat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbuildingfee_KeyPress);
             // 
             // radBuildingFeeValue
             // 
@@ -693,6 +694,7 @@
             this.radBuildingFeeValue.Text = "0.00";
             this.radBuildingFeeValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.radBuildingFeeValue.ThemeName = "Material";
+            this.radBuildingFeeValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbuildingfee_KeyPress);
             // 
             // radWorkFeeValue
             // 
@@ -709,6 +711,7 @@
             this.radWorkFeeValue.Text = "0.00";
             this.radWorkFeeValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.radWorkFeeValue.ThemeName = "Material";
+            this.radWorkFeeValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbuildingfee_KeyPress);
             // 
             // radVatValue
             // 
@@ -725,6 +728,7 @@
             this.radVatValue.Text = "0.00";
             this.radVatValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.radVatValue.ThemeName = "Material";
+            this.radVatValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbuildingfee_KeyPress);
             // 
             // radAmountBuildingfee
             // 
@@ -742,6 +746,7 @@
             this.radAmountBuildingfee.Text = "0.00";
             this.radAmountBuildingfee.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.radAmountBuildingfee.ThemeName = "Material";
+            this.radAmountBuildingfee.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbuildingfee_KeyPress);
             // 
             // radLandWorkfee
             // 
@@ -759,6 +764,7 @@
             this.radLandWorkfee.Text = "0.00";
             this.radLandWorkfee.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.radLandWorkfee.ThemeName = "Material";
+            this.radLandWorkfee.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbuildingfee_KeyPress);
             // 
             // radlandfee
             // 
@@ -776,6 +782,7 @@
             this.radlandfee.Text = "0.00";
             this.radlandfee.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.radlandfee.ThemeName = "Material";
+            this.radlandfee.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbuildingfee_KeyPress);
             // 
             // radTextBox1
             // 
@@ -793,6 +800,7 @@
             this.radTextBox1.Text = "0.00";
             this.radTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.radTextBox1.ThemeName = "Material";
+            this.radTextBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbuildingfee_KeyPress);
             // 
             // Txtlastaction
             // 
@@ -1579,13 +1587,13 @@
             this.BtnEcelExport.EnableRippleAnimation = true;
             this.BtnEcelExport.Name = "BtnEcelExport";
             this.BtnEcelExport.Tag = "تصدير بيانات البطاقة الي ملف إكسيل علي طريقة الطباعة";
-            this.BtnEcelExport.Text = "تصدير ملف إكسيل طباعة";
+            this.BtnEcelExport.Text = "تصدير ملف excel طباعة";
             // 
             // BtnExportExcelData
             // 
             this.BtnExportExcelData.Name = "BtnExportExcelData";
             this.BtnExportExcelData.Tag = "تصدير بيانات البطاقة الي ملف إكسيل علي طريقة البيانات";
-            this.BtnExportExcelData.Text = "تصدير ملف إكسيل بيانات";
+            this.BtnExportExcelData.Text = "تصدير ملف excel بيانات";
             // 
             // BtnPdfExport
             // 
