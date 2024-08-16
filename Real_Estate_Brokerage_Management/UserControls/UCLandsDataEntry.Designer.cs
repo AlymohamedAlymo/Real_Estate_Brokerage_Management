@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition28 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition29 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition30 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition3 = new Telerik.WinControls.UI.TableViewDefinition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCLandsDataEntry));
-            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification28 = new Telerik.RadToastNotificationManager.RadToastNotification();
-            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification29 = new Telerik.RadToastNotificationManager.RadToastNotification();
-            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification30 = new Telerik.RadToastNotificationManager.RadToastNotification();
+            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification1 = new Telerik.RadToastNotificationManager.RadToastNotification();
+            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification2 = new Telerik.RadToastNotificationManager.RadToastNotification();
+            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification3 = new Telerik.RadToastNotificationManager.RadToastNotification();
             this.materialTheme1 = new Telerik.WinControls.Themes.MaterialTheme();
             this.Cmblandtype = new Telerik.WinControls.UI.RadTextBox();
             this.Txtblocknumber = new Telerik.WinControls.UI.RadTextBox();
@@ -79,7 +79,6 @@
             this.PanelContainer = new Telerik.WinControls.UI.RadScrollablePanelContainer();
             this.radPageView1 = new Telerik.WinControls.UI.RadPageView();
             this.PageHome = new Telerik.WinControls.UI.RadPageViewPage();
-            this.MainPanel = new System.Windows.Forms.Panel();
             this.Txtstatus = new Telerik.WinControls.UI.RadLabel();
             this.Txtnumber = new Telerik.WinControls.UI.RadLabel();
             this.radLabel5 = new Telerik.WinControls.UI.RadLabel();
@@ -89,13 +88,10 @@
             this.radLabel16 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel17 = new Telerik.WinControls.UI.RadLabel();
             this.Chkisvat = new Telerik.WinControls.UI.RadCheckBox();
-            this.radLabel8 = new Telerik.WinControls.UI.RadLabel();
-            this.Chkisbuildingfee = new Telerik.WinControls.UI.RadCheckBox();
-            this.radCheckBox13 = new Telerik.WinControls.UI.RadCheckBox();
-            this.Chkisworkfee = new Telerik.WinControls.UI.RadCheckBox();
-            this.radCheckBox3 = new Telerik.WinControls.UI.RadCheckBox();
             this.radTotalText = new Telerik.WinControls.UI.RadLabel();
-            this.radLabel11 = new Telerik.WinControls.UI.RadLabel();
+            this.radLabel8 = new Telerik.WinControls.UI.RadLabel();
+            this.Chkisworkfee = new Telerik.WinControls.UI.RadCheckBox();
+            this.Chkisbuildingfee = new Telerik.WinControls.UI.RadCheckBox();
             this.PageAttachments = new Telerik.WinControls.UI.RadPageViewPage();
             this.BtnScanner = new Telerik.WinControls.UI.RadButton();
             this.BtnAttachment = new Telerik.WinControls.UI.RadButton();
@@ -117,61 +113,33 @@
             this.BtnLast = new Telerik.WinControls.UI.CommandBarButton();
             this.commandBarStripElement2 = new Telerik.WinControls.UI.CommandBarStripElement();
             this.BtnNew2 = new Telerik.WinControls.UI.CommandBarButton();
-            this.radOffice2007ScreenTipElement11 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
             this.BtnDelete2 = new Telerik.WinControls.UI.CommandBarButton();
-            this.radOffice2007ScreenTipElement13 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
             this.BtnResfresh = new Telerik.WinControls.UI.CommandBarButton();
-            this.radOffice2007ScreenTipElement17 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
             this.commandBarSeparator5 = new Telerik.WinControls.UI.CommandBarSeparator();
             this.BtnImport = new Telerik.WinControls.UI.CommandBarDropDownButton();
             this.BtnImportExcel = new Telerik.WinControls.UI.RadMenuItem();
-            this.radOffice2007ScreenTipElement25 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
-            this.radOffice2007ScreenTipElement26 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
             this.BtnExport = new Telerik.WinControls.UI.CommandBarDropDownButton();
             this.BtnEcelExport = new Telerik.WinControls.UI.RadMenuItem();
-            this.radOffice2007ScreenTipElement37 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
             this.BtnExportExcelData = new Telerik.WinControls.UI.RadMenuItem();
-            this.radOffice2007ScreenTipElement44 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
             this.BtnPdfExport = new Telerik.WinControls.UI.RadMenuItem();
-            this.radOffice2007ScreenTipElement41 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
             this.BtnWordExport = new Telerik.WinControls.UI.RadMenuItem();
-            this.radOffice2007ScreenTipElement42 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
             this.BtnEmailExport = new Telerik.WinControls.UI.RadMenuItem();
-            this.radOffice2007ScreenTipElement43 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
-            this.radOffice2007ScreenTipElement36 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
             this.commandBarSeparator8 = new Telerik.WinControls.UI.CommandBarSeparator();
             this.BtnDelete = new Telerik.WinControls.UI.CommandBarButton();
-            this.radOffice2007ScreenTipElement24 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
             this.commandBarSeparator9 = new Telerik.WinControls.UI.CommandBarSeparator();
             this.BtnPrint = new Telerik.WinControls.UI.CommandBarDropDownButton();
             this.BtnSentToPrinter = new Telerik.WinControls.UI.RadMenuItem();
-            this.radOffice2007ScreenTipElement28 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
             this.BtnPreview = new Telerik.WinControls.UI.RadMenuItem();
-            this.radOffice2007ScreenTipElement29 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
             this.BtnDesign = new Telerik.WinControls.UI.RadMenuItem();
-            this.radOffice2007ScreenTipElement30 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
-            this.radOffice2007ScreenTipElement27 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
             this.BtnOperation = new Telerik.WinControls.UI.CommandBarDropDownButton();
             this.BtnSaleOrder = new Telerik.WinControls.UI.RadMenuItem();
             this.BtnContract = new Telerik.WinControls.UI.RadMenuItem();
             this.BtnReservation = new Telerik.WinControls.UI.RadMenuItem();
             this.BtnPriceOffer = new Telerik.WinControls.UI.RadMenuItem();
-            this.radOffice2007ScreenTipElement39 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
             this.commandBarSeparator7 = new Telerik.WinControls.UI.CommandBarSeparator();
             this.BtnNew = new Telerik.WinControls.UI.CommandBarButton();
-            this.radOffice2007ScreenTipElement23 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
             this.BtnEdit = new Telerik.WinControls.UI.CommandBarButton();
-            this.radOffice2007ScreenTipElement12 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
             this.BtnExit = new Telerik.WinControls.UI.CommandBarButton();
-            this.radOffice2007ScreenTipElement38 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
-            this.radOffice2007ScreenTipElement10 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
-            this.radOffice2007ScreenTipElement15 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
-            this.radOffice2007ScreenTipElement35 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
-            this.radOffice2007ScreenTipElement22 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
-            this.radOffice2007ScreenTipElement14 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
-            this.radOffice2007ScreenTipElement21 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
-            this.radOffice2007ScreenTipElement20 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
-            this.radScrollablePanel2 = new Telerik.WinControls.UI.RadScrollablePanel();
             this.layoutControlItem1 = new Telerik.WinControls.UI.LayoutControlItem();
             this.layoutControlItem5 = new Telerik.WinControls.UI.LayoutControlItem();
             this.layoutControlItem6 = new Telerik.WinControls.UI.LayoutControlItem();
@@ -204,40 +172,20 @@
             this.layoutControlItem33 = new Telerik.WinControls.UI.LayoutControlItem();
             this.layoutControlItem34 = new Telerik.WinControls.UI.LayoutControlItem();
             this.layoutControlItem35 = new Telerik.WinControls.UI.LayoutControlItem();
-            this.radOffice2007ScreenTipElement1 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
-            this.radOffice2007ScreenTipElement2 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
-            this.radOffice2007ScreenTipElement3 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
-            this.radOffice2007ScreenTipElement4 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
-            this.radOffice2007ScreenTipElement5 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
-            this.radOffice2007ScreenTipElement6 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
-            this.radOffice2007ScreenTipElement7 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
-            this.radOffice2007ScreenTipElement8 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
-            this.radOffice2007ScreenTipElement9 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
-            this.radOffice2007ScreenTipElement16 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
-            this.radOffice2007ScreenTipElement18 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
-            this.radOffice2007ScreenTipElement19 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
             this.radToastNotificationManager1 = new Telerik.WinControls.UI.RadToastNotificationManager(this.components);
             this.radDesktopAlert1 = new Telerik.WinControls.UI.RadDesktopAlert(this.components);
             this.radContextMenuManager1 = new Telerik.WinControls.UI.RadContextMenuManager();
             this.AttachmentsContextMenu = new Telerik.WinControls.UI.RadContextMenu(this.components);
             this.MenuPreviewAttachment = new Telerik.WinControls.UI.RadMenuItem();
-            this.radOffice2007ScreenTipElement31 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
             this.MenuExtractAttachement = new Telerik.WinControls.UI.RadMenuItem();
-            this.radOffice2007ScreenTipElement32 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
             this.radMenuSeparatorItem1 = new Telerik.WinControls.UI.RadMenuSeparatorItem();
             this.MenuDeleteAttachment = new Telerik.WinControls.UI.RadMenuItem();
-            this.radOffice2007ScreenTipElement33 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
             this.radCallout1 = new Telerik.WinControls.UI.RadCallout();
-            this.radOffice2007ScreenTipElement34 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
             this.layoutControlItem48 = new Telerik.WinControls.UI.LayoutControlItem();
             this.layoutControlItem51 = new Telerik.WinControls.UI.LayoutControlItem();
             this.layoutControlItem36 = new Telerik.WinControls.UI.LayoutControlItem();
             this.layoutControlItem41 = new Telerik.WinControls.UI.LayoutControlItem();
             this.AlertTimer = new System.Windows.Forms.Timer(this.components);
-            this.radOffice2007ScreenTipElement40 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
-            this.radLayoutControl1 = new Telerik.WinControls.UI.RadLayoutControl();
-            this.layoutControlItem2 = new Telerik.WinControls.UI.LayoutControlItem();
-            this.layoutControlItem3 = new Telerik.WinControls.UI.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.Cmblandtype)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txtblocknumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txtarea)).BeginInit();
@@ -281,7 +229,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.radPageView1)).BeginInit();
             this.radPageView1.SuspendLayout();
             this.PageHome.SuspendLayout();
-            this.MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Txtstatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txtnumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).BeginInit();
@@ -292,14 +239,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.radLabel16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Chkisvat)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Chkisbuildingfee)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radCheckBox13)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Chkisworkfee)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radCheckBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radTotalText)).BeginInit();
-            this.radTotalText.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Chkisworkfee)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Chkisbuildingfee)).BeginInit();
             this.PageAttachments.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BtnScanner)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BtnAttachment)).BeginInit();
@@ -309,11 +252,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.DataGridPriceLog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridPriceLog.MasterTemplate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BindingNavigatorLands)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radScrollablePanel2)).BeginInit();
-            this.radScrollablePanel2.PanelContainer.SuspendLayout();
-            this.radScrollablePanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radLayoutControl1)).BeginInit();
-            this.radLayoutControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // Cmblandtype
@@ -323,14 +261,15 @@
             this.Cmblandtype.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.Cmblandtype.EmbeddedLabelText = "نوع الأرض";
             this.Cmblandtype.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Cmblandtype.Location = new System.Drawing.Point(1079, 6);
+            this.Cmblandtype.Location = new System.Drawing.Point(1022, 11);
             this.Cmblandtype.Name = "Cmblandtype";
             this.Cmblandtype.NullText = "اختر نوع الأرض";
             this.Cmblandtype.ShowEmbeddedLabel = true;
             this.Cmblandtype.ShowNullText = true;
             this.Cmblandtype.Size = new System.Drawing.Size(128, 59);
-            this.Cmblandtype.TabIndex = 1;
+            this.Cmblandtype.TabIndex = 0;
             this.Cmblandtype.ThemeName = "Material";
+            this.Cmblandtype.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtamount_KeyPress);
             // 
             // Txtblocknumber
             // 
@@ -339,14 +278,14 @@
             this.Txtblocknumber.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.Txtblocknumber.EmbeddedLabelText = "رقم البلوك";
             this.Txtblocknumber.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtblocknumber.Location = new System.Drawing.Point(811, 6);
+            this.Txtblocknumber.Location = new System.Drawing.Point(754, 11);
             this.Txtblocknumber.Name = "Txtblocknumber";
             this.Txtblocknumber.NullText = "اختر رقم البلوك";
             this.Txtblocknumber.ReadOnly = true;
             this.Txtblocknumber.ShowEmbeddedLabel = true;
             this.Txtblocknumber.ShowNullText = true;
             this.Txtblocknumber.Size = new System.Drawing.Size(128, 59);
-            this.Txtblocknumber.TabIndex = 3;
+            this.Txtblocknumber.TabIndex = 2;
             this.Txtblocknumber.ThemeName = "Material";
             this.Txtblocknumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtblocknumber_KeyPress);
             // 
@@ -357,7 +296,7 @@
             this.Txtarea.DecimalPlaces = 2;
             this.Txtarea.EnableNullValueInput = true;
             this.Txtarea.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtarea.Location = new System.Drawing.Point(945, 71);
+            this.Txtarea.Location = new System.Drawing.Point(888, 76);
             this.Txtarea.Maximum = new decimal(new int[] {
             1661992960,
             1808227885,
@@ -368,10 +307,11 @@
             this.Txtarea.ReadOnly = true;
             this.Txtarea.RightMouseButtonReset = true;
             this.Txtarea.Size = new System.Drawing.Size(262, 61);
-            this.Txtarea.TabIndex = 5;
+            this.Txtarea.TabIndex = 4;
             this.Txtarea.ThemeName = "Material";
             this.Txtarea.ThousandsSeparator = true;
             this.Txtarea.ValueChanged += new System.EventHandler(this.Txt_ValueChanged);
+            this.Txtarea.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtamount_KeyPress);
             // 
             // radLabel1
             // 
@@ -394,15 +334,16 @@
             this.Txtdeednumber.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.Txtdeednumber.EmbeddedLabelText = "رقم الصك";
             this.Txtdeednumber.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtdeednumber.Location = new System.Drawing.Point(567, 6);
+            this.Txtdeednumber.Location = new System.Drawing.Point(510, 11);
             this.Txtdeednumber.Name = "Txtdeednumber";
             this.Txtdeednumber.NullText = "ادخل رقم الصك";
             this.Txtdeednumber.ReadOnly = true;
             this.Txtdeednumber.ShowEmbeddedLabel = true;
             this.Txtdeednumber.ShowNullText = true;
             this.Txtdeednumber.Size = new System.Drawing.Size(238, 59);
-            this.Txtdeednumber.TabIndex = 26;
+            this.Txtdeednumber.TabIndex = 3;
             this.Txtdeednumber.ThemeName = "Material";
+            this.Txtdeednumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtamount_KeyPress);
             // 
             // Txtamount
             // 
@@ -411,7 +352,7 @@
             this.Txtamount.DecimalPlaces = 2;
             this.Txtamount.EnableNullValueInput = true;
             this.Txtamount.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtamount.Location = new System.Drawing.Point(567, 71);
+            this.Txtamount.Location = new System.Drawing.Point(510, 76);
             this.Txtamount.Maximum = new decimal(new int[] {
             1661992960,
             1808227885,
@@ -422,7 +363,7 @@
             this.Txtamount.ReadOnly = true;
             this.Txtamount.RightMouseButtonReset = true;
             this.Txtamount.Size = new System.Drawing.Size(372, 61);
-            this.Txtamount.TabIndex = 6;
+            this.Txtamount.TabIndex = 5;
             this.Txtamount.ThemeName = "Material";
             this.Txtamount.ThousandsSeparator = true;
             this.Txtamount.ValueChanged += new System.EventHandler(this.Txt_ValueChanged);
@@ -449,7 +390,7 @@
             this.Txtnote.AutoScroll = true;
             this.Txtnote.EmbeddedLabelText = "الملاحظات ";
             this.Txtnote.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtnote.Location = new System.Drawing.Point(14, 482);
+            this.Txtnote.Location = new System.Drawing.Point(15, 490);
             this.Txtnote.Multiline = true;
             this.Txtnote.Name = "Txtnote";
             this.Txtnote.NullText = "ادخل الملاحظات إن وجد";
@@ -460,10 +401,11 @@
             this.Txtnote.RootElement.StretchVertically = true;
             this.Txtnote.ShowEmbeddedLabel = true;
             this.Txtnote.ShowNullText = true;
-            this.Txtnote.Size = new System.Drawing.Size(535, 102);
-            this.Txtnote.TabIndex = 23;
+            this.Txtnote.Size = new System.Drawing.Size(458, 102);
+            this.Txtnote.TabIndex = 17;
             this.Txtnote.ThemeName = "Material";
             this.Txtnote.WordWrap = false;
+            this.Txtnote.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtamount_KeyPress);
             // 
             // Txtnorthdesc
             // 
@@ -472,7 +414,7 @@
             this.Txtnorthdesc.AutoScroll = true;
             this.Txtnorthdesc.EmbeddedLabelText = "وصف الشمال";
             this.Txtnorthdesc.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtnorthdesc.Location = new System.Drawing.Point(14, 154);
+            this.Txtnorthdesc.Location = new System.Drawing.Point(15, 162);
             this.Txtnorthdesc.Multiline = true;
             this.Txtnorthdesc.Name = "Txtnorthdesc";
             this.Txtnorthdesc.NullText = "ادخل وصف الشمال";
@@ -483,11 +425,11 @@
             this.Txtnorthdesc.RootElement.StretchVertically = true;
             this.Txtnorthdesc.ShowEmbeddedLabel = true;
             this.Txtnorthdesc.ShowNullText = true;
-            this.Txtnorthdesc.Size = new System.Drawing.Size(363, 76);
-            this.Txtnorthdesc.TabIndex = 16;
+            this.Txtnorthdesc.Size = new System.Drawing.Size(286, 76);
+            this.Txtnorthdesc.TabIndex = 10;
             this.Txtnorthdesc.ThemeName = "Material";
             this.Txtnorthdesc.WordWrap = false;
-            this.Txtnorthdesc.TextChanged += new System.EventHandler(this.Txtnorthdesc_TextChanged);
+            this.Txtnorthdesc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtamount_KeyPress);
             // 
             // Txtsouthdesc
             // 
@@ -496,7 +438,7 @@
             this.Txtsouthdesc.AutoScroll = true;
             this.Txtsouthdesc.EmbeddedLabelText = "وصف الجنوب";
             this.Txtsouthdesc.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtsouthdesc.Location = new System.Drawing.Point(14, 236);
+            this.Txtsouthdesc.Location = new System.Drawing.Point(15, 244);
             this.Txtsouthdesc.Multiline = true;
             this.Txtsouthdesc.Name = "Txtsouthdesc";
             this.Txtsouthdesc.NullText = "ادخل وصف الجنوب";
@@ -507,11 +449,11 @@
             this.Txtsouthdesc.RootElement.StretchVertically = true;
             this.Txtsouthdesc.ShowEmbeddedLabel = true;
             this.Txtsouthdesc.ShowNullText = true;
-            this.Txtsouthdesc.Size = new System.Drawing.Size(363, 76);
-            this.Txtsouthdesc.TabIndex = 18;
+            this.Txtsouthdesc.Size = new System.Drawing.Size(286, 76);
+            this.Txtsouthdesc.TabIndex = 12;
             this.Txtsouthdesc.ThemeName = "Material";
             this.Txtsouthdesc.WordWrap = false;
-            this.Txtsouthdesc.TextChanged += new System.EventHandler(this.Txtsouthdesc_TextChanged);
+            this.Txtsouthdesc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtamount_KeyPress);
             // 
             // Txteastdesc
             // 
@@ -520,7 +462,7 @@
             this.Txteastdesc.AutoScroll = true;
             this.Txteastdesc.EmbeddedLabelText = "وصف الشرق";
             this.Txteastdesc.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txteastdesc.Location = new System.Drawing.Point(14, 318);
+            this.Txteastdesc.Location = new System.Drawing.Point(15, 326);
             this.Txteastdesc.Multiline = true;
             this.Txteastdesc.Name = "Txteastdesc";
             this.Txteastdesc.NullText = "ادخل وصف الشرق";
@@ -531,11 +473,11 @@
             this.Txteastdesc.RootElement.StretchVertically = true;
             this.Txteastdesc.ShowEmbeddedLabel = true;
             this.Txteastdesc.ShowNullText = true;
-            this.Txteastdesc.Size = new System.Drawing.Size(363, 76);
-            this.Txteastdesc.TabIndex = 20;
+            this.Txteastdesc.Size = new System.Drawing.Size(286, 76);
+            this.Txteastdesc.TabIndex = 14;
             this.Txteastdesc.ThemeName = "Material";
             this.Txteastdesc.WordWrap = false;
-            this.Txteastdesc.TextChanged += new System.EventHandler(this.Txteastdesc_TextChanged);
+            this.Txteastdesc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtamount_KeyPress);
             // 
             // Txtwestdesc
             // 
@@ -544,7 +486,7 @@
             this.Txtwestdesc.AutoScroll = true;
             this.Txtwestdesc.EmbeddedLabelText = "وصف الغرب";
             this.Txtwestdesc.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtwestdesc.Location = new System.Drawing.Point(14, 400);
+            this.Txtwestdesc.Location = new System.Drawing.Point(15, 408);
             this.Txtwestdesc.Multiline = true;
             this.Txtwestdesc.Name = "Txtwestdesc";
             this.Txtwestdesc.NullText = "ادخل وصف الغرب";
@@ -555,11 +497,11 @@
             this.Txtwestdesc.RootElement.StretchVertically = true;
             this.Txtwestdesc.ShowEmbeddedLabel = true;
             this.Txtwestdesc.ShowNullText = true;
-            this.Txtwestdesc.Size = new System.Drawing.Size(363, 76);
-            this.Txtwestdesc.TabIndex = 22;
+            this.Txtwestdesc.Size = new System.Drawing.Size(286, 76);
+            this.Txtwestdesc.TabIndex = 16;
             this.Txtwestdesc.ThemeName = "Material";
             this.Txtwestdesc.WordWrap = false;
-            this.Txtwestdesc.TextChanged += new System.EventHandler(this.Txtwestdesc_TextChanged);
+            this.Txtwestdesc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtamount_KeyPress);
             // 
             // Txtreservereason
             // 
@@ -567,7 +509,7 @@
             this.Txtreservereason.AutoScroll = true;
             this.Txtreservereason.EmbeddedLabelText = " سبب الحجز";
             this.Txtreservereason.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtreservereason.Location = new System.Drawing.Point(945, 283);
+            this.Txtreservereason.Location = new System.Drawing.Point(888, 288);
             this.Txtreservereason.Name = "Txtreservereason";
             this.Txtreservereason.NullText = "ادخل  سبب الحجز";
             this.Txtreservereason.ReadOnly = true;
@@ -575,8 +517,9 @@
             this.Txtreservereason.ShowNullText = true;
             this.Txtreservereason.Size = new System.Drawing.Size(262, 59);
             this.Txtreservereason.TabIndex = 24;
+            this.Txtreservereason.TabStop = false;
             this.Txtreservereason.ThemeName = "Material";
-            this.Txtreservereason.TextChanged += new System.EventHandler(this.Txtreservereason_TextChanged);
+            this.Txtreservereason.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbuildingfee_KeyPress);
             // 
             // Txtnorth
             // 
@@ -584,16 +527,17 @@
             this.Txtnorth.AutoScroll = true;
             this.Txtnorth.EmbeddedLabelText = "ابعاد الشمال";
             this.Txtnorth.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtnorth.Location = new System.Drawing.Point(383, 163);
+            this.Txtnorth.Location = new System.Drawing.Point(307, 169);
             this.Txtnorth.Name = "Txtnorth";
             this.Txtnorth.NullText = "ادخل ابعاد الشمال";
             this.Txtnorth.ReadOnly = true;
             this.Txtnorth.ShowEmbeddedLabel = true;
             this.Txtnorth.ShowNullText = true;
             this.Txtnorth.Size = new System.Drawing.Size(166, 59);
-            this.Txtnorth.TabIndex = 15;
+            this.Txtnorth.TabIndex = 9;
             this.Txtnorth.ThemeName = "Material";
             this.Txtnorth.WordWrap = false;
+            this.Txtnorth.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtamount_KeyPress);
             // 
             // Txtsouth
             // 
@@ -601,16 +545,17 @@
             this.Txtsouth.AutoScroll = true;
             this.Txtsouth.EmbeddedLabelText = "ابعاد الجنوب";
             this.Txtsouth.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtsouth.Location = new System.Drawing.Point(383, 245);
+            this.Txtsouth.Location = new System.Drawing.Point(307, 251);
             this.Txtsouth.Name = "Txtsouth";
             this.Txtsouth.NullText = "ادخل ابعاد الجنوب";
             this.Txtsouth.ReadOnly = true;
             this.Txtsouth.ShowEmbeddedLabel = true;
             this.Txtsouth.ShowNullText = true;
             this.Txtsouth.Size = new System.Drawing.Size(166, 59);
-            this.Txtsouth.TabIndex = 17;
+            this.Txtsouth.TabIndex = 11;
             this.Txtsouth.ThemeName = "Material";
             this.Txtsouth.WordWrap = false;
+            this.Txtsouth.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtamount_KeyPress);
             // 
             // Txteast
             // 
@@ -618,16 +563,17 @@
             this.Txteast.AutoScroll = true;
             this.Txteast.EmbeddedLabelText = "ابعاد الشرق";
             this.Txteast.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txteast.Location = new System.Drawing.Point(383, 327);
+            this.Txteast.Location = new System.Drawing.Point(307, 333);
             this.Txteast.Name = "Txteast";
             this.Txteast.NullText = "ادخل الشرق الجنوب";
             this.Txteast.ReadOnly = true;
             this.Txteast.ShowEmbeddedLabel = true;
             this.Txteast.ShowNullText = true;
             this.Txteast.Size = new System.Drawing.Size(166, 59);
-            this.Txteast.TabIndex = 19;
+            this.Txteast.TabIndex = 13;
             this.Txteast.ThemeName = "Material";
             this.Txteast.WordWrap = false;
+            this.Txteast.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtamount_KeyPress);
             // 
             // Txtwest
             // 
@@ -635,16 +581,17 @@
             this.Txtwest.AutoScroll = true;
             this.Txtwest.EmbeddedLabelText = "ابعاد الغرب";
             this.Txtwest.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtwest.Location = new System.Drawing.Point(383, 409);
+            this.Txtwest.Location = new System.Drawing.Point(307, 415);
             this.Txtwest.Name = "Txtwest";
             this.Txtwest.NullText = "ادخل ابعاد الغرب";
             this.Txtwest.ReadOnly = true;
             this.Txtwest.ShowEmbeddedLabel = true;
             this.Txtwest.ShowNullText = true;
             this.Txtwest.Size = new System.Drawing.Size(166, 59);
-            this.Txtwest.TabIndex = 21;
+            this.Txtwest.TabIndex = 15;
             this.Txtwest.ThemeName = "Material";
             this.Txtwest.WordWrap = false;
+            this.Txtwest.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtamount_KeyPress);
             // 
             // Txtworkfee
             // 
@@ -652,7 +599,7 @@
             this.Txtworkfee.DecimalPlaces = 2;
             this.Txtworkfee.EnableNullValueInput = true;
             this.Txtworkfee.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtworkfee.Location = new System.Drawing.Point(945, 198);
+            this.Txtworkfee.Location = new System.Drawing.Point(888, 203);
             this.Txtworkfee.Maximum = new decimal(new int[] {
             1661992960,
             1808227885,
@@ -663,9 +610,11 @@
             this.Txtworkfee.ReadOnly = true;
             this.Txtworkfee.Size = new System.Drawing.Size(88, 38);
             this.Txtworkfee.TabIndex = 800;
+            this.Txtworkfee.TabStop = false;
             this.Txtworkfee.ThemeName = "Material";
             this.Txtworkfee.ThousandsSeparator = true;
             this.Txtworkfee.ValueChanged += new System.EventHandler(this.Txt_ValueChanged);
+            this.Txtworkfee.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbuildingfee_KeyPress);
             // 
             // Txtbuildingfee
             // 
@@ -673,7 +622,7 @@
             this.Txtbuildingfee.DecimalPlaces = 2;
             this.Txtbuildingfee.EnableNullValueInput = true;
             this.Txtbuildingfee.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtbuildingfee.Location = new System.Drawing.Point(945, 157);
+            this.Txtbuildingfee.Location = new System.Drawing.Point(888, 162);
             this.Txtbuildingfee.Maximum = new decimal(new int[] {
             1661992960,
             1808227885,
@@ -684,9 +633,11 @@
             this.Txtbuildingfee.ReadOnly = true;
             this.Txtbuildingfee.Size = new System.Drawing.Size(88, 38);
             this.Txtbuildingfee.TabIndex = 110;
+            this.Txtbuildingfee.TabStop = false;
             this.Txtbuildingfee.ThemeName = "Material";
             this.Txtbuildingfee.ThousandsSeparator = true;
             this.Txtbuildingfee.ValueChanged += new System.EventHandler(this.Txt_ValueChanged);
+            this.Txtbuildingfee.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbuildingfee_KeyPress);
             // 
             // Txtvat
             // 
@@ -694,7 +645,7 @@
             this.Txtvat.DecimalPlaces = 2;
             this.Txtvat.EnableNullValueInput = true;
             this.Txtvat.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtvat.Location = new System.Drawing.Point(945, 239);
+            this.Txtvat.Location = new System.Drawing.Point(888, 244);
             this.Txtvat.Maximum = new decimal(new int[] {
             1661992960,
             1808227885,
@@ -705,9 +656,11 @@
             this.Txtvat.ReadOnly = true;
             this.Txtvat.Size = new System.Drawing.Size(88, 38);
             this.Txtvat.TabIndex = 130;
+            this.Txtvat.TabStop = false;
             this.Txtvat.ThemeName = "Material";
             this.Txtvat.ThousandsSeparator = true;
             this.Txtvat.ValueChanged += new System.EventHandler(this.Txt_ValueChanged);
+            this.Txtvat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbuildingfee_KeyPress);
             // 
             // CmbPlanGuid
             // 
@@ -732,7 +685,7 @@
             this.CmbPlanGuid.EditorControl.MasterTemplate.EnableFiltering = true;
             this.CmbPlanGuid.EditorControl.MasterTemplate.EnableGrouping = false;
             this.CmbPlanGuid.EditorControl.MasterTemplate.ShowFilteringRow = false;
-            this.CmbPlanGuid.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition28;
+            this.CmbPlanGuid.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.CmbPlanGuid.EditorControl.Name = "NestedRadGridView";
             this.CmbPlanGuid.EditorControl.ReadOnly = true;
             this.CmbPlanGuid.EditorControl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -740,13 +693,14 @@
             this.CmbPlanGuid.EditorControl.Size = new System.Drawing.Size(240, 150);
             this.CmbPlanGuid.EditorControl.TabIndex = 0;
             this.CmbPlanGuid.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmbPlanGuid.Location = new System.Drawing.Point(945, 27);
+            this.CmbPlanGuid.Location = new System.Drawing.Point(888, 32);
             this.CmbPlanGuid.Name = "CmbPlanGuid";
             this.CmbPlanGuid.NullText = "اختر المخطط";
             this.CmbPlanGuid.Size = new System.Drawing.Size(128, 38);
-            this.CmbPlanGuid.TabIndex = 2;
+            this.CmbPlanGuid.TabIndex = 1;
             this.CmbPlanGuid.TabStop = false;
             this.CmbPlanGuid.ThemeName = "Material";
+            this.CmbPlanGuid.DropDownOpening += new Telerik.WinControls.UI.RadPopupOpeningEventHandler(this.CmbPlanGuid_DropDownOpening);
             // 
             // radWorkFeeWithVat
             // 
@@ -759,6 +713,7 @@
             this.radWorkFeeWithVat.ShowNullText = true;
             this.radWorkFeeWithVat.Size = new System.Drawing.Size(165, 40);
             this.radWorkFeeWithVat.TabIndex = 197;
+            this.radWorkFeeWithVat.TabStop = false;
             this.radWorkFeeWithVat.Text = "0.00";
             this.radWorkFeeWithVat.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.radWorkFeeWithVat.ThemeName = "Material";
@@ -774,6 +729,7 @@
             this.radBuildingFeeValue.ShowNullText = true;
             this.radBuildingFeeValue.Size = new System.Drawing.Size(165, 40);
             this.radBuildingFeeValue.TabIndex = 198;
+            this.radBuildingFeeValue.TabStop = false;
             this.radBuildingFeeValue.Text = "0.00";
             this.radBuildingFeeValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.radBuildingFeeValue.ThemeName = "Material";
@@ -789,6 +745,7 @@
             this.radWorkFeeValue.ShowNullText = true;
             this.radWorkFeeValue.Size = new System.Drawing.Size(165, 40);
             this.radWorkFeeValue.TabIndex = 90;
+            this.radWorkFeeValue.TabStop = false;
             this.radWorkFeeValue.Text = "0.00";
             this.radWorkFeeValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.radWorkFeeValue.ThemeName = "Material";
@@ -804,6 +761,7 @@
             this.radVatValue.ShowNullText = true;
             this.radVatValue.Size = new System.Drawing.Size(165, 40);
             this.radVatValue.TabIndex = 200;
+            this.radVatValue.TabStop = false;
             this.radVatValue.Text = "0.00";
             this.radVatValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.radVatValue.ThemeName = "Material";
@@ -820,6 +778,7 @@
             this.radAmountBuildingfee.ShowNullText = true;
             this.radAmountBuildingfee.Size = new System.Drawing.Size(167, 40);
             this.radAmountBuildingfee.TabIndex = 199;
+            this.radAmountBuildingfee.TabStop = false;
             this.radAmountBuildingfee.Text = "0.00";
             this.radAmountBuildingfee.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.radAmountBuildingfee.ThemeName = "Material";
@@ -836,6 +795,7 @@
             this.radLandWorkfee.ShowNullText = true;
             this.radLandWorkfee.Size = new System.Drawing.Size(165, 40);
             this.radLandWorkfee.TabIndex = 1410;
+            this.radLandWorkfee.TabStop = false;
             this.radLandWorkfee.Text = "0.00";
             this.radLandWorkfee.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.radLandWorkfee.ThemeName = "Material";
@@ -852,6 +812,7 @@
             this.radlandfee.ShowNullText = true;
             this.radlandfee.Size = new System.Drawing.Size(165, 40);
             this.radlandfee.TabIndex = 1411;
+            this.radlandfee.TabStop = false;
             this.radlandfee.Text = "0.00";
             this.radlandfee.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.radlandfee.ThemeName = "Material";
@@ -868,6 +829,7 @@
             this.radTextBox1.ShowNullText = true;
             this.radTextBox1.Size = new System.Drawing.Size(165, 40);
             this.radTextBox1.TabIndex = 1412;
+            this.radTextBox1.TabStop = false;
             this.radTextBox1.Text = "0.00";
             this.radTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.radTextBox1.ThemeName = "Material";
@@ -878,7 +840,7 @@
             this.Txtlastaction.AutoScroll = true;
             this.Txtlastaction.EmbeddedLabelText = "العملية الاخيرة";
             this.Txtlastaction.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtlastaction.Location = new System.Drawing.Point(945, 348);
+            this.Txtlastaction.Location = new System.Drawing.Point(888, 353);
             this.Txtlastaction.Multiline = true;
             this.Txtlastaction.Name = "Txtlastaction";
             this.Txtlastaction.ReadOnly = true;
@@ -891,8 +853,9 @@
             this.Txtlastaction.ShowNullText = true;
             this.Txtlastaction.Size = new System.Drawing.Size(262, 123);
             this.Txtlastaction.TabIndex = 194;
+            this.Txtlastaction.TabStop = false;
             this.Txtlastaction.ThemeName = "Material";
-            this.Txtlastaction.TextChanged += new System.EventHandler(this.Txtlastaction_TextChanged);
+            this.Txtlastaction.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbuildingfee_KeyPress);
             // 
             // radLabel3
             // 
@@ -1035,72 +998,59 @@
             this.radPageView1.Controls.Add(this.PageHome);
             this.radPageView1.Controls.Add(this.PageAttachments);
             this.radPageView1.Controls.Add(this.PagePricingLog);
-            this.radPageView1.Location = new System.Drawing.Point(3, 49);
+            this.radPageView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.radPageView1.Location = new System.Drawing.Point(0, 48);
             this.radPageView1.Name = "radPageView1";
             this.radPageView1.PageBackColor = System.Drawing.SystemColors.Control;
             this.radPageView1.SelectedPage = this.PageHome;
-            this.radPageView1.Size = new System.Drawing.Size(1227, 661);
+            this.radPageView1.Size = new System.Drawing.Size(1177, 665);
             this.radPageView1.TabIndex = 72;
             this.radPageView1.ThemeName = "Material";
             this.radPageView1.ViewMode = Telerik.WinControls.UI.PageViewMode.OfficeNavigationBar;
-            ((Telerik.WinControls.UI.RadOfficeNavigationBarElement)(this.radPageView1.GetChildAt(0))).ShowNavigationOptionsMenuItem = false;
             ((Telerik.WinControls.UI.RadOfficeNavigationBarElement)(this.radPageView1.GetChildAt(0))).VisibleItemsCount = 3;
-            ((Telerik.WinControls.UI.RadOfficeNavigationBarElement)(this.radPageView1.GetChildAt(0))).OverflowItemPosition = Telerik.WinControls.UI.OfficeNavigationBar.OfficeNavigationBarOverflowItemPosition.Front;
-            ((Telerik.WinControls.UI.RadOfficeNavigationBarElement)(this.radPageView1.GetChildAt(0))).ShowHorizontalLine = false;
+            ((Telerik.WinControls.UI.RadOfficeNavigationBarElement)(this.radPageView1.GetChildAt(0))).ItemSpacing = 5;
             // 
             // PageHome
             // 
             this.PageHome.AutoScroll = true;
-            this.PageHome.Controls.Add(this.MainPanel);
+            this.PageHome.Controls.Add(this.Txtstatus);
+            this.PageHome.Controls.Add(this.Txtnumber);
+            this.PageHome.Controls.Add(this.Cmblandtype);
+            this.PageHome.Controls.Add(this.radLabel5);
+            this.PageHome.Controls.Add(this.Txtnorthdesc);
+            this.PageHome.Controls.Add(this.Txtlastaction);
+            this.PageHome.Controls.Add(this.Txtnote);
+            this.PageHome.Controls.Add(this.radPanel1);
+            this.PageHome.Controls.Add(this.Txtsouthdesc);
+            this.PageHome.Controls.Add(this.Chkisvat);
+            this.PageHome.Controls.Add(this.radTotalText);
+            this.PageHome.Controls.Add(this.Txtwest);
+            this.PageHome.Controls.Add(this.Txteastdesc);
+            this.PageHome.Controls.Add(this.Txtwestdesc);
+            this.PageHome.Controls.Add(this.Txtreservereason);
+            this.PageHome.Controls.Add(this.radLabel8);
+            this.PageHome.Controls.Add(this.Chkisworkfee);
+            this.PageHome.Controls.Add(this.CmbPlanGuid);
+            this.PageHome.Controls.Add(this.Txtamount);
+            this.PageHome.Controls.Add(this.Txtvat);
+            this.PageHome.Controls.Add(this.Txtdeednumber);
+            this.PageHome.Controls.Add(this.Txtbuildingfee);
+            this.PageHome.Controls.Add(this.Txtarea);
+            this.PageHome.Controls.Add(this.Txtworkfee);
+            this.PageHome.Controls.Add(this.Txtblocknumber);
+            this.PageHome.Controls.Add(this.Txteast);
+            this.PageHome.Controls.Add(this.Chkisbuildingfee);
+            this.PageHome.Controls.Add(this.Txtsouth);
+            this.PageHome.Controls.Add(this.Txtnorth);
             this.PageHome.Description = null;
             this.PageHome.Image = global::DoctorERP.Properties.Resources.website_25;
             this.PageHome.ItemSize = new System.Drawing.SizeF(71F, 55F);
             this.PageHome.Location = new System.Drawing.Point(6, 6);
             this.PageHome.Name = "PageHome";
-            this.PageHome.Size = new System.Drawing.Size(1215, 593);
+            this.PageHome.Size = new System.Drawing.Size(1165, 597);
             this.PageHome.Text = "عام";
             this.PageHome.Title = "البيانات العامة لبطاقة الأرض";
-            // 
-            // MainPanel
-            // 
-            this.MainPanel.AutoScroll = true;
-            this.MainPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.MainPanel.Controls.Add(this.Txtstatus);
-            this.MainPanel.Controls.Add(this.Txtnumber);
-            this.MainPanel.Controls.Add(this.radLabel5);
-            this.MainPanel.Controls.Add(this.Txtlastaction);
-            this.MainPanel.Controls.Add(this.radPanel1);
-            this.MainPanel.Controls.Add(this.Chkisvat);
-            this.MainPanel.Controls.Add(this.Txtwest);
-            this.MainPanel.Controls.Add(this.Txtwestdesc);
-            this.MainPanel.Controls.Add(this.radLabel8);
-            this.MainPanel.Controls.Add(this.CmbPlanGuid);
-            this.MainPanel.Controls.Add(this.Txtvat);
-            this.MainPanel.Controls.Add(this.Txtbuildingfee);
-            this.MainPanel.Controls.Add(this.Txtworkfee);
-            this.MainPanel.Controls.Add(this.Txteast);
-            this.MainPanel.Controls.Add(this.Txtsouth);
-            this.MainPanel.Controls.Add(this.Txtnorth);
-            this.MainPanel.Controls.Add(this.Cmblandtype);
-            this.MainPanel.Controls.Add(this.Chkisbuildingfee);
-            this.MainPanel.Controls.Add(this.Txtblocknumber);
-            this.MainPanel.Controls.Add(this.Txtarea);
-            this.MainPanel.Controls.Add(this.Txtdeednumber);
-            this.MainPanel.Controls.Add(this.Txtamount);
-            this.MainPanel.Controls.Add(this.radCheckBox13);
-            this.MainPanel.Controls.Add(this.Chkisworkfee);
-            this.MainPanel.Controls.Add(this.Txtreservereason);
-            this.MainPanel.Controls.Add(this.radCheckBox3);
-            this.MainPanel.Controls.Add(this.Txteastdesc);
-            this.MainPanel.Controls.Add(this.radTotalText);
-            this.MainPanel.Controls.Add(this.Txtsouthdesc);
-            this.MainPanel.Controls.Add(this.Txtnote);
-            this.MainPanel.Controls.Add(this.Txtnorthdesc);
-            this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainPanel.Location = new System.Drawing.Point(0, 0);
-            this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(1215, 593);
-            this.MainPanel.TabIndex = 175;
+            this.PageHome.Paint += new System.Windows.Forms.PaintEventHandler(this.PageHome_Paint);
             // 
             // Txtstatus
             // 
@@ -1108,20 +1058,19 @@
             this.Txtstatus.AutoSize = false;
             this.Txtstatus.BackColor = System.Drawing.Color.White;
             this.Txtstatus.Font = new System.Drawing.Font("Arial", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtstatus.Location = new System.Drawing.Point(14, 4);
+            this.Txtstatus.Location = new System.Drawing.Point(15, 12);
             this.Txtstatus.Name = "Txtstatus";
             // 
             // 
             // 
             this.Txtstatus.RootElement.BorderHighlightThickness = 0;
-            this.Txtstatus.Size = new System.Drawing.Size(162, 127);
+            this.Txtstatus.Size = new System.Drawing.Size(147, 127);
             this.Txtstatus.TabIndex = 1413;
             this.Txtstatus.Text = "الحالة";
             this.Txtstatus.TextAlignment = System.Drawing.ContentAlignment.TopRight;
             this.Txtstatus.TextWrap = false;
             this.Txtstatus.ThemeName = "Material";
             this.Txtstatus.TextChanged += new System.EventHandler(this.Txtstatus_TextChanged);
-            this.Txtstatus.Click += new System.EventHandler(this.Txtstatus_Click);
             // 
             // Txtnumber
             // 
@@ -1132,13 +1081,13 @@
             this.Txtnumber.BackColor = System.Drawing.Color.White;
             this.Txtnumber.BorderVisible = true;
             this.Txtnumber.Font = new System.Drawing.Font("Arial", 60F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtnumber.Location = new System.Drawing.Point(182, 5);
+            this.Txtnumber.Location = new System.Drawing.Point(168, 11);
             this.Txtnumber.Name = "Txtnumber";
             // 
             // 
             // 
             this.Txtnumber.RootElement.BorderHighlightThickness = 0;
-            this.Txtnumber.Size = new System.Drawing.Size(239, 127);
+            this.Txtnumber.Size = new System.Drawing.Size(177, 127);
             this.Txtnumber.TabIndex = 1412;
             this.Txtnumber.Text = "10";
             this.Txtnumber.TextAlignment = System.Drawing.ContentAlignment.TopRight;
@@ -1153,7 +1102,7 @@
             this.radLabel5.BackColor = System.Drawing.Color.White;
             this.radLabel5.BorderVisible = true;
             this.radLabel5.Font = new System.Drawing.Font("Arial", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel5.Location = new System.Drawing.Point(419, 5);
+            this.radLabel5.Location = new System.Drawing.Point(343, 11);
             this.radLabel5.Name = "radLabel5";
             // 
             // 
@@ -1185,7 +1134,7 @@
             this.radPanel1.Controls.Add(this.radLabel3);
             this.radPanel1.Controls.Add(this.radLabel16);
             this.radPanel1.Controls.Add(this.radLabel17);
-            this.radPanel1.Location = new System.Drawing.Point(589, 156);
+            this.radPanel1.Location = new System.Drawing.Point(532, 161);
             this.radPanel1.Name = "radPanel1";
             this.radPanel1.Size = new System.Drawing.Size(350, 313);
             this.radPanel1.TabIndex = 1410;
@@ -1262,16 +1211,32 @@
             this.Chkisvat.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Chkisvat.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Chkisvat.ImageAlignment = System.Drawing.ContentAlignment.MiddleRight;
-            this.Chkisvat.Location = new System.Drawing.Point(1039, 238);
+            this.Chkisvat.Location = new System.Drawing.Point(982, 243);
             this.Chkisvat.Name = "Chkisvat";
             this.Chkisvat.ReadOnly = true;
             this.Chkisvat.Size = new System.Drawing.Size(168, 41);
-            this.Chkisvat.TabIndex = 12;
+            this.Chkisvat.TabIndex = 8;
             this.Chkisvat.Text = "تفعيل القيمة المضافة لعمولة السعي";
             this.Chkisvat.TextWrap = true;
             this.Chkisvat.ThemeName = "Material";
-            this.Chkisvat.ToggleStateChanged += new Telerik.WinControls.UI.StateChangedEventHandler(this.Chkisvat_ToggleStateChanged);
             this.Chkisvat.CheckStateChanged += new System.EventHandler(this.Chkisvat_CheckStateChanged);
+            this.Chkisvat.Click += new System.EventHandler(this.Chkisbuildingfee_Click);
+            // 
+            // radTotalText
+            // 
+            this.radTotalText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.radTotalText.AutoScroll = true;
+            this.radTotalText.AutoSize = false;
+            this.radTotalText.BackColor = System.Drawing.Color.White;
+            this.radTotalText.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radTotalText.Location = new System.Drawing.Point(510, 487);
+            this.radTotalText.Name = "radTotalText";
+            this.radTotalText.Size = new System.Drawing.Size(640, 102);
+            this.radTotalText.TabIndex = 1470;
+            this.radTotalText.Text = "radLabel11";
+            this.radTotalText.TextAlignment = System.Drawing.ContentAlignment.TopRight;
+            this.radTotalText.ThemeName = "Material";
+            this.radTotalText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbuildingfee_KeyPress);
             // 
             // radLabel8
             // 
@@ -1280,47 +1245,14 @@
             this.radLabel8.BackColor = System.Drawing.Color.White;
             this.radLabel8.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radLabel8.ForeColor = System.Drawing.Color.Gray;
-            this.radLabel8.Location = new System.Drawing.Point(945, 6);
+            this.radLabel8.Location = new System.Drawing.Point(888, 11);
             this.radLabel8.Name = "radLabel8";
             this.radLabel8.Size = new System.Drawing.Size(128, 26);
-            this.radLabel8.TabIndex = 196;
+            this.radLabel8.TabIndex = 1960;
             this.radLabel8.Text = "المخطط";
             this.radLabel8.TextAlignment = System.Drawing.ContentAlignment.TopRight;
             this.radLabel8.TextWrap = false;
             this.radLabel8.ThemeName = "Material";
-            // 
-            // Chkisbuildingfee
-            // 
-            this.Chkisbuildingfee.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Chkisbuildingfee.AutoSize = false;
-            this.Chkisbuildingfee.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Chkisbuildingfee.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Chkisbuildingfee.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Chkisbuildingfee.ImageAlignment = System.Drawing.ContentAlignment.MiddleRight;
-            this.Chkisbuildingfee.Location = new System.Drawing.Point(1039, 156);
-            this.Chkisbuildingfee.Name = "Chkisbuildingfee";
-            this.Chkisbuildingfee.ReadOnly = true;
-            this.Chkisbuildingfee.Size = new System.Drawing.Size(168, 41);
-            this.Chkisbuildingfee.TabIndex = 10;
-            this.Chkisbuildingfee.Text = "تفعيل ضريبة التصرفات العقارية";
-            this.Chkisbuildingfee.TextWrap = true;
-            this.Chkisbuildingfee.ThemeName = "Material";
-            this.Chkisbuildingfee.ToggleStateChanged += new Telerik.WinControls.UI.StateChangedEventHandler(this.Chkisbuildingfee_ToggleStateChanged);
-            this.Chkisbuildingfee.CheckStateChanged += new System.EventHandler(this.Chkisvat_CheckStateChanged);
-            // 
-            // radCheckBox13
-            // 
-            this.radCheckBox13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.radCheckBox13.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.radCheckBox13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.radCheckBox13.ImageAlignment = System.Drawing.ContentAlignment.MiddleRight;
-            this.radCheckBox13.Location = new System.Drawing.Point(1577, 162);
-            this.radCheckBox13.Name = "radCheckBox13";
-            this.radCheckBox13.Size = new System.Drawing.Size(183, 19);
-            this.radCheckBox13.TabIndex = 135;
-            this.radCheckBox13.Text = "تفعيل ضريبة التصرفات العقارية";
-            this.radCheckBox13.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
-            this.radCheckBox13.ThemeName = "Material";
             // 
             // Chkisworkfee
             // 
@@ -1330,7 +1262,7 @@
             this.Chkisworkfee.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Chkisworkfee.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Chkisworkfee.ImageAlignment = System.Drawing.ContentAlignment.MiddleRight;
-            this.Chkisworkfee.Location = new System.Drawing.Point(1039, 197);
+            this.Chkisworkfee.Location = new System.Drawing.Point(982, 202);
             this.Chkisworkfee.Name = "Chkisworkfee";
             this.Chkisworkfee.ReadOnly = true;
             this.Chkisworkfee.Size = new System.Drawing.Size(168, 41);
@@ -1338,53 +1270,27 @@
             this.Chkisworkfee.Text = "تفعيل عمولة السعي";
             this.Chkisworkfee.TextWrap = true;
             this.Chkisworkfee.ThemeName = "Material";
-            this.Chkisworkfee.ToggleStateChanged += new Telerik.WinControls.UI.StateChangedEventHandler(this.Chkisworkfee_ToggleStateChanged);
             this.Chkisworkfee.CheckStateChanged += new System.EventHandler(this.Chkisvat_CheckStateChanged);
+            this.Chkisworkfee.Click += new System.EventHandler(this.Chkisbuildingfee_Click);
             // 
-            // radCheckBox3
+            // Chkisbuildingfee
             // 
-            this.radCheckBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.radCheckBox3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.radCheckBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.radCheckBox3.ImageAlignment = System.Drawing.ContentAlignment.MiddleRight;
-            this.radCheckBox3.Location = new System.Drawing.Point(1577, 245);
-            this.radCheckBox3.Name = "radCheckBox3";
-            this.radCheckBox3.Size = new System.Drawing.Size(180, 19);
-            this.radCheckBox3.TabIndex = 144;
-            this.radCheckBox3.Text = "تفعيل عمولة السعي مع الضريبة";
-            this.radCheckBox3.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
-            this.radCheckBox3.ThemeName = "Material";
-            // 
-            // radTotalText
-            // 
-            this.radTotalText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.radTotalText.AutoScroll = true;
-            this.radTotalText.AutoSize = false;
-            this.radTotalText.BackColor = System.Drawing.Color.White;
-            this.radTotalText.Controls.Add(this.radLabel11);
-            this.radTotalText.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radTotalText.Location = new System.Drawing.Point(567, 482);
-            this.radTotalText.Name = "radTotalText";
-            this.radTotalText.Size = new System.Drawing.Size(640, 102);
-            this.radTotalText.TabIndex = 147;
-            this.radTotalText.Text = "radLabel11";
-            this.radTotalText.TextAlignment = System.Drawing.ContentAlignment.TopRight;
-            this.radTotalText.ThemeName = "Material";
-            this.radTotalText.MouseDown += new System.Windows.Forms.MouseEventHandler(this.radTotalText_MouseDown);
-            // 
-            // radLabel11
-            // 
-            this.radLabel11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.radLabel11.AutoScroll = true;
-            this.radLabel11.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel11.Location = new System.Drawing.Point(172, 26);
-            this.radLabel11.Name = "radLabel11";
-            this.radLabel11.Size = new System.Drawing.Size(227, 48);
-            this.radLabel11.TabIndex = 1404;
-            this.radLabel11.Text = "يجب الضغط علي زر تعديل أولاَ\r\nثم بعد ذلك يمكنك تعديل البيانات";
-            this.radLabel11.TextAlignment = System.Drawing.ContentAlignment.TopRight;
-            this.radLabel11.ThemeName = "Material";
+            this.Chkisbuildingfee.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Chkisbuildingfee.AutoSize = false;
+            this.Chkisbuildingfee.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Chkisbuildingfee.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Chkisbuildingfee.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Chkisbuildingfee.ImageAlignment = System.Drawing.ContentAlignment.MiddleRight;
+            this.Chkisbuildingfee.Location = new System.Drawing.Point(982, 161);
+            this.Chkisbuildingfee.Name = "Chkisbuildingfee";
+            this.Chkisbuildingfee.ReadOnly = true;
+            this.Chkisbuildingfee.Size = new System.Drawing.Size(168, 41);
+            this.Chkisbuildingfee.TabIndex = 6;
+            this.Chkisbuildingfee.Text = "تفعيل ضريبة التصرفات العقارية";
+            this.Chkisbuildingfee.TextWrap = true;
+            this.Chkisbuildingfee.ThemeName = "Material";
+            this.Chkisbuildingfee.CheckStateChanged += new System.EventHandler(this.Chkisvat_CheckStateChanged);
+            this.Chkisbuildingfee.Click += new System.EventHandler(this.Chkisbuildingfee_Click);
             // 
             // PageAttachments
             // 
@@ -1442,7 +1348,7 @@
             this.DataGridAttachments.MasterTemplate.AllowEditRow = false;
             this.DataGridAttachments.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
             this.DataGridAttachments.MasterTemplate.EnableGrouping = false;
-            this.DataGridAttachments.MasterTemplate.ViewDefinition = tableViewDefinition29;
+            this.DataGridAttachments.MasterTemplate.ViewDefinition = tableViewDefinition2;
             this.DataGridAttachments.Name = "DataGridAttachments";
             this.DataGridAttachments.ShowGroupPanel = false;
             this.DataGridAttachments.ShowGroupPanelScrollbars = false;
@@ -1481,7 +1387,7 @@
             this.DataGridPriceLog.MasterTemplate.AllowRowHeaderContextMenu = false;
             this.DataGridPriceLog.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
             this.DataGridPriceLog.MasterTemplate.EnableGrouping = false;
-            this.DataGridPriceLog.MasterTemplate.ViewDefinition = tableViewDefinition30;
+            this.DataGridPriceLog.MasterTemplate.ViewDefinition = tableViewDefinition3;
             this.DataGridPriceLog.Name = "DataGridPriceLog";
             this.DataGridPriceLog.ShowGroupPanel = false;
             this.DataGridPriceLog.ShowGroupPanelScrollbars = false;
@@ -1494,11 +1400,12 @@
             // 
             this.BindingNavigatorLands.AutoHandleAddNew = false;
             this.BindingNavigatorLands.AutoScroll = true;
-            this.BindingNavigatorLands.Location = new System.Drawing.Point(3, -1);
+            this.BindingNavigatorLands.Dock = System.Windows.Forms.DockStyle.Top;
+            this.BindingNavigatorLands.Location = new System.Drawing.Point(0, 0);
             this.BindingNavigatorLands.Name = "BindingNavigatorLands";
             this.BindingNavigatorLands.Rows.AddRange(new Telerik.WinControls.UI.CommandBarRowElement[] {
             this.commandBarRowElement1});
-            this.BindingNavigatorLands.Size = new System.Drawing.Size(1227, 48);
+            this.BindingNavigatorLands.Size = new System.Drawing.Size(1177, 48);
             this.BindingNavigatorLands.TabIndex = 68;
             this.BindingNavigatorLands.ThemeName = "Material";
             // 
@@ -1656,18 +1563,9 @@
             this.BtnNew2.Image = null;
             this.BtnNew2.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.BtnNew2.Name = "BtnNew2";
-            this.BtnNew2.ScreenTip = this.radOffice2007ScreenTipElement11;
             this.BtnNew2.Text = " ";
             this.BtnNew2.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.BtnNew2.Visibility = Telerik.WinControls.ElementVisibility.Hidden;
-            // 
-            // radOffice2007ScreenTipElement11
-            // 
-            this.radOffice2007ScreenTipElement11.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement11.Name = "radOffice2007ScreenTipElement11";
-            this.radOffice2007ScreenTipElement11.TemplateType = null;
-            this.radOffice2007ScreenTipElement11.TipSize = new System.Drawing.Size(0, 0);
             // 
             // BtnDelete2
             // 
@@ -1680,18 +1578,9 @@
             this.BtnDelete2.EnableRippleAnimation = true;
             this.BtnDelete2.Image = null;
             this.BtnDelete2.Name = "BtnDelete2";
-            this.BtnDelete2.ScreenTip = this.radOffice2007ScreenTipElement13;
             this.BtnDelete2.Text = " ";
             this.BtnDelete2.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.BtnDelete2.Visibility = Telerik.WinControls.ElementVisibility.Hidden;
-            // 
-            // radOffice2007ScreenTipElement13
-            // 
-            this.radOffice2007ScreenTipElement13.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement13.Name = "radOffice2007ScreenTipElement13";
-            this.radOffice2007ScreenTipElement13.TemplateType = null;
-            this.radOffice2007ScreenTipElement13.TipSize = new System.Drawing.Size(0, 0);
             // 
             // BtnResfresh
             // 
@@ -1711,19 +1600,10 @@
             this.BtnResfresh.Font = new System.Drawing.Font("Traditional Arabic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnResfresh.Image = null;
             this.BtnResfresh.Name = "BtnResfresh";
-            this.BtnResfresh.ScreenTip = this.radOffice2007ScreenTipElement17;
             this.BtnResfresh.Tag = "تحديث بيانات الصفحة";
             this.BtnResfresh.Text = "تحديث";
             this.BtnResfresh.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.BtnResfresh.Click += new System.EventHandler(this.BtnResfresh_Click);
-            // 
-            // radOffice2007ScreenTipElement17
-            // 
-            this.radOffice2007ScreenTipElement17.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement17.Name = "radOffice2007ScreenTipElement17";
-            this.radOffice2007ScreenTipElement17.TemplateType = null;
-            this.radOffice2007ScreenTipElement17.TipSize = new System.Drawing.Size(0, 0);
             // 
             // commandBarSeparator5
             // 
@@ -1747,11 +1627,9 @@
             this.BtnImport.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.BtnImportExcel});
             this.BtnImport.Name = "BtnImport";
-            this.BtnImport.ScreenTip = this.radOffice2007ScreenTipElement26;
             this.BtnImport.Tag = "إستيراد بيانات البطاقة";
             this.BtnImport.Text = "إستيراد";
             this.BtnImport.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.BtnImport.Click += new System.EventHandler(this.BtnImport_Click_1);
             // 
             // BtnImportExcel
             // 
@@ -1760,26 +1638,9 @@
             this.BtnImportExcel.Image = null;
             this.BtnImportExcel.Name = "BtnImportExcel";
             this.BtnImportExcel.RightToLeft = true;
-            this.BtnImportExcel.ScreenTip = this.radOffice2007ScreenTipElement25;
             this.BtnImportExcel.Tag = "إستيراد بيانات البطاقة من ملف إكسيل";
             this.BtnImportExcel.Text = "إستراد من إكسيل";
             this.BtnImportExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            // 
-            // radOffice2007ScreenTipElement25
-            // 
-            this.radOffice2007ScreenTipElement25.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement25.Name = "radOffice2007ScreenTipElement25";
-            this.radOffice2007ScreenTipElement25.TemplateType = null;
-            this.radOffice2007ScreenTipElement25.TipSize = new System.Drawing.Size(0, 0);
-            // 
-            // radOffice2007ScreenTipElement26
-            // 
-            this.radOffice2007ScreenTipElement26.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement26.Name = "radOffice2007ScreenTipElement26";
-            this.radOffice2007ScreenTipElement26.TemplateType = null;
-            this.radOffice2007ScreenTipElement26.TipSize = new System.Drawing.Size(0, 0);
             // 
             // BtnExport
             // 
@@ -1795,7 +1656,6 @@
             this.BtnWordExport,
             this.BtnEmailExport});
             this.BtnExport.Name = "BtnExport";
-            this.BtnExport.ScreenTip = this.radOffice2007ScreenTipElement36;
             this.BtnExport.Tag = "تصدير بيانات البطاقة";
             this.BtnExport.Text = "تصدير";
             this.BtnExport.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -1806,85 +1666,32 @@
             this.BtnEcelExport.EnableFocusBorderAnimation = false;
             this.BtnEcelExport.EnableRippleAnimation = true;
             this.BtnEcelExport.Name = "BtnEcelExport";
-            this.BtnEcelExport.ScreenTip = this.radOffice2007ScreenTipElement37;
             this.BtnEcelExport.Tag = "تصدير بيانات البطاقة الي ملف إكسيل علي طريقة الطباعة";
             this.BtnEcelExport.Text = "تصدير ملف إكسيل طباعة";
-            // 
-            // radOffice2007ScreenTipElement37
-            // 
-            this.radOffice2007ScreenTipElement37.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement37.Name = "radOffice2007ScreenTipElement37";
-            this.radOffice2007ScreenTipElement37.TemplateType = null;
-            this.radOffice2007ScreenTipElement37.TipSize = new System.Drawing.Size(0, 0);
             // 
             // BtnExportExcelData
             // 
             this.BtnExportExcelData.Name = "BtnExportExcelData";
-            this.BtnExportExcelData.ScreenTip = this.radOffice2007ScreenTipElement44;
             this.BtnExportExcelData.Tag = "تصدير بيانات البطاقة الي ملف إكسيل علي طريقة البيانات";
             this.BtnExportExcelData.Text = "تصدير ملف إكسيل بيانات";
-            // 
-            // radOffice2007ScreenTipElement44
-            // 
-            this.radOffice2007ScreenTipElement44.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement44.Name = "radOffice2007ScreenTipElement44";
-            this.radOffice2007ScreenTipElement44.TemplateType = null;
-            this.radOffice2007ScreenTipElement44.TipSize = new System.Drawing.Size(0, 0);
             // 
             // BtnPdfExport
             // 
             this.BtnPdfExport.Name = "BtnPdfExport";
-            this.BtnPdfExport.ScreenTip = this.radOffice2007ScreenTipElement41;
             this.BtnPdfExport.Tag = "تصدير بيانات البطاقة الي ملف pdf";
             this.BtnPdfExport.Text = "تصدير pdf";
-            // 
-            // radOffice2007ScreenTipElement41
-            // 
-            this.radOffice2007ScreenTipElement41.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement41.Name = "radOffice2007ScreenTipElement41";
-            this.radOffice2007ScreenTipElement41.TemplateType = null;
-            this.radOffice2007ScreenTipElement41.TipSize = new System.Drawing.Size(0, 0);
             // 
             // BtnWordExport
             // 
             this.BtnWordExport.Name = "BtnWordExport";
-            this.BtnWordExport.ScreenTip = this.radOffice2007ScreenTipElement42;
             this.BtnWordExport.Tag = "تصدير بيانات البطاقة الي ملف word";
             this.BtnWordExport.Text = "تصدير ملف word";
-            // 
-            // radOffice2007ScreenTipElement42
-            // 
-            this.radOffice2007ScreenTipElement42.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement42.Name = "radOffice2007ScreenTipElement42";
-            this.radOffice2007ScreenTipElement42.TemplateType = null;
-            this.radOffice2007ScreenTipElement42.TipSize = new System.Drawing.Size(0, 0);
             // 
             // BtnEmailExport
             // 
             this.BtnEmailExport.Name = "BtnEmailExport";
-            this.BtnEmailExport.ScreenTip = this.radOffice2007ScreenTipElement43;
             this.BtnEmailExport.Tag = "تصدير بيانات البطاقة و ارسالها عبر إيميل";
             this.BtnEmailExport.Text = "إرسال إيميل";
-            // 
-            // radOffice2007ScreenTipElement43
-            // 
-            this.radOffice2007ScreenTipElement43.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement43.Name = "radOffice2007ScreenTipElement43";
-            this.radOffice2007ScreenTipElement43.TemplateType = null;
-            this.radOffice2007ScreenTipElement43.TipSize = new System.Drawing.Size(0, 0);
-            // 
-            // radOffice2007ScreenTipElement36
-            // 
-            this.radOffice2007ScreenTipElement36.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement36.Name = "radOffice2007ScreenTipElement36";
-            this.radOffice2007ScreenTipElement36.TemplateType = null;
-            this.radOffice2007ScreenTipElement36.TipSize = new System.Drawing.Size(0, 0);
             // 
             // commandBarSeparator8
             // 
@@ -1907,19 +1714,10 @@
             this.BtnDelete.Font = new System.Drawing.Font("Traditional Arabic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnDelete.Image = global::DoctorERP.Properties.Resources.BtnDelete;
             this.BtnDelete.Name = "BtnDelete";
-            this.BtnDelete.ScreenTip = this.radOffice2007ScreenTipElement24;
             this.BtnDelete.Tag = "حذف البطاقة";
             this.BtnDelete.Text = "حذف";
             this.BtnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.BtnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
-            // 
-            // radOffice2007ScreenTipElement24
-            // 
-            this.radOffice2007ScreenTipElement24.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement24.Name = "radOffice2007ScreenTipElement24";
-            this.radOffice2007ScreenTipElement24.TemplateType = null;
-            this.radOffice2007ScreenTipElement24.TipSize = new System.Drawing.Size(0, 0);
             // 
             // commandBarSeparator9
             // 
@@ -1945,7 +1743,6 @@
             this.BtnPreview,
             this.BtnDesign});
             this.BtnPrint.Name = "BtnPrint";
-            this.BtnPrint.ScreenTip = this.radOffice2007ScreenTipElement27;
             this.BtnPrint.Tag = "طباعة بيانات البطاقة";
             this.BtnPrint.Text = "طباعة";
             this.BtnPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -1958,18 +1755,9 @@
             this.BtnSentToPrinter.Image = global::DoctorERP.Properties.Resources.printer16;
             this.BtnSentToPrinter.Name = "BtnSentToPrinter";
             this.BtnSentToPrinter.RightToLeft = true;
-            this.BtnSentToPrinter.ScreenTip = this.radOffice2007ScreenTipElement28;
             this.BtnSentToPrinter.Tag = "إرسال بيانات البطاقة الي الطابعة";
             this.BtnSentToPrinter.Text = "إرسال للطابعة";
             this.BtnSentToPrinter.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            // 
-            // radOffice2007ScreenTipElement28
-            // 
-            this.radOffice2007ScreenTipElement28.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement28.Name = "radOffice2007ScreenTipElement28";
-            this.radOffice2007ScreenTipElement28.TemplateType = null;
-            this.radOffice2007ScreenTipElement28.TipSize = new System.Drawing.Size(0, 0);
             // 
             // BtnPreview
             // 
@@ -1979,18 +1767,9 @@
             this.BtnPreview.Image = global::DoctorERP.Properties.Resources.preview16;
             this.BtnPreview.Name = "BtnPreview";
             this.BtnPreview.RightToLeft = true;
-            this.BtnPreview.ScreenTip = this.radOffice2007ScreenTipElement29;
             this.BtnPreview.Tag = "معاينة الطباعة";
             this.BtnPreview.Text = "معاينة";
             this.BtnPreview.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            // 
-            // radOffice2007ScreenTipElement29
-            // 
-            this.radOffice2007ScreenTipElement29.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement29.Name = "radOffice2007ScreenTipElement29";
-            this.radOffice2007ScreenTipElement29.TemplateType = null;
-            this.radOffice2007ScreenTipElement29.TipSize = new System.Drawing.Size(0, 0);
             // 
             // BtnDesign
             // 
@@ -2000,26 +1779,9 @@
             this.BtnDesign.Image = global::DoctorERP.Properties.Resources.BtnSketch_16;
             this.BtnDesign.Name = "BtnDesign";
             this.BtnDesign.RightToLeft = true;
-            this.BtnDesign.ScreenTip = this.radOffice2007ScreenTipElement30;
             this.BtnDesign.Tag = "تغيير تصميم الطباعة";
             this.BtnDesign.Text = "تصميم";
             this.BtnDesign.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            // 
-            // radOffice2007ScreenTipElement30
-            // 
-            this.radOffice2007ScreenTipElement30.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement30.Name = "radOffice2007ScreenTipElement30";
-            this.radOffice2007ScreenTipElement30.TemplateType = null;
-            this.radOffice2007ScreenTipElement30.TipSize = new System.Drawing.Size(0, 0);
-            // 
-            // radOffice2007ScreenTipElement27
-            // 
-            this.radOffice2007ScreenTipElement27.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement27.Name = "radOffice2007ScreenTipElement27";
-            this.radOffice2007ScreenTipElement27.TemplateType = null;
-            this.radOffice2007ScreenTipElement27.TipSize = new System.Drawing.Size(0, 0);
             // 
             // BtnOperation
             // 
@@ -2038,11 +1800,9 @@
             this.BtnReservation,
             this.BtnPriceOffer});
             this.BtnOperation.Name = "BtnOperation";
-            this.BtnOperation.ScreenTip = this.radOffice2007ScreenTipElement39;
             this.BtnOperation.Tag = "عمليات علي البطاقة";
             this.BtnOperation.Text = "عمليات";
             this.BtnOperation.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.BtnOperation.Click += new System.EventHandler(this.BtnOperation_Click);
             // 
             // BtnSaleOrder
             // 
@@ -2069,14 +1829,6 @@
             this.BtnPriceOffer.Text = "عرض سعر";
             this.BtnPriceOffer.UseCompatibleTextRendering = false;
             // 
-            // radOffice2007ScreenTipElement39
-            // 
-            this.radOffice2007ScreenTipElement39.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement39.Name = "radOffice2007ScreenTipElement39";
-            this.radOffice2007ScreenTipElement39.TemplateType = null;
-            this.radOffice2007ScreenTipElement39.TipSize = new System.Drawing.Size(0, 0);
-            // 
             // commandBarSeparator7
             // 
             this.commandBarSeparator7.DisplayName = "commandBarSeparator7";
@@ -2098,20 +1850,11 @@
             this.BtnNew.Font = new System.Drawing.Font("Traditional Arabic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnNew.Image = global::DoctorERP.Properties.Resources.BtnAddNew;
             this.BtnNew.Name = "BtnNew";
-            this.BtnNew.ScreenTip = this.radOffice2007ScreenTipElement23;
             this.BtnNew.Tag = "إنشاء بطاقة جديدة";
             this.BtnNew.Text = "جديد";
             this.BtnNew.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.BtnNew.TextOrientation = System.Windows.Forms.Orientation.Horizontal;
             this.BtnNew.Click += new System.EventHandler(this.BtnAdd_Click);
-            // 
-            // radOffice2007ScreenTipElement23
-            // 
-            this.radOffice2007ScreenTipElement23.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement23.Name = "radOffice2007ScreenTipElement23";
-            this.radOffice2007ScreenTipElement23.TemplateType = null;
-            this.radOffice2007ScreenTipElement23.TipSize = new System.Drawing.Size(0, 0);
             // 
             // BtnEdit
             // 
@@ -2127,20 +1870,11 @@
             this.BtnEdit.Font = new System.Drawing.Font("Traditional Arabic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnEdit.Image = global::DoctorERP.Properties.Resources.BtnEdite;
             this.BtnEdit.Name = "BtnEdit";
-            this.BtnEdit.ScreenTip = this.radOffice2007ScreenTipElement12;
             this.BtnEdit.Tag = "تعديل بيانات البطاقة";
             this.BtnEdit.Text = "تعديل";
             this.BtnEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.BtnEdit.TextWrap = false;
             this.BtnEdit.Click += new System.EventHandler(this.BtnEdit_Click);
-            // 
-            // radOffice2007ScreenTipElement12
-            // 
-            this.radOffice2007ScreenTipElement12.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement12.Name = "radOffice2007ScreenTipElement12";
-            this.radOffice2007ScreenTipElement12.TemplateType = null;
-            this.radOffice2007ScreenTipElement12.TipSize = new System.Drawing.Size(0, 0);
             // 
             // BtnExit
             // 
@@ -2156,96 +1890,11 @@
             this.BtnExit.Font = new System.Drawing.Font("Traditional Arabic", 14.25F, System.Drawing.FontStyle.Bold);
             this.BtnExit.Image = global::DoctorERP.Properties.Resources.BtnExit;
             this.BtnExit.Name = "BtnExit";
-            this.BtnExit.ScreenTip = this.radOffice2007ScreenTipElement38;
             this.BtnExit.Tag = "تجاهل التغييرات و الخروج من الصفحة";
             this.BtnExit.Text = "خروج";
             this.BtnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.BtnExit.TextOrientation = System.Windows.Forms.Orientation.Horizontal;
             this.BtnExit.Click += new System.EventHandler(this.MenuExit_Click);
-            // 
-            // radOffice2007ScreenTipElement38
-            // 
-            this.radOffice2007ScreenTipElement38.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement38.Name = "radOffice2007ScreenTipElement38";
-            this.radOffice2007ScreenTipElement38.TemplateType = null;
-            this.radOffice2007ScreenTipElement38.TipSize = new System.Drawing.Size(0, 0);
-            // 
-            // radOffice2007ScreenTipElement10
-            // 
-            this.radOffice2007ScreenTipElement10.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement10.Name = "radOffice2007ScreenTipElement10";
-            this.radOffice2007ScreenTipElement10.TemplateType = null;
-            this.radOffice2007ScreenTipElement10.TipSize = new System.Drawing.Size(0, 0);
-            // 
-            // radOffice2007ScreenTipElement15
-            // 
-            this.radOffice2007ScreenTipElement15.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement15.Name = "radOffice2007ScreenTipElement15";
-            this.radOffice2007ScreenTipElement15.TemplateType = null;
-            this.radOffice2007ScreenTipElement15.TipSize = new System.Drawing.Size(0, 0);
-            // 
-            // radOffice2007ScreenTipElement35
-            // 
-            this.radOffice2007ScreenTipElement35.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement35.Name = "radOffice2007ScreenTipElement35";
-            this.radOffice2007ScreenTipElement35.TemplateType = null;
-            this.radOffice2007ScreenTipElement35.TipSize = new System.Drawing.Size(0, 0);
-            // 
-            // radOffice2007ScreenTipElement22
-            // 
-            this.radOffice2007ScreenTipElement22.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement22.Name = "radOffice2007ScreenTipElement22";
-            this.radOffice2007ScreenTipElement22.TemplateType = null;
-            this.radOffice2007ScreenTipElement22.TipSize = new System.Drawing.Size(0, 0);
-            // 
-            // radOffice2007ScreenTipElement14
-            // 
-            this.radOffice2007ScreenTipElement14.CustomFont = "Roboto";
-            this.radOffice2007ScreenTipElement14.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement14.Name = "radOffice2007ScreenTipElement14";
-            this.radOffice2007ScreenTipElement14.RightToLeft = true;
-            this.radOffice2007ScreenTipElement14.TemplateType = null;
-            this.radOffice2007ScreenTipElement14.TipSize = new System.Drawing.Size(0, 0);
-            // 
-            // radOffice2007ScreenTipElement21
-            // 
-            this.radOffice2007ScreenTipElement21.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement21.Name = "radOffice2007ScreenTipElement21";
-            this.radOffice2007ScreenTipElement21.TemplateType = null;
-            this.radOffice2007ScreenTipElement21.TipSize = new System.Drawing.Size(0, 0);
-            // 
-            // radOffice2007ScreenTipElement20
-            // 
-            this.radOffice2007ScreenTipElement20.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement20.Name = "radOffice2007ScreenTipElement20";
-            this.radOffice2007ScreenTipElement20.TemplateType = null;
-            this.radOffice2007ScreenTipElement20.TipSize = new System.Drawing.Size(0, 0);
-            // 
-            // radScrollablePanel2
-            // 
-            this.radScrollablePanel2.BackColor = System.Drawing.SystemColors.Control;
-            this.radScrollablePanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radScrollablePanel2.Location = new System.Drawing.Point(0, 0);
-            this.radScrollablePanel2.Name = "radScrollablePanel2";
-            this.radScrollablePanel2.Padding = new System.Windows.Forms.Padding(0);
-            // 
-            // radScrollablePanel2.PanelContainer
-            // 
-            this.radScrollablePanel2.PanelContainer.Controls.Add(this.radLayoutControl1);
-            this.radScrollablePanel2.PanelContainer.Location = new System.Drawing.Point(0, 0);
-            this.radScrollablePanel2.PanelContainer.Size = new System.Drawing.Size(1233, 713);
-            this.radScrollablePanel2.Size = new System.Drawing.Size(1233, 713);
-            this.radScrollablePanel2.TabIndex = 3;
-            this.radScrollablePanel2.ThemeName = "Material";
-            this.radScrollablePanel2.Click += new System.EventHandler(this.radScrollablePanel2_Click);
             // 
             // layoutControlItem1
             // 
@@ -2503,126 +2152,30 @@
             this.layoutControlItem35.Name = "layoutControlItem35";
             this.layoutControlItem35.Text = "";
             // 
-            // radOffice2007ScreenTipElement1
-            // 
-            this.radOffice2007ScreenTipElement1.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement1.Name = "radOffice2007ScreenTipElement1";
-            this.radOffice2007ScreenTipElement1.TemplateType = null;
-            this.radOffice2007ScreenTipElement1.TipSize = new System.Drawing.Size(0, 0);
-            // 
-            // radOffice2007ScreenTipElement2
-            // 
-            this.radOffice2007ScreenTipElement2.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement2.Name = "radOffice2007ScreenTipElement2";
-            this.radOffice2007ScreenTipElement2.TemplateType = null;
-            this.radOffice2007ScreenTipElement2.TipSize = new System.Drawing.Size(0, 0);
-            // 
-            // radOffice2007ScreenTipElement3
-            // 
-            this.radOffice2007ScreenTipElement3.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement3.Name = "radOffice2007ScreenTipElement3";
-            this.radOffice2007ScreenTipElement3.TemplateType = null;
-            this.radOffice2007ScreenTipElement3.TipSize = new System.Drawing.Size(0, 0);
-            // 
-            // radOffice2007ScreenTipElement4
-            // 
-            this.radOffice2007ScreenTipElement4.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement4.Name = "radOffice2007ScreenTipElement4";
-            this.radOffice2007ScreenTipElement4.TemplateType = null;
-            this.radOffice2007ScreenTipElement4.TipSize = new System.Drawing.Size(0, 0);
-            // 
-            // radOffice2007ScreenTipElement5
-            // 
-            this.radOffice2007ScreenTipElement5.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement5.Name = "radOffice2007ScreenTipElement5";
-            this.radOffice2007ScreenTipElement5.TemplateType = null;
-            this.radOffice2007ScreenTipElement5.TipSize = new System.Drawing.Size(0, 0);
-            // 
-            // radOffice2007ScreenTipElement6
-            // 
-            this.radOffice2007ScreenTipElement6.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement6.Name = "radOffice2007ScreenTipElement6";
-            this.radOffice2007ScreenTipElement6.TemplateType = null;
-            this.radOffice2007ScreenTipElement6.TipSize = new System.Drawing.Size(0, 0);
-            // 
-            // radOffice2007ScreenTipElement7
-            // 
-            this.radOffice2007ScreenTipElement7.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement7.Name = "radOffice2007ScreenTipElement7";
-            this.radOffice2007ScreenTipElement7.TemplateType = null;
-            this.radOffice2007ScreenTipElement7.TipSize = new System.Drawing.Size(0, 0);
-            // 
-            // radOffice2007ScreenTipElement8
-            // 
-            this.radOffice2007ScreenTipElement8.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement8.Name = "radOffice2007ScreenTipElement8";
-            this.radOffice2007ScreenTipElement8.TemplateType = null;
-            this.radOffice2007ScreenTipElement8.TipSize = new System.Drawing.Size(0, 0);
-            // 
-            // radOffice2007ScreenTipElement9
-            // 
-            this.radOffice2007ScreenTipElement9.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement9.Name = "radOffice2007ScreenTipElement9";
-            this.radOffice2007ScreenTipElement9.TemplateType = null;
-            this.radOffice2007ScreenTipElement9.TipSize = new System.Drawing.Size(0, 0);
-            // 
-            // radOffice2007ScreenTipElement16
-            // 
-            this.radOffice2007ScreenTipElement16.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement16.Name = "radOffice2007ScreenTipElement16";
-            this.radOffice2007ScreenTipElement16.TemplateType = null;
-            this.radOffice2007ScreenTipElement16.TipSize = new System.Drawing.Size(0, 0);
-            // 
-            // radOffice2007ScreenTipElement18
-            // 
-            this.radOffice2007ScreenTipElement18.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement18.Name = "radOffice2007ScreenTipElement18";
-            this.radOffice2007ScreenTipElement18.TemplateType = null;
-            this.radOffice2007ScreenTipElement18.TipSize = new System.Drawing.Size(0, 0);
-            // 
-            // radOffice2007ScreenTipElement19
-            // 
-            this.radOffice2007ScreenTipElement19.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement19.Name = "radOffice2007ScreenTipElement19";
-            this.radOffice2007ScreenTipElement19.TemplateType = null;
-            this.radOffice2007ScreenTipElement19.TipSize = new System.Drawing.Size(0, 0);
-            // 
             // radToastNotificationManager1
             // 
-            radToastNotification28.BindingData = null;
-            radToastNotification28.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
-            radToastNotification28.Name = "ToastNews1";
-            radToastNotification28.Tag = null;
-            radToastNotification28.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastNews;
-            radToastNotification28.Xml = resources.GetString("radToastNotification28.Xml");
-            radToastNotification29.BindingData = null;
-            radToastNotification29.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
-            radToastNotification29.Name = "ToastLegacy1";
-            radToastNotification29.Tag = null;
-            radToastNotification29.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastLegacy;
-            radToastNotification29.Xml = resources.GetString("radToastNotification29.Xml");
-            radToastNotification30.BindingData = null;
-            radToastNotification30.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
-            radToastNotification30.Name = "ToastGeneric1";
-            radToastNotification30.Tag = null;
-            radToastNotification30.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastGeneric;
-            radToastNotification30.Xml = "<toast>\n  <visual>\n    <binding template=\"ToastGeneric\"></binding>\n  </visual>\n</" +
+            radToastNotification1.BindingData = null;
+            radToastNotification1.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
+            radToastNotification1.Name = "ToastNews1";
+            radToastNotification1.Tag = null;
+            radToastNotification1.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastNews;
+            radToastNotification1.Xml = resources.GetString("radToastNotification1.Xml");
+            radToastNotification2.BindingData = null;
+            radToastNotification2.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
+            radToastNotification2.Name = "ToastLegacy1";
+            radToastNotification2.Tag = null;
+            radToastNotification2.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastLegacy;
+            radToastNotification2.Xml = resources.GetString("radToastNotification2.Xml");
+            radToastNotification3.BindingData = null;
+            radToastNotification3.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
+            radToastNotification3.Name = "ToastGeneric1";
+            radToastNotification3.Tag = null;
+            radToastNotification3.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastGeneric;
+            radToastNotification3.Xml = "<toast>\n  <visual>\n    <binding template=\"ToastGeneric\"></binding>\n  </visual>\n</" +
     "toast>";
-            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification28);
-            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification29);
-            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification30);
+            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification1);
+            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification2);
+            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification3);
             // 
             // radDesktopAlert1
             // 
@@ -2653,16 +2206,7 @@
             this.MenuPreviewAttachment.EnableRippleAnimation = true;
             this.MenuPreviewAttachment.Name = "MenuPreviewAttachment";
             this.MenuPreviewAttachment.RightToLeft = true;
-            this.MenuPreviewAttachment.ScreenTip = this.radOffice2007ScreenTipElement31;
             this.MenuPreviewAttachment.Text = "معاينة \\ تشغيل";
-            // 
-            // radOffice2007ScreenTipElement31
-            // 
-            this.radOffice2007ScreenTipElement31.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement31.Name = "radOffice2007ScreenTipElement31";
-            this.radOffice2007ScreenTipElement31.TemplateType = null;
-            this.radOffice2007ScreenTipElement31.TipSize = new System.Drawing.Size(0, 0);
             // 
             // MenuExtractAttachement
             // 
@@ -2671,16 +2215,7 @@
             this.MenuExtractAttachement.EnableRippleAnimation = true;
             this.MenuExtractAttachement.Name = "MenuExtractAttachement";
             this.MenuExtractAttachement.RightToLeft = true;
-            this.MenuExtractAttachement.ScreenTip = this.radOffice2007ScreenTipElement32;
             this.MenuExtractAttachement.Text = "إستخراج";
-            // 
-            // radOffice2007ScreenTipElement32
-            // 
-            this.radOffice2007ScreenTipElement32.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement32.Name = "radOffice2007ScreenTipElement32";
-            this.radOffice2007ScreenTipElement32.TemplateType = null;
-            this.radOffice2007ScreenTipElement32.TipSize = new System.Drawing.Size(0, 0);
             // 
             // radMenuSeparatorItem1
             // 
@@ -2698,28 +2233,7 @@
             this.MenuDeleteAttachment.EnableRippleAnimation = true;
             this.MenuDeleteAttachment.Name = "MenuDeleteAttachment";
             this.MenuDeleteAttachment.RightToLeft = true;
-            this.MenuDeleteAttachment.ScreenTip = this.radOffice2007ScreenTipElement33;
             this.MenuDeleteAttachment.Text = "حذف";
-            // 
-            // radOffice2007ScreenTipElement33
-            // 
-            this.radOffice2007ScreenTipElement33.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement33.Name = "radOffice2007ScreenTipElement33";
-            this.radOffice2007ScreenTipElement33.TemplateType = null;
-            this.radOffice2007ScreenTipElement33.TipSize = new System.Drawing.Size(0, 0);
-            // 
-            // radCallout1
-            // 
-            this.radCallout1.AssociatedControl = this.radLabel11;
-            // 
-            // radOffice2007ScreenTipElement34
-            // 
-            this.radOffice2007ScreenTipElement34.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement34.Name = "radOffice2007ScreenTipElement34";
-            this.radOffice2007ScreenTipElement34.TemplateType = null;
-            this.radOffice2007ScreenTipElement34.TipSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem48
             // 
@@ -2766,52 +2280,19 @@
             // 
             this.AlertTimer.Tick += new System.EventHandler(this.AlertTimer_Tick);
             // 
-            // radOffice2007ScreenTipElement40
-            // 
-            this.radOffice2007ScreenTipElement40.Description = "Override this property and provide custom screentip template description in Desig" +
-    "nTime.";
-            this.radOffice2007ScreenTipElement40.Name = "radOffice2007ScreenTipElement40";
-            this.radOffice2007ScreenTipElement40.TemplateType = null;
-            this.radOffice2007ScreenTipElement40.TipSize = new System.Drawing.Size(0, 0);
-            // 
-            // radLayoutControl1
-            // 
-            this.radLayoutControl1.Controls.Add(this.radPageView1);
-            this.radLayoutControl1.Controls.Add(this.BindingNavigatorLands);
-            this.radLayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radLayoutControl1.Items.AddRange(new Telerik.WinControls.RadItem[] {
-            this.layoutControlItem2,
-            this.layoutControlItem3});
-            this.radLayoutControl1.Location = new System.Drawing.Point(0, 0);
-            this.radLayoutControl1.Name = "radLayoutControl1";
-            this.radLayoutControl1.Size = new System.Drawing.Size(1233, 713);
-            this.radLayoutControl1.TabIndex = 1414;
-            // 
-            // layoutControlItem2
-            // 
-            this.layoutControlItem2.AssociatedControl = this.radPageView1;
-            this.layoutControlItem2.Bounds = new System.Drawing.Rectangle(0, 46, 1233, 667);
-            this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Text = "";
-            // 
-            // layoutControlItem3
-            // 
-            this.layoutControlItem3.AssociatedControl = this.BindingNavigatorLands;
-            this.layoutControlItem3.Bounds = new System.Drawing.Rectangle(0, 0, 1233, 46);
-            this.layoutControlItem3.ControlVerticalAlignment = Telerik.WinControls.UI.RadVerticalAlignment.Center;
-            this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Text = "layoutControlItem3";
-            // 
             // UCLandsDataEntry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Controls.Add(this.radScrollablePanel2);
+            this.Controls.Add(this.radPageView1);
+            this.Controls.Add(this.BindingNavigatorLands);
             this.Name = "UCLandsDataEntry";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.Size = new System.Drawing.Size(1233, 713);
+            this.Size = new System.Drawing.Size(1177, 713);
+            this.Load += new System.EventHandler(this.UCLandsDataEntry_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UCLandsDataEntry_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.Cmblandtype)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txtblocknumber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txtarea)).EndInit();
@@ -2857,8 +2338,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.radPageView1)).EndInit();
             this.radPageView1.ResumeLayout(false);
             this.PageHome.ResumeLayout(false);
-            this.MainPanel.ResumeLayout(false);
-            this.MainPanel.PerformLayout();
+            this.PageHome.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Txtstatus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txtnumber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).EndInit();
@@ -2870,15 +2350,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.radLabel16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Chkisvat)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Chkisbuildingfee)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radCheckBox13)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Chkisworkfee)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radCheckBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radTotalText)).EndInit();
-            this.radTotalText.ResumeLayout(false);
-            this.radTotalText.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Chkisworkfee)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Chkisbuildingfee)).EndInit();
             this.PageAttachments.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.BtnScanner)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BtnAttachment)).EndInit();
@@ -2888,13 +2363,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.DataGridPriceLog.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridPriceLog)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BindingNavigatorLands)).EndInit();
-            this.radScrollablePanel2.PanelContainer.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.radScrollablePanel2)).EndInit();
-            this.radScrollablePanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.radLayoutControl1)).EndInit();
-            this.radLayoutControl1.ResumeLayout(false);
-            this.radLayoutControl1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -2908,7 +2378,6 @@
         private Telerik.WinControls.UI.RadGridView DataGridAttachments;
         private Telerik.WinControls.UI.RadPageViewPage PagePricingLog;
         private Telerik.WinControls.UI.RadGridView DataGridPriceLog;
-        private Telerik.WinControls.UI.RadScrollablePanel radScrollablePanel2;
         private Telerik.WinControls.UI.RadPageViewPage PageHome;
         private Telerik.WinControls.UI.LayoutControlItem layoutControlItem1;
         private Telerik.WinControls.UI.LayoutControlItem layoutControlItem5;
@@ -2983,58 +2452,55 @@
         private Telerik.WinControls.UI.RadTextBox Txtnorth;
         private Telerik.WinControls.UI.RadBindingNavigator BindingNavigatorLands;
         private Telerik.WinControls.UI.CommandBarTextBox RadMenueTxtSearch;
-        private System.Windows.Forms.Panel MainPanel;
-        private Telerik.WinControls.UI.RadCheckBox radCheckBox13;
-        private Telerik.WinControls.UI.RadCheckBox radCheckBox3;
         private Telerik.WinControls.UI.RadSpinEditor Txtbuildingfee;
         private Telerik.WinControls.UI.RadSpinEditor Txtworkfee;
         private Telerik.WinControls.UI.RadSpinEditor Txtvat;
         private Telerik.WinControls.UI.RadMultiColumnComboBox CmbPlanGuid;
         private Telerik.WinControls.UI.RadLabel radLabel8;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement4;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement1;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement3;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement2;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement5;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement6;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement7;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement9;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement8;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement10;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement11;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement12;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement13;
+        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement4;
+        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement1;
+        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement3;
+        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement2;
+        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement5;
+        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement6;
+        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement7;
+        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement9;
+        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement8;
+        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement10;
+        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement11;
+        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement12;
+        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement13;
         private Telerik.WinControls.UI.CommandBarSeparator commandBarSeparator7;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement14;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement15;
+        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement14;
+        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement15;
         private Telerik.WinControls.UI.CommandBarButton BtnResfresh;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement17;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement16;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement19;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement18;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement21;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement20;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement22;
+        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement17;
+        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement16;
+        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement19;
+        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement18;
+        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement21;
+        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement20;
+        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement22;
         private Telerik.WinControls.UI.RadTextBox radBuildingFeeValue;
         private Telerik.WinControls.UI.RadTextBox radWorkFeeWithVat;
         private Telerik.WinControls.UI.RadTextBox radVatValue;
         private Telerik.WinControls.UI.RadTextBox radWorkFeeValue;
         private Telerik.WinControls.UI.CommandBarButton BtnNew;
         private Telerik.WinControls.UI.CommandBarButton BtnDelete;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement23;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement24;
+        ////private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement23;
+        ////private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement24;
         private Telerik.WinControls.UI.CommandBarDropDownButton BtnImport;
         private Telerik.WinControls.UI.RadMenuItem BtnImportExcel;
         private Telerik.WinControls.UI.CommandBarDropDownButton BtnPrint;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement25;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement26;
+        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement25;
+        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement26;
         private Telerik.WinControls.UI.RadMenuItem BtnSentToPrinter;
         private Telerik.WinControls.UI.RadMenuItem BtnPreview;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement27;
+        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement27;
         private Telerik.WinControls.UI.RadMenuItem BtnDesign;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement28;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement29;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement30;
+        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement28;
+        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement29;
+        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement30;
         private Telerik.WinControls.UI.RadButton BtnScanner;
         private Telerik.WinControls.UI.RadButton BtnAttachment;
         private Telerik.WinControls.UI.RadToastNotificationManager radToastNotificationManager1;
@@ -3045,22 +2511,21 @@
         private Telerik.WinControls.UI.RadMenuItem MenuExtractAttachement;
         private Telerik.WinControls.UI.RadMenuSeparatorItem radMenuSeparatorItem1;
         private Telerik.WinControls.UI.RadMenuItem MenuDeleteAttachment;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement31;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement32;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement33;
+        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement31;
+        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement32;
+        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement33;
         private Telerik.WinControls.UI.RadLabel radLabel4;
         private Telerik.WinControls.UI.RadLabel radLabel3;
         private Telerik.WinControls.UI.RadLabel radLabel9;
         private Telerik.WinControls.UI.RadCallout radCallout1;
-        private Telerik.WinControls.UI.RadLabel radLabel11;
         private Telerik.WinControls.UI.RadLabel radLabel12;
         private Telerik.WinControls.UI.CommandBarSeparator commandBarSeparator5;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement35;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement34;
+        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement35;
+        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement34;
         private Telerik.WinControls.UI.CommandBarDropDownButton BtnExport;
         private Telerik.WinControls.UI.RadMenuItem BtnEcelExport;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement37;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement36;
+        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement37;
+        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement36;
         private Telerik.WinControls.UI.RadMenuItem BtnPdfExport;
         private Telerik.WinControls.UI.RadMenuItem BtnEmailExport;
         private Telerik.WinControls.UI.RadTextBox radAmountBuildingfee;
@@ -3078,7 +2543,6 @@
         private Telerik.WinControls.UI.RadLabel radLabel5;
         private Telerik.WinControls.UI.RadLabel Txtstatus;
         private Telerik.WinControls.UI.RadLabel Txtnumber;
-        private Telerik.WinControls.UI.RadScrollablePanelContainer PanelContainer;
         private Telerik.WinControls.UI.RadTextBox Txtlastaction;
         private Telerik.WinControls.UI.RadLabel radLabel15;
         private Telerik.WinControls.UI.CommandBarSeparator commandBarSeparator8;
@@ -3091,16 +2555,14 @@
         private Telerik.WinControls.UI.RadMenuItem BtnWordExport;
         private Telerik.WinControls.UI.RadMenuItem BtnPriceOffer;
         private System.Windows.Forms.Timer AlertTimer;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement38;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement39;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement40;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement41;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement42;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement43;
+        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement38;
+        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement39;
+        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement40;
+        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement41;
+        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement42;
+        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement43;
         private Telerik.WinControls.UI.RadMenuItem BtnExportExcelData;
-        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement44;
-        private Telerik.WinControls.UI.RadLayoutControl radLayoutControl1;
-        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem2;
-        private Telerik.WinControls.UI.LayoutControlItem layoutControlItem3;
+        private Telerik.WinControls.UI.RadScrollablePanelContainer PanelContainer;
+        //private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement44;
     }
 }

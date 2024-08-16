@@ -83,7 +83,7 @@ namespace DoctorERP.User_Controls
             Txtstatus.TextAlignment = ContentAlignment.MiddleCenter;
             radTotalText.TextAlignment = ContentAlignment.TopLeft;
             radDesktopAlert1.Popup.RootElement.RightToLeft = true;
-
+            radPageView1.RootElement.Children[0].Children[0].Children[0].Children[3].Visibility = ElementVisibility.Hidden;
 
             List<CommandBarButton> radBarButton = new List<CommandBarButton> {  BtnResfresh, BtnDelete, BtnNew, BtnEdit, BtnExit };
             foreach(CommandBarButton control in radBarButton)
@@ -112,7 +112,6 @@ namespace DoctorERP.User_Controls
 
 
             SetData();
-            IsLoad = false;
         }
 
         #region Main Events
@@ -163,7 +162,7 @@ namespace DoctorERP.User_Controls
         {
             List<RadControl> NotUsedControls = new List<RadControl>()
             { Txtnumber, radWorkFeeValue, radBuildingFeeValue, radVatValue, radWorkFeeWithVat, Txtlastaction, Txtworkfee,Txtbuildingfee, Txtvat };
-            foreach (RadControl control in MainPanel.Controls)
+            foreach (RadControl control in PageHome.Controls)
             {
                 if (NotUsedControls.Contains(control)) { continue; }
                 if (control is RadTextBox radTextControl)
@@ -400,6 +399,7 @@ namespace DoctorERP.User_Controls
         #region Binding
         private void SetData()
         {
+            IsLoad = true;
 
 
             if (FrmMain.PlanGuid != Guid.Empty)
@@ -423,8 +423,14 @@ namespace DoctorERP.User_Controls
             CmbPlanGuid.DataSource = tbPlanInfo.lstData;
             CmbPlanGuid.ValueMember = "guid";
             CmbPlanGuid.DisplayMember = "name";
-
-            foreach (RadControl control in MainPanel.Controls)
+            CmbPlanGuid.EditorControl.Columns[0].IsVisible = false;
+            CmbPlanGuid.EditorControl.Columns[2].IsVisible = false;
+            CmbPlanGuid.EditorControl.Columns[1].HeaderText = "اسم المخطط";
+            CmbPlanGuid.EditorControl.Columns[3].HeaderText = "المدينة";
+            CmbPlanGuid.EditorControl.Columns[3].HeaderText = "الموقع";
+            CmbPlanGuid.EditorControl.Columns[4].HeaderText = "رقم المخطط";
+            CmbPlanGuid.AutoSizeDropDownColumnMode = BestFitColumnMode.AllCells;
+            foreach (RadControl control in PageHome.Controls)
             {
                 if (control.Name.StartsWith("rad")) { continue; }
                 control.DataBindings.Clear();
@@ -445,6 +451,9 @@ namespace DoctorERP.User_Controls
                 return;
             }
             Bs.MoveLast();
+
+            IsLoad = false;
+
         }
 
         private void Bs_PositionChanged(object sender, EventArgs e)
@@ -507,7 +516,7 @@ namespace DoctorERP.User_Controls
             FillDataGridAttachments(Guid.Empty);
             SetReadOnly(false);
 
-            foreach (RadControl control in MainPanel.Controls)
+            foreach (RadControl control in PageHome.Controls)
             {
                 if (control is RadSpinEditor spinEditor)
                 {
@@ -729,11 +738,42 @@ namespace DoctorERP.User_Controls
         }
         private void Txtblocknumber_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (!IsDirty)
+            {
+                RadCallout callout = new RadCallout
+                {
+                    ArrowType = Telerik.WinControls.UI.Callout.CalloutArrowType.Triangle,
+                    ArrowDirection = Telerik.WinControls.ArrowDirection.Right,
+                    AutoClose = true,
+                    CalloutType = Telerik.WinControls.UI.Callout.CalloutType.RoundedRectangle,
+                    DropShadow = true
+                };
+                RadControl cn = sender as RadControl;
+                RadCallout.Show(callout, cn, "لا يمكن تعديل بيانات البطاقة قبل الضغط علي زر تعديل أولاً", "تعديل البيانات", "ثم الضغط علي زر حفظ لحفظ التغييرات");
+            }
+
             if (!Char.IsNumber(e.KeyChar) && !Char.IsControl(e.KeyChar))
                 e.Handled = true;
         }
+
+        private void Txtbuildingfee_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            RadCallout callout = new RadCallout
+            {
+                ArrowType = Telerik.WinControls.UI.Callout.CalloutArrowType.Triangle,
+                ArrowDirection = Telerik.WinControls.ArrowDirection.Right,
+                AutoClose = true,
+                CalloutType = Telerik.WinControls.UI.Callout.CalloutType.RoundedRectangle,
+                DropShadow = true
+            };
+            RadControl cn = sender as RadControl;
+            RadCallout.Show(callout, cn, "لا يمك تعديل هذا البيان", "تعديل البيانات", "بيان للعرض فقط و لا يمكن تغييره");
+
+        }
+
         private void Chkisvat_CheckStateChanged(object sender, EventArgs e)
         {
+
             radWorkFeeValue.Enabled = Txtworkfee.Enabled = Chkisworkfee.Checked;
             radBuildingFeeValue.Enabled = Txtbuildingfee.Enabled = Chkisbuildingfee.Checked;
             if (Chkisworkfee.Checked)
@@ -762,34 +802,19 @@ namespace DoctorERP.User_Controls
         {
             if (!IsDirty)
             {
-                RadCallout callout = new RadCallout();
-                callout.ArrowType = Telerik.WinControls.UI.Callout.CalloutArrowType.Triangle;
-                callout.AssociatedControl = radLabel11;
-                callout.ArrowDirection = Telerik.WinControls.ArrowDirection.Right;
-                callout.AutoClose = true;
-                callout.CalloutType = Telerik.WinControls.UI.Callout.CalloutType.RoundedRectangle;
-                callout.DropShadow = true;
-                var cn = sender as RadControl;
-
-                RadCallout.Show(callout, cn, "لقد تم إرسال الملف Lands.pdf \n عبر الإيميل بنجاح", "تمت العملية", "sdfsdfs");
-
-                // ShowDesktopAlert(".أولآ تعديل زر علي الضغط يجب", "البيانات  تعديل يمكنك ذلك بعد", "التعديل لحفظ حفظ زر علي الضغط ثم");
+                RadCallout callout = new RadCallout
+                {
+                    ArrowType = Telerik.WinControls.UI.Callout.CalloutArrowType.Triangle,
+                    ArrowDirection = Telerik.WinControls.ArrowDirection.Right,
+                    AutoClose = true,
+                    CalloutType = Telerik.WinControls.UI.Callout.CalloutType.RoundedRectangle,
+                    DropShadow = true
+                };
+                RadControl cn = sender as RadControl;
+                RadCallout.Show(callout, cn, "لا يمكن تعديل بيانات البطاقة قبل الضغط علي زر تعديل أولاً", "تعديل البيانات", "ثم الضغط علي زر حفظ لحفظ التغييرات");
             }
         }
 
-        private void radTotalText_MouseDown(object sender, MouseEventArgs e)
-        {
-            RadCallout radCallout = new RadCallout();
-            radCallout.AssociatedControl = this.radLabel11;
-            radLabel11.Text = "تم إحتساب الحافز بناءَ علي : قيمة الأرض + قيمة ضريبة التصرفات العقارية + قيمة عمولة السعي + القيمة المضافة لعمولة السعي";
-            radCallout.CalloutType = Telerik.WinControls.UI.Callout.CalloutType.RoundedRectangle;
-            radCallout.ArrowDirection = Telerik.WinControls.ArrowDirection.Up;
-            radCallout.ArrowType = Telerik.WinControls.UI.Callout.CalloutArrowType.Triangle;
-            radCallout.AutoClose = true;
-            radCallout.DropShadow = true;
-            radCallout.Show(this.radTotalText);
-
-        }
         private void Txtstatus_TextChanged(object sender, EventArgs e)
         {
             if (Txtstatus.Text == "متاح") { Txtstatus.BackColor = Color.FromArgb(0, 255, 1); }
@@ -1463,68 +1488,57 @@ namespace DoctorERP.User_Controls
             AlertTimer.Stop();
 
         }
+        private void Chkisbuildingfee_Click(object sender, EventArgs e)
+        {
+            if (!IsDirty)
+            {
+                RadCallout callout = new RadCallout
+                {
+                    ArrowType = Telerik.WinControls.UI.Callout.CalloutArrowType.Triangle,
+                    ArrowDirection = Telerik.WinControls.ArrowDirection.Right,
+                    AutoClose = true,
+                    CalloutType = Telerik.WinControls.UI.Callout.CalloutType.RoundedRectangle,
+                    DropShadow = true
+                };
+                RadControl cn = sender as RadControl;
+                RadCallout.Show(callout, cn, "لا يمكن تعديل بيانات البطاقة قبل الضغط علي زر تعديل أولاً", "تعديل البيانات", "ثم الضغط علي زر حفظ لحفظ التغييرات");
+            }
 
-        private void Txtnorthdesc_TextChanged(object sender, EventArgs e)
+        }
+
+        private void CmbPlanGuid_DropDownOpening(object sender, System.ComponentModel.CancelEventArgs args)
+        {
+            if (!IsDirty)
+            {
+                RadCallout callout = new RadCallout
+                {
+                    ArrowType = Telerik.WinControls.UI.Callout.CalloutArrowType.Triangle,
+                    ArrowDirection = Telerik.WinControls.ArrowDirection.Right,
+                    AutoClose = true,
+                    CalloutType = Telerik.WinControls.UI.Callout.CalloutType.RoundedRectangle,
+                    DropShadow = true
+                };
+                RadControl cn = sender as RadControl;
+                RadCallout.Show(callout, cn, "لا يمكن تعديل بيانات البطاقة قبل الضغط علي زر تعديل أولاً", "تعديل البيانات", "ثم الضغط علي زر حفظ لحفظ التغييرات");
+                args.Cancel = true;
+            }
+           
+        }
+
+        private void PageHome_Paint(object sender, PaintEventArgs e)
         {
 
         }
 
-        private void Txtsouthdesc_TextChanged(object sender, EventArgs e)
+        private void UCLandsDataEntry_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.KeyCode == Keys.Escape)
+            {
 
+            }
         }
 
-        private void Txteastdesc_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Txtwestdesc_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Chkisbuildingfee_ToggleStateChanged(object sender, StateChangedEventArgs args)
-        {
-
-        }
-
-        private void Chkisworkfee_ToggleStateChanged(object sender, StateChangedEventArgs args)
-        {
-
-        }
-
-        private void Chkisvat_ToggleStateChanged(object sender, StateChangedEventArgs args)
-        {
-
-        }
-
-        private void Txtreservereason_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Txtlastaction_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radScrollablePanel2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Txtstatus_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void BtnOperation_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void BtnImport_Click_1(object sender, EventArgs e)
+        private void UCLandsDataEntry_Load(object sender, EventArgs e)
         {
 
         }
