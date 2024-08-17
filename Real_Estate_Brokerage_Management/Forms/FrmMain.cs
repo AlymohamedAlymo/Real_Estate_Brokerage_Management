@@ -968,15 +968,54 @@ namespace DoctorERP
 
         private void MenuAgentBuyCard_Click(object sender, EventArgs e)
         {
-                       RadMenuItem toolmenu = (RadMenuItem)sender;
+            ////           RadMenuItem toolmenu = (RadMenuItem)sender;
+            ////if (!IsPermissionGranted(toolmenu.Text))
+            ////{
+            ////    MessageBox.Show("لا تملك صلاحية للقيام بهذا العمل", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            ////    return;
+            ////}
+            ////FrmAgent agent = new FrmAgent(Guid.Empty, true, 1, false);
+            ////agent.Owner = this;
+            ////agent.Show();
+            ///
+
+
+
+
+            RadMenuItem toolmenu = (RadMenuItem)sender;
             if (!IsPermissionGranted(toolmenu.Text))
             {
                 MessageBox.Show("لا تملك صلاحية للقيام بهذا العمل", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            FrmAgent agent = new FrmAgent(Guid.Empty, true, 1, false);
-            agent.Owner = this;
-            agent.Show();
+            RadOverlayManager.Show(this);
+
+            RadPageViewPage enumerableIterator = PageViewCardsHome.Pages.Where(u => u.Name == "ClientLandsCard").FirstOrDefault();
+            if (enumerableIterator == null)
+            {
+                RadPageViewPage radPageViewPage = new RadPageViewPage();
+                radPageViewPage.Name = "ClientLandsCard";
+                radPageViewPage.Text = "بطاقة عميل";
+
+                DoctorERP.User_Controls.UCClientCards uCLands = new User_Controls.UCClientCards(Guid.Empty, false, 1, false);
+                uCLands.Dock = DockStyle.Fill;
+
+                radPageViewPage.Controls.Add(uCLands);
+                PageViewCardsHome.Pages.Add(radPageViewPage);
+                PageViewCardsHome.SelectedPage = radPageViewPage;
+            }
+            else
+            {
+                UCClientCards UC = PageViewCardsHome.Pages["ClientLandsCard"].Controls[0] as UCClientCards;
+                PageViewCardsHome.SelectedPage = enumerableIterator;
+
+            }
+            this.TopMost = true;
+
+            RadOverlayManager.Close();
+            this.TopMost = false;
+
+
         }
 
         private void MenuLandTree_Click(object sender, EventArgs e)

@@ -32,6 +32,8 @@ namespace DoctorERP.User_Controls
             BlockNumber = _BlockNumber;
             IsNew = _isNew;
 
+            #region Initialize
+
             BtnSentToPrinter.Click -= BtnPrint_Click;
             BtnSentToPrinter.Click += BtnPrint_Click;
             BtnPreview.Click -= MenuPreview_Click;
@@ -108,12 +110,148 @@ namespace DoctorERP.User_Controls
                 screenTip.MainTextLabel.Text = control.Tag.ToString();
                 control.ScreenTip = screenTip;
             }
-
+            #endregion
 
             SetData();
         }
 
+
+        #region Default Properties
+        private void ShowNotification(string Header, string Content, string Note)
+        {
+            radToastNotificationManager1.ToastNotifications[0].Xml = "<toast launch=\"readMoreArg\">\r\n  <visual>\r\n    <binding template=\"ToastGeneric\">\r\n   " +
+                "   <text>" + Header + "</text>\r\n   " +
+                "   <text>" + Content + "</text>\r\n  " +
+                "    <text placement=\"attribution\">" + Note + "</text>\r\n    </binding>\r\n  </visual>\r\n</toast>";
+            radToastNotificationManager1.ShowNotification(0);
+
+        }
+        private bool MessageWarning(string Heading, string Body, string FootNote)
+        {
+            RadTaskDialogPage page = new RadTaskDialogPage()
+            {
+
+                Caption = " ",
+                Heading = Heading,
+                Text = Body,
+                RightToLeft = true,
+                CustomFont = "Robot",
+                Icon = RadTaskDialogIcon.ShieldWarningYellowBar,
+                AllowCancel = true,
+                Footnote = new RadTaskDialogFootnote("ملحوظة: " + FootNote),
+                CommandAreaButtons = {
+                    RadTaskDialogButton.Yes,
+                    RadTaskDialogButton.No
+                }
+
+            };
+            page.CommandAreaButtons[0].Text = "نعم";
+            page.CommandAreaButtons[1].Text = "لا";
+            RadTaskDialogButton result = RadTaskDialog.ShowDialog(page, RadTaskDialogStartupLocation.CenterScreen);
+            if (result == null || result == RadTaskDialogButton.No)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        private bool MessageException(string Heading, string Body, string FootNote)
+        {
+            RadTaskDialogPage page = new RadTaskDialogPage()
+            {
+
+                Caption = " ",
+                Heading = Heading,
+                Text = Body,
+                RightToLeft = true,
+                CustomFont = "Robot",
+                Icon = RadTaskDialogIcon.ShieldErrorRedBar,
+                Footnote = new RadTaskDialogFootnote("ملحوظة: " + FootNote),
+                CommandAreaButtons = {
+                    RadTaskDialogButton.OK,
+                }
+
+            };
+            page.CommandAreaButtons[0].Text = "موافق";
+            RadTaskDialogButton result = RadTaskDialog.ShowDialog(page, RadTaskDialogStartupLocation.CenterScreen);
+            return true;
+        }
+        private void ShowDesktopAlert(string Header, string Content, string ContentHighlight, string Footer)
+        {
+            Content = TextHelper.ReverseText(Content);
+            ContentHighlight = TextHelper.ReverseText(ContentHighlight);
+            Footer = TextHelper.ReverseText(Footer);
+
+            radDesktopAlert1.CaptionText = "<html><b>\n" + Header;
+            radDesktopAlert1.ContentText = "<html><i>" +
+                Content +
+                "</i><b><span><color=Blue>" +
+                "\n" + ContentHighlight + "\n" +
+                "</span></b>" +
+                Footer;
+            radDesktopAlert1.ContentImage = Properties.Resources.information50;
+            radDesktopAlert1.Opacity = 0.9f;
+            radDesktopAlert1.Show();
+
+        }
+
+        private void CommandBarLabel1_TextChanged(object sender, EventArgs e)
+        {
+            string NewTxt = commandBarLabel1.Text.Replace("of", "من");
+            commandBarLabel1.Text = NewTxt;
+
+        }
+        private void RadMenueTxtSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (IsDirty) { TackAction(); }
+
+            }
+
+        }
+
+        #endregion
+
+
         #region Main Events
+
+        #region Form Methods
+        private bool Check(string Operation, string Command, OperationType.OperationIs OperType)
+        {
+            if (IsDirty) { TackAction(); }
+            if (!FrmMain.IsPermissionGranted(Operation))
+            {
+                MessageException(Operation, "لا تملك صلاحية", "لا تملك صلاحية للقيام ب " + Command + " \n تواصل مع المدير.");
+                return false;
+            }
+            if (Bs.Current == null)
+            {
+                MessageException(Operation, "يجب حفظ البطاقة أولا", "قم بحفظ بطاقة الأرض أولاَ و بعد ذلك يمكنك " + Command);
+                return false;
+            }
+            tbLand land = (tbLand)Bs.Current;
+            var Check = CheckifOprAllow(land, OperType);
+            if (!Check.Keys.First() && !Operation.Contains("جديد"))
+            {
+                MessageException(Operation, "لا يمكن " + Command, Check.Values.First());
+                return false;
+            }
+            if (land is null || land.guid.Equals(Guid.Empty))
+            {
+                MessageException(Operation, "يجب حفظ البطاقة أولا", "قم بحفظ بطاقة الأرض أولاَ و بعد ذلك يمكنك " + Command);
+                return false;
+            }
+            else if (land.status.Equals("محجوز") && !Operation.Contains("حجز") && !Operation.Contains("جديد"))
+            {
+                MessageException(Operation, "الأرض محجوزة مسبقاً", "الأرض محجوزة مسبقاً، يجب فك الحجز قبل " + Command);
+                return false;
+            }
+            return true;
+
+        }
 
         private Dictionary<bool, string> CheckifOprAllow(tbLand land, OperationType.OperationIs operation)
         {
@@ -237,61 +375,9 @@ namespace DoctorERP.User_Controls
 
         }
 
-        private bool MessageWarning(string Heading, string Body, string FootNote)
-        {
-            RadTaskDialogPage page = new RadTaskDialogPage()
-            {
-
-                Caption = " ",
-                Heading = Heading,
-                Text = Body,
-                RightToLeft = true,
-                CustomFont = "Robot",
-                Icon = RadTaskDialogIcon.ShieldWarningYellowBar,
-                AllowCancel = true,
-                Footnote = new RadTaskDialogFootnote("ملحوظة: " + FootNote),
-                CommandAreaButtons = {
-                    RadTaskDialogButton.Yes,
-                    RadTaskDialogButton.No
-                }
-
-            };
-            page.CommandAreaButtons[0].Text = "نعم";
-            page.CommandAreaButtons[1].Text = "لا";
-            RadTaskDialogButton result = RadTaskDialog.ShowDialog(page, RadTaskDialogStartupLocation.CenterScreen);
-            if (result == null || result == RadTaskDialogButton.No)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-        private bool MessageException(string Heading, string Body, string FootNote)
-        {
-            RadTaskDialogPage page = new RadTaskDialogPage()
-            {
-
-                Caption = " ",
-                Heading = Heading,
-                Text = Body,
-                RightToLeft = true,
-                CustomFont = "Robot",
-                Icon = RadTaskDialogIcon.ShieldErrorRedBar,
-                Footnote = new RadTaskDialogFootnote("ملحوظة: " + FootNote),
-                CommandAreaButtons = {
-                    RadTaskDialogButton.OK,
-                }
-
-            };
-            page.CommandAreaButtons[0].Text = "موافق";
-            RadTaskDialogButton result = RadTaskDialog.ShowDialog(page, RadTaskDialogStartupLocation.CenterScreen);
-            return true;
-        }
         public void TackAction()
         {
-            bool Confirm = MessageWarning("بطاقات الأراضي", "هل تريد حفظ التغيرات ؟", "إذا ضغت علي زر نعم سوف يتم حفظ البيان المفتوح");
+            bool Confirm = MessageWarning("بطاقة أرض", "هل تريد حفظ التغيرات ؟", "إذا ضغت علي زر نعم سوف يتم حفظ البيان المفتوح");
             if (Confirm)
             {
                 ShowConfirmMSG = false;
@@ -331,68 +417,9 @@ namespace DoctorERP.User_Controls
                 }
             }
         }
-        private void ShowDesktopAlert(string Header, string Content, string ContentHighlight, string Footer)
-        {
-            Content = TextHelper.ReverseText(Content);
-            ContentHighlight = TextHelper.ReverseText(ContentHighlight);
-            Footer = TextHelper.ReverseText(Footer);
 
-            radDesktopAlert1.CaptionText = "<html><b>\n" + Header;
-            radDesktopAlert1.ContentText = "<html><i>" +
-                Content +
-                "</i><b><span><color=Blue>" +
-                "\n" + ContentHighlight + "\n" +
-                "</span></b>" +
-                Footer;
-            radDesktopAlert1.ContentImage = Properties.Resources.information50;
-            radDesktopAlert1.Opacity = 0.9f;
-            radDesktopAlert1.Show();
+        #endregion
 
-        }
-
-        private bool Check(string Operation, string Command, OperationType.OperationIs OperType)
-        {
-            if (IsDirty) { TackAction(); }
-            if (!FrmMain.IsPermissionGranted(Operation))
-            {
-                MessageException(Operation, "لا تملك صلاحية", "لا تملك صلاحية للقيام ب " + Command + " \n تواصل مع المدير.");
-                return false;
-            }
-            if (Bs.Current == null)
-            {
-                MessageException(Operation, "يجب حفظ البطاقة أولا", "قم بحفظ بطاقة الأرض أولاَ و بعد ذلك يمكنك " + Command);
-                return false;
-            }
-            tbLand land = (tbLand)Bs.Current;
-            var Check = CheckifOprAllow(land, OperType);
-            if (!Check.Keys.First() && !Operation.Contains("جديد"))
-            {
-                MessageException(Operation, "لا يمكن " + Command, Check.Values.First());
-                return false;
-            }
-            if (land is null || land.guid.Equals(Guid.Empty))
-            {
-                MessageException(Operation, "يجب حفظ البطاقة أولا", "قم بحفظ بطاقة الأرض أولاَ و بعد ذلك يمكنك " + Command);
-                return false;
-            }
-            else if (land.status.Equals("محجوز") && !Operation.Contains("حجز") && !Operation.Contains("جديد"))
-            {
-                MessageException(Operation, "الأرض محجوزة مسبقاً", "الأرض محجوزة مسبقاً، يجب فك الحجز قبل " + Command);
-                return false;
-            }
-            return true;
-
-        }
-
-        private void ShowNotification(string Header, string Content, string Note)
-        {
-            radToastNotificationManager1.ToastNotifications[0].Xml = "<toast launch=\"readMoreArg\">\r\n  <visual>\r\n    <binding template=\"ToastGeneric\">\r\n   " +
-    "   <text>" + Header + "</text>\r\n   " +
-    "   <text>" + Content + "</text>\r\n  " +
-    "    <text placement=\"attribution\">" + Note + "</text>\r\n    </binding>\r\n  </visual>\r\n</toast>";
-            radToastNotificationManager1.ShowNotification(0);
-
-        }
 
 
         #region Binding
@@ -439,8 +466,6 @@ namespace DoctorERP.User_Controls
                 Binding ControlBinding = new System.Windows.Forms.Binding(propertyName, Bs, dataMember, false);
                 control.DataBindings.Add(ControlBinding);
             }
-            Binding SearchBinding = new System.Windows.Forms.Binding("Text", Bs, "number", false);
-
 
             if (IsNew) { BtnNew.PerformClick(); return; }
 
@@ -505,7 +530,7 @@ namespace DoctorERP.User_Controls
             BtnDelete.Enabled = false;
             BtnEdit.Enabled = false;
             BtnNew.Text = "حفظ";
-            BtnNew.ScreenTip.Text = "حفظ بطاقة الصنف الجديدة";
+            BtnNew.ScreenTip.Text = "حفظ بطاقة الأرض الجديدة";
             BtnNew.Image = Properties.Resources.BtnConform;
             Txtreservereason.Visible = false;
             BtnReservation.Text = "حجز";
@@ -624,7 +649,7 @@ namespace DoctorERP.User_Controls
             log.oldprice = log.newprice = land.amount;
 
             DBConnect.StartTransAction();
-            tbLog.AddLog("إضافة", this.Text, land.code.ToString());
+            tbLog.AddLog("إضافة", "بطاقة أرض", land.code.ToString());
             AddAttachments(land.guid);
             land.Insert();
             log.Insert();
@@ -695,7 +720,7 @@ namespace DoctorERP.User_Controls
             DBConnect.StartTransAction();
             AddAttachments(land.guid);
             land.Update();
-            tbLog.AddLog("تعديل", this.Text, land.code.ToString());
+            tbLog.AddLog("تعديل", "بطاقة أرض", land.code.ToString());
             if (DBConnect.CommitTransAction())
             {
                 FillGridLog(land.guid);
@@ -711,12 +736,7 @@ namespace DoctorERP.User_Controls
         #endregion
 
 
-        private void CommandBarLabel1_TextChanged(object sender, EventArgs e)
-        {
-            string NewTxt = commandBarLabel1.Text.Replace("of", "من");
-            commandBarLabel1.Text = NewTxt;
-
-        }
+        #region Form Events
         private void Txt_ValueChanged(object sender, EventArgs e)
         {
             if (sender is RadSpinEditor)
@@ -775,15 +795,6 @@ namespace DoctorERP.User_Controls
             }
 
             CalcTotal();
-        }
-        private void RadMenueTxtSearch_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (IsDirty) { TackAction(); }
-
-            }
-
         }
 
         private void Txtamount_KeyPress(object sender, KeyPressEventArgs e)
@@ -864,9 +875,7 @@ namespace DoctorERP.User_Controls
                             if (Readyreport(report))
                             {
                                 report.Prepare();
-                                // create an instance of HTML export filter
                                 FastReport.Export.Pdf.PDFExport export = new FastReport.Export.Pdf.PDFExport();
-                                // show the export options dialog and do the export
                                 report.Export(export, Application.ExecutablePath + "Lands.pdf");
 
 
@@ -943,11 +952,11 @@ namespace DoctorERP.User_Controls
             }
 
         }
+        #endregion
 
 
 
         #endregion
-
 
 
         #region Buttons
@@ -1100,7 +1109,7 @@ namespace DoctorERP.User_Controls
             tbPriceLog pricelog = new tbPriceLog();
             tbAttachment attach = new tbAttachment();
             tbLand land = (tbLand)Bs.Current;
-            tbLog.AddLog("حذف", this.Text, land.code.ToString());
+            tbLog.AddLog("حذف", "بطاقة أرض", land.code.ToString());
             attach.DeleteBy("ParentGuid", land.guid);
             land.Delete();
             pricelog.DeleteBy("ParentGuid", land.guid);
@@ -1171,28 +1180,23 @@ namespace DoctorERP.User_Controls
 
         private void BtnExportWord_Click(object sender, EventArgs e)
         {
-            if (IsDirty) { TackAction(); }
-
-            if (!CheckifOprAllow(new tbLand(), OperationType.OperationIs.Add).Keys.First())
-            {
-                MessageBox.Show("لا تملك صلاحية للقيام بهذا العمل", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
+            RadMenuItem toolmenu = (RadMenuItem)sender;
+            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Add)) { return; }
 
             FastReport.Report report = new FastReport.Report();
             if (Readyreport(report))
             {
-                SaveFileDialog sfd = new SaveFileDialog();
-                sfd.Title = "تصدير البيانات إلى ملف pdf";
-                sfd.Filter = "Word File (.docx ,.doc)|*.docx;*.doc";
-                sfd.RestoreDirectory = true;
-                sfd.OverwritePrompt = true;
+                SaveFileDialog sfd = new SaveFileDialog
+                {
+                    Title = "تصدير البيانات إلى ملف pdf",
+                    Filter = "Word File (.docx ,.doc)|*.docx;*.doc",
+                    RestoreDirectory = true,
+                    OverwritePrompt = true
+                };
                 if (sfd.ShowDialog() == DialogResult.OK)
                 {
                     report.Prepare();
-                    // create an instance of HTML export filter
                     FastReport.Export.OoXML.Word2007Export export = new FastReport.Export.OoXML.Word2007Export();
-                    // show the export options dialog and do the export
                     if (export.ShowDialog())
                         report.Export(export, sfd.FileName);
                 }
@@ -1203,28 +1207,23 @@ namespace DoctorERP.User_Controls
 
         private void BtnExportPdf_Click(object sender, EventArgs e)
         {
-            if (IsDirty) { TackAction(); }
-
-            if (!CheckifOprAllow(new tbLand(), OperationType.OperationIs.Add).Keys.First())
-            {
-                MessageBox.Show("لا تملك صلاحية للقيام بهذا العمل", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
+            RadMenuItem toolmenu = (RadMenuItem)sender;
+            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Add)) { return; }
 
             FastReport.Report report = new FastReport.Report();
             if (Readyreport(report))
             {
-                SaveFileDialog sfd = new SaveFileDialog();
-                sfd.Title = "تصدير البيانات إلى ملف pdf";
-                sfd.Filter = "Pdf Files|*.pdf";
-                sfd.RestoreDirectory = true;
-                sfd.OverwritePrompt = true;
+                SaveFileDialog sfd = new SaveFileDialog
+                {
+                    Title = "تصدير البيانات إلى ملف pdf",
+                    Filter = "Pdf Files|*.pdf",
+                    RestoreDirectory = true,
+                    OverwritePrompt = true
+                };
                 if (sfd.ShowDialog() == DialogResult.OK)
                 {
                     report.Prepare();
-                    // create an instance of HTML export filter
                     FastReport.Export.Pdf.PDFExport export = new FastReport.Export.Pdf.PDFExport();
-                    // show the export options dialog and do the export
                     if (export.ShowDialog())
                         report.Export(export, sfd.FileName);
                 }
@@ -1256,7 +1255,8 @@ namespace DoctorERP.User_Controls
         }
         private void MenuDesign_Click(object sender, EventArgs e)
         {
-            if (IsDirty) { TackAction(); }
+            RadMenuItem toolmenu = (RadMenuItem)sender;
+            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Add)) { return; }
             FastReport.Report report = new FastReport.Report();
             if (Readyreport(report))
                 Reports.DesignReport(report);
@@ -1264,7 +1264,8 @@ namespace DoctorERP.User_Controls
 
         private void MenuPreview_Click(object sender, EventArgs e)
         {
-            if (IsDirty) { TackAction(); }
+            RadMenuItem toolmenu = (RadMenuItem)sender;
+            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Add)) { return; }
 
             FastReport.Report report = new FastReport.Report();
             if (Readyreport(report))
@@ -1273,7 +1274,8 @@ namespace DoctorERP.User_Controls
 
         private void BtnPrint_Click(object sender, EventArgs e)
         {
-            if (IsDirty) { TackAction(); }
+            RadMenuItem toolmenu = (RadMenuItem)sender;
+            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Add)) { return; }
 
             FastReport.Report report = new FastReport.Report();
             if (Readyreport(report))
@@ -1283,8 +1285,6 @@ namespace DoctorERP.User_Controls
         #endregion
 
 
-
-
         #region report and print
         private bool Readyreport(FastReport.Report rpt)
         {
@@ -1292,7 +1292,7 @@ namespace DoctorERP.User_Controls
 
             if (land is null || land.guid.Equals(Guid.Empty))
             {
-                MessageBox.Show("يجب حفظ البطاقة أولا", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                ShowDesktopAlert("الطباعة", "فشلت العملية", "يجب حفظ البطاقة أولاً", "يجب حفظ البطاقة أولاً ثم يمكنك طباعتها.");
                 return false;
             }
 
@@ -1319,7 +1319,6 @@ namespace DoctorERP.User_Controls
         #endregion
 
 
-
         #region Attach
 
         private void FillDataGridAttachments(Guid parentguid)
@@ -1336,9 +1335,10 @@ namespace DoctorERP.User_Controls
             DataGridAttachments.Columns[5].HeaderText = "الملف";
 
         }
-
         private void AddAttachments(Guid parentguid)
         {
+            if (!Check("اضافة مرفقات", "تصدير البيانات", OperationType.OperationIs.Add)) { return; }
+
             foreach (Telerik.WinControls.UI.GridViewRowInfo dr in DataGridAttachments.Rows)
             {
                 tbAttachment tbAttach = new tbAttachment
@@ -1363,6 +1363,7 @@ namespace DoctorERP.User_Controls
 
         private void UpdateAttachments(Guid parentguid)
         {
+
             tbAttachment.FillTrans(parentguid);
             foreach (tbAttachment attach in tbAttachment.lstData)
             {
@@ -1388,10 +1389,14 @@ namespace DoctorERP.User_Controls
 
         private void BtnAddAttachment_Click(object sender, EventArgs e)
         {
+            RadMenuItem toolmenu = (RadMenuItem)sender;
+            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Add)) { return; }
 
-            OpenFileDialog opf = new OpenFileDialog();
-            opf.RestoreDirectory = true;
-            opf.Filter = "All Files (*.*)|*.*";
+            OpenFileDialog opf = new OpenFileDialog
+            {
+                RestoreDirectory = true,
+                Filter = "All Files (*.*)|*.*"
+            };
 
             if (opf.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
@@ -1404,7 +1409,7 @@ namespace DoctorERP.User_Controls
                 tbattach.FileData = FileHelper.FileToByteArray(opf.FileName);
                 if (tbattach.FileData.Length > 10000000)
                 {
-                    MessageBox.Show("لا يمكن إضافة مرفق بحجم أكبر من 10 ميغا بايت", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    ShowDesktopAlert("إضافة المرفقات", "فشلت العملية", "تمت إضافة المرفقات", "لا يمكن إضافة مرفق بحجم أكبر من 10 ميغا بايت.");
                     return;
                 }
                 this.Cursor = Cursors.WaitCursor;
@@ -1446,6 +1451,8 @@ namespace DoctorERP.User_Controls
 
         private void MenuPreviewAttach_Click(object sender, EventArgs e)
         {
+            RadMenuItem toolmenu = (RadMenuItem)sender;
+            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Print)) { return; }
 
             byte[] bfiles = (byte[])DataGridAttachments.CurrentRow.Cells[5].Value;
             Guid guid = new Guid(DataGridAttachments.CurrentRow.Cells[0].Value.ToString());
@@ -1460,19 +1467,16 @@ namespace DoctorERP.User_Controls
 
         }
 
+
         private void MenuExtractAttachment_Click(object sender, EventArgs e)
         {
-            if (!FrmMain.CurrentUser.IsAdmin)
+            RadMenuItem toolmenu = (RadMenuItem)sender;
+            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Print)) { return; }
+            SaveFileDialog sfd = new SaveFileDialog
             {
-                if (!FrmMain.CurrentUser.CanPrint)
-                {
-                    MessageBox.Show("ليس لديك صلاحية للقيام بهذا الإجراء", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    return;
-                }
-            }
-            SaveFileDialog sfd = new SaveFileDialog();
-            sfd.RestoreDirectory = true;
-            sfd.Filter = "All Files (*.*)|*.*";
+                RestoreDirectory = true,
+                Filter = "All Files (*.*)|*.*"
+            };
 
             byte[] bfiles = (byte[])DataGridAttachments.CurrentRow.Cells[5].Value;
             Guid guid = new Guid(DataGridAttachments.CurrentRow.Cells[0].Value.ToString());
@@ -1491,33 +1495,33 @@ namespace DoctorERP.User_Controls
                     ShowDesktopAlert("إستخراج المرفقات", "تمت العملية", "تمت إستخراج المرفقات بنجاح", "تم عملية إستخراج المرفقات بنجاح و يمكن القيام بالعمليات عليها الأن.");
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ShowDesktopAlert("إستخراج المرفقات", "حدث خطأ", "لم يتم إستخراج المرفقات بنجاح", "حدث خطأ عند إستخراج المرفقات.");
                 }
             }
         }
 
         private void MenuDeleteAttachment_Click(object sender, EventArgs e)
         {
-            if (!FrmMain.CurrentUser.CanDelete)
-            {
-                MessageBox.Show("لا تملك صلاحية للقيام بهذا العمل", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
+            RadMenuItem toolmenu = (RadMenuItem)sender;
+            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Delete)) { return; }
 
             DataGridAttachments.Rows.RemoveAt(DataGridAttachments.CurrentRow.Index);
         }
 
+
         private void BtnScanner_Click(object sender, EventArgs e)
         {
+            RadMenuItem toolmenu = (RadMenuItem)sender;
+            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Print)) { return; }
 
             FrmScanImage2 frmscan = new FrmScanImage2();
             if (frmscan.ShowDialog() == DialogResult.OK)
             {
                 if (frmscan.imgSc.fbytes.Length <= 0)
                 {
-                    MessageBox.Show("الملف غير صالح، لم يتم إضافة المرفق", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    ShowDesktopAlert("إضافة مرفقات", "لم يتم إضافة المرفق", "الملف غير صالح", "حدد ملف صالح ثم اعد المحاولة مرة آخرى.");
                     return;
                 }
                 tbAttachment tbattach = new tbAttachment();
@@ -1533,13 +1537,12 @@ namespace DoctorERP.User_Controls
             }
             else
             {
-                MessageBox.Show("لم يتم إضافة المرفق", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                ShowDesktopAlert("إضافة مرفقات", "لم يتم إضافة المرفق", "تم إلغاء العملية", "قام المستخدم بإلغاء العملية.");
             }
         }
 
 
         #endregion
-
 
 
         #region Price Log
