@@ -1,4 +1,4 @@
-﻿using DoctorERP.CustomElements.Flyout;
+﻿using DoctorERP.CustomElements;
 using DoctorERP.Helpers;
 using DoctorHelper.Helpers;
 using System;
@@ -110,6 +110,8 @@ namespace DoctorERP.User_Controls
                 screenTip.MainTextLabel.Text = control.Tag.ToString();
                 control.ScreenTip = screenTip;
             }
+            radPageView1.SelectedPage = PageHome;
+
             #endregion
 
             SetData();
@@ -764,7 +766,7 @@ namespace DoctorERP.User_Controls
                 e.Handled = true;
         }
 
-        private void Txtbuildingfee_KeyPress(object sender, KeyPressEventArgs e)
+        private void TxtViewOnly_KeyPress(object sender, KeyPressEventArgs e)
         {
             RadCallout callout = new RadCallout
             {
@@ -775,8 +777,51 @@ namespace DoctorERP.User_Controls
                 DropShadow = true
             };
             RadControl cn = sender as RadControl;
-            RadCallout.Show(callout, cn, "لا يمك تعديل هذا البيان", "تعديل البيانات", "بيان للعرض فقط و لا يمكن تغييره");
+            RadCallout.Show(callout, cn, "لا يمكن تعديل هذا البيان", "تعديل البيانات", "بيان للعرض فقط و لا يمكن تغييره");
 
+        }
+        private void TxtReadOnly_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!IsDirty)
+            {
+                RadCallout callout = new RadCallout
+                {
+                    ArrowType = Telerik.WinControls.UI.Callout.CalloutArrowType.Triangle,
+                    ArrowDirection = Telerik.WinControls.ArrowDirection.Right,
+                    AutoClose = true,
+                    CalloutType = Telerik.WinControls.UI.Callout.CalloutType.RoundedRectangle,
+                    DropShadow = true
+                };
+                RadControl cn = sender as RadControl;
+                RadCallout.Show(callout, cn, "لا يمكن تعديل بيانات البطاقة قبل الضغط علي زر تعديل أولاً", "تعديل البيانات", "ثم الضغط علي زر حفظ لحفظ التغييرات");
+            }
+        }
+        private void Chkisbuildingfee_Click(object sender, EventArgs e)
+        {
+            if (!IsDirty)
+            {
+                RadCallout callout = new RadCallout
+                {
+                    ArrowType = Telerik.WinControls.UI.Callout.CalloutArrowType.Triangle,
+                    ArrowDirection = Telerik.WinControls.ArrowDirection.Right,
+                    AutoClose = true,
+                    CalloutType = Telerik.WinControls.UI.Callout.CalloutType.RoundedRectangle,
+                    DropShadow = true
+                };
+                RadControl cn = sender as RadControl;
+                RadCallout.Show(callout, cn, "لا يمكن تعديل بيانات البطاقة قبل الضغط علي زر تعديل أولاً", "تعديل البيانات", "ثم الضغط علي زر حفظ لحفظ التغييرات");
+            }
+
+        }
+
+        private void TxtClearButtonVisible_TextChanged(object sender, EventArgs e)
+        {
+            if (sender is RadTextBox control)
+            {
+                if (control.ReadOnly) { control.ShowClearButton = false; }
+                else if (control.ReadOnly) { control.ShowClearButton = true; }
+
+            }
         }
 
         private void Chkisvat_CheckStateChanged(object sender, EventArgs e)
@@ -797,22 +842,6 @@ namespace DoctorERP.User_Controls
             CalcTotal();
         }
 
-        private void Txtamount_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!IsDirty)
-            {
-                RadCallout callout = new RadCallout
-                {
-                    ArrowType = Telerik.WinControls.UI.Callout.CalloutArrowType.Triangle,
-                    ArrowDirection = Telerik.WinControls.ArrowDirection.Right,
-                    AutoClose = true,
-                    CalloutType = Telerik.WinControls.UI.Callout.CalloutType.RoundedRectangle,
-                    DropShadow = true
-                };
-                RadControl cn = sender as RadControl;
-                RadCallout.Show(callout, cn, "لا يمكن تعديل بيانات البطاقة قبل الضغط علي زر تعديل أولاً", "تعديل البيانات", "ثم الضغط علي زر حفظ لحفظ التغييرات");
-            }
-        }
 
         private void Txtstatus_TextChanged(object sender, EventArgs e)
         {
@@ -916,23 +945,6 @@ namespace DoctorERP.User_Controls
 
         }
 
-        private void Chkisbuildingfee_Click(object sender, EventArgs e)
-        {
-            if (!IsDirty)
-            {
-                RadCallout callout = new RadCallout
-                {
-                    ArrowType = Telerik.WinControls.UI.Callout.CalloutArrowType.Triangle,
-                    ArrowDirection = Telerik.WinControls.ArrowDirection.Right,
-                    AutoClose = true,
-                    CalloutType = Telerik.WinControls.UI.Callout.CalloutType.RoundedRectangle,
-                    DropShadow = true
-                };
-                RadControl cn = sender as RadControl;
-                RadCallout.Show(callout, cn, "لا يمكن تعديل بيانات البطاقة قبل الضغط علي زر تعديل أولاً", "تعديل البيانات", "ثم الضغط علي زر حفظ لحفظ التغييرات");
-            }
-
-        }
 
         private void CmbPlanGuid_DropDownOpening(object sender, System.ComponentModel.CancelEventArgs args)
         {
@@ -1509,7 +1521,6 @@ namespace DoctorERP.User_Controls
 
             DataGridAttachments.Rows.RemoveAt(DataGridAttachments.CurrentRow.Index);
         }
-
 
         private void BtnScanner_Click(object sender, EventArgs e)
         {

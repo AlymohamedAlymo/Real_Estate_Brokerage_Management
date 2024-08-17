@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Telerik.WinControls;
-using System.ComponentModel;
 using Telerik.WinControls.Primitives;
 using Telerik.WinControls.UI;
 using System.Drawing;
-using System.Diagnostics;
 using Telerik.WinControls.Layouts;
 
-namespace DoctorERP
+namespace DoctorERP.CustomElements
 {
     public class BubbleBarElement : RadElement
     {
@@ -30,7 +26,7 @@ namespace DoctorERP
 
             this.items = new RadItemOwnerCollection();
             this.items.ItemTypes = new Type[] { typeof(RadButtonElement) };
-            this.items.ItemsChanged += new ItemChangedDelegate(items_ItemsChanged);
+            this.items.ItemsChanged += new ItemChangedDelegate(Items_ItemsChanged);
         }
 
         public RadItemOwnerCollection Items
@@ -43,38 +39,40 @@ namespace DoctorERP
 
         protected override void CreateChildElements()
         {
-            fill = new FillPrimitive();
-            fill.BackColor = Color.Transparent;
-            fill.BackColor2 = Color.Transparent;
+            fill = new FillPrimitive
+            {
+                BackColor = Color.Transparent,
+                BackColor2 = Color.Transparent,
 
-
-            //fill.BackColor = Color.FromArgb(253, 253, 253);
-            //fill.BackColor2 = Color.FromArgb(112, 112, 112);
-            fill.NumberOfColors = 2;
-            fill.GradientStyle = GradientStyles.Linear;
-            fill.GradientAngle = 90;
-            fill.AutoSizeMode = RadAutoSizeMode.WrapAroundChildren;
+                NumberOfColors = 2,
+                GradientStyle = GradientStyles.Linear,
+                GradientAngle = 90,
+                AutoSizeMode = RadAutoSizeMode.WrapAroundChildren
+            };
             this.Children.Add(fill);
 
-            border = new BorderPrimitive();
-            border.GradientStyle = GradientStyles.Solid;
-            border.ForeColor = Color.FromArgb(0, 0, 0);
-            border.AutoSizeMode = RadAutoSizeMode.WrapAroundChildren;
+            border = new BorderPrimitive
+            {
+                GradientStyle = GradientStyles.Solid,
+                ForeColor = Color.FromArgb(0, 0, 0),
+                AutoSizeMode = RadAutoSizeMode.WrapAroundChildren
+            };
 
             this.Children.Add(border);
 
-            panel = new StackLayoutPanel();
-            panel.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            //panel.Margin = new System.Windows.Forms.Padding(0, 20, 10, 0);
-            panel.Alignment = ContentAlignment.MiddleCenter;
-            panel.StretchHorizontally = false;
+            panel = new StackLayoutPanel
+            {
+                Orientation = System.Windows.Forms.Orientation.Horizontal,
+                Alignment = ContentAlignment.MiddleCenter,
+                StretchHorizontally = false
+            };
             this.Children.Add(panel);
 
             this.items.Owner = panel;
         }
 
 
-        void items_ItemsChanged(RadItemCollection changed, RadItem target, ItemsChangeOperation operation)
+        void Items_ItemsChanged(RadItemCollection changed, RadItem target, ItemsChangeOperation operation)
         {
             if (operation == ItemsChangeOperation.Inserted || operation == ItemsChangeOperation.Set)
             {

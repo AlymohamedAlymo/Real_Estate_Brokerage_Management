@@ -229,7 +229,8 @@
             this.Cmblandtype.Size = new System.Drawing.Size(128, 59);
             this.Cmblandtype.TabIndex = 0;
             this.Cmblandtype.ThemeName = "Material";
-            this.Cmblandtype.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtamount_KeyPress);
+            this.Cmblandtype.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
+            this.Cmblandtype.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReadOnly_KeyPress);
             // 
             // Txtblocknumber
             // 
@@ -247,6 +248,7 @@
             this.Txtblocknumber.Size = new System.Drawing.Size(128, 59);
             this.Txtblocknumber.TabIndex = 2;
             this.Txtblocknumber.ThemeName = "Material";
+            this.Txtblocknumber.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
             this.Txtblocknumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtblocknumber_KeyPress);
             // 
             // Txtarea
@@ -271,7 +273,7 @@
             this.Txtarea.ThemeName = "Material";
             this.Txtarea.ThousandsSeparator = true;
             this.Txtarea.ValueChanged += new System.EventHandler(this.Txt_ValueChanged);
-            this.Txtarea.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtamount_KeyPress);
+            this.Txtarea.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReadOnly_KeyPress);
             // 
             // radLabel1
             // 
@@ -303,7 +305,8 @@
             this.Txtdeednumber.Size = new System.Drawing.Size(238, 59);
             this.Txtdeednumber.TabIndex = 3;
             this.Txtdeednumber.ThemeName = "Material";
-            this.Txtdeednumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtamount_KeyPress);
+            this.Txtdeednumber.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
+            this.Txtdeednumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReadOnly_KeyPress);
             // 
             // Txtamount
             // 
@@ -327,7 +330,7 @@
             this.Txtamount.ThemeName = "Material";
             this.Txtamount.ThousandsSeparator = true;
             this.Txtamount.ValueChanged += new System.EventHandler(this.Txt_ValueChanged);
-            this.Txtamount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtamount_KeyPress);
+            this.Txtamount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReadOnly_KeyPress);
             // 
             // radLabel2
             // 
@@ -365,7 +368,8 @@
             this.Txtnote.TabIndex = 17;
             this.Txtnote.ThemeName = "Material";
             this.Txtnote.WordWrap = false;
-            this.Txtnote.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtamount_KeyPress);
+            this.Txtnote.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
+            this.Txtnote.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReadOnly_KeyPress);
             // 
             // Txtnorthdesc
             // 
@@ -389,7 +393,8 @@
             this.Txtnorthdesc.TabIndex = 10;
             this.Txtnorthdesc.ThemeName = "Material";
             this.Txtnorthdesc.WordWrap = false;
-            this.Txtnorthdesc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtamount_KeyPress);
+            this.Txtnorthdesc.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
+            this.Txtnorthdesc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReadOnly_KeyPress);
             // 
             // Txtsouthdesc
             // 
@@ -413,7 +418,8 @@
             this.Txtsouthdesc.TabIndex = 12;
             this.Txtsouthdesc.ThemeName = "Material";
             this.Txtsouthdesc.WordWrap = false;
-            this.Txtsouthdesc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtamount_KeyPress);
+            this.Txtsouthdesc.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
+            this.Txtsouthdesc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReadOnly_KeyPress);
             // 
             // Txteastdesc
             // 
@@ -437,7 +443,8 @@
             this.Txteastdesc.TabIndex = 14;
             this.Txteastdesc.ThemeName = "Material";
             this.Txteastdesc.WordWrap = false;
-            this.Txteastdesc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtamount_KeyPress);
+            this.Txteastdesc.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
+            this.Txteastdesc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReadOnly_KeyPress);
             // 
             // Txtwestdesc
             // 
@@ -461,7 +468,8 @@
             this.Txtwestdesc.TabIndex = 16;
             this.Txtwestdesc.ThemeName = "Material";
             this.Txtwestdesc.WordWrap = false;
-            this.Txtwestdesc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtamount_KeyPress);
+            this.Txtwestdesc.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
+            this.Txtwestdesc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReadOnly_KeyPress);
             // 
             // Txtreservereason
             // 
@@ -479,7 +487,8 @@
             this.Txtreservereason.TabIndex = 24;
             this.Txtreservereason.TabStop = false;
             this.Txtreservereason.ThemeName = "Material";
-            this.Txtreservereason.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbuildingfee_KeyPress);
+            this.Txtreservereason.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
+            this.Txtreservereason.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtViewOnly_KeyPress);
             // 
             // Txtnorth
             // 
@@ -497,7 +506,8 @@
             this.Txtnorth.TabIndex = 9;
             this.Txtnorth.ThemeName = "Material";
             this.Txtnorth.WordWrap = false;
-            this.Txtnorth.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtamount_KeyPress);
+            this.Txtnorth.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
+            this.Txtnorth.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReadOnly_KeyPress);
             // 
             // Txtsouth
             // 
@@ -515,7 +525,8 @@
             this.Txtsouth.TabIndex = 11;
             this.Txtsouth.ThemeName = "Material";
             this.Txtsouth.WordWrap = false;
-            this.Txtsouth.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtamount_KeyPress);
+            this.Txtsouth.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
+            this.Txtsouth.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReadOnly_KeyPress);
             // 
             // Txteast
             // 
@@ -533,7 +544,8 @@
             this.Txteast.TabIndex = 13;
             this.Txteast.ThemeName = "Material";
             this.Txteast.WordWrap = false;
-            this.Txteast.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtamount_KeyPress);
+            this.Txteast.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
+            this.Txteast.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReadOnly_KeyPress);
             // 
             // Txtwest
             // 
@@ -551,7 +563,8 @@
             this.Txtwest.TabIndex = 15;
             this.Txtwest.ThemeName = "Material";
             this.Txtwest.WordWrap = false;
-            this.Txtwest.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtamount_KeyPress);
+            this.Txtwest.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
+            this.Txtwest.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReadOnly_KeyPress);
             // 
             // Txtworkfee
             // 
@@ -574,7 +587,7 @@
             this.Txtworkfee.ThemeName = "Material";
             this.Txtworkfee.ThousandsSeparator = true;
             this.Txtworkfee.ValueChanged += new System.EventHandler(this.Txt_ValueChanged);
-            this.Txtworkfee.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbuildingfee_KeyPress);
+            this.Txtworkfee.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtViewOnly_KeyPress);
             // 
             // Txtbuildingfee
             // 
@@ -597,7 +610,7 @@
             this.Txtbuildingfee.ThemeName = "Material";
             this.Txtbuildingfee.ThousandsSeparator = true;
             this.Txtbuildingfee.ValueChanged += new System.EventHandler(this.Txt_ValueChanged);
-            this.Txtbuildingfee.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbuildingfee_KeyPress);
+            this.Txtbuildingfee.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtViewOnly_KeyPress);
             // 
             // Txtvat
             // 
@@ -620,7 +633,7 @@
             this.Txtvat.ThemeName = "Material";
             this.Txtvat.ThousandsSeparator = true;
             this.Txtvat.ValueChanged += new System.EventHandler(this.Txt_ValueChanged);
-            this.Txtvat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbuildingfee_KeyPress);
+            this.Txtvat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtViewOnly_KeyPress);
             // 
             // CmbPlanGuid
             // 
@@ -677,7 +690,7 @@
             this.radWorkFeeWithVat.Text = "0.00";
             this.radWorkFeeWithVat.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.radWorkFeeWithVat.ThemeName = "Material";
-            this.radWorkFeeWithVat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbuildingfee_KeyPress);
+            this.radWorkFeeWithVat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtViewOnly_KeyPress);
             // 
             // radBuildingFeeValue
             // 
@@ -694,7 +707,7 @@
             this.radBuildingFeeValue.Text = "0.00";
             this.radBuildingFeeValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.radBuildingFeeValue.ThemeName = "Material";
-            this.radBuildingFeeValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbuildingfee_KeyPress);
+            this.radBuildingFeeValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtViewOnly_KeyPress);
             // 
             // radWorkFeeValue
             // 
@@ -711,7 +724,7 @@
             this.radWorkFeeValue.Text = "0.00";
             this.radWorkFeeValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.radWorkFeeValue.ThemeName = "Material";
-            this.radWorkFeeValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbuildingfee_KeyPress);
+            this.radWorkFeeValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtViewOnly_KeyPress);
             // 
             // radVatValue
             // 
@@ -728,7 +741,7 @@
             this.radVatValue.Text = "0.00";
             this.radVatValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.radVatValue.ThemeName = "Material";
-            this.radVatValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbuildingfee_KeyPress);
+            this.radVatValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtViewOnly_KeyPress);
             // 
             // radAmountBuildingfee
             // 
@@ -746,7 +759,7 @@
             this.radAmountBuildingfee.Text = "0.00";
             this.radAmountBuildingfee.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.radAmountBuildingfee.ThemeName = "Material";
-            this.radAmountBuildingfee.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbuildingfee_KeyPress);
+            this.radAmountBuildingfee.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtViewOnly_KeyPress);
             // 
             // radLandWorkfee
             // 
@@ -764,7 +777,7 @@
             this.radLandWorkfee.Text = "0.00";
             this.radLandWorkfee.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.radLandWorkfee.ThemeName = "Material";
-            this.radLandWorkfee.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbuildingfee_KeyPress);
+            this.radLandWorkfee.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtViewOnly_KeyPress);
             // 
             // radlandfee
             // 
@@ -782,7 +795,7 @@
             this.radlandfee.Text = "0.00";
             this.radlandfee.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.radlandfee.ThemeName = "Material";
-            this.radlandfee.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbuildingfee_KeyPress);
+            this.radlandfee.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtViewOnly_KeyPress);
             // 
             // radTextBox1
             // 
@@ -800,7 +813,7 @@
             this.radTextBox1.Text = "0.00";
             this.radTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.radTextBox1.ThemeName = "Material";
-            this.radTextBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbuildingfee_KeyPress);
+            this.radTextBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtViewOnly_KeyPress);
             // 
             // Txtlastaction
             // 
@@ -823,7 +836,7 @@
             this.Txtlastaction.TabIndex = 194;
             this.Txtlastaction.TabStop = false;
             this.Txtlastaction.ThemeName = "Material";
-            this.Txtlastaction.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbuildingfee_KeyPress);
+            this.Txtlastaction.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtViewOnly_KeyPress);
             // 
             // radLabel3
             // 
@@ -1154,7 +1167,7 @@
             this.radTotalText.Text = "radLabel11";
             this.radTotalText.TextAlignment = System.Drawing.ContentAlignment.TopRight;
             this.radTotalText.ThemeName = "Material";
-            this.radTotalText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtbuildingfee_KeyPress);
+            this.radTotalText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtViewOnly_KeyPress);
             // 
             // radLabel8
             // 

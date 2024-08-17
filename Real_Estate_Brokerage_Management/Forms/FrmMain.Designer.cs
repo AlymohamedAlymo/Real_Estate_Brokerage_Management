@@ -67,7 +67,7 @@ namespace DoctorERP
             this.panel2 = new System.Windows.Forms.Panel();
             this.radRadioButton1 = new Telerik.WinControls.UI.RadRadioButton();
             this.RBallLands = new Telerik.WinControls.UI.RadRadioButton();
-            this.bubbleBar1 = new DoctorERP.BubbleBar();
+            this.bubbleBar1 = new DoctorERP.CustomElements.BubbleBar();
             this.BtnAgentCard = new Telerik.WinControls.UI.RadButtonElement();
             this.BtnSalesBill = new Telerik.WinControls.UI.RadButtonElement();
             this.BtnPayContract = new Telerik.WinControls.UI.RadButtonElement();
@@ -545,7 +545,7 @@ namespace DoctorERP
             this.bubbleBar1.Text = "bubbleBar1";
             this.bubbleBar1.ThemeName = "Material";
             this.bubbleBar1.Visible = false;
-            ((DoctorERP.BubbleBarElement)(this.bubbleBar1.GetChildAt(0))).AutoSizeMode = Telerik.WinControls.RadAutoSizeMode.WrapAroundChildren;
+            ((DoctorERP.CustomElements.BubbleBarElement)(this.bubbleBar1.GetChildAt(0))).AutoSizeMode = Telerik.WinControls.RadAutoSizeMode.WrapAroundChildren;
             ((Telerik.WinControls.Primitives.FillPrimitive)(this.bubbleBar1.GetChildAt(0).GetChildAt(0))).BackColor2 = System.Drawing.Color.Transparent;
             ((Telerik.WinControls.Primitives.FillPrimitive)(this.bubbleBar1.GetChildAt(0).GetChildAt(0))).BackColor3 = System.Drawing.Color.Transparent;
             ((Telerik.WinControls.Primitives.FillPrimitive)(this.bubbleBar1.GetChildAt(0).GetChildAt(0))).BackColor4 = System.Drawing.Color.Transparent;
@@ -1547,7 +1547,7 @@ namespace DoctorERP
         private Telerik.WinControls.UI.RadButtonElement BtnSalesOrder;
         private Telerik.WinControls.UI.RadButtonElement BtnLogOut;
         private Telerik.WinControls.UI.RadButtonElement btnExit;
-        private DoctorERP.BubbleBar bubbleBar1;
+        private DoctorERP.CustomElements.BubbleBar bubbleBar1;
         private Telerik.WinControls.UI.RadSparklineElement radSparklineElement4;
         private System.Windows.Forms.Label CompanyNameLabel;
         private System.Windows.Forms.Panel panel1;

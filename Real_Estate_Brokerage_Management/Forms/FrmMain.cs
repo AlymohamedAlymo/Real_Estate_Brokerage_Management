@@ -430,7 +430,7 @@ namespace DoctorERP
 
             if (e.VisualItem is IconListViewVisualItem)
             {
-                e.VisualItem = new LandIconListViewVisualItem();
+                e.VisualItem = new IconListViewVisualItemCustomize();
             }
             else
             {

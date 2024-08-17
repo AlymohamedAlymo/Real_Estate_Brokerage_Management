@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 using Telerik.WinControls;
 
-namespace DoctorERP
+namespace DoctorERP.CustomElements
 {
     /// <summary>
     /// Behavior class defining the OnMouseOver behavior of the BubbleBar

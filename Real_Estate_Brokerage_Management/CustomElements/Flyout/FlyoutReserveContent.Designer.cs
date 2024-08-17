@@ -1,4 +1,4 @@
-﻿namespace DoctorERP
+﻿namespace DoctorERP.CustomElements
 {
     partial class FlyoutReserveContent
     {

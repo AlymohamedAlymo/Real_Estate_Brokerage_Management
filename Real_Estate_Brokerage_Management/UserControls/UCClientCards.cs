@@ -1,10 +1,8 @@
-﻿using DoctorERP.CustomElements.Flyout;
+﻿using DoctorERP.CustomElements;
 using DoctorERP.Helpers;
 using DoctorHelper.Helpers;
-using FastReport.DevComponents.DotNetBar.Controls;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlTypes;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -12,7 +10,6 @@ using System.Windows.Forms;
 using Telerik.WinControls;
 using Telerik.WinControls.UI;
 using Telerik.WinControls.UI.SplashScreen;
-using WinformsDirtyTracking;
 
 namespace DoctorERP.User_Controls
 {
@@ -90,6 +87,7 @@ namespace DoctorERP.User_Controls
                 screenTip.MainTextLabel.Text = control.Tag.ToString();
                 control.ScreenTip = screenTip;
             }
+            radPageView1.SelectedPage = PageHome;
             #endregion
 
             guid = _guid;
@@ -476,7 +474,7 @@ namespace DoctorERP.User_Controls
                 if (!MessageWarning("هل أنت متاكد من الإضافة ؟", "إضافة بطاقة عميل جديدة", "إذا ضغت علي زر نعم سوف يتم إضافة بطاقة العميل الجديدة"))
                     return false;
             }
-            if (TxtName.Text.Trim().Equals(string.Empty))
+            if (Txtname.Text.Trim().Equals(string.Empty))
             {
                 RadCallout callout = new RadCallout
                 {
@@ -486,7 +484,7 @@ namespace DoctorERP.User_Controls
                     CalloutType = Telerik.WinControls.UI.Callout.CalloutType.RoundedRectangle,
                     DropShadow = true
                 };
-                RadCallout.Show(callout, TxtName, "اسم العميل غير مدخل", "حفظ البيانات", "ثم الضغط علي زر حفظ لحفظ التغييرات");
+                RadCallout.Show(callout, Txtname, "اسم العميل غير مدخل", "حفظ البيانات", "ثم الضغط علي زر حفظ لحفظ التغييرات");
                 return false;
             }
 
@@ -545,7 +543,7 @@ namespace DoctorERP.User_Controls
                 if (!MessageWarning("هل أنت متاكد من التعديل ؟", "تعديل بطاقة عميل", "إذا ضغت علي زر نعم سوف يتم تعديل بيانات بطاقة العميل"))
                     return false;
             }
-            if (TxtName.Text.Trim().Equals(string.Empty))
+            if (Txtname.Text.Trim().Equals(string.Empty))
             {
                 RadCallout callout = new RadCallout
                 {
@@ -555,7 +553,7 @@ namespace DoctorERP.User_Controls
                     CalloutType = Telerik.WinControls.UI.Callout.CalloutType.RoundedRectangle,
                     DropShadow = true
                 };
-                RadCallout.Show(callout, TxtName, "اسم العميل غير مدخل", "حفظ البيانات", "ثم الضغط علي زر حفظ لحفظ التغييرات");
+                RadCallout.Show(callout, Txtname, "اسم العميل غير مدخل", "حفظ البيانات", "ثم الضغط علي زر حفظ لحفظ التغييرات");
                 return false;
             }
 
@@ -641,7 +639,7 @@ namespace DoctorERP.User_Controls
             commandBarLabel1.Text = NewTxt;
 
         }
-        private void Txtbuildingfee_KeyPress(object sender, KeyPressEventArgs e)
+        private void TxtViewOnly_KeyPress(object sender, KeyPressEventArgs e)
         {
             RadCallout callout = new RadCallout
             {
@@ -654,6 +652,32 @@ namespace DoctorERP.User_Controls
             RadControl cn = sender as RadControl;
             RadCallout.Show(callout, cn, "لا يمك تعديل هذا البيان", "تعديل البيانات", "بيان للعرض فقط و لا يمكن تغييره");
 
+        }
+        private void TxtReadOnly_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!IsDirty)
+            {
+                RadCallout callout = new RadCallout
+                {
+                    ArrowType = Telerik.WinControls.UI.Callout.CalloutArrowType.Triangle,
+                    ArrowDirection = Telerik.WinControls.ArrowDirection.Right,
+                    AutoClose = true,
+                    CalloutType = Telerik.WinControls.UI.Callout.CalloutType.RoundedRectangle,
+                    DropShadow = true
+                };
+                RadControl cn = sender as RadControl;
+                RadCallout.Show(callout, cn, "لا يمكن تعديل بيانات البطاقة قبل الضغط علي زر تعديل أولاً", "تعديل البيانات", "ثم الضغط علي زر حفظ لحفظ التغييرات");
+            }
+        }
+
+        private void TxtClearButtonVisible_TextChanged(object sender, EventArgs e)
+        {
+            if (sender is RadTextBox control)
+            {
+                if (control.ReadOnly) { control.ShowClearButton = false; }
+                else if (control.ReadOnly) { control.ShowClearButton = true; }
+
+            }
         }
 
         private void RadMenueTxtSearch_KeyDown(object sender, KeyEventArgs e)
@@ -671,30 +695,6 @@ namespace DoctorERP.User_Controls
             //else if (Txtstatus.Text == "مباع") { Txtstatus.BackColor = Color.FromArgb(254, 0, 0); }
             //else if (Txtstatus.Text == "محجوز") { Txtstatus.BackColor = Color.FromArgb(255, 255, 0); }
         }
-
-        private void Txtamount_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!IsDirty)
-            {
-                RadCallout callout = new RadCallout
-                {
-                    ArrowType = Telerik.WinControls.UI.Callout.CalloutArrowType.Triangle,
-                    ArrowDirection = Telerik.WinControls.ArrowDirection.Right,
-                    AutoClose = true,
-                    CalloutType = Telerik.WinControls.UI.Callout.CalloutType.RoundedRectangle,
-                    DropShadow = true
-                };
-                RadControl cn = sender as RadControl;
-                RadCallout.Show(callout, cn, "لا يمكن تعديل بيانات البطاقة قبل الضغط علي زر تعديل أولاً", "تعديل البيانات", "ثم الضغط علي زر حفظ لحفظ التغييرات");
-            }
-        }
-
-        //private void Txtstatus_TextChanged(object sender, EventArgs e)
-        //{
-        //    if (Txtstatus.Text == "متاح") { Txtstatus.BackColor = Color.FromArgb(0, 255, 1); }
-        //    else if (Txtstatus.Text == "مباع") { Txtstatus.BackColor = Color.FromArgb(254, 0, 0); }
-        //    else if (Txtstatus.Text == "محجوز") { Txtstatus.BackColor = Color.FromArgb(255, 255, 0); }
-        //}
 
         private void RadFlyoutManager_FlyoutClosed(FlyoutClosedEventArgs e)
         {
@@ -716,12 +716,8 @@ namespace DoctorERP.User_Controls
                             if (Readyreport(report))
                             {
                                 report.Prepare();
-                                // create an instance of HTML export filter
                                 FastReport.Export.Pdf.PDFExport export = new FastReport.Export.Pdf.PDFExport();
-                                // show the export options dialog and do the export
                                 report.Export(export, Application.ExecutablePath + "Agents.pdf");
-
-
                                 MemoryStream ms = new MemoryStream();
                                 using (FileStream file = new FileStream(Application.ExecutablePath + "Agents.pdf", FileMode.Open, FileAccess.Read))
                                     file.CopyTo(ms);

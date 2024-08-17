@@ -795,7 +795,7 @@
     <Compile Include="Helpers\Mimes.cs" />
     <Compile Include="Helpers\NumberToWords.cs" />
     <Compile Include="Helpers\Printers.cs" />
-    <Compile Include="CustomElements\ImageListView\LandIconListViewVisualItem.cs" />
+    <Compile Include="CustomElements\ImageListView\IconListViewVisualItemCustomize.cs" />
     <Compile Include="Helpers\SendSMS.cs" />
     <Compile Include="Helpers\WinformsDirtyTracking.cs" />
     <Compile Include="Program.cs" />

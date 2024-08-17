@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using Telerik.WinControls;
 
-namespace DoctorERP
+namespace DoctorERP.CustomElements
 {
     public class BubbleBar : RadControl
     {
@@ -33,8 +28,10 @@ namespace DoctorERP
 
         protected override void CreateChildItems(RadElement parent)
         {
-            this.element = new BubbleBarElement();
-            this.element.AutoSizeMode = RadAutoSizeMode.WrapAroundChildren;
+            this.element = new BubbleBarElement
+            {
+                AutoSizeMode = RadAutoSizeMode.WrapAroundChildren
+            };
             parent.Children.Add(this.element);
         }
     }

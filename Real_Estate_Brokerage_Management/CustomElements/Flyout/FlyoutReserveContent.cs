@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using Telerik.WinControls.UI;
 
-namespace DoctorERP
+namespace DoctorERP.CustomElements
 {
     public partial class FlyoutReserveContent : UserControl
     {
@@ -22,6 +22,15 @@ namespace DoctorERP
         {
             get { return this.RadTextboxReserveReason.Text; }
         }
+        private bool ValidateData()
+        {
+            if (string.IsNullOrWhiteSpace(this.ReserveReason))
+            {
+                return false;
+            }
+
+            return true;
+        }
 
         private void RadButtonOK_Click(object sender, EventArgs e)
         {
@@ -40,15 +49,6 @@ namespace DoctorERP
             RadFlyoutManager.Close();
         }
 
-        private bool ValidateData()
-        {
-            if (string.IsNullOrWhiteSpace(this.ReserveReason))
-            {
-                return false;
-            }
-
-            return true;
-        }
 
     }
 }

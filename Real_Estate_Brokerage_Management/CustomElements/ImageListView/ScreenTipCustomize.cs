@@ -1,28 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using Telerik.WinControls.UI;
 using Telerik.WinControls;
-using System.Windows;
 using System.Drawing;
 
 namespace DoctorERP.CustomElements
 {
     public class ScreenTipCustomize : RadScreenTipElement
     {
-        private  LightVisualElement Header_Element = new LightVisualElement();
-        private  LightVisualElement Content_Element = new LightVisualElement();
-        private  LightVisualElement Footer_Element = new LightVisualElement();
+        private readonly LightVisualElement Header_Element = new LightVisualElement();
+        private readonly LightVisualElement Content_Element = new LightVisualElement();
+        private readonly LightVisualElement Footer_Element = new LightVisualElement();
         private readonly RadLineItem LineItem = new RadLineItem();
-        private readonly RadLineItem LineItem2 = new RadLineItem();
-
         private readonly StackLayoutElement VerticalContainer = new StackLayoutElement();
         private readonly StackLayoutElement HorizontalContainer = new StackLayoutElement();
 
-
+        #region Properties
         public LightVisualElement HeaderElement
         {
             get
@@ -45,7 +37,7 @@ namespace DoctorERP.CustomElements
                 return Footer_Element;
             }
         }
-
+        #endregion
         protected override void CreateChildElements()
         {
             base.CreateChildElements();
@@ -55,9 +47,6 @@ namespace DoctorERP.CustomElements
             VerticalContainer.ShouldHandleMouseInput = false;
             VerticalContainer.StretchHorizontally = true;
             VerticalContainer.StretchVertically = true;
-            ////LandHeaderContainer.Orientation = System.Windows.Forms.Orientation.Vertical;
-            ////LandHeaderContainer.NotifyParentOnMouseInput = true;
-            ////LandHeaderContainer.ShouldHandleMouseInput = false;
 
             HorizontalContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
             HorizontalContainer.NotifyParentOnMouseInput = true;
@@ -65,7 +54,6 @@ namespace DoctorERP.CustomElements
             HorizontalContainer.StretchHorizontally = true;
             HorizontalContainer.StretchVertically = true;
 
-            //LandHeaderContainer.StretchHorizontally = true;
             Header_Element.DrawFill = true;
             Header_Element.DrawText = true;
             Header_Element.GradientStyle = GradientStyles.Solid;
@@ -78,7 +66,6 @@ namespace DoctorERP.CustomElements
             Header_Element.RightToLeft = true;
             Header_Element.Padding = new Padding(0, 2, 0, 0);
             Header_Element.Margin = new Padding(0, 2, 0, 0);
-            //Header_Element.AutoSize = false;
 
             Content_Element.DrawFill = true;
             Content_Element.DrawText = true;
@@ -90,8 +77,6 @@ namespace DoctorERP.CustomElements
             Content_Element.StretchVertically = true;
             Content_Element.BackColor = Color.White;
             Content_Element.RightToLeft = true;
-            //Content_Element.AutoSize = true;
-
 
             Footer_Element.DrawFill = true;
             Footer_Element.DrawText = true;
@@ -106,13 +91,12 @@ namespace DoctorERP.CustomElements
 
             VerticalContainer.Children.AddRange(Header_Element, LineItem, Content_Element);
 
-            //VerticalContainer.Children.Add(LandHeaderContainer);
             this.Children.Add(this.VerticalContainer);
             this.AutoSize = true;
             this.StretchHorizontally = true;
             this.StretchVertically = true;
-
             this.BackColor = Color.White;
+
         }
 
     }
