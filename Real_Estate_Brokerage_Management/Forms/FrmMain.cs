@@ -413,7 +413,7 @@ namespace DoctorERP
             {
                 try
                 {
-                    UCLandsDataEntry ucLand = e.Page.Controls[0] as UCLandsDataEntry;
+                    UCLandsCards ucLand = e.Page.Controls[0] as UCLandsCards;
                     if (ucLand.IsDirty)
                     {
                         ucLand.TackAction();
@@ -555,7 +555,7 @@ namespace DoctorERP
                     radPageViewPage.Name = "LandsCard";
                     radPageViewPage.Text = "بطاقات الأراضي";
 
-                    DoctorERP.User_Controls.UCLandsDataEntry uCLands = new User_Controls.UCLandsDataEntry(land.guid, false, string.Empty);
+                    DoctorERP.User_Controls.UCLandsCards uCLands = new User_Controls.UCLandsCards(land.guid, false, string.Empty);
                     uCLands.Dock = DockStyle.Fill;
                     
                     radPageViewPage.Controls.Add(uCLands);
@@ -567,7 +567,7 @@ namespace DoctorERP
                 }
                 else
                 {
-                    UCLandsDataEntry UC = PageViewCardsHome.Pages["LandsCard"].Controls[0] as UCLandsDataEntry;
+                    UCLandsCards UC = PageViewCardsHome.Pages["LandsCard"].Controls[0] as UCLandsCards;
                     UC.Bs.Position = land.number - 1;
                     PageViewCardsHome.SelectedPage = enumerableIterator;
 
@@ -1009,7 +1009,7 @@ namespace DoctorERP
                 radPageViewPage.Name = "LandsCard";
                 radPageViewPage.Text = "بطاقات الأراضي";
 
-                DoctorERP.User_Controls.UCLandsDataEntry uCLands = new User_Controls.UCLandsDataEntry(Guid.Empty, false, string.Empty);
+                DoctorERP.User_Controls.UCLandsCards uCLands = new User_Controls.UCLandsCards(Guid.Empty, false, string.Empty);
                 uCLands.Dock = DockStyle.Fill;
 
                 radPageViewPage.Controls.Add(uCLands);
@@ -1018,7 +1018,7 @@ namespace DoctorERP
             }
             else
             {
-                UCLandsDataEntry UC = PageViewCardsHome.Pages["LandsCard"].Controls[0] as UCLandsDataEntry;
+                UCLandsCards UC = PageViewCardsHome.Pages["LandsCard"].Controls[0] as UCLandsCards;
                 PageViewCardsHome.SelectedPage = enumerableIterator;
 
             }

@@ -1,5 +1,4 @@
-﻿using DevExpress.XtraBars.Docking2010.Views.WindowsUI;
-using DoctorERP.CustomElements.Flyout;
+﻿using DoctorERP.CustomElements.Flyout;
 using DoctorERP.Helpers;
 using DoctorHelper.Helpers;
 using System;
@@ -14,7 +13,7 @@ using Telerik.WinControls.UI.SplashScreen;
 
 namespace DoctorERP.User_Controls
 {
-    public partial class UCLandsDataEntry : UserControl
+    public partial class UCClientCards : UserControl
     {
 
         private Guid guid;
@@ -25,7 +24,7 @@ namespace DoctorERP.User_Controls
         private readonly int CurrentPosition = 0;
         private decimal TotalLand;
 
-        public UCLandsDataEntry(Guid _guid, bool _isNew, string _BlockNumber)
+        public UCClientCards(Guid _guid, bool _isNew, string _BlockNumber)
         {
             InitializeComponent();
 
@@ -70,14 +69,6 @@ namespace DoctorERP.User_Controls
             radLabel8.TextAlignment = ContentAlignment.BottomLeft;
             radLabel2.TextAlignment = ContentAlignment.MiddleLeft;
             radLabel1.TextAlignment = ContentAlignment.MiddleLeft;
-            radLabel17.TextAlignment = ContentAlignment.MiddleLeft;
-            radLabel16.TextAlignment = ContentAlignment.MiddleLeft;
-            radLabel15.TextAlignment = ContentAlignment.MiddleLeft;
-            radLabel14.TextAlignment = ContentAlignment.MiddleLeft;
-            radLabel3.TextAlignment = ContentAlignment.MiddleLeft;
-            radLabel4.TextAlignment = ContentAlignment.MiddleLeft;
-            radLabel9.TextAlignment = ContentAlignment.MiddleLeft;
-            radLabel12.TextAlignment = ContentAlignment.MiddleLeft;
             radLabel5.TextAlignment = ContentAlignment.MiddleCenter;
             Txtnumber.TextAlignment = ContentAlignment.MiddleCenter;
             Txtstatus.TextAlignment = ContentAlignment.MiddleCenter;
@@ -85,8 +76,8 @@ namespace DoctorERP.User_Controls
             radDesktopAlert1.Popup.RootElement.RightToLeft = true;
             radPageView1.RootElement.Children[0].Children[0].Children[0].Children[3].Visibility = ElementVisibility.Hidden;
 
-            List<CommandBarButton> radBarButton = new List<CommandBarButton> {  BtnResfresh, BtnDelete, BtnNew, BtnEdit, BtnExit };
-            foreach(CommandBarButton control in radBarButton)
+            List<CommandBarButton> radBarButton = new List<CommandBarButton> { BtnResfresh, BtnDelete, BtnNew, BtnEdit, BtnExit };
+            foreach (CommandBarButton control in radBarButton)
             {
                 RadOffice2007ScreenTipElement screenTip = new RadOffice2007ScreenTipElement();
                 screenTip.CaptionLabel.Text = control.Text;
@@ -101,7 +92,7 @@ namespace DoctorERP.User_Controls
                 screenTip.MainTextLabel.Text = control.Tag.ToString();
                 control.ScreenTip = screenTip;
             }
-            List<RadMenuItem> radMenuItem = new List<RadMenuItem> { BtnImportExcel, BtnExportExcelData, BtnEcelExport, BtnEmailExport, BtnPdfExport, BtnWordExport, BtnSentToPrinter, BtnDesign, BtnPreview, BtnContract, BtnSaleOrder,BtnReservation, BtnPriceOffer };
+            List<RadMenuItem> radMenuItem = new List<RadMenuItem> { BtnImportExcel, BtnExportExcelData, BtnEcelExport, BtnEmailExport, BtnPdfExport, BtnWordExport, BtnSentToPrinter, BtnDesign, BtnPreview, BtnContract, BtnSaleOrder, BtnReservation, BtnPriceOffer };
             foreach (RadMenuItem control in radMenuItem)
             {
                 RadOffice2007ScreenTipElement screenTip = new RadOffice2007ScreenTipElement();
@@ -220,7 +211,7 @@ namespace DoctorERP.User_Controls
             radlandfee.Text = FormatingNumber(Amount + (Amount * TaxDiscount.salesfee / 100) + (Amount * TaxDiscount.workfee / 100) +
                 ((Amount * TaxDiscount.workfee / 100) * TaxDiscount.vat / 100));
 
-            radTextBox1.Text = FormatingNumber(Amount + (Amount * TaxDiscount.salesfee / 100) + (Amount * TaxDiscount.workfee / 100) + (Amount * TaxDiscount.buildingfee / 100) +
+            Txtcivilid.Text = FormatingNumber(Amount + (Amount * TaxDiscount.salesfee / 100) + (Amount * TaxDiscount.workfee / 100) + (Amount * TaxDiscount.buildingfee / 100) +
                 ((Amount * TaxDiscount.workfee / 100) * TaxDiscount.vat / 100));
 
             TotalLand = total;
@@ -407,7 +398,7 @@ namespace DoctorERP.User_Controls
 
             Cmblandtype.AutoCompleteCustomSource.AddRange(tbLand.GetUniqueList("LandType").ToArray());
             Txtblocknumber.AutoCompleteCustomSource.AddRange(tbLand.GetUniqueList("blocknumber").ToArray());
-            Txtdeednumber.AutoCompleteCustomSource.AddRange(tbLand.GetUniqueList("deednumber").ToArray());
+            TxtName.AutoCompleteCustomSource.AddRange(tbLand.GetUniqueList("deednumber").ToArray());
 
             tbPlanInfo.Fill();
             CmbPlanGuid.DataSource = tbPlanInfo.lstData;
@@ -569,7 +560,7 @@ namespace DoctorERP.User_Controls
             land.amount = Txtamount.Value;
             land.area = Txtarea.Value;
             land.blocknumber = int.Parse(Txtblocknumber.Text);
-            land.deednumber = Txtdeednumber.Text;
+            land.deednumber = TxtName.Text;
             land.east = Txteast.Text;
             land.eastdesc = Txteastdesc.Text;
             land.isdiscountfee = taxdiscount.isdiscountfee;
@@ -587,10 +578,10 @@ namespace DoctorERP.User_Controls
             land.vat = Txtvat.Value;
             land.workfee = Txtworkfee.Value;
             land.landtype = Cmblandtype.Text;
-            land.lastaction = "عملية إضافة" + " - بتاريخ  " + DateTime.Now.ToString("dd/MM/yyyy") 
-                +" - الساعة  " + DateTime.Now.ToString("hh:mm tt") + " - عن طريق المستخدم  " + FrmMain.CurrentUser.name;
+            land.lastaction = "عملية إضافة" + " - بتاريخ  " + DateTime.Now.ToString("dd/MM/yyyy")
+                + " - الساعة  " + DateTime.Now.ToString("hh:mm tt") + " - عن طريق المستخدم  " + FrmMain.CurrentUser.name;
             land.north = Txtnorth.Text;
-            land.northdesc = Txtnorthdesc.Text;
+            land.northdesc = TxtName.Text;
             land.note = Txtnote.Text;
             land.number = tbLand.GetMaxNumber("Number") + 1;
             land.planguid = tbPlanInfo.lstData.Where(u => u.name == CmbPlanGuid.Text).FirstOrDefault().guid;
@@ -633,9 +624,9 @@ namespace DoctorERP.User_Controls
         private void ShowNotification(string Header, string Content, string Note)
         {
             radToastNotificationManager1.ToastNotifications[0].Xml = "<toast launch=\"readMoreArg\">\r\n  <visual>\r\n    <binding template=\"ToastGeneric\">\r\n   " +
-    "   <text>"+ Header + "</text>\r\n   " +
-    "   <text>"+ Content + "</text>\r\n  " +
-    "    <text placement=\"attribution\">"+ Note + "</text>\r\n    </binding>\r\n  </visual>\r\n</toast>";
+    "   <text>" + Header + "</text>\r\n   " +
+    "   <text>" + Content + "</text>\r\n  " +
+    "    <text placement=\"attribution\">" + Note + "</text>\r\n    </binding>\r\n  </visual>\r\n</toast>";
             radToastNotificationManager1.ShowNotification(0);
 
         }
@@ -668,7 +659,7 @@ namespace DoctorERP.User_Controls
             land.amount = Txtamount.Value;
             land.area = Txtarea.Value;
             land.blocknumber = int.Parse(Txtblocknumber.Text);
-            land.deednumber = Txtdeednumber.Text;
+            //land.deednumber = TxtName.Text;
             land.east = Txteast.Text;
             land.eastdesc = Txteastdesc.Text;
             land.isvat = Chkisvat.Checked;
@@ -678,10 +669,10 @@ namespace DoctorERP.User_Controls
             land.vat = Txtvat.Value;
             land.workfee = Txtworkfee.Value;
             land.landtype = Cmblandtype.Text;
-            land.lastaction = "عملية تعديل" + " - بتاريخ  " + DateTime.Now.ToString("dd/MM/yyyy")+
+            land.lastaction = "عملية تعديل" + " - بتاريخ  " + DateTime.Now.ToString("dd/MM/yyyy") +
                 " - الساعة  " + DateTime.Now.ToString("hh:mm tt") + " - عن طريق المستخدم  " + FrmMain.CurrentUser.name;
             land.north = Txtnorth.Text;
-            land.northdesc = Txtnorthdesc.Text;
+            land.northdesc = TxtName.Text;
             land.note = Txtnote.Text;
             land.planguid = tbPlanInfo.lstData.Where(u => u.name == CmbPlanGuid.Text).FirstOrDefault().guid;
             land.reservereason = Txtreservereason.Text;
@@ -698,7 +689,7 @@ namespace DoctorERP.User_Controls
             tbLog.AddLog("تعديل", this.Text, land.code.ToString());
             if (DBConnect.CommitTransAction())
             {
-                FillGridLog(land.guid);
+                //FillGridLog(land.guid);
                 ShowNotification("تعديل بطاقة أرض جديدة", "تمت عملية تعديل بطاقة الأرض بنجاح", "عملية إضافة بواسطة المستخدم : " + FrmMain.CurrentUser.name + " بتاريخ : " + DateTime.Now.ToString("yyyy/MM/dd") + " الساعة : " + DateTime.Now.ToString("hh:mm tt"));
                 ShowDesktopAlert("تعديل بطاقة أرض جديدة", "تمت العملية", "تمت عملية تعديل بطاقة الأرض بنجاح", "تم تعديل بيانات بطاقة الأرض يمكن القيام بالعمليات عليها الأن.");
                 FrmMain.DataHasChanged = true;
@@ -1112,7 +1103,7 @@ namespace DoctorERP.User_Controls
             tbLand land = (tbLand)Bs.Current;
             tbLand.Fill("guid", land.guid);
             ExcelXLSX.ExportToExcelFromDataTable(tbLand.dtData);
-            
+
         }
 
         private void BtnSendEmail_Click(object sender, EventArgs e)
@@ -1452,6 +1443,136 @@ namespace DoctorERP.User_Controls
             }
         }
 
+        private void kryptonTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void kryptonTextBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void kryptonLabel15_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void LblNote_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Lblpublicnumber_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Lblvatid_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void kryptonLabel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void PageHome_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void PageAgent_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Lblagentname_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void kryptonLabel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Txtagentpublicnumber_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Lblagentmobile_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Txtagentmobile_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Txtagentvatid_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Lblagentcivilid_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Lblagentvatid_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Txtagentcivilid_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Txtagencynumber_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TxtAgentEmail_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Lblagencynumber_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Lblagentpublicnumber_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Txtagentname_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radTextBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radTextBox5_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radTextBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void MenuDeleteAttachment_Click(object sender, EventArgs e)
         {
             if (!FrmMain.CurrentUser.CanDelete)
@@ -1463,72 +1584,6 @@ namespace DoctorERP.User_Controls
             DataGridAttachments.Rows.RemoveAt(DataGridAttachments.CurrentRow.Index);
         }
 
-        private void AlertTimer_Tick(object sender, EventArgs e)
-        {
-            if (RadOverlayManager.IsActive) { RadOverlayManager.Close(); }
-            this.ParentForm.TopMost = false;
-            AlertTimer.Stop();
-
-        }
-        private void Chkisbuildingfee_Click(object sender, EventArgs e)
-        {
-            if (!IsDirty)
-            {
-                RadCallout callout = new RadCallout
-                {
-                    ArrowType = Telerik.WinControls.UI.Callout.CalloutArrowType.Triangle,
-                    ArrowDirection = Telerik.WinControls.ArrowDirection.Right,
-                    AutoClose = true,
-                    CalloutType = Telerik.WinControls.UI.Callout.CalloutType.RoundedRectangle,
-                    DropShadow = true
-                };
-                RadControl cn = sender as RadControl;
-                RadCallout.Show(callout, cn, "لا يمكن تعديل بيانات البطاقة قبل الضغط علي زر تعديل أولاً", "تعديل البيانات", "ثم الضغط علي زر حفظ لحفظ التغييرات");
-            }
-
-        }
-
-        private void CmbPlanGuid_DropDownOpening(object sender, System.ComponentModel.CancelEventArgs args)
-        {
-            if (!IsDirty)
-            {
-                RadCallout callout = new RadCallout
-                {
-                    ArrowType = Telerik.WinControls.UI.Callout.CalloutArrowType.Triangle,
-                    ArrowDirection = Telerik.WinControls.ArrowDirection.Right,
-                    AutoClose = true,
-                    CalloutType = Telerik.WinControls.UI.Callout.CalloutType.RoundedRectangle,
-                    DropShadow = true
-                };
-                RadControl cn = sender as RadControl;
-                RadCallout.Show(callout, cn, "لا يمكن تعديل بيانات البطاقة قبل الضغط علي زر تعديل أولاً", "تعديل البيانات", "ثم الضغط علي زر حفظ لحفظ التغييرات");
-                args.Cancel = true;
-            }
-           
-        }
-
-        private void PageHome_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void UCLandsDataEntry_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape)
-            {
-
-            }
-        }
-
-        private void UCLandsDataEntry_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void CmbPlanGuid_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void BtnScanner_Click(object sender, EventArgs e)
         {
@@ -1561,50 +1616,13 @@ namespace DoctorERP.User_Controls
 
         #endregion
 
-
-
-        #region Price Log
-        private void FillGridLog(Guid landGuid)
+        private void AlertTimer_Tick(object sender, EventArgs e)
         {
-            tbPriceLog.Fill("ParentGuid", landGuid);
-            DataGridPriceLog.DataSource = tbPriceLog.dtData;
-
-            DataGridPriceLog.Columns[0].IsVisible = false;
-            DataGridPriceLog.Columns[1].IsVisible = false;
-
-            DataGridPriceLog.Columns[2].HeaderText = "المستخدم";
-            DataGridPriceLog.Columns[3].HeaderText = "وقت الحركة";
-            DataGridPriceLog.Columns[4].HeaderText = "السعر القديم";
-            DataGridPriceLog.Columns[5].HeaderText = "السعر الجديد";
-
-            DataGridPriceLog.Columns[6].IsVisible = false;
-            DataGridPriceLog.Columns[7].IsVisible = false;
-
-            foreach (var row in DataGridPriceLog.Rows)
-            {
-                row.Cells[4].Value = string.Format("{0:0.00}", double.Parse(row.Cells[4].Value.ToString()));
-                row.Cells[5].Value = string.Format("{0:0.00}", double.Parse(row.Cells[5].Value.ToString()));
-
-            }
+            if (RadOverlayManager.IsActive) { RadOverlayManager.Close(); }
+            this.ParentForm.TopMost = false;
+            AlertTimer.Stop();
 
         }
-
-        private void DataGridPriceLog_CellDoubleClick(object sender, GridViewCellEventArgs e)
-        {
-            tbLand land = (tbLand)Bs.Current;
-            if (land is null || land.guid.Equals(Guid.Empty)) { return; }
-            if (DataGridPriceLog.Rows.Count == 0) { return; }
-            Guid guid = (Guid)DataGridPriceLog.Rows[0].Cells[0].Value;
-            tbPriceLog pricel = tbPriceLog.FindBy("Guid", guid);
-            FrmPriceLog frmtable = new FrmPriceLog(guid, land.guid, pricel.oldprice, pricel.newprice);
-            frmtable.ShowDialog();
-            FillGridLog(land.guid);
-        }
-
-        #endregion
-
-
-
 
     }
 }

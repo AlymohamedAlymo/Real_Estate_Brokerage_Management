@@ -1,6 +1,6 @@
 ﻿namespace DoctorERP.User_Controls
 {
-    partial class UCLandsDataEntry
+    partial class UCLandsCards
     {
         /// <summary> 
         /// Required designer variable.
@@ -32,7 +32,7 @@
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition3 = new Telerik.WinControls.UI.TableViewDefinition();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCLandsDataEntry));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCLandsCards));
             Telerik.RadToastNotificationManager.RadToastNotification radToastNotification1 = new Telerik.RadToastNotificationManager.RadToastNotification();
             Telerik.RadToastNotificationManager.RadToastNotification radToastNotification2 = new Telerik.RadToastNotificationManager.RadToastNotification();
             Telerik.RadToastNotificationManager.RadToastNotification radToastNotification3 = new Telerik.RadToastNotificationManager.RadToastNotification();
@@ -658,9 +658,9 @@
             this.CmbPlanGuid.NullText = "اختر المخطط";
             this.CmbPlanGuid.Size = new System.Drawing.Size(128, 38);
             this.CmbPlanGuid.TabIndex = 1;
+            this.CmbPlanGuid.TabStop = false;
             this.CmbPlanGuid.ThemeName = "Material";
             this.CmbPlanGuid.DropDownOpening += new Telerik.WinControls.UI.RadPopupOpeningEventHandler(this.CmbPlanGuid_DropDownOpening);
-            this.CmbPlanGuid.SelectedIndexChanged += new System.EventHandler(this.CmbPlanGuid_SelectedIndexChanged);
             // 
             // radWorkFeeWithVat
             // 
@@ -970,7 +970,6 @@
             this.PageHome.Size = new System.Drawing.Size(1165, 597);
             this.PageHome.Text = "عام";
             this.PageHome.Title = "البيانات العامة لبطاقة الأرض";
-            this.PageHome.Paint += new System.Windows.Forms.PaintEventHandler(this.PageHome_Paint);
             // 
             // Txtstatus
             // 
@@ -1221,14 +1220,14 @@
             this.PageAttachments.ItemSize = new System.Drawing.SizeF(91F, 55F);
             this.PageAttachments.Location = new System.Drawing.Point(6, 6);
             this.PageAttachments.Name = "PageAttachments";
-            this.PageAttachments.Size = new System.Drawing.Size(1162, 597);
+            this.PageAttachments.Size = new System.Drawing.Size(1165, 597);
             this.PageAttachments.Text = "مرفقات";
             // 
             // BtnScanner
             // 
             this.BtnScanner.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnScanner.Enabled = false;
-            this.BtnScanner.Location = new System.Drawing.Point(774, 548);
+            this.BtnScanner.Location = new System.Drawing.Point(777, 548);
             this.BtnScanner.Name = "BtnScanner";
             this.BtnScanner.Size = new System.Drawing.Size(229, 36);
             this.BtnScanner.TabIndex = 2;
@@ -1240,7 +1239,7 @@
             // 
             this.BtnAttachment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnAttachment.Enabled = false;
-            this.BtnAttachment.Location = new System.Drawing.Point(1028, 548);
+            this.BtnAttachment.Location = new System.Drawing.Point(1031, 548);
             this.BtnAttachment.Name = "BtnAttachment";
             this.BtnAttachment.Size = new System.Drawing.Size(120, 36);
             this.BtnAttachment.TabIndex = 1;
@@ -1272,7 +1271,7 @@
             this.DataGridAttachments.Name = "DataGridAttachments";
             this.DataGridAttachments.ShowGroupPanel = false;
             this.DataGridAttachments.ShowGroupPanelScrollbars = false;
-            this.DataGridAttachments.Size = new System.Drawing.Size(1159, 542);
+            this.DataGridAttachments.Size = new System.Drawing.Size(1162, 542);
             this.DataGridAttachments.TabIndex = 0;
             this.DataGridAttachments.TitleText = "المرفقات";
             this.DataGridAttachments.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DataGridAttachment_MouseDown);
@@ -1285,7 +1284,7 @@
             this.PagePricingLog.ItemSize = new System.Drawing.SizeF(151F, 55F);
             this.PagePricingLog.Location = new System.Drawing.Point(6, 6);
             this.PagePricingLog.Name = "PagePricingLog";
-            this.PagePricingLog.Size = new System.Drawing.Size(1162, 597);
+            this.PagePricingLog.Size = new System.Drawing.Size(1165, 597);
             this.PagePricingLog.Text = "سجل تعديل الأسعار";
             this.PagePricingLog.Title = "سجل تعديل سعر الأرض";
             // 
@@ -1311,7 +1310,7 @@
             this.DataGridPriceLog.Name = "DataGridPriceLog";
             this.DataGridPriceLog.ShowGroupPanel = false;
             this.DataGridPriceLog.ShowGroupPanelScrollbars = false;
-            this.DataGridPriceLog.Size = new System.Drawing.Size(1162, 597);
+            this.DataGridPriceLog.Size = new System.Drawing.Size(1165, 597);
             this.DataGridPriceLog.TabIndex = 1;
             this.DataGridPriceLog.TitleText = "سجل تعديل الأسعار";
             this.DataGridPriceLog.CellDoubleClick += new Telerik.WinControls.UI.GridViewCellEventHandler(this.DataGridPriceLog_CellDoubleClick);
@@ -1914,8 +1913,6 @@
             this.Name = "UCLandsDataEntry";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.Size = new System.Drawing.Size(1177, 713);
-            this.Load += new System.EventHandler(this.UCLandsDataEntry_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UCLandsDataEntry_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.Cmblandtype)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txtblocknumber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txtarea)).EndInit();

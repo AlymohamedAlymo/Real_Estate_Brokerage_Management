@@ -815,17 +815,23 @@
     <Compile Include="CustomElements\Flyout\FlyoutStaticContent.Designer.cs">
       <DependentUpon>FlyoutStaticContent.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UCClientCards.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCClientCards.Designer.cs">
+      <DependentUpon>UCClientCards.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UCLands.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\UCLands.Designer.cs">
       <DependentUpon>UCLands.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UCLandsDataEntry.cs">
+    <Compile Include="UserControls\UCLandsCards.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UCLandsDataEntry.Designer.cs">
-      <DependentUpon>UCLandsDataEntry.cs</DependentUpon>
+    <Compile Include="UserControls\UCLandsCards.Designer.cs">
+      <DependentUpon>UCLandsCards.cs</DependentUpon>
     </Compile>
     <Compile Include="CustomElements\Flyout\FlyoutReserveContent.cs">
       <SubType>UserControl</SubType>
@@ -1079,14 +1085,17 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UCClientCards.resx">
+      <DependentUpon>UCClientCards.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UCLands.ar-EG.resx">
       <DependentUpon>UCLands.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UCLands.resx">
       <DependentUpon>UCLands.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UCLandsDataEntry.resx">
-      <DependentUpon>UCLandsDataEntry.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\UCLandsCards.resx">
+      <DependentUpon>UCLandsCards.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomElements\Flyout\FlyoutReserveContent.resx">
       <DependentUpon>FlyoutReserveContent.cs</DependentUpon>

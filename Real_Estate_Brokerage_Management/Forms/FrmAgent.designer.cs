@@ -29,11 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAgent));
             this.PnlMain = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.TxtLastAction = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.kryptonLabel15 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.TxtNote = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.LblNote = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.TxtName = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
@@ -120,16 +122,12 @@
             this.MenuAttachDesign = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.MenuDeleteAttachment = new System.Windows.Forms.ToolStripMenuItem();
-            this.TxtLastAction = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.kryptonLabel15 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.PnlMain.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grpOffice)).BeginInit();
-            this.grpOffice.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
-            this.groupControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridAttachments)).BeginInit();
             this.panel1.SuspendLayout();
@@ -188,6 +186,31 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "عام";
             this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // TxtLastAction
+            // 
+            this.TxtLastAction.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtLastAction.Location = new System.Drawing.Point(177, 288);
+            this.TxtLastAction.Name = "TxtLastAction";
+            this.TxtLastAction.ReadOnly = true;
+            this.TxtLastAction.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.TxtLastAction.Size = new System.Drawing.Size(358, 21);
+            this.TxtLastAction.StateCommon.Back.Color1 = System.Drawing.SystemColors.Control;
+            this.TxtLastAction.StateCommon.Content.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtLastAction.TabIndex = 44;
+            this.TxtLastAction.TabStop = false;
+            // 
+            // kryptonLabel15
+            // 
+            this.kryptonLabel15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.kryptonLabel15.Location = new System.Drawing.Point(539, 290);
+            this.kryptonLabel15.Name = "kryptonLabel15";
+            this.kryptonLabel15.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.kryptonLabel15.Size = new System.Drawing.Size(57, 17);
+            this.kryptonLabel15.StateCommon.ShortText.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel15.TabIndex = 45;
+            this.kryptonLabel15.Values.Text = "آخر عملية";
             // 
             // TxtNote
             // 
@@ -370,6 +393,7 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "الوكيل";
             this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // grpOffice
             // 
@@ -421,6 +445,7 @@
             this.Txtofficename.Size = new System.Drawing.Size(338, 21);
             this.Txtofficename.StateCommon.Content.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txtofficename.TabIndex = 0;
+            this.Txtofficename.TextChanged += new System.EventHandler(this.Txtofficename_TextChanged);
             // 
             // Txtofficephone
             // 
@@ -442,6 +467,7 @@
             this.Lblofficecr.StateCommon.ShortText.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lblofficecr.TabIndex = 66;
             this.Lblofficecr.Values.Text = "السجل التجاري";
+            this.Lblofficecr.Paint += new System.Windows.Forms.PaintEventHandler(this.Lblofficecr_Paint);
             // 
             // Lblofficepublicnumber
             // 
@@ -516,6 +542,7 @@
             this.Lblofficename.StateCommon.ShortText.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lblofficename.TabIndex = 65;
             this.Lblofficename.Values.Text = "الاسم";
+            this.Lblofficename.Paint += new System.Windows.Forms.PaintEventHandler(this.Lblofficename_Paint);
             // 
             // groupControl1
             // 
@@ -548,6 +575,7 @@
             this.TxtAgentEmail.Size = new System.Drawing.Size(338, 21);
             this.TxtAgentEmail.StateCommon.Content.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtAgentEmail.TabIndex = 3;
+            this.TxtAgentEmail.TextChanged += new System.EventHandler(this.TxtAgentEmail_TextChanged);
             // 
             // kryptonLabel2
             // 
@@ -559,6 +587,7 @@
             this.kryptonLabel2.StateCommon.ShortText.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kryptonLabel2.TabIndex = 72;
             this.kryptonLabel2.Values.Text = "البريد الإلكتروني";
+            this.kryptonLabel2.Paint += new System.Windows.Forms.PaintEventHandler(this.kryptonLabel2_Paint);
             // 
             // Txtagentpublicnumber
             // 
@@ -580,6 +609,7 @@
             this.Lblagentmobile.StateCommon.ShortText.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lblagentmobile.TabIndex = 43;
             this.Lblagentmobile.Values.Text = "رقم الجوال";
+            this.Lblagentmobile.Paint += new System.Windows.Forms.PaintEventHandler(this.Lblagentmobile_Paint);
             // 
             // Txtagentmobile
             // 
@@ -590,6 +620,7 @@
             this.Txtagentmobile.Size = new System.Drawing.Size(338, 21);
             this.Txtagentmobile.StateCommon.Content.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txtagentmobile.TabIndex = 2;
+            this.Txtagentmobile.TextChanged += new System.EventHandler(this.Txtagentmobile_TextChanged);
             // 
             // Txtagentvatid
             // 
@@ -600,6 +631,7 @@
             this.Txtagentvatid.Size = new System.Drawing.Size(338, 21);
             this.Txtagentvatid.StateCommon.Content.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txtagentvatid.TabIndex = 4;
+            this.Txtagentvatid.TextChanged += new System.EventHandler(this.Txtagentvatid_TextChanged);
             // 
             // Lblagentcivilid
             // 
@@ -611,6 +643,7 @@
             this.Lblagentcivilid.StateCommon.ShortText.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lblagentcivilid.TabIndex = 41;
             this.Lblagentcivilid.Values.Text = "رقم الهوية";
+            this.Lblagentcivilid.Paint += new System.Windows.Forms.PaintEventHandler(this.Lblagentcivilid_Paint);
             // 
             // Lblagentvatid
             // 
@@ -632,6 +665,7 @@
             this.Txtagentcivilid.Size = new System.Drawing.Size(338, 21);
             this.Txtagentcivilid.StateCommon.Content.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txtagentcivilid.TabIndex = 1;
+            this.Txtagentcivilid.TextChanged += new System.EventHandler(this.Txtagentcivilid_TextChanged);
             // 
             // Txtagencynumber
             // 
@@ -653,6 +687,7 @@
             this.Lblagentname.StateCommon.ShortText.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lblagentname.TabIndex = 39;
             this.Lblagentname.Values.Text = "الاسم";
+            this.Lblagentname.Paint += new System.Windows.Forms.PaintEventHandler(this.Lblagentname_Paint);
             // 
             // Lblagencynumber
             // 
@@ -685,6 +720,7 @@
             this.Txtagentname.Size = new System.Drawing.Size(338, 21);
             this.Txtagentname.StateCommon.Content.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txtagentname.TabIndex = 0;
+            this.Txtagentname.TextChanged += new System.EventHandler(this.Txtagentname_TextChanged);
             // 
             // tabPage4
             // 
@@ -704,8 +740,8 @@
             this.DataGridAttachments.AllowUserToDeleteRows = false;
             this.DataGridAttachments.AllowUserToResizeColumns = false;
             this.DataGridAttachments.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.DataGridAttachments.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.DataGridAttachments.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.DataGridAttachments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridAttachments.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colguid,
@@ -1075,30 +1111,6 @@
             this.MenuDeleteAttachment.Text = "حذف";
             this.MenuDeleteAttachment.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
-            // TxtLastAction
-            // 
-            this.TxtLastAction.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtLastAction.Location = new System.Drawing.Point(177, 288);
-            this.TxtLastAction.Name = "TxtLastAction";
-            this.TxtLastAction.ReadOnly = true;
-            this.TxtLastAction.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.TxtLastAction.Size = new System.Drawing.Size(358, 21);
-            this.TxtLastAction.StateCommon.Back.Color1 = System.Drawing.SystemColors.Control;
-            this.TxtLastAction.StateCommon.Content.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtLastAction.TabIndex = 44;
-            this.TxtLastAction.TabStop = false;
-            // 
-            // kryptonLabel15
-            // 
-            this.kryptonLabel15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.kryptonLabel15.Location = new System.Drawing.Point(539, 290);
-            this.kryptonLabel15.Name = "kryptonLabel15";
-            this.kryptonLabel15.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.kryptonLabel15.Size = new System.Drawing.Size(57, 17);
-            this.kryptonLabel15.StateCommon.ShortText.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabel15.TabIndex = 45;
-            this.kryptonLabel15.Values.Text = "آخر عملية";
-            // 
             // FrmAgent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1119,11 +1131,7 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grpOffice)).EndInit();
-            this.grpOffice.ResumeLayout(false);
-            this.grpOffice.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
-            this.groupControl1.ResumeLayout(false);
-            this.groupControl1.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridAttachments)).EndInit();
             this.panel1.ResumeLayout(false);

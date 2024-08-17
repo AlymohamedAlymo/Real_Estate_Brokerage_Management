@@ -729,8 +729,77 @@ namespace DoctorERP
             }
         }
 
+
         #endregion
 
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Lblofficename_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Txtofficename_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Lblofficecr_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Lblagentname_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Txtagentname_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Lblagentcivilid_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Txtagentcivilid_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Txtagentmobile_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Lblagentmobile_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void kryptonLabel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void TxtAgentEmail_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Txtagentvatid_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
