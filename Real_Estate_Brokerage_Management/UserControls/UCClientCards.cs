@@ -1593,6 +1593,46 @@ namespace DoctorERP.User_Controls
 
         }
 
+        private void Txtmobile_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TxtEmail_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TxtName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Txtcivilid_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radCollapsiblePanel1_PanelContainer_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void radButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TxtAgentEmail_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Txtagentmobile_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
         private void MenuDeleteAttachment_Click(object sender, EventArgs e)
         {
             if (!FrmMain.CurrentUser.CanDelete)

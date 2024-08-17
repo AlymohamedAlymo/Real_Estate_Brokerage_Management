@@ -922,11 +922,12 @@
             this.radPageView1.Location = new System.Drawing.Point(0, 48);
             this.radPageView1.Name = "radPageView1";
             this.radPageView1.PageBackColor = System.Drawing.SystemColors.Control;
-            this.radPageView1.SelectedPage = this.PageHome;
+            this.radPageView1.SelectedPage = this.PagePricingLog;
             this.radPageView1.Size = new System.Drawing.Size(1177, 665);
             this.radPageView1.TabIndex = 72;
             this.radPageView1.ThemeName = "Material";
             this.radPageView1.ViewMode = Telerik.WinControls.UI.PageViewMode.OfficeNavigationBar;
+            this.radPageView1.SelectedPageChanged += new System.EventHandler(this.radPageView1_SelectedPageChanged);
             ((Telerik.WinControls.UI.RadOfficeNavigationBarElement)(this.radPageView1.GetChildAt(0))).VisibleItemsCount = 3;
             ((Telerik.WinControls.UI.RadOfficeNavigationBarElement)(this.radPageView1.GetChildAt(0))).ItemSpacing = 5;
             // 
@@ -963,8 +964,7 @@
             this.PageHome.Controls.Add(this.Txtsouth);
             this.PageHome.Controls.Add(this.Txtnorth);
             this.PageHome.Description = null;
-            this.PageHome.Image = global::DoctorERP.Properties.Resources.website_25;
-            this.PageHome.ItemSize = new System.Drawing.SizeF(71F, 55F);
+            this.PageHome.ItemSize = new System.Drawing.SizeF(46F, 49F);
             this.PageHome.Location = new System.Drawing.Point(6, 6);
             this.PageHome.Name = "PageHome";
             this.PageHome.Size = new System.Drawing.Size(1165, 597);
@@ -1216,8 +1216,7 @@
             this.PageAttachments.Controls.Add(this.BtnScanner);
             this.PageAttachments.Controls.Add(this.BtnAttachment);
             this.PageAttachments.Controls.Add(this.DataGridAttachments);
-            this.PageAttachments.Image = global::DoctorERP.Properties.Resources.attachment25;
-            this.PageAttachments.ItemSize = new System.Drawing.SizeF(91F, 55F);
+            this.PageAttachments.ItemSize = new System.Drawing.SizeF(66F, 49F);
             this.PageAttachments.Location = new System.Drawing.Point(6, 6);
             this.PageAttachments.Name = "PageAttachments";
             this.PageAttachments.Size = new System.Drawing.Size(1165, 597);
@@ -1280,11 +1279,10 @@
             // 
             this.PagePricingLog.Controls.Add(this.DataGridPriceLog);
             this.PagePricingLog.Description = "سجل تعديل سعر الأرض";
-            this.PagePricingLog.Image = global::DoctorERP.Properties.Resources.file25;
-            this.PagePricingLog.ItemSize = new System.Drawing.SizeF(151F, 55F);
+            this.PagePricingLog.ItemSize = new System.Drawing.SizeF(126F, 49F);
             this.PagePricingLog.Location = new System.Drawing.Point(6, 6);
             this.PagePricingLog.Name = "PagePricingLog";
-            this.PagePricingLog.Size = new System.Drawing.Size(1165, 597);
+            this.PagePricingLog.Size = new System.Drawing.Size(1165, 603);
             this.PagePricingLog.Text = "سجل تعديل الأسعار";
             this.PagePricingLog.Title = "سجل تعديل سعر الأرض";
             // 
@@ -1310,7 +1308,7 @@
             this.DataGridPriceLog.Name = "DataGridPriceLog";
             this.DataGridPriceLog.ShowGroupPanel = false;
             this.DataGridPriceLog.ShowGroupPanelScrollbars = false;
-            this.DataGridPriceLog.Size = new System.Drawing.Size(1165, 597);
+            this.DataGridPriceLog.Size = new System.Drawing.Size(1165, 603);
             this.DataGridPriceLog.TabIndex = 1;
             this.DataGridPriceLog.TitleText = "سجل تعديل الأسعار";
             this.DataGridPriceLog.CellDoubleClick += new Telerik.WinControls.UI.GridViewCellEventHandler(this.DataGridPriceLog_CellDoubleClick);
@@ -1902,7 +1900,7 @@
             // 
             this.AlertTimer.Tick += new System.EventHandler(this.AlertTimer_Tick);
             // 
-            // UCLandsDataEntry
+            // UCLandsCards
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1910,7 +1908,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.radPageView1);
             this.Controls.Add(this.BindingNavigatorLands);
-            this.Name = "UCLandsDataEntry";
+            this.Name = "UCLandsCards";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.Size = new System.Drawing.Size(1177, 713);
             ((System.ComponentModel.ISupportInitialize)(this.Cmblandtype)).EndInit();

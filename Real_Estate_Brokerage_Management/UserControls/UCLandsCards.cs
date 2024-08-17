@@ -1507,6 +1507,11 @@ namespace DoctorERP.User_Controls
            
         }
 
+        private void radPageView1_SelectedPageChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void BtnScanner_Click(object sender, EventArgs e)
         {
 
