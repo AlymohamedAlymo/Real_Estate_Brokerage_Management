@@ -922,12 +922,11 @@
             this.radPageView1.Location = new System.Drawing.Point(0, 48);
             this.radPageView1.Name = "radPageView1";
             this.radPageView1.PageBackColor = System.Drawing.SystemColors.Control;
-            this.radPageView1.SelectedPage = this.PagePricingLog;
+            this.radPageView1.SelectedPage = this.PageHome;
             this.radPageView1.Size = new System.Drawing.Size(1177, 665);
             this.radPageView1.TabIndex = 72;
             this.radPageView1.ThemeName = "Material";
             this.radPageView1.ViewMode = Telerik.WinControls.UI.PageViewMode.OfficeNavigationBar;
-            this.radPageView1.SelectedPageChanged += new System.EventHandler(this.radPageView1_SelectedPageChanged);
             ((Telerik.WinControls.UI.RadOfficeNavigationBarElement)(this.radPageView1.GetChildAt(0))).VisibleItemsCount = 3;
             ((Telerik.WinControls.UI.RadOfficeNavigationBarElement)(this.radPageView1.GetChildAt(0))).ItemSpacing = 5;
             // 
@@ -967,7 +966,7 @@
             this.PageHome.ItemSize = new System.Drawing.SizeF(46F, 49F);
             this.PageHome.Location = new System.Drawing.Point(6, 6);
             this.PageHome.Name = "PageHome";
-            this.PageHome.Size = new System.Drawing.Size(1165, 597);
+            this.PageHome.Size = new System.Drawing.Size(1165, 603);
             this.PageHome.Text = "عام";
             this.PageHome.Title = "البيانات العامة لبطاقة الأرض";
             // 

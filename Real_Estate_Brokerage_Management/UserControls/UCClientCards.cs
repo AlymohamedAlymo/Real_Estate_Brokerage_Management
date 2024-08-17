@@ -66,13 +66,9 @@ namespace DoctorERP.User_Controls
             RadFlyoutManager.FlyoutClosed -= this.RadFlyoutManager_FlyoutClosed;
             RadFlyoutManager.FlyoutClosed += this.RadFlyoutManager_FlyoutClosed;
 
-            radLabel8.TextAlignment = ContentAlignment.BottomLeft;
-            radLabel2.TextAlignment = ContentAlignment.MiddleLeft;
-            radLabel1.TextAlignment = ContentAlignment.MiddleLeft;
             radLabel5.TextAlignment = ContentAlignment.MiddleCenter;
             Txtnumber.TextAlignment = ContentAlignment.MiddleCenter;
             Txtstatus.TextAlignment = ContentAlignment.MiddleCenter;
-            radTotalText.TextAlignment = ContentAlignment.TopLeft;
             radDesktopAlert1.Popup.RootElement.RightToLeft = true;
             radPageView1.RootElement.Children[0].Children[0].Children[0].Children[3].Visibility = ElementVisibility.Hidden;
 
@@ -152,7 +148,7 @@ namespace DoctorERP.User_Controls
         private void SetReadOnly(bool IsReadOnly)
         {
             List<RadControl> NotUsedControls = new List<RadControl>()
-            { Txtnumber, radWorkFeeValue, radBuildingFeeValue, radVatValue, radWorkFeeWithVat, Txtlastaction, Txtworkfee,Txtbuildingfee, Txtvat };
+            { Txtnumber, Txtlastaction };
             foreach (RadControl control in PageHome.Controls)
             {
                 if (NotUsedControls.Contains(control)) { continue; }
@@ -175,58 +171,6 @@ namespace DoctorERP.User_Controls
                     radChkControl.ReadOnly = IsReadOnly;
                 }
             }
-        }
-
-        private string FormatingNumber(decimal number)
-        {
-            return $"{number:n}  ريال";
-        }
-
-        private void CalcTotal()
-        {
-
-            tbTaxDiscount.Fill();
-            tbTaxDiscount TaxDiscount = tbTaxDiscount.lstData[0];
-
-            decimal Amount = Txtamount.Value;
-            decimal Salesfee = TaxDiscount.salesfee;
-            decimal Buildingfee = Chkisbuildingfee.Checked ? TaxDiscount.buildingfee : 0;
-            decimal Workfee = Chkisworkfee.Checked ? TaxDiscount.workfee : 0;
-            decimal Vatfee = Chkisvat.Checked ? TaxDiscount.vat : 0;
-
-            decimal total = Amount + (Amount * Salesfee / 100) + (Amount * Buildingfee / 100) +
-                (Amount * Workfee / 100) + ((Amount * Workfee / 100) * Vatfee / 100);
-
-            Txtbuildingfee.Value = Buildingfee;
-            Txtworkfee.Value = Workfee;
-            Txtvat.Value = Vatfee;
-            radBuildingFeeValue.Text = FormatingNumber(Amount * Buildingfee / 100);
-            radWorkFeeValue.Text = FormatingNumber(Amount * Workfee / 100);
-            radVatValue.Text = FormatingNumber((Amount * Workfee / 100) * Vatfee / 100);
-            radWorkFeeWithVat.Text = FormatingNumber((Amount * Workfee / 100) + ((Amount * Workfee / 100) * Vatfee / 100));
-
-
-            radAmountBuildingfee.Text = FormatingNumber(Amount + (Amount * TaxDiscount.salesfee / 100) + (Amount * TaxDiscount.buildingfee / 100));
-            radLandWorkfee.Text = FormatingNumber(Amount + (Amount * TaxDiscount.salesfee / 100) + (Amount * TaxDiscount.workfee / 100));
-            radlandfee.Text = FormatingNumber(Amount + (Amount * TaxDiscount.salesfee / 100) + (Amount * TaxDiscount.workfee / 100) +
-                ((Amount * TaxDiscount.workfee / 100) * TaxDiscount.vat / 100));
-
-            Txtcivilid.Text = FormatingNumber(Amount + (Amount * TaxDiscount.salesfee / 100) + (Amount * TaxDiscount.workfee / 100) + (Amount * TaxDiscount.buildingfee / 100) +
-                ((Amount * TaxDiscount.workfee / 100) * TaxDiscount.vat / 100));
-
-            TotalLand = total;
-
-
-            CurrencyInfo currency = new CurrencyInfo(CurrencyInfo.Currencies.SaudiArabia);
-            NumberToWord toWord = new NumberToWord(Amount, currency)
-            {
-                ArabicPrefixText = string.Empty,
-                EnglishSuffixText = string.Empty
-            };
-
-            radTotalText.Text = toWord.ConvertToArabic();
-
-
         }
 
         private bool MessageWarning(string Heading, string Body, string FootNote)
@@ -342,6 +286,16 @@ namespace DoctorERP.User_Controls
 
         }
 
+        private void ShowNotification(string Header, string Content, string Note)
+        {
+            radToastNotificationManager1.ToastNotifications[0].Xml = "<toast launch=\"readMoreArg\">\r\n  <visual>\r\n    <binding template=\"ToastGeneric\">\r\n   " +
+    "   <text>" + Header + "</text>\r\n   " +
+    "   <text>" + Content + "</text>\r\n  " +
+    "    <text placement=\"attribution\">" + Note + "</text>\r\n    </binding>\r\n  </visual>\r\n</toast>";
+            radToastNotificationManager1.ShowNotification(0);
+
+        }
+
         private bool Check(string Operation, string Command, OperationType.OperationIs OperType)
         {
             if (IsDirty) { TackAction(); }
@@ -396,21 +350,8 @@ namespace DoctorERP.User_Controls
             Bs.PositionChanged += new EventHandler(Bs_PositionChanged);
             BindingNavigatorLands.BindingSource = Bs;
 
-            Cmblandtype.AutoCompleteCustomSource.AddRange(tbLand.GetUniqueList("LandType").ToArray());
-            Txtblocknumber.AutoCompleteCustomSource.AddRange(tbLand.GetUniqueList("blocknumber").ToArray());
             TxtName.AutoCompleteCustomSource.AddRange(tbLand.GetUniqueList("deednumber").ToArray());
 
-            tbPlanInfo.Fill();
-            CmbPlanGuid.DataSource = tbPlanInfo.lstData;
-            CmbPlanGuid.ValueMember = "guid";
-            CmbPlanGuid.DisplayMember = "name";
-            CmbPlanGuid.EditorControl.Columns[0].IsVisible = false;
-            CmbPlanGuid.EditorControl.Columns[2].IsVisible = false;
-            CmbPlanGuid.EditorControl.Columns[1].HeaderText = "اسم المخطط";
-            CmbPlanGuid.EditorControl.Columns[3].HeaderText = "المدينة";
-            CmbPlanGuid.EditorControl.Columns[3].HeaderText = "الموقع";
-            CmbPlanGuid.EditorControl.Columns[4].HeaderText = "رقم المخطط";
-            CmbPlanGuid.AutoSizeDropDownColumnMode = BestFitColumnMode.AllCells;
             foreach (RadControl control in PageHome.Controls)
             {
                 if (control.Name.StartsWith("rad")) { continue; }
@@ -456,30 +397,28 @@ namespace DoctorERP.User_Controls
                 IsProgrammatic = false;
             }
 
-            if (!obj.guid.Equals(Guid.Empty)) { FillBindingCurrentData(obj); }
+            //if (!obj.guid.Equals(Guid.Empty)) { FillBindingCurrentData(obj); }
         }
 
-        private void FillBindingCurrentData(tbLand land)
-        {
+        ////private void FillBindingCurrentData(tbLand land)
+        ////{
 
-            if (land.status == "محجوز")
-            {
-                BtnReservation.Text = "إلغاء الحجز";
-                Txtreservereason.Visible = true;
-            }
-            else
-            {
-                BtnReservation.Text = "حجز";
-                Txtreservereason.Visible = false;
-            }
+        ////    if (land.status == "محجوز")
+        ////    {
+        ////        BtnReservation.Text = "إلغاء الحجز";
+        ////        Txtreservereason.Visible = true;
+        ////    }
+        ////    else
+        ////    {
+        ////        BtnReservation.Text = "حجز";
+        ////        Txtreservereason.Visible = false;
+        ////    }
 
-            CalcTotal();
-            FillDataGridAttachments(land.guid);
-            FillGridLog(land.guid);
-            BtnDelete.Enabled = true;
-            BtnEdit.Enabled = true;
-            SetReadOnly(true);
-        }
+        ////    FillDataGridAttachments(land.guid);
+        ////    BtnDelete.Enabled = true;
+        ////    BtnEdit.Enabled = true;
+        ////    SetReadOnly(true);
+        ////}
 
         private void NewFill()
         {
@@ -489,11 +428,8 @@ namespace DoctorERP.User_Controls
             BtnNew.Text = "حفظ";
             BtnNew.ScreenTip.Text = "حفظ بطاقة الصنف الجديدة";
             BtnNew.Image = Properties.Resources.BtnConform;
-            Txtreservereason.Visible = false;
             BtnReservation.Text = "حجز";
 
-            CalcTotal();
-            FillGridLog(Guid.Empty);
             FillDataGridAttachments(Guid.Empty);
             SetReadOnly(false);
 
@@ -512,38 +448,14 @@ namespace DoctorERP.User_Controls
                 control.DataBindings.Clear();
             }
 
-            tbTaxDiscount.Fill();
-
-            if (tbTaxDiscount.lstData.Count > 0)
-            {
-                tbTaxDiscount TaxDiscount = tbTaxDiscount.lstData[0];
-                Chkisbuildingfee.Checked = TaxDiscount.isbuildingfee;
-                Txtbuildingfee.Text = TaxDiscount.buildingfee.ToString();
-                Chkisvat.Checked = TaxDiscount.isvat;
-                Txtvat.Text = TaxDiscount.vat.ToString();
-                Chkisworkfee.Checked = TaxDiscount.isworkfee;
-                Txtworkfee.Text = TaxDiscount.workfee.ToString();
-            }
-            Txtstatus.Text = "متاح";
-            Cmblandtype.Text = "ارض";
-            if (!BlockNumber.Equals(string.Empty))
-            {
-                Txtblocknumber.Text = BlockNumber;
-            }
-            else if (BlockNumber.Equals(string.Empty))
-            {
-                Txtblocknumber.Text = "0";
-            }
+            Txtstatus.Text = "تشط";
             Txtnumber.Text = RadMenueTxtSearch.Text = (tbLand.GetMaxNumber("Number") + 1).ToString();
-            CmbPlanGuid.SelectedValue = FrmMain.PlanGuid;
 
-            Txtarea.Focus();
 
         }
 
         private bool Add()
         {
-            CalcTotal();
 
             if (ShowConfirmMSG)
             {
@@ -554,62 +466,62 @@ namespace DoctorERP.User_Controls
             tbTaxDiscount.Fill();
             tbTaxDiscount taxdiscount = tbTaxDiscount.lstData[0];
 
-            tbLand land = new tbLand();
+            //tbLand land = new tbLand();
 
-            land.guid = Guid.NewGuid();
-            land.amount = Txtamount.Value;
-            land.area = Txtarea.Value;
-            land.blocknumber = int.Parse(Txtblocknumber.Text);
-            land.deednumber = TxtName.Text;
-            land.east = Txteast.Text;
-            land.eastdesc = Txteastdesc.Text;
-            land.isdiscountfee = taxdiscount.isdiscountfee;
-            land.discountfee = taxdiscount.discountfee;
-            land.isdiscounttotal = taxdiscount.isdiscounttotal;
-            land.issalefee = taxdiscount.issalefee;
-            land.salesfee = taxdiscount.salesfee;
-            land.discountfeevalue = taxdiscount.discountfeevalue;
-            land.discounttotal = taxdiscount.discounttotal;
-            land.discounttotalvalue = taxdiscount.discounttotalvalue;
-            land.isvat = Chkisvat.Checked;
-            land.isworkfee = Chkisworkfee.Checked;
-            land.isbuildingfee = Chkisbuildingfee.Checked;
-            land.buildingfee = Txtbuildingfee.Value;
-            land.vat = Txtvat.Value;
-            land.workfee = Txtworkfee.Value;
-            land.landtype = Cmblandtype.Text;
-            land.lastaction = "عملية إضافة" + " - بتاريخ  " + DateTime.Now.ToString("dd/MM/yyyy")
-                + " - الساعة  " + DateTime.Now.ToString("hh:mm tt") + " - عن طريق المستخدم  " + FrmMain.CurrentUser.name;
-            land.north = Txtnorth.Text;
-            land.northdesc = TxtName.Text;
-            land.note = Txtnote.Text;
-            land.number = tbLand.GetMaxNumber("Number") + 1;
-            land.planguid = tbPlanInfo.lstData.Where(u => u.name == CmbPlanGuid.Text).FirstOrDefault().guid;
-            land.reservereason = Txtreservereason.Text;
-            land.south = Txtsouth.Text;
-            land.southdesc = Txtsouthdesc.Text;
-            land.status = Txtstatus.Text;
-            land.total = TotalLand;
-            land.west = Txtwest.Text;
-            land.westdesc = Txtwestdesc.Text;
-            land.code = land.number;
+            //land.guid = Guid.NewGuid();
+            ////land.amount = Txtamount.Value;
+            ////land.area = Txtarea.Value;
+            ////land.blocknumber = int.Parse(Txtblocknumber.Text);
+            //land.deednumber = TxtName.Text;
+            //land.east = Txteast.Text;
+            //land.eastdesc = Txteastdesc.Text;
+            //land.isdiscountfee = taxdiscount.isdiscountfee;
+            //land.discountfee = taxdiscount.discountfee;
+            //land.isdiscounttotal = taxdiscount.isdiscounttotal;
+            //land.issalefee = taxdiscount.issalefee;
+            //land.salesfee = taxdiscount.salesfee;
+            //land.discountfeevalue = taxdiscount.discountfeevalue;
+            //land.discounttotal = taxdiscount.discounttotal;
+            //land.discounttotalvalue = taxdiscount.discounttotalvalue;
+            //land.isvat = Chkisvat.Checked;
+            //land.isworkfee = Chkisworkfee.Checked;
+            //land.isbuildingfee = Chkisbuildingfee.Checked;
+            //land.buildingfee = Txtbuildingfee.Value;
+            //land.vat = Txtvat.Value;
+            //land.workfee = Txtworkfee.Value;
+            //land.landtype = Cmblandtype.Text;
+            //land.lastaction = "عملية إضافة" + " - بتاريخ  " + DateTime.Now.ToString("dd/MM/yyyy")
+            //    + " - الساعة  " + DateTime.Now.ToString("hh:mm tt") + " - عن طريق المستخدم  " + FrmMain.CurrentUser.name;
+            //land.north = Txtnorth.Text;
+            //land.northdesc = TxtName.Text;
+            //land.note = Txtnote.Text;
+            //land.number = tbLand.GetMaxNumber("Number") + 1;
+            //land.planguid = tbPlanInfo.lstData.Where(u => u.name == CmbPlanGuid.Text).FirstOrDefault().guid;
+            //land.reservereason = Txtreservereason.Text;
+            //land.south = Txtsouth.Text;
+            //land.southdesc = Txtsouthdesc.Text;
+            //land.status = Txtstatus.Text;
+            //land.total = TotalLand;
+            //land.west = Txtwest.Text;
+            //land.westdesc = Txtwestdesc.Text;
+            //land.code = land.number;
 
-            tbPriceLog log = new tbPriceLog
-            {
-                guid = Guid.NewGuid(),
-                username = FrmMain.CurrentUser.name,
-                actdate = DateTime.Now.Date,
-                actno = 1,
-                changedate = DateTime.Now.Date,
-                parentguid = land.guid
-            };
-            log.oldprice = log.newprice = land.amount;
+            //tbPriceLog log = new tbPriceLog
+            //{
+            //    guid = Guid.NewGuid(),
+            //    username = FrmMain.CurrentUser.name,
+            //    actdate = DateTime.Now.Date,
+            //    actno = 1,
+            //    changedate = DateTime.Now.Date,
+            //    parentguid = land.guid
+            //};
+            //log.oldprice = log.newprice = land.amount;
 
-            DBConnect.StartTransAction();
-            tbLog.AddLog("إضافة", this.Text, land.code.ToString());
-            AddAttachments(land.guid);
-            land.Insert();
-            log.Insert();
+            //DBConnect.StartTransAction();
+            //tbLog.AddLog("إضافة", this.Text, land.code.ToString());
+            //AddAttachments(land.guid);
+            //land.Insert();
+            //log.Insert();
 
             if (DBConnect.CommitTransAction())
             {
@@ -621,19 +533,9 @@ namespace DoctorERP.User_Controls
             return true;
         }
 
-        private void ShowNotification(string Header, string Content, string Note)
-        {
-            radToastNotificationManager1.ToastNotifications[0].Xml = "<toast launch=\"readMoreArg\">\r\n  <visual>\r\n    <binding template=\"ToastGeneric\">\r\n   " +
-    "   <text>" + Header + "</text>\r\n   " +
-    "   <text>" + Content + "</text>\r\n  " +
-    "    <text placement=\"attribution\">" + Note + "</text>\r\n    </binding>\r\n  </visual>\r\n</toast>";
-            radToastNotificationManager1.ShowNotification(0);
-
-        }
         private bool Edit()
         {
 
-            CalcTotal();
 
             if (ShowConfirmMSG)
             {
@@ -642,51 +544,51 @@ namespace DoctorERP.User_Controls
             }
             Guid CurrentGuid = ((tbLand)Bs.Current).guid;
             tbLand land = tbLand.lstData.Where(u => u.guid == CurrentGuid).FirstOrDefault();
-            decimal Amount = Txtamount.Value;
-            if (land.amount != Amount)
-            {
-                FrmPriceLog frm = new FrmPriceLog(Guid.Empty, land.guid, land.amount, Amount);
-                if (frm.ShowDialog() == DialogResult.OK)
-                {
+            //decimal Amount = Txtamount.Value;
+            //if (land.amount != Amount)
+            //{
+            //    FrmPriceLog frm = new FrmPriceLog(Guid.Empty, land.guid, land.amount, Amount);
+            //    if (frm.ShowDialog() == DialogResult.OK)
+            //    {
 
-                }
-                else
-                {
-                    return false;
-                }
-            }
+            //    }
+            //    else
+            //    {
+            //        return false;
+            //    }
+            //}
 
-            land.amount = Txtamount.Value;
-            land.area = Txtarea.Value;
-            land.blocknumber = int.Parse(Txtblocknumber.Text);
-            //land.deednumber = TxtName.Text;
-            land.east = Txteast.Text;
-            land.eastdesc = Txteastdesc.Text;
-            land.isvat = Chkisvat.Checked;
-            land.isworkfee = Chkisworkfee.Checked;
-            land.isbuildingfee = Chkisbuildingfee.Checked;
-            land.buildingfee = Txtbuildingfee.Value;
-            land.vat = Txtvat.Value;
-            land.workfee = Txtworkfee.Value;
-            land.landtype = Cmblandtype.Text;
-            land.lastaction = "عملية تعديل" + " - بتاريخ  " + DateTime.Now.ToString("dd/MM/yyyy") +
-                " - الساعة  " + DateTime.Now.ToString("hh:mm tt") + " - عن طريق المستخدم  " + FrmMain.CurrentUser.name;
-            land.north = Txtnorth.Text;
-            land.northdesc = TxtName.Text;
-            land.note = Txtnote.Text;
-            land.planguid = tbPlanInfo.lstData.Where(u => u.name == CmbPlanGuid.Text).FirstOrDefault().guid;
-            land.reservereason = Txtreservereason.Text;
-            land.south = Txtsouth.Text;
-            land.southdesc = Txtsouthdesc.Text;
-            land.status = Txtstatus.Text;
-            land.total = TotalLand;
-            land.west = Txtwest.Text;
-            land.westdesc = Txtwestdesc.Text;
+            //land.amount = Txtamount.Value;
+            //land.area = Txtarea.Value;
+            //land.blocknumber = int.Parse(Txtblocknumber.Text);
+            ////land.deednumber = TxtName.Text;
+            //land.east = Txteast.Text;
+            //land.eastdesc = Txteastdesc.Text;
+            //land.isvat = Chkisvat.Checked;
+            //land.isworkfee = Chkisworkfee.Checked;
+            //land.isbuildingfee = Chkisbuildingfee.Checked;
+            //land.buildingfee = Txtbuildingfee.Value;
+            //land.vat = Txtvat.Value;
+            //land.workfee = Txtworkfee.Value;
+            //land.landtype = Cmblandtype.Text;
+            //land.lastaction = "عملية تعديل" + " - بتاريخ  " + DateTime.Now.ToString("dd/MM/yyyy") +
+            //    " - الساعة  " + DateTime.Now.ToString("hh:mm tt") + " - عن طريق المستخدم  " + FrmMain.CurrentUser.name;
+            //land.north = Txtnorth.Text;
+            //land.northdesc = TxtName.Text;
+            //land.note = Txtnote.Text;
+            //land.planguid = tbPlanInfo.lstData.Where(u => u.name == CmbPlanGuid.Text).FirstOrDefault().guid;
+            //land.reservereason = Txtreservereason.Text;
+            //land.south = Txtsouth.Text;
+            //land.southdesc = Txtsouthdesc.Text;
+            //land.status = Txtstatus.Text;
+            //land.total = TotalLand;
+            //land.west = Txtwest.Text;
+            //land.westdesc = Txtwestdesc.Text;
 
-            DBConnect.StartTransAction();
-            AddAttachments(land.guid);
-            land.Update();
-            tbLog.AddLog("تعديل", this.Text, land.code.ToString());
+            //DBConnect.StartTransAction();
+            //AddAttachments(land.guid);
+            //land.Update();
+            //tbLog.AddLog("تعديل", this.Text, land.code.ToString());
             if (DBConnect.CommitTransAction())
             {
                 //FillGridLog(land.guid);
@@ -707,13 +609,6 @@ namespace DoctorERP.User_Controls
             string NewTxt = commandBarLabel1.Text.Replace("of", "من");
             commandBarLabel1.Text = NewTxt;
 
-        }
-        private void Txt_ValueChanged(object sender, EventArgs e)
-        {
-            if (sender is RadSpinEditor)
-            {
-                CalcTotal();
-            }
         }
         private void Txtblocknumber_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -750,23 +645,6 @@ namespace DoctorERP.User_Controls
 
         }
 
-        private void Chkisvat_CheckStateChanged(object sender, EventArgs e)
-        {
-
-            radWorkFeeValue.Enabled = Txtworkfee.Enabled = Chkisworkfee.Checked;
-            radBuildingFeeValue.Enabled = Txtbuildingfee.Enabled = Chkisbuildingfee.Checked;
-            if (Chkisworkfee.Checked)
-            {
-                radVatValue.Enabled = Txtvat.Enabled = Chkisvat.Checked;
-
-            }
-            else if (!Chkisworkfee.Checked)
-            {
-                radVatValue.Enabled = Txtvat.Enabled = Chkisvat.Checked = false;
-            }
-
-            CalcTotal();
-        }
         private void RadMenueTxtSearch_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -819,9 +697,7 @@ namespace DoctorERP.User_Controls
                             DBConnect.StartTransAction();
                             Txtstatus.Text = land.status = "محجوز";
                             BtnReservation.Text = "إلغاء الحجز";
-                            Txtreservereason.Visible = Txtreservereason.Visible = true;
                             land.reservereason = content.ReserveReason;
-                            Txtreservereason.Text = content.ReserveReason;
                             land.Update();
                             if (DBConnect.CommitTransAction())
                             {
@@ -944,7 +820,6 @@ namespace DoctorERP.User_Controls
                 Txtstatus.Text = land.status = "متاح";
                 BtnReservation.Text = "حجز";
                 land.reservereason = string.Empty;
-                Txtreservereason.Visible = Txtreservereason.Visible = false;
                 land.Update();
                 if (DBConnect.CommitTransAction())
                 {
@@ -1014,7 +889,6 @@ namespace DoctorERP.User_Controls
                 IsDirty = true;
                 guid = land.guid;
                 SetReadOnly(false);
-                Txtarea.Focus();
             }
             else if (BtnEdit.Text == "حفظ")
             {
@@ -1250,7 +1124,7 @@ namespace DoctorERP.User_Controls
             rpt.RegisterData(tbPlanInfo.dtData, "planinfodata");
             rpt.RegisterData(tbAgent.dtData, "ownerdata");
 
-            rpt.SetParameterValue("TotalText", radTotalText.Text);
+            //rpt.SetParameterValue("TotalText", radTotalText.Text);
 
             rpt.SetParameterValue("UserName", FrmMain.CurrentUser.name);
 
@@ -1441,196 +1315,6 @@ namespace DoctorERP.User_Controls
                     MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-        }
-
-        private void kryptonTextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void kryptonTextBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void kryptonLabel15_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void LblNote_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void Lblpublicnumber_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void Lblvatid_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void kryptonLabel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void PageHome_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void PageAgent_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void Lblagentname_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void kryptonLabel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void Txtagentpublicnumber_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Lblagentmobile_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void Txtagentmobile_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Txtagentvatid_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Lblagentcivilid_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void Lblagentvatid_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void Txtagentcivilid_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Txtagencynumber_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TxtAgentEmail_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Lblagencynumber_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void Lblagentpublicnumber_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void Txtagentname_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radTextBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radTextBox5_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radTextBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radCollapsiblePanel2_PanelContainer_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void radTextBox7_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radTextBox6_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Txtofficename_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Txtmobile_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TxtEmail_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TxtName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Txtcivilid_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radCollapsiblePanel1_PanelContainer_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void radButton1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TxtAgentEmail_TextChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Txtagentmobile_TextChanged_1(object sender, EventArgs e)
-        {
-
         }
 
         private void MenuDeleteAttachment_Click(object sender, EventArgs e)
