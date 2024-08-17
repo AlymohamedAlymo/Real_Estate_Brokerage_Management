@@ -118,6 +118,12 @@
             this.Txtagentname = new Telerik.WinControls.UI.RadTextBox();
             this.TxtAgentEmail = new Telerik.WinControls.UI.RadTextBox();
             this.Txtagencynumber = new Telerik.WinControls.UI.RadTextBox();
+            this.Txtofficevatid = new Telerik.WinControls.UI.RadTextBox();
+            this.TxtOfficeEmail = new Telerik.WinControls.UI.RadTextBox();
+            this.Txtofficename = new Telerik.WinControls.UI.RadTextBox();
+            this.Txtofficepublicnumber = new Telerik.WinControls.UI.RadTextBox();
+            this.Txtofficephone = new Telerik.WinControls.UI.RadTextBox();
+            this.Txtofficecr = new Telerik.WinControls.UI.RadTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.Txtnote)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel23)).BeginInit();
@@ -145,6 +151,7 @@
             this.radCollapsiblePanel1.SuspendLayout();
             this.PageAgent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radCollapsiblePanel2)).BeginInit();
+            this.radCollapsiblePanel2.PanelContainer.SuspendLayout();
             this.radCollapsiblePanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Txtagentcivilid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txtagentmobile)).BeginInit();
@@ -153,6 +160,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.Txtagentname)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtAgentEmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txtagencynumber)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Txtofficevatid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtOfficeEmail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Txtofficename)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Txtofficepublicnumber)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Txtofficephone)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Txtofficecr)).BeginInit();
             this.SuspendLayout();
             // 
             // Txtnote
@@ -185,17 +198,12 @@
             this.TxtName.EmbeddedLabelText = "اسم العميل";
             this.TxtName.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtName.Location = new System.Drawing.Point(876, 153);
-            this.TxtName.Multiline = true;
             this.TxtName.Name = "TxtName";
             this.TxtName.NullText = "ادخل اسم العميل";
             this.TxtName.ReadOnly = true;
-            // 
-            // 
-            // 
-            this.TxtName.RootElement.StretchVertically = true;
             this.TxtName.ShowEmbeddedLabel = true;
             this.TxtName.ShowNullText = true;
-            this.TxtName.Size = new System.Drawing.Size(286, 76);
+            this.TxtName.Size = new System.Drawing.Size(286, 58);
             this.TxtName.TabIndex = 10;
             this.TxtName.ThemeName = "Material";
             this.TxtName.WordWrap = false;
@@ -234,7 +242,7 @@
             this.radPageView1.Location = new System.Drawing.Point(0, 48);
             this.radPageView1.Name = "radPageView1";
             this.radPageView1.PageBackColor = System.Drawing.SystemColors.Control;
-            this.radPageView1.SelectedPage = this.PageAgent;
+            this.radPageView1.SelectedPage = this.PageHome;
             this.radPageView1.Size = new System.Drawing.Size(1177, 665);
             this.radPageView1.TabIndex = 72;
             this.radPageView1.ThemeName = "Material";
@@ -991,17 +999,12 @@
             this.Txtcivilid.EmbeddedLabelText = "رقم الهوية";
             this.Txtcivilid.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txtcivilid.Location = new System.Drawing.Point(584, 153);
-            this.Txtcivilid.Multiline = true;
             this.Txtcivilid.Name = "Txtcivilid";
             this.Txtcivilid.NullText = "ادخل رقم الهوية";
             this.Txtcivilid.ReadOnly = true;
-            // 
-            // 
-            // 
-            this.Txtcivilid.RootElement.StretchVertically = true;
             this.Txtcivilid.ShowEmbeddedLabel = true;
             this.Txtcivilid.ShowNullText = true;
-            this.Txtcivilid.Size = new System.Drawing.Size(286, 76);
+            this.Txtcivilid.Size = new System.Drawing.Size(286, 58);
             this.Txtcivilid.TabIndex = 1979;
             this.Txtcivilid.ThemeName = "Material";
             this.Txtcivilid.WordWrap = false;
@@ -1014,17 +1017,12 @@
             this.Txtmobile.EmbeddedLabelText = "رقم الجوال";
             this.Txtmobile.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txtmobile.Location = new System.Drawing.Point(876, 235);
-            this.Txtmobile.Multiline = true;
             this.Txtmobile.Name = "Txtmobile";
             this.Txtmobile.NullText = "ادخل رقم الجوال";
             this.Txtmobile.ReadOnly = true;
-            // 
-            // 
-            // 
-            this.Txtmobile.RootElement.StretchVertically = true;
             this.Txtmobile.ShowEmbeddedLabel = true;
             this.Txtmobile.ShowNullText = true;
-            this.Txtmobile.Size = new System.Drawing.Size(286, 76);
+            this.Txtmobile.Size = new System.Drawing.Size(286, 58);
             this.Txtmobile.TabIndex = 1980;
             this.Txtmobile.ThemeName = "Material";
             this.Txtmobile.WordWrap = false;
@@ -1037,17 +1035,12 @@
             this.TxtEmail.EmbeddedLabelText = "البريد الإلكتروني";
             this.TxtEmail.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtEmail.Location = new System.Drawing.Point(584, 235);
-            this.TxtEmail.Multiline = true;
             this.TxtEmail.Name = "TxtEmail";
             this.TxtEmail.NullText = "ادخل البريد الإلكتروني";
             this.TxtEmail.ReadOnly = true;
-            // 
-            // 
-            // 
-            this.TxtEmail.RootElement.StretchVertically = true;
             this.TxtEmail.ShowEmbeddedLabel = true;
             this.TxtEmail.ShowNullText = true;
-            this.TxtEmail.Size = new System.Drawing.Size(286, 76);
+            this.TxtEmail.Size = new System.Drawing.Size(286, 58);
             this.TxtEmail.TabIndex = 1981;
             this.TxtEmail.ThemeName = "Material";
             this.TxtEmail.WordWrap = false;
@@ -1060,17 +1053,12 @@
             this.Txtvatid.EmbeddedLabelText = "الرقم الضريبي";
             this.Txtvatid.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txtvatid.Location = new System.Drawing.Point(876, 317);
-            this.Txtvatid.Multiline = true;
             this.Txtvatid.Name = "Txtvatid";
             this.Txtvatid.NullText = "ادخل الرقم الضريبي";
             this.Txtvatid.ReadOnly = true;
-            // 
-            // 
-            // 
-            this.Txtvatid.RootElement.StretchVertically = true;
             this.Txtvatid.ShowEmbeddedLabel = true;
             this.Txtvatid.ShowNullText = true;
-            this.Txtvatid.Size = new System.Drawing.Size(286, 76);
+            this.Txtvatid.Size = new System.Drawing.Size(286, 58);
             this.Txtvatid.TabIndex = 1982;
             this.Txtvatid.ThemeName = "Material";
             this.Txtvatid.WordWrap = false;
@@ -1083,17 +1071,12 @@
             this.Txtpublicnumber.EmbeddedLabelText = "رقم المعلن";
             this.Txtpublicnumber.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txtpublicnumber.Location = new System.Drawing.Point(584, 317);
-            this.Txtpublicnumber.Multiline = true;
             this.Txtpublicnumber.Name = "Txtpublicnumber";
             this.Txtpublicnumber.NullText = "ادخل رقم المعلن";
             this.Txtpublicnumber.ReadOnly = true;
-            // 
-            // 
-            // 
-            this.Txtpublicnumber.RootElement.StretchVertically = true;
             this.Txtpublicnumber.ShowEmbeddedLabel = true;
             this.Txtpublicnumber.ShowNullText = true;
-            this.Txtpublicnumber.Size = new System.Drawing.Size(286, 76);
+            this.Txtpublicnumber.Size = new System.Drawing.Size(286, 58);
             this.Txtpublicnumber.TabIndex = 1983;
             this.Txtpublicnumber.ThemeName = "Material";
             this.Txtpublicnumber.WordWrap = false;
@@ -1160,34 +1143,34 @@
             // 
             this.radCollapsiblePanel2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radCollapsiblePanel2.HeaderText = "بيانات الموثق";
-            this.radCollapsiblePanel2.Location = new System.Drawing.Point(250, 52);
+            this.radCollapsiblePanel2.Location = new System.Drawing.Point(19, 3);
             this.radCollapsiblePanel2.Name = "radCollapsiblePanel2";
             // 
             // radCollapsiblePanel2.PanelContainer
             // 
-            this.radCollapsiblePanel2.PanelContainer.Size = new System.Drawing.Size(252, 241);
-            this.radCollapsiblePanel2.Size = new System.Drawing.Size(254, 273);
+            this.radCollapsiblePanel2.PanelContainer.Controls.Add(this.Txtofficevatid);
+            this.radCollapsiblePanel2.PanelContainer.Controls.Add(this.Txtofficepublicnumber);
+            this.radCollapsiblePanel2.PanelContainer.Controls.Add(this.TxtOfficeEmail);
+            this.radCollapsiblePanel2.PanelContainer.Controls.Add(this.Txtofficename);
+            this.radCollapsiblePanel2.PanelContainer.Controls.Add(this.Txtofficephone);
+            this.radCollapsiblePanel2.PanelContainer.Controls.Add(this.Txtofficecr);
+            this.radCollapsiblePanel2.PanelContainer.Size = new System.Drawing.Size(482, 383);
+            this.radCollapsiblePanel2.PanelContainer.Paint += new System.Windows.Forms.PaintEventHandler(this.radCollapsiblePanel2_PanelContainer_Paint);
+            this.radCollapsiblePanel2.Size = new System.Drawing.Size(484, 415);
             this.radCollapsiblePanel2.TabIndex = 1989;
             // 
             // Txtagentcivilid
             // 
-            this.Txtagentcivilid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.Txtagentcivilid.AutoScroll = true;
             this.Txtagentcivilid.EmbeddedLabelText = "رقم الهوية";
             this.Txtagentcivilid.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txtagentcivilid.Location = new System.Drawing.Point(584, 3);
-            this.Txtagentcivilid.Multiline = true;
             this.Txtagentcivilid.Name = "Txtagentcivilid";
             this.Txtagentcivilid.NullText = "ادخل رقم الهوية";
             this.Txtagentcivilid.ReadOnly = true;
-            // 
-            // 
-            // 
-            this.Txtagentcivilid.RootElement.StretchVertically = true;
             this.Txtagentcivilid.ShowEmbeddedLabel = true;
             this.Txtagentcivilid.ShowNullText = true;
-            this.Txtagentcivilid.Size = new System.Drawing.Size(286, 76);
+            this.Txtagentcivilid.Size = new System.Drawing.Size(286, 58);
             this.Txtagentcivilid.TabIndex = 2005;
             this.Txtagentcivilid.ThemeName = "Material";
             this.Txtagentcivilid.WordWrap = false;
@@ -1195,46 +1178,32 @@
             // 
             // Txtagentmobile
             // 
-            this.Txtagentmobile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.Txtagentmobile.AutoScroll = true;
             this.Txtagentmobile.EmbeddedLabelText = "رقم الجوال";
             this.Txtagentmobile.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txtagentmobile.Location = new System.Drawing.Point(876, 85);
-            this.Txtagentmobile.Multiline = true;
             this.Txtagentmobile.Name = "Txtagentmobile";
             this.Txtagentmobile.NullText = "ادخل رقم الجوال";
             this.Txtagentmobile.ReadOnly = true;
-            // 
-            // 
-            // 
-            this.Txtagentmobile.RootElement.StretchVertically = true;
             this.Txtagentmobile.ShowEmbeddedLabel = true;
             this.Txtagentmobile.ShowNullText = true;
-            this.Txtagentmobile.Size = new System.Drawing.Size(286, 76);
+            this.Txtagentmobile.Size = new System.Drawing.Size(286, 58);
             this.Txtagentmobile.TabIndex = 2006;
             this.Txtagentmobile.ThemeName = "Material";
             this.Txtagentmobile.WordWrap = false;
             // 
             // Txtagentvatid
             // 
-            this.Txtagentvatid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.Txtagentvatid.AutoScroll = true;
             this.Txtagentvatid.EmbeddedLabelText = "الرقم الضريبي";
             this.Txtagentvatid.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txtagentvatid.Location = new System.Drawing.Point(876, 167);
-            this.Txtagentvatid.Multiline = true;
             this.Txtagentvatid.Name = "Txtagentvatid";
             this.Txtagentvatid.NullText = "ادخل الرقم الضريبي";
             this.Txtagentvatid.ReadOnly = true;
-            // 
-            // 
-            // 
-            this.Txtagentvatid.RootElement.StretchVertically = true;
             this.Txtagentvatid.ShowEmbeddedLabel = true;
             this.Txtagentvatid.ShowNullText = true;
-            this.Txtagentvatid.Size = new System.Drawing.Size(286, 76);
+            this.Txtagentvatid.Size = new System.Drawing.Size(286, 58);
             this.Txtagentvatid.TabIndex = 2008;
             this.Txtagentvatid.ThemeName = "Material";
             this.Txtagentvatid.WordWrap = false;
@@ -1242,95 +1211,165 @@
             // 
             // Txtagentpublicnumber
             // 
-            this.Txtagentpublicnumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.Txtagentpublicnumber.AutoScroll = true;
             this.Txtagentpublicnumber.EmbeddedLabelText = "رقم المعلن";
             this.Txtagentpublicnumber.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txtagentpublicnumber.Location = new System.Drawing.Point(876, 249);
-            this.Txtagentpublicnumber.Multiline = true;
             this.Txtagentpublicnumber.Name = "Txtagentpublicnumber";
             this.Txtagentpublicnumber.NullText = "ادخل رقم المعلن";
             this.Txtagentpublicnumber.ReadOnly = true;
-            // 
-            // 
-            // 
-            this.Txtagentpublicnumber.RootElement.StretchVertically = true;
             this.Txtagentpublicnumber.ShowEmbeddedLabel = true;
             this.Txtagentpublicnumber.ShowNullText = true;
-            this.Txtagentpublicnumber.Size = new System.Drawing.Size(286, 76);
+            this.Txtagentpublicnumber.Size = new System.Drawing.Size(286, 58);
             this.Txtagentpublicnumber.TabIndex = 2009;
             this.Txtagentpublicnumber.ThemeName = "Material";
             this.Txtagentpublicnumber.WordWrap = false;
             // 
             // Txtagentname
             // 
-            this.Txtagentname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.Txtagentname.AutoScroll = true;
             this.Txtagentname.EmbeddedLabelText = "اسم العميل";
             this.Txtagentname.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txtagentname.Location = new System.Drawing.Point(876, 3);
-            this.Txtagentname.Multiline = true;
             this.Txtagentname.Name = "Txtagentname";
             this.Txtagentname.NullText = "ادخل اسم العميل";
             this.Txtagentname.ReadOnly = true;
-            // 
-            // 
-            // 
-            this.Txtagentname.RootElement.StretchVertically = true;
             this.Txtagentname.ShowEmbeddedLabel = true;
             this.Txtagentname.ShowNullText = true;
-            this.Txtagentname.Size = new System.Drawing.Size(286, 76);
+            this.Txtagentname.Size = new System.Drawing.Size(286, 58);
             this.Txtagentname.TabIndex = 2010;
             this.Txtagentname.ThemeName = "Material";
             this.Txtagentname.WordWrap = false;
             // 
             // TxtAgentEmail
             // 
-            this.TxtAgentEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtAgentEmail.AutoScroll = true;
             this.TxtAgentEmail.EmbeddedLabelText = "البريد الإلكتروني";
             this.TxtAgentEmail.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtAgentEmail.Location = new System.Drawing.Point(584, 85);
-            this.TxtAgentEmail.Multiline = true;
             this.TxtAgentEmail.Name = "TxtAgentEmail";
             this.TxtAgentEmail.NullText = "ادخل البريد الإلكتروني";
             this.TxtAgentEmail.ReadOnly = true;
-            // 
-            // 
-            // 
-            this.TxtAgentEmail.RootElement.StretchVertically = true;
             this.TxtAgentEmail.ShowEmbeddedLabel = true;
             this.TxtAgentEmail.ShowNullText = true;
-            this.TxtAgentEmail.Size = new System.Drawing.Size(286, 76);
+            this.TxtAgentEmail.Size = new System.Drawing.Size(286, 58);
             this.TxtAgentEmail.TabIndex = 2011;
             this.TxtAgentEmail.ThemeName = "Material";
             this.TxtAgentEmail.WordWrap = false;
             // 
             // Txtagencynumber
             // 
-            this.Txtagencynumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.Txtagencynumber.AutoScroll = true;
             this.Txtagencynumber.EmbeddedLabelText = "رقم الوكالة";
             this.Txtagencynumber.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txtagencynumber.Location = new System.Drawing.Point(584, 167);
-            this.Txtagencynumber.Multiline = true;
             this.Txtagencynumber.Name = "Txtagencynumber";
             this.Txtagencynumber.NullText = "ادخل رقم الوكالة";
             this.Txtagencynumber.ReadOnly = true;
-            // 
-            // 
-            // 
-            this.Txtagencynumber.RootElement.StretchVertically = true;
             this.Txtagencynumber.ShowEmbeddedLabel = true;
             this.Txtagencynumber.ShowNullText = true;
-            this.Txtagencynumber.Size = new System.Drawing.Size(286, 76);
+            this.Txtagencynumber.Size = new System.Drawing.Size(286, 58);
             this.Txtagencynumber.TabIndex = 2012;
             this.Txtagencynumber.ThemeName = "Material";
             this.Txtagencynumber.WordWrap = false;
+            // 
+            // Txtofficevatid
+            // 
+            this.Txtofficevatid.AutoScroll = true;
+            this.Txtofficevatid.EmbeddedLabelText = "الرقم الضريبي";
+            this.Txtofficevatid.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txtofficevatid.Location = new System.Drawing.Point(186, 259);
+            this.Txtofficevatid.Name = "Txtofficevatid";
+            this.Txtofficevatid.NullText = "ادخل الرقم الضريبي";
+            this.Txtofficevatid.ReadOnly = true;
+            this.Txtofficevatid.ShowEmbeddedLabel = true;
+            this.Txtofficevatid.ShowNullText = true;
+            this.Txtofficevatid.Size = new System.Drawing.Size(286, 58);
+            this.Txtofficevatid.TabIndex = 2015;
+            this.Txtofficevatid.ThemeName = "Material";
+            this.Txtofficevatid.WordWrap = false;
+            // 
+            // TxtOfficeEmail
+            // 
+            this.TxtOfficeEmail.AutoScroll = true;
+            this.TxtOfficeEmail.EmbeddedLabelText = "البريد الإلكتروني";
+            this.TxtOfficeEmail.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtOfficeEmail.Location = new System.Drawing.Point(186, 195);
+            this.TxtOfficeEmail.Name = "TxtOfficeEmail";
+            this.TxtOfficeEmail.NullText = "ادخل البريد الإلكتروني";
+            this.TxtOfficeEmail.ReadOnly = true;
+            this.TxtOfficeEmail.ShowEmbeddedLabel = true;
+            this.TxtOfficeEmail.ShowNullText = true;
+            this.TxtOfficeEmail.Size = new System.Drawing.Size(286, 58);
+            this.TxtOfficeEmail.TabIndex = 2018;
+            this.TxtOfficeEmail.ThemeName = "Material";
+            this.TxtOfficeEmail.WordWrap = false;
+            // 
+            // Txtofficename
+            // 
+            this.Txtofficename.AutoScroll = true;
+            this.Txtofficename.EmbeddedLabelText = "اسم الموثق";
+            this.Txtofficename.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txtofficename.Location = new System.Drawing.Point(186, 3);
+            this.Txtofficename.Name = "Txtofficename";
+            this.Txtofficename.NullText = "ادخل اسم الموثق";
+            this.Txtofficename.ReadOnly = true;
+            this.Txtofficename.ShowEmbeddedLabel = true;
+            this.Txtofficename.ShowNullText = true;
+            this.Txtofficename.Size = new System.Drawing.Size(286, 58);
+            this.Txtofficename.TabIndex = 2017;
+            this.Txtofficename.ThemeName = "Material";
+            this.Txtofficename.WordWrap = false;
+            // 
+            // Txtofficepublicnumber
+            // 
+            this.Txtofficepublicnumber.AutoScroll = true;
+            this.Txtofficepublicnumber.EmbeddedLabelText = "رقم المعلن";
+            this.Txtofficepublicnumber.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txtofficepublicnumber.Location = new System.Drawing.Point(186, 323);
+            this.Txtofficepublicnumber.Name = "Txtofficepublicnumber";
+            this.Txtofficepublicnumber.NullText = "ادخل رقم المعلن";
+            this.Txtofficepublicnumber.ReadOnly = true;
+            this.Txtofficepublicnumber.ShowEmbeddedLabel = true;
+            this.Txtofficepublicnumber.ShowNullText = true;
+            this.Txtofficepublicnumber.Size = new System.Drawing.Size(286, 58);
+            this.Txtofficepublicnumber.TabIndex = 2016;
+            this.Txtofficepublicnumber.ThemeName = "Material";
+            this.Txtofficepublicnumber.WordWrap = false;
+            // 
+            // Txtofficephone
+            // 
+            this.Txtofficephone.AutoScroll = true;
+            this.Txtofficephone.EmbeddedLabelText = "رقم الهاتف";
+            this.Txtofficephone.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txtofficephone.Location = new System.Drawing.Point(186, 131);
+            this.Txtofficephone.Name = "Txtofficephone";
+            this.Txtofficephone.NullText = "ادخل رقم الهاتف";
+            this.Txtofficephone.ReadOnly = true;
+            this.Txtofficephone.ShowEmbeddedLabel = true;
+            this.Txtofficephone.ShowNullText = true;
+            this.Txtofficephone.Size = new System.Drawing.Size(286, 58);
+            this.Txtofficephone.TabIndex = 2014;
+            this.Txtofficephone.ThemeName = "Material";
+            this.Txtofficephone.WordWrap = false;
+            this.Txtofficephone.TextChanged += new System.EventHandler(this.radTextBox6_TextChanged);
+            // 
+            // Txtofficecr
+            // 
+            this.Txtofficecr.AutoScroll = true;
+            this.Txtofficecr.EmbeddedLabelText = "السجل التجاري";
+            this.Txtofficecr.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txtofficecr.Location = new System.Drawing.Point(186, 67);
+            this.Txtofficecr.Name = "Txtofficecr";
+            this.Txtofficecr.NullText = "ادخل السجل التجاري";
+            this.Txtofficecr.ReadOnly = true;
+            this.Txtofficecr.ShowEmbeddedLabel = true;
+            this.Txtofficecr.ShowNullText = true;
+            this.Txtofficecr.Size = new System.Drawing.Size(286, 58);
+            this.Txtofficecr.TabIndex = 2013;
+            this.Txtofficecr.ThemeName = "Material";
+            this.Txtofficecr.WordWrap = false;
+            this.Txtofficecr.TextChanged += new System.EventHandler(this.radTextBox7_TextChanged);
             // 
             // UCClientCards
             // 
@@ -1371,6 +1410,8 @@
             this.radCollapsiblePanel1.ResumeLayout(false);
             this.PageAgent.ResumeLayout(false);
             this.PageAgent.PerformLayout();
+            this.radCollapsiblePanel2.PanelContainer.ResumeLayout(false);
+            this.radCollapsiblePanel2.PanelContainer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radCollapsiblePanel2)).EndInit();
             this.radCollapsiblePanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Txtagentcivilid)).EndInit();
@@ -1380,6 +1421,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.Txtagentname)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtAgentEmail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txtagencynumber)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Txtofficevatid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtOfficeEmail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Txtofficename)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Txtofficepublicnumber)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Txtofficephone)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Txtofficecr)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1470,5 +1517,11 @@
         private Telerik.WinControls.UI.RadTextBox Txtagentname;
         private Telerik.WinControls.UI.RadTextBox TxtAgentEmail;
         private Telerik.WinControls.UI.RadTextBox Txtagencynumber;
+        private Telerik.WinControls.UI.RadTextBox Txtofficename;
+        private Telerik.WinControls.UI.RadTextBox TxtOfficeEmail;
+        private Telerik.WinControls.UI.RadTextBox Txtofficevatid;
+        private Telerik.WinControls.UI.RadTextBox Txtofficepublicnumber;
+        private Telerik.WinControls.UI.RadTextBox Txtofficecr;
+        private Telerik.WinControls.UI.RadTextBox Txtofficephone;
     }
 }

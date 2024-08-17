@@ -1573,6 +1573,26 @@ namespace DoctorERP.User_Controls
 
         }
 
+        private void radCollapsiblePanel2_PanelContainer_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void radTextBox7_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radTextBox6_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Txtofficename_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void MenuDeleteAttachment_Click(object sender, EventArgs e)
         {
             if (!FrmMain.CurrentUser.CanDelete)
