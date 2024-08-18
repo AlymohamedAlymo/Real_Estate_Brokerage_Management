@@ -282,7 +282,7 @@ namespace DoctorERP.User_Controls
             List<RadControl> NotUsedControls = new List<RadControl>()
             { Txtnumber, Txtlastaction };
             List<RadControl> ContainerControls = new List<RadControl>()
-            { radCollapsiblePanelParenter1, radCollapsiblePanelParenter2, radCollapsiblePanelParenter3, radCollapsiblePanelParenter4 };
+            { radCollapsiblePanelParenter1, radCollapsiblePanelParenter2, radCollapsiblePanelParenter3, radCollapsiblePanelParenter4, radCollapsiblePanel2 };
             List<RadPageViewPage> ContainerPage = new List<RadPageViewPage>()
             { PageHome, PageAgent };
 
@@ -420,28 +420,7 @@ namespace DoctorERP.User_Controls
             radCmbPlanGuid.EditorControl.Columns[4].HeaderText = "رقم المخطط";
             radCmbPlanGuid.AutoSizeDropDownColumnMode = BestFitColumnMode.AllCells;
 
-            foreach (RadControl control in PageHome.Controls)
-            {
-                if (control.Name.StartsWith("rad")) { continue; }
-                control.DataBindings.Clear();
-                string dataMember = control.Name.Remove(0, 3);
-                string propertyName = control is RadSpinEditor ? "Value" : control is RadCheckBox ? "Checked"
-                    : control is RadMultiColumnComboBox ? "SelectedValue" : "Text";
-                Binding ControlBinding = new System.Windows.Forms.Binding(propertyName, Bs, dataMember, false);
-                control.DataBindings.Add(ControlBinding);
-            }
-            foreach (RadControl control in PageAgent.Controls)
-            {
-                if (control.Name.StartsWith("rad")) { continue; }
-                control.DataBindings.Clear();
-                string dataMember = control.Name.Remove(0, 3);
-                string propertyName = control is RadSpinEditor ? "Value" : control is RadCheckBox ? "Checked"
-                    : control is RadMultiColumnComboBox ? "SelectedValue" : "Text";
-                Binding ControlBinding = new System.Windows.Forms.Binding(propertyName, Bs, dataMember, false);
-                control.DataBindings.Add(ControlBinding);
-            }
-
-            radstatus.Text = "نشط";
+            SetControlsDataBindings();
 
             if (IsNew) { BtnNew.PerformClick(); return; }
 
@@ -453,6 +432,44 @@ namespace DoctorERP.User_Controls
             Bs.MoveLast();
 
             IsLoad = false;
+
+        }
+        private void SetControlsDataBindings()
+        {
+            List<RadControl> ContainerControls = new List<RadControl>()
+            { radCollapsiblePanel2 };
+            List<RadPageViewPage> ContainerPage = new List<RadPageViewPage>()
+            { PageHome, PageAgent };
+
+            foreach (RadControl collection in ContainerControls)
+            {
+                foreach (RadControl control in collection.Controls[0].Controls[0].Controls)
+                {
+                    if (control.Name.StartsWith("rad")) { continue; }
+                    control.DataBindings.Clear();
+                    string dataMember = control.Name.Remove(0, 3);
+                    string propertyName = control is RadSpinEditor ? "Value" : control is RadCheckBox ? "Checked"
+                        : control is RadMultiColumnComboBox ? "SelectedValue" : "Text";
+                    Binding ControlBinding = new System.Windows.Forms.Binding(propertyName, Bs, dataMember, false);
+                    control.DataBindings.Add(ControlBinding);
+                }
+
+            }
+            foreach (RadPageViewPage collection in ContainerPage)
+            {
+                foreach (RadControl control in collection.Controls)
+                {
+                    if (control.Name.StartsWith("rad")) { continue; }
+                    control.DataBindings.Clear();
+                    string dataMember = control.Name.Remove(0, 3);
+                    string propertyName = control is RadSpinEditor ? "Value" : control is RadCheckBox ? "Checked"
+                        : control is RadMultiColumnComboBox ? "SelectedValue" : "Text";
+                    Binding ControlBinding = new System.Windows.Forms.Binding(propertyName, Bs, dataMember, false);
+                    control.DataBindings.Add(ControlBinding);
+                }
+
+            }
+
 
         }
 
@@ -482,10 +499,14 @@ namespace DoctorERP.User_Controls
             if (Agent.note == "غير نشط")
             {
                 BtnReservation.Text = "تنشيط";
+                radstatus.Text = "غير نشط";
+
             }
             else
             {
                 BtnReservation.Text = "إلغاء التنشيط";
+                radstatus.Text = "نشط";
+
             }
 
             FillDataGridAttachments(Agent.guid);
@@ -502,7 +523,7 @@ namespace DoctorERP.User_Controls
             BtnNew.Text = "حفظ";
             BtnNew.ScreenTip.Text = "حفظ بطاقة عميل جديدة";
             BtnNew.Image = Properties.Resources.BtnConform;
-            BtnReservation.Text = "تنشيط";
+
             BtnReservation.Text = "تنشيط";
 
             FillDataGridAttachments(Guid.Empty);
@@ -522,7 +543,7 @@ namespace DoctorERP.User_Controls
                 if (control.Name.StartsWith("rad")) { continue; }
                 control.DataBindings.Clear();
             }
-            Txtnumber.Text = RadMenueTxtSearch.Text = (tbAgent.GetMaxNumber("Number") + 1).ToString();
+            Txtnumber.Text = (tbAgent.GetMaxNumber("Number") + 1).ToString();
             radstatus.Text = "نشط";
             radCmbPlanGuid.SelectedValue = FrmMain.PlanGuid;
             Txtname.Focus();
@@ -869,6 +890,8 @@ namespace DoctorERP.User_Controls
                 BtnNew.Text = "حفظ";
                 BtnNew.ScreenTip.Text = "حفظ بطاقة العميل الجديدة";
                 BtnNew.Image = Properties.Resources.BtnConform;
+                BtnAttachment.Enabled = true;
+                BtnScanner.Enabled = true;
                 radPageView1.SelectedPage = PageHome;
                 IsDirty = true;
                 guid = Guid.Empty;
@@ -882,6 +905,8 @@ namespace DoctorERP.User_Controls
                 BtnNew.Text = "جديد";
                 BtnNew.ScreenTip.Text = "إضافة بطاقة عميل جديدة";
                 BtnNew.Image = Properties.Resources.BtnAddNew;
+                BtnAttachment.Enabled = false;
+                BtnScanner.Enabled = false;
                 SetReadOnly(true);
                 IsDirty = false;
                 IsNew = false;
@@ -986,7 +1011,7 @@ namespace DoctorERP.User_Controls
                     FrmMain.DataHasChanged = true;
                 }
             }
-            else if (Agent.note.Equals("نشط"))
+            else
             {
                 if (!MessageWarning("تنشيط بطاقة العميل", "هل أنت متأكد من إلغاء تنشيط هذه البطاقة ؟", "إذا ضغط علي زر نعم سوف يتم إلغاء تنشيط بطاقة العميل \n إذا ضغط علي لا سوف يتم تجاهل التغييرات"))
                 {
@@ -1336,10 +1361,15 @@ namespace DoctorERP.User_Controls
 
         private void BtnAddParenter_Click(object sender, EventArgs e)
         {
-            if (!radCollapsiblePanelParenter1.Visible) { radCollapsiblePanelParenter1.Visible = true; }
-            if (radCollapsiblePanelParenter1.Visible) { radCollapsiblePanelParenter2.Visible = true; }
-            if (radCollapsiblePanelParenter2.Visible) { radCollapsiblePanelParenter3.Visible = true; }
-            if (radCollapsiblePanelParenter3.Visible) { radCollapsiblePanelParenter4.Visible = true; }
+            if (!radCollapsiblePanelParenter1.Visible) { radCollapsiblePanelParenter1.Visible = true; return; }
+            if (radCollapsiblePanelParenter1.Visible) { radCollapsiblePanelParenter2.Visible = true; return; }
+            if (radCollapsiblePanelParenter2.Visible) { radCollapsiblePanelParenter3.Visible = true; return; }
+            if (radCollapsiblePanelParenter3.Visible) { radCollapsiblePanelParenter4.Visible = true; return; }
+
+        }
+
+        private void PageHome_Paint(object sender, PaintEventArgs e)
+        {
 
         }
 

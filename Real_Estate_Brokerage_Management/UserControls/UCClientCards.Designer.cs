@@ -324,6 +324,7 @@
             this.PageHome.Size = new System.Drawing.Size(1165, 603);
             this.PageHome.Text = "عام";
             this.PageHome.Title = "البيانات العامة لبطاقة الأرض";
+            this.PageHome.Paint += new System.Windows.Forms.PaintEventHandler(this.PageHome_Paint);
             // 
             // radCollapsiblePanelParenter2
             // 
@@ -793,13 +794,13 @@
             this.radstatus.AutoSize = false;
             this.radstatus.BackColor = System.Drawing.Color.White;
             this.radstatus.Font = new System.Drawing.Font("Arial", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radstatus.Location = new System.Drawing.Point(674, 12);
+            this.radstatus.Location = new System.Drawing.Point(631, 12);
             this.radstatus.Name = "radstatus";
             // 
             // 
             // 
             this.radstatus.RootElement.BorderHighlightThickness = 0;
-            this.radstatus.Size = new System.Drawing.Size(147, 127);
+            this.radstatus.Size = new System.Drawing.Size(190, 127);
             this.radstatus.TabIndex = 1413;
             this.radstatus.Text = "الحالة";
             this.radstatus.TextAlignment = System.Drawing.ContentAlignment.TopRight;

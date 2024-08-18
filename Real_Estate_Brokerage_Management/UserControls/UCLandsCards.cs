@@ -578,7 +578,7 @@ namespace DoctorERP.User_Controls
             {
                 Txtblocknumber.Text = "0";
             }
-            Txtnumber.Text = RadMenueTxtSearch.Text = (tbLand.GetMaxNumber("Number") + 1).ToString();
+            Txtnumber.Text = (tbLand.GetMaxNumber("Number") + 1).ToString();
             CmbPlanGuid.SelectedValue = FrmMain.PlanGuid;
 
             Txtarea.Focus();
@@ -1048,6 +1048,8 @@ namespace DoctorERP.User_Controls
                 BtnNew.Text = "حفظ";
                 BtnNew.ScreenTip.Text = "حفظ بطاقة الأرض الجديدة";
                 BtnNew.Image = Properties.Resources.BtnConform;
+                BtnAttachment.Enabled = true;
+                BtnScanner.Enabled = true;
                 radPageView1.SelectedPage = PageHome;
                 IsDirty = true;
                 guid = Guid.Empty;
@@ -1061,6 +1063,8 @@ namespace DoctorERP.User_Controls
                 BtnNew.Text = "جديد";
                 BtnNew.ScreenTip.Text = "إضافة بطاقة أرض جديدة";
                 BtnNew.Image = Properties.Resources.BtnAddNew;
+                BtnAttachment.Enabled = false;
+                BtnScanner.Enabled = false;
                 SetReadOnly(true);
                 IsDirty = false;
                 IsNew = false;

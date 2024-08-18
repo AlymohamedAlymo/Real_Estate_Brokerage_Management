@@ -160,7 +160,7 @@ public class tbAgent
     {
         lstData = new List<tbAgent>();
         dtData = new DataTable();
-        DBConnect.DBCommand = new SqlCommand("SELECT * FROM tbAgent", DBConnect.DBConnection);
+        DBConnect.DBCommand = new SqlCommand("SELECT * FROM tbAgent order by number", DBConnect.DBConnection);
         DBConnect.DBAdapter = new SqlDataAdapter(DBConnect.DBCommand);
         DBConnect.DBAdapter.Fill(dtData);
         foreach (DataRow dr in dtData.Rows)
@@ -243,7 +243,7 @@ public class tbAgent
     {
         lstData = new List<tbAgent>();
         dtData = new DataTable();
-        DBConnect.DBCommand = new SqlCommand(string.Format("SELECT * FROM tbAgent WHERE {0} = @val", dbcolumn), DBConnect.DBConnection);
+        DBConnect.DBCommand = new SqlCommand(string.Format("SELECT * FROM tbAgent WHERE {0} = @val order by number", dbcolumn), DBConnect.DBConnection);
         DBConnect.DBCommand.Parameters.AddWithValue("@val", val);
         DBConnect.DBAdapter = new SqlDataAdapter(DBConnect.DBCommand);
         DBConnect.DBAdapter.Fill(dtData);
