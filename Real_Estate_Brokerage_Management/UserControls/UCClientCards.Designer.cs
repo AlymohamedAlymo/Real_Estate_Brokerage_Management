@@ -324,7 +324,6 @@
             this.PageHome.Size = new System.Drawing.Size(1165, 603);
             this.PageHome.Text = "عام";
             this.PageHome.Title = "البيانات العامة لبطاقة الأرض";
-            this.PageHome.Paint += new System.Windows.Forms.PaintEventHandler(this.PageHome_Paint);
             // 
             // radCollapsiblePanelParenter2
             // 
@@ -1020,7 +1019,7 @@
             this.radCollapsiblePanel2.PanelContainer.Controls.Add(this.Txtofficename);
             this.radCollapsiblePanel2.PanelContainer.Controls.Add(this.Txtofficephone);
             this.radCollapsiblePanel2.PanelContainer.Controls.Add(this.Txtofficecr);
-            this.radCollapsiblePanel2.PanelContainer.Size = new System.Drawing.Size(310, 385);
+            this.radCollapsiblePanel2.PanelContainer.Size = new System.Drawing.Size(308, 383);
             this.radCollapsiblePanel2.Size = new System.Drawing.Size(314, 427);
             this.radCollapsiblePanel2.TabIndex = 1989;
             // 

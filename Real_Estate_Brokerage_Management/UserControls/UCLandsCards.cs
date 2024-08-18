@@ -18,8 +18,8 @@ namespace DoctorERP.User_Controls
 
         private Guid guid;
         public BindingSource Bs;
-        public bool IsDirty = false, IsLoad = true;
-        private bool IsNew = false, ShowConfirmMSG = true, IsProgrammatic = false;
+        public bool IsDirty = false;
+        private bool IsNew = false, ShowConfirmMSG = true, IsProgrammatic = false, IsLoad = true;
         private readonly string BlockNumber;
         private readonly int CurrentPosition = 0;
         private decimal TotalLand;
@@ -198,7 +198,6 @@ namespace DoctorERP.User_Controls
             radDesktopAlert1.Show();
 
         }
-
         private void CommandBarLabel1_TextChanged(object sender, EventArgs e)
         {
             string NewTxt = commandBarLabel1.Text.Replace("of", "من");
@@ -221,7 +220,7 @@ namespace DoctorERP.User_Controls
         #region Main Events
 
         #region Form Methods
-        private bool Check(string Operation, string Command, OperationType.OperationIs OperType)
+        private bool Check(string Operation, string Command, OperationType.OperationIs OperType, bool IsAction)
         {
             if (IsDirty) { TackAction(); }
             if (!FrmMain.IsPermissionGranted(Operation))
@@ -235,7 +234,7 @@ namespace DoctorERP.User_Controls
                 return false;
             }
             tbLand land = (tbLand)Bs.Current;
-            var Check = CheckifOprAllow(land, OperType);
+            Dictionary<bool, string> Check = CheckifOprAllow(land, OperType, IsAction);
             if (!Check.Keys.First() && !Operation.Contains("جديد"))
             {
                 MessageException(Operation, "لا يمكن " + Command, Check.Values.First());
@@ -254,8 +253,7 @@ namespace DoctorERP.User_Controls
             return true;
 
         }
-
-        private Dictionary<bool, string> CheckifOprAllow(tbLand land, OperationType.OperationIs operation)
+        private Dictionary<bool, string> CheckifOprAllow(tbLand land, OperationType.OperationIs operation, bool IsAction)
         {
             bool GoHead = false, IsSoldorInOrder = false;
             Dictionary<bool, string> Pair = new Dictionary<bool, string>();
@@ -281,22 +279,25 @@ namespace DoctorERP.User_Controls
                 default:
                     break;
             }
-            if (GoHead)
+            if (IsAction)
             {
-                Pair.Clear();
-                IsSoldorInOrder = !tbBillBody.IsExist("LandGuid", land.guid);
-                Pair.Add(IsSoldorInOrder, "تم إنشاء عقد بيع مسبقاً لبطاقة الأرض");
-                if (IsSoldorInOrder)
+                if (GoHead)
                 {
                     Pair.Clear();
-                    IsSoldorInOrder = !tbSaleOrderBody.IsExist("LandGuid", land.guid);
-                    Pair.Add(IsSoldorInOrder, "تم إنشاء أمر بيع مسبقاً لبطاقة الأرض");
+                    IsSoldorInOrder = !tbBillBody.IsExist("LandGuid", land.guid);
+                    Pair.Add(IsSoldorInOrder, "تم إنشاء عقد بيع مسبقاً لبطاقة الأرض");
+                    if (IsSoldorInOrder)
+                    {
+                        Pair.Clear();
+                        IsSoldorInOrder = !tbSaleOrderBody.IsExist("LandGuid", land.guid);
+                        Pair.Add(IsSoldorInOrder, "تم إنشاء أمر بيع مسبقاً لبطاقة الأرض");
+                    }
                 }
+
             }
             return Pair;
 
         }
-
         private void SetReadOnly(bool IsReadOnly)
         {
             List<RadControl> NotUsedControls = new List<RadControl>()
@@ -324,7 +325,6 @@ namespace DoctorERP.User_Controls
                 }
             }
         }
-
         private string FormatingNumber(decimal number)
         {
             return $"{number:n}  ريال";
@@ -985,7 +985,7 @@ namespace DoctorERP.User_Controls
         private void MenuSaleOrder_Click(object sender, EventArgs e)
         {
             RadMenuItem toolmenu = (RadMenuItem)sender;
-            if (!Check(toolmenu.Text, "إنشاء أمر بيع", OperationType.OperationIs.Add)) { return; }
+            if (!Check(toolmenu.Text, "إنشاء أمر بيع", OperationType.OperationIs.Add, true)) { return; }
             tbLand land = (tbLand)Bs.Current;
             FrmSaleOrder frm = new FrmSaleOrder(land);
             frm.Show(this);
@@ -994,7 +994,7 @@ namespace DoctorERP.User_Controls
         private void BtnContract_Click(object sender, EventArgs e)
         {
             RadMenuItem toolmenu = (RadMenuItem)sender;
-            if (!Check(toolmenu.Text, "إنشاء عقد بيع", OperationType.OperationIs.Add)) { return; }
+            if (!Check(toolmenu.Text, "إنشاء عقد بيع", OperationType.OperationIs.Add, true)) { return; }
             tbLand land = (tbLand)Bs.Current;
             List<tbLand> lst = new List<tbLand> { land };
             FrmBillHeader frm = new FrmBillHeader(Guid.Empty, true, 0, lst);
@@ -1005,7 +1005,7 @@ namespace DoctorERP.User_Controls
         private void BtnReservation_Click(object sender, EventArgs e)
         {
             RadMenuItem toolmenu = (RadMenuItem)sender;
-            if (!Check(toolmenu.Text, "حجز بطاقة الأرض", OperationType.OperationIs.Edit)) { return; }
+            if (!Check(toolmenu.Text, "حجز بطاقة الأرض", OperationType.OperationIs.Edit, true)) { return; }
             tbLand land = (tbLand)Bs.Current;
             if (land.status.Equals("محجوز"))
             {
@@ -1043,7 +1043,7 @@ namespace DoctorERP.User_Controls
 
             if (BtnNew.Text == "جديد")
             {
-                if (!Check("إضافة جديد", "إضافة بطاقة أرض جديدة", OperationType.OperationIs.Add)) { return; }
+                if (!Check("إضافة جديد", "إضافة بطاقة أرض جديدة", OperationType.OperationIs.Add, true)) { return; }
 
                 BtnNew.Text = "حفظ";
                 BtnNew.ScreenTip.Text = "حفظ بطاقة الأرض الجديدة";
@@ -1082,7 +1082,7 @@ namespace DoctorERP.User_Controls
 
             if (BtnEdit.Text == "تعديل")
             {
-                if (!Check("تعديل بطاقة", "تعديل بطاقة الأرض", OperationType.OperationIs.Edit)) { return; }
+                if (!Check("تعديل بطاقة", "تعديل بطاقة الأرض", OperationType.OperationIs.Edit, true)) { return; }
 
                 BtnEdit.Text = "حفظ";
                 BtnEdit.ScreenTip.Text = "حفظ التعديلات";
@@ -1113,7 +1113,7 @@ namespace DoctorERP.User_Controls
 
         private void BtnDelete_Click(object sender, EventArgs e)
         {
-            if (!Check("حذف بطاقة", "حذف بطاقة الأرض", OperationType.OperationIs.Delete)) { return; }
+            if (!Check("حذف بطاقة", "حذف بطاقة الأرض", OperationType.OperationIs.Delete, true)) { return; }
             if (!MessageWarning("حذف بطاقة الأرض", "هل أنت متأكد من حذف هذه البطاقة ؟", "إذا ضغط علي زر نعم سوف يتم حذف بطاقة الأرض \n إذا ضغط علي لا سوف يتم تجاهل التغييرات"))
             {
                 return;
@@ -1141,7 +1141,7 @@ namespace DoctorERP.User_Controls
         private void BtnImport_Click(object sender, EventArgs e)
         {
             RadMenuItem toolmenu = (RadMenuItem)sender;
-            if (!Check(toolmenu.Text, "إستيراد البيانات", OperationType.OperationIs.Add)) { return; }
+            if (!Check(toolmenu.Text, "إستيراد البيانات", OperationType.OperationIs.Print, false)) { return; }
             FrmLandImport frm = new FrmLandImport();
             frm.ShowDialog();
 
@@ -1149,7 +1149,7 @@ namespace DoctorERP.User_Controls
         private void BtnExportExcel_Click(object sender, EventArgs e)
         {
             RadMenuItem toolmenu = (RadMenuItem)sender;
-            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Edit)) { return; }
+            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Print, false)) { return; }
 
             FastReport.Report report = new FastReport.Report();
             if (Readyreport(report))
@@ -1176,7 +1176,7 @@ namespace DoctorERP.User_Controls
         private void BtnExportExcelData_Click(object sender, EventArgs e)
         {
             RadMenuItem toolmenu = (RadMenuItem)sender;
-            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Edit)) { return; }
+            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Print, false)) { return; }
 
             tbLand land = (tbLand)Bs.Current;
             tbLand.Fill("guid", land.guid);
@@ -1187,7 +1187,7 @@ namespace DoctorERP.User_Controls
         private void BtnSendEmail_Click(object sender, EventArgs e)
         {
             RadMenuItem toolmenu = (RadMenuItem)sender;
-            if (!Check(toolmenu.Text, "إرسال بريد إلكتروني", OperationType.OperationIs.Add)) { return; }
+            if (!Check(toolmenu.Text, "إرسال بريد إلكتروني", OperationType.OperationIs.Print, false)) { return; }
             RadFlyoutManager.Show(this, typeof(FlyoutEmailContent));
 
         }
@@ -1195,7 +1195,7 @@ namespace DoctorERP.User_Controls
         private void BtnExportWord_Click(object sender, EventArgs e)
         {
             RadMenuItem toolmenu = (RadMenuItem)sender;
-            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Add)) { return; }
+            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Print, false)) { return; }
 
             FastReport.Report report = new FastReport.Report();
             if (Readyreport(report))
@@ -1222,7 +1222,7 @@ namespace DoctorERP.User_Controls
         private void BtnExportPdf_Click(object sender, EventArgs e)
         {
             RadMenuItem toolmenu = (RadMenuItem)sender;
-            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Add)) { return; }
+            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Print, false)) { return; }
 
             FastReport.Report report = new FastReport.Report();
             if (Readyreport(report))
@@ -1270,7 +1270,7 @@ namespace DoctorERP.User_Controls
         private void MenuDesign_Click(object sender, EventArgs e)
         {
             RadMenuItem toolmenu = (RadMenuItem)sender;
-            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Add)) { return; }
+            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Print, false)) { return; }
             FastReport.Report report = new FastReport.Report();
             if (Readyreport(report))
                 Reports.DesignReport(report);
@@ -1279,7 +1279,7 @@ namespace DoctorERP.User_Controls
         private void MenuPreview_Click(object sender, EventArgs e)
         {
             RadMenuItem toolmenu = (RadMenuItem)sender;
-            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Add)) { return; }
+            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Print, false)) { return; }
 
             FastReport.Report report = new FastReport.Report();
             if (Readyreport(report))
@@ -1289,7 +1289,7 @@ namespace DoctorERP.User_Controls
         private void BtnPrint_Click(object sender, EventArgs e)
         {
             RadMenuItem toolmenu = (RadMenuItem)sender;
-            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Add)) { return; }
+            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Print, false)) { return; }
 
             FastReport.Report report = new FastReport.Report();
             if (Readyreport(report))
@@ -1402,6 +1402,9 @@ namespace DoctorERP.User_Controls
 
         private void BtnAddAttachment_Click(object sender, EventArgs e)
         {
+            RadButton toolmenu = (RadButton)sender;
+            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Add, false)) { return; }
+
             OpenFileDialog opf = new OpenFileDialog
             {
                 RestoreDirectory = true,
@@ -1462,7 +1465,7 @@ namespace DoctorERP.User_Controls
         private void MenuPreviewAttach_Click(object sender, EventArgs e)
         {
             RadMenuItem toolmenu = (RadMenuItem)sender;
-            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Print)) { return; }
+            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Print, false)) { return; }
 
             byte[] bfiles = (byte[])DataGridAttachments.CurrentRow.Cells[5].Value;
             Guid guid = new Guid(DataGridAttachments.CurrentRow.Cells[0].Value.ToString());
@@ -1481,7 +1484,7 @@ namespace DoctorERP.User_Controls
         private void MenuExtractAttachment_Click(object sender, EventArgs e)
         {
             RadMenuItem toolmenu = (RadMenuItem)sender;
-            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Print)) { return; }
+            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Print, false)) { return; }
             SaveFileDialog sfd = new SaveFileDialog
             {
                 RestoreDirectory = true,
@@ -1515,15 +1518,15 @@ namespace DoctorERP.User_Controls
         private void MenuDeleteAttachment_Click(object sender, EventArgs e)
         {
             RadMenuItem toolmenu = (RadMenuItem)sender;
-            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Delete)) { return; }
+            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Delete, true)) { return; }
 
             DataGridAttachments.Rows.RemoveAt(DataGridAttachments.CurrentRow.Index);
         }
 
         private void BtnScanner_Click(object sender, EventArgs e)
         {
-            RadMenuItem toolmenu = (RadMenuItem)sender;
-            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Print)) { return; }
+            RadButton toolmenu = (RadButton)sender;
+            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Add, false)) { return; }
 
             FrmScanImage2 frmscan = new FrmScanImage2();
             if (frmscan.ShowDialog() == DialogResult.OK)
