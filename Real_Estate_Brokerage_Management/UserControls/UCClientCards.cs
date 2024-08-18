@@ -1001,7 +1001,7 @@ namespace DoctorERP.User_Controls
         private void BtnReservation_Click(object sender, EventArgs e)
         {
             RadMenuItem toolmenu = (RadMenuItem)sender;
-            if (!Check(toolmenu.Text, "تنشيط بطاقة العميل", OperationType.OperationIs.Edit, true)) { return; }
+            if (!Check(toolmenu.Text, "تنشيط بطاقة العميل", OperationType.OperationIs.Edit, false)) { return; }
             tbAgent Agent = (tbAgent)Bs.Current;
             if (Agent.note.Equals("غير نشط"))
             {
