@@ -275,6 +275,7 @@ public class vwSalesOrderRpt
 
     public static int GetSalesOrderRemainCount()
     {
+
         DBConnect.DBCommand = new SqlCommand("select count(*) as salesorderscount from tbSaleOrderBody JOIN tbLand ON tbLand.guid = tbSaleOrderBody.landguid LEFT JOIN tbBillBody ON tbBillBody.landguid = tbSaleOrderBody.landguid LEFT JOIN tbBillheader ON tbBillheader.guid = tbBillBody.parentguid  WHERE tbLand.status <> 'مباع' AND  (tbBillBody.Guid IS NULL OR tbBillBody.status = 'مرتجع' )", DBConnect.DBConnection);
         int icount = int.Parse(DBConnect.DBCommand.ExecuteScalar().ToString());
         return icount;

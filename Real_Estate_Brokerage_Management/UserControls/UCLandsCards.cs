@@ -819,7 +819,7 @@ namespace DoctorERP.User_Controls
             if (sender is RadTextBox control)
             {
                 if (control.ReadOnly) { control.ShowClearButton = false; }
-                else if (control.ReadOnly) { control.ShowClearButton = true; }
+                else if (!control.ReadOnly) { control.ShowClearButton = true; }
 
             }
         }
@@ -1349,7 +1349,6 @@ namespace DoctorERP.User_Controls
         }
         private void AddAttachments(Guid parentguid)
         {
-            if (!Check("اضافة مرفقات", "تصدير البيانات", OperationType.OperationIs.Add)) { return; }
 
             foreach (Telerik.WinControls.UI.GridViewRowInfo dr in DataGridAttachments.Rows)
             {

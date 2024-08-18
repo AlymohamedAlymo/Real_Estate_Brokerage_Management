@@ -275,28 +275,65 @@ namespace DoctorERP.User_Controls
         {
             List<RadControl> NotUsedControls = new List<RadControl>()
             { Txtnumber, Txtlastaction };
-            foreach (RadControl control in PageHome.Controls)
+            List<RadControl> ContainerControls = new List<RadControl>()
+            { radCollapsiblePanel1, radCollapsiblePanel3, radCollapsiblePanel4, radCollapsiblePanel5 };
+            List<RadPageViewPage> ContainerPage = new List<RadPageViewPage>()
+            { PageHome, PageAgent };
+
+            foreach (RadControl collection in ContainerControls)
             {
-                if (NotUsedControls.Contains(control)) { continue; }
-                if (control is RadTextBox radTextControl)
+                foreach (RadControl control in collection.Controls[0].Controls[0].Controls)
                 {
-                    radTextControl.ReadOnly = IsReadOnly;
-                    if (IsReadOnly) { radTextControl.AutoCompleteMode = AutoCompleteMode.None; }
-                    else if (!IsReadOnly) { radTextControl.AutoCompleteMode = AutoCompleteMode.SuggestAppend; }
+                    if (NotUsedControls.Contains(control)) { continue; }
+                    if (control is RadTextBox radTextControl)
+                    {
+                        radTextControl.ReadOnly = IsReadOnly;
+                        if (IsReadOnly) { radTextControl.AutoCompleteMode = AutoCompleteMode.None; }
+                        else if (!IsReadOnly) { radTextControl.AutoCompleteMode = AutoCompleteMode.SuggestAppend; }
+                    }
+                    else if (control is RadSpinEditor radSpinControl)
+                    {
+                        radSpinControl.ReadOnly = IsReadOnly;
+                    }
+                    else if (control is RadMultiColumnComboBox radCmbControl)
+                    {
+                        radCmbControl.ReadOnly = IsReadOnly;
+                    }
+                    else if (control is RadCheckBox radChkControl)
+                    {
+                        radChkControl.ReadOnly = IsReadOnly;
+                    }
                 }
-                else if (control is RadSpinEditor radSpinControl)
-                {
-                    radSpinControl.ReadOnly = IsReadOnly;
-                }
-                else if (control is RadMultiColumnComboBox radCmbControl)
-                {
-                    radCmbControl.ReadOnly = IsReadOnly;
-                }
-                else if (control is RadCheckBox radChkControl)
-                {
-                    radChkControl.ReadOnly = IsReadOnly;
-                }
+
             }
+            foreach (RadPageViewPage collection in ContainerPage)
+            {
+                foreach (RadControl control in collection.Controls)
+                {
+                    if (NotUsedControls.Contains(control)) { continue; }
+                    if (control is RadTextBox radTextControl)
+                    {
+                        radTextControl.ReadOnly = IsReadOnly;
+                        if (IsReadOnly) { radTextControl.AutoCompleteMode = AutoCompleteMode.None; }
+                        else if (!IsReadOnly) { radTextControl.AutoCompleteMode = AutoCompleteMode.SuggestAppend; }
+                    }
+                    else if (control is RadSpinEditor radSpinControl)
+                    {
+                        radSpinControl.ReadOnly = IsReadOnly;
+                    }
+                    else if (control is RadMultiColumnComboBox radCmbControl)
+                    {
+                        radCmbControl.ReadOnly = IsReadOnly;
+                    }
+                    else if (control is RadCheckBox radChkControl)
+                    {
+                        radChkControl.ReadOnly = IsReadOnly;
+                    }
+                }
+
+            }
+
+
         }
 
         public void TackAction()
@@ -460,10 +497,10 @@ namespace DoctorERP.User_Controls
                 if (control.Name.StartsWith("rad")) { continue; }
                 control.DataBindings.Clear();
             }
-
+            Txtnumber.Text = RadMenueTxtSearch.Text = (tbLand.GetMaxNumber("Number") + 1).ToString();
             radstatus.Text = "تشط";
             radCmbPlanGuid.SelectedValue = FrmMain.PlanGuid;
-
+            Txtname.Focus();
         }
 
         private bool Add()
@@ -488,40 +525,41 @@ namespace DoctorERP.User_Controls
                 return false;
             }
 
+           
             tbAgent agent = new tbAgent 
             { 
-                agencynumber = "",
-                agentcivilid = "",
-                agentemail = "", 
-                agentmobile = "",
-                agentname = "",
-                agentpublicnumber = "",
+                agencynumber = Txtagencynumber.Text,
+                agentcivilid = Txtagentcivilid.Text,
+                agentemail = Txtagentemail.Text, 
+                agentmobile = Txtagentmobile.Text,
+                agentname = Txtagentname.Text,
+                agentpublicnumber = Txtagentpublicnumber.Text,
                 agenttype = AgentType,
-                agentvatid = "",
-                civilid = "",
-                email = "",
+                agentvatid = Txtagentvatid.Text,
+                civilid = Txtcivilid.Text,
+                email = Txtemail.Text,
                 guid = Guid.NewGuid(),
                 lastaction = "عملية إضافة" + " - بتاريخ  " + DateTime.Now.ToString("dd/MM/yyyy")
                 + " - الساعة  " + DateTime.Now.ToString("hh:mm tt") + " - عن طريق المستخدم  " + FrmMain.CurrentUser.name,
-                mobile = "",
-                name ="",
-                note ="",
+                mobile = Txtmobile.Text,
+                name = Txtname.Text,
+                note = Txtnote.Text,
                 number = tbAgent.GetMaxNumber("Number") + 1,
-                officecr ="",
-                officeemail ="",
-                officename ="",
-                officephone ="",
-                officepublicnumber ="",
-                officevatid ="",
-                publicnumber ="",
-                vatid ="",
+                officecr = Txtofficecr.Text,
+                officeemail = Txtofficeemail.Text,
+                officename = Txtofficename.Text,
+                officephone = Txtofficephone.Text,
+                officepublicnumber = Txtofficepublicnumber.Text,
+                officevatid = Txtofficevatid.Text,
+                publicnumber = Txtpublicnumber.Text,
+                vatid = Txtvatid.Text,
                 
             };
             //agent.planguid = tbPlanInfo.lstData.Where(u => u.name == CmbPlanGuid.Text).FirstOrDefault().guid;
 
             DBConnect.StartTransAction();
             tbLog.AddLog("إضافة", "بطاقة عميل", agent.name.ToString());
-            AddAttachments(agent.guid);
+           AddAttachments(agent.guid);
             agent.Insert();
 
             if (DBConnect.CommitTransAction())
@@ -557,36 +595,36 @@ namespace DoctorERP.User_Controls
                 return false;
             }
 
+
             tbAgent agent = new tbAgent
             {
-                agencynumber = "",
-                agentcivilid = "",
-                agentemail = "",
-                agentmobile = "",
-                agentname = "",
-                agentpublicnumber = "",
+                agencynumber = Txtagencynumber.Text,
+                agentcivilid = Txtagentcivilid.Text,
+                agentemail = Txtagentemail.Text,
+                agentmobile = Txtagentmobile.Text,
+                agentname = Txtagentname.Text,
+                agentpublicnumber = Txtagentpublicnumber.Text,
                 agenttype = AgentType,
-                agentvatid = "",
-                civilid = "",
-                email = "",
-                guid = Guid.NewGuid(),
+                agentvatid = Txtagentvatid.Text,
+                civilid = Txtcivilid.Text,
+                email = Txtemail.Text,
                 lastaction = "عملية إضافة" + " - بتاريخ  " + DateTime.Now.ToString("dd/MM/yyyy")
                 + " - الساعة  " + DateTime.Now.ToString("hh:mm tt") + " - عن طريق المستخدم  " + FrmMain.CurrentUser.name,
-                mobile = "",
-                name = "",
-                note = "",
-                number = tbAgent.GetMaxNumber("Number") + 1,
-                officecr = "",
-                officeemail = "",
-                officename = "",
-                officephone = "",
-                officepublicnumber = "",
-                officevatid = "",
-                publicnumber = "",
-                vatid = "",
+                mobile = Txtmobile.Text,
+                name = Txtname.Text,
+                note = Txtnote.Text,
+                officecr = Txtofficecr.Text,
+                officeemail = Txtofficeemail.Text,
+                officename = Txtofficename.Text,
+                officephone = Txtofficephone.Text,
+                officepublicnumber = Txtofficepublicnumber.Text,
+                officevatid = Txtofficevatid.Text,
+                publicnumber = Txtpublicnumber.Text,
+                vatid = Txtvatid.Text,
 
             };
-            //agent.planguid = tbPlanInfo.lstData.Where(u => u.name == CmbPlanGuid.Text).FirstOrDefault().guid;
+
+            //land.planguid = tbPlanInfo.lstData.Where(u => u.name == CmbPlanGuid.Text).FirstOrDefault().guid;
 
             DBConnect.StartTransAction();
             AddAttachments(agent.guid);
@@ -675,7 +713,7 @@ namespace DoctorERP.User_Controls
             if (sender is RadTextBox control)
             {
                 if (control.ReadOnly) { control.ShowClearButton = false; }
-                else if (control.ReadOnly) { control.ShowClearButton = true; }
+                else if (!control.ReadOnly) { control.ShowClearButton = true; }
 
             }
         }
@@ -1077,7 +1115,6 @@ namespace DoctorERP.User_Controls
         }
         private void AddAttachments(Guid parentguid)
         {
-            if (!Check("اضافة مرفقات", "تصدير البيانات", OperationType.OperationIs.Add)) { return; }
 
             foreach (Telerik.WinControls.UI.GridViewRowInfo dr in DataGridAttachments.Rows)
             {
