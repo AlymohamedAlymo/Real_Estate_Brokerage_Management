@@ -40,6 +40,7 @@ using FastReport;
 using OfficeOpenXml.FormulaParsing.Excel.Functions.Text;
 using DoctorERP.Helpers;
 using DoctorHelper.Helpers;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.Numeric;
 namespace DoctorERP
 {
     public partial class FrmBillHeader : XtraForm
@@ -55,6 +56,58 @@ namespace DoctorERP
         int billtype;
         tbAgent DefOwner = new tbAgent();
         List<tbLand> SellLand;
+        tbAgent Client = new tbAgent();
+        public FrmBillHeader(Guid guid, bool isNew, int billtype, List<tbLand> SellLand, tbAgent _Client)
+        {
+            InitializeComponent();
+
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+
+            this.SellLand = SellLand;
+
+            dirtytracker = new WinformsDirtyTracking.DirtyTracker(this);
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+            this.guid = guid;
+
+            BtnEdit.Visible = true;
+            BtnAdd.Visible = false;
+
+            this.isNew = isNew;
+
+            this.billtype = billtype;
+            Client = _Client;
+
+            tbAgent.Fill("AgentType", 0);
+            DefOwner = tbAgent.lstData[0];
+
+            TxtSelectOwner.Tag = DefOwner;
+
+            if (billtype == 0)
+            {
+                this.Text = "عقد بيع";
+                LblHint.Text = "عقد بيع أرض";
+            }
+            else if (billtype == 1)
+            {
+                this.Text = "مرتجع بيع";
+                LblHint.Text = "عقد مرتجع بيع أرض";
+            }
+            else if (billtype == 2)
+            {
+                LblAgent.Text = "المشتري";
+                LblOwner.Text = "البائع";
+                CmbBuyerData.Visible = CmbOwnerData.Visible = false;
+                this.Text = "عقد بيع خارجي (صوري)";
+                LblHint.Text = "عقد بيع خارجي (صوري)";
+            }
+
+            InitReadyGrid();
+
+            FillCmb();
+
+
+
+        }
 
         public FrmBillHeader(Guid guid, bool isNew, int billtype, List<tbLand> SellLand)
         {
@@ -123,6 +176,11 @@ namespace DoctorERP
             {
                 BtnAddFromBlock.PerformClick();
             }
+
+
+            TxtSelectBuyer.Tag = Client;
+            TxtSelectBuyer.Text = Client.name;
+
 
             dirtytracker.MarkAsClean();
         }
@@ -3275,6 +3333,11 @@ namespace DoctorERP
                     AllowEditPrice = false;
                 }
             }
+        }
+
+        private void TxtSelectBuyer_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

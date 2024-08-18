@@ -150,20 +150,17 @@
             this.MenuAllowEditPrice = new DevExpress.XtraBars.BarButtonItem();
             this.MenuGrid = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.PnlTop)).BeginInit();
-            this.PnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CmbBuyerData.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CmbOwnerData.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtRegDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtRegDate.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtRegDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtNote.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PnlMain)).BeginInit();
-            this.PnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainGridReadyItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BtnSelectItem)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PnlBottom)).BeginInit();
-            this.PnlBottom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManagerGrid)).BeginInit();
@@ -185,9 +182,9 @@
             this.PnlTop.Controls.Add(this.TxtSelectOwner);
             this.PnlTop.Controls.Add(this.LblOwner);
             this.PnlTop.Controls.Add(this.dtRegDate);
+            this.PnlTop.Controls.Add(this.labelControl7);
             this.PnlTop.Controls.Add(this.TxtNote);
             this.PnlTop.Controls.Add(this.labelControl5);
-            this.PnlTop.Controls.Add(this.labelControl7);
             this.PnlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.PnlTop.Location = new System.Drawing.Point(0, 0);
             this.PnlTop.Name = "PnlTop";
@@ -232,6 +229,9 @@
             this.CmbBuyerData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CmbBuyerData.Location = new System.Drawing.Point(589, 79);
             this.CmbBuyerData.Name = "CmbBuyerData";
+            // 
+            // 
+            // 
             this.CmbBuyerData.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Bold);
             this.CmbBuyerData.Properties.Appearance.Options.UseFont = true;
             this.CmbBuyerData.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -249,6 +249,9 @@
             this.CmbOwnerData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CmbOwnerData.Location = new System.Drawing.Point(589, 43);
             this.CmbOwnerData.Name = "CmbOwnerData";
+            // 
+            // 
+            // 
             this.CmbOwnerData.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Bold);
             this.CmbOwnerData.Properties.Appearance.Options.UseFont = true;
             this.CmbOwnerData.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -308,6 +311,7 @@
             this.TxtSelectBuyer.Size = new System.Drawing.Size(337, 30);
             this.TxtSelectBuyer.StateCommon.Content.Font = new System.Drawing.Font("Tahoma", 14F);
             this.TxtSelectBuyer.TabIndex = 23;
+            this.TxtSelectBuyer.TextChanged += new System.EventHandler(this.TxtSelectBuyer_TextChanged);
             this.TxtSelectBuyer.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtSelectBuyer_KeyDown);
             // 
             // BtnAddBuyer
@@ -395,13 +399,18 @@
             // dtRegDate
             // 
             this.dtRegDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtRegDate.EditValue = null;
             this.dtRegDate.Location = new System.Drawing.Point(744, 7);
             this.dtRegDate.Name = "dtRegDate";
+            // 
+            // 
+            // 
             this.dtRegDate.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14F);
             this.dtRegDate.Properties.Appearance.Options.UseFont = true;
             this.dtRegDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            // 
+            // 
+            // 
             this.dtRegDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dtRegDate.Properties.EditFormat.FormatString = "dd/MM/yyyy";
@@ -1174,10 +1183,10 @@
             this.PnlBottom.Controls.Add(this.BtnPrint);
             this.PnlBottom.Controls.Add(this.BtnCancel);
             this.PnlBottom.Controls.Add(this.BtnDelete);
-            this.PnlBottom.Controls.Add(this.BtnEdit);
             this.PnlBottom.Controls.Add(this.BtnAdd);
             this.PnlBottom.Controls.Add(this.BtnNew);
             this.PnlBottom.Controls.Add(this.dataNavigator1);
+            this.PnlBottom.Controls.Add(this.BtnEdit);
             this.PnlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.PnlBottom.Location = new System.Drawing.Point(0, 466);
             this.PnlBottom.Name = "PnlBottom";
@@ -1497,23 +1506,18 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmReadyItems_FormClosing);
             this.Load += new System.EventHandler(this.FrmReadyItems_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PnlTop)).EndInit();
-            this.PnlTop.ResumeLayout(false);
-            this.PnlTop.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CmbBuyerData.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CmbOwnerData.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtRegDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtRegDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtNote.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PnlMain)).EndInit();
-            this.PnlMain.ResumeLayout(false);
-            this.PnlMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainGridReadyItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BtnSelectItem)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PnlBottom)).EndInit();
-            this.PnlBottom.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManagerGrid)).EndInit();

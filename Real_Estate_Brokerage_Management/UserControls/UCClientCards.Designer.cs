@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition5 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition6 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCClientCards));
-            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification7 = new Telerik.RadToastNotificationManager.RadToastNotification();
-            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification8 = new Telerik.RadToastNotificationManager.RadToastNotification();
-            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification9 = new Telerik.RadToastNotificationManager.RadToastNotification();
+            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification1 = new Telerik.RadToastNotificationManager.RadToastNotification();
+            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification2 = new Telerik.RadToastNotificationManager.RadToastNotification();
+            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification3 = new Telerik.RadToastNotificationManager.RadToastNotification();
             this.materialTheme1 = new Telerik.WinControls.Themes.MaterialTheme();
             this.Txtnote = new Telerik.WinControls.UI.RadTextBox();
             this.Txtname = new Telerik.WinControls.UI.RadTextBox();
@@ -42,21 +42,21 @@
             this.radLabel19 = new Telerik.WinControls.UI.RadLabel();
             this.radPageView1 = new Telerik.WinControls.UI.RadPageView();
             this.PageHome = new Telerik.WinControls.UI.RadPageViewPage();
-            this.radCollapsiblePanel3 = new Telerik.WinControls.UI.RadCollapsiblePanel();
+            this.radCollapsiblePanelParenter2 = new Telerik.WinControls.UI.RadCollapsiblePanel();
             this.radTextBox4 = new Telerik.WinControls.UI.RadTextBox();
             this.radTextBox5 = new Telerik.WinControls.UI.RadTextBox();
             this.radTextBox6 = new Telerik.WinControls.UI.RadTextBox();
-            this.radCollapsiblePanel4 = new Telerik.WinControls.UI.RadCollapsiblePanel();
+            this.radCollapsiblePanelParenter3 = new Telerik.WinControls.UI.RadCollapsiblePanel();
             this.radTextBox7 = new Telerik.WinControls.UI.RadTextBox();
             this.radTextBox8 = new Telerik.WinControls.UI.RadTextBox();
             this.radTextBox9 = new Telerik.WinControls.UI.RadTextBox();
-            this.radCollapsiblePanel5 = new Telerik.WinControls.UI.RadCollapsiblePanel();
+            this.radCollapsiblePanelParenter4 = new Telerik.WinControls.UI.RadCollapsiblePanel();
             this.radTextBox10 = new Telerik.WinControls.UI.RadTextBox();
             this.radTextBox11 = new Telerik.WinControls.UI.RadTextBox();
             this.radTextBox12 = new Telerik.WinControls.UI.RadTextBox();
             this.radLabel8 = new Telerik.WinControls.UI.RadLabel();
             this.radCmbPlanGuid = new Telerik.WinControls.UI.RadMultiColumnComboBox();
-            this.radCollapsiblePanel1 = new Telerik.WinControls.UI.RadCollapsiblePanel();
+            this.radCollapsiblePanelParenter1 = new Telerik.WinControls.UI.RadCollapsiblePanel();
             this.radTextBox1 = new Telerik.WinControls.UI.RadTextBox();
             this.radTextBox2 = new Telerik.WinControls.UI.RadTextBox();
             this.radTextBox3 = new Telerik.WinControls.UI.RadTextBox();
@@ -149,21 +149,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.radPageView1)).BeginInit();
             this.radPageView1.SuspendLayout();
             this.PageHome.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radCollapsiblePanel3)).BeginInit();
-            this.radCollapsiblePanel3.PanelContainer.SuspendLayout();
-            this.radCollapsiblePanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radCollapsiblePanelParenter2)).BeginInit();
+            this.radCollapsiblePanelParenter2.PanelContainer.SuspendLayout();
+            this.radCollapsiblePanelParenter2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radCollapsiblePanel4)).BeginInit();
-            this.radCollapsiblePanel4.PanelContainer.SuspendLayout();
-            this.radCollapsiblePanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radCollapsiblePanelParenter3)).BeginInit();
+            this.radCollapsiblePanelParenter3.PanelContainer.SuspendLayout();
+            this.radCollapsiblePanelParenter3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radCollapsiblePanel5)).BeginInit();
-            this.radCollapsiblePanel5.PanelContainer.SuspendLayout();
-            this.radCollapsiblePanel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radCollapsiblePanelParenter4)).BeginInit();
+            this.radCollapsiblePanelParenter4.PanelContainer.SuspendLayout();
+            this.radCollapsiblePanelParenter4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox12)).BeginInit();
@@ -171,9 +171,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.radCmbPlanGuid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radCmbPlanGuid.EditorControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radCmbPlanGuid.EditorControl.MasterTemplate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radCollapsiblePanel1)).BeginInit();
-            this.radCollapsiblePanel1.PanelContainer.SuspendLayout();
-            this.radCollapsiblePanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radCollapsiblePanelParenter1)).BeginInit();
+            this.radCollapsiblePanelParenter1.PanelContainer.SuspendLayout();
+            this.radCollapsiblePanelParenter1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox3)).BeginInit();
@@ -218,7 +218,7 @@
             this.Txtnote.AutoScroll = true;
             this.Txtnote.EmbeddedLabelText = "الملاحظات ";
             this.Txtnote.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtnote.Location = new System.Drawing.Point(844, 353);
+            this.Txtnote.Location = new System.Drawing.Point(844, 415);
             this.Txtnote.Multiline = true;
             this.Txtnote.Name = "Txtnote";
             this.Txtnote.NullText = "ادخل الملاحظات إن وجد";
@@ -242,7 +242,7 @@
             this.Txtname.AutoScroll = true;
             this.Txtname.EmbeddedLabelText = "اسم العميل";
             this.Txtname.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtname.Location = new System.Drawing.Point(844, 161);
+            this.Txtname.Location = new System.Drawing.Point(844, 223);
             this.Txtname.Name = "Txtname";
             this.Txtname.NullText = "ادخل اسم العميل";
             this.Txtname.ReadOnly = true;
@@ -288,7 +288,7 @@
             this.radPageView1.Location = new System.Drawing.Point(0, 48);
             this.radPageView1.Name = "radPageView1";
             this.radPageView1.PageBackColor = System.Drawing.SystemColors.Control;
-            this.radPageView1.SelectedPage = this.PageAgent;
+            this.radPageView1.SelectedPage = this.PageHome;
             this.radPageView1.Size = new System.Drawing.Size(1177, 665);
             this.radPageView1.TabIndex = 72;
             this.radPageView1.ThemeName = "Material";
@@ -299,12 +299,12 @@
             // PageHome
             // 
             this.PageHome.AutoScroll = true;
-            this.PageHome.Controls.Add(this.radCollapsiblePanel3);
-            this.PageHome.Controls.Add(this.radCollapsiblePanel4);
-            this.PageHome.Controls.Add(this.radCollapsiblePanel5);
+            this.PageHome.Controls.Add(this.radCollapsiblePanelParenter2);
+            this.PageHome.Controls.Add(this.radCollapsiblePanelParenter3);
+            this.PageHome.Controls.Add(this.radCollapsiblePanelParenter4);
             this.PageHome.Controls.Add(this.radLabel8);
             this.PageHome.Controls.Add(this.radCmbPlanGuid);
-            this.PageHome.Controls.Add(this.radCollapsiblePanel1);
+            this.PageHome.Controls.Add(this.radCollapsiblePanelParenter1);
             this.PageHome.Controls.Add(this.radButton1);
             this.PageHome.Controls.Add(this.Txtlastaction);
             this.PageHome.Controls.Add(this.Txtvatid);
@@ -325,24 +325,25 @@
             this.PageHome.Text = "عام";
             this.PageHome.Title = "البيانات العامة لبطاقة الأرض";
             // 
-            // radCollapsiblePanel3
+            // radCollapsiblePanelParenter2
             // 
-            this.radCollapsiblePanel3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radCollapsiblePanel3.HeaderText = "بيانات الشريك الثاني";
-            this.radCollapsiblePanel3.IsExpanded = false;
-            this.radCollapsiblePanel3.Location = new System.Drawing.Point(3, 277);
-            this.radCollapsiblePanel3.Name = "radCollapsiblePanel3";
-            this.radCollapsiblePanel3.OwnerBoundsCache = new System.Drawing.Rectangle(3, 277, 315, 225);
+            this.radCollapsiblePanelParenter2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radCollapsiblePanelParenter2.HeaderText = "بيانات الشريك الثاني";
+            this.radCollapsiblePanelParenter2.IsExpanded = false;
+            this.radCollapsiblePanelParenter2.Location = new System.Drawing.Point(3, 277);
+            this.radCollapsiblePanelParenter2.Name = "radCollapsiblePanelParenter2";
+            this.radCollapsiblePanelParenter2.OwnerBoundsCache = new System.Drawing.Rectangle(3, 277, 315, 225);
             // 
-            // radCollapsiblePanel3.PanelContainer
+            // radCollapsiblePanelParenter2.PanelContainer
             // 
-            this.radCollapsiblePanel3.PanelContainer.Controls.Add(this.radTextBox4);
-            this.radCollapsiblePanel3.PanelContainer.Controls.Add(this.radTextBox5);
-            this.radCollapsiblePanel3.PanelContainer.Controls.Add(this.radTextBox6);
-            this.radCollapsiblePanel3.PanelContainer.Location = new System.Drawing.Point(18, 1);
-            this.radCollapsiblePanel3.PanelContainer.Size = new System.Drawing.Size(0, 0);
-            this.radCollapsiblePanel3.Size = new System.Drawing.Size(315, 25);
-            this.radCollapsiblePanel3.TabIndex = 1988;
+            this.radCollapsiblePanelParenter2.PanelContainer.Controls.Add(this.radTextBox4);
+            this.radCollapsiblePanelParenter2.PanelContainer.Controls.Add(this.radTextBox5);
+            this.radCollapsiblePanelParenter2.PanelContainer.Controls.Add(this.radTextBox6);
+            this.radCollapsiblePanelParenter2.PanelContainer.Location = new System.Drawing.Point(18, 1);
+            this.radCollapsiblePanelParenter2.PanelContainer.Size = new System.Drawing.Size(0, 0);
+            this.radCollapsiblePanelParenter2.Size = new System.Drawing.Size(315, 25);
+            this.radCollapsiblePanelParenter2.TabIndex = 1988;
+            this.radCollapsiblePanelParenter2.Visible = false;
             // 
             // radTextBox4
             // 
@@ -398,24 +399,25 @@
             this.radTextBox6.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
             this.radTextBox6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReadOnly_KeyPress);
             // 
-            // radCollapsiblePanel4
+            // radCollapsiblePanelParenter3
             // 
-            this.radCollapsiblePanel4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radCollapsiblePanel4.HeaderText = "بيانات الشريك الثالث";
-            this.radCollapsiblePanel4.IsExpanded = false;
-            this.radCollapsiblePanel4.Location = new System.Drawing.Point(3, 314);
-            this.radCollapsiblePanel4.Name = "radCollapsiblePanel4";
-            this.radCollapsiblePanel4.OwnerBoundsCache = new System.Drawing.Rectangle(3, 314, 315, 225);
+            this.radCollapsiblePanelParenter3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radCollapsiblePanelParenter3.HeaderText = "بيانات الشريك الثالث";
+            this.radCollapsiblePanelParenter3.IsExpanded = false;
+            this.radCollapsiblePanelParenter3.Location = new System.Drawing.Point(3, 314);
+            this.radCollapsiblePanelParenter3.Name = "radCollapsiblePanelParenter3";
+            this.radCollapsiblePanelParenter3.OwnerBoundsCache = new System.Drawing.Rectangle(3, 314, 315, 225);
             // 
-            // radCollapsiblePanel4.PanelContainer
+            // radCollapsiblePanelParenter3.PanelContainer
             // 
-            this.radCollapsiblePanel4.PanelContainer.Controls.Add(this.radTextBox7);
-            this.radCollapsiblePanel4.PanelContainer.Controls.Add(this.radTextBox8);
-            this.radCollapsiblePanel4.PanelContainer.Controls.Add(this.radTextBox9);
-            this.radCollapsiblePanel4.PanelContainer.Location = new System.Drawing.Point(18, 1);
-            this.radCollapsiblePanel4.PanelContainer.Size = new System.Drawing.Size(0, 0);
-            this.radCollapsiblePanel4.Size = new System.Drawing.Size(315, 25);
-            this.radCollapsiblePanel4.TabIndex = 1989;
+            this.radCollapsiblePanelParenter3.PanelContainer.Controls.Add(this.radTextBox7);
+            this.radCollapsiblePanelParenter3.PanelContainer.Controls.Add(this.radTextBox8);
+            this.radCollapsiblePanelParenter3.PanelContainer.Controls.Add(this.radTextBox9);
+            this.radCollapsiblePanelParenter3.PanelContainer.Location = new System.Drawing.Point(18, 1);
+            this.radCollapsiblePanelParenter3.PanelContainer.Size = new System.Drawing.Size(0, 0);
+            this.radCollapsiblePanelParenter3.Size = new System.Drawing.Size(315, 25);
+            this.radCollapsiblePanelParenter3.TabIndex = 1989;
+            this.radCollapsiblePanelParenter3.Visible = false;
             // 
             // radTextBox7
             // 
@@ -471,24 +473,25 @@
             this.radTextBox9.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
             this.radTextBox9.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReadOnly_KeyPress);
             // 
-            // radCollapsiblePanel5
+            // radCollapsiblePanelParenter4
             // 
-            this.radCollapsiblePanel5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radCollapsiblePanel5.HeaderText = "بيانات الشريك الرابع";
-            this.radCollapsiblePanel5.IsExpanded = false;
-            this.radCollapsiblePanel5.Location = new System.Drawing.Point(3, 351);
-            this.radCollapsiblePanel5.Name = "radCollapsiblePanel5";
-            this.radCollapsiblePanel5.OwnerBoundsCache = new System.Drawing.Rectangle(3, 351, 315, 225);
+            this.radCollapsiblePanelParenter4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radCollapsiblePanelParenter4.HeaderText = "بيانات الشريك الرابع";
+            this.radCollapsiblePanelParenter4.IsExpanded = false;
+            this.radCollapsiblePanelParenter4.Location = new System.Drawing.Point(3, 351);
+            this.radCollapsiblePanelParenter4.Name = "radCollapsiblePanelParenter4";
+            this.radCollapsiblePanelParenter4.OwnerBoundsCache = new System.Drawing.Rectangle(3, 351, 315, 225);
             // 
-            // radCollapsiblePanel5.PanelContainer
+            // radCollapsiblePanelParenter4.PanelContainer
             // 
-            this.radCollapsiblePanel5.PanelContainer.Controls.Add(this.radTextBox10);
-            this.radCollapsiblePanel5.PanelContainer.Controls.Add(this.radTextBox11);
-            this.radCollapsiblePanel5.PanelContainer.Controls.Add(this.radTextBox12);
-            this.radCollapsiblePanel5.PanelContainer.Location = new System.Drawing.Point(18, 1);
-            this.radCollapsiblePanel5.PanelContainer.Size = new System.Drawing.Size(0, 0);
-            this.radCollapsiblePanel5.Size = new System.Drawing.Size(315, 25);
-            this.radCollapsiblePanel5.TabIndex = 1990;
+            this.radCollapsiblePanelParenter4.PanelContainer.Controls.Add(this.radTextBox10);
+            this.radCollapsiblePanelParenter4.PanelContainer.Controls.Add(this.radTextBox11);
+            this.radCollapsiblePanelParenter4.PanelContainer.Controls.Add(this.radTextBox12);
+            this.radCollapsiblePanelParenter4.PanelContainer.Location = new System.Drawing.Point(18, 1);
+            this.radCollapsiblePanelParenter4.PanelContainer.Size = new System.Drawing.Size(0, 0);
+            this.radCollapsiblePanelParenter4.Size = new System.Drawing.Size(315, 25);
+            this.radCollapsiblePanelParenter4.TabIndex = 1990;
+            this.radCollapsiblePanelParenter4.Visible = false;
             // 
             // radTextBox10
             // 
@@ -546,11 +549,12 @@
             // 
             // radLabel8
             // 
+            this.radLabel8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.radLabel8.AutoSize = false;
             this.radLabel8.BackColor = System.Drawing.Color.White;
             this.radLabel8.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radLabel8.ForeColor = System.Drawing.Color.Gray;
-            this.radLabel8.Location = new System.Drawing.Point(533, 79);
+            this.radLabel8.Location = new System.Drawing.Point(1021, 146);
             this.radLabel8.Name = "radLabel8";
             this.radLabel8.Size = new System.Drawing.Size(128, 26);
             this.radLabel8.TabIndex = 1992;
@@ -561,6 +565,7 @@
             // 
             // radCmbPlanGuid
             // 
+            this.radCmbPlanGuid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.radCmbPlanGuid.AutoFilter = true;
             this.radCmbPlanGuid.AutoSizeDropDownHeight = true;
             this.radCmbPlanGuid.AutoSizeDropDownToBestFit = true;
@@ -581,7 +586,7 @@
             this.radCmbPlanGuid.EditorControl.MasterTemplate.EnableFiltering = true;
             this.radCmbPlanGuid.EditorControl.MasterTemplate.EnableGrouping = false;
             this.radCmbPlanGuid.EditorControl.MasterTemplate.ShowFilteringRow = false;
-            this.radCmbPlanGuid.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition5;
+            this.radCmbPlanGuid.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.radCmbPlanGuid.EditorControl.Name = "NestedRadGridView";
             this.radCmbPlanGuid.EditorControl.ReadOnly = true;
             this.radCmbPlanGuid.EditorControl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -589,7 +594,7 @@
             this.radCmbPlanGuid.EditorControl.Size = new System.Drawing.Size(240, 150);
             this.radCmbPlanGuid.EditorControl.TabIndex = 0;
             this.radCmbPlanGuid.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radCmbPlanGuid.Location = new System.Drawing.Point(533, 100);
+            this.radCmbPlanGuid.Location = new System.Drawing.Point(1021, 167);
             this.radCmbPlanGuid.Name = "radCmbPlanGuid";
             this.radCmbPlanGuid.NullText = "اختر المخطط";
             this.radCmbPlanGuid.Size = new System.Drawing.Size(128, 38);
@@ -598,21 +603,22 @@
             this.radCmbPlanGuid.ThemeName = "Material";
             this.radCmbPlanGuid.DropDownOpening += new Telerik.WinControls.UI.RadPopupOpeningEventHandler(this.CmbPlanGuid_DropDownOpening);
             // 
-            // radCollapsiblePanel1
+            // radCollapsiblePanelParenter1
             // 
-            this.radCollapsiblePanel1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radCollapsiblePanel1.HeaderText = "بيانات الشريك الأول";
-            this.radCollapsiblePanel1.Location = new System.Drawing.Point(3, 46);
-            this.radCollapsiblePanel1.Name = "radCollapsiblePanel1";
+            this.radCollapsiblePanelParenter1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radCollapsiblePanelParenter1.HeaderText = "بيانات الشريك الأول";
+            this.radCollapsiblePanelParenter1.Location = new System.Drawing.Point(3, 46);
+            this.radCollapsiblePanelParenter1.Name = "radCollapsiblePanelParenter1";
             // 
-            // radCollapsiblePanel1.PanelContainer
+            // radCollapsiblePanelParenter1.PanelContainer
             // 
-            this.radCollapsiblePanel1.PanelContainer.Controls.Add(this.radTextBox1);
-            this.radCollapsiblePanel1.PanelContainer.Controls.Add(this.radTextBox2);
-            this.radCollapsiblePanel1.PanelContainer.Controls.Add(this.radTextBox3);
-            this.radCollapsiblePanel1.PanelContainer.Size = new System.Drawing.Size(313, 193);
-            this.radCollapsiblePanel1.Size = new System.Drawing.Size(315, 225);
-            this.radCollapsiblePanel1.TabIndex = 1987;
+            this.radCollapsiblePanelParenter1.PanelContainer.Controls.Add(this.radTextBox1);
+            this.radCollapsiblePanelParenter1.PanelContainer.Controls.Add(this.radTextBox2);
+            this.radCollapsiblePanelParenter1.PanelContainer.Controls.Add(this.radTextBox3);
+            this.radCollapsiblePanelParenter1.PanelContainer.Size = new System.Drawing.Size(313, 193);
+            this.radCollapsiblePanelParenter1.Size = new System.Drawing.Size(315, 225);
+            this.radCollapsiblePanelParenter1.TabIndex = 1987;
+            this.radCollapsiblePanelParenter1.Visible = false;
             // 
             // radTextBox1
             // 
@@ -675,9 +681,11 @@
             this.radButton1.Name = "radButton1";
             this.radButton1.Size = new System.Drawing.Size(120, 36);
             this.radButton1.TabIndex = 1986;
+            this.radButton1.TabStop = false;
             this.radButton1.Text = "إضافة شريك";
             this.radButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.radButton1.ThemeName = "Material";
+            this.radButton1.Click += new System.EventHandler(this.BtnAddParenter_Click);
             // 
             // Txtlastaction
             // 
@@ -685,7 +693,7 @@
             this.Txtlastaction.AutoScroll = true;
             this.Txtlastaction.EmbeddedLabelText = "العملية الاخيرة";
             this.Txtlastaction.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtlastaction.Location = new System.Drawing.Point(533, 353);
+            this.Txtlastaction.Location = new System.Drawing.Point(533, 415);
             this.Txtlastaction.Multiline = true;
             this.Txtlastaction.Name = "Txtlastaction";
             this.Txtlastaction.ReadOnly = true;
@@ -709,7 +717,7 @@
             this.Txtvatid.AutoScroll = true;
             this.Txtvatid.EmbeddedLabelText = "الرقم الضريبي";
             this.Txtvatid.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtvatid.Location = new System.Drawing.Point(844, 289);
+            this.Txtvatid.Location = new System.Drawing.Point(844, 351);
             this.Txtvatid.Name = "Txtvatid";
             this.Txtvatid.NullText = "ادخل الرقم الضريبي";
             this.Txtvatid.ReadOnly = true;
@@ -728,7 +736,7 @@
             this.Txtemail.AutoScroll = true;
             this.Txtemail.EmbeddedLabelText = "البريد الإلكتروني";
             this.Txtemail.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtemail.Location = new System.Drawing.Point(533, 225);
+            this.Txtemail.Location = new System.Drawing.Point(533, 287);
             this.Txtemail.Name = "Txtemail";
             this.Txtemail.NullText = "ادخل البريد الإلكتروني";
             this.Txtemail.ReadOnly = true;
@@ -747,7 +755,7 @@
             this.Txtmobile.AutoScroll = true;
             this.Txtmobile.EmbeddedLabelText = "رقم الجوال";
             this.Txtmobile.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtmobile.Location = new System.Drawing.Point(844, 225);
+            this.Txtmobile.Location = new System.Drawing.Point(844, 287);
             this.Txtmobile.Name = "Txtmobile";
             this.Txtmobile.NullText = "ادخل رقم الجوال";
             this.Txtmobile.ReadOnly = true;
@@ -766,7 +774,7 @@
             this.Txtcivilid.AutoScroll = true;
             this.Txtcivilid.EmbeddedLabelText = "رقم الهوية";
             this.Txtcivilid.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtcivilid.Location = new System.Drawing.Point(533, 161);
+            this.Txtcivilid.Location = new System.Drawing.Point(533, 223);
             this.Txtcivilid.Name = "Txtcivilid";
             this.Txtcivilid.NullText = "ادخل رقم الهوية";
             this.Txtcivilid.ReadOnly = true;
@@ -848,7 +856,7 @@
             this.Txtpublicnumber.AutoScroll = true;
             this.Txtpublicnumber.EmbeddedLabelText = "رقم المعلن";
             this.Txtpublicnumber.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtpublicnumber.Location = new System.Drawing.Point(533, 289);
+            this.Txtpublicnumber.Location = new System.Drawing.Point(533, 351);
             this.Txtpublicnumber.Name = "Txtpublicnumber";
             this.Txtpublicnumber.NullText = "ادخل رقم المعلن";
             this.Txtpublicnumber.ReadOnly = true;
@@ -1011,7 +1019,7 @@
             this.radCollapsiblePanel2.PanelContainer.Controls.Add(this.Txtofficename);
             this.radCollapsiblePanel2.PanelContainer.Controls.Add(this.Txtofficephone);
             this.radCollapsiblePanel2.PanelContainer.Controls.Add(this.Txtofficecr);
-            this.radCollapsiblePanel2.PanelContainer.Size = new System.Drawing.Size(312, 387);
+            this.radCollapsiblePanel2.PanelContainer.Size = new System.Drawing.Size(310, 385);
             this.radCollapsiblePanel2.Size = new System.Drawing.Size(314, 427);
             this.radCollapsiblePanel2.TabIndex = 1989;
             // 
@@ -1166,7 +1174,7 @@
             this.DataGridAttachments.MasterTemplate.AllowEditRow = false;
             this.DataGridAttachments.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
             this.DataGridAttachments.MasterTemplate.EnableGrouping = false;
-            this.DataGridAttachments.MasterTemplate.ViewDefinition = tableViewDefinition6;
+            this.DataGridAttachments.MasterTemplate.ViewDefinition = tableViewDefinition2;
             this.DataGridAttachments.Name = "DataGridAttachments";
             this.DataGridAttachments.ShowGroupPanel = false;
             this.DataGridAttachments.ShowGroupPanelScrollbars = false;
@@ -1677,28 +1685,28 @@
             // 
             // radToastNotificationManager1
             // 
-            radToastNotification7.BindingData = null;
-            radToastNotification7.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
-            radToastNotification7.Name = "ToastNews1";
-            radToastNotification7.Tag = null;
-            radToastNotification7.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastNews;
-            radToastNotification7.Xml = null;
-            radToastNotification8.BindingData = null;
-            radToastNotification8.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
-            radToastNotification8.Name = "ToastLegacy1";
-            radToastNotification8.Tag = null;
-            radToastNotification8.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastLegacy;
-            radToastNotification8.Xml = null;
-            radToastNotification9.BindingData = null;
-            radToastNotification9.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
-            radToastNotification9.Name = "ToastGeneric1";
-            radToastNotification9.Tag = null;
-            radToastNotification9.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastGeneric;
-            radToastNotification9.Xml = "<toast>\n  <visual>\n    <binding template=\"ToastGeneric\"></binding>\n  </visual>\n</" +
+            radToastNotification1.BindingData = null;
+            radToastNotification1.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
+            radToastNotification1.Name = "ToastNews1";
+            radToastNotification1.Tag = null;
+            radToastNotification1.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastNews;
+            radToastNotification1.Xml = null;
+            radToastNotification2.BindingData = null;
+            radToastNotification2.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
+            radToastNotification2.Name = "ToastLegacy1";
+            radToastNotification2.Tag = null;
+            radToastNotification2.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastLegacy;
+            radToastNotification2.Xml = null;
+            radToastNotification3.BindingData = null;
+            radToastNotification3.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
+            radToastNotification3.Name = "ToastGeneric1";
+            radToastNotification3.Tag = null;
+            radToastNotification3.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastGeneric;
+            radToastNotification3.Xml = "<toast>\n  <visual>\n    <binding template=\"ToastGeneric\"></binding>\n  </visual>\n</" +
     "toast>";
-            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification7);
-            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification8);
-            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification9);
+            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification1);
+            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification2);
+            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification3);
             // 
             // radDesktopAlert1
             // 
@@ -1781,24 +1789,24 @@
             this.radPageView1.ResumeLayout(false);
             this.PageHome.ResumeLayout(false);
             this.PageHome.PerformLayout();
-            this.radCollapsiblePanel3.PanelContainer.ResumeLayout(false);
-            this.radCollapsiblePanel3.PanelContainer.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radCollapsiblePanel3)).EndInit();
-            this.radCollapsiblePanel3.ResumeLayout(false);
+            this.radCollapsiblePanelParenter2.PanelContainer.ResumeLayout(false);
+            this.radCollapsiblePanelParenter2.PanelContainer.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radCollapsiblePanelParenter2)).EndInit();
+            this.radCollapsiblePanelParenter2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox6)).EndInit();
-            this.radCollapsiblePanel4.PanelContainer.ResumeLayout(false);
-            this.radCollapsiblePanel4.PanelContainer.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radCollapsiblePanel4)).EndInit();
-            this.radCollapsiblePanel4.ResumeLayout(false);
+            this.radCollapsiblePanelParenter3.PanelContainer.ResumeLayout(false);
+            this.radCollapsiblePanelParenter3.PanelContainer.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radCollapsiblePanelParenter3)).EndInit();
+            this.radCollapsiblePanelParenter3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox9)).EndInit();
-            this.radCollapsiblePanel5.PanelContainer.ResumeLayout(false);
-            this.radCollapsiblePanel5.PanelContainer.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radCollapsiblePanel5)).EndInit();
-            this.radCollapsiblePanel5.ResumeLayout(false);
+            this.radCollapsiblePanelParenter4.PanelContainer.ResumeLayout(false);
+            this.radCollapsiblePanelParenter4.PanelContainer.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radCollapsiblePanelParenter4)).EndInit();
+            this.radCollapsiblePanelParenter4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox12)).EndInit();
@@ -1806,10 +1814,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.radCmbPlanGuid.EditorControl.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radCmbPlanGuid.EditorControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radCmbPlanGuid)).EndInit();
-            this.radCollapsiblePanel1.PanelContainer.ResumeLayout(false);
-            this.radCollapsiblePanel1.PanelContainer.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radCollapsiblePanel1)).EndInit();
-            this.radCollapsiblePanel1.ResumeLayout(false);
+            this.radCollapsiblePanelParenter1.PanelContainer.ResumeLayout(false);
+            this.radCollapsiblePanelParenter1.PanelContainer.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radCollapsiblePanelParenter1)).EndInit();
+            this.radCollapsiblePanelParenter1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox3)).EndInit();
@@ -1928,7 +1936,7 @@
         private Telerik.WinControls.UI.RadTextBox Txtlastaction;
         private Telerik.WinControls.UI.RadButton radButton1;
         private Telerik.WinControls.UI.RadTaskbarButton radTaskbarButton1;
-        private Telerik.WinControls.UI.RadCollapsiblePanel radCollapsiblePanel1;
+        private Telerik.WinControls.UI.RadCollapsiblePanel radCollapsiblePanelParenter1;
         private Telerik.WinControls.UI.RadPageViewPage PageAgent;
         private Telerik.WinControls.UI.RadCollapsiblePanel radCollapsiblePanel2;
         private Telerik.WinControls.UI.RadTextBox Txtagentvatid;
@@ -1947,15 +1955,15 @@
         private Telerik.WinControls.UI.RadTextBox radTextBox1;
         private Telerik.WinControls.UI.RadTextBox radTextBox2;
         private Telerik.WinControls.UI.RadTextBox radTextBox3;
-        private Telerik.WinControls.UI.RadCollapsiblePanel radCollapsiblePanel3;
+        private Telerik.WinControls.UI.RadCollapsiblePanel radCollapsiblePanelParenter2;
         private Telerik.WinControls.UI.RadTextBox radTextBox4;
         private Telerik.WinControls.UI.RadTextBox radTextBox5;
         private Telerik.WinControls.UI.RadTextBox radTextBox6;
-        private Telerik.WinControls.UI.RadCollapsiblePanel radCollapsiblePanel5;
+        private Telerik.WinControls.UI.RadCollapsiblePanel radCollapsiblePanelParenter4;
         private Telerik.WinControls.UI.RadTextBox radTextBox10;
         private Telerik.WinControls.UI.RadTextBox radTextBox11;
         private Telerik.WinControls.UI.RadTextBox radTextBox12;
-        private Telerik.WinControls.UI.RadCollapsiblePanel radCollapsiblePanel4;
+        private Telerik.WinControls.UI.RadCollapsiblePanel radCollapsiblePanelParenter3;
         private Telerik.WinControls.UI.RadTextBox radTextBox7;
         private Telerik.WinControls.UI.RadTextBox radTextBox8;
         private Telerik.WinControls.UI.RadTextBox radTextBox9;

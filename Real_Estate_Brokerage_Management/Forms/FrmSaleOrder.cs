@@ -40,6 +40,7 @@ using FastReport;
 using OfficeOpenXml.FormulaParsing.Excel.Functions.Text;
 using DoctorHelper.Helpers;
 using DoctorERP.Helpers;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.Numeric;
 
 
 namespace DoctorERP
@@ -53,6 +54,30 @@ namespace DoctorERP
         public WinformsDirtyTracking.DirtyTracker dirtytracker;
         bool isNew = false;
         tbLand land;
+        tbAgent Client = new tbAgent();
+
+        public FrmSaleOrder(Guid guid, bool isNew, tbAgent _Client)
+        {
+            InitializeComponent();
+
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+
+            dirtytracker = new WinformsDirtyTracking.DirtyTracker(this);
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+            this.guid = guid;
+
+            BtnEdit.Visible = true;
+            BtnAdd.Visible = false;
+
+            this.isNew = isNew;
+            Client = _Client;
+
+            InitReadyGrid();
+
+            FillCmb();
+
+
+        }
 
         public FrmSaleOrder(tbLand _land)
         {
@@ -120,6 +145,8 @@ namespace DoctorERP
                 FillLandInfo(0, land);
             }
 
+            TxtSelectBuyer.Tag = Client;
+            TxtSelectBuyer.Text = Client.name;
 
             dirtytracker.MarkAsClean();
         }
@@ -1617,6 +1644,11 @@ namespace DoctorERP
             }
             FrmBillHeader frm = new FrmBillHeader(Guid.Empty, true, 0, lstland);
             frm.Show(this);
+        }
+
+        private void TxtSelectBuyer_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

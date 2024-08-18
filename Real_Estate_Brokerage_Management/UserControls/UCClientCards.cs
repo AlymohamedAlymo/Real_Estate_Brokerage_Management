@@ -53,6 +53,12 @@ namespace DoctorERP.User_Controls
             MenuDeleteAttachment.Click += MenuDeleteAttachment_Click;
             BtnExportExcelData.Click -= BtnExportExcelData_Click;
             BtnExportExcelData.Click += BtnExportExcelData_Click;
+            BtnSaleOrder.Click -= MenuSaleOrder_Click;
+            BtnSaleOrder.Click += MenuSaleOrder_Click;
+            BtnContract.Click -= BtnContract_Click;
+            BtnContract.Click += BtnContract_Click;
+            BtnReservation.Click -= BtnReservation_Click;
+            BtnReservation.Click += BtnReservation_Click;
 
             RadFlyoutManager.FlyoutClosed -= this.RadFlyoutManager_FlyoutClosed;
             RadFlyoutManager.FlyoutClosed += this.RadFlyoutManager_FlyoutClosed;
@@ -276,7 +282,7 @@ namespace DoctorERP.User_Controls
             List<RadControl> NotUsedControls = new List<RadControl>()
             { Txtnumber, Txtlastaction };
             List<RadControl> ContainerControls = new List<RadControl>()
-            { radCollapsiblePanel1, radCollapsiblePanel3, radCollapsiblePanel4, radCollapsiblePanel5 };
+            { radCollapsiblePanelParenter1, radCollapsiblePanelParenter2, radCollapsiblePanelParenter3, radCollapsiblePanelParenter4 };
             List<RadPageViewPage> ContainerPage = new List<RadPageViewPage>()
             { PageHome, PageAgent };
 
@@ -424,6 +430,16 @@ namespace DoctorERP.User_Controls
                 Binding ControlBinding = new System.Windows.Forms.Binding(propertyName, Bs, dataMember, false);
                 control.DataBindings.Add(ControlBinding);
             }
+            foreach (RadControl control in PageAgent.Controls)
+            {
+                if (control.Name.StartsWith("rad")) { continue; }
+                control.DataBindings.Clear();
+                string dataMember = control.Name.Remove(0, 3);
+                string propertyName = control is RadSpinEditor ? "Value" : control is RadCheckBox ? "Checked"
+                    : control is RadMultiColumnComboBox ? "SelectedValue" : "Text";
+                Binding ControlBinding = new System.Windows.Forms.Binding(propertyName, Bs, dataMember, false);
+                control.DataBindings.Add(ControlBinding);
+            }
 
             radstatus.Text = "نشط";
 
@@ -463,6 +479,14 @@ namespace DoctorERP.User_Controls
         }
         private void FillBindingCurrentData(tbAgent Agent)
         {
+            if (Agent.note == "غير نشط")
+            {
+                BtnReservation.Text = "تنشيط";
+            }
+            else
+            {
+                BtnReservation.Text = "إلغاء التنشيط";
+            }
 
             FillDataGridAttachments(Agent.guid);
             BtnDelete.Enabled = true;
@@ -478,7 +502,8 @@ namespace DoctorERP.User_Controls
             BtnNew.Text = "حفظ";
             BtnNew.ScreenTip.Text = "حفظ بطاقة عميل جديدة";
             BtnNew.Image = Properties.Resources.BtnConform;
-            BtnReservation.Text = "حجز";
+            BtnReservation.Text = "تنشيط";
+            BtnReservation.Text = "تنشيط";
 
             FillDataGridAttachments(Guid.Empty);
             SetReadOnly(false);
@@ -497,8 +522,8 @@ namespace DoctorERP.User_Controls
                 if (control.Name.StartsWith("rad")) { continue; }
                 control.DataBindings.Clear();
             }
-            Txtnumber.Text = RadMenueTxtSearch.Text = (tbLand.GetMaxNumber("Number") + 1).ToString();
-            radstatus.Text = "تشط";
+            Txtnumber.Text = RadMenueTxtSearch.Text = (tbAgent.GetMaxNumber("Number") + 1).ToString();
+            radstatus.Text = "نشط";
             radCmbPlanGuid.SelectedValue = FrmMain.PlanGuid;
             Txtname.Focus();
         }
@@ -595,36 +620,35 @@ namespace DoctorERP.User_Controls
                 return false;
             }
 
+            Guid CurrentGuid = ((tbAgent)Bs.Current).guid;
+            tbAgent agent = tbAgent.lstData.Where(u => u.guid == CurrentGuid).FirstOrDefault();
 
-            tbAgent agent = new tbAgent
-            {
-                agencynumber = Txtagencynumber.Text,
-                agentcivilid = Txtagentcivilid.Text,
-                agentemail = Txtagentemail.Text,
-                agentmobile = Txtagentmobile.Text,
-                agentname = Txtagentname.Text,
-                agentpublicnumber = Txtagentpublicnumber.Text,
-                agenttype = AgentType,
-                agentvatid = Txtagentvatid.Text,
-                civilid = Txtcivilid.Text,
-                email = Txtemail.Text,
-                lastaction = "عملية إضافة" + " - بتاريخ  " + DateTime.Now.ToString("dd/MM/yyyy")
-                + " - الساعة  " + DateTime.Now.ToString("hh:mm tt") + " - عن طريق المستخدم  " + FrmMain.CurrentUser.name,
-                mobile = Txtmobile.Text,
-                name = Txtname.Text,
-                note = Txtnote.Text,
-                officecr = Txtofficecr.Text,
-                officeemail = Txtofficeemail.Text,
-                officename = Txtofficename.Text,
-                officephone = Txtofficephone.Text,
-                officepublicnumber = Txtofficepublicnumber.Text,
-                officevatid = Txtofficevatid.Text,
-                publicnumber = Txtpublicnumber.Text,
-                vatid = Txtvatid.Text,
+            agent.agencynumber = Txtagencynumber.Text;
+            agent.agentcivilid = Txtagentcivilid.Text;
+            agent.agentemail = Txtagentemail.Text;
+            agent.agentmobile = Txtagentmobile.Text;
+            agent.agentname = Txtagentname.Text;
+            agent.agentpublicnumber = Txtagentpublicnumber.Text;
+            agent.agenttype = AgentType;
+            agent.agentvatid = Txtagentvatid.Text;
+            agent.civilid = Txtcivilid.Text;
+            agent.email = Txtemail.Text;
+            agent.lastaction = "عملية إضافة" + " - بتاريخ  " + DateTime.Now.ToString("dd/MM/yyyy")
+            + " - الساعة  " + DateTime.Now.ToString("hh:mm tt") + " - عن طريق المستخدم  " + FrmMain.CurrentUser.name;
+            agent.mobile = Txtmobile.Text;
+            agent.name = Txtname.Text;
+            agent.note = Txtnote.Text;
+            agent.officecr = Txtofficecr.Text;
+            agent.officeemail = Txtofficeemail.Text;
+                agent.officename = Txtofficename.Text;
+            agent.officephone = Txtofficephone.Text;
+            agent.officepublicnumber = Txtofficepublicnumber.Text;
+            agent.officevatid = Txtofficevatid.Text;
+            agent.publicnumber = Txtpublicnumber.Text;
+            agent.vatid = Txtvatid.Text;
 
-            };
 
-            //land.planguid = tbPlanInfo.lstData.Where(u => u.name == CmbPlanGuid.Text).FirstOrDefault().guid;
+            //Agent.planguid = tbPlanInfo.lstData.Where(u => u.name == CmbPlanGuid.Text).FirstOrDefault().guid;
 
             DBConnect.StartTransAction();
             AddAttachments(agent.guid);
@@ -730,15 +754,46 @@ namespace DoctorERP.User_Controls
         private void Txtstatus_TextChanged(object sender, EventArgs e)
         {
             if (radstatus.Text == "نشط") { radstatus.BackColor = Color.FromArgb(0, 255, 1); }
-            //else if (Txtstatus.Text == "مباع") { Txtstatus.BackColor = Color.FromArgb(254, 0, 0); }
-            //else if (Txtstatus.Text == "محجوز") { Txtstatus.BackColor = Color.FromArgb(255, 255, 0); }
+            else if (radstatus.Text == "غير نشط") { radstatus.BackColor = Color.FromArgb(254, 0, 0); }
+            else if (radstatus.Text == "محجوز") { radstatus.BackColor = Color.FromArgb(255, 255, 0); }
         }
 
         private void RadFlyoutManager_FlyoutClosed(FlyoutClosedEventArgs e)
         {
             Action action = new Action(() =>
             {
-                if (e.Content is FlyoutEmailContent)
+                if (e.Content is FlyoutReserveContent)
+                {
+                    RadCallout callout = new RadCallout();
+                    callout.ArrowDirection = Telerik.WinControls.ArrowDirection.Up;
+
+                    FlyoutReserveContent content = e.Content as FlyoutReserveContent;
+                    if (content != null)
+                    {
+                        tbAgent Agent = (tbAgent)Bs.Current;
+                        if (content.Result == DialogResult.OK)
+                        {
+                            DBConnect.StartTransAction();
+                            radstatus.Text = Agent.note = "غير نشط";
+                            BtnReservation.Text = "تنشيط";
+                            Agent.Update();
+                            if (DBConnect.CommitTransAction())
+                            {
+                                ShowDesktopAlert("تنشيط بطاقة عميل", "تنشيط بطاقة العميل", "تمت عملية تنشيط البطاقة بنجاح", "تم تنشيط بطاقة العميل يمكن القيام بالعمليات عليها الأن.");
+                                FrmMain.DataHasChanged = true;
+                            }
+
+                            string ReserveReason = $"{content.ReserveReason}";
+                            RadCallout.Show(callout, this.BtnReservation, $"عملية تنشيط بطاقة العميل بسبب{ReserveReason} تمت!", "تمت العملية بنجاح");
+                        }
+                        else
+                        {
+                            RadCallout.Show(callout, this.BtnReservation, "فشلت عملية تنشيط بطاقة العميل!", "فشلت العملية");
+                        }
+                    }
+
+                }
+                else if (e.Content is FlyoutEmailContent)
                 {
 
                     FlyoutEmailContent content = e.Content as FlyoutEmailContent;
@@ -755,14 +810,16 @@ namespace DoctorERP.User_Controls
                             {
                                 report.Prepare();
                                 FastReport.Export.Pdf.PDFExport export = new FastReport.Export.Pdf.PDFExport();
-                                report.Export(export, Application.ExecutablePath + "Agents.pdf");
+                                report.Export(export, Application.ExecutablePath + "Client.pdf");
+
+
                                 MemoryStream ms = new MemoryStream();
-                                using (FileStream file = new FileStream(Application.ExecutablePath + "Agents.pdf", FileMode.Open, FileAccess.Read))
+                                using (FileStream file = new FileStream(Application.ExecutablePath + "Client.pdf", FileMode.Open, FileAccess.Read))
                                     file.CopyTo(ms);
                                 DynamicAttachement dynamicAttachement = new DynamicAttachement
                                 {
                                     attachData = ms,
-                                    attachFileName = Application.ExecutablePath + "Agents.pdf"
+                                    attachFileName = Application.ExecutablePath + "Client.pdf"
                                 };
 
                                 tbAttachment tbAttachment = new tbAttachment();
@@ -772,11 +829,11 @@ namespace DoctorERP.User_Controls
 
                             }
 
-                            RadCallout.Show(callout, this.BtnEmailExport, $"لقد تم إرسال الملف Agents.pdf \n عبر الإيميل بنجاح", "تمت العملية");
+                            RadCallout.Show(callout, this.BtnEmailExport, $"لقد تم إرسال الملف Clients.pdf \n عبر الإيميل بنجاح", "تمت العملية");
                         }
                         else
                         {
-                            RadCallout.Show(callout, this.BtnReservation, "فشلت عملية حجز بطاقة العميل!", "فشلت العملية");
+                            RadCallout.Show(callout, this.BtnReservation, "فشلت عملية تنشيط بطاقة العميل!", "فشلت العملية");
                         }
                     }
                 }
@@ -896,6 +953,62 @@ namespace DoctorERP.User_Controls
             }
         }
 
+
+        private void MenuSaleOrder_Click(object sender, EventArgs e)
+        {
+            RadMenuItem toolmenu = (RadMenuItem)sender;
+            if (!Check(toolmenu.Text, "إنشاء أمر بيع", OperationType.OperationIs.Add)) { return; }
+            tbAgent client = (tbAgent)Bs.Current;
+            FrmSaleOrder frm = new FrmSaleOrder(Guid.Empty, true, client);
+            frm.Show(this);
+        }
+
+        private void BtnReservation_Click(object sender, EventArgs e)
+        {
+            RadMenuItem toolmenu = (RadMenuItem)sender;
+            if (!Check(toolmenu.Text, "تنشيط بطاقة العميل", OperationType.OperationIs.Edit)) { return; }
+            tbAgent Agent = (tbAgent)Bs.Current;
+            if (Agent.note.Equals("غير نشط"))
+            {
+                if (!MessageWarning("تنشيط بطاقة العميل", "هل أنت متأكد من تنشيط هذه البطاقة ؟", "إذا ضغط علي زر نعم سوف يتم تنشيط بطاقة العميل \n إذا ضغط علي لا سوف يتم تجاهل التغييرات"))
+                {
+                    return;
+                }
+
+                DBConnect.StartTransAction();
+                radstatus.Text = Agent.note = "نشط";
+                BtnReservation.Text = "إلغاء تنشيط";
+                Agent.note = string.Empty;
+                Agent.Update();
+                if (DBConnect.CommitTransAction())
+                {
+                    ShowDesktopAlert("تنشيط بطاقة العميل", "تمت العملية", "تمت عملية تنشيط بطاقة العميل بنجاح", "تم تنشيط بطاقة العميل لا يمكن القيام بالعمليات عليها الأن.");
+                    FrmMain.DataHasChanged = true;
+                }
+            }
+            else if (Agent.note.Equals("نشط"))
+            {
+                if (!MessageWarning("تنشيط بطاقة العميل", "هل أنت متأكد من إلغاء تنشيط هذه البطاقة ؟", "إذا ضغط علي زر نعم سوف يتم إلغاء تنشيط بطاقة العميل \n إذا ضغط علي لا سوف يتم تجاهل التغييرات"))
+                {
+                    return;
+                }
+                RadFlyoutManager.Show(this, typeof(FlyoutReserveContent));
+            }
+
+
+        }
+
+        private void BtnContract_Click(object sender, EventArgs e)
+        {
+            RadMenuItem toolmenu = (RadMenuItem)sender;
+            if (!Check(toolmenu.Text, "إنشاء عقد بيع", OperationType.OperationIs.Add)) { return; }
+            tbAgent client = (tbAgent)Bs.Current;
+            FrmBillHeader frm = new FrmBillHeader(Guid.Empty, true, 0, new List<tbLand>(), client);
+            frm.Show();
+
+        }
+
+
         private void BtnImport_Click(object sender, EventArgs e)
         {
             RadMenuItem toolmenu = (RadMenuItem)sender;
@@ -993,9 +1106,7 @@ namespace DoctorERP.User_Controls
                 if (sfd.ShowDialog() == DialogResult.OK)
                 {
                     report.Prepare();
-                    // create an instance of HTML export filter
                     FastReport.Export.Pdf.PDFExport export = new FastReport.Export.Pdf.PDFExport();
-                    // show the export options dialog and do the export
                     if (export.ShowDialog())
                         report.Export(export, sfd.FileName);
                 }
@@ -1053,7 +1164,6 @@ namespace DoctorERP.User_Controls
             if (Readyreport(report))
                 report.Print();
         }
-
         #endregion
 
 
@@ -1166,8 +1276,6 @@ namespace DoctorERP.User_Controls
 
         private void BtnAddAttachment_Click(object sender, EventArgs e)
         {
-            RadMenuItem toolmenu = (RadMenuItem)sender;
-            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Add)) { return; }
 
             OpenFileDialog opf = new OpenFileDialog
             {
@@ -1226,6 +1334,14 @@ namespace DoctorERP.User_Controls
             }
         }
 
+        private void BtnAddParenter_Click(object sender, EventArgs e)
+        {
+            if (!radCollapsiblePanelParenter1.Visible) { radCollapsiblePanelParenter1.Visible = true; }
+            if (radCollapsiblePanelParenter1.Visible) { radCollapsiblePanelParenter2.Visible = true; }
+            if (radCollapsiblePanelParenter2.Visible) { radCollapsiblePanelParenter3.Visible = true; }
+            if (radCollapsiblePanelParenter3.Visible) { radCollapsiblePanelParenter4.Visible = true; }
+
+        }
 
         private void MenuPreviewAttach_Click(object sender, EventArgs e)
         {

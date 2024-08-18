@@ -423,7 +423,6 @@ namespace DoctorERP.User_Controls
         #endregion
 
 
-
         #region Binding
         private void SetData()
         {
@@ -841,7 +840,6 @@ namespace DoctorERP.User_Controls
 
             CalcTotal();
         }
-
 
         private void Txtstatus_TextChanged(object sender, EventArgs e)
         {
@@ -1400,9 +1398,6 @@ namespace DoctorERP.User_Controls
 
         private void BtnAddAttachment_Click(object sender, EventArgs e)
         {
-            RadMenuItem toolmenu = (RadMenuItem)sender;
-            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Add)) { return; }
-
             OpenFileDialog opf = new OpenFileDialog
             {
                 RestoreDirectory = true,
