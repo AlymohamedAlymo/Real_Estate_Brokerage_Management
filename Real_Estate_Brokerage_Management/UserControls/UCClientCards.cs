@@ -426,6 +426,12 @@ namespace DoctorERP.User_Controls
 
             SetControlsDataBindings();
 
+            radCollapsiblePanelParenter1.Visible = false;
+            radCollapsiblePanelParenter2.Visible = false;
+            radCollapsiblePanelParenter3.Visible = false;
+            radCollapsiblePanelParenter4.Visible = false;
+
+
             if (IsNew) { BtnNew.PerformClick(); return; }
 
             if (!guid.Equals(Guid.Empty))
@@ -1217,11 +1223,10 @@ namespace DoctorERP.User_Controls
 
             tbAgent.Fill(Agent.guid);
 
-            tbAgent.Fill("agenttype", 0);
-
             tbPlanInfo.Fill();
             rpt.RegisterData(tbPlanInfo.dtData, "planinfodata");
             rpt.RegisterData(tbAgent.dtData, "ownerdata");
+            rpt.RegisterData(tbAgent.dtData, "agentdata");
 
 
 
@@ -1305,8 +1310,6 @@ namespace DoctorERP.User_Controls
 
         private void BtnAddAttachment_Click(object sender, EventArgs e)
         {
-            RadButton toolmenu = (RadButton)sender;
-            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Print, false)) { return; }
 
             OpenFileDialog opf = new OpenFileDialog
             {
@@ -1367,10 +1370,49 @@ namespace DoctorERP.User_Controls
 
         private void BtnAddParenter_Click(object sender, EventArgs e)
         {
-            if (!radCollapsiblePanelParenter1.Visible) { radCollapsiblePanelParenter1.Visible = true; return; }
-            if (radCollapsiblePanelParenter1.Visible) { radCollapsiblePanelParenter2.Visible = true; return; }
-            if (radCollapsiblePanelParenter2.Visible) { radCollapsiblePanelParenter3.Visible = true; return; }
-            if (radCollapsiblePanelParenter3.Visible) { radCollapsiblePanelParenter4.Visible = true; return; }
+            if (!IsDirty) 
+            {
+                RadCallout callout = new RadCallout
+                {
+                    ArrowType = Telerik.WinControls.UI.Callout.CalloutArrowType.Triangle,
+                    ArrowDirection = Telerik.WinControls.ArrowDirection.Right,
+                    AutoClose = true,
+                    CalloutType = Telerik.WinControls.UI.Callout.CalloutType.RoundedRectangle,
+                    DropShadow = true
+                };
+                RadControl cn = sender as RadControl;
+                RadCallout.Show(callout, cn, "لا يمكن تعديل بيانات البطاقة قبل الضغط علي زر تعديل أولاً", "تعديل البيانات", "ثم الضغط علي زر حفظ لحفظ التغييرات");
+                return;
+            }
+            if (!radCollapsiblePanelParenter1.Visible) 
+            { 
+                radCollapsiblePanelParenter1.IsExpanded = true; 
+                radCollapsiblePanelParenter1.Visible = true; 
+                return;
+            }
+            if ( radCollapsiblePanelParenter1.Visible && !radCollapsiblePanelParenter2.Visible) 
+            {
+                radCollapsiblePanelParenter2.IsExpanded = true;
+
+                radCollapsiblePanelParenter2.Visible = true;
+                return;
+            }
+            if (radCollapsiblePanelParenter2.Visible && !radCollapsiblePanelParenter3.Visible) 
+            {
+                radCollapsiblePanelParenter2.IsExpanded = false;
+                radCollapsiblePanelParenter3.IsExpanded = true;
+
+                radCollapsiblePanelParenter3.Visible = true; 
+                return;
+            }
+            if (radCollapsiblePanelParenter3.Visible) 
+            {
+                radCollapsiblePanelParenter3.IsExpanded = false;
+                radCollapsiblePanelParenter4.IsExpanded = true;
+
+                radCollapsiblePanelParenter4.Visible = true;
+                return;
+            }
 
         }
 

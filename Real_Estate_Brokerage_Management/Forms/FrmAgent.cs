@@ -479,7 +479,7 @@ namespace DoctorERP
 
             tbAgent.Fill(agent.guid);
 
-            tbAgent.Fill("agenttype", 0);
+            //tbAgent.Fill("agenttype", 0);
 
             tbPlanInfo.Fill();
             rpt.RegisterData(tbPlanInfo.dtData, "planinfodata");

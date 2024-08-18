@@ -1402,8 +1402,6 @@ namespace DoctorERP.User_Controls
 
         private void BtnAddAttachment_Click(object sender, EventArgs e)
         {
-            RadButton toolmenu = (RadButton)sender;
-            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Add, false)) { return; }
 
             OpenFileDialog opf = new OpenFileDialog
             {

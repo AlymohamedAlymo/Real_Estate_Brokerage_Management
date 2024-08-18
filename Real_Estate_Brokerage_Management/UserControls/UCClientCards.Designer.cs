@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition3 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition4 = new Telerik.WinControls.UI.TableViewDefinition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCClientCards));
-            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification1 = new Telerik.RadToastNotificationManager.RadToastNotification();
-            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification2 = new Telerik.RadToastNotificationManager.RadToastNotification();
-            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification3 = new Telerik.RadToastNotificationManager.RadToastNotification();
+            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification4 = new Telerik.RadToastNotificationManager.RadToastNotification();
+            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification5 = new Telerik.RadToastNotificationManager.RadToastNotification();
+            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification6 = new Telerik.RadToastNotificationManager.RadToastNotification();
             this.materialTheme1 = new Telerik.WinControls.Themes.MaterialTheme();
             this.Txtnote = new Telerik.WinControls.UI.RadTextBox();
             this.Txtname = new Telerik.WinControls.UI.RadTextBox();
@@ -288,7 +288,7 @@
             this.radPageView1.Location = new System.Drawing.Point(0, 48);
             this.radPageView1.Name = "radPageView1";
             this.radPageView1.PageBackColor = System.Drawing.SystemColors.Control;
-            this.radPageView1.SelectedPage = this.PageHome;
+            this.radPageView1.SelectedPage = this.PageAttachments;
             this.radPageView1.Size = new System.Drawing.Size(1177, 665);
             this.radPageView1.TabIndex = 72;
             this.radPageView1.ThemeName = "Material";
@@ -327,6 +327,8 @@
             // 
             // radCollapsiblePanelParenter2
             // 
+            this.radCollapsiblePanelParenter2.AnimationType = Telerik.WinControls.UI.CollapsiblePanelAnimationType.Slide;
+            this.radCollapsiblePanelParenter2.EnableAnimation = false;
             this.radCollapsiblePanelParenter2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radCollapsiblePanelParenter2.HeaderText = "بيانات الشريك الثاني";
             this.radCollapsiblePanelParenter2.IsExpanded = false;
@@ -401,6 +403,8 @@
             // 
             // radCollapsiblePanelParenter3
             // 
+            this.radCollapsiblePanelParenter3.AnimationType = Telerik.WinControls.UI.CollapsiblePanelAnimationType.Slide;
+            this.radCollapsiblePanelParenter3.EnableAnimation = false;
             this.radCollapsiblePanelParenter3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radCollapsiblePanelParenter3.HeaderText = "بيانات الشريك الثالث";
             this.radCollapsiblePanelParenter3.IsExpanded = false;
@@ -475,6 +479,8 @@
             // 
             // radCollapsiblePanelParenter4
             // 
+            this.radCollapsiblePanelParenter4.AnimationType = Telerik.WinControls.UI.CollapsiblePanelAnimationType.Slide;
+            this.radCollapsiblePanelParenter4.EnableAnimation = false;
             this.radCollapsiblePanelParenter4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radCollapsiblePanelParenter4.HeaderText = "بيانات الشريك الرابع";
             this.radCollapsiblePanelParenter4.IsExpanded = false;
@@ -586,7 +592,7 @@
             this.radCmbPlanGuid.EditorControl.MasterTemplate.EnableFiltering = true;
             this.radCmbPlanGuid.EditorControl.MasterTemplate.EnableGrouping = false;
             this.radCmbPlanGuid.EditorControl.MasterTemplate.ShowFilteringRow = false;
-            this.radCmbPlanGuid.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition1;
+            this.radCmbPlanGuid.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition3;
             this.radCmbPlanGuid.EditorControl.Name = "NestedRadGridView";
             this.radCmbPlanGuid.EditorControl.ReadOnly = true;
             this.radCmbPlanGuid.EditorControl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -605,6 +611,8 @@
             // 
             // radCollapsiblePanelParenter1
             // 
+            this.radCollapsiblePanelParenter1.AnimationType = Telerik.WinControls.UI.CollapsiblePanelAnimationType.Slide;
+            this.radCollapsiblePanelParenter1.EnableAnimation = false;
             this.radCollapsiblePanelParenter1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radCollapsiblePanelParenter1.HeaderText = "بيانات الشريك الأول";
             this.radCollapsiblePanelParenter1.Location = new System.Drawing.Point(3, 46);
@@ -1006,6 +1014,7 @@
             // 
             // radCollapsiblePanel2
             // 
+            this.radCollapsiblePanel2.AnimationType = Telerik.WinControls.UI.CollapsiblePanelAnimationType.Slide;
             this.radCollapsiblePanel2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radCollapsiblePanel2.HeaderText = "بيانات الموثق";
             this.radCollapsiblePanel2.Location = new System.Drawing.Point(16, 18);
@@ -1019,9 +1028,9 @@
             this.radCollapsiblePanel2.PanelContainer.Controls.Add(this.Txtofficename);
             this.radCollapsiblePanel2.PanelContainer.Controls.Add(this.Txtofficephone);
             this.radCollapsiblePanel2.PanelContainer.Controls.Add(this.Txtofficecr);
-            this.radCollapsiblePanel2.PanelContainer.Size = new System.Drawing.Size(308, 383);
+            this.radCollapsiblePanel2.PanelContainer.Size = new System.Drawing.Size(312, 387);
             this.radCollapsiblePanel2.Size = new System.Drawing.Size(314, 427);
-            this.radCollapsiblePanel2.TabIndex = 1989;
+            this.radCollapsiblePanel2.TabIndex = 14;
             // 
             // Txtofficevatid
             // 
@@ -1035,7 +1044,7 @@
             this.Txtofficevatid.ShowEmbeddedLabel = true;
             this.Txtofficevatid.ShowNullText = true;
             this.Txtofficevatid.Size = new System.Drawing.Size(305, 58);
-            this.Txtofficevatid.TabIndex = 18;
+            this.Txtofficevatid.TabIndex = 19;
             this.Txtofficevatid.ThemeName = "Material";
             this.Txtofficevatid.WordWrap = false;
             // 
@@ -1051,7 +1060,7 @@
             this.Txtofficepublicnumber.ShowEmbeddedLabel = true;
             this.Txtofficepublicnumber.ShowNullText = true;
             this.Txtofficepublicnumber.Size = new System.Drawing.Size(305, 58);
-            this.Txtofficepublicnumber.TabIndex = 19;
+            this.Txtofficepublicnumber.TabIndex = 20;
             this.Txtofficepublicnumber.ThemeName = "Material";
             this.Txtofficepublicnumber.WordWrap = false;
             // 
@@ -1067,7 +1076,7 @@
             this.Txtofficeemail.ShowEmbeddedLabel = true;
             this.Txtofficeemail.ShowNullText = true;
             this.Txtofficeemail.Size = new System.Drawing.Size(305, 58);
-            this.Txtofficeemail.TabIndex = 17;
+            this.Txtofficeemail.TabIndex = 18;
             this.Txtofficeemail.ThemeName = "Material";
             this.Txtofficeemail.WordWrap = false;
             // 
@@ -1083,7 +1092,7 @@
             this.Txtofficename.ShowEmbeddedLabel = true;
             this.Txtofficename.ShowNullText = true;
             this.Txtofficename.Size = new System.Drawing.Size(305, 58);
-            this.Txtofficename.TabIndex = 14;
+            this.Txtofficename.TabIndex = 15;
             this.Txtofficename.ThemeName = "Material";
             this.Txtofficename.WordWrap = false;
             // 
@@ -1099,7 +1108,7 @@
             this.Txtofficephone.ShowEmbeddedLabel = true;
             this.Txtofficephone.ShowNullText = true;
             this.Txtofficephone.Size = new System.Drawing.Size(305, 58);
-            this.Txtofficephone.TabIndex = 16;
+            this.Txtofficephone.TabIndex = 17;
             this.Txtofficephone.ThemeName = "Material";
             this.Txtofficephone.WordWrap = false;
             // 
@@ -1115,7 +1124,7 @@
             this.Txtofficecr.ShowEmbeddedLabel = true;
             this.Txtofficecr.ShowNullText = true;
             this.Txtofficecr.Size = new System.Drawing.Size(305, 58);
-            this.Txtofficecr.TabIndex = 15;
+            this.Txtofficecr.TabIndex = 16;
             this.Txtofficecr.ThemeName = "Material";
             this.Txtofficecr.WordWrap = false;
             // 
@@ -1174,7 +1183,7 @@
             this.DataGridAttachments.MasterTemplate.AllowEditRow = false;
             this.DataGridAttachments.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
             this.DataGridAttachments.MasterTemplate.EnableGrouping = false;
-            this.DataGridAttachments.MasterTemplate.ViewDefinition = tableViewDefinition2;
+            this.DataGridAttachments.MasterTemplate.ViewDefinition = tableViewDefinition4;
             this.DataGridAttachments.Name = "DataGridAttachments";
             this.DataGridAttachments.ShowGroupPanel = false;
             this.DataGridAttachments.ShowGroupPanelScrollbars = false;
@@ -1685,28 +1694,28 @@
             // 
             // radToastNotificationManager1
             // 
-            radToastNotification1.BindingData = null;
-            radToastNotification1.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
-            radToastNotification1.Name = "ToastNews1";
-            radToastNotification1.Tag = null;
-            radToastNotification1.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastNews;
-            radToastNotification1.Xml = null;
-            radToastNotification2.BindingData = null;
-            radToastNotification2.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
-            radToastNotification2.Name = "ToastLegacy1";
-            radToastNotification2.Tag = null;
-            radToastNotification2.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastLegacy;
-            radToastNotification2.Xml = null;
-            radToastNotification3.BindingData = null;
-            radToastNotification3.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
-            radToastNotification3.Name = "ToastGeneric1";
-            radToastNotification3.Tag = null;
-            radToastNotification3.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastGeneric;
-            radToastNotification3.Xml = "<toast>\n  <visual>\n    <binding template=\"ToastGeneric\"></binding>\n  </visual>\n</" +
+            radToastNotification4.BindingData = null;
+            radToastNotification4.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
+            radToastNotification4.Name = "ToastNews1";
+            radToastNotification4.Tag = null;
+            radToastNotification4.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastNews;
+            radToastNotification4.Xml = null;
+            radToastNotification5.BindingData = null;
+            radToastNotification5.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
+            radToastNotification5.Name = "ToastLegacy1";
+            radToastNotification5.Tag = null;
+            radToastNotification5.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastLegacy;
+            radToastNotification5.Xml = null;
+            radToastNotification6.BindingData = null;
+            radToastNotification6.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
+            radToastNotification6.Name = "ToastGeneric1";
+            radToastNotification6.Tag = null;
+            radToastNotification6.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastGeneric;
+            radToastNotification6.Xml = "<toast>\n  <visual>\n    <binding template=\"ToastGeneric\"></binding>\n  </visual>\n</" +
     "toast>";
-            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification1);
-            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification2);
-            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification3);
+            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification4);
+            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification5);
+            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification6);
             // 
             // radDesktopAlert1
             // 
