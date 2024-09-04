@@ -1,14 +1,17 @@
 ﻿using DoctorERP.CustomElements;
 using DoctorERP.Helpers;
 using DoctorHelper.Helpers;
+using Helper.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 using Telerik.WinControls;
 using Telerik.WinControls.UI;
+using Telerik.WinControls.UI.Localization;
 using Telerik.WinControls.UI.SplashScreen;
 
 namespace DoctorERP.User_Controls
@@ -25,7 +28,31 @@ namespace DoctorERP.User_Controls
 
         public UCClientCards(Guid _guid, bool _IsNew, int _AgentType, bool _AddFromSelect)
         {
+
+
+            System.Globalization.CultureInfo cultureInfo = new System.Globalization.CultureInfo("ar-EG");
+            cultureInfo.DateTimeFormat.DayNames = new string[7]{
+                "السبت",
+                "الأحد",
+                "الاثنين",
+                "الثلاثاء",
+                "الاربعاء",
+                "الخميس",
+                "الجمعة"};
+
+            Thread.CurrentThread.CurrentCulture = cultureInfo;
+            Thread.CurrentThread.CurrentUICulture = cultureInfo;
+
+
+
             InitializeComponent();
+            this.Size = new Size(Screen.FromControl(this).Bounds.Width, Screen.FromControl(this).Bounds.Height);
+
+            RadGridLocalizationProvider.CurrentProvider = new MyArabicRadGridLocalizationProvider();
+            GridViewReport.TableElement.UpdateView();
+            DataGridAttachments.TableElement.UpdateView();
+
+
             #region Initialize
 
             BtnSentToPrinter.Click -= BtnPrint_Click;
@@ -66,7 +93,7 @@ namespace DoctorERP.User_Controls
             Txtnumber.TextAlignment = ContentAlignment.MiddleCenter;
             radstatus.TextAlignment = ContentAlignment.MiddleCenter;
             radDesktopAlert1.Popup.RootElement.RightToLeft = true;
-            radPageView1.RootElement.Children[0].Children[0].Children[0].Children[3].Visibility = ElementVisibility.Hidden;
+            //radPageView1.RootElement.Children[0].Children[0].Children[0].Children[3].Visibility = ElementVisibility.Hidden;
 
             List<CommandBarButton> radBarButton = new List<CommandBarButton> { BtnResfresh, BtnDelete, BtnNew, BtnEdit, BtnExit };
             foreach (CommandBarButton control in radBarButton)
@@ -116,6 +143,36 @@ namespace DoctorERP.User_Controls
             {
                 BindingNavigatorClient.Enabled = false;
 
+            }
+            this.MainContainer.PanelElement.PanelFill.Visibility = ElementVisibility.Hidden;
+            this.MainContainer.BackgroundImage = Properties.Resources.Background;
+            this.MainContainer.BackgroundImageLayout = ImageLayout.Stretch;
+
+            this.radPanel1.PanelElement.PanelFill.Visibility = ElementVisibility.Hidden;
+            this.radPanel1.BackgroundImage = Properties.Resources.Background;
+            this.radPanel1.BackgroundImageLayout = ImageLayout.Stretch;
+
+            this.radPanel2.PanelElement.PanelFill.Visibility = ElementVisibility.Hidden;
+            this.radPanel2.BackgroundImage = Properties.Resources.Background;
+            this.radPanel2.BackgroundImageLayout = ImageLayout.Stretch;
+
+            this.radPanel3.PanelElement.PanelFill.Visibility = ElementVisibility.Hidden;
+            this.radPanel3.BackgroundImage = Properties.Resources.Background;
+            this.radPanel3.BackgroundImageLayout = ImageLayout.Stretch;
+
+
+            this.DataGridAttachments.AutoGenerateHierarchy = true;
+            this.DataGridAttachments.TableElement.CellSpacing = 10;
+            this.DataGridAttachments.RootElement.EnableElementShadow = false;
+            this.DataGridAttachments.GridViewElement.DrawFill = false;
+            this.DataGridAttachments.TableElement.Margin = new Padding(15, 0, 15, 0);
+            this.DataGridAttachments.BackColor = Color.Transparent;
+            this.DataGridAttachments.GridViewElement.DrawFill = true;
+            this.DataGridAttachments.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;
+            foreach (GridViewDataColumn col in this.DataGridAttachments.Columns)
+            {
+                col.TextAlignment = ContentAlignment.MiddleCenter;
+                col.HeaderTextAlignment = ContentAlignment.MiddleCenter;
             }
 
 
@@ -432,6 +489,8 @@ namespace DoctorERP.User_Controls
             radCollapsiblePanelParenter4.Visible = false;
 
 
+            FillDataGridReport();
+
             if (IsNew) { BtnNew.PerformClick(); return; }
 
             if (!guid.Equals(Guid.Empty))
@@ -446,26 +505,42 @@ namespace DoctorERP.User_Controls
         }
         private void SetControlsDataBindings()
         {
-            List<RadControl> ContainerControls = new List<RadControl>()
-            { radCollapsiblePanel2 };
-            List<RadPageViewPage> ContainerPage = new List<RadPageViewPage>()
-            { PageHome, PageAgent };
+            //List<RadControl> ContainerControls = new List<RadControl>()
+            //{ radCollapsiblePanel2 };
+            //List<RadPageViewPage> ContainerPage = new List<RadPageViewPage>()
+            //{ PageAgent };
+            List<RadControl> MainContainerControls = new List<RadControl>()
+            {  MainContainer, radPanel1 };
 
-            foreach (RadControl collection in ContainerControls)
-            {
-                foreach (RadControl control in collection.Controls[0].Controls[0].Controls)
-                {
-                    if (control.Name.StartsWith("rad")) { continue; }
-                    control.DataBindings.Clear();
-                    string dataMember = control.Name.Remove(0, 3);
-                    string propertyName = control is RadSpinEditor ? "Value" : control is RadCheckBox ? "Checked"
-                        : control is RadMultiColumnComboBox ? "SelectedValue" : "Text";
-                    Binding ControlBinding = new System.Windows.Forms.Binding(propertyName, Bs, dataMember, false);
-                    control.DataBindings.Add(ControlBinding);
-                }
+            //foreach (RadControl collection in ContainerControls)
+            //{
+            //    foreach (RadControl control in collection.Controls[0].Controls[0].Controls)
+            //    {
+            //        if (control.Name.StartsWith("rad")) { continue; }
+            //        control.DataBindings.Clear();
+            //        string dataMember = control.Name.Remove(0, 3);
+            //        string propertyName = control is RadSpinEditor ? "Value" : control is RadCheckBox ? "Checked"
+            //            : control is RadMultiColumnComboBox ? "SelectedValue" : "Text";
+            //        Binding ControlBinding = new System.Windows.Forms.Binding(propertyName, Bs, dataMember, false);
+            //        control.DataBindings.Add(ControlBinding);
+            //    }
 
-            }
-            foreach (RadPageViewPage collection in ContainerPage)
+            //}
+            //foreach (RadPageViewPage collection in ContainerPage)
+            //{
+            //    foreach (RadControl control in collection.Controls)
+            //    {
+            //        if (control.Name.StartsWith("rad")) { continue; }
+            //        control.DataBindings.Clear();
+            //        string dataMember = control.Name.Remove(0, 3);
+            //        string propertyName = control is RadSpinEditor ? "Value" : control is RadCheckBox ? "Checked"
+            //            : control is RadMultiColumnComboBox ? "SelectedValue" : "Text";
+            //        Binding ControlBinding = new System.Windows.Forms.Binding(propertyName, Bs, dataMember, false);
+            //        control.DataBindings.Add(ControlBinding);
+            //    }
+
+            //}
+            foreach (RadControl collection in MainContainerControls)
             {
                 foreach (RadControl control in collection.Controls)
                 {
@@ -539,7 +614,7 @@ namespace DoctorERP.User_Controls
             FillDataGridAttachments(Guid.Empty);
             SetReadOnly(false);
 
-            foreach (RadControl control in PageHome.Controls)
+            foreach (RadControl control in MainContainer.Controls)
             {
                 if (control is RadSpinEditor spinEditor)
                 {
@@ -1240,6 +1315,23 @@ namespace DoctorERP.User_Controls
 
         #endregion
 
+        #region Report 
+        private void FillDataGridReport()
+        {
+            tbAgent.Fill();
+           GridViewReport.DataSource = tbAgent.dtData;
+            GridViewReport.BestFitColumns();
+            //DataGridAttachments.Columns[0].IsVisible = false;
+            //DataGridAttachments.Columns[1].IsVisible = false;
+
+            //DataGridAttachments.Columns[2].HeaderText = "الاسم";
+            //DataGridAttachments.Columns[3].HeaderText = "اسم الملف";
+            //DataGridAttachments.Columns[4].HeaderText = "الحجم";
+            //DataGridAttachments.Columns[5].HeaderText = "الملف";
+
+        }
+
+        #endregion
 
         #region Attach
 
@@ -1366,6 +1458,46 @@ namespace DoctorERP.User_Controls
             {
                 this.radContextMenuManager1.SetRadContextMenu(this.DataGridAttachments, null);
             }
+        }
+
+        private void commandBarLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PageHome_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void radPageView1_SelectedPageChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void idLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DataGridAttachments_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GridViewCars_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radPageViewPage1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void MainContainer_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
         private void BtnAddParenter_Click(object sender, EventArgs e)

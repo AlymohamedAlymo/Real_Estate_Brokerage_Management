@@ -314,6 +314,11 @@ namespace DoctorERP
 
             CompanyNameBarLabel.Text = tbVATSettings.lstData[0].CompanyName;
             CompanyNameLabel.Text = tbVATSettings.lstData[0].CompanyName;
+            if (PlanGuid != Guid.Empty)
+            {
+                PlanNameLabel.Text = "مخطط : \n"+ tbPlanInfo.lstData.Where(u => u.guid == PlanGuid).FirstOrDefault().name;
+
+            }
             SplitButtonUSER.Text = FrmMain.CurrentUser.name;
             LabelDataBase.Text = "قاعدة البيانات: " + DBConnect.DBConnection.Database;
             LabelServer.Text = "المخدم: " + DBConnect.DBConnection.DataSource;

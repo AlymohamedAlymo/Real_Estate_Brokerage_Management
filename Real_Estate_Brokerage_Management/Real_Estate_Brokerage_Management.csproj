@@ -62,6 +62,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Deve Tools\CSharp\DataGridFilter\DgvFilterPopup_src_VS2008\DgvFilterPopup\bin\Debug\DgvFilterPopup.dll</HintPath>
     </Reference>
+    <Reference Include="DoctorHelper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Helper\bin\Debug\DoctorHelper.dll</HintPath>
+    </Reference>
     <Reference Include="Dynamsoft.Forms.Viewer">
       <HintPath>..\..\The Prophetic Medicine\The Prophetic Medicine\bin\Debug\Dynamsoft.Forms.Viewer.dll</HintPath>
     </Reference>
@@ -1263,12 +1267,6 @@
     <None Include="Resources\calc.png" />
     <None Include="Resources\Restore.sql" />
     <None Include="Resources\db.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Helper\DoctorHelper.csproj">
-      <Project>{a61e2475-f9bf-40d9-8519-217497c625f5}</Project>
-      <Name>DoctorHelper</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

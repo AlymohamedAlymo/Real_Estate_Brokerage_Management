@@ -68,6 +68,7 @@ namespace DoctorERP
             this.radRadioButton1 = new Telerik.WinControls.UI.RadRadioButton();
             this.RBallLands = new Telerik.WinControls.UI.RadRadioButton();
             this.bubbleBar1 = new DoctorERP.CustomElements.BubbleBar();
+            this.PlanNameLabel = new System.Windows.Forms.Label();
             this.BtnAgentCard = new Telerik.WinControls.UI.RadButtonElement();
             this.BtnSalesBill = new Telerik.WinControls.UI.RadButtonElement();
             this.BtnPayContract = new Telerik.WinControls.UI.RadButtonElement();
@@ -207,6 +208,7 @@ namespace DoctorERP
             ((System.ComponentModel.ISupportInitialize)(this.radRadioButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RBallLands)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bubbleBar1)).BeginInit();
+            this.bubbleBar1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicLogo)).BeginInit();
@@ -381,16 +383,16 @@ namespace DoctorERP
             ((Telerik.WinControls.UI.RadPageViewStripElement)(this.PageViewCardsHome.GetChildAt(0))).EnableElementShadow = true;
             ((Telerik.WinControls.UI.RadPageViewStripElement)(this.PageViewCardsHome.GetChildAt(0))).EnableRippleAnimation = true;
             ((Telerik.WinControls.UI.RadPageViewStripElement)(this.PageViewCardsHome.GetChildAt(0))).CustomFont = "Roboto";
-            ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(0))).ToolTipText = "انتقل الي الصفحة اليمني";
+            ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(0))).ToolTipText = "إغلاق الصفحات المفتوحة";
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(0))).Enabled = true;
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(0))).Visibility = Telerik.WinControls.ElementVisibility.Visible;
-            ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(1))).ToolTipText = "إغلاق الصفحات المفتوحة";
+            ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(1))).ToolTipText = "إغلاق جميع الصفحات المفتوحة";
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(1))).Enabled = true;
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(1))).Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(2))).ToolTipText = "إغلاق الصفحات المفتوحة";
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(2))).Enabled = false;
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(2))).Visibility = Telerik.WinControls.ElementVisibility.Visible;
-            ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(3))).ToolTipText = "إغلاق جميع الصفحات المفتوحة";
+            ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(3))).ToolTipText = "انتقل الي الصفحة اليمني";
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(3))).Enabled = false;
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(3))).Visibility = Telerik.WinControls.ElementVisibility.Visible;
             ((Telerik.WinControls.UI.RadPageViewLabelElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(2))).Text = "الرئيسية";
@@ -522,6 +524,7 @@ namespace DoctorERP
             // 
             this.bubbleBar1.AutoScroll = true;
             this.bubbleBar1.BackColor = System.Drawing.Color.Transparent;
+            this.bubbleBar1.Controls.Add(this.PlanNameLabel);
             this.bubbleBar1.Dock = System.Windows.Forms.DockStyle.Top;
             this.bubbleBar1.Element.AutoSizeMode = Telerik.WinControls.RadAutoSizeMode.WrapAroundChildren;
             this.bubbleBar1.Element.SerializeProperties = true;
@@ -554,6 +557,18 @@ namespace DoctorERP
             ((Telerik.WinControls.Primitives.FillPrimitive)(this.bubbleBar1.GetChildAt(0).GetChildAt(0))).GradientPercentage2 = 0.1F;
             ((Telerik.WinControls.Primitives.FillPrimitive)(this.bubbleBar1.GetChildAt(0).GetChildAt(0))).BackColor = System.Drawing.Color.Transparent;
             ((Telerik.WinControls.Primitives.BorderPrimitive)(this.bubbleBar1.GetChildAt(0).GetChildAt(1))).ForeColor = System.Drawing.Color.Transparent;
+            // 
+            // PlanNameLabel
+            // 
+            this.PlanNameLabel.BackColor = System.Drawing.Color.Transparent;
+            this.PlanNameLabel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.PlanNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PlanNameLabel.Location = new System.Drawing.Point(0, 0);
+            this.PlanNameLabel.Name = "PlanNameLabel";
+            this.PlanNameLabel.Size = new System.Drawing.Size(117, 94);
+            this.PlanNameLabel.TabIndex = 26;
+            this.PlanNameLabel.Text = ".";
+            this.PlanNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // BtnAgentCard
             // 
@@ -1507,6 +1522,7 @@ namespace DoctorERP
             ((System.ComponentModel.ISupportInitialize)(this.radRadioButton1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RBallLands)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bubbleBar1)).EndInit();
+            this.bubbleBar1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).EndInit();
@@ -1683,6 +1699,7 @@ namespace DoctorERP
         private System.Windows.Forms.Timer TmrStatic;
         private Telerik.WinControls.UI.RadMenuButtonItem BtnRefresh;
         private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement1;
+        private System.Windows.Forms.Label PlanNameLabel;
     }
 }
 
