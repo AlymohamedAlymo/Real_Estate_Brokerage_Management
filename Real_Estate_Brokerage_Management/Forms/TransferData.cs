@@ -16,8 +16,8 @@ namespace DoctorERP.Forms
 {
     public partial class TransferData : Form
     {
-        private static string InsertScript = global::DoctorERP.Properties.Resources.insert_into;
-        private static string UpdateScript = global::DoctorERP.Properties.Resources.UpdateDataBase;
+        private static string InsertScript = global::Real_Estate_Management.Properties.Resources.insert_into;
+        private static string UpdateScript = global::Real_Estate_Management.Properties.Resources.UpdateDataBase;
 
         public TransferData()
         {

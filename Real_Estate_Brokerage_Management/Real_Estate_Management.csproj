@@ -7,14 +7,14 @@
     <ProjectGuid>{878BC9B2-72BE-4548-86FB-98204E370A65}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DoctorERP</RootNamespace>
-    <AssemblyName>Real_Estate_Brokerage_Management</AssemblyName>
+    <RootNamespace>Real_Estate_Management</RootNamespace>
+    <AssemblyName>Real_Estate_Management</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -40,6 +40,9 @@
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ComponentFactory.Krypton.Design">
       <HintPath>..\..\..\Programing\Deve Tools\CSharp\Krypton\ComponentFactory.Krypton.Design.dll</HintPath>
@@ -62,10 +65,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Deve Tools\CSharp\DataGridFilter\DgvFilterPopup_src_VS2008\DgvFilterPopup\bin\Debug\DgvFilterPopup.dll</HintPath>
     </Reference>
-    <Reference Include="DoctorHelper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Helper\bin\Debug\DoctorHelper.dll</HintPath>
-    </Reference>
     <Reference Include="Dynamsoft.Forms.Viewer">
       <HintPath>..\..\The Prophetic Medicine\The Prophetic Medicine\bin\Debug\Dynamsoft.Forms.Viewer.dll</HintPath>
     </Reference>
@@ -77,6 +76,12 @@
     </Reference>
     <Reference Include="EasyBAL">
       <HintPath>..\..\..\Done\Easy BAL\Easy BAL\bin\Debug\EasyBAL.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="EPPlus">
       <HintPath>D:\Programing\Works and Projects\Done\ProPlus 1.0\accountant\bin\Debug\EPPlus.dll</HintPath>
@@ -167,6 +172,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.WebRequest" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -223,11 +229,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="almalqa2023abhaDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>almalqa2023abhaDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="CustomElements\Bubble Bar\BubbleBar.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -297,6 +298,53 @@
     <Compile Include="DAL\vwWorkFee.cs" />
     <Compile Include="DAL\vwWorkFeeVAT.cs" />
     <Compile Include="DAL\vwWorkFeeVatTotals.cs" />
+    <Compile Include="Data\fnAccountBalance_Result.cs">
+      <DependentUpon>Real_Estate_Management_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\fnDailySalesGrouped_Result.cs">
+      <DependentUpon>Real_Estate_Management_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\fnGetAgentData_Result.cs">
+      <DependentUpon>Real_Estate_Management_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\fnPaysGrouped_Result.cs">
+      <DependentUpon>Real_Estate_Management_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Real_Estate_Management_DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Real_Estate_Management_DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Real_Estate_Management_Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Real_Estate_Management_Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Real_Estate_Management_Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Real_Estate_Management_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Real_Estate_Management_Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Real_Estate_Management_Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\vwAccountBalance.cs">
+      <DependentUpon>Real_Estate_Management_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\vwDailSell.cs">
+      <DependentUpon>Real_Estate_Management_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\vwGeneralAccountLandSale.cs">
+      <DependentUpon>Real_Estate_Management_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\vwLandQty.cs">
+      <DependentUpon>Real_Estate_Management_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\vwLandTran.cs">
+      <DependentUpon>Real_Estate_Management_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmAccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -843,6 +891,12 @@
     <Compile Include="CustomElements\Flyout\FlyoutReserveContent.Designer.cs">
       <DependentUpon>FlyoutReserveContent.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UCLawyer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCLawyer.Designer.cs">
+      <DependentUpon>UCLawyer.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CustomElements\Flyout\FlyoutEmailContent.resx">
       <DependentUpon>FlyoutEmailContent.cs</DependentUpon>
     </EmbeddedResource>
@@ -1104,17 +1158,28 @@
     <EmbeddedResource Include="CustomElements\Flyout\FlyoutReserveContent.resx">
       <DependentUpon>FlyoutReserveContent.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="almalqa2023abhaDataSet.xsc">
-      <DependentUpon>almalqa2023abhaDataSet.xsd</DependentUpon>
+    <EmbeddedResource Include="UserControls\UCLawyer.resx">
+      <DependentUpon>UCLawyer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="Data\Real_Estate_Management_Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Real_Estate_Management_Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Data\Real_Estate_Management_DataSet.xsc">
+      <DependentUpon>Real_Estate_Management_DataSet.xsd</DependentUpon>
     </None>
-    <None Include="almalqa2023abhaDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>almalqa2023abhaDataSet.Designer.cs</LastGenOutput>
+    <None Include="Data\Real_Estate_Management_DataSet.xsd">
       <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Real_Estate_Management_DataSet.Designer.cs</LastGenOutput>
     </None>
-    <None Include="almalqa2023abhaDataSet.xss">
-      <DependentUpon>almalqa2023abhaDataSet.xsd</DependentUpon>
+    <None Include="Data\Real_Estate_Management_DataSet.xss">
+      <DependentUpon>Real_Estate_Management_DataSet.xsd</DependentUpon>
     </None>
+    <None Include="Data\Real_Estate_Management_Model.edmx.diagram">
+      <DependentUpon>Real_Estate_Management_Model.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -1131,6 +1196,16 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Data\Real_Estate_Management_Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Real_Estate_Management_Model.edmx</DependentUpon>
+      <LastGenOutput>Real_Estate_Management_Model.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data\Real_Estate_Management_Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Real_Estate_Management_Model.edmx</DependentUpon>
+      <LastGenOutput>Real_Estate_Management_Model.cs</LastGenOutput>
+    </Content>
     <Content Include="Map-icon.svg.ico" />
     <None Include="Resources\UpdateDataBase.sql" />
     <None Include="Resources\BtnDelete.png" />
@@ -1267,6 +1342,15 @@
     <None Include="Resources\calc.png" />
     <None Include="Resources\Restore.sql" />
     <None Include="Resources\db.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Helper\DoctorHelper.csproj">
+      <Project>{a61e2475-f9bf-40d9-8519-217497c625f5}</Project>
+      <Name>DoctorHelper</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DoctorERP.Properties {
+namespace Real_Estate_Management.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -31,6 +31,17 @@ namespace DoctorERP.Properties {
         public string dbConnectionString {
             get {
                 return ((string)(this["dbConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=test2024;Integrated Security=True;TrustServerCertif" +
+            "icate=True")]
+        public string test2024ConnectionString {
+            get {
+                return ((string)(this["test2024ConnectionString"]));
             }
         }
     }

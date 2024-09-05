@@ -7,13 +7,13 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 
-[assembly: AssemblyTitle("Real_Estate_Brokerage_Management")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("برنامج إدارة الإراضي و العقارات")]
+[assembly: AssemblyDescription("لصالح أستاذ سلطان")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Real_Estate_Brokerage_Management")]
-[assembly: AssemblyCopyright("Copyright Doctor ERP ©  2024")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCompany("تطوير علي محمد")]
+[assembly: AssemblyProduct("DoctorERP_v1_00_by_Aly_mo")]
+[assembly: AssemblyCopyright("Copyright ©Aly Mohamed  2024")]
+[assembly: AssemblyTrademark("DoctorERP_byAlyMo")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 

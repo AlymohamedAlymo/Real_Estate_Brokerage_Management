@@ -401,7 +401,7 @@
             // 
             // BtnSearch
             // 
-            this.BtnSearch.Image = global::DoctorERP.Properties.Resources.BtnSearch;
+            this.BtnSearch.Image = global::Real_Estate_Management.Properties.Resources.BtnSearch;
             this.BtnSearch.UniqueName = "E3BBAC1E54F946ADA49433CFF1391045";
             this.BtnSearch.Click += new System.EventHandler(this.BtnSearch_Click);
             // 

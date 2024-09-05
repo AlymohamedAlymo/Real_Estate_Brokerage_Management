@@ -307,7 +307,7 @@
             // BtnClearSearch
             // 
             this.BtnClearSearch.Edge = ComponentFactory.Krypton.Toolkit.PaletteRelativeEdgeAlign.Near;
-            this.BtnClearSearch.Image = global::DoctorERP.Properties.Resources.delete;
+            this.BtnClearSearch.Image = global::Real_Estate_Management.Properties.Resources.delete;
             this.BtnClearSearch.UniqueName = "2D4DFC044BD642233B9024686EFBFEF0";
             this.BtnClearSearch.Click += new System.EventHandler(this.BtnClearSearch_Click);
             // 

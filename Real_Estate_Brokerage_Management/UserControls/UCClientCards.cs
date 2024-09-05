@@ -145,19 +145,19 @@ namespace DoctorERP.User_Controls
 
             }
             this.MainContainer.PanelElement.PanelFill.Visibility = ElementVisibility.Hidden;
-            this.MainContainer.BackgroundImage = Properties.Resources.Background;
+            this.MainContainer.BackgroundImage = Real_Estate_Management.Properties.Resources.Background;
             this.MainContainer.BackgroundImageLayout = ImageLayout.Stretch;
 
             this.radPanel1.PanelElement.PanelFill.Visibility = ElementVisibility.Hidden;
-            this.radPanel1.BackgroundImage = Properties.Resources.Background;
+            this.radPanel1.BackgroundImage = Real_Estate_Management.Properties.Resources.Background;
             this.radPanel1.BackgroundImageLayout = ImageLayout.Stretch;
 
             this.radPanel2.PanelElement.PanelFill.Visibility = ElementVisibility.Hidden;
-            this.radPanel2.BackgroundImage = Properties.Resources.Background;
+            this.radPanel2.BackgroundImage = Real_Estate_Management.Properties.Resources.Background;
             this.radPanel2.BackgroundImageLayout = ImageLayout.Stretch;
 
             this.radPanel3.PanelElement.PanelFill.Visibility = ElementVisibility.Hidden;
-            this.radPanel3.BackgroundImage = Properties.Resources.Background;
+            this.radPanel3.BackgroundImage = Real_Estate_Management.Properties.Resources.Background;
             this.radPanel3.BackgroundImageLayout = ImageLayout.Stretch;
 
 
@@ -247,7 +247,7 @@ namespace DoctorERP.User_Controls
                 "\n" + ContentHighlight + "\n" +
                 "</span></b>" +
                 Footer;
-            radDesktopAlert1.ContentImage = Properties.Resources.information50;
+            radDesktopAlert1.ContentImage = Real_Estate_Management.Properties.Resources.information50;
             radDesktopAlert1.Opacity = 0.9f;
             radDesktopAlert1.Show();
 
@@ -420,7 +420,7 @@ namespace DoctorERP.User_Controls
                     Bs.MoveLast();
                     BtnNew.Text = "جديد";
                     BtnNew.ScreenTip.Text = "إضافة بطاقة عميل جديدة";
-                    BtnNew.Image = Properties.Resources.BtnAddNew;
+                    BtnNew.Image = Real_Estate_Management.Properties.Resources.BtnAddNew;
                     SetReadOnly(true);
                     IsProgrammatic = false;
                     IsDirty = false;
@@ -434,7 +434,7 @@ namespace DoctorERP.User_Controls
                     Bs.CancelEdit();
                     BtnEdit.Text = "تعديل";
                     BtnEdit.ScreenTip.Text = "تعديل بيانات بطاقة عميل";
-                    BtnEdit.Image = Properties.Resources.BtnEdite;
+                    BtnEdit.Image = Real_Estate_Management.Properties.Resources.BtnEdite;
                     BtnAttachment.Enabled = false;
                     BtnScanner.Enabled = false;
                     SetReadOnly(true);
@@ -607,7 +607,7 @@ namespace DoctorERP.User_Controls
             BtnEdit.Enabled = false;
             BtnNew.Text = "حفظ";
             BtnNew.ScreenTip.Text = "حفظ بطاقة عميل جديدة";
-            BtnNew.Image = Properties.Resources.BtnConform;
+            BtnNew.Image = Real_Estate_Management.Properties.Resources.BtnConform;
 
             BtnReservation.Text = "تنشيط";
 
@@ -974,7 +974,7 @@ namespace DoctorERP.User_Controls
 
                 BtnNew.Text = "حفظ";
                 BtnNew.ScreenTip.Text = "حفظ بطاقة العميل الجديدة";
-                BtnNew.Image = Properties.Resources.BtnConform;
+                BtnNew.Image = Real_Estate_Management.Properties.Resources.BtnConform;
                 BtnAttachment.Enabled = true;
                 BtnScanner.Enabled = true;
                 radPageView1.SelectedPage = PageHome;
@@ -989,7 +989,7 @@ namespace DoctorERP.User_Controls
                 Add();
                 BtnNew.Text = "جديد";
                 BtnNew.ScreenTip.Text = "إضافة بطاقة عميل جديدة";
-                BtnNew.Image = Properties.Resources.BtnAddNew;
+                BtnNew.Image = Real_Estate_Management.Properties.Resources.BtnAddNew;
                 BtnAttachment.Enabled = false;
                 BtnScanner.Enabled = false;
                 SetReadOnly(true);
@@ -1013,7 +1013,7 @@ namespace DoctorERP.User_Controls
 
                 BtnEdit.Text = "حفظ";
                 BtnEdit.ScreenTip.Text = "حفظ التعديلات";
-                BtnEdit.Image = Properties.Resources.BtnConform;
+                BtnEdit.Image = Real_Estate_Management.Properties.Resources.BtnConform;
                 BtnAttachment.Enabled = true;
                 BtnScanner.Enabled = true;
                 IsDirty = true;
@@ -1025,7 +1025,7 @@ namespace DoctorERP.User_Controls
                 Edit();
                 BtnEdit.Text = "تعديل";
                 BtnEdit.ScreenTip.Text = "تعديل بيانات بطاقة العميل";
-                BtnEdit.Image = Properties.Resources.BtnEdite;
+                BtnEdit.Image = Real_Estate_Management.Properties.Resources.BtnEdite;
                 BtnAttachment.Enabled = false;
                 BtnScanner.Enabled = false;
                 SetReadOnly(true);

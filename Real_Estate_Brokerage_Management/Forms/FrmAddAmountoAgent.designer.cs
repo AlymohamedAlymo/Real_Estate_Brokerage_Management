@@ -401,14 +401,14 @@
             // 
             // BtnSearch
             // 
-            this.BtnSearch.Image = global::DoctorERP.Properties.Resources.BtnSearch;
+            this.BtnSearch.Image = global::Real_Estate_Management.Properties.Resources.BtnSearch;
             this.BtnSearch.UniqueName = "E3BBAC1E54F946ADA49433CFF1391045";
             this.BtnSearch.Click += new System.EventHandler(this.BtnSeacrh_Click);
             // 
             // BtnShowCard
             // 
             this.BtnShowCard.Edge = ComponentFactory.Krypton.Toolkit.PaletteRelativeEdgeAlign.Near;
-            this.BtnShowCard.Image = global::DoctorERP.Properties.Resources.Card;
+            this.BtnShowCard.Image = global::Real_Estate_Management.Properties.Resources.Card;
             this.BtnShowCard.ToolTipBody = "إظهار البطاقة المختارة";
             this.BtnShowCard.ToolTipTitle = "شس";
             this.BtnShowCard.UniqueName = "B0CAF56D63214FFE058534D9E19E12F4";

@@ -56,7 +56,7 @@ Go
 
 DELETE FROM dataNew.[dbo].tbLand
 INSERT INTO dataNew.[dbo].tbLand
-SELECT (SELECT TOP(1) guid From dataOld.[dbo].tbPlanInfo),  *, ' ' FROM dataOld.[dbo].tbLand
+SELECT (SELECT TOP(1) [guid] From dataOld.[dbo].tbPlanInfo),  *, ' ' FROM dataOld.[dbo].tbLand
 Go
 
 DELETE FROM dataNew.[dbo].tbLandTrans

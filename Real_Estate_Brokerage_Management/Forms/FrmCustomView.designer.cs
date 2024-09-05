@@ -78,7 +78,7 @@
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.BtnMoveUp.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnMoveUp.TabIndex = 27;
-            this.BtnMoveUp.Values.Image = global::DoctorERP.Properties.Resources.up;
+            this.BtnMoveUp.Values.Image = global::Real_Estate_Management.Properties.Resources.up;
             this.BtnMoveUp.Values.Text = "";
             this.BtnMoveUp.Click += new System.EventHandler(this.BtnMoveUp_Click);
             // 
@@ -95,7 +95,7 @@
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.BtnMoveDown.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnMoveDown.TabIndex = 27;
-            this.BtnMoveDown.Values.Image = global::DoctorERP.Properties.Resources.down;
+            this.BtnMoveDown.Values.Image = global::Real_Estate_Management.Properties.Resources.down;
             this.BtnMoveDown.Values.Text = "";
             this.BtnMoveDown.Click += new System.EventHandler(this.BtnMoveDown_Click);
             // 

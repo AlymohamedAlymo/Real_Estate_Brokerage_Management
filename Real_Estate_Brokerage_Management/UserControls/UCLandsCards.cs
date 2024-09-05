@@ -193,7 +193,7 @@ namespace DoctorERP.User_Controls
                 "\n" + ContentHighlight + "\n" +
                 "</span></b>" +
                 Footer;
-            radDesktopAlert1.ContentImage = Properties.Resources.information50;
+            radDesktopAlert1.ContentImage = Real_Estate_Management.Properties.Resources.information50;
             radDesktopAlert1.Opacity = 0.9f;
             radDesktopAlert1.Show();
 
@@ -394,7 +394,7 @@ namespace DoctorERP.User_Controls
                     Bs.MoveLast();
                     BtnNew.Text = "جديد";
                     BtnNew.ScreenTip.Text = "إضافة بطاقة أرض جديدة";
-                    BtnNew.Image = Properties.Resources.BtnAddNew;
+                    BtnNew.Image = Real_Estate_Management.Properties.Resources.BtnAddNew;
                     SetReadOnly(true);
                     IsProgrammatic = false;
                     IsDirty = false;
@@ -408,7 +408,7 @@ namespace DoctorERP.User_Controls
                     Bs.CancelEdit();
                     BtnEdit.Text = "تعديل";
                     BtnEdit.ScreenTip.Text = "تعديل بيانات بطاقة الأرض";
-                    BtnEdit.Image = Properties.Resources.BtnEdite;
+                    BtnEdit.Image = Real_Estate_Management.Properties.Resources.BtnEdite;
                     BtnAttachment.Enabled = false;
                     BtnScanner.Enabled = false;
                     SetReadOnly(true);
@@ -532,7 +532,7 @@ namespace DoctorERP.User_Controls
             BtnEdit.Enabled = false;
             BtnNew.Text = "حفظ";
             BtnNew.ScreenTip.Text = "حفظ بطاقة الأرض الجديدة";
-            BtnNew.Image = Properties.Resources.BtnConform;
+            BtnNew.Image = Real_Estate_Management.Properties.Resources.BtnConform;
             Txtreservereason.Visible = false;
             BtnReservation.Text = "حجز";
 
@@ -1047,7 +1047,7 @@ namespace DoctorERP.User_Controls
 
                 BtnNew.Text = "حفظ";
                 BtnNew.ScreenTip.Text = "حفظ بطاقة الأرض الجديدة";
-                BtnNew.Image = Properties.Resources.BtnConform;
+                BtnNew.Image = Real_Estate_Management.Properties.Resources.BtnConform;
                 BtnAttachment.Enabled = true;
                 BtnScanner.Enabled = true;
                 radPageView1.SelectedPage = PageHome;
@@ -1062,7 +1062,7 @@ namespace DoctorERP.User_Controls
                 Add();
                 BtnNew.Text = "جديد";
                 BtnNew.ScreenTip.Text = "إضافة بطاقة أرض جديدة";
-                BtnNew.Image = Properties.Resources.BtnAddNew;
+                BtnNew.Image = Real_Estate_Management.Properties.Resources.BtnAddNew;
                 BtnAttachment.Enabled = false;
                 BtnScanner.Enabled = false;
                 SetReadOnly(true);
@@ -1086,7 +1086,7 @@ namespace DoctorERP.User_Controls
 
                 BtnEdit.Text = "حفظ";
                 BtnEdit.ScreenTip.Text = "حفظ التعديلات";
-                BtnEdit.Image = Properties.Resources.BtnConform;
+                BtnEdit.Image = Real_Estate_Management.Properties.Resources.BtnConform;
                 BtnAttachment.Enabled = true;
                 BtnScanner.Enabled = true;
                 IsDirty = true;
@@ -1099,7 +1099,7 @@ namespace DoctorERP.User_Controls
                 Edit();
                 BtnEdit.Text = "تعديل";
                 BtnEdit.ScreenTip.Text = "تعديل بيانات بطاقة الأرض";
-                BtnEdit.Image = Properties.Resources.BtnEdite;
+                BtnEdit.Image = Real_Estate_Management.Properties.Resources.BtnEdite;
                 BtnAttachment.Enabled = false;
                 BtnScanner.Enabled = false;
                 SetReadOnly(true);

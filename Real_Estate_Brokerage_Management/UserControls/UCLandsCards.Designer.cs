@@ -1642,7 +1642,7 @@
             this.BtnDelete.EnableHighlight = true;
             this.BtnDelete.EnableRippleAnimation = true;
             this.BtnDelete.Font = new System.Drawing.Font("Traditional Arabic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnDelete.Image = global::DoctorERP.Properties.Resources.BtnDelete;
+            this.BtnDelete.Image = global::Real_Estate_Management.Properties.Resources.BtnDelete;
             this.BtnDelete.Name = "BtnDelete";
             this.BtnDelete.Tag = "حذف البطاقة";
             this.BtnDelete.Text = "حذف";
@@ -1682,7 +1682,7 @@
             this.BtnSentToPrinter.CustomFont = "Roboto";
             this.BtnSentToPrinter.EnableRippleAnimation = true;
             this.BtnSentToPrinter.HintText = "";
-            this.BtnSentToPrinter.Image = global::DoctorERP.Properties.Resources.printer16;
+            this.BtnSentToPrinter.Image = global::Real_Estate_Management.Properties.Resources.printer16;
             this.BtnSentToPrinter.Name = "BtnSentToPrinter";
             this.BtnSentToPrinter.RightToLeft = true;
             this.BtnSentToPrinter.Tag = "إرسال بيانات البطاقة الي الطابعة";
@@ -1694,7 +1694,7 @@
             this.BtnPreview.CustomFont = "Roboto";
             this.BtnPreview.EnableRippleAnimation = true;
             this.BtnPreview.HintText = "";
-            this.BtnPreview.Image = global::DoctorERP.Properties.Resources.preview16;
+            this.BtnPreview.Image = global::Real_Estate_Management.Properties.Resources.preview16;
             this.BtnPreview.Name = "BtnPreview";
             this.BtnPreview.RightToLeft = true;
             this.BtnPreview.Tag = "معاينة الطباعة";
@@ -1706,7 +1706,7 @@
             this.BtnDesign.CustomFont = "Roboto";
             this.BtnDesign.EnableRippleAnimation = true;
             this.BtnDesign.HintText = "";
-            this.BtnDesign.Image = global::DoctorERP.Properties.Resources.BtnSketch_16;
+            this.BtnDesign.Image = global::Real_Estate_Management.Properties.Resources.BtnSketch_16;
             this.BtnDesign.Name = "BtnDesign";
             this.BtnDesign.RightToLeft = true;
             this.BtnDesign.Tag = "تغيير تصميم الطباعة";
@@ -1778,7 +1778,7 @@
             this.BtnNew.EnableHighlight = true;
             this.BtnNew.EnableRippleAnimation = true;
             this.BtnNew.Font = new System.Drawing.Font("Traditional Arabic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnNew.Image = global::DoctorERP.Properties.Resources.BtnAddNew;
+            this.BtnNew.Image = global::Real_Estate_Management.Properties.Resources.BtnAddNew;
             this.BtnNew.Name = "BtnNew";
             this.BtnNew.Tag = "إنشاء بطاقة جديدة";
             this.BtnNew.Text = "جديد";
@@ -1798,7 +1798,7 @@
             this.BtnEdit.EnableHighlight = true;
             this.BtnEdit.EnableRippleAnimation = true;
             this.BtnEdit.Font = new System.Drawing.Font("Traditional Arabic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEdit.Image = global::DoctorERP.Properties.Resources.BtnEdite;
+            this.BtnEdit.Image = global::Real_Estate_Management.Properties.Resources.BtnEdite;
             this.BtnEdit.Name = "BtnEdit";
             this.BtnEdit.Tag = "تعديل بيانات البطاقة";
             this.BtnEdit.Text = "تعديل";
@@ -1818,7 +1818,7 @@
             this.BtnExit.EnableHighlight = true;
             this.BtnExit.EnableRippleAnimation = true;
             this.BtnExit.Font = new System.Drawing.Font("Traditional Arabic", 14.25F, System.Drawing.FontStyle.Bold);
-            this.BtnExit.Image = global::DoctorERP.Properties.Resources.BtnExit;
+            this.BtnExit.Image = global::Real_Estate_Management.Properties.Resources.BtnExit;
             this.BtnExit.Name = "BtnExit";
             this.BtnExit.Tag = "تجاهل التغييرات و الخروج من الصفحة";
             this.BtnExit.Text = "خروج";

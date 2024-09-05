@@ -35,7 +35,6 @@ namespace DoctorERP
         {
 
             InitializeComponent();
-            this.Size = new System.Drawing.Size(1280, 1024);
             this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
 
             IsViewScreen = File.Exists(AppSetting.GetAppPath() + "settings.txt");
@@ -52,6 +51,10 @@ namespace DoctorERP
             Thread.CurrentThread.CurrentCulture = CultureAR;
             Thread.CurrentThread.CurrentUICulture = CultureAR;
 
+
+            this.Size = new System.Drawing.Size(Screen.FromControl(this).Bounds.Width, Screen.FromControl(this).Bounds.Height);
+
+
             ///* THeme ///////////////////////////////////////
 
             RadDropDownListElement themesDropDown = new RadDropDownListElement();
@@ -61,18 +64,18 @@ namespace DoctorERP
             themesDropDown.DropDownStyle = RadDropDownStyle.DropDownList;
             themesDropDown.Items.AddRange(new RadListDataItem[]
             {
-                new RadListDataItem("Material") { Image =   Properties.Resources.default_small },
-                new RadListDataItem("MaterialPink") { Image = Properties.Resources.pink_blue_small },
-                new RadListDataItem("MaterialTeal") { Image = Properties.Resources.teal_red_small },
-                new RadListDataItem("MaterialBlueGrey") { Image = Properties.Resources.blue_grey_green_small },
-                new RadListDataItem("Windows11") { Image = Properties.Resources.blue_grey_green_small },
-                new RadListDataItem("Windows8") { Image = Properties.Resources.windows8 },
-                new RadListDataItem("VisualStudio2022Light") { Image = Properties.Resources.blue_grey_green_small },
-                new RadListDataItem("Office2019Light") { Image = Properties.Resources.blue_grey_green_small },
-                new RadListDataItem("Fluent") { Image = Properties.Resources.fluent },
-                new RadListDataItem("TelerikMetro") { Image = Properties.Resources.telerik_metro },
-                new RadListDataItem("TelerikMetroBlue") { Image = Properties.Resources.fluent_dark },
-                new RadListDataItem("telerikMetroTouchTheme1") { Image = Properties.Resources.telerik_metro },
+                new RadListDataItem("Material") { Image =   Real_Estate_Management.Properties.Resources.default_small },
+                new RadListDataItem("MaterialPink") { Image = Real_Estate_Management.Properties.Resources.pink_blue_small },
+                new RadListDataItem("MaterialTeal") { Image = Real_Estate_Management.Properties.Resources.teal_red_small },
+                new RadListDataItem("MaterialBlueGrey") { Image = Real_Estate_Management.Properties.Resources.blue_grey_green_small },
+                new RadListDataItem("Windows11") { Image = Real_Estate_Management.Properties.Resources.blue_grey_green_small },
+                new RadListDataItem("Windows8") { Image = Real_Estate_Management.Properties.Resources.windows8 },
+                new RadListDataItem("VisualStudio2022Light") { Image = Real_Estate_Management.Properties.Resources.blue_grey_green_small },
+                new RadListDataItem("Office2019Light") { Image = Real_Estate_Management.Properties.Resources.blue_grey_green_small },
+                new RadListDataItem("Fluent") { Image = Real_Estate_Management.Properties.Resources.fluent },
+                new RadListDataItem("TelerikMetro") { Image = Real_Estate_Management.Properties.Resources.telerik_metro },
+                new RadListDataItem("TelerikMetroBlue") { Image = Real_Estate_Management.Properties.Resources.fluent_dark },
+                new RadListDataItem("telerikMetroTouchTheme1") { Image = Real_Estate_Management.Properties.Resources.telerik_metro },
 
             });
             
@@ -90,6 +93,9 @@ namespace DoctorERP
             ControlTraceMonitor.AnalyticsMonitor?.TrackAtomicFeature("ThemeChanged." + ThemeResolutionService.ApplicationThemeName);
             MenuTools.Items.Add(themesDropDown);
             ////////////////////////////////////////////////////////////
+
+
+
 
             RadPageViewStripItem item = this.radPageViewPage1.Item as RadPageViewStripItem;
             item.ButtonsPanel.CloseButton.Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
@@ -122,7 +128,7 @@ namespace DoctorERP
             this.LandsListView.ListViewElement.Padding = new System.Windows.Forms.Padding(15, 8, 8, 8);
 
             this.LandsListView.RootElement.EnableElementShadow = false;
-            this.overviewMainContainer.BackgroundImage = Properties.Resources.Background;
+            this.overviewMainContainer.BackgroundImage = Real_Estate_Management.Properties.Resources.Background;
             this.overviewMainContainer.BackgroundImageLayout = ImageLayout.Stretch;
             this.overviewMainContainer.PanelElement.PanelFill.Visibility = ElementVisibility.Collapsed;
             this.LandsListView.GroupItemSize = new System.Drawing.Size(0, 25);
@@ -367,9 +373,9 @@ namespace DoctorERP
             BtnSalesOrder.Text = string.Format("أمر بيع ({0})", totalorders);
 
             if (totalorders <= 0)
-                BtnSalesOrder.Image = global::DoctorERP.Properties.Resources.NoSalesOrder;
+                BtnSalesOrder.Image = global::Real_Estate_Management.Properties.Resources.NoSalesOrder;
             else
-                BtnSalesOrder.Image = global::DoctorERP.Properties.Resources.SalesOrder;
+                BtnSalesOrder.Image = global::Real_Estate_Management.Properties.Resources.SalesOrder;
             LoadLandData();
         }
 

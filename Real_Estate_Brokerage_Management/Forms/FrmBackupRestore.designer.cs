@@ -106,7 +106,7 @@
             // 
             // BtnPath
             // 
-            this.BtnPath.Image = global::DoctorERP.Properties.Resources.browse;
+            this.BtnPath.Image = global::Real_Estate_Management.Properties.Resources.browse;
             this.BtnPath.UniqueName = "A391E3F642E9431DB8BCC811EA9085C7";
             this.BtnPath.Click += new System.EventHandler(this.BtnPath_Click);
             // 

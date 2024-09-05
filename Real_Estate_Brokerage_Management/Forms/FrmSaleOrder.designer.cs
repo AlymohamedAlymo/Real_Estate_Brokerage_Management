@@ -241,14 +241,14 @@
             // BtnAddBuyer
             // 
             this.BtnAddBuyer.Edge = ComponentFactory.Krypton.Toolkit.PaletteRelativeEdgeAlign.Far;
-            this.BtnAddBuyer.Image = global::DoctorERP.Properties.Resources.add;
+            this.BtnAddBuyer.Image = global::Real_Estate_Management.Properties.Resources.add;
             this.BtnAddBuyer.UniqueName = "77FFB538B37047AF78B17F2D143A27C2";
             this.BtnAddBuyer.Click += new System.EventHandler(this.BtnAddBuyer_Click);
             // 
             // BtnShowBuyerCard
             // 
             this.BtnShowBuyerCard.Edge = ComponentFactory.Krypton.Toolkit.PaletteRelativeEdgeAlign.Far;
-            this.BtnShowBuyerCard.Image = global::DoctorERP.Properties.Resources.Card;
+            this.BtnShowBuyerCard.Image = global::Real_Estate_Management.Properties.Resources.Card;
             this.BtnShowBuyerCard.ToolTipBody = "إظهار البطاقة المختارة";
             this.BtnShowBuyerCard.ToolTipTitle = "شس";
             this.BtnShowBuyerCard.UniqueName = "B0CAF56D63214FFE058534D9E19E12F4";
@@ -257,7 +257,7 @@
             // BtnSearchBuyer
             // 
             this.BtnSearchBuyer.Edge = ComponentFactory.Krypton.Toolkit.PaletteRelativeEdgeAlign.Near;
-            this.BtnSearchBuyer.Image = global::DoctorERP.Properties.Resources.BtnSearch;
+            this.BtnSearchBuyer.Image = global::Real_Estate_Management.Properties.Resources.BtnSearch;
             this.BtnSearchBuyer.UniqueName = "E3BBAC1E54F946ADA49433CFF1391045";
             this.BtnSearchBuyer.Click += new System.EventHandler(this.BtnSeacrhBuyer_Click);
             // 

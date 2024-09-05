@@ -365,7 +365,7 @@ namespace DoctorERP
             // 
             // PageViewCardsHome
             // 
-            this.PageViewCardsHome.BackgroundImage = global::DoctorERP.Properties.Resources.Background;
+            this.PageViewCardsHome.BackgroundImage = global::Real_Estate_Management.Properties.Resources.Background;
             this.PageViewCardsHome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.PageViewCardsHome.Controls.Add(this.radPageViewPage1);
             this.PageViewCardsHome.DefaultPage = this.radPageViewPage1;
@@ -383,16 +383,16 @@ namespace DoctorERP
             ((Telerik.WinControls.UI.RadPageViewStripElement)(this.PageViewCardsHome.GetChildAt(0))).EnableElementShadow = true;
             ((Telerik.WinControls.UI.RadPageViewStripElement)(this.PageViewCardsHome.GetChildAt(0))).EnableRippleAnimation = true;
             ((Telerik.WinControls.UI.RadPageViewStripElement)(this.PageViewCardsHome.GetChildAt(0))).CustomFont = "Roboto";
-            ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(0))).ToolTipText = "إغلاق الصفحات المفتوحة";
+            ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(0))).ToolTipText = "إغلاق جميع الصفحات المفتوحة";
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(0))).Enabled = true;
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(0))).Visibility = Telerik.WinControls.ElementVisibility.Visible;
-            ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(1))).ToolTipText = "إغلاق جميع الصفحات المفتوحة";
+            ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(1))).ToolTipText = "إغلاق الصفحات المفتوحة";
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(1))).Enabled = true;
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(1))).Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
-            ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(2))).ToolTipText = "إغلاق الصفحات المفتوحة";
+            ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(2))).ToolTipText = "انتقل الي الصفحة اليمني";
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(2))).Enabled = false;
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(2))).Visibility = Telerik.WinControls.ElementVisibility.Visible;
-            ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(3))).ToolTipText = "انتقل الي الصفحة اليمني";
+            ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(3))).ToolTipText = "إغلاق الصفحات المفتوحة";
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(3))).Enabled = false;
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(3))).Visibility = Telerik.WinControls.ElementVisibility.Visible;
             ((Telerik.WinControls.UI.RadPageViewLabelElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(2))).Text = "الرئيسية";
@@ -575,7 +575,7 @@ namespace DoctorERP
             this.BtnAgentCard.BackColor = System.Drawing.Color.Transparent;
             this.BtnAgentCard.DisplayStyle = Telerik.WinControls.DisplayStyle.ImageAndText;
             this.BtnAgentCard.HighlightColor = System.Drawing.Color.Transparent;
-            this.BtnAgentCard.Image = global::DoctorERP.Properties.Resources.Agents;
+            this.BtnAgentCard.Image = global::Real_Estate_Management.Properties.Resources.Agents;
             this.BtnAgentCard.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
             this.BtnAgentCard.Name = "BtnAgentCard";
             this.BtnAgentCard.ShowBorder = false;
@@ -586,7 +586,7 @@ namespace DoctorERP
             // BtnSalesBill
             // 
             this.BtnSalesBill.BackColor = System.Drawing.Color.Transparent;
-            this.BtnSalesBill.Image = global::DoctorERP.Properties.Resources.Contracts;
+            this.BtnSalesBill.Image = global::Real_Estate_Management.Properties.Resources.Contracts;
             this.BtnSalesBill.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
             this.BtnSalesBill.Name = "BtnSalesBill";
             this.BtnSalesBill.ShowBorder = false;
@@ -597,7 +597,7 @@ namespace DoctorERP
             // BtnPayContract
             // 
             this.BtnPayContract.BackColor = System.Drawing.Color.Transparent;
-            this.BtnPayContract.Image = global::DoctorERP.Properties.Resources.payin;
+            this.BtnPayContract.Image = global::Real_Estate_Management.Properties.Resources.payin;
             this.BtnPayContract.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
             this.BtnPayContract.Name = "BtnPayContract";
             this.BtnPayContract.ShowBorder = false;
@@ -608,7 +608,7 @@ namespace DoctorERP
             // BtnCalc
             // 
             this.BtnCalc.BackColor = System.Drawing.Color.Transparent;
-            this.BtnCalc.Image = global::DoctorERP.Properties.Resources.calc;
+            this.BtnCalc.Image = global::Real_Estate_Management.Properties.Resources.calc;
             this.BtnCalc.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
             this.BtnCalc.Name = "BtnCalc";
             this.BtnCalc.ShowBorder = false;
@@ -619,7 +619,7 @@ namespace DoctorERP
             // BtnPlanInfoMap
             // 
             this.BtnPlanInfoMap.BackColor = System.Drawing.Color.Transparent;
-            this.BtnPlanInfoMap.Image = global::DoctorERP.Properties.Resources.map;
+            this.BtnPlanInfoMap.Image = global::Real_Estate_Management.Properties.Resources.map;
             this.BtnPlanInfoMap.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
             this.BtnPlanInfoMap.Name = "BtnPlanInfoMap";
             this.BtnPlanInfoMap.ShowBorder = false;
@@ -630,7 +630,7 @@ namespace DoctorERP
             // BtnPlanInfoArea
             // 
             this.BtnPlanInfoArea.BackColor = System.Drawing.Color.Transparent;
-            this.BtnPlanInfoArea.Image = global::DoctorERP.Properties.Resources.planinfoarea;
+            this.BtnPlanInfoArea.Image = global::Real_Estate_Management.Properties.Resources.planinfoarea;
             this.BtnPlanInfoArea.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
             this.BtnPlanInfoArea.Name = "BtnPlanInfoArea";
             this.BtnPlanInfoArea.ShowBorder = false;
@@ -641,7 +641,7 @@ namespace DoctorERP
             // BtnPlnInfoPrices
             // 
             this.BtnPlnInfoPrices.BackColor = System.Drawing.Color.Transparent;
-            this.BtnPlnInfoPrices.Image = global::DoctorERP.Properties.Resources.planinfoprices;
+            this.BtnPlnInfoPrices.Image = global::Real_Estate_Management.Properties.Resources.planinfoprices;
             this.BtnPlnInfoPrices.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
             this.BtnPlnInfoPrices.Name = "BtnPlnInfoPrices";
             this.BtnPlnInfoPrices.ShowBorder = false;
@@ -652,7 +652,7 @@ namespace DoctorERP
             // BtnOther
             // 
             this.BtnOther.BackColor = System.Drawing.Color.Transparent;
-            this.BtnOther.Image = global::DoctorERP.Properties.Resources.planinfoother;
+            this.BtnOther.Image = global::Real_Estate_Management.Properties.Resources.planinfoother;
             this.BtnOther.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
             this.BtnOther.Name = "BtnOther";
             this.BtnOther.ShowBorder = false;
@@ -663,7 +663,7 @@ namespace DoctorERP
             // BtnSalesOrder
             // 
             this.BtnSalesOrder.BackColor = System.Drawing.Color.Transparent;
-            this.BtnSalesOrder.Image = global::DoctorERP.Properties.Resources.SalesOrder;
+            this.BtnSalesOrder.Image = global::Real_Estate_Management.Properties.Resources.SalesOrder;
             this.BtnSalesOrder.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
             this.BtnSalesOrder.Name = "BtnSalesOrder";
             this.BtnSalesOrder.ShowBorder = false;
@@ -674,7 +674,7 @@ namespace DoctorERP
             // BtnLogOut
             // 
             this.BtnLogOut.BackColor = System.Drawing.Color.Transparent;
-            this.BtnLogOut.Image = global::DoctorERP.Properties.Resources.LogOut;
+            this.BtnLogOut.Image = global::Real_Estate_Management.Properties.Resources.LogOut;
             this.BtnLogOut.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
             this.BtnLogOut.Name = "BtnLogOut";
             this.BtnLogOut.ShowBorder = false;
@@ -685,7 +685,7 @@ namespace DoctorERP
             // btnExit
             // 
             this.btnExit.BackColor = System.Drawing.Color.Transparent;
-            this.btnExit.Image = global::DoctorERP.Properties.Resources.Exit;
+            this.btnExit.Image = global::Real_Estate_Management.Properties.Resources.Exit;
             this.btnExit.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
             this.btnExit.Name = "btnExit";
             this.btnExit.ShowBorder = false;
@@ -1388,7 +1388,7 @@ namespace DoctorERP
             this.BtnRefresh.CustomFont = "Roboto";
             this.BtnRefresh.EnableElementShadow = false;
             this.BtnRefresh.EnableRippleAnimation = true;
-            this.BtnRefresh.Image = global::DoctorERP.Properties.Resources.BtnRefresh_16;
+            this.BtnRefresh.Image = global::Real_Estate_Management.Properties.Resources.BtnRefresh_16;
             this.BtnRefresh.KeyTip = "F5";
             this.BtnRefresh.Name = "BtnRefresh";
             this.BtnRefresh.ScreenTip = this.radOffice2007ScreenTipElement1;

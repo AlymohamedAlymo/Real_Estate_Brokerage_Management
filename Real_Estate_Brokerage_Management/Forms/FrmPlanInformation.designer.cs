@@ -133,28 +133,28 @@
             // BtnPreview4
             // 
             this.BtnPreview4.Edge = ComponentFactory.Krypton.Toolkit.PaletteRelativeEdgeAlign.Near;
-            this.BtnPreview4.Image = global::DoctorERP.Properties.Resources.BtnSearch;
+            this.BtnPreview4.Image = global::Real_Estate_Management.Properties.Resources.BtnSearch;
             this.BtnPreview4.UniqueName = "8A991C3BB62641E9B587DF794218AD2D";
             this.BtnPreview4.Click += new System.EventHandler(this.BtnPreviewAttach4_Click);
             // 
             // BtnSaveAttach4
             // 
             this.BtnSaveAttach4.Edge = ComponentFactory.Krypton.Toolkit.PaletteRelativeEdgeAlign.Near;
-            this.BtnSaveAttach4.Image = global::DoctorERP.Properties.Resources.save;
+            this.BtnSaveAttach4.Image = global::Real_Estate_Management.Properties.Resources.save;
             this.BtnSaveAttach4.UniqueName = "FFB42037416B4989ABA0A9B136BBFDB1";
             this.BtnSaveAttach4.Click += new System.EventHandler(this.BtnSaveAttach4_Click);
             // 
             // BtnDelete4
             // 
             this.BtnDelete4.Edge = ComponentFactory.Krypton.Toolkit.PaletteRelativeEdgeAlign.Near;
-            this.BtnDelete4.Image = global::DoctorERP.Properties.Resources.delete;
+            this.BtnDelete4.Image = global::Real_Estate_Management.Properties.Resources.delete;
             this.BtnDelete4.UniqueName = "0B84513BAC7A4F1365808847A123E786";
             this.BtnDelete4.Click += new System.EventHandler(this.BtnDeleteAttach4_Click);
             // 
             // BtnBrowse4
             // 
             this.BtnBrowse4.Edge = ComponentFactory.Krypton.Toolkit.PaletteRelativeEdgeAlign.Near;
-            this.BtnBrowse4.Image = global::DoctorERP.Properties.Resources.browse;
+            this.BtnBrowse4.Image = global::Real_Estate_Management.Properties.Resources.browse;
             this.BtnBrowse4.UniqueName = "7FC43721AE774FE8FB9EC9699AFC6A96";
             this.BtnBrowse4.Click += new System.EventHandler(this.BtnBrowseAttach4_Click);
             // 
@@ -184,28 +184,28 @@
             // BtnPreview3
             // 
             this.BtnPreview3.Edge = ComponentFactory.Krypton.Toolkit.PaletteRelativeEdgeAlign.Near;
-            this.BtnPreview3.Image = global::DoctorERP.Properties.Resources.BtnSearch;
+            this.BtnPreview3.Image = global::Real_Estate_Management.Properties.Resources.BtnSearch;
             this.BtnPreview3.UniqueName = "8A991C3BB62641E9B587DF794218AD2D";
             this.BtnPreview3.Click += new System.EventHandler(this.BtnPreviewAttach3_Click);
             // 
             // BtnSaveAttach3
             // 
             this.BtnSaveAttach3.Edge = ComponentFactory.Krypton.Toolkit.PaletteRelativeEdgeAlign.Near;
-            this.BtnSaveAttach3.Image = global::DoctorERP.Properties.Resources.save;
+            this.BtnSaveAttach3.Image = global::Real_Estate_Management.Properties.Resources.save;
             this.BtnSaveAttach3.UniqueName = "FFB42037416B4989ABA0A9B136BBFDB1";
             this.BtnSaveAttach3.Click += new System.EventHandler(this.BtnSaveAttach3_Click);
             // 
             // BtnDeleteAttach3
             // 
             this.BtnDeleteAttach3.Edge = ComponentFactory.Krypton.Toolkit.PaletteRelativeEdgeAlign.Near;
-            this.BtnDeleteAttach3.Image = global::DoctorERP.Properties.Resources.delete;
+            this.BtnDeleteAttach3.Image = global::Real_Estate_Management.Properties.Resources.delete;
             this.BtnDeleteAttach3.UniqueName = "0B84513BAC7A4F1365808847A123E786";
             this.BtnDeleteAttach3.Click += new System.EventHandler(this.BtnDeleteAttach3_Click);
             // 
             // BtnBrowse3
             // 
             this.BtnBrowse3.Edge = ComponentFactory.Krypton.Toolkit.PaletteRelativeEdgeAlign.Near;
-            this.BtnBrowse3.Image = global::DoctorERP.Properties.Resources.browse;
+            this.BtnBrowse3.Image = global::Real_Estate_Management.Properties.Resources.browse;
             this.BtnBrowse3.UniqueName = "7FC43721AE774FE8FB9EC9699AFC6A96";
             this.BtnBrowse3.Click += new System.EventHandler(this.BtnBrowseAttach3_Click);
             // 
@@ -306,7 +306,7 @@
             // BtnAddOwner
             // 
             this.BtnAddOwner.Edge = ComponentFactory.Krypton.Toolkit.PaletteRelativeEdgeAlign.Near;
-            this.BtnAddOwner.Image = global::DoctorERP.Properties.Resources.add;
+            this.BtnAddOwner.Image = global::Real_Estate_Management.Properties.Resources.add;
             this.BtnAddOwner.UniqueName = "77FFB538B37047AF78B17F2D143A27C2";
             this.BtnAddOwner.Visible = false;
             this.BtnAddOwner.Click += new System.EventHandler(this.BtnAddOwner_Click);
@@ -314,7 +314,7 @@
             // BtnShowOwnerCard
             // 
             this.BtnShowOwnerCard.Edge = ComponentFactory.Krypton.Toolkit.PaletteRelativeEdgeAlign.Near;
-            this.BtnShowOwnerCard.Image = global::DoctorERP.Properties.Resources.Card;
+            this.BtnShowOwnerCard.Image = global::Real_Estate_Management.Properties.Resources.Card;
             this.BtnShowOwnerCard.ToolTipBody = "إظهار البطاقة المختارة";
             this.BtnShowOwnerCard.ToolTipTitle = "شس";
             this.BtnShowOwnerCard.UniqueName = "B0CAF56D63214FFE058534D9E19E12F4";
@@ -323,7 +323,7 @@
             // BtnSearchOwner
             // 
             this.BtnSearchOwner.Edge = ComponentFactory.Krypton.Toolkit.PaletteRelativeEdgeAlign.Far;
-            this.BtnSearchOwner.Image = global::DoctorERP.Properties.Resources.BtnSearch;
+            this.BtnSearchOwner.Image = global::Real_Estate_Management.Properties.Resources.BtnSearch;
             this.BtnSearchOwner.UniqueName = "E3BBAC1E54F946ADA49433CFF1391045";
             this.BtnSearchOwner.Visible = false;
             this.BtnSearchOwner.Click += new System.EventHandler(this.BtnSeacrhOwner_Click);
@@ -356,28 +356,28 @@
             // BtnPreview2
             // 
             this.BtnPreview2.Edge = ComponentFactory.Krypton.Toolkit.PaletteRelativeEdgeAlign.Near;
-            this.BtnPreview2.Image = global::DoctorERP.Properties.Resources.BtnSearch;
+            this.BtnPreview2.Image = global::Real_Estate_Management.Properties.Resources.BtnSearch;
             this.BtnPreview2.UniqueName = "8A991C3BB62641E9B587DF794218AD2D";
             this.BtnPreview2.Click += new System.EventHandler(this.BtnPreview2Attach_Click);
             // 
             // BtnSaveAttachment2
             // 
             this.BtnSaveAttachment2.Edge = ComponentFactory.Krypton.Toolkit.PaletteRelativeEdgeAlign.Near;
-            this.BtnSaveAttachment2.Image = global::DoctorERP.Properties.Resources.save;
+            this.BtnSaveAttachment2.Image = global::Real_Estate_Management.Properties.Resources.save;
             this.BtnSaveAttachment2.UniqueName = "FFB42037416B4989ABA0A9B136BBFDB1";
             this.BtnSaveAttachment2.Click += new System.EventHandler(this.BtnSaveAttach2_Click);
             // 
             // BtnDeleteAttachment2
             // 
             this.BtnDeleteAttachment2.Edge = ComponentFactory.Krypton.Toolkit.PaletteRelativeEdgeAlign.Near;
-            this.BtnDeleteAttachment2.Image = global::DoctorERP.Properties.Resources.delete;
+            this.BtnDeleteAttachment2.Image = global::Real_Estate_Management.Properties.Resources.delete;
             this.BtnDeleteAttachment2.UniqueName = "0B84513BAC7A4F1365808847A123E786";
             this.BtnDeleteAttachment2.Click += new System.EventHandler(this.BtnDelete2Attach_Click);
             // 
             // BtnBrowse2
             // 
             this.BtnBrowse2.Edge = ComponentFactory.Krypton.Toolkit.PaletteRelativeEdgeAlign.Near;
-            this.BtnBrowse2.Image = global::DoctorERP.Properties.Resources.browse;
+            this.BtnBrowse2.Image = global::Real_Estate_Management.Properties.Resources.browse;
             this.BtnBrowse2.UniqueName = "7FC43721AE774FE8FB9EC9699AFC6A96";
             this.BtnBrowse2.Click += new System.EventHandler(this.BtnBrowseAttach2_Click);
             // 
@@ -407,28 +407,28 @@
             // BtnPreview
             // 
             this.BtnPreview.Edge = ComponentFactory.Krypton.Toolkit.PaletteRelativeEdgeAlign.Near;
-            this.BtnPreview.Image = global::DoctorERP.Properties.Resources.BtnSearch;
+            this.BtnPreview.Image = global::Real_Estate_Management.Properties.Resources.BtnSearch;
             this.BtnPreview.UniqueName = "8A991C3BB62641E9B587DF794218AD2D";
             this.BtnPreview.Click += new System.EventHandler(this.BtnPreviewAttach_Click);
             // 
             // BtnSaveAttach
             // 
             this.BtnSaveAttach.Edge = ComponentFactory.Krypton.Toolkit.PaletteRelativeEdgeAlign.Near;
-            this.BtnSaveAttach.Image = global::DoctorERP.Properties.Resources.save;
+            this.BtnSaveAttach.Image = global::Real_Estate_Management.Properties.Resources.save;
             this.BtnSaveAttach.UniqueName = "FFB42037416B4989ABA0A9B136BBFDB1";
             this.BtnSaveAttach.Click += new System.EventHandler(this.BtnSaveAttach_Click);
             // 
             // BtnDeleteAttach
             // 
             this.BtnDeleteAttach.Edge = ComponentFactory.Krypton.Toolkit.PaletteRelativeEdgeAlign.Near;
-            this.BtnDeleteAttach.Image = global::DoctorERP.Properties.Resources.delete;
+            this.BtnDeleteAttach.Image = global::Real_Estate_Management.Properties.Resources.delete;
             this.BtnDeleteAttach.UniqueName = "0B84513BAC7A4F1365808847A123E786";
             this.BtnDeleteAttach.Click += new System.EventHandler(this.BtnDeleteAttach_Click);
             // 
             // BtnBrowseAttach
             // 
             this.BtnBrowseAttach.Edge = ComponentFactory.Krypton.Toolkit.PaletteRelativeEdgeAlign.Near;
-            this.BtnBrowseAttach.Image = global::DoctorERP.Properties.Resources.browse;
+            this.BtnBrowseAttach.Image = global::Real_Estate_Management.Properties.Resources.browse;
             this.BtnBrowseAttach.UniqueName = "7FC43721AE774FE8FB9EC9699AFC6A96";
             this.BtnBrowseAttach.Click += new System.EventHandler(this.BtnBrowseAttach_Click);
             // 

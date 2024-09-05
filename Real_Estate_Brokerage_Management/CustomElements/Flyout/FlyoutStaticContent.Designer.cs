@@ -56,7 +56,7 @@
             // radPictureBox1
             // 
             this.radPictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.radPictureBox1.Image = global::DoctorERP.Properties.Resources.add;
+            this.radPictureBox1.Image = global::Real_Estate_Management.Properties.Resources.add;
             this.radPictureBox1.ImageLayout = Telerik.WinControls.UI.RadImageLayout.Center;
             this.radPictureBox1.Location = new System.Drawing.Point(8, 8);
             this.radPictureBox1.Name = "radPictureBox1";
@@ -70,7 +70,7 @@
             // radPictureBox2
             // 
             this.radPictureBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.radPictureBox2.Image = global::DoctorERP.Properties.Resources.agreement16;
+            this.radPictureBox2.Image = global::Real_Estate_Management.Properties.Resources.agreement16;
             this.radPictureBox2.Location = new System.Drawing.Point(8, 216);
             this.radPictureBox2.Name = "radPictureBox2";
             // 
@@ -79,7 +79,7 @@
             this.radPictureBox2.RootElement.EnableElementShadow = false;
             this.radPictureBox2.Size = new System.Drawing.Size(414, 46);
             this.radPictureBox2.TabIndex = 4;
-            ((Telerik.WinControls.UI.RadPictureBoxElement)(this.radPictureBox2.GetChildAt(0))).Image = global::DoctorERP.Properties.Resources.broken_link;
+            ((Telerik.WinControls.UI.RadPictureBoxElement)(this.radPictureBox2.GetChildAt(0))).Image = global::Real_Estate_Management.Properties.Resources.broken_link;
             ((Telerik.WinControls.UI.RadPictureBoxElement)(this.radPictureBox2.GetChildAt(0))).ImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             ((Telerik.WinControls.UI.RadPictureBoxElement)(this.radPictureBox2.GetChildAt(0))).Margin = new System.Windows.Forms.Padding(25, 0, 25, 0);
             // 
