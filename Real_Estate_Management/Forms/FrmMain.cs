@@ -16,6 +16,9 @@ using System.ComponentModel;
 using Telerik.WinControls.Data;
 using DoctorERP.User_Controls;
 using DoctorERP.CustomElements;
+using Telerik.WinControls.UI.SplashScreen;
+using Contract_Management.Dialogs;
+using Real_Estate_Management.Helpers.Messages;
 
 namespace DoctorERP
 {
@@ -155,6 +158,62 @@ namespace DoctorERP
             }
 
 
+            RadFlyoutManager.FlyoutClosed -= this.RadFlyoutManager_FlyoutClosed;
+            RadFlyoutManager.FlyoutClosed += this.RadFlyoutManager_FlyoutClosed;
+
+            //RadFlyoutManager.ContentCreated -= this.RadFlyoutManager_ContentCreated;
+            //RadFlyoutManager.ContentCreated += this.RadFlyoutManager_ContentCreated;
+
+
+        }
+
+        private void RadFlyoutManager_FlyoutClosed(FlyoutClosedEventArgs e)
+        {
+            try
+            {
+                Telerik.WinControls.Extensions.Action action = new Telerik.WinControls.Extensions.Action(() =>
+                {
+
+                    if (e.Content is FlyoutTransferData contentFlyoutTransferData)
+                    {
+                        if (contentFlyoutTransferData.Result == DialogResult.OK)
+                        {
+                            //Messages messages = new Messages();
+                            //messages.MessageInformation(Application.ProductName, "تحديث قاعدة البيانات", "تم تحديث قاعدة البيانات بنجاح");
+                            RadFlyoutManager.Show(this, typeof(FlyoutUserLogin));
+
+                        }
+                        else if (contentFlyoutTransferData.Result == DialogResult.Cancel)
+                        {
+                            MessageBox.Show("فشلت عملية تحديث البيانات", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                        }
+                    }
+                    else if (e.Content is FlyoutUserLogin contentFlyoutUserLogin)
+                    {
+                        if (contentFlyoutUserLogin.Result == DialogResult.OK)
+                        {
+                            PlanGuid = contentFlyoutUserLogin.Plane;
+
+                            CurrentUser = (tbUsers)contentFlyoutUserLogin.user;
+                            LoadSettings();
+
+                        }
+                        else if (contentFlyoutUserLogin.Result == DialogResult.Cancel)
+                        {
+                            Application.Exit();
+                            GC.Collect();
+
+                        }
+                    }
+
+
+                });
+
+                this.Invoke(action);
+
+            }
+            catch { }
         }
 
         #region Main Events
@@ -252,16 +311,18 @@ namespace DoctorERP
                     return true;
                 }
 
-                FrmLogin frmlog = new FrmLogin();
-                if (frmlog.ShowDialog(this) == DialogResult.OK)
-                {
-                    CurrentUser = frmlog.user;
-                    LoadSettings();
+                RadFlyoutManager.Show(this, typeof(FlyoutTransferData));
 
-                    return true;
-                }
-                else
-                    return false;
+                //FrmLogin frmlog = new FrmLogin();
+                //if (frmlog.ShowDialog(this) == DialogResult.OK)
+                //{
+                //    CurrentUser = frmlog.user;
+                //    LoadSettings();
+
+                return true;
+                //}
+                //else
+                //    return false;
 
             }
             else
@@ -270,16 +331,18 @@ namespace DoctorERP
                 FrmDataBases frmdb = new FrmDataBases(AppSetting.DataBase, OpenDef);
                 if (frmdb.ShowDialog() == DialogResult.OK)
                 {
-                    FrmLogin frmlog = new FrmLogin();
-                    if (frmlog.ShowDialog() == DialogResult.OK)
-                    {
-                        CurrentUser = frmlog.user;
-                        LoadSettings();
+                    RadFlyoutManager.Show(this, typeof(FlyoutTransferData));
 
-                        return true;
-                    }
-                    else
-                        return false;
+                    //FrmLogin frmlog = new FrmLogin();
+                    //if (frmlog.ShowDialog() == DialogResult.OK)
+                    //{
+                    //    CurrentUser = frmlog.user;
+                    //    LoadSettings();
+
+                    return true;
+                    //}
+                    //else
+                    //    return false;
                 }
                 else
                 {
@@ -1751,5 +1814,53 @@ namespace DoctorERP
 
         }
 
+        private void MenuCards_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MenuLawyerCard_Click(object sender, EventArgs e)
+        {
+
+            RadMenuItem toolmenu = (RadMenuItem)sender;
+            if (!IsPermissionGranted(toolmenu.Text))
+            {
+                MessageBox.Show("لا تملك صلاحية للقيام بهذا العمل", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            RadOverlayManager.Show(this);
+
+            RadPageViewPage enumerableIterator = PageViewCardsHome.Pages.Where(u => u.Name == "UCLawyer").FirstOrDefault();
+            if (enumerableIterator == null)
+            {
+                RadPageViewPage radPageViewPage = new RadPageViewPage
+                {
+                    Name = "UCLawyer",
+                    Text = "بطاقة محامي"
+                };
+
+                DoctorERP.User_Controls.UCLawyer uCLands = new User_Controls.UCLawyer(Guid.Empty, false, 1, false)
+                {
+                    Dock = DockStyle.Fill
+                };
+
+                radPageViewPage.Controls.Add(uCLands);
+                PageViewCardsHome.Pages.Add(radPageViewPage);
+                PageViewCardsHome.SelectedPage = radPageViewPage;
+            }
+            else
+            {
+                UCClientCards UC = PageViewCardsHome.Pages["UCLawyer"].Controls[0] as UCClientCards;
+                PageViewCardsHome.SelectedPage = enumerableIterator;
+
+            }
+            this.TopMost = true;
+
+            RadOverlayManager.Close();
+            this.TopMost = false;
+
+
+
+        }
     }
 }

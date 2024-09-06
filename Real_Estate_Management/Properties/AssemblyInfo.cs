@@ -7,11 +7,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 
-[assembly: AssemblyTitle("برنامج إدارة الإراضي و العقارات")]
+[assembly: AssemblyTitle("DoctorERP_v1_00_by_Aly_mo")]
 [assembly: AssemblyDescription("لصالح أستاذ سلطان")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("تطوير علي محمد")]
-[assembly: AssemblyProduct("DoctorERP_v1_00_by_Aly_mo")]
+[assembly: AssemblyProduct("برنامج إدارة الإراضي")]
 [assembly: AssemblyCopyright("Copyright ©Aly Mohamed  2024")]
 [assembly: AssemblyTrademark("DoctorERP_byAlyMo")]
 [assembly: AssemblyCulture("")]

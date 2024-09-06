@@ -67,19 +67,6 @@ namespace DoctorERP
             this.panel2 = new System.Windows.Forms.Panel();
             this.radRadioButton1 = new Telerik.WinControls.UI.RadRadioButton();
             this.RBallLands = new Telerik.WinControls.UI.RadRadioButton();
-            this.bubbleBar1 = new DoctorERP.CustomElements.BubbleBar();
-            this.PlanNameLabel = new System.Windows.Forms.Label();
-            this.BtnAgentCard = new Telerik.WinControls.UI.RadButtonElement();
-            this.BtnSalesBill = new Telerik.WinControls.UI.RadButtonElement();
-            this.BtnPayContract = new Telerik.WinControls.UI.RadButtonElement();
-            this.BtnCalc = new Telerik.WinControls.UI.RadButtonElement();
-            this.BtnPlanInfoMap = new Telerik.WinControls.UI.RadButtonElement();
-            this.BtnPlanInfoArea = new Telerik.WinControls.UI.RadButtonElement();
-            this.BtnPlnInfoPrices = new Telerik.WinControls.UI.RadButtonElement();
-            this.BtnOther = new Telerik.WinControls.UI.RadButtonElement();
-            this.BtnSalesOrder = new Telerik.WinControls.UI.RadButtonElement();
-            this.BtnLogOut = new Telerik.WinControls.UI.RadButtonElement();
-            this.btnExit = new Telerik.WinControls.UI.RadButtonElement();
             this.panel1 = new System.Windows.Forms.Panel();
             this.radMenu1 = new Telerik.WinControls.UI.RadMenu();
             this.MenuFile = new Telerik.WinControls.UI.RadMenuItem();
@@ -196,6 +183,20 @@ namespace DoctorERP
             this.telerikMetroTheme1 = new Telerik.WinControls.Themes.TelerikMetroTheme();
             this.telerikMetroBlueTheme1 = new Telerik.WinControls.Themes.TelerikMetroBlueTheme();
             this.telerikMetroTouchTheme1 = new Telerik.WinControls.Themes.TelerikMetroTouchTheme();
+            this.bubbleBar1 = new DoctorERP.CustomElements.BubbleBar();
+            this.PlanNameLabel = new System.Windows.Forms.Label();
+            this.BtnAgentCard = new Telerik.WinControls.UI.RadButtonElement();
+            this.BtnSalesBill = new Telerik.WinControls.UI.RadButtonElement();
+            this.BtnPayContract = new Telerik.WinControls.UI.RadButtonElement();
+            this.BtnCalc = new Telerik.WinControls.UI.RadButtonElement();
+            this.BtnPlanInfoMap = new Telerik.WinControls.UI.RadButtonElement();
+            this.BtnPlanInfoArea = new Telerik.WinControls.UI.RadButtonElement();
+            this.BtnPlnInfoPrices = new Telerik.WinControls.UI.RadButtonElement();
+            this.BtnOther = new Telerik.WinControls.UI.RadButtonElement();
+            this.BtnSalesOrder = new Telerik.WinControls.UI.RadButtonElement();
+            this.BtnLogOut = new Telerik.WinControls.UI.RadButtonElement();
+            this.btnExit = new Telerik.WinControls.UI.RadButtonElement();
+            this.MenuLawyerCard = new Telerik.WinControls.UI.RadMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.radStatusStrip1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PageViewCardsHome)).BeginInit();
             this.PageViewCardsHome.SuspendLayout();
@@ -207,12 +208,12 @@ namespace DoctorERP
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radRadioButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RBallLands)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bubbleBar1)).BeginInit();
-            this.bubbleBar1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bubbleBar1)).BeginInit();
+            this.bubbleBar1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -385,10 +386,10 @@ namespace DoctorERP
             ((Telerik.WinControls.UI.RadPageViewStripElement)(this.PageViewCardsHome.GetChildAt(0))).CustomFont = "Roboto";
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(0))).ToolTipText = "إغلاق جميع الصفحات المفتوحة";
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(0))).Enabled = true;
-            ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(0))).Visibility = Telerik.WinControls.ElementVisibility.Visible;
+            ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(0))).Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(1))).ToolTipText = "إغلاق الصفحات المفتوحة";
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(1))).Enabled = true;
-            ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(1))).Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
+            ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(1))).Visibility = Telerik.WinControls.ElementVisibility.Visible;
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(2))).ToolTipText = "انتقل الي الصفحة اليمني";
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(2))).Enabled = false;
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(2))).Visibility = Telerik.WinControls.ElementVisibility.Visible;
@@ -403,10 +404,10 @@ namespace DoctorERP
             // radPageViewPage1
             // 
             this.radPageViewPage1.Controls.Add(this.overviewMainContainer);
-            this.radPageViewPage1.ItemSize = new System.Drawing.SizeF(109F, 51F);
-            this.radPageViewPage1.Location = new System.Drawing.Point(6, 57);
+            this.radPageViewPage1.ItemSize = new System.Drawing.SizeF(93F, 29F);
+            this.radPageViewPage1.Location = new System.Drawing.Point(6, 35);
             this.radPageViewPage1.Name = "radPageViewPage1";
-            this.radPageViewPage1.Size = new System.Drawing.Size(1266, 811);
+            this.radPageViewPage1.Size = new System.Drawing.Size(1266, 833);
             this.radPageViewPage1.Text = "الرئيسية";
             // 
             // overviewMainContainer
@@ -419,7 +420,7 @@ namespace DoctorERP
             this.overviewMainContainer.Location = new System.Drawing.Point(0, 0);
             this.overviewMainContainer.Margin = new System.Windows.Forms.Padding(0);
             this.overviewMainContainer.Name = "overviewMainContainer";
-            this.overviewMainContainer.Size = new System.Drawing.Size(1266, 811);
+            this.overviewMainContainer.Size = new System.Drawing.Size(1266, 833);
             this.overviewMainContainer.TabIndex = 22;
             // 
             // LandsListView
@@ -432,7 +433,7 @@ namespace DoctorERP
             this.LandsListView.Location = new System.Drawing.Point(0, 138);
             this.LandsListView.MultiSelect = true;
             this.LandsListView.Name = "LandsListView";
-            this.LandsListView.Size = new System.Drawing.Size(1266, 673);
+            this.LandsListView.Size = new System.Drawing.Size(1266, 695);
             this.LandsListView.TabIndex = 34;
             this.LandsListView.ThemeName = "Material";
             this.LandsListView.ItemMouseClick += new Telerik.WinControls.UI.ListViewItemEventHandler(this.OverviewLandsView_ItemMouseClick);
@@ -519,179 +520,6 @@ namespace DoctorERP
             this.RBallLands.ThemeName = "Material";
             this.RBallLands.ToggleState = Telerik.WinControls.Enumerations.ToggleState.On;
             this.RBallLands.CheckStateChanged += new System.EventHandler(this.RBallLands_CheckStateChanged);
-            // 
-            // bubbleBar1
-            // 
-            this.bubbleBar1.AutoScroll = true;
-            this.bubbleBar1.BackColor = System.Drawing.Color.Transparent;
-            this.bubbleBar1.Controls.Add(this.PlanNameLabel);
-            this.bubbleBar1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.bubbleBar1.Element.AutoSizeMode = Telerik.WinControls.RadAutoSizeMode.WrapAroundChildren;
-            this.bubbleBar1.Element.SerializeProperties = true;
-            this.bubbleBar1.ForeColor = System.Drawing.Color.Black;
-            this.bubbleBar1.Items.AddRange(new Telerik.WinControls.RadItem[] {
-            this.BtnAgentCard,
-            this.BtnSalesBill,
-            this.BtnPayContract,
-            this.BtnCalc,
-            this.BtnPlanInfoMap,
-            this.BtnPlanInfoArea,
-            this.BtnPlnInfoPrices,
-            this.BtnOther,
-            this.BtnSalesOrder,
-            this.BtnLogOut,
-            this.btnExit});
-            this.bubbleBar1.Location = new System.Drawing.Point(0, 0);
-            this.bubbleBar1.Name = "bubbleBar1";
-            this.bubbleBar1.Size = new System.Drawing.Size(1266, 94);
-            this.bubbleBar1.TabIndex = 34;
-            this.bubbleBar1.Text = "bubbleBar1";
-            this.bubbleBar1.ThemeName = "Material";
-            this.bubbleBar1.Visible = false;
-            ((DoctorERP.CustomElements.BubbleBarElement)(this.bubbleBar1.GetChildAt(0))).AutoSizeMode = Telerik.WinControls.RadAutoSizeMode.WrapAroundChildren;
-            ((Telerik.WinControls.Primitives.FillPrimitive)(this.bubbleBar1.GetChildAt(0).GetChildAt(0))).BackColor2 = System.Drawing.Color.Transparent;
-            ((Telerik.WinControls.Primitives.FillPrimitive)(this.bubbleBar1.GetChildAt(0).GetChildAt(0))).BackColor3 = System.Drawing.Color.Transparent;
-            ((Telerik.WinControls.Primitives.FillPrimitive)(this.bubbleBar1.GetChildAt(0).GetChildAt(0))).BackColor4 = System.Drawing.Color.Transparent;
-            ((Telerik.WinControls.Primitives.FillPrimitive)(this.bubbleBar1.GetChildAt(0).GetChildAt(0))).NumberOfColors = 4;
-            ((Telerik.WinControls.Primitives.FillPrimitive)(this.bubbleBar1.GetChildAt(0).GetChildAt(0))).GradientPercentage = 0.3F;
-            ((Telerik.WinControls.Primitives.FillPrimitive)(this.bubbleBar1.GetChildAt(0).GetChildAt(0))).GradientPercentage2 = 0.1F;
-            ((Telerik.WinControls.Primitives.FillPrimitive)(this.bubbleBar1.GetChildAt(0).GetChildAt(0))).BackColor = System.Drawing.Color.Transparent;
-            ((Telerik.WinControls.Primitives.BorderPrimitive)(this.bubbleBar1.GetChildAt(0).GetChildAt(1))).ForeColor = System.Drawing.Color.Transparent;
-            // 
-            // PlanNameLabel
-            // 
-            this.PlanNameLabel.BackColor = System.Drawing.Color.Transparent;
-            this.PlanNameLabel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.PlanNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PlanNameLabel.Location = new System.Drawing.Point(0, 0);
-            this.PlanNameLabel.Name = "PlanNameLabel";
-            this.PlanNameLabel.Size = new System.Drawing.Size(117, 94);
-            this.PlanNameLabel.TabIndex = 26;
-            this.PlanNameLabel.Text = ".";
-            this.PlanNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // BtnAgentCard
-            // 
-            this.BtnAgentCard.BackColor = System.Drawing.Color.Transparent;
-            this.BtnAgentCard.DisplayStyle = Telerik.WinControls.DisplayStyle.ImageAndText;
-            this.BtnAgentCard.HighlightColor = System.Drawing.Color.Transparent;
-            this.BtnAgentCard.Image = global::Real_Estate_Management.Properties.Resources.Agents;
-            this.BtnAgentCard.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnAgentCard.Name = "BtnAgentCard";
-            this.BtnAgentCard.ShowBorder = false;
-            this.BtnAgentCard.Text = "بطاقة عميل";
-            this.BtnAgentCard.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnAgentCard.UseCompatibleTextRendering = false;
-            // 
-            // BtnSalesBill
-            // 
-            this.BtnSalesBill.BackColor = System.Drawing.Color.Transparent;
-            this.BtnSalesBill.Image = global::Real_Estate_Management.Properties.Resources.Contracts;
-            this.BtnSalesBill.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnSalesBill.Name = "BtnSalesBill";
-            this.BtnSalesBill.ShowBorder = false;
-            this.BtnSalesBill.Text = "عقد بيع";
-            this.BtnSalesBill.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnSalesBill.UseCompatibleTextRendering = false;
-            // 
-            // BtnPayContract
-            // 
-            this.BtnPayContract.BackColor = System.Drawing.Color.Transparent;
-            this.BtnPayContract.Image = global::Real_Estate_Management.Properties.Resources.payin;
-            this.BtnPayContract.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnPayContract.Name = "BtnPayContract";
-            this.BtnPayContract.ShowBorder = false;
-            this.BtnPayContract.Text = "سند قبض";
-            this.BtnPayContract.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnPayContract.UseCompatibleTextRendering = false;
-            // 
-            // BtnCalc
-            // 
-            this.BtnCalc.BackColor = System.Drawing.Color.Transparent;
-            this.BtnCalc.Image = global::Real_Estate_Management.Properties.Resources.calc;
-            this.BtnCalc.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnCalc.Name = "BtnCalc";
-            this.BtnCalc.ShowBorder = false;
-            this.BtnCalc.Text = "حاسبة الأراضي";
-            this.BtnCalc.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnCalc.UseCompatibleTextRendering = false;
-            // 
-            // BtnPlanInfoMap
-            // 
-            this.BtnPlanInfoMap.BackColor = System.Drawing.Color.Transparent;
-            this.BtnPlanInfoMap.Image = global::Real_Estate_Management.Properties.Resources.map;
-            this.BtnPlanInfoMap.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnPlanInfoMap.Name = "BtnPlanInfoMap";
-            this.BtnPlanInfoMap.ShowBorder = false;
-            this.BtnPlanInfoMap.Text = "خريطة المخطط";
-            this.BtnPlanInfoMap.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnPlanInfoMap.UseCompatibleTextRendering = false;
-            // 
-            // BtnPlanInfoArea
-            // 
-            this.BtnPlanInfoArea.BackColor = System.Drawing.Color.Transparent;
-            this.BtnPlanInfoArea.Image = global::Real_Estate_Management.Properties.Resources.planinfoarea;
-            this.BtnPlanInfoArea.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnPlanInfoArea.Name = "BtnPlanInfoArea";
-            this.BtnPlanInfoArea.ShowBorder = false;
-            this.BtnPlanInfoArea.Text = "مساحة المخطط";
-            this.BtnPlanInfoArea.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnPlanInfoArea.UseCompatibleTextRendering = false;
-            // 
-            // BtnPlnInfoPrices
-            // 
-            this.BtnPlnInfoPrices.BackColor = System.Drawing.Color.Transparent;
-            this.BtnPlnInfoPrices.Image = global::Real_Estate_Management.Properties.Resources.planinfoprices;
-            this.BtnPlnInfoPrices.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnPlnInfoPrices.Name = "BtnPlnInfoPrices";
-            this.BtnPlnInfoPrices.ShowBorder = false;
-            this.BtnPlnInfoPrices.Text = "أسعار المخطط";
-            this.BtnPlnInfoPrices.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnPlnInfoPrices.UseCompatibleTextRendering = false;
-            // 
-            // BtnOther
-            // 
-            this.BtnOther.BackColor = System.Drawing.Color.Transparent;
-            this.BtnOther.Image = global::Real_Estate_Management.Properties.Resources.planinfoother;
-            this.BtnOther.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnOther.Name = "BtnOther";
-            this.BtnOther.ShowBorder = false;
-            this.BtnOther.Text = "أخرى";
-            this.BtnOther.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnOther.UseCompatibleTextRendering = false;
-            // 
-            // BtnSalesOrder
-            // 
-            this.BtnSalesOrder.BackColor = System.Drawing.Color.Transparent;
-            this.BtnSalesOrder.Image = global::Real_Estate_Management.Properties.Resources.SalesOrder;
-            this.BtnSalesOrder.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnSalesOrder.Name = "BtnSalesOrder";
-            this.BtnSalesOrder.ShowBorder = false;
-            this.BtnSalesOrder.Text = "أمر بيع";
-            this.BtnSalesOrder.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnSalesOrder.UseCompatibleTextRendering = false;
-            // 
-            // BtnLogOut
-            // 
-            this.BtnLogOut.BackColor = System.Drawing.Color.Transparent;
-            this.BtnLogOut.Image = global::Real_Estate_Management.Properties.Resources.LogOut;
-            this.BtnLogOut.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnLogOut.Name = "BtnLogOut";
-            this.BtnLogOut.ShowBorder = false;
-            this.BtnLogOut.Text = "تبديل المستخدم";
-            this.BtnLogOut.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnLogOut.UseCompatibleTextRendering = false;
-            // 
-            // btnExit
-            // 
-            this.btnExit.BackColor = System.Drawing.Color.Transparent;
-            this.btnExit.Image = global::Real_Estate_Management.Properties.Resources.Exit;
-            this.btnExit.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
-            this.btnExit.Name = "btnExit";
-            this.btnExit.ShowBorder = false;
-            this.btnExit.Text = "خروج";
-            this.btnExit.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnExit.UseCompatibleTextRendering = false;
             // 
             // panel1
             // 
@@ -825,9 +653,11 @@ namespace DoctorERP
             this.radMenuSeparatorItem18,
             this.MenuLandCard,
             this.MenuLandTree,
-            this.MenuLandTransRpt});
+            this.MenuLandTransRpt,
+            this.MenuLawyerCard});
             this.MenuCards.Name = "MenuCards";
             this.MenuCards.Text = "بطاقات ";
+            this.MenuCards.Click += new System.EventHandler(this.MenuCards_Click);
             // 
             // MenuAgentBuyCard
             // 
@@ -1487,6 +1317,185 @@ namespace DoctorERP
             this.MainMenu.TabIndex = 30;
             this.MainMenu.ThemeName = "Material";
             // 
+            // bubbleBar1
+            // 
+            this.bubbleBar1.AutoScroll = true;
+            this.bubbleBar1.BackColor = System.Drawing.Color.Transparent;
+            this.bubbleBar1.Controls.Add(this.PlanNameLabel);
+            this.bubbleBar1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.bubbleBar1.Element.AutoSizeMode = Telerik.WinControls.RadAutoSizeMode.WrapAroundChildren;
+            this.bubbleBar1.Element.SerializeProperties = true;
+            this.bubbleBar1.ForeColor = System.Drawing.Color.Black;
+            this.bubbleBar1.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.BtnAgentCard,
+            this.BtnSalesBill,
+            this.BtnPayContract,
+            this.BtnCalc,
+            this.BtnPlanInfoMap,
+            this.BtnPlanInfoArea,
+            this.BtnPlnInfoPrices,
+            this.BtnOther,
+            this.BtnSalesOrder,
+            this.BtnLogOut,
+            this.btnExit});
+            this.bubbleBar1.Location = new System.Drawing.Point(0, 0);
+            this.bubbleBar1.Name = "bubbleBar1";
+            this.bubbleBar1.Size = new System.Drawing.Size(1266, 94);
+            this.bubbleBar1.TabIndex = 34;
+            this.bubbleBar1.Text = "bubbleBar1";
+            this.bubbleBar1.ThemeName = "Material";
+            this.bubbleBar1.Visible = false;
+            ((DoctorERP.CustomElements.BubbleBarElement)(this.bubbleBar1.GetChildAt(0))).AutoSizeMode = Telerik.WinControls.RadAutoSizeMode.WrapAroundChildren;
+            ((Telerik.WinControls.Primitives.FillPrimitive)(this.bubbleBar1.GetChildAt(0).GetChildAt(0))).BackColor2 = System.Drawing.Color.Transparent;
+            ((Telerik.WinControls.Primitives.FillPrimitive)(this.bubbleBar1.GetChildAt(0).GetChildAt(0))).BackColor3 = System.Drawing.Color.Transparent;
+            ((Telerik.WinControls.Primitives.FillPrimitive)(this.bubbleBar1.GetChildAt(0).GetChildAt(0))).BackColor4 = System.Drawing.Color.Transparent;
+            ((Telerik.WinControls.Primitives.FillPrimitive)(this.bubbleBar1.GetChildAt(0).GetChildAt(0))).NumberOfColors = 4;
+            ((Telerik.WinControls.Primitives.FillPrimitive)(this.bubbleBar1.GetChildAt(0).GetChildAt(0))).GradientPercentage = 0.3F;
+            ((Telerik.WinControls.Primitives.FillPrimitive)(this.bubbleBar1.GetChildAt(0).GetChildAt(0))).GradientPercentage2 = 0.1F;
+            ((Telerik.WinControls.Primitives.FillPrimitive)(this.bubbleBar1.GetChildAt(0).GetChildAt(0))).BackColor = System.Drawing.Color.Transparent;
+            ((Telerik.WinControls.Primitives.BorderPrimitive)(this.bubbleBar1.GetChildAt(0).GetChildAt(1))).ForeColor = System.Drawing.Color.Transparent;
+            // 
+            // PlanNameLabel
+            // 
+            this.PlanNameLabel.BackColor = System.Drawing.Color.Transparent;
+            this.PlanNameLabel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.PlanNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PlanNameLabel.Location = new System.Drawing.Point(0, 0);
+            this.PlanNameLabel.Name = "PlanNameLabel";
+            this.PlanNameLabel.Size = new System.Drawing.Size(117, 94);
+            this.PlanNameLabel.TabIndex = 26;
+            this.PlanNameLabel.Text = "جميع المخططات";
+            this.PlanNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // BtnAgentCard
+            // 
+            this.BtnAgentCard.BackColor = System.Drawing.Color.Transparent;
+            this.BtnAgentCard.DisplayStyle = Telerik.WinControls.DisplayStyle.ImageAndText;
+            this.BtnAgentCard.HighlightColor = System.Drawing.Color.Transparent;
+            this.BtnAgentCard.Image = global::Real_Estate_Management.Properties.Resources.Agents;
+            this.BtnAgentCard.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
+            this.BtnAgentCard.Name = "BtnAgentCard";
+            this.BtnAgentCard.ShowBorder = false;
+            this.BtnAgentCard.Text = "بطاقة عميل";
+            this.BtnAgentCard.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
+            this.BtnAgentCard.UseCompatibleTextRendering = false;
+            // 
+            // BtnSalesBill
+            // 
+            this.BtnSalesBill.BackColor = System.Drawing.Color.Transparent;
+            this.BtnSalesBill.Image = global::Real_Estate_Management.Properties.Resources.Contracts;
+            this.BtnSalesBill.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
+            this.BtnSalesBill.Name = "BtnSalesBill";
+            this.BtnSalesBill.ShowBorder = false;
+            this.BtnSalesBill.Text = "عقد بيع";
+            this.BtnSalesBill.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
+            this.BtnSalesBill.UseCompatibleTextRendering = false;
+            // 
+            // BtnPayContract
+            // 
+            this.BtnPayContract.BackColor = System.Drawing.Color.Transparent;
+            this.BtnPayContract.Image = global::Real_Estate_Management.Properties.Resources.payin;
+            this.BtnPayContract.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
+            this.BtnPayContract.Name = "BtnPayContract";
+            this.BtnPayContract.ShowBorder = false;
+            this.BtnPayContract.Text = "سند قبض";
+            this.BtnPayContract.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
+            this.BtnPayContract.UseCompatibleTextRendering = false;
+            // 
+            // BtnCalc
+            // 
+            this.BtnCalc.BackColor = System.Drawing.Color.Transparent;
+            this.BtnCalc.Image = global::Real_Estate_Management.Properties.Resources.calc;
+            this.BtnCalc.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
+            this.BtnCalc.Name = "BtnCalc";
+            this.BtnCalc.ShowBorder = false;
+            this.BtnCalc.Text = "حاسبة الأراضي";
+            this.BtnCalc.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
+            this.BtnCalc.UseCompatibleTextRendering = false;
+            // 
+            // BtnPlanInfoMap
+            // 
+            this.BtnPlanInfoMap.BackColor = System.Drawing.Color.Transparent;
+            this.BtnPlanInfoMap.Image = global::Real_Estate_Management.Properties.Resources.map;
+            this.BtnPlanInfoMap.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
+            this.BtnPlanInfoMap.Name = "BtnPlanInfoMap";
+            this.BtnPlanInfoMap.ShowBorder = false;
+            this.BtnPlanInfoMap.Text = "خريطة المخطط";
+            this.BtnPlanInfoMap.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
+            this.BtnPlanInfoMap.UseCompatibleTextRendering = false;
+            // 
+            // BtnPlanInfoArea
+            // 
+            this.BtnPlanInfoArea.BackColor = System.Drawing.Color.Transparent;
+            this.BtnPlanInfoArea.Image = global::Real_Estate_Management.Properties.Resources.planinfoarea;
+            this.BtnPlanInfoArea.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
+            this.BtnPlanInfoArea.Name = "BtnPlanInfoArea";
+            this.BtnPlanInfoArea.ShowBorder = false;
+            this.BtnPlanInfoArea.Text = "مساحة المخطط";
+            this.BtnPlanInfoArea.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
+            this.BtnPlanInfoArea.UseCompatibleTextRendering = false;
+            // 
+            // BtnPlnInfoPrices
+            // 
+            this.BtnPlnInfoPrices.BackColor = System.Drawing.Color.Transparent;
+            this.BtnPlnInfoPrices.Image = global::Real_Estate_Management.Properties.Resources.planinfoprices;
+            this.BtnPlnInfoPrices.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
+            this.BtnPlnInfoPrices.Name = "BtnPlnInfoPrices";
+            this.BtnPlnInfoPrices.ShowBorder = false;
+            this.BtnPlnInfoPrices.Text = "أسعار المخطط";
+            this.BtnPlnInfoPrices.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
+            this.BtnPlnInfoPrices.UseCompatibleTextRendering = false;
+            // 
+            // BtnOther
+            // 
+            this.BtnOther.BackColor = System.Drawing.Color.Transparent;
+            this.BtnOther.Image = global::Real_Estate_Management.Properties.Resources.planinfoother;
+            this.BtnOther.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
+            this.BtnOther.Name = "BtnOther";
+            this.BtnOther.ShowBorder = false;
+            this.BtnOther.Text = "أخرى";
+            this.BtnOther.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
+            this.BtnOther.UseCompatibleTextRendering = false;
+            // 
+            // BtnSalesOrder
+            // 
+            this.BtnSalesOrder.BackColor = System.Drawing.Color.Transparent;
+            this.BtnSalesOrder.Image = global::Real_Estate_Management.Properties.Resources.SalesOrder;
+            this.BtnSalesOrder.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
+            this.BtnSalesOrder.Name = "BtnSalesOrder";
+            this.BtnSalesOrder.ShowBorder = false;
+            this.BtnSalesOrder.Text = "أمر بيع";
+            this.BtnSalesOrder.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
+            this.BtnSalesOrder.UseCompatibleTextRendering = false;
+            // 
+            // BtnLogOut
+            // 
+            this.BtnLogOut.BackColor = System.Drawing.Color.Transparent;
+            this.BtnLogOut.Image = global::Real_Estate_Management.Properties.Resources.LogOut;
+            this.BtnLogOut.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
+            this.BtnLogOut.Name = "BtnLogOut";
+            this.BtnLogOut.ShowBorder = false;
+            this.BtnLogOut.Text = "تبديل المستخدم";
+            this.BtnLogOut.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
+            this.BtnLogOut.UseCompatibleTextRendering = false;
+            // 
+            // btnExit
+            // 
+            this.btnExit.BackColor = System.Drawing.Color.Transparent;
+            this.btnExit.Image = global::Real_Estate_Management.Properties.Resources.Exit;
+            this.btnExit.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
+            this.btnExit.Name = "btnExit";
+            this.btnExit.ShowBorder = false;
+            this.btnExit.Text = "خروج";
+            this.btnExit.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnExit.UseCompatibleTextRendering = false;
+            // 
+            // MenuLawyerCard
+            // 
+            this.MenuLawyerCard.Name = "MenuLawyerCard";
+            this.MenuLawyerCard.Text = "بطاقة محامي";
+            this.MenuLawyerCard.Click += new System.EventHandler(this.MenuLawyerCard_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1521,13 +1530,13 @@ namespace DoctorERP
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radRadioButton1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RBallLands)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bubbleBar1)).EndInit();
-            this.bubbleBar1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bubbleBar1)).EndInit();
+            this.bubbleBar1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1700,6 +1709,7 @@ namespace DoctorERP
         private Telerik.WinControls.UI.RadMenuButtonItem BtnRefresh;
         private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement1;
         private System.Windows.Forms.Label PlanNameLabel;
+        private Telerik.WinControls.UI.RadMenuItem MenuLawyerCard;
     }
 }
 

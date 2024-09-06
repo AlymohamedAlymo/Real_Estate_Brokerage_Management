@@ -29,13 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition19 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition20 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition21 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition3 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition4 = new Telerik.WinControls.UI.TableViewDefinition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCLawyer));
-            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification19 = new Telerik.RadToastNotificationManager.RadToastNotification();
-            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification20 = new Telerik.RadToastNotificationManager.RadToastNotification();
-            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification21 = new Telerik.RadToastNotificationManager.RadToastNotification();
+            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification4 = new Telerik.RadToastNotificationManager.RadToastNotification();
+            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification5 = new Telerik.RadToastNotificationManager.RadToastNotification();
+            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification6 = new Telerik.RadToastNotificationManager.RadToastNotification();
             this.materialTheme1 = new Telerik.WinControls.Themes.MaterialTheme();
             this.Txtnote = new Telerik.WinControls.UI.RadTextBox();
             this.Txtname = new Telerik.WinControls.UI.RadTextBox();
@@ -60,6 +59,8 @@
             this.radTextBox12 = new Telerik.WinControls.UI.RadTextBox();
             this.radLabel8 = new Telerik.WinControls.UI.RadLabel();
             this.Txtnumber = new Telerik.WinControls.UI.RadLabel();
+            this.tbLawyerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.real_Estate_Management_DataSet = new Real_Estate_Management.Data.Real_Estate_Management_DataSet();
             this.radCmbPlanGuid = new Telerik.WinControls.UI.RadMultiColumnComboBox();
             this.radstatus = new Telerik.WinControls.UI.RadLabel();
             this.radCollapsiblePanelParenter1 = new Telerik.WinControls.UI.RadCollapsiblePanel();
@@ -93,9 +94,6 @@
             this.DataGridAttachments = new Telerik.WinControls.UI.RadGridView();
             this.BtnScanner = new Telerik.WinControls.UI.RadButton();
             this.BtnAttachment = new Telerik.WinControls.UI.RadButton();
-            this.radPageViewPage1 = new Telerik.WinControls.UI.RadPageViewPage();
-            this.radPanel3 = new Telerik.WinControls.UI.RadPanel();
-            this.GridViewReport = new Telerik.WinControls.UI.RadGridView();
             this.BindingNavigatorClient = new Telerik.WinControls.UI.RadBindingNavigator();
             this.commandBarRowElement1 = new Telerik.WinControls.UI.CommandBarRowElement();
             this.commandBarStripElement1 = new Telerik.WinControls.UI.CommandBarStripElement();
@@ -148,8 +146,6 @@
             this.MenuDeleteAttachment = new Telerik.WinControls.UI.RadMenuItem();
             this.radCallout1 = new Telerik.WinControls.UI.RadCallout();
             this.AlertTimer = new System.Windows.Forms.Timer(this.components);
-            this.real_Estate_Management_DataSet = new Real_Estate_Management.Data.Real_Estate_Management_DataSet();
-            this.tbLawyerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tbLawyerTableAdapter = new Real_Estate_Management.Data.Real_Estate_Management_DataSetTableAdapters.tbLawyerTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.Txtnote)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txtname)).BeginInit();
@@ -182,6 +178,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txtnumber)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbLawyerBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.real_Estate_Management_DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radCmbPlanGuid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radCmbPlanGuid.EditorControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radCmbPlanGuid.EditorControl.MasterTemplate)).BeginInit();
@@ -224,14 +222,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DataGridAttachments.MasterTemplate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BtnScanner)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BtnAttachment)).BeginInit();
-            this.radPageViewPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radPanel3)).BeginInit();
-            this.radPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GridViewReport)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GridViewReport.MasterTemplate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BindingNavigatorClient)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.real_Estate_Management_DataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbLawyerBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // Txtnote
@@ -306,7 +297,6 @@
             this.radPageView1.Controls.Add(this.PageHome);
             this.radPageView1.Controls.Add(this.PageAgent);
             this.radPageView1.Controls.Add(this.PageAttachments);
-            this.radPageView1.Controls.Add(this.radPageViewPage1);
             this.radPageView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radPageView1.Location = new System.Drawing.Point(0, 48);
             this.radPageView1.Name = "radPageView1";
@@ -664,6 +654,16 @@
             this.Txtnumber.TextWrap = false;
             this.Txtnumber.ThemeName = "Material";
             // 
+            // tbLawyerBindingSource
+            // 
+            this.tbLawyerBindingSource.DataMember = "tbLawyer";
+            this.tbLawyerBindingSource.DataSource = this.real_Estate_Management_DataSet;
+            // 
+            // real_Estate_Management_DataSet
+            // 
+            this.real_Estate_Management_DataSet.DataSetName = "Real_Estate_Management_DataSet";
+            this.real_Estate_Management_DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // radCmbPlanGuid
             // 
             this.radCmbPlanGuid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -687,7 +687,7 @@
             this.radCmbPlanGuid.EditorControl.MasterTemplate.EnableFiltering = true;
             this.radCmbPlanGuid.EditorControl.MasterTemplate.EnableGrouping = false;
             this.radCmbPlanGuid.EditorControl.MasterTemplate.ShowFilteringRow = false;
-            this.radCmbPlanGuid.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition19;
+            this.radCmbPlanGuid.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition3;
             this.radCmbPlanGuid.EditorControl.Name = "NestedRadGridView";
             this.radCmbPlanGuid.EditorControl.ReadOnly = true;
             this.radCmbPlanGuid.EditorControl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -989,7 +989,7 @@
             this.radCollapsiblePanel2.PanelContainer.Controls.Add(this.Txtofficephone);
             this.radCollapsiblePanel2.PanelContainer.Controls.Add(this.Txtofficecr);
             this.radCollapsiblePanel2.PanelContainer.Location = new System.Drawing.Point(18, 1);
-            this.radCollapsiblePanel2.PanelContainer.Size = new System.Drawing.Size(194, 269);
+            this.radCollapsiblePanel2.PanelContainer.Size = new System.Drawing.Size(156, 231);
             this.radCollapsiblePanel2.Size = new System.Drawing.Size(314, 427);
             this.radCollapsiblePanel2.TabIndex = 14;
             // 
@@ -998,7 +998,7 @@
             this.Txtofficevatid.AutoScroll = true;
             this.Txtofficevatid.EmbeddedLabelText = "الرقم الضريبي";
             this.Txtofficevatid.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtofficevatid.Location = new System.Drawing.Point(2283, 259);
+            this.Txtofficevatid.Location = new System.Drawing.Point(9541, 259);
             this.Txtofficevatid.Name = "Txtofficevatid";
             this.Txtofficevatid.NullText = "ادخل الرقم الضريبي";
             this.Txtofficevatid.ReadOnly = true;
@@ -1014,7 +1014,7 @@
             this.Txtofficepublicnumber.AutoScroll = true;
             this.Txtofficepublicnumber.EmbeddedLabelText = "رقم المعلن";
             this.Txtofficepublicnumber.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtofficepublicnumber.Location = new System.Drawing.Point(2283, 323);
+            this.Txtofficepublicnumber.Location = new System.Drawing.Point(9541, 323);
             this.Txtofficepublicnumber.Name = "Txtofficepublicnumber";
             this.Txtofficepublicnumber.NullText = "ادخل رقم المعلن";
             this.Txtofficepublicnumber.ReadOnly = true;
@@ -1030,7 +1030,7 @@
             this.Txtofficeemail.AutoScroll = true;
             this.Txtofficeemail.EmbeddedLabelText = "البريد الإلكتروني";
             this.Txtofficeemail.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtofficeemail.Location = new System.Drawing.Point(2283, 195);
+            this.Txtofficeemail.Location = new System.Drawing.Point(9541, 195);
             this.Txtofficeemail.Name = "Txtofficeemail";
             this.Txtofficeemail.NullText = "ادخل البريد الإلكتروني";
             this.Txtofficeemail.ReadOnly = true;
@@ -1046,7 +1046,7 @@
             this.Txtofficename.AutoScroll = true;
             this.Txtofficename.EmbeddedLabelText = "اسم الموثق";
             this.Txtofficename.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtofficename.Location = new System.Drawing.Point(2283, 3);
+            this.Txtofficename.Location = new System.Drawing.Point(9541, 3);
             this.Txtofficename.Name = "Txtofficename";
             this.Txtofficename.NullText = "ادخل اسم الموثق";
             this.Txtofficename.ReadOnly = true;
@@ -1062,7 +1062,7 @@
             this.Txtofficephone.AutoScroll = true;
             this.Txtofficephone.EmbeddedLabelText = "رقم الهاتف";
             this.Txtofficephone.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtofficephone.Location = new System.Drawing.Point(2283, 131);
+            this.Txtofficephone.Location = new System.Drawing.Point(9541, 131);
             this.Txtofficephone.Name = "Txtofficephone";
             this.Txtofficephone.NullText = "ادخل رقم الهاتف";
             this.Txtofficephone.ReadOnly = true;
@@ -1078,7 +1078,7 @@
             this.Txtofficecr.AutoScroll = true;
             this.Txtofficecr.EmbeddedLabelText = "السجل التجاري";
             this.Txtofficecr.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtofficecr.Location = new System.Drawing.Point(2283, 67);
+            this.Txtofficecr.Location = new System.Drawing.Point(9541, 67);
             this.Txtofficecr.Name = "Txtofficecr";
             this.Txtofficecr.NullText = "ادخل السجل التجاري";
             this.Txtofficecr.ReadOnly = true;
@@ -1214,7 +1214,7 @@
             this.DataGridAttachments.MasterTemplate.AllowEditRow = false;
             this.DataGridAttachments.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
             this.DataGridAttachments.MasterTemplate.EnableGrouping = false;
-            this.DataGridAttachments.MasterTemplate.ViewDefinition = tableViewDefinition20;
+            this.DataGridAttachments.MasterTemplate.ViewDefinition = tableViewDefinition4;
             this.DataGridAttachments.Name = "DataGridAttachments";
             this.DataGridAttachments.ShowGroupPanel = false;
             this.DataGridAttachments.ShowGroupPanelScrollbars = false;
@@ -1247,65 +1247,6 @@
             this.BtnAttachment.Text = "إضافة مرفق";
             this.BtnAttachment.ThemeName = "Material";
             this.BtnAttachment.Click += new System.EventHandler(this.BtnAddAttachment_Click);
-            // 
-            // radPageViewPage1
-            // 
-            this.radPageViewPage1.Controls.Add(this.radPanel3);
-            this.radPageViewPage1.ItemSize = new System.Drawing.SizeF(60F, 49F);
-            this.radPageViewPage1.Location = new System.Drawing.Point(6, 6);
-            this.radPageViewPage1.Name = "radPageViewPage1";
-            this.radPageViewPage1.Size = new System.Drawing.Size(1165, 603);
-            this.radPageViewPage1.Text = "تقارير";
-            this.radPageViewPage1.Paint += new System.Windows.Forms.PaintEventHandler(this.radPageViewPage1_Paint);
-            // 
-            // radPanel3
-            // 
-            this.radPanel3.Controls.Add(this.GridViewReport);
-            this.radPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radPanel3.Location = new System.Drawing.Point(0, 0);
-            this.radPanel3.Name = "radPanel3";
-            this.radPanel3.Size = new System.Drawing.Size(1165, 603);
-            this.radPanel3.TabIndex = 11512125;
-            // 
-            // GridViewReport
-            // 
-            this.GridViewReport.AllowShowFocusCues = true;
-            this.GridViewReport.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.GridViewReport.EnableCodedUITests = true;
-            this.GridViewReport.EnableCustomDrawing = true;
-            this.GridViewReport.EnableCustomFiltering = true;
-            this.GridViewReport.EnableCustomGrouping = true;
-            this.GridViewReport.EnableCustomSorting = true;
-            this.GridViewReport.EnableKeyMap = true;
-            this.GridViewReport.EnableKineticScrolling = true;
-            this.GridViewReport.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GridViewReport.Location = new System.Drawing.Point(20, 26);
-            this.GridViewReport.Margin = new System.Windows.Forms.Padding(20, 3, 20, 3);
-            // 
-            // 
-            // 
-            this.GridViewReport.MasterTemplate.AllowAddNewRow = false;
-            this.GridViewReport.MasterTemplate.AllowRowReorder = true;
-            this.GridViewReport.MasterTemplate.AllowSearchRow = true;
-            this.GridViewReport.MasterTemplate.EnableAlternatingRowColor = true;
-            this.GridViewReport.MasterTemplate.EnableCustomFiltering = true;
-            this.GridViewReport.MasterTemplate.EnableCustomGrouping = true;
-            this.GridViewReport.MasterTemplate.EnableCustomSorting = true;
-            this.GridViewReport.MasterTemplate.EnableFiltering = true;
-            this.GridViewReport.MasterTemplate.EnablePaging = true;
-            this.GridViewReport.MasterTemplate.ShowChildViewCaptions = true;
-            this.GridViewReport.MasterTemplate.ShowGroupedColumns = true;
-            this.GridViewReport.MasterTemplate.ShowHeaderCellButtons = true;
-            this.GridViewReport.MasterTemplate.ViewDefinition = tableViewDefinition21;
-            this.GridViewReport.Name = "GridViewReport";
-            this.GridViewReport.ShowChildViewCaptions = true;
-            this.GridViewReport.ShowHeaderCellButtons = true;
-            this.GridViewReport.Size = new System.Drawing.Size(1125, 533);
-            this.GridViewReport.TabIndex = 6;
-            this.GridViewReport.TitleText = "التقارير";
-            this.GridViewReport.Click += new System.EventHandler(this.GridViewCars_Click);
             // 
             // BindingNavigatorClient
             // 
@@ -1810,28 +1751,28 @@
             // 
             // radToastNotificationManager1
             // 
-            radToastNotification19.BindingData = null;
-            radToastNotification19.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
-            radToastNotification19.Name = "ToastNews1";
-            radToastNotification19.Tag = null;
-            radToastNotification19.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastNews;
-            radToastNotification19.Xml = null;
-            radToastNotification20.BindingData = null;
-            radToastNotification20.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
-            radToastNotification20.Name = "ToastLegacy1";
-            radToastNotification20.Tag = null;
-            radToastNotification20.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastLegacy;
-            radToastNotification20.Xml = null;
-            radToastNotification21.BindingData = null;
-            radToastNotification21.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
-            radToastNotification21.Name = "ToastGeneric1";
-            radToastNotification21.Tag = null;
-            radToastNotification21.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastGeneric;
-            radToastNotification21.Xml = "<toast>\n  <visual>\n    <binding template=\"ToastGeneric\"></binding>\n  </visual>\n</" +
+            radToastNotification4.BindingData = null;
+            radToastNotification4.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
+            radToastNotification4.Name = "ToastNews1";
+            radToastNotification4.Tag = null;
+            radToastNotification4.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastNews;
+            radToastNotification4.Xml = null;
+            radToastNotification5.BindingData = null;
+            radToastNotification5.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
+            radToastNotification5.Name = "ToastLegacy1";
+            radToastNotification5.Tag = null;
+            radToastNotification5.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastLegacy;
+            radToastNotification5.Xml = null;
+            radToastNotification6.BindingData = null;
+            radToastNotification6.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
+            radToastNotification6.Name = "ToastGeneric1";
+            radToastNotification6.Tag = null;
+            radToastNotification6.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastGeneric;
+            radToastNotification6.Xml = "<toast>\n  <visual>\n    <binding template=\"ToastGeneric\"></binding>\n  </visual>\n</" +
     "toast>";
-            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification19);
-            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification20);
-            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification21);
+            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification4);
+            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification5);
+            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification6);
             // 
             // radDesktopAlert1
             // 
@@ -1895,16 +1836,6 @@
             // 
             this.AlertTimer.Tick += new System.EventHandler(this.AlertTimer_Tick);
             // 
-            // real_Estate_Management_DataSet
-            // 
-            this.real_Estate_Management_DataSet.DataSetName = "Real_Estate_Management_DataSet";
-            this.real_Estate_Management_DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tbLawyerBindingSource
-            // 
-            this.tbLawyerBindingSource.DataMember = "tbLawyer";
-            this.tbLawyerBindingSource.DataSource = this.real_Estate_Management_DataSet;
-            // 
             // tbLawyerTableAdapter
             // 
             this.tbLawyerTableAdapter.ClearBeforeFill = true;
@@ -1955,6 +1886,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txtnumber)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbLawyerBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.real_Estate_Management_DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radCmbPlanGuid.EditorControl.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radCmbPlanGuid.EditorControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radCmbPlanGuid)).EndInit();
@@ -2000,14 +1933,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DataGridAttachments)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BtnScanner)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BtnAttachment)).EndInit();
-            this.radPageViewPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.radPanel3)).EndInit();
-            this.radPanel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.GridViewReport.MasterTemplate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GridViewReport)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BindingNavigatorClient)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.real_Estate_Management_DataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbLawyerBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2123,9 +2049,6 @@
         private Telerik.WinControls.UI.RadPanel MainContainer;
         private Telerik.WinControls.UI.RadPanel radPanel1;
         private Telerik.WinControls.UI.RadPanel radPanel2;
-        private Telerik.WinControls.UI.RadPageViewPage radPageViewPage1;
-        public Telerik.WinControls.UI.RadGridView GridViewReport;
-        private Telerik.WinControls.UI.RadPanel radPanel3;
         private System.Windows.Forms.BindingSource tbLawyerBindingSource;
         private Real_Estate_Management.Data.Real_Estate_Management_DataSet real_Estate_Management_DataSet;
         private Real_Estate_Management.Data.Real_Estate_Management_DataSetTableAdapters.tbLawyerTableAdapter tbLawyerTableAdapter;

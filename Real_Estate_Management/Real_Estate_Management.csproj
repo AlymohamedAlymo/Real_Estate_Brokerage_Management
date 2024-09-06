@@ -234,6 +234,12 @@
     </Compile>
     <Compile Include="CustomElements\Bubble Bar\BubbleBarElement.cs" />
     <Compile Include="CustomElements\Bubble Bar\BubbleBarMouseOverBehavior.cs" />
+    <Compile Include="CustomElements\Flyout\FlyoutUserLogin.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomElements\Flyout\FlyoutUserLogin.Designer.cs">
+      <DependentUpon>FlyoutUserLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomElements\Flyout\FlyoutEmailContent.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -844,6 +850,7 @@
     <Compile Include="Helpers\InitSchema.cs" />
     <Compile Include="Helpers\License.cs" />
     <Compile Include="Helpers\MenuItemsPermessions.cs" />
+    <Compile Include="Helpers\Messages\Messages.cs" />
     <Compile Include="Helpers\Mimes.cs" />
     <Compile Include="Helpers\NumberToWords.cs" />
     <Compile Include="Helpers\Printers.cs" />
@@ -861,11 +868,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="CustomElements\Flyout\FlyoutStaticContent.cs">
+    <Compile Include="CustomElements\Flyout\FlyoutTransferData.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CustomElements\Flyout\FlyoutStaticContent.Designer.cs">
-      <DependentUpon>FlyoutStaticContent.cs</DependentUpon>
+    <Compile Include="CustomElements\Flyout\FlyoutTransferData.Designer.cs">
+      <DependentUpon>FlyoutTransferData.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UCClientCards.cs">
       <SubType>UserControl</SubType>
@@ -897,8 +904,14 @@
     <Compile Include="UserControls\UCLawyer.Designer.cs">
       <DependentUpon>UCLawyer.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CustomElements\Flyout\FlyoutUserLogin.resx">
+      <DependentUpon>FlyoutUserLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomElements\Flyout\FlyoutEmailContent.resx">
       <DependentUpon>FlyoutEmailContent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomElements\Flyout\FlyoutTransferData.resx">
+      <DependentUpon>FlyoutTransferData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmAccount.resx">
       <DependentUpon>FrmAccount.cs</DependentUpon>
@@ -1207,6 +1220,7 @@
       <LastGenOutput>Real_Estate_Management_Model.cs</LastGenOutput>
     </Content>
     <Content Include="Map-icon.svg.ico" />
+    <None Include="Resources\data-migration.png" />
     <None Include="Resources\UpdateDataBase.sql" />
     <None Include="Resources\BtnDelete.png" />
     <None Include="Resources\BtnConform.png" />

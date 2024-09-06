@@ -32,7 +32,7 @@ namespace DoctorERP.User_Controls
             InitializeComponent();
 
             RadGridLocalizationProvider.CurrentProvider = new MyArabicRadGridLocalizationProvider();
-            GridViewReport.TableElement.UpdateView();
+            //GridViewReport.TableElement.UpdateView();
             DataGridAttachments.TableElement.UpdateView();
 
 
@@ -139,9 +139,9 @@ namespace DoctorERP.User_Controls
             this.radPanel2.BackgroundImage = Real_Estate_Management.Properties.Resources.Background;
             this.radPanel2.BackgroundImageLayout = ImageLayout.Stretch;
 
-            this.radPanel3.PanelElement.PanelFill.Visibility = ElementVisibility.Hidden;
-            this.radPanel3.BackgroundImage = Real_Estate_Management.Properties.Resources.Background;
-            this.radPanel3.BackgroundImageLayout = ImageLayout.Stretch;
+            //this.radPanel3.PanelElement.PanelFill.Visibility = ElementVisibility.Hidden;
+            //this.radPanel3.BackgroundImage = Real_Estate_Management.Properties.Resources.Background;
+            //this.radPanel3.BackgroundImageLayout = ImageLayout.Stretch;
 
 
             this.DataGridAttachments.AutoGenerateHierarchy = true;
@@ -1301,9 +1301,9 @@ namespace DoctorERP.User_Controls
         #region Report 
         private void FillDataGridReport()
         {
-            tbAgent.Fill();
-            GridViewReport.DataSource = tbAgent.dtData;
-            GridViewReport.BestFitColumns();
+            //tbAgent.Fill();
+            //GridViewReport.DataSource = tbAgent.dtData;
+            //GridViewReport.BestFitColumns();
             //DataGridAttachments.Columns[0].IsVisible = false;
             //DataGridAttachments.Columns[1].IsVisible = false;
 

@@ -421,6 +421,16 @@ namespace Real_Estate_Management.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap data_migration {
+            get {
+                object obj = ResourceManager.GetObject("data_migration", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 
         ///GO
         ////****** Object:  UserDefinedFunction [dbo].[GetContractPayments]    Script Date: 24/10/2023 11:13:41 AM ******/
