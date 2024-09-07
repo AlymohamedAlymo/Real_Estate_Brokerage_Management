@@ -44,51 +44,18 @@
             this.PageHome = new Telerik.WinControls.UI.RadPageViewPage();
             this.MainContainer = new Telerik.WinControls.UI.RadPanel();
             this.radLabel5 = new Telerik.WinControls.UI.RadLabel();
-            this.radCollapsiblePanelParenter2 = new Telerik.WinControls.UI.RadCollapsiblePanel();
-            this.radTextBox4 = new Telerik.WinControls.UI.RadTextBox();
-            this.radTextBox5 = new Telerik.WinControls.UI.RadTextBox();
-            this.radTextBox6 = new Telerik.WinControls.UI.RadTextBox();
             this.Txtpublicnumber = new Telerik.WinControls.UI.RadTextBox();
-            this.radCollapsiblePanelParenter3 = new Telerik.WinControls.UI.RadCollapsiblePanel();
-            this.radTextBox7 = new Telerik.WinControls.UI.RadTextBox();
-            this.radTextBox8 = new Telerik.WinControls.UI.RadTextBox();
-            this.radTextBox9 = new Telerik.WinControls.UI.RadTextBox();
-            this.radCollapsiblePanelParenter4 = new Telerik.WinControls.UI.RadCollapsiblePanel();
-            this.radTextBox10 = new Telerik.WinControls.UI.RadTextBox();
-            this.radTextBox11 = new Telerik.WinControls.UI.RadTextBox();
-            this.radTextBox12 = new Telerik.WinControls.UI.RadTextBox();
             this.radLabel8 = new Telerik.WinControls.UI.RadLabel();
             this.Txtnumber = new Telerik.WinControls.UI.RadLabel();
             this.tbLawyerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.real_Estate_Management_DataSet = new Real_Estate_Management.Data.Real_Estate_Management_DataSet();
             this.radCmbPlanGuid = new Telerik.WinControls.UI.RadMultiColumnComboBox();
             this.radstatus = new Telerik.WinControls.UI.RadLabel();
-            this.radCollapsiblePanelParenter1 = new Telerik.WinControls.UI.RadCollapsiblePanel();
-            this.radTextBox1 = new Telerik.WinControls.UI.RadTextBox();
-            this.radTextBox2 = new Telerik.WinControls.UI.RadTextBox();
-            this.radTextBox3 = new Telerik.WinControls.UI.RadTextBox();
             this.Txtcivilid = new Telerik.WinControls.UI.RadTextBox();
-            this.radButton1 = new Telerik.WinControls.UI.RadButton();
             this.Txtmobile = new Telerik.WinControls.UI.RadTextBox();
             this.Txtlastaction = new Telerik.WinControls.UI.RadTextBox();
             this.Txtemail = new Telerik.WinControls.UI.RadTextBox();
             this.Txtvatid = new Telerik.WinControls.UI.RadTextBox();
-            this.PageAgent = new Telerik.WinControls.UI.RadPageViewPage();
-            this.radPanel1 = new Telerik.WinControls.UI.RadPanel();
-            this.Txtagentname = new Telerik.WinControls.UI.RadTextBox();
-            this.Txtagencynumber = new Telerik.WinControls.UI.RadTextBox();
-            this.radCollapsiblePanel2 = new Telerik.WinControls.UI.RadCollapsiblePanel();
-            this.Txtofficevatid = new Telerik.WinControls.UI.RadTextBox();
-            this.Txtofficepublicnumber = new Telerik.WinControls.UI.RadTextBox();
-            this.Txtofficeemail = new Telerik.WinControls.UI.RadTextBox();
-            this.Txtofficename = new Telerik.WinControls.UI.RadTextBox();
-            this.Txtofficephone = new Telerik.WinControls.UI.RadTextBox();
-            this.Txtofficecr = new Telerik.WinControls.UI.RadTextBox();
-            this.Txtagentvatid = new Telerik.WinControls.UI.RadTextBox();
-            this.Txtagentcivilid = new Telerik.WinControls.UI.RadTextBox();
-            this.Txtagentemail = new Telerik.WinControls.UI.RadTextBox();
-            this.Txtagentmobile = new Telerik.WinControls.UI.RadTextBox();
-            this.Txtagentpublicnumber = new Telerik.WinControls.UI.RadTextBox();
             this.PageAttachments = new Telerik.WinControls.UI.RadPageViewPage();
             this.radPanel2 = new Telerik.WinControls.UI.RadPanel();
             this.DataGridAttachments = new Telerik.WinControls.UI.RadGridView();
@@ -157,25 +124,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.MainContainer)).BeginInit();
             this.MainContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radCollapsiblePanelParenter2)).BeginInit();
-            this.radCollapsiblePanelParenter2.PanelContainer.SuspendLayout();
-            this.radCollapsiblePanelParenter2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txtpublicnumber)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radCollapsiblePanelParenter3)).BeginInit();
-            this.radCollapsiblePanelParenter3.PanelContainer.SuspendLayout();
-            this.radCollapsiblePanelParenter3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radCollapsiblePanelParenter4)).BeginInit();
-            this.radCollapsiblePanelParenter4.PanelContainer.SuspendLayout();
-            this.radCollapsiblePanelParenter4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txtnumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbLawyerBindingSource)).BeginInit();
@@ -184,37 +133,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.radCmbPlanGuid.EditorControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radCmbPlanGuid.EditorControl.MasterTemplate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radstatus)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radCollapsiblePanelParenter1)).BeginInit();
-            this.radCollapsiblePanelParenter1.PanelContainer.SuspendLayout();
-            this.radCollapsiblePanelParenter1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txtcivilid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txtmobile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txtlastaction)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txtemail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txtvatid)).BeginInit();
-            this.PageAgent.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).BeginInit();
-            this.radPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Txtagentname)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Txtagencynumber)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radCollapsiblePanel2)).BeginInit();
-            this.radCollapsiblePanel2.PanelContainer.SuspendLayout();
-            this.radCollapsiblePanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Txtofficevatid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Txtofficepublicnumber)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Txtofficeemail)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Txtofficename)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Txtofficephone)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Txtofficecr)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Txtagentvatid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Txtagentcivilid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Txtagentemail)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Txtagentmobile)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Txtagentpublicnumber)).BeginInit();
             this.PageAttachments.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).BeginInit();
             this.radPanel2.SuspendLayout();
@@ -231,7 +154,7 @@
             this.Txtnote.AutoScroll = true;
             this.Txtnote.EmbeddedLabelText = "الملاحظات ";
             this.Txtnote.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtnote.Location = new System.Drawing.Point(847, 421);
+            this.Txtnote.Location = new System.Drawing.Point(847, 413);
             this.Txtnote.Multiline = true;
             this.Txtnote.Name = "Txtnote";
             this.Txtnote.NullText = "ادخل الملاحظات إن وجد";
@@ -255,7 +178,7 @@
             this.Txtname.AutoScroll = true;
             this.Txtname.EmbeddedLabelText = "اسم المحامي";
             this.Txtname.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtname.Location = new System.Drawing.Point(847, 229);
+            this.Txtname.Location = new System.Drawing.Point(847, 221);
             this.Txtname.Name = "Txtname";
             this.Txtname.NullText = "ادخل اسم المحامي";
             this.Txtname.ReadOnly = true;
@@ -295,7 +218,6 @@
             // radPageView1
             // 
             this.radPageView1.Controls.Add(this.PageHome);
-            this.radPageView1.Controls.Add(this.PageAgent);
             this.radPageView1.Controls.Add(this.PageAttachments);
             this.radPageView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radPageView1.Location = new System.Drawing.Point(0, 48);
@@ -306,7 +228,6 @@
             this.radPageView1.TabIndex = 72;
             this.radPageView1.ThemeName = "Material";
             this.radPageView1.ViewMode = Telerik.WinControls.UI.PageViewMode.OfficeNavigationBar;
-            this.radPageView1.SelectedPageChanged += new System.EventHandler(this.radPageView1_SelectedPageChanged);
             // 
             // PageHome
             // 
@@ -319,24 +240,18 @@
             this.PageHome.Size = new System.Drawing.Size(1165, 603);
             this.PageHome.Text = "عام";
             this.PageHome.Title = "البيانات العامة لبطاقة الأرض";
-            this.PageHome.Paint += new System.Windows.Forms.PaintEventHandler(this.PageHome_Paint);
             // 
             // MainContainer
             // 
             this.MainContainer.Controls.Add(this.radLabel5);
-            this.MainContainer.Controls.Add(this.radCollapsiblePanelParenter2);
             this.MainContainer.Controls.Add(this.Txtpublicnumber);
-            this.MainContainer.Controls.Add(this.radCollapsiblePanelParenter3);
             this.MainContainer.Controls.Add(this.Txtnote);
-            this.MainContainer.Controls.Add(this.radCollapsiblePanelParenter4);
             this.MainContainer.Controls.Add(this.Txtname);
             this.MainContainer.Controls.Add(this.radLabel8);
             this.MainContainer.Controls.Add(this.Txtnumber);
             this.MainContainer.Controls.Add(this.radCmbPlanGuid);
             this.MainContainer.Controls.Add(this.radstatus);
-            this.MainContainer.Controls.Add(this.radCollapsiblePanelParenter1);
             this.MainContainer.Controls.Add(this.Txtcivilid);
-            this.MainContainer.Controls.Add(this.radButton1);
             this.MainContainer.Controls.Add(this.Txtmobile);
             this.MainContainer.Controls.Add(this.Txtlastaction);
             this.MainContainer.Controls.Add(this.Txtemail);
@@ -346,7 +261,6 @@
             this.MainContainer.Name = "MainContainer";
             this.MainContainer.Size = new System.Drawing.Size(1165, 603);
             this.MainContainer.TabIndex = 11512122;
-            this.MainContainer.Paint += new System.Windows.Forms.PaintEventHandler(this.MainContainer_Paint);
             // 
             // radLabel5
             // 
@@ -369,89 +283,13 @@
             this.radLabel5.TextWrap = false;
             this.radLabel5.ThemeName = "Material";
             // 
-            // radCollapsiblePanelParenter2
-            // 
-            this.radCollapsiblePanelParenter2.AnimationType = Telerik.WinControls.UI.CollapsiblePanelAnimationType.Slide;
-            this.radCollapsiblePanelParenter2.EnableAnimation = false;
-            this.radCollapsiblePanelParenter2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radCollapsiblePanelParenter2.HeaderText = "بيانات الشريك الثاني";
-            this.radCollapsiblePanelParenter2.IsExpanded = false;
-            this.radCollapsiblePanelParenter2.Location = new System.Drawing.Point(19, 290);
-            this.radCollapsiblePanelParenter2.Name = "radCollapsiblePanelParenter2";
-            this.radCollapsiblePanelParenter2.OwnerBoundsCache = new System.Drawing.Rectangle(19, 290, 315, 225);
-            // 
-            // radCollapsiblePanelParenter2.PanelContainer
-            // 
-            this.radCollapsiblePanelParenter2.PanelContainer.Controls.Add(this.radTextBox4);
-            this.radCollapsiblePanelParenter2.PanelContainer.Controls.Add(this.radTextBox5);
-            this.radCollapsiblePanelParenter2.PanelContainer.Controls.Add(this.radTextBox6);
-            this.radCollapsiblePanelParenter2.PanelContainer.Location = new System.Drawing.Point(18, 1);
-            this.radCollapsiblePanelParenter2.PanelContainer.Size = new System.Drawing.Size(0, 0);
-            this.radCollapsiblePanelParenter2.Size = new System.Drawing.Size(315, 25);
-            this.radCollapsiblePanelParenter2.TabIndex = 1988;
-            this.radCollapsiblePanelParenter2.Visible = false;
-            // 
-            // radTextBox4
-            // 
-            this.radTextBox4.AutoScroll = true;
-            this.radTextBox4.EmbeddedLabelText = "رقم الجوال";
-            this.radTextBox4.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radTextBox4.Location = new System.Drawing.Point(4, 131);
-            this.radTextBox4.Name = "radTextBox4";
-            this.radTextBox4.NullText = "ادخل رقم الجوال";
-            this.radTextBox4.ReadOnly = true;
-            this.radTextBox4.ShowEmbeddedLabel = true;
-            this.radTextBox4.ShowNullText = true;
-            this.radTextBox4.Size = new System.Drawing.Size(305, 58);
-            this.radTextBox4.TabIndex = 1983;
-            this.radTextBox4.ThemeName = "Material";
-            this.radTextBox4.WordWrap = false;
-            this.radTextBox4.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
-            this.radTextBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReadOnly_KeyPress);
-            // 
-            // radTextBox5
-            // 
-            this.radTextBox5.AutoScroll = true;
-            this.radTextBox5.EmbeddedLabelText = "رقم الهوية";
-            this.radTextBox5.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radTextBox5.Location = new System.Drawing.Point(4, 67);
-            this.radTextBox5.Name = "radTextBox5";
-            this.radTextBox5.NullText = "ادخل رقم الهوية";
-            this.radTextBox5.ReadOnly = true;
-            this.radTextBox5.ShowEmbeddedLabel = true;
-            this.radTextBox5.ShowNullText = true;
-            this.radTextBox5.Size = new System.Drawing.Size(305, 58);
-            this.radTextBox5.TabIndex = 1982;
-            this.radTextBox5.ThemeName = "Material";
-            this.radTextBox5.WordWrap = false;
-            this.radTextBox5.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
-            this.radTextBox5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReadOnly_KeyPress);
-            // 
-            // radTextBox6
-            // 
-            this.radTextBox6.AutoScroll = true;
-            this.radTextBox6.EmbeddedLabelText = "اسم العميل";
-            this.radTextBox6.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radTextBox6.Location = new System.Drawing.Point(4, 3);
-            this.radTextBox6.Name = "radTextBox6";
-            this.radTextBox6.NullText = "ادخل اسم العميل";
-            this.radTextBox6.ReadOnly = true;
-            this.radTextBox6.ShowEmbeddedLabel = true;
-            this.radTextBox6.ShowNullText = true;
-            this.radTextBox6.Size = new System.Drawing.Size(305, 58);
-            this.radTextBox6.TabIndex = 1981;
-            this.radTextBox6.ThemeName = "Material";
-            this.radTextBox6.WordWrap = false;
-            this.radTextBox6.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
-            this.radTextBox6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReadOnly_KeyPress);
-            // 
             // Txtpublicnumber
             // 
             this.Txtpublicnumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Txtpublicnumber.AutoScroll = true;
             this.Txtpublicnumber.EmbeddedLabelText = "رقم المعلن";
             this.Txtpublicnumber.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtpublicnumber.Location = new System.Drawing.Point(536, 357);
+            this.Txtpublicnumber.Location = new System.Drawing.Point(536, 349);
             this.Txtpublicnumber.Name = "Txtpublicnumber";
             this.Txtpublicnumber.NullText = "ادخل رقم المعلن";
             this.Txtpublicnumber.ReadOnly = true;
@@ -463,158 +301,6 @@
             this.Txtpublicnumber.WordWrap = false;
             this.Txtpublicnumber.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
             this.Txtpublicnumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReadOnly_KeyPress);
-            // 
-            // radCollapsiblePanelParenter3
-            // 
-            this.radCollapsiblePanelParenter3.AnimationType = Telerik.WinControls.UI.CollapsiblePanelAnimationType.Slide;
-            this.radCollapsiblePanelParenter3.EnableAnimation = false;
-            this.radCollapsiblePanelParenter3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radCollapsiblePanelParenter3.HeaderText = "بيانات الشريك الثالث";
-            this.radCollapsiblePanelParenter3.IsExpanded = false;
-            this.radCollapsiblePanelParenter3.Location = new System.Drawing.Point(19, 327);
-            this.radCollapsiblePanelParenter3.Name = "radCollapsiblePanelParenter3";
-            this.radCollapsiblePanelParenter3.OwnerBoundsCache = new System.Drawing.Rectangle(19, 327, 315, 225);
-            // 
-            // radCollapsiblePanelParenter3.PanelContainer
-            // 
-            this.radCollapsiblePanelParenter3.PanelContainer.Controls.Add(this.radTextBox7);
-            this.radCollapsiblePanelParenter3.PanelContainer.Controls.Add(this.radTextBox8);
-            this.radCollapsiblePanelParenter3.PanelContainer.Controls.Add(this.radTextBox9);
-            this.radCollapsiblePanelParenter3.PanelContainer.Location = new System.Drawing.Point(18, 1);
-            this.radCollapsiblePanelParenter3.PanelContainer.Size = new System.Drawing.Size(0, 0);
-            this.radCollapsiblePanelParenter3.Size = new System.Drawing.Size(315, 25);
-            this.radCollapsiblePanelParenter3.TabIndex = 1989;
-            this.radCollapsiblePanelParenter3.Visible = false;
-            // 
-            // radTextBox7
-            // 
-            this.radTextBox7.AutoScroll = true;
-            this.radTextBox7.EmbeddedLabelText = "رقم الجوال";
-            this.radTextBox7.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radTextBox7.Location = new System.Drawing.Point(4, 131);
-            this.radTextBox7.Name = "radTextBox7";
-            this.radTextBox7.NullText = "ادخل رقم الجوال";
-            this.radTextBox7.ReadOnly = true;
-            this.radTextBox7.ShowEmbeddedLabel = true;
-            this.radTextBox7.ShowNullText = true;
-            this.radTextBox7.Size = new System.Drawing.Size(305, 58);
-            this.radTextBox7.TabIndex = 1983;
-            this.radTextBox7.ThemeName = "Material";
-            this.radTextBox7.WordWrap = false;
-            this.radTextBox7.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
-            this.radTextBox7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReadOnly_KeyPress);
-            // 
-            // radTextBox8
-            // 
-            this.radTextBox8.AutoScroll = true;
-            this.radTextBox8.EmbeddedLabelText = "رقم الهوية";
-            this.radTextBox8.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radTextBox8.Location = new System.Drawing.Point(4, 67);
-            this.radTextBox8.Name = "radTextBox8";
-            this.radTextBox8.NullText = "ادخل رقم الهوية";
-            this.radTextBox8.ReadOnly = true;
-            this.radTextBox8.ShowEmbeddedLabel = true;
-            this.radTextBox8.ShowNullText = true;
-            this.radTextBox8.Size = new System.Drawing.Size(305, 58);
-            this.radTextBox8.TabIndex = 1982;
-            this.radTextBox8.ThemeName = "Material";
-            this.radTextBox8.WordWrap = false;
-            this.radTextBox8.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
-            this.radTextBox8.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReadOnly_KeyPress);
-            // 
-            // radTextBox9
-            // 
-            this.radTextBox9.AutoScroll = true;
-            this.radTextBox9.EmbeddedLabelText = "اسم العميل";
-            this.radTextBox9.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radTextBox9.Location = new System.Drawing.Point(4, 3);
-            this.radTextBox9.Name = "radTextBox9";
-            this.radTextBox9.NullText = "ادخل اسم العميل";
-            this.radTextBox9.ReadOnly = true;
-            this.radTextBox9.ShowEmbeddedLabel = true;
-            this.radTextBox9.ShowNullText = true;
-            this.radTextBox9.Size = new System.Drawing.Size(305, 58);
-            this.radTextBox9.TabIndex = 1981;
-            this.radTextBox9.ThemeName = "Material";
-            this.radTextBox9.WordWrap = false;
-            this.radTextBox9.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
-            this.radTextBox9.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReadOnly_KeyPress);
-            // 
-            // radCollapsiblePanelParenter4
-            // 
-            this.radCollapsiblePanelParenter4.AnimationType = Telerik.WinControls.UI.CollapsiblePanelAnimationType.Slide;
-            this.radCollapsiblePanelParenter4.EnableAnimation = false;
-            this.radCollapsiblePanelParenter4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radCollapsiblePanelParenter4.HeaderText = "بيانات الشريك الرابع";
-            this.radCollapsiblePanelParenter4.IsExpanded = false;
-            this.radCollapsiblePanelParenter4.Location = new System.Drawing.Point(19, 364);
-            this.radCollapsiblePanelParenter4.Name = "radCollapsiblePanelParenter4";
-            this.radCollapsiblePanelParenter4.OwnerBoundsCache = new System.Drawing.Rectangle(19, 364, 315, 225);
-            // 
-            // radCollapsiblePanelParenter4.PanelContainer
-            // 
-            this.radCollapsiblePanelParenter4.PanelContainer.Controls.Add(this.radTextBox10);
-            this.radCollapsiblePanelParenter4.PanelContainer.Controls.Add(this.radTextBox11);
-            this.radCollapsiblePanelParenter4.PanelContainer.Controls.Add(this.radTextBox12);
-            this.radCollapsiblePanelParenter4.PanelContainer.Location = new System.Drawing.Point(18, 1);
-            this.radCollapsiblePanelParenter4.PanelContainer.Size = new System.Drawing.Size(0, 0);
-            this.radCollapsiblePanelParenter4.Size = new System.Drawing.Size(315, 25);
-            this.radCollapsiblePanelParenter4.TabIndex = 1990;
-            this.radCollapsiblePanelParenter4.Visible = false;
-            // 
-            // radTextBox10
-            // 
-            this.radTextBox10.AutoScroll = true;
-            this.radTextBox10.EmbeddedLabelText = "رقم الجوال";
-            this.radTextBox10.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radTextBox10.Location = new System.Drawing.Point(4, 131);
-            this.radTextBox10.Name = "radTextBox10";
-            this.radTextBox10.NullText = "ادخل رقم الجوال";
-            this.radTextBox10.ReadOnly = true;
-            this.radTextBox10.ShowEmbeddedLabel = true;
-            this.radTextBox10.ShowNullText = true;
-            this.radTextBox10.Size = new System.Drawing.Size(305, 58);
-            this.radTextBox10.TabIndex = 1983;
-            this.radTextBox10.ThemeName = "Material";
-            this.radTextBox10.WordWrap = false;
-            this.radTextBox10.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
-            this.radTextBox10.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReadOnly_KeyPress);
-            // 
-            // radTextBox11
-            // 
-            this.radTextBox11.AutoScroll = true;
-            this.radTextBox11.EmbeddedLabelText = "رقم الهوية";
-            this.radTextBox11.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radTextBox11.Location = new System.Drawing.Point(4, 67);
-            this.radTextBox11.Name = "radTextBox11";
-            this.radTextBox11.NullText = "ادخل رقم الهوية";
-            this.radTextBox11.ReadOnly = true;
-            this.radTextBox11.ShowEmbeddedLabel = true;
-            this.radTextBox11.ShowNullText = true;
-            this.radTextBox11.Size = new System.Drawing.Size(305, 58);
-            this.radTextBox11.TabIndex = 1982;
-            this.radTextBox11.ThemeName = "Material";
-            this.radTextBox11.WordWrap = false;
-            this.radTextBox11.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
-            this.radTextBox11.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReadOnly_KeyPress);
-            // 
-            // radTextBox12
-            // 
-            this.radTextBox12.AutoScroll = true;
-            this.radTextBox12.EmbeddedLabelText = "اسم العميل";
-            this.radTextBox12.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radTextBox12.Location = new System.Drawing.Point(4, 3);
-            this.radTextBox12.Name = "radTextBox12";
-            this.radTextBox12.NullText = "ادخل اسم العميل";
-            this.radTextBox12.ReadOnly = true;
-            this.radTextBox12.ShowEmbeddedLabel = true;
-            this.radTextBox12.ShowNullText = true;
-            this.radTextBox12.Size = new System.Drawing.Size(305, 58);
-            this.radTextBox12.TabIndex = 1981;
-            this.radTextBox12.ThemeName = "Material";
-            this.radTextBox12.WordWrap = false;
-            this.radTextBox12.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
-            this.radTextBox12.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReadOnly_KeyPress);
             // 
             // radLabel8
             // 
@@ -641,13 +327,13 @@
             this.Txtnumber.BorderVisible = true;
             this.Txtnumber.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbLawyerBindingSource, "number", true));
             this.Txtnumber.Font = new System.Drawing.Font("Arial", 60F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtnumber.Location = new System.Drawing.Point(748, 17);
+            this.Txtnumber.Location = new System.Drawing.Point(732, 17);
             this.Txtnumber.Name = "Txtnumber";
             // 
             // 
             // 
             this.Txtnumber.RootElement.BorderHighlightThickness = 0;
-            this.Txtnumber.Size = new System.Drawing.Size(276, 127);
+            this.Txtnumber.Size = new System.Drawing.Size(292, 127);
             this.Txtnumber.TabIndex = 1412;
             this.Txtnumber.Text = "10";
             this.Txtnumber.TextAlignment = System.Drawing.ContentAlignment.TopRight;
@@ -711,7 +397,7 @@
             this.radstatus.AutoSize = false;
             this.radstatus.BackColor = System.Drawing.Color.White;
             this.radstatus.Font = new System.Drawing.Font("Arial", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radstatus.Location = new System.Drawing.Point(552, 18);
+            this.radstatus.Location = new System.Drawing.Point(536, 17);
             this.radstatus.Name = "radstatus";
             // 
             // 
@@ -725,86 +411,13 @@
             this.radstatus.ThemeName = "Material";
             this.radstatus.TextChanged += new System.EventHandler(this.Txtstatus_TextChanged);
             // 
-            // radCollapsiblePanelParenter1
-            // 
-            this.radCollapsiblePanelParenter1.AnimationType = Telerik.WinControls.UI.CollapsiblePanelAnimationType.Slide;
-            this.radCollapsiblePanelParenter1.EnableAnimation = false;
-            this.radCollapsiblePanelParenter1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radCollapsiblePanelParenter1.HeaderText = "بيانات الشريك الأول";
-            this.radCollapsiblePanelParenter1.Location = new System.Drawing.Point(19, 59);
-            this.radCollapsiblePanelParenter1.Name = "radCollapsiblePanelParenter1";
-            // 
-            // radCollapsiblePanelParenter1.PanelContainer
-            // 
-            this.radCollapsiblePanelParenter1.PanelContainer.Controls.Add(this.radTextBox1);
-            this.radCollapsiblePanelParenter1.PanelContainer.Controls.Add(this.radTextBox2);
-            this.radCollapsiblePanelParenter1.PanelContainer.Controls.Add(this.radTextBox3);
-            this.radCollapsiblePanelParenter1.PanelContainer.Size = new System.Drawing.Size(313, 193);
-            this.radCollapsiblePanelParenter1.Size = new System.Drawing.Size(315, 225);
-            this.radCollapsiblePanelParenter1.TabIndex = 1987;
-            this.radCollapsiblePanelParenter1.Visible = false;
-            // 
-            // radTextBox1
-            // 
-            this.radTextBox1.AutoScroll = true;
-            this.radTextBox1.EmbeddedLabelText = "رقم الجوال";
-            this.radTextBox1.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radTextBox1.Location = new System.Drawing.Point(4, 131);
-            this.radTextBox1.Name = "radTextBox1";
-            this.radTextBox1.NullText = "ادخل رقم الجوال";
-            this.radTextBox1.ReadOnly = true;
-            this.radTextBox1.ShowEmbeddedLabel = true;
-            this.radTextBox1.ShowNullText = true;
-            this.radTextBox1.Size = new System.Drawing.Size(305, 58);
-            this.radTextBox1.TabIndex = 1983;
-            this.radTextBox1.ThemeName = "Material";
-            this.radTextBox1.WordWrap = false;
-            this.radTextBox1.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
-            this.radTextBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReadOnly_KeyPress);
-            // 
-            // radTextBox2
-            // 
-            this.radTextBox2.AutoScroll = true;
-            this.radTextBox2.EmbeddedLabelText = "رقم الهوية";
-            this.radTextBox2.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radTextBox2.Location = new System.Drawing.Point(4, 67);
-            this.radTextBox2.Name = "radTextBox2";
-            this.radTextBox2.NullText = "ادخل رقم الهوية";
-            this.radTextBox2.ReadOnly = true;
-            this.radTextBox2.ShowEmbeddedLabel = true;
-            this.radTextBox2.ShowNullText = true;
-            this.radTextBox2.Size = new System.Drawing.Size(305, 58);
-            this.radTextBox2.TabIndex = 1982;
-            this.radTextBox2.ThemeName = "Material";
-            this.radTextBox2.WordWrap = false;
-            this.radTextBox2.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
-            this.radTextBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReadOnly_KeyPress);
-            // 
-            // radTextBox3
-            // 
-            this.radTextBox3.AutoScroll = true;
-            this.radTextBox3.EmbeddedLabelText = "اسم العميل";
-            this.radTextBox3.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radTextBox3.Location = new System.Drawing.Point(4, 3);
-            this.radTextBox3.Name = "radTextBox3";
-            this.radTextBox3.NullText = "ادخل اسم العميل";
-            this.radTextBox3.ReadOnly = true;
-            this.radTextBox3.ShowEmbeddedLabel = true;
-            this.radTextBox3.ShowNullText = true;
-            this.radTextBox3.Size = new System.Drawing.Size(305, 58);
-            this.radTextBox3.TabIndex = 1981;
-            this.radTextBox3.ThemeName = "Material";
-            this.radTextBox3.WordWrap = false;
-            this.radTextBox3.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
-            this.radTextBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReadOnly_KeyPress);
-            // 
             // Txtcivilid
             // 
             this.Txtcivilid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Txtcivilid.AutoScroll = true;
             this.Txtcivilid.EmbeddedLabelText = "رقم الهوية";
             this.Txtcivilid.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtcivilid.Location = new System.Drawing.Point(536, 229);
+            this.Txtcivilid.Location = new System.Drawing.Point(536, 221);
             this.Txtcivilid.Name = "Txtcivilid";
             this.Txtcivilid.NullText = "ادخل رقم الهوية";
             this.Txtcivilid.ReadOnly = true;
@@ -817,27 +430,13 @@
             this.Txtcivilid.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
             this.Txtcivilid.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReadOnly_KeyPress);
             // 
-            // radButton1
-            // 
-            this.radButton1.Image = global::Real_Estate_Management.Properties.Resources.plus;
-            this.radButton1.Location = new System.Drawing.Point(24, 17);
-            this.radButton1.Name = "radButton1";
-            this.radButton1.Size = new System.Drawing.Size(120, 36);
-            this.radButton1.TabIndex = 1986;
-            this.radButton1.TabStop = false;
-            this.radButton1.Text = "إضافة شريك";
-            this.radButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.radButton1.ThemeName = "Material";
-            this.radButton1.Visible = false;
-            this.radButton1.Click += new System.EventHandler(this.BtnAddParenter_Click);
-            // 
             // Txtmobile
             // 
             this.Txtmobile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Txtmobile.AutoScroll = true;
             this.Txtmobile.EmbeddedLabelText = "رقم الجوال";
             this.Txtmobile.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtmobile.Location = new System.Drawing.Point(847, 293);
+            this.Txtmobile.Location = new System.Drawing.Point(847, 285);
             this.Txtmobile.Name = "Txtmobile";
             this.Txtmobile.NullText = "ادخل رقم الجوال";
             this.Txtmobile.ReadOnly = true;
@@ -856,7 +455,7 @@
             this.Txtlastaction.AutoScroll = true;
             this.Txtlastaction.EmbeddedLabelText = "العملية الاخيرة";
             this.Txtlastaction.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtlastaction.Location = new System.Drawing.Point(536, 421);
+            this.Txtlastaction.Location = new System.Drawing.Point(536, 413);
             this.Txtlastaction.Multiline = true;
             this.Txtlastaction.Name = "Txtlastaction";
             this.Txtlastaction.ReadOnly = true;
@@ -880,7 +479,7 @@
             this.Txtemail.AutoScroll = true;
             this.Txtemail.EmbeddedLabelText = "البريد الإلكتروني";
             this.Txtemail.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtemail.Location = new System.Drawing.Point(536, 293);
+            this.Txtemail.Location = new System.Drawing.Point(536, 285);
             this.Txtemail.Name = "Txtemail";
             this.Txtemail.NullText = "ادخل البريد الإلكتروني";
             this.Txtemail.ReadOnly = true;
@@ -899,7 +498,7 @@
             this.Txtvatid.AutoScroll = true;
             this.Txtvatid.EmbeddedLabelText = "الرقم الضريبي";
             this.Txtvatid.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtvatid.Location = new System.Drawing.Point(847, 357);
+            this.Txtvatid.Location = new System.Drawing.Point(847, 349);
             this.Txtvatid.Name = "Txtvatid";
             this.Txtvatid.NullText = "ادخل الرقم الضريبي";
             this.Txtvatid.ReadOnly = true;
@@ -911,268 +510,6 @@
             this.Txtvatid.WordWrap = false;
             this.Txtvatid.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
             this.Txtvatid.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReadOnly_KeyPress);
-            // 
-            // PageAgent
-            // 
-            this.PageAgent.Controls.Add(this.radPanel1);
-            this.PageAgent.ItemSize = new System.Drawing.SizeF(60F, 49F);
-            this.PageAgent.Location = new System.Drawing.Point(6, 6);
-            this.PageAgent.Name = "PageAgent";
-            this.PageAgent.Size = new System.Drawing.Size(1165, 603);
-            this.PageAgent.Text = "الوكيل";
-            // 
-            // radPanel1
-            // 
-            this.radPanel1.Controls.Add(this.Txtagentname);
-            this.radPanel1.Controls.Add(this.Txtagencynumber);
-            this.radPanel1.Controls.Add(this.radCollapsiblePanel2);
-            this.radPanel1.Controls.Add(this.Txtagentvatid);
-            this.radPanel1.Controls.Add(this.Txtagentcivilid);
-            this.radPanel1.Controls.Add(this.Txtagentemail);
-            this.radPanel1.Controls.Add(this.Txtagentmobile);
-            this.radPanel1.Controls.Add(this.Txtagentpublicnumber);
-            this.radPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radPanel1.Location = new System.Drawing.Point(0, 0);
-            this.radPanel1.Name = "radPanel1";
-            this.radPanel1.Size = new System.Drawing.Size(1165, 603);
-            this.radPanel1.TabIndex = 11512123;
-            // 
-            // Txtagentname
-            // 
-            this.Txtagentname.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Txtagentname.AutoScroll = true;
-            this.Txtagentname.EmbeddedLabelText = "اسم الوكيل";
-            this.Txtagentname.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtagentname.Location = new System.Drawing.Point(836, 24);
-            this.Txtagentname.Name = "Txtagentname";
-            this.Txtagentname.NullText = "ادخل اسم الوكيل";
-            this.Txtagentname.ReadOnly = true;
-            this.Txtagentname.ShowEmbeddedLabel = true;
-            this.Txtagentname.ShowNullText = true;
-            this.Txtagentname.Size = new System.Drawing.Size(305, 58);
-            this.Txtagentname.TabIndex = 7;
-            this.Txtagentname.ThemeName = "Material";
-            this.Txtagentname.WordWrap = false;
-            // 
-            // Txtagencynumber
-            // 
-            this.Txtagencynumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Txtagencynumber.AutoScroll = true;
-            this.Txtagencynumber.EmbeddedLabelText = "رقم الوكالة";
-            this.Txtagencynumber.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtagencynumber.Location = new System.Drawing.Point(525, 152);
-            this.Txtagencynumber.Name = "Txtagencynumber";
-            this.Txtagencynumber.NullText = "ادخل رقم الوكالة";
-            this.Txtagencynumber.ReadOnly = true;
-            this.Txtagencynumber.ShowEmbeddedLabel = true;
-            this.Txtagencynumber.ShowNullText = true;
-            this.Txtagencynumber.Size = new System.Drawing.Size(305, 58);
-            this.Txtagencynumber.TabIndex = 12;
-            this.Txtagencynumber.ThemeName = "Material";
-            this.Txtagencynumber.WordWrap = false;
-            // 
-            // radCollapsiblePanel2
-            // 
-            this.radCollapsiblePanel2.AnimationType = Telerik.WinControls.UI.CollapsiblePanelAnimationType.Slide;
-            this.radCollapsiblePanel2.EnableAnimation = false;
-            this.radCollapsiblePanel2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radCollapsiblePanel2.HeaderText = "بيانات الموثق";
-            this.radCollapsiblePanel2.Location = new System.Drawing.Point(13, 24);
-            this.radCollapsiblePanel2.Name = "radCollapsiblePanel2";
-            // 
-            // radCollapsiblePanel2.PanelContainer
-            // 
-            this.radCollapsiblePanel2.PanelContainer.Controls.Add(this.Txtofficevatid);
-            this.radCollapsiblePanel2.PanelContainer.Controls.Add(this.Txtofficepublicnumber);
-            this.radCollapsiblePanel2.PanelContainer.Controls.Add(this.Txtofficeemail);
-            this.radCollapsiblePanel2.PanelContainer.Controls.Add(this.Txtofficename);
-            this.radCollapsiblePanel2.PanelContainer.Controls.Add(this.Txtofficephone);
-            this.radCollapsiblePanel2.PanelContainer.Controls.Add(this.Txtofficecr);
-            this.radCollapsiblePanel2.PanelContainer.Location = new System.Drawing.Point(18, 1);
-            this.radCollapsiblePanel2.PanelContainer.Size = new System.Drawing.Size(156, 231);
-            this.radCollapsiblePanel2.Size = new System.Drawing.Size(314, 427);
-            this.radCollapsiblePanel2.TabIndex = 14;
-            // 
-            // Txtofficevatid
-            // 
-            this.Txtofficevatid.AutoScroll = true;
-            this.Txtofficevatid.EmbeddedLabelText = "الرقم الضريبي";
-            this.Txtofficevatid.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtofficevatid.Location = new System.Drawing.Point(9541, 259);
-            this.Txtofficevatid.Name = "Txtofficevatid";
-            this.Txtofficevatid.NullText = "ادخل الرقم الضريبي";
-            this.Txtofficevatid.ReadOnly = true;
-            this.Txtofficevatid.ShowEmbeddedLabel = true;
-            this.Txtofficevatid.ShowNullText = true;
-            this.Txtofficevatid.Size = new System.Drawing.Size(305, 58);
-            this.Txtofficevatid.TabIndex = 19;
-            this.Txtofficevatid.ThemeName = "Material";
-            this.Txtofficevatid.WordWrap = false;
-            // 
-            // Txtofficepublicnumber
-            // 
-            this.Txtofficepublicnumber.AutoScroll = true;
-            this.Txtofficepublicnumber.EmbeddedLabelText = "رقم المعلن";
-            this.Txtofficepublicnumber.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtofficepublicnumber.Location = new System.Drawing.Point(9541, 323);
-            this.Txtofficepublicnumber.Name = "Txtofficepublicnumber";
-            this.Txtofficepublicnumber.NullText = "ادخل رقم المعلن";
-            this.Txtofficepublicnumber.ReadOnly = true;
-            this.Txtofficepublicnumber.ShowEmbeddedLabel = true;
-            this.Txtofficepublicnumber.ShowNullText = true;
-            this.Txtofficepublicnumber.Size = new System.Drawing.Size(305, 58);
-            this.Txtofficepublicnumber.TabIndex = 20;
-            this.Txtofficepublicnumber.ThemeName = "Material";
-            this.Txtofficepublicnumber.WordWrap = false;
-            // 
-            // Txtofficeemail
-            // 
-            this.Txtofficeemail.AutoScroll = true;
-            this.Txtofficeemail.EmbeddedLabelText = "البريد الإلكتروني";
-            this.Txtofficeemail.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtofficeemail.Location = new System.Drawing.Point(9541, 195);
-            this.Txtofficeemail.Name = "Txtofficeemail";
-            this.Txtofficeemail.NullText = "ادخل البريد الإلكتروني";
-            this.Txtofficeemail.ReadOnly = true;
-            this.Txtofficeemail.ShowEmbeddedLabel = true;
-            this.Txtofficeemail.ShowNullText = true;
-            this.Txtofficeemail.Size = new System.Drawing.Size(305, 58);
-            this.Txtofficeemail.TabIndex = 18;
-            this.Txtofficeemail.ThemeName = "Material";
-            this.Txtofficeemail.WordWrap = false;
-            // 
-            // Txtofficename
-            // 
-            this.Txtofficename.AutoScroll = true;
-            this.Txtofficename.EmbeddedLabelText = "اسم الموثق";
-            this.Txtofficename.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtofficename.Location = new System.Drawing.Point(9541, 3);
-            this.Txtofficename.Name = "Txtofficename";
-            this.Txtofficename.NullText = "ادخل اسم الموثق";
-            this.Txtofficename.ReadOnly = true;
-            this.Txtofficename.ShowEmbeddedLabel = true;
-            this.Txtofficename.ShowNullText = true;
-            this.Txtofficename.Size = new System.Drawing.Size(305, 58);
-            this.Txtofficename.TabIndex = 15;
-            this.Txtofficename.ThemeName = "Material";
-            this.Txtofficename.WordWrap = false;
-            // 
-            // Txtofficephone
-            // 
-            this.Txtofficephone.AutoScroll = true;
-            this.Txtofficephone.EmbeddedLabelText = "رقم الهاتف";
-            this.Txtofficephone.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtofficephone.Location = new System.Drawing.Point(9541, 131);
-            this.Txtofficephone.Name = "Txtofficephone";
-            this.Txtofficephone.NullText = "ادخل رقم الهاتف";
-            this.Txtofficephone.ReadOnly = true;
-            this.Txtofficephone.ShowEmbeddedLabel = true;
-            this.Txtofficephone.ShowNullText = true;
-            this.Txtofficephone.Size = new System.Drawing.Size(305, 58);
-            this.Txtofficephone.TabIndex = 17;
-            this.Txtofficephone.ThemeName = "Material";
-            this.Txtofficephone.WordWrap = false;
-            // 
-            // Txtofficecr
-            // 
-            this.Txtofficecr.AutoScroll = true;
-            this.Txtofficecr.EmbeddedLabelText = "السجل التجاري";
-            this.Txtofficecr.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtofficecr.Location = new System.Drawing.Point(9541, 67);
-            this.Txtofficecr.Name = "Txtofficecr";
-            this.Txtofficecr.NullText = "ادخل السجل التجاري";
-            this.Txtofficecr.ReadOnly = true;
-            this.Txtofficecr.ShowEmbeddedLabel = true;
-            this.Txtofficecr.ShowNullText = true;
-            this.Txtofficecr.Size = new System.Drawing.Size(305, 58);
-            this.Txtofficecr.TabIndex = 16;
-            this.Txtofficecr.ThemeName = "Material";
-            this.Txtofficecr.WordWrap = false;
-            // 
-            // Txtagentvatid
-            // 
-            this.Txtagentvatid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Txtagentvatid.AutoScroll = true;
-            this.Txtagentvatid.EmbeddedLabelText = "الرقم الضريبي";
-            this.Txtagentvatid.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtagentvatid.Location = new System.Drawing.Point(836, 152);
-            this.Txtagentvatid.Name = "Txtagentvatid";
-            this.Txtagentvatid.NullText = "ادخل الرقم الضريبي";
-            this.Txtagentvatid.ReadOnly = true;
-            this.Txtagentvatid.ShowEmbeddedLabel = true;
-            this.Txtagentvatid.ShowNullText = true;
-            this.Txtagentvatid.Size = new System.Drawing.Size(305, 58);
-            this.Txtagentvatid.TabIndex = 11;
-            this.Txtagentvatid.ThemeName = "Material";
-            this.Txtagentvatid.WordWrap = false;
-            // 
-            // Txtagentcivilid
-            // 
-            this.Txtagentcivilid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Txtagentcivilid.AutoScroll = true;
-            this.Txtagentcivilid.EmbeddedLabelText = "رقم الهوية";
-            this.Txtagentcivilid.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtagentcivilid.Location = new System.Drawing.Point(525, 24);
-            this.Txtagentcivilid.Name = "Txtagentcivilid";
-            this.Txtagentcivilid.NullText = "ادخل رقم الهوية";
-            this.Txtagentcivilid.ReadOnly = true;
-            this.Txtagentcivilid.ShowEmbeddedLabel = true;
-            this.Txtagentcivilid.ShowNullText = true;
-            this.Txtagentcivilid.Size = new System.Drawing.Size(305, 58);
-            this.Txtagentcivilid.TabIndex = 8;
-            this.Txtagentcivilid.ThemeName = "Material";
-            this.Txtagentcivilid.WordWrap = false;
-            // 
-            // Txtagentemail
-            // 
-            this.Txtagentemail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Txtagentemail.AutoScroll = true;
-            this.Txtagentemail.EmbeddedLabelText = "البريد الإلكتروني";
-            this.Txtagentemail.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtagentemail.Location = new System.Drawing.Point(525, 88);
-            this.Txtagentemail.Name = "Txtagentemail";
-            this.Txtagentemail.NullText = "ادخل البريد الإلكتروني";
-            this.Txtagentemail.ReadOnly = true;
-            this.Txtagentemail.ShowEmbeddedLabel = true;
-            this.Txtagentemail.ShowNullText = true;
-            this.Txtagentemail.Size = new System.Drawing.Size(305, 58);
-            this.Txtagentemail.TabIndex = 10;
-            this.Txtagentemail.ThemeName = "Material";
-            this.Txtagentemail.WordWrap = false;
-            // 
-            // Txtagentmobile
-            // 
-            this.Txtagentmobile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Txtagentmobile.AutoScroll = true;
-            this.Txtagentmobile.EmbeddedLabelText = "رقم الجوال";
-            this.Txtagentmobile.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtagentmobile.Location = new System.Drawing.Point(836, 88);
-            this.Txtagentmobile.Name = "Txtagentmobile";
-            this.Txtagentmobile.NullText = "ادخل رقم الجوال";
-            this.Txtagentmobile.ReadOnly = true;
-            this.Txtagentmobile.ShowEmbeddedLabel = true;
-            this.Txtagentmobile.ShowNullText = true;
-            this.Txtagentmobile.Size = new System.Drawing.Size(305, 58);
-            this.Txtagentmobile.TabIndex = 9;
-            this.Txtagentmobile.ThemeName = "Material";
-            this.Txtagentmobile.WordWrap = false;
-            // 
-            // Txtagentpublicnumber
-            // 
-            this.Txtagentpublicnumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Txtagentpublicnumber.AutoScroll = true;
-            this.Txtagentpublicnumber.EmbeddedLabelText = "رقم المعلن";
-            this.Txtagentpublicnumber.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtagentpublicnumber.Location = new System.Drawing.Point(836, 216);
-            this.Txtagentpublicnumber.Name = "Txtagentpublicnumber";
-            this.Txtagentpublicnumber.NullText = "ادخل رقم المعلن";
-            this.Txtagentpublicnumber.ReadOnly = true;
-            this.Txtagentpublicnumber.ShowEmbeddedLabel = true;
-            this.Txtagentpublicnumber.ShowNullText = true;
-            this.Txtagentpublicnumber.Size = new System.Drawing.Size(305, 58);
-            this.Txtagentpublicnumber.TabIndex = 13;
-            this.Txtagentpublicnumber.ThemeName = "Material";
-            this.Txtagentpublicnumber.WordWrap = false;
             // 
             // PageAttachments
             // 
@@ -1218,19 +555,18 @@
             this.DataGridAttachments.Name = "DataGridAttachments";
             this.DataGridAttachments.ShowGroupPanel = false;
             this.DataGridAttachments.ShowGroupPanelScrollbars = false;
-            this.DataGridAttachments.Size = new System.Drawing.Size(1110, 489);
+            this.DataGridAttachments.Size = new System.Drawing.Size(1110, 523);
             this.DataGridAttachments.TabIndex = 0;
             this.DataGridAttachments.TitleText = "المرفقات";
-            this.DataGridAttachments.Click += new System.EventHandler(this.DataGridAttachments_Click);
             this.DataGridAttachments.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DataGridAttachment_MouseDown);
             // 
             // BtnScanner
             // 
             this.BtnScanner.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnScanner.Enabled = false;
-            this.BtnScanner.Location = new System.Drawing.Point(743, 533);
+            this.BtnScanner.Location = new System.Drawing.Point(840, 546);
             this.BtnScanner.Name = "BtnScanner";
-            this.BtnScanner.Size = new System.Drawing.Size(229, 36);
+            this.BtnScanner.Size = new System.Drawing.Size(172, 36);
             this.BtnScanner.TabIndex = 2;
             this.BtnScanner.Text = "جلب من الماسح الضوئي";
             this.BtnScanner.ThemeName = "Material";
@@ -1240,7 +576,7 @@
             // 
             this.BtnAttachment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnAttachment.Enabled = false;
-            this.BtnAttachment.Location = new System.Drawing.Point(997, 533);
+            this.BtnAttachment.Location = new System.Drawing.Point(1018, 546);
             this.BtnAttachment.Name = "BtnAttachment";
             this.BtnAttachment.Size = new System.Drawing.Size(120, 36);
             this.BtnAttachment.TabIndex = 1;
@@ -1341,7 +677,6 @@
             this.commandBarLabel1.Name = "commandBarLabel1";
             this.commandBarLabel1.Text = "من {0}";
             this.commandBarLabel1.TextChanged += new System.EventHandler(this.CommandBarLabel1_TextChanged);
-            this.commandBarLabel1.Click += new System.EventHandler(this.commandBarLabel1_Click);
             // 
             // commandBarSeparator3
             // 
@@ -1862,28 +1197,7 @@
             this.MainContainer.ResumeLayout(false);
             this.MainContainer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).EndInit();
-            this.radCollapsiblePanelParenter2.PanelContainer.ResumeLayout(false);
-            this.radCollapsiblePanelParenter2.PanelContainer.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radCollapsiblePanelParenter2)).EndInit();
-            this.radCollapsiblePanelParenter2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txtpublicnumber)).EndInit();
-            this.radCollapsiblePanelParenter3.PanelContainer.ResumeLayout(false);
-            this.radCollapsiblePanelParenter3.PanelContainer.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radCollapsiblePanelParenter3)).EndInit();
-            this.radCollapsiblePanelParenter3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox9)).EndInit();
-            this.radCollapsiblePanelParenter4.PanelContainer.ResumeLayout(false);
-            this.radCollapsiblePanelParenter4.PanelContainer.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radCollapsiblePanelParenter4)).EndInit();
-            this.radCollapsiblePanelParenter4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txtnumber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbLawyerBindingSource)).EndInit();
@@ -1892,40 +1206,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.radCmbPlanGuid.EditorControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radCmbPlanGuid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radstatus)).EndInit();
-            this.radCollapsiblePanelParenter1.PanelContainer.ResumeLayout(false);
-            this.radCollapsiblePanelParenter1.PanelContainer.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radCollapsiblePanelParenter1)).EndInit();
-            this.radCollapsiblePanelParenter1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txtcivilid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radButton1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txtmobile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txtlastaction)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txtemail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txtvatid)).EndInit();
-            this.PageAgent.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).EndInit();
-            this.radPanel1.ResumeLayout(false);
-            this.radPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Txtagentname)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Txtagencynumber)).EndInit();
-            this.radCollapsiblePanel2.PanelContainer.ResumeLayout(false);
-            this.radCollapsiblePanel2.PanelContainer.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radCollapsiblePanel2)).EndInit();
-            this.radCollapsiblePanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Txtofficevatid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Txtofficepublicnumber)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Txtofficeemail)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Txtofficename)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Txtofficephone)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Txtofficecr)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Txtagentvatid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Txtagentcivilid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Txtagentemail)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Txtagentmobile)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Txtagentpublicnumber)).EndInit();
             this.PageAttachments.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).EndInit();
             this.radPanel2.ResumeLayout(false);
@@ -2012,42 +1297,9 @@
         private Telerik.WinControls.UI.RadTextBox Txtcivilid;
         private Telerik.WinControls.UI.RadTextBox Txtpublicnumber;
         private Telerik.WinControls.UI.RadTextBox Txtlastaction;
-        private Telerik.WinControls.UI.RadButton radButton1;
-        private Telerik.WinControls.UI.RadCollapsiblePanel radCollapsiblePanelParenter1;
-        private Telerik.WinControls.UI.RadPageViewPage PageAgent;
-        private Telerik.WinControls.UI.RadCollapsiblePanel radCollapsiblePanel2;
-        private Telerik.WinControls.UI.RadTextBox Txtagentvatid;
-        private Telerik.WinControls.UI.RadTextBox Txtagentmobile;
-        private Telerik.WinControls.UI.RadTextBox Txtagentcivilid;
-        private Telerik.WinControls.UI.RadTextBox Txtagentpublicnumber;
-        private Telerik.WinControls.UI.RadTextBox Txtagentname;
-        private Telerik.WinControls.UI.RadTextBox Txtagentemail;
-        private Telerik.WinControls.UI.RadTextBox Txtagencynumber;
-        private Telerik.WinControls.UI.RadTextBox Txtofficename;
-        private Telerik.WinControls.UI.RadTextBox Txtofficeemail;
-        private Telerik.WinControls.UI.RadTextBox Txtofficevatid;
-        private Telerik.WinControls.UI.RadTextBox Txtofficepublicnumber;
-        private Telerik.WinControls.UI.RadTextBox Txtofficecr;
-        private Telerik.WinControls.UI.RadTextBox Txtofficephone;
-        private Telerik.WinControls.UI.RadTextBox radTextBox1;
-        private Telerik.WinControls.UI.RadTextBox radTextBox2;
-        private Telerik.WinControls.UI.RadTextBox radTextBox3;
-        private Telerik.WinControls.UI.RadCollapsiblePanel radCollapsiblePanelParenter2;
-        private Telerik.WinControls.UI.RadTextBox radTextBox4;
-        private Telerik.WinControls.UI.RadTextBox radTextBox5;
-        private Telerik.WinControls.UI.RadTextBox radTextBox6;
-        private Telerik.WinControls.UI.RadCollapsiblePanel radCollapsiblePanelParenter4;
-        private Telerik.WinControls.UI.RadTextBox radTextBox10;
-        private Telerik.WinControls.UI.RadTextBox radTextBox11;
-        private Telerik.WinControls.UI.RadTextBox radTextBox12;
-        private Telerik.WinControls.UI.RadCollapsiblePanel radCollapsiblePanelParenter3;
-        private Telerik.WinControls.UI.RadTextBox radTextBox7;
-        private Telerik.WinControls.UI.RadTextBox radTextBox8;
-        private Telerik.WinControls.UI.RadTextBox radTextBox9;
         private Telerik.WinControls.UI.RadLabel radLabel8;
         private Telerik.WinControls.UI.RadMultiColumnComboBox radCmbPlanGuid;
         private Telerik.WinControls.UI.RadPanel MainContainer;
-        private Telerik.WinControls.UI.RadPanel radPanel1;
         private Telerik.WinControls.UI.RadPanel radPanel2;
         private System.Windows.Forms.BindingSource tbLawyerBindingSource;
         private Real_Estate_Management.Data.Real_Estate_Management_DataSet real_Estate_Management_DataSet;

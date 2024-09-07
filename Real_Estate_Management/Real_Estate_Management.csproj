@@ -850,7 +850,6 @@
     <Compile Include="Helpers\InitSchema.cs" />
     <Compile Include="Helpers\License.cs" />
     <Compile Include="Helpers\MenuItemsPermessions.cs" />
-    <Compile Include="Helpers\Messages\Messages.cs" />
     <Compile Include="Helpers\Mimes.cs" />
     <Compile Include="Helpers\NumberToWords.cs" />
     <Compile Include="Helpers\Printers.cs" />

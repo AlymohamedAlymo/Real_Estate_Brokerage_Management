@@ -18,7 +18,6 @@ using DoctorERP.User_Controls;
 using DoctorERP.CustomElements;
 using Telerik.WinControls.UI.SplashScreen;
 using Contract_Management.Dialogs;
-using Real_Estate_Management.Helpers.Messages;
 
 namespace DoctorERP
 {
@@ -808,16 +807,18 @@ namespace DoctorERP
         private void MenuLogOut_Click(object sender, EventArgs e)
         {
             AppSetting.DataBase = DBConnect.DBConnection.Database;
-            FrmLogin frmlog = new FrmLogin();
-            if (frmlog.ShowDialog(this) == DialogResult.OK)
-            {
-                CurrentUser = frmlog.user;
-                LoadSettings();
-            }
-            else
-            {
-                Application.Exit();
-            }
+            RadFlyoutManager.Show(this, typeof(FlyoutUserLogin));
+
+            //FrmLogin frmlog = new FrmLogin();
+            //if (frmlog.ShowDialog(this) == DialogResult.OK)
+            //{
+            //    CurrentUser = frmlog.user;
+            //    LoadSettings();
+            //}
+            //else
+            //{
+            //    Application.Exit();
+            //}
         }
 
         private void MenuBackupToFile_Click(object sender, EventArgs e)
@@ -1771,16 +1772,18 @@ namespace DoctorERP
         {
 
             AppSetting.DataBase = DBConnect.DBConnection.Database;
-            FrmLogin frmlog = new FrmLogin();
-            if (frmlog.ShowDialog() == DialogResult.OK)
-            {
-                CurrentUser = frmlog.user;
-                LoadSettings();
+            RadFlyoutManager.Show(this, typeof(FlyoutUserLogin));
 
-                return;
-            }
-            else
-                return;
+            //FrmLogin frmlog = new FrmLogin();
+            //if (frmlog.ShowDialog() == DialogResult.OK)
+            //{
+            //    CurrentUser = frmlog.user;
+            //    LoadSettings();
+
+            //    return;
+            //}
+            //else
+            //    return;
         }
 
         private void MenuPayContractOut_Click(object sender, EventArgs e)
@@ -1839,7 +1842,7 @@ namespace DoctorERP
                     Text = "بطاقة محامي"
                 };
 
-                DoctorERP.User_Controls.UCLawyer uCLands = new User_Controls.UCLawyer(Guid.Empty, false, 1, false)
+                DoctorERP.User_Controls.UCLawyer uCLands = new User_Controls.UCLawyer(Guid.Empty)
                 {
                     Dock = DockStyle.Fill
                 };

@@ -19,22 +19,17 @@ namespace DoctorERP.User_Controls
     public partial class UCLawyer : UserControl
     {
 
-        private Guid guid;
+        private Guid CurrentGuid;
         private BindingSource Bs;
         private bool IsDirty = false, IsLoad = true;
-        private bool IsNew = false, ShowConfirmMSG = true, IsProgrammatic = false, AddFromSelect;
-        private readonly int CurrentPosition = 0, AgentType;
-        private tbAgent AddedAgents = new tbAgent();
-
-        public UCLawyer(Guid _guid, bool _IsNew, int _AgentType, bool _AddFromSelect)
+        private bool IsNew = false, ShowConfirmMSG = true, IsProgrammatic = false;
+        private readonly int CurrentPosition = 0;
+        private readonly tbAgent AddedAgents = new tbAgent();
+        private readonly DoctorHelper.Messages.Messages MessagesHelper = new DoctorHelper.Messages.Messages();
+        public UCLawyer(Guid _guid)
         {
 
             InitializeComponent();
-
-            RadGridLocalizationProvider.CurrentProvider = new MyArabicRadGridLocalizationProvider();
-            //GridViewReport.TableElement.UpdateView();
-            DataGridAttachments.TableElement.UpdateView();
-
 
             #region Initialize
 
@@ -104,45 +99,15 @@ namespace DoctorERP.User_Controls
             }
 
             radPageView1.SelectedPage = PageHome;
-            #endregion
 
-            guid = _guid;
-            IsNew = _IsNew;
-            AddFromSelect = _AddFromSelect;
-            AgentType = _AgentType;
-
-            if (AgentType == 0)
-            {
-                Text = "تعريف المالك";
-                BindingNavigatorClient.Enabled = false;
-            }
-            else
-            {
-                Text = "بطاقة عميل";
-                ////grpOffice.Visible = false;
-            }
-
-            if (AddFromSelect)
-            {
-                BindingNavigatorClient.Enabled = false;
-
-            }
             this.MainContainer.PanelElement.PanelFill.Visibility = ElementVisibility.Hidden;
             this.MainContainer.BackgroundImage = Real_Estate_Management.Properties.Resources.Background;
             this.MainContainer.BackgroundImageLayout = ImageLayout.Stretch;
 
-            this.radPanel1.PanelElement.PanelFill.Visibility = ElementVisibility.Hidden;
-            this.radPanel1.BackgroundImage = Real_Estate_Management.Properties.Resources.Background;
-            this.radPanel1.BackgroundImageLayout = ImageLayout.Stretch;
 
             this.radPanel2.PanelElement.PanelFill.Visibility = ElementVisibility.Hidden;
             this.radPanel2.BackgroundImage = Real_Estate_Management.Properties.Resources.Background;
             this.radPanel2.BackgroundImageLayout = ImageLayout.Stretch;
-
-            //this.radPanel3.PanelElement.PanelFill.Visibility = ElementVisibility.Hidden;
-            //this.radPanel3.BackgroundImage = Real_Estate_Management.Properties.Resources.Background;
-            //this.radPanel3.BackgroundImageLayout = ImageLayout.Stretch;
-
 
             this.DataGridAttachments.AutoGenerateHierarchy = true;
             this.DataGridAttachments.TableElement.CellSpacing = 10;
@@ -152,284 +117,15 @@ namespace DoctorERP.User_Controls
             this.DataGridAttachments.BackColor = Color.Transparent;
             this.DataGridAttachments.GridViewElement.DrawFill = true;
             this.DataGridAttachments.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;
-            foreach (GridViewDataColumn col in this.DataGridAttachments.Columns)
-            {
-                col.TextAlignment = ContentAlignment.MiddleCenter;
-                col.HeaderTextAlignment = ContentAlignment.MiddleCenter;
-            }
+            RadGridLocalizationProvider.CurrentProvider = new MyArabicRadGridLocalizationProvider();
+            DataGridAttachments.TableElement.UpdateView();
 
+            #endregion
 
+            CurrentGuid = _guid;
 
             SetData();
         }
-
-        #region Main Events
-        #region Default
-        private bool MessageWarning(string Heading, string Body, string FootNote)
-        {
-            RadTaskDialogPage page = new RadTaskDialogPage()
-            {
-
-                Caption = " ",
-                Heading = Heading,
-                Text = Body,
-                RightToLeft = true,
-                CustomFont = "Robot",
-                Icon = RadTaskDialogIcon.ShieldWarningYellowBar,
-                AllowCancel = true,
-                Footnote = new RadTaskDialogFootnote("ملحوظة: " + FootNote),
-                CommandAreaButtons = {
-                    RadTaskDialogButton.Yes,
-                    RadTaskDialogButton.No
-                }
-
-            };
-            page.CommandAreaButtons[0].Text = "نعم";
-            page.CommandAreaButtons[1].Text = "لا";
-            RadTaskDialogButton result = RadTaskDialog.ShowDialog(page, RadTaskDialogStartupLocation.CenterScreen);
-            if (result == null || result == RadTaskDialogButton.No)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-        private bool MessageException(string Heading, string Body, string FootNote)
-        {
-            RadTaskDialogPage page = new RadTaskDialogPage()
-            {
-
-                Caption = " ",
-                Heading = Heading,
-                Text = Body,
-                RightToLeft = true,
-                CustomFont = "Robot",
-                Icon = RadTaskDialogIcon.ShieldErrorRedBar,
-                Footnote = new RadTaskDialogFootnote("ملحوظة: " + FootNote),
-                CommandAreaButtons = {
-                    RadTaskDialogButton.OK,
-                }
-
-            };
-            page.CommandAreaButtons[0].Text = "موافق";
-            RadTaskDialogButton result = RadTaskDialog.ShowDialog(page, RadTaskDialogStartupLocation.CenterScreen);
-            return true;
-        }
-        private void ShowDesktopAlert(string Header, string Content, string ContentHighlight, string Footer)
-        {
-            Content = TextHelper.ReverseText(Content);
-            ContentHighlight = TextHelper.ReverseText(ContentHighlight);
-            Footer = TextHelper.ReverseText(Footer);
-
-            radDesktopAlert1.CaptionText = "<html><b>\n" + Header;
-            radDesktopAlert1.ContentText = "<html><i>" +
-                Content +
-                "</i><b><span><color=Blue>" +
-                "\n" + ContentHighlight + "\n" +
-                "</span></b>" +
-                Footer;
-            radDesktopAlert1.ContentImage = Real_Estate_Management.Properties.Resources.information50;
-            radDesktopAlert1.Opacity = 0.9f;
-            radDesktopAlert1.Show();
-
-        }
-        private void ShowNotification(string Header, string Content, string Note)
-        {
-            radToastNotificationManager1.ToastNotifications[0].Xml = "<toast launch=\"readMoreArg\">\r\n  <visual>\r\n    <binding template=\"ToastGeneric\">\r\n   " +
-    "   <text>" + Header + "</text>\r\n   " +
-    "   <text>" + Content + "</text>\r\n  " +
-    "    <text placement=\"attribution\">" + Note + "</text>\r\n    </binding>\r\n  </visual>\r\n</toast>";
-            radToastNotificationManager1.ShowNotification(0);
-
-        }
-
-        #endregion
-        private bool Check(string Operation, string Command, OperationType.OperationIs OperType, bool IsAction)
-        {
-            if (IsDirty) { TackAction(); }
-            if (!FrmMain.IsPermissionGranted(Operation))
-            {
-                MessageException(Operation, "لا تملك صلاحية", "لا تملك صلاحية للقيام ب " + Command + " \n تواصل مع المدير.");
-                return false;
-            }
-            if (Bs.Current == null)
-            {
-                MessageException(Operation, "يجب حفظ البطاقة أولا", "قم بحفظ بطاقة العميل أولاَ و بعد ذلك يمكنك " + Command);
-                return false;
-            }
-
-            tbAgent Agent = (tbAgent)Bs.Current;
-            Dictionary<bool, string> Check = CheckifOprAllow(Agent, OperType, IsAction);
-            if (!Check.Keys.First() && !Operation.Contains("جديد"))
-            {
-                MessageException(Operation, "لا يمكن " + Command, Check.Values.First());
-                return false;
-            }
-            if (Agent is null || Agent.guid.Equals(Guid.Empty))
-            {
-                MessageException(Operation, "يجب حفظ البطاقة أولا", "قم بحفظ بطاقة العميل أولاَ و بعد ذلك يمكنك " + Command);
-                return false;
-            }
-            return true;
-
-        }
-
-        private Dictionary<bool, string> CheckifOprAllow(tbAgent Agent, OperationType.OperationIs operation, bool IsAction)
-        {
-            bool GoHead = false, IsSoldorInOrder = false;
-            Dictionary<bool, string> Pair = new Dictionary<bool, string>();
-            switch (operation)
-            {
-                case OperationType.OperationIs.Add:
-                    GoHead = FrmMain.CurrentUser.CanAdd;
-                    Pair.Clear();
-                    Pair.Add(GoHead, "ليس لديك صلاحية الإضافة");
-                    break;
-                case OperationType.OperationIs.Edit:
-                    GoHead = FrmMain.CurrentUser.CanEdit;
-                    Pair.Add(GoHead, "ليس لديك صلاحية التعديل");
-                    break;
-                case OperationType.OperationIs.Delete:
-                    GoHead = FrmMain.CurrentUser.CanDelete;
-                    Pair.Add(GoHead, "ليس لديك صلاحية الحذف");
-                    break;
-                case OperationType.OperationIs.Print:
-                    GoHead = FrmMain.CurrentUser.CanPrint;
-                    Pair.Add(GoHead, "ليس لديك صلاحية الطباعة");
-                    break;
-                default:
-                    break;
-            }
-            if (IsAction)
-            {
-                if (GoHead)
-                {
-                    Pair.Clear();
-                    IsSoldorInOrder = !tbBillheader.IsExist("ownerguid", Agent.guid);
-                    Pair.Add(IsSoldorInOrder, "لا يمكن حذف الحساب لأنه مستخدم في العقود");
-                    if (IsSoldorInOrder)
-                    {
-                        Pair.Clear();
-                        IsSoldorInOrder = !tbBillheader.IsExist("buyerguid", Agent.guid);
-                        Pair.Add(IsSoldorInOrder, "لا يمكن حذف الحساب لأنه مستخدم في العقود");
-                    }
-                }
-            }
-            return Pair;
-
-        }
-
-        private void SetReadOnly(bool IsReadOnly)
-        {
-            List<RadControl> NotUsedControls = new List<RadControl>()
-            { Txtnumber, Txtlastaction };
-            List<RadControl> ContainerControls = new List<RadControl>()
-            { radCollapsiblePanelParenter1, radCollapsiblePanelParenter2, radCollapsiblePanelParenter3, radCollapsiblePanelParenter4, radCollapsiblePanel2 };
-            List<RadPageViewPage> ContainerPage = new List<RadPageViewPage>()
-            { PageHome, PageAgent };
-
-            foreach (RadControl collection in ContainerControls)
-            {
-                foreach (RadControl control in collection.Controls[0].Controls[0].Controls)
-                {
-                    if (NotUsedControls.Contains(control)) { continue; }
-                    if (control is RadTextBox radTextControl)
-                    {
-                        radTextControl.ReadOnly = IsReadOnly;
-                        if (IsReadOnly) { radTextControl.AutoCompleteMode = AutoCompleteMode.None; }
-                        else if (!IsReadOnly) { radTextControl.AutoCompleteMode = AutoCompleteMode.SuggestAppend; }
-                    }
-                    else if (control is RadSpinEditor radSpinControl)
-                    {
-                        radSpinControl.ReadOnly = IsReadOnly;
-                    }
-                    else if (control is RadMultiColumnComboBox radCmbControl)
-                    {
-                        radCmbControl.ReadOnly = IsReadOnly;
-                    }
-                    else if (control is RadCheckBox radChkControl)
-                    {
-                        radChkControl.ReadOnly = IsReadOnly;
-                    }
-                }
-
-            }
-            foreach (RadPageViewPage collection in ContainerPage)
-            {
-                foreach (RadControl control in collection.Controls)
-                {
-                    if (NotUsedControls.Contains(control)) { continue; }
-                    if (control is RadTextBox radTextControl)
-                    {
-                        radTextControl.ReadOnly = IsReadOnly;
-                        if (IsReadOnly) { radTextControl.AutoCompleteMode = AutoCompleteMode.None; }
-                        else if (!IsReadOnly) { radTextControl.AutoCompleteMode = AutoCompleteMode.SuggestAppend; }
-                    }
-                    else if (control is RadSpinEditor radSpinControl)
-                    {
-                        radSpinControl.ReadOnly = IsReadOnly;
-                    }
-                    else if (control is RadMultiColumnComboBox radCmbControl)
-                    {
-                        radCmbControl.ReadOnly = IsReadOnly;
-                    }
-                    else if (control is RadCheckBox radChkControl)
-                    {
-                        radChkControl.ReadOnly = IsReadOnly;
-                    }
-                }
-
-            }
-
-
-        }
-
-        public void TackAction()
-        {
-            bool Confirm = MessageWarning("بطاقة العميل", "هل تريد حفظ التغيرات ؟", "إذا ضغت علي زر نعم سوف يتم حفظ البيان المفتوح");
-            if (Confirm)
-            {
-                ShowConfirmMSG = false;
-                if (BtnNew.Text == "حفظ") { BtnNew.PerformClick(); }
-                else if (BtnEdit.Text == "حفظ") { BtnEdit.PerformClick(); }
-            }
-            else if (!Confirm)
-            {
-                if (BtnNew.Text == "حفظ")
-                {
-                    IsProgrammatic = true;
-                    Bs.MoveLast();
-                    BtnNew.Text = "جديد";
-                    BtnNew.ScreenTip.Text = "إضافة بطاقة عميل جديدة";
-                    BtnNew.Image = Real_Estate_Management.Properties.Resources.BtnAddNew;
-                    SetReadOnly(true);
-                    IsProgrammatic = false;
-                    IsDirty = false;
-                    IsNew = false;
-                    SetData();
-
-                }
-                else if (BtnEdit.Text == "حفظ")
-                {
-                    IsProgrammatic = true;
-                    Bs.CancelEdit();
-                    BtnEdit.Text = "تعديل";
-                    BtnEdit.ScreenTip.Text = "تعديل بيانات بطاقة عميل";
-                    BtnEdit.Image = Real_Estate_Management.Properties.Resources.BtnEdite;
-                    BtnAttachment.Enabled = false;
-                    BtnScanner.Enabled = false;
-                    SetReadOnly(true);
-                    IsProgrammatic = false;
-                    IsDirty = false;
-                    IsNew = false;
-                    SetData();
-                }
-            }
-        }
-
-
 
 
         #region Binding
@@ -439,12 +135,12 @@ namespace DoctorERP.User_Controls
 
             if (FrmMain.PlanGuid != Guid.Empty)
             {
-                //tbAgent.Fill("PlanGuid", FrmMain.PlanGuid, "agenttype", AgentType);
+                tbAgent.Fill("PlanGuid", FrmMain.PlanGuid);
 
             }
             else if (FrmMain.PlanGuid == Guid.Empty)
             {
-                tbAgent.Fill("agenttype", AgentType);
+                tbAgent.Fill();
             }
 
 
@@ -466,19 +162,13 @@ namespace DoctorERP.User_Controls
 
             SetControlsDataBindings();
 
-            radCollapsiblePanelParenter1.Visible = false;
-            radCollapsiblePanelParenter2.Visible = false;
-            radCollapsiblePanelParenter3.Visible = false;
-            radCollapsiblePanelParenter4.Visible = false;
 
-
-            FillDataGridReport();
 
             if (IsNew) { BtnNew.PerformClick(); return; }
 
-            if (!guid.Equals(Guid.Empty))
+            if (!CurrentGuid.Equals(Guid.Empty))
             {
-                Bs.Position = tbAgent.lstData.FindIndex(delegate (tbAgent Agent) { return Agent.guid == guid; });
+                Bs.Position = tbAgent.lstData.FindIndex(delegate (tbAgent Agent) { return Agent.guid == CurrentGuid; });
                 return;
             }
             Bs.MoveLast();
@@ -488,41 +178,9 @@ namespace DoctorERP.User_Controls
         }
         private void SetControlsDataBindings()
         {
-            //List<RadControl> ContainerControls = new List<RadControl>()
-            //{ radCollapsiblePanel2 };
-            //List<RadPageViewPage> ContainerPage = new List<RadPageViewPage>()
-            //{ PageAgent };
             List<RadControl> MainContainerControls = new List<RadControl>()
-            {  MainContainer, radPanel1 };
+            {  MainContainer };
 
-            //foreach (RadControl collection in ContainerControls)
-            //{
-            //    foreach (RadControl control in collection.Controls[0].Controls[0].Controls)
-            //    {
-            //        if (control.Name.StartsWith("rad")) { continue; }
-            //        control.DataBindings.Clear();
-            //        string dataMember = control.Name.Remove(0, 3);
-            //        string propertyName = control is RadSpinEditor ? "Value" : control is RadCheckBox ? "Checked"
-            //            : control is RadMultiColumnComboBox ? "SelectedValue" : "Text";
-            //        Binding ControlBinding = new System.Windows.Forms.Binding(propertyName, Bs, dataMember, false);
-            //        control.DataBindings.Add(ControlBinding);
-            //    }
-
-            //}
-            //foreach (RadPageViewPage collection in ContainerPage)
-            //{
-            //    foreach (RadControl control in collection.Controls)
-            //    {
-            //        if (control.Name.StartsWith("rad")) { continue; }
-            //        control.DataBindings.Clear();
-            //        string dataMember = control.Name.Remove(0, 3);
-            //        string propertyName = control is RadSpinEditor ? "Value" : control is RadCheckBox ? "Checked"
-            //            : control is RadMultiColumnComboBox ? "SelectedValue" : "Text";
-            //        Binding ControlBinding = new System.Windows.Forms.Binding(propertyName, Bs, dataMember, false);
-            //        control.DataBindings.Add(ControlBinding);
-            //    }
-
-            //}
             foreach (RadControl collection in MainContainerControls)
             {
                 foreach (RadControl control in collection.Controls)
@@ -537,7 +195,6 @@ namespace DoctorERP.User_Controls
                 }
 
             }
-
 
         }
 
@@ -622,7 +279,7 @@ namespace DoctorERP.User_Controls
 
             if (ShowConfirmMSG)
             {
-                if (!MessageWarning("هل أنت متاكد من الإضافة ؟", "إضافة بطاقة عميل جديدة", "إذا ضغت علي زر نعم سوف يتم إضافة بطاقة العميل الجديدة"))
+                if (!MessagesHelper.MessageWarning("هل أنت متاكد من الإضافة ؟", "إضافة بطاقة عميل جديدة", "إذا ضغت علي زر نعم سوف يتم إضافة بطاقة العميل الجديدة"))
                     return false;
             }
             if (Txtname.Text.Trim().Equals(string.Empty))
@@ -642,31 +299,31 @@ namespace DoctorERP.User_Controls
 
             tbAgent agent = new tbAgent
             {
-                agencynumber = Txtagencynumber.Text,
-                agentcivilid = Txtagentcivilid.Text,
-                agentemail = Txtagentemail.Text,
-                agentmobile = Txtagentmobile.Text,
-                agentname = Txtagentname.Text,
-                agentpublicnumber = Txtagentpublicnumber.Text,
-                agenttype = AgentType,
-                agentvatid = Txtagentvatid.Text,
-                civilid = Txtcivilid.Text,
-                email = Txtemail.Text,
-                guid = Guid.NewGuid(),
-                lastaction = "عملية إضافة" + " - بتاريخ  " + DateTime.Now.ToString("dd/MM/yyyy")
-                + " - الساعة  " + DateTime.Now.ToString("hh:mm tt") + " - عن طريق المستخدم  " + FrmMain.CurrentUser.name,
-                mobile = Txtmobile.Text,
-                name = Txtname.Text,
-                note = Txtnote.Text,
-                number = tbAgent.GetMaxNumber("Number") + 1,
-                officecr = Txtofficecr.Text,
-                officeemail = Txtofficeemail.Text,
-                officename = Txtofficename.Text,
-                officephone = Txtofficephone.Text,
-                officepublicnumber = Txtofficepublicnumber.Text,
-                officevatid = Txtofficevatid.Text,
-                publicnumber = Txtpublicnumber.Text,
-                vatid = Txtvatid.Text,
+                //agencynumber = Txtagencynumber.Text,
+                //agentcivilid = Txtagentcivilid.Text,
+                //agentemail = Txtagentemail.Text,
+                //agentmobile = Txtagentmobile.Text,
+                //agentname = Txtagentname.Text,
+                //agentpublicnumber = Txtagentpublicnumber.Text,
+                //agenttype = AgentType,
+                //agentvatid = Txtagentvatid.Text,
+                //civilid = Txtcivilid.Text,
+                //email = Txtemail.Text,
+                //guid = Guid.NewGuid(),
+                //lastaction = "عملية إضافة" + " - بتاريخ  " + DateTime.Now.ToString("dd/MM/yyyy")
+                //+ " - الساعة  " + DateTime.Now.ToString("hh:mm tt") + " - عن طريق المستخدم  " + FrmMain.CurrentUser.name,
+                //mobile = Txtmobile.Text,
+                //name = Txtname.Text,
+                //note = Txtnote.Text,
+                //number = tbAgent.GetMaxNumber("Number") + 1,
+                //officecr = Txtofficecr.Text,
+                //officeemail = Txtofficeemail.Text,
+                //officename = Txtofficename.Text,
+                //officephone = Txtofficephone.Text,
+                //officepublicnumber = Txtofficepublicnumber.Text,
+                //officevatid = Txtofficevatid.Text,
+                //publicnumber = Txtpublicnumber.Text,
+                //vatid = Txtvatid.Text,
 
             };
             //agent.planguid = tbPlanInfo.lstData.Where(u => u.name == CmbPlanGuid.Text).FirstOrDefault().guid;
@@ -692,7 +349,7 @@ namespace DoctorERP.User_Controls
 
             if (ShowConfirmMSG)
             {
-                if (!MessageWarning("هل أنت متاكد من التعديل ؟", "تعديل بطاقة عميل", "إذا ضغت علي زر نعم سوف يتم تعديل بيانات بطاقة العميل"))
+                if (!MessagesHelper.MessageWarning("هل أنت متاكد من التعديل ؟", "تعديل بطاقة عميل", "إذا ضغت علي زر نعم سوف يتم تعديل بيانات بطاقة العميل"))
                     return false;
             }
             if (Txtname.Text.Trim().Equals(string.Empty))
@@ -712,29 +369,29 @@ namespace DoctorERP.User_Controls
             Guid CurrentGuid = ((tbAgent)Bs.Current).guid;
             tbAgent agent = tbAgent.lstData.Where(u => u.guid == CurrentGuid).FirstOrDefault();
 
-            agent.agencynumber = Txtagencynumber.Text;
-            agent.agentcivilid = Txtagentcivilid.Text;
-            agent.agentemail = Txtagentemail.Text;
-            agent.agentmobile = Txtagentmobile.Text;
-            agent.agentname = Txtagentname.Text;
-            agent.agentpublicnumber = Txtagentpublicnumber.Text;
-            agent.agenttype = AgentType;
-            agent.agentvatid = Txtagentvatid.Text;
-            agent.civilid = Txtcivilid.Text;
-            agent.email = Txtemail.Text;
-            agent.lastaction = "عملية إضافة" + " - بتاريخ  " + DateTime.Now.ToString("dd/MM/yyyy")
-            + " - الساعة  " + DateTime.Now.ToString("hh:mm tt") + " - عن طريق المستخدم  " + FrmMain.CurrentUser.name;
-            agent.mobile = Txtmobile.Text;
-            agent.name = Txtname.Text;
-            agent.note = Txtnote.Text;
-            agent.officecr = Txtofficecr.Text;
-            agent.officeemail = Txtofficeemail.Text;
-            agent.officename = Txtofficename.Text;
-            agent.officephone = Txtofficephone.Text;
-            agent.officepublicnumber = Txtofficepublicnumber.Text;
-            agent.officevatid = Txtofficevatid.Text;
-            agent.publicnumber = Txtpublicnumber.Text;
-            agent.vatid = Txtvatid.Text;
+            //agent.agencynumber = Txtagencynumber.Text;
+            //agent.agentcivilid = Txtagentcivilid.Text;
+            //agent.agentemail = Txtagentemail.Text;
+            //agent.agentmobile = Txtagentmobile.Text;
+            //agent.agentname = Txtagentname.Text;
+            //agent.agentpublicnumber = Txtagentpublicnumber.Text;
+            //agent.agenttype = AgentType;
+            //agent.agentvatid = Txtagentvatid.Text;
+            //agent.civilid = Txtcivilid.Text;
+            //agent.email = Txtemail.Text;
+            //agent.lastaction = "عملية إضافة" + " - بتاريخ  " + DateTime.Now.ToString("dd/MM/yyyy")
+            //+ " - الساعة  " + DateTime.Now.ToString("hh:mm tt") + " - عن طريق المستخدم  " + FrmMain.CurrentUser.name;
+            //agent.mobile = Txtmobile.Text;
+            //agent.name = Txtname.Text;
+            //agent.note = Txtnote.Text;
+            //agent.officecr = Txtofficecr.Text;
+            //agent.officeemail = Txtofficeemail.Text;
+            //agent.officename = Txtofficename.Text;
+            //agent.officephone = Txtofficephone.Text;
+            //agent.officepublicnumber = Txtofficepublicnumber.Text;
+            //agent.officevatid = Txtofficevatid.Text;
+            //agent.publicnumber = Txtpublicnumber.Text;
+            //agent.vatid = Txtvatid.Text;
 
 
             //Agent.planguid = tbPlanInfo.lstData.Where(u => u.name == CmbPlanGuid.Text).FirstOrDefault().guid;
@@ -756,6 +413,191 @@ namespace DoctorERP.User_Controls
 
         #endregion
 
+        #region Main Events
+        #region Default
+        private void ShowDesktopAlert(string Header, string Content, string ContentHighlight, string Footer)
+        {
+            Content = TextHelper.ReverseText(Content);
+            ContentHighlight = TextHelper.ReverseText(ContentHighlight);
+            Footer = TextHelper.ReverseText(Footer);
+
+            radDesktopAlert1.CaptionText = "<html><b>\n" + Header;
+            radDesktopAlert1.ContentText = "<html><i>" +
+                Content +
+                "</i><b><span><color=Blue>" +
+                "\n" + ContentHighlight + "\n" +
+                "</span></b>" +
+                Footer;
+            radDesktopAlert1.ContentImage = Real_Estate_Management.Properties.Resources.information50;
+            radDesktopAlert1.Opacity = 0.9f;
+            radDesktopAlert1.Show();
+
+        }
+        private void ShowNotification(string Header, string Content, string Note)
+        {
+            radToastNotificationManager1.ToastNotifications[0].Xml = "<toast launch=\"readMoreArg\">\r\n  <visual>\r\n    <binding template=\"ToastGeneric\">\r\n   " +
+                "   <text>" + Header + "</text>\r\n   " +
+                "   <text>" + Content + "</text>\r\n  " +
+                "    <text placement=\"attribution\">" + Note + "</text>\r\n    </binding>\r\n  </visual>\r\n</toast>";
+            radToastNotificationManager1.ShowNotification(0);
+
+        }
+
+        #endregion
+        private bool Check(string Operation, string Command, OperationType.OperationIs OperType, bool IsAction)
+        {
+            if (IsDirty) { TackAction(); }
+            if (!FrmMain.IsPermissionGranted(Operation))
+            {
+                MessagesHelper.MessageException(Operation, "لا تملك صلاحية", "لا تملك صلاحية للقيام ب " + Command + " \n تواصل مع المدير.");
+                return false;
+            }
+            if (Bs.Current == null)
+            {
+                MessagesHelper.MessageException(Operation, "يجب حفظ البطاقة أولا", "قم بحفظ بطاقة العميل أولاَ و بعد ذلك يمكنك " + Command);
+                return false;
+            }
+
+            tbAgent Agent = (tbAgent)Bs.Current;
+            Dictionary<bool, string> Check = CheckifOprAllow(Agent, OperType, IsAction);
+            if (!Check.Keys.First() && !Operation.Contains("جديد"))
+            {
+                MessagesHelper.MessageException(Operation, "لا يمكن " + Command, Check.Values.First());
+                return false;
+            }
+            if (Agent is null || Agent.guid.Equals(Guid.Empty))
+            {
+                MessagesHelper.MessageException(Operation, "يجب حفظ البطاقة أولا", "قم بحفظ بطاقة العميل أولاَ و بعد ذلك يمكنك " + Command);
+                return false;
+            }
+            return true;
+
+        }
+
+        private Dictionary<bool, string> CheckifOprAllow(tbAgent Agent, OperationType.OperationIs operation, bool IsAction)
+        {
+            bool GoHead = false, IsSoldorInOrder = false;
+            Dictionary<bool, string> Pair = new Dictionary<bool, string>();
+            switch (operation)
+            {
+                case OperationType.OperationIs.Add:
+                    GoHead = FrmMain.CurrentUser.CanAdd;
+                    Pair.Clear();
+                    Pair.Add(GoHead, "ليس لديك صلاحية الإضافة");
+                    break;
+                case OperationType.OperationIs.Edit:
+                    GoHead = FrmMain.CurrentUser.CanEdit;
+                    Pair.Add(GoHead, "ليس لديك صلاحية التعديل");
+                    break;
+                case OperationType.OperationIs.Delete:
+                    GoHead = FrmMain.CurrentUser.CanDelete;
+                    Pair.Add(GoHead, "ليس لديك صلاحية الحذف");
+                    break;
+                case OperationType.OperationIs.Print:
+                    GoHead = FrmMain.CurrentUser.CanPrint;
+                    Pair.Add(GoHead, "ليس لديك صلاحية الطباعة");
+                    break;
+                default:
+                    break;
+            }
+            if (IsAction)
+            {
+                if (GoHead)
+                {
+                    Pair.Clear();
+                    IsSoldorInOrder = !tbBillheader.IsExist("ownerguid", Agent.guid);
+                    Pair.Add(IsSoldorInOrder, "لا يمكن حذف الحساب لأنه مستخدم في العقود");
+                    if (IsSoldorInOrder)
+                    {
+                        Pair.Clear();
+                        IsSoldorInOrder = !tbBillheader.IsExist("buyerguid", Agent.guid);
+                        Pair.Add(IsSoldorInOrder, "لا يمكن حذف الحساب لأنه مستخدم في العقود");
+                    }
+                }
+            }
+            return Pair;
+
+        }
+
+        private void SetReadOnly(bool IsReadOnly)
+        {
+            List<RadControl> NotUsedControls = new List<RadControl>()
+            { Txtnumber, Txtlastaction };
+            List<RadPageViewPage> ContainerPage = new List<RadPageViewPage>()
+            { PageHome };
+
+            foreach (RadPageViewPage collection in ContainerPage)
+            {
+                foreach (RadControl control in collection.Controls)
+                {
+                    if (NotUsedControls.Contains(control)) { continue; }
+                    if (control is RadTextBox radTextControl)
+                    {
+                        radTextControl.ReadOnly = IsReadOnly;
+                        if (IsReadOnly) { radTextControl.AutoCompleteMode = AutoCompleteMode.None; }
+                        else if (!IsReadOnly) { radTextControl.AutoCompleteMode = AutoCompleteMode.SuggestAppend; }
+                    }
+                    else if (control is RadSpinEditor radSpinControl)
+                    {
+                        radSpinControl.ReadOnly = IsReadOnly;
+                    }
+                    else if (control is RadMultiColumnComboBox radCmbControl)
+                    {
+                        radCmbControl.ReadOnly = IsReadOnly;
+                    }
+                    else if (control is RadCheckBox radChkControl)
+                    {
+                        radChkControl.ReadOnly = IsReadOnly;
+                    }
+                }
+
+            }
+
+
+        }
+
+        public void TackAction()
+        {
+            bool Confirm = MessagesHelper.MessageWarning("بطاقة العميل", "هل تريد حفظ التغيرات ؟", "إذا ضغت علي زر نعم سوف يتم حفظ البيان المفتوح");
+            if (Confirm)
+            {
+                ShowConfirmMSG = false;
+                if (BtnNew.Text == "حفظ") { BtnNew.PerformClick(); }
+                else if (BtnEdit.Text == "حفظ") { BtnEdit.PerformClick(); }
+            }
+            else if (!Confirm)
+            {
+                if (BtnNew.Text == "حفظ")
+                {
+                    IsProgrammatic = true;
+                    Bs.MoveLast();
+                    BtnNew.Text = "جديد";
+                    BtnNew.ScreenTip.Text = "إضافة بطاقة عميل جديدة";
+                    BtnNew.Image = Real_Estate_Management.Properties.Resources.BtnAddNew;
+                    SetReadOnly(true);
+                    IsProgrammatic = false;
+                    IsDirty = false;
+                    IsNew = false;
+                    SetData();
+
+                }
+                else if (BtnEdit.Text == "حفظ")
+                {
+                    IsProgrammatic = true;
+                    Bs.CancelEdit();
+                    BtnEdit.Text = "تعديل";
+                    BtnEdit.ScreenTip.Text = "تعديل بيانات بطاقة عميل";
+                    BtnEdit.Image = Real_Estate_Management.Properties.Resources.BtnEdite;
+                    BtnAttachment.Enabled = false;
+                    BtnScanner.Enabled = false;
+                    SetReadOnly(true);
+                    IsProgrammatic = false;
+                    IsDirty = false;
+                    IsNew = false;
+                    SetData();
+                }
+            }
+        }
 
         private void CmbPlanGuid_DropDownOpening(object sender, System.ComponentModel.CancelEventArgs args)
         {
@@ -775,7 +617,6 @@ namespace DoctorERP.User_Controls
             }
 
         }
-
         private void AlertTimer_Tick(object sender, EventArgs e)
         {
             if (RadOverlayManager.IsActive) { RadOverlayManager.Close(); }
@@ -931,12 +772,28 @@ namespace DoctorERP.User_Controls
             this.Invoke(action);
         }
 
-
         #endregion
 
-
-
         #region Buttons
+
+        private void BtnAddParenter_Click(object sender, EventArgs e)
+        {
+            if (!IsDirty)
+            {
+                RadCallout callout = new RadCallout
+                {
+                    ArrowType = Telerik.WinControls.UI.Callout.CalloutArrowType.Triangle,
+                    ArrowDirection = Telerik.WinControls.ArrowDirection.Right,
+                    AutoClose = true,
+                    CalloutType = Telerik.WinControls.UI.Callout.CalloutType.RoundedRectangle,
+                    DropShadow = true
+                };
+                RadControl cn = sender as RadControl;
+                RadCallout.Show(callout, cn, "لا يمكن تعديل بيانات البطاقة قبل الضغط علي زر تعديل أولاً", "تعديل البيانات", "ثم الضغط علي زر حفظ لحفظ التغييرات");
+                return;
+            }
+
+        }
 
         private void MenuExit_Click(object sender, EventArgs e)
         {
@@ -962,7 +819,7 @@ namespace DoctorERP.User_Controls
                 BtnScanner.Enabled = true;
                 radPageView1.SelectedPage = PageHome;
                 IsDirty = true;
-                guid = Guid.Empty;
+                CurrentGuid = Guid.Empty;
                 Bs.AddNew();
                 Bs.MoveLast();
                 NewFill();
@@ -978,7 +835,7 @@ namespace DoctorERP.User_Controls
                 SetReadOnly(true);
                 IsDirty = false;
                 IsNew = false;
-                guid = Guid.Empty;
+                CurrentGuid = Guid.Empty;
                 SetData();
 
             }
@@ -1000,7 +857,7 @@ namespace DoctorERP.User_Controls
                 BtnAttachment.Enabled = true;
                 BtnScanner.Enabled = true;
                 IsDirty = true;
-                guid = Agent.guid;
+                CurrentGuid = Agent.guid;
                 SetReadOnly(false);
             }
             else if (BtnEdit.Text == "حفظ")
@@ -1014,7 +871,7 @@ namespace DoctorERP.User_Controls
                 SetReadOnly(true);
                 IsDirty = false;
                 IsNew = false;
-                guid = Agent.guid;
+                CurrentGuid = Agent.guid;
                 SetData();
 
             }
@@ -1024,7 +881,7 @@ namespace DoctorERP.User_Controls
         {
             if (!Check("حذف بطاقة", "حذف بطاقة العميل", OperationType.OperationIs.Delete, true)) { return; }
 
-            if (!MessageWarning("حذف بطاقة العميل", "هل أنت متأكد من حذف هذه البطاقة ؟", "إذا ضغط علي زر نعم سوف يتم حذف بطاقة العميل \n إذا ضغط علي لا سوف يتم تجاهل التغييرات"))
+            if (!MessagesHelper.MessageWarning("حذف بطاقة العميل", "هل أنت متأكد من حذف هذه البطاقة ؟", "إذا ضغط علي زر نعم سوف يتم حذف بطاقة العميل \n إذا ضغط علي لا سوف يتم تجاهل التغييرات"))
             {
                 return;
             }
@@ -1041,7 +898,7 @@ namespace DoctorERP.User_Controls
                 ShowDesktopAlert("حذف بطاقة عميل", "تمت العملية", "تمت عملية حذف بطاقة العميل بنجاح", "تم حذف بطاقة العميل و لا يوجد لها بيانات في قاعدة البيانات الأن.");
                 FrmMain.DataHasChanged = true;
                 IsNew = false;
-                guid = Guid.Empty;
+                CurrentGuid = Guid.Empty;
                 SetData();
             }
         }
@@ -1063,7 +920,7 @@ namespace DoctorERP.User_Controls
             tbAgent Agent = (tbAgent)Bs.Current;
             if (Agent.note.Equals("غير نشط"))
             {
-                if (!MessageWarning("تنشيط بطاقة العميل", "هل أنت متأكد من تنشيط هذه البطاقة ؟", "إذا ضغط علي زر نعم سوف يتم تنشيط بطاقة العميل \n إذا ضغط علي لا سوف يتم تجاهل التغييرات"))
+                if (!MessagesHelper.MessageWarning("تنشيط بطاقة العميل", "هل أنت متأكد من تنشيط هذه البطاقة ؟", "إذا ضغط علي زر نعم سوف يتم تنشيط بطاقة العميل \n إذا ضغط علي لا سوف يتم تجاهل التغييرات"))
                 {
                     return;
                 }
@@ -1081,7 +938,7 @@ namespace DoctorERP.User_Controls
             }
             else
             {
-                if (!MessageWarning("تنشيط بطاقة العميل", "هل أنت متأكد من إلغاء تنشيط هذه البطاقة ؟", "إذا ضغط علي زر نعم سوف يتم إلغاء تنشيط بطاقة العميل \n إذا ضغط علي لا سوف يتم تجاهل التغييرات"))
+                if (!MessagesHelper.MessageWarning("تنشيط بطاقة العميل", "هل أنت متأكد من إلغاء تنشيط هذه البطاقة ؟", "إذا ضغط علي زر نعم سوف يتم إلغاء تنشيط بطاقة العميل \n إذا ضغط علي لا سوف يتم تجاهل التغييرات"))
                 {
                     return;
                 }
@@ -1215,7 +1072,7 @@ namespace DoctorERP.User_Controls
 
             if (IsDirty) { TackAction(); }
 
-            guid = Guid.Empty;
+            CurrentGuid = Guid.Empty;
             SetData();
             ShowDesktopAlert("تحديث البيانات", "تمت العملية", "تمت عملية تحديث البيانات بنجاح", "تم تحديث البيانات و يمكن القيام بالعمليات عليها الأن.");
 
@@ -1259,9 +1116,6 @@ namespace DoctorERP.User_Controls
         }
         #endregion
 
-
-
-
         #region report and print
 
         private bool Readyreport(FastReport.Report rpt)
@@ -1274,10 +1128,12 @@ namespace DoctorERP.User_Controls
                 return false;
             }
 
-            if (AgentType == 0)
-                Reports.InitReport(rpt, "ownercard.frx", false);
-            else
-                Reports.InitReport(rpt, "agentcard.frx", false);
+            //if (AgentType == 0)
+            //    Reports.InitReport(rpt, "ownercard.frx", false);
+            //else
+            //    Reports.InitReport(rpt, "agentcard.frx", false);
+
+            Reports.InitReport(rpt, "agentcard.frx", false);
 
             tbAgent.Fill(Agent.guid);
 
@@ -1298,24 +1154,6 @@ namespace DoctorERP.User_Controls
 
         #endregion
 
-        #region Report 
-        private void FillDataGridReport()
-        {
-            //tbAgent.Fill();
-            //GridViewReport.DataSource = tbAgent.dtData;
-            //GridViewReport.BestFitColumns();
-            //DataGridAttachments.Columns[0].IsVisible = false;
-            //DataGridAttachments.Columns[1].IsVisible = false;
-
-            //DataGridAttachments.Columns[2].HeaderText = "الاسم";
-            //DataGridAttachments.Columns[3].HeaderText = "اسم الملف";
-            //DataGridAttachments.Columns[4].HeaderText = "الحجم";
-            //DataGridAttachments.Columns[5].HeaderText = "الملف";
-
-        }
-
-        #endregion
-
         #region Attach
 
         private void FillDataGridAttachments(Guid parentguid)
@@ -1330,6 +1168,12 @@ namespace DoctorERP.User_Controls
             DataGridAttachments.Columns[3].HeaderText = "اسم الملف";
             DataGridAttachments.Columns[4].HeaderText = "الحجم";
             DataGridAttachments.Columns[5].HeaderText = "الملف";
+
+            foreach (GridViewDataColumn col in this.DataGridAttachments.Columns)
+            {
+                col.TextAlignment = ContentAlignment.MiddleCenter;
+                col.HeaderTextAlignment = ContentAlignment.MiddleCenter;
+            }
 
         }
         private void AddAttachments(Guid parentguid)
@@ -1443,93 +1287,6 @@ namespace DoctorERP.User_Controls
             }
         }
 
-        private void commandBarLabel1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void PageHome_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void radPageView1_SelectedPageChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void idLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void DataGridAttachments_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void GridViewCars_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radPageViewPage1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void MainContainer_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void BtnAddParenter_Click(object sender, EventArgs e)
-        {
-            if (!IsDirty)
-            {
-                RadCallout callout = new RadCallout
-                {
-                    ArrowType = Telerik.WinControls.UI.Callout.CalloutArrowType.Triangle,
-                    ArrowDirection = Telerik.WinControls.ArrowDirection.Right,
-                    AutoClose = true,
-                    CalloutType = Telerik.WinControls.UI.Callout.CalloutType.RoundedRectangle,
-                    DropShadow = true
-                };
-                RadControl cn = sender as RadControl;
-                RadCallout.Show(callout, cn, "لا يمكن تعديل بيانات البطاقة قبل الضغط علي زر تعديل أولاً", "تعديل البيانات", "ثم الضغط علي زر حفظ لحفظ التغييرات");
-                return;
-            }
-            if (!radCollapsiblePanelParenter1.Visible)
-            {
-                radCollapsiblePanelParenter1.IsExpanded = true;
-                radCollapsiblePanelParenter1.Visible = true;
-                return;
-            }
-            if (radCollapsiblePanelParenter1.Visible && !radCollapsiblePanelParenter2.Visible)
-            {
-                radCollapsiblePanelParenter2.IsExpanded = true;
-
-                radCollapsiblePanelParenter2.Visible = true;
-                return;
-            }
-            if (radCollapsiblePanelParenter2.Visible && !radCollapsiblePanelParenter3.Visible)
-            {
-                radCollapsiblePanelParenter2.IsExpanded = false;
-                radCollapsiblePanelParenter3.IsExpanded = true;
-
-                radCollapsiblePanelParenter3.Visible = true;
-                return;
-            }
-            if (radCollapsiblePanelParenter3.Visible)
-            {
-                radCollapsiblePanelParenter3.IsExpanded = false;
-                radCollapsiblePanelParenter4.IsExpanded = true;
-
-                radCollapsiblePanelParenter4.Visible = true;
-                return;
-            }
-
-        }
 
         private void MenuPreviewAttach_Click(object sender, EventArgs e)
         {
@@ -1548,7 +1305,6 @@ namespace DoctorERP.User_Controls
                 FileHelper.RunFile(filename, bfiles);
 
         }
-
 
         private void MenuExtractAttachment_Click(object sender, EventArgs e)
         {
@@ -1591,7 +1347,6 @@ namespace DoctorERP.User_Controls
 
             DataGridAttachments.Rows.RemoveAt(DataGridAttachments.CurrentRow.Index);
         }
-
 
         private void BtnScanner_Click(object sender, EventArgs e)
         {

@@ -1,14 +1,12 @@
-﻿using DevExpress.Utils.XtraFrames;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Telerik.WinControls.UI;
-using Telerik.WinForms.Documents.FormatProviders.Html.Parsing;
 
-namespace Real_Estate_Management.Helpers.Messages
+namespace DoctorHelper.Messages
 {
     public class Messages
     {
