@@ -2,6 +2,8 @@
 using DoctorERP.Helpers;
 using DoctorHelper.Helpers;
 using Helper.Helpers;
+using Real_Estate_Management.Data.Real_Estate_Management_DataSetTableAdapters;
+using Real_Estate_Management.Repositry;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -13,11 +15,15 @@ using Telerik.WinControls;
 using Telerik.WinControls.UI;
 using Telerik.WinControls.UI.Localization;
 using Telerik.WinControls.UI.SplashScreen;
+using static Real_Estate_Management.Data.Real_Estate_Management_DataSet;
 
 namespace DoctorERP.User_Controls
 {
     public partial class UCLawyer : UserControl
     {
+        private readonly tbLawyerDataTable DataTableLawyer = new tbLawyerDataTable();
+
+
 
         private Guid CurrentGuid;
         private BindingSource Bs;
@@ -68,8 +74,8 @@ namespace DoctorERP.User_Controls
             RadFlyoutManager.FlyoutClosed += this.RadFlyoutManager_FlyoutClosed;
 
             radLabel5.TextAlignment = ContentAlignment.MiddleCenter;
-            Txtnumber.TextAlignment = ContentAlignment.MiddleCenter;
-            radstatus.TextAlignment = ContentAlignment.MiddleCenter;
+            TxtNumber.TextAlignment = ContentAlignment.MiddleCenter;
+            TxtStatues.TextAlignment = ContentAlignment.MiddleCenter;
             radDesktopAlert1.Popup.RootElement.RightToLeft = true;
             //radPageView1.RootElement.Children[0].Children[0].Children[0].Children[3].Visibility = ElementVisibility.Hidden;
 
@@ -135,30 +141,37 @@ namespace DoctorERP.User_Controls
 
             if (FrmMain.PlanGuid != Guid.Empty)
             {
-                tbAgent.Fill("PlanGuid", FrmMain.PlanGuid);
+                
+                //tbAgent.Fill("PlanGuid", FrmMain.PlanGuid);
+
+                TbLawyer tbLawyer = new TbLawyer();
+                var uu = tbLawyer.Fill("PlanGuid", FrmMain.PlanGuid);
 
             }
             else if (FrmMain.PlanGuid == Guid.Empty)
             {
-                tbAgent.Fill();
+                TbLawyer tbLawyer = new TbLawyer();
+                tbLawyer.Fill(DataTableLawyer);
+
+                //tbAgent.lstData = tbLawyer.lstData;
+                //tbAgent.Fill();
             }
 
-
-            Bs = new BindingSource(tbAgent.lstData, string.Empty);
+            Bs = new BindingSource(DataTableLawyer, "guid");
             Bs.PositionChanged += new EventHandler(Bs_PositionChanged);
             BindingNavigatorClient.BindingSource = Bs;
 
             tbPlanInfo.Fill();
-            radCmbPlanGuid.DataSource = tbPlanInfo.lstData;
-            radCmbPlanGuid.ValueMember = "guid";
-            radCmbPlanGuid.DisplayMember = "name";
-            radCmbPlanGuid.EditorControl.Columns[0].IsVisible = false;
-            radCmbPlanGuid.EditorControl.Columns[2].IsVisible = false;
-            radCmbPlanGuid.EditorControl.Columns[1].HeaderText = "اسم المخطط";
-            radCmbPlanGuid.EditorControl.Columns[3].HeaderText = "المدينة";
-            radCmbPlanGuid.EditorControl.Columns[3].HeaderText = "الموقع";
-            radCmbPlanGuid.EditorControl.Columns[4].HeaderText = "رقم المخطط";
-            radCmbPlanGuid.AutoSizeDropDownColumnMode = BestFitColumnMode.AllCells;
+            CmbPlanGuid.DataSource = tbPlanInfo.lstData;
+            CmbPlanGuid.ValueMember = "guid";
+            CmbPlanGuid.DisplayMember = "name";
+            ////radCmbPlanGuid.EditorControl.Columns[0].IsVisible = false;
+            ////radCmbPlanGuid.EditorControl.Columns[2].IsVisible = false;
+            ////radCmbPlanGuid.EditorControl.Columns[1].HeaderText = "اسم المخطط";
+            ////radCmbPlanGuid.EditorControl.Columns[3].HeaderText = "المدينة";
+            ////radCmbPlanGuid.EditorControl.Columns[3].HeaderText = "الموقع";
+            ////radCmbPlanGuid.EditorControl.Columns[4].HeaderText = "رقم المخطط";
+            CmbPlanGuid.AutoSizeDropDownColumnMode = BestFitColumnMode.AllCells;
 
             SetControlsDataBindings();
 
@@ -178,21 +191,29 @@ namespace DoctorERP.User_Controls
         }
         private void SetControlsDataBindings()
         {
-            List<RadControl> MainContainerControls = new List<RadControl>()
-            {  MainContainer };
+            //List<RadControl> MainContainerControls = new List<RadControl>()
+            //{  MainContainer.Controls };
 
-            foreach (RadControl collection in MainContainerControls)
+            foreach (RadControl control in MainContainer.Controls)
             {
-                foreach (RadControl control in collection.Controls)
-                {
-                    if (control.Name.StartsWith("rad")) { continue; }
-                    control.DataBindings.Clear();
-                    string dataMember = control.Name.Remove(0, 3);
-                    string propertyName = control is RadSpinEditor ? "Value" : control is RadCheckBox ? "Checked"
-                        : control is RadMultiColumnComboBox ? "SelectedValue" : "Text";
-                    Binding ControlBinding = new System.Windows.Forms.Binding(propertyName, Bs, dataMember, false);
-                    control.DataBindings.Add(ControlBinding);
-                }
+                if (control.Name.StartsWith("rad")) { continue; }
+                control.DataBindings.Clear();
+                string dataMember = control.Name.Remove(0, 3);
+                string propertyName = control is RadSpinEditor ? "Value" : control is RadCheckBox ? "Checked"
+                    : control is RadMultiColumnComboBox ? "SelectedValue" : "Text";
+                Binding ControlBinding = new System.Windows.Forms.Binding(propertyName, Bs.DataSource, dataMember);
+                control.DataBindings.Add(ControlBinding);
+
+                //foreach (RadControl control in collection.Controls)
+                //{
+                //    if (control.Name.StartsWith("rad")) { continue; }
+                //    control.DataBindings.Clear();
+                //    string dataMember = control.Name.Remove(0, 3);
+                //    string propertyName = control is RadSpinEditor ? "Value" : control is RadCheckBox ? "Checked"
+                //        : control is RadMultiColumnComboBox ? "SelectedValue" : "Text";
+                //    Binding ControlBinding = new System.Windows.Forms.Binding(propertyName, Bs, dataMember, false);
+                //    control.DataBindings.Add(ControlBinding);
+                //}
 
             }
 
@@ -224,13 +245,13 @@ namespace DoctorERP.User_Controls
             if (Agent.note == "غير نشط")
             {
                 BtnReservation.Text = "تنشيط";
-                radstatus.Text = "غير نشط";
+                TxtStatues.Text = "غير نشط";
 
             }
             else
             {
                 BtnReservation.Text = "إلغاء التنشيط";
-                radstatus.Text = "نشط";
+                TxtStatues.Text = "نشط";
 
             }
 
@@ -268,10 +289,10 @@ namespace DoctorERP.User_Controls
                 if (control.Name.StartsWith("rad")) { continue; }
                 control.DataBindings.Clear();
             }
-            Txtnumber.Text = (tbAgent.GetMaxNumber("Number") + 1).ToString();
-            radstatus.Text = "نشط";
-            radCmbPlanGuid.SelectedValue = FrmMain.PlanGuid;
-            Txtname.Focus();
+            TxtNumber.Text = (tbAgent.GetMaxNumber("Number") + 1).ToString();
+            TxtStatues.Text = "نشط";
+            CmbPlanGuid.SelectedValue = FrmMain.PlanGuid;
+            TxtName.Focus();
         }
 
         private bool Add()
@@ -282,7 +303,7 @@ namespace DoctorERP.User_Controls
                 if (!MessagesHelper.MessageWarning("هل أنت متاكد من الإضافة ؟", "إضافة بطاقة عميل جديدة", "إذا ضغت علي زر نعم سوف يتم إضافة بطاقة العميل الجديدة"))
                     return false;
             }
-            if (Txtname.Text.Trim().Equals(string.Empty))
+            if (TxtName.Text.Trim().Equals(string.Empty))
             {
                 RadCallout callout = new RadCallout
                 {
@@ -292,7 +313,7 @@ namespace DoctorERP.User_Controls
                     CalloutType = Telerik.WinControls.UI.Callout.CalloutType.RoundedRectangle,
                     DropShadow = true
                 };
-                RadCallout.Show(callout, Txtname, "اسم العميل غير مدخل", "حفظ البيانات", "ثم الضغط علي زر حفظ لحفظ التغييرات");
+                RadCallout.Show(callout, TxtName, "اسم العميل غير مدخل", "حفظ البيانات", "ثم الضغط علي زر حفظ لحفظ التغييرات");
                 return false;
             }
 
@@ -352,7 +373,7 @@ namespace DoctorERP.User_Controls
                 if (!MessagesHelper.MessageWarning("هل أنت متاكد من التعديل ؟", "تعديل بطاقة عميل", "إذا ضغت علي زر نعم سوف يتم تعديل بيانات بطاقة العميل"))
                     return false;
             }
-            if (Txtname.Text.Trim().Equals(string.Empty))
+            if (TxtName.Text.Trim().Equals(string.Empty))
             {
                 RadCallout callout = new RadCallout
                 {
@@ -362,7 +383,7 @@ namespace DoctorERP.User_Controls
                     CalloutType = Telerik.WinControls.UI.Callout.CalloutType.RoundedRectangle,
                     DropShadow = true
                 };
-                RadCallout.Show(callout, Txtname, "اسم العميل غير مدخل", "حفظ البيانات", "ثم الضغط علي زر حفظ لحفظ التغييرات");
+                RadCallout.Show(callout, TxtName, "اسم العميل غير مدخل", "حفظ البيانات", "ثم الضغط علي زر حفظ لحفظ التغييرات");
                 return false;
             }
 
@@ -522,7 +543,7 @@ namespace DoctorERP.User_Controls
         private void SetReadOnly(bool IsReadOnly)
         {
             List<RadControl> NotUsedControls = new List<RadControl>()
-            { Txtnumber, Txtlastaction };
+            { TxtNumber, TxtLastAction };
             List<RadPageViewPage> ContainerPage = new List<RadPageViewPage>()
             { PageHome };
 
@@ -683,9 +704,9 @@ namespace DoctorERP.User_Controls
         }
         private void Txtstatus_TextChanged(object sender, EventArgs e)
         {
-            if (radstatus.Text == "نشط") { radstatus.BackColor = Color.FromArgb(0, 255, 1); }
-            else if (radstatus.Text == "غير نشط") { radstatus.BackColor = Color.FromArgb(254, 0, 0); }
-            else if (radstatus.Text == "محجوز") { radstatus.BackColor = Color.FromArgb(255, 255, 0); }
+            if (TxtStatues.Text == "نشط") { TxtStatues.BackColor = Color.FromArgb(0, 255, 1); }
+            else if (TxtStatues.Text == "غير نشط") { TxtStatues.BackColor = Color.FromArgb(254, 0, 0); }
+            else if (TxtStatues.Text == "محجوز") { TxtStatues.BackColor = Color.FromArgb(255, 255, 0); }
         }
 
         private void RadFlyoutManager_FlyoutClosed(FlyoutClosedEventArgs e)
@@ -704,7 +725,7 @@ namespace DoctorERP.User_Controls
                         if (content.Result == DialogResult.OK)
                         {
                             DBConnect.StartTransAction();
-                            radstatus.Text = Agent.note = "غير نشط";
+                            TxtStatues.Text = Agent.note = "غير نشط";
                             BtnReservation.Text = "تنشيط";
                             Agent.Update();
                             if (DBConnect.CommitTransAction())
@@ -926,7 +947,7 @@ namespace DoctorERP.User_Controls
                 }
 
                 DBConnect.StartTransAction();
-                radstatus.Text = Agent.note = "نشط";
+                TxtStatues.Text = Agent.note = "نشط";
                 BtnReservation.Text = "إلغاء تنشيط";
                 Agent.note = string.Empty;
                 Agent.Update();

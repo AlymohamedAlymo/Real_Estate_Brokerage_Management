@@ -4,12 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="154b833b49f544f8b3a564b6cf9770ee" Name="Diagram1">
-        <EntityTypeShape EntityType="test2024Model.vwAccountBalance" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="test2024Model.vwDailSell" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="test2024Model.vwGeneralAccountLandSale" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="test2024Model.vwLandQty" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="test2024Model.vwLandTran" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+      <Diagram DiagramId="2421ccba55294b7798417d8f4ba49d18" Name="Diagram1" ZoomLevel="82">
+        <EntityTypeShape EntityType="Real_Estate_Management_Model.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Real_Estate_Management_Model.vwAccountBalance" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Real_Estate_Management_Model.vwDailSell" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Real_Estate_Management_Model.vwGeneralAccountLandSale" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Real_Estate_Management_Model.vwLandQty" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Real_Estate_Management_Model.vwLandTran" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Real_Estate_Management_Model.tbPlanInfo" Width="1.5" PointX="10.625" PointY="0.875" />
+        <EntityTypeShape EntityType="Real_Estate_Management_Model.tbLawyer" Width="1.5" PointX="8.5" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

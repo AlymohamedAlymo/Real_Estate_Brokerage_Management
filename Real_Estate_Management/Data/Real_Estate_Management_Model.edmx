@@ -4,258 +4,39 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="test2024Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.tbAccount' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tbAccount">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="number" Type="int" />
-          <Property Name="name" Type="varchar" MaxLength="255" />
-          <Property Name="note" Type="varchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.tbAgent' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tbAgent">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="number" Type="int" />
-          <Property Name="name" Type="varchar" MaxLength="255" />
-          <Property Name="civilid" Type="varchar" MaxLength="255" />
-          <Property Name="mobile" Type="varchar" MaxLength="255" />
-          <Property Name="email" Type="varchar" MaxLength="255" />
-          <Property Name="vatid" Type="varchar" MaxLength="255" />
-          <Property Name="publicnumber" Type="varchar" MaxLength="255" />
-          <Property Name="agentname" Type="varchar" MaxLength="255" />
-          <Property Name="agentcivilid" Type="varchar" MaxLength="255" />
-          <Property Name="agentmobile" Type="varchar" MaxLength="255" />
-          <Property Name="agentemail" Type="varchar" MaxLength="255" />
-          <Property Name="agentvatid" Type="varchar" MaxLength="255" />
-          <Property Name="agencynumber" Type="varchar" MaxLength="255" />
-          <Property Name="agentpublicnumber" Type="varchar" MaxLength="255" />
-          <Property Name="officename" Type="varchar" MaxLength="255" />
-          <Property Name="officecr" Type="varchar" MaxLength="255" />
-          <Property Name="officephone" Type="varchar" MaxLength="255" />
-          <Property Name="officeemail" Type="varchar" MaxLength="255" />
-          <Property Name="officevatid" Type="varchar" MaxLength="255" />
-          <Property Name="officepublicnumber" Type="varchar" MaxLength="255" />
-          <Property Name="note" Type="varchar" MaxLength="255" />
-          <Property Name="agenttype" Type="int" />
-          <Property Name="lastaction" Type="varchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.tbAppInfo' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tbAppInfo">
-          <Property Name="Guid" Type="uniqueidentifier" />
-          <Property Name="AppTitle" Type="varchar" MaxLength="255" />
-          <Property Name="ColumnCount" Type="int" />
-          <Property Name="BackupOnExit" Type="bit" />
-          <Property Name="BackupPath" Type="varchar" MaxLength="255" />
-          <Property Name="background" Type="image" />
-          <Property Name="KMStyle" Type="int" />
-          <Property Name="QtyFormat" Type="varchar" MaxLength="50" />
-          <Property Name="CurrecnyFormat" Type="varchar" MaxLength="50" />
-          <Property Name="Logo" Type="image" />
-          <Property Name="ShowConfirmMSG" Type="bit" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.tbAttachment' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tbAttachment">
-          <Property Name="Guid" Type="uniqueidentifier" />
-          <Property Name="ParentGuid" Type="uniqueidentifier" />
-          <Property Name="Name" Type="varchar" MaxLength="255" />
-          <Property Name="FileName" Type="varchar" MaxLength="255" />
-          <Property Name="FileSize" Type="varchar" MaxLength="255" />
-          <Property Name="FileData" Type="image" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.tbBanks' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tbBanks">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="bankname" Type="varchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.tbBillBody' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tbBillBody">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="parentguid" Type="uniqueidentifier" />
-          <Property Name="landguid" Type="uniqueidentifier" />
-          <Property Name="number" Type="int" />
-          <Property Name="contractno" Type="int" />
-          <Property Name="price" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="discounttotaltext" Type="varchar" MaxLength="255" />
-          <Property Name="discounttotal" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="discounttotalvalue" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="buildingfeevalue" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="workfeevalue" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="vatvalue" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="discountfeetext" Type="varchar" MaxLength="255" />
-          <Property Name="discountfee" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="discountfeevalue" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="total" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="totalnet" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="note" Type="varchar" MaxLength="255" />
-          <Property Name="status" Type="varchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.tbBillheader' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tbBillheader">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="ownerguid" Type="uniqueidentifier" />
-          <Property Name="buyerguid" Type="uniqueidentifier" />
-          <Property Name="billtype" Type="int" />
-          <Property Name="number" Type="int" />
-          <Property Name="regdate" Type="datetime" />
-          <Property Name="ownerdata" Type="varchar" MaxLength="255" />
-          <Property Name="buyerdata" Type="varchar" MaxLength="255" />
-          <Property Name="total" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="totaldiscounttotal" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="totalbuidlingfee" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="totalworkfee" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="totalvat" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="totaldiscountfee" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="totalnet" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="note" Type="varchar" MaxLength="255" />
-          <Property Name="lastaction" Type="varchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.tbEditPassword' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tbEditPassword">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="password" Type="varchar" MaxLength="50" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.tbEmailSettings' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tbEmailSettings">
-          <Property Name="Guid" Type="uniqueidentifier" />
-          <Property Name="SenderName" Type="varchar" MaxLength="50" />
-          <Property Name="SenderEmail" Type="varchar" MaxLength="50" />
-          <Property Name="Password" Type="varchar" MaxLength="50" />
-          <Property Name="Subject" Type="varchar" MaxLength="50" />
-          <Property Name="MessageBody" Type="varchar" MaxLength="255" />
-          <Property Name="SMTPServer" Type="varchar" MaxLength="50" />
-          <Property Name="Port" Type="int" />
-          <Property Name="UseSSL" Type="bit" />
-          <Property Name="CCEmail" Type="varchar" MaxLength="50" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.tbLand' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tbLand">
-          <Property Name="PlanGuid" Type="uniqueidentifier" />
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="code" Type="int" />
-          <Property Name="number" Type="int" />
-          <Property Name="blocknumber" Type="varchar" MaxLength="255" />
-          <Property Name="landtype" Type="varchar" MaxLength="255" />
-          <Property Name="area" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="deednumber" Type="varchar" MaxLength="255" />
-          <Property Name="amount" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="isworkfee" Type="bit" />
-          <Property Name="workfee" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="issalefee" Type="bit" />
-          <Property Name="salesfee" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="isbuildingfee" Type="bit" />
-          <Property Name="buildingfee" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="isvat" Type="bit" />
-          <Property Name="vat" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="isdiscounttotal" Type="bit" />
-          <Property Name="discounttotal" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="discounttotalvalue" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="isdiscountfee" Type="bit" />
-          <Property Name="discountfee" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="discountfeevalue" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="total" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="south" Type="varchar" MaxLength="255" />
-          <Property Name="southdesc" Type="varchar" MaxLength="255" />
-          <Property Name="north" Type="varchar" MaxLength="255" />
-          <Property Name="northdesc" Type="varchar" MaxLength="255" />
-          <Property Name="east" Type="varchar" MaxLength="255" />
-          <Property Name="eastdesc" Type="varchar" MaxLength="255" />
-          <Property Name="west" Type="varchar" MaxLength="255" />
-          <Property Name="westdesc" Type="varchar" MaxLength="255" />
-          <Property Name="status" Type="varchar" MaxLength="255" />
-          <Property Name="reservereason" Type="varchar" MaxLength="255" />
-          <Property Name="note" Type="varchar" MaxLength="255" />
-          <Property Name="lastaction" Type="varchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.tbLandTrans' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tbLandTrans">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="number" Type="int" />
-          <Property Name="landguid" Type="uniqueidentifier" />
-          <Property Name="regdate" Type="datetime" />
-          <Property Name="deednumber" Type="varchar" MaxLength="255" />
-          <Property Name="buildingnumber" Type="varchar" MaxLength="255" />
-          <Property Name="note" Type="varchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.tbLawyer' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+    <Schema Namespace="Real_Estate_Management_Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="tbLawyer">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="number" Type="int" />
-          <Property Name="name" Type="varchar" MaxLength="255" />
-          <Property Name="civilid" Type="varchar" MaxLength="255" />
-          <Property Name="mobile" Type="varchar" MaxLength="255" />
-          <Property Name="email" Type="varchar" MaxLength="255" />
-          <Property Name="vatid" Type="varchar" MaxLength="255" />
-          <Property Name="publicnumber" Type="varchar" MaxLength="255" />
-          <Property Name="note" Type="varchar" MaxLength="255" />
-          <Property Name="lastaction" Type="varchar" MaxLength="255" />
-        </EntityType>-->
+          <Key>
+            <PropertyRef Name="PlanGuid" />
+            <PropertyRef Name="Guid" />
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="PlanGuid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Statues" Type="varchar" MaxLength="10" />
+          <Property Name="Number" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+          <Property Name="IDNumber" Type="varchar" MaxLength="255" />
+          <Property Name="Mobile" Type="varchar" MaxLength="255" />
+          <Property Name="Email" Type="varchar" MaxLength="255" />
+          <Property Name="VatNumber" Type="varchar" MaxLength="255" />
+          <Property Name="PublicNumber" Type="varchar" MaxLength="255" />
+          <Property Name="Note" Type="varchar" MaxLength="255" />
+          <Property Name="LastAction" Type="varchar" MaxLength="255" />
+        </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.tbLog' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tbLog">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="regdate" Type="date" />
-          <Property Name="username" Type="varchar" MaxLength="255" />
-          <Property Name="actiontype" Type="varchar" MaxLength="255" />
-          <Property Name="action" Type="varchar" MaxLength="255" />
-          <Property Name="note" Type="varchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.tbPay' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tbPay">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="accountguid" Type="uniqueidentifier" />
-          <Property Name="paytype" Type="int" />
-          <Property Name="number" Type="int" />
-          <Property Name="paydate" Type="datetime" />
-          <Property Name="amount" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="note" Type="varchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.tbPayContract' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tbPayContract">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="paymenttype" Type="int" />
-          <Property Name="number" Type="int" />
-          <Property Name="paydate" Type="datetime" />
-          <Property Name="refnumber" Type="int" />
-          <Property Name="contractno" Type="int" />
-          <Property Name="AmountFor" Type="varchar" MaxLength="255" />
-          <Property Name="paytype" Type="varchar" MaxLength="255" />
-          <Property Name="bank" Type="varchar" MaxLength="255" />
-          <Property Name="checkno" Type="varchar" MaxLength="255" />
-          <Property Name="amount" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="note" Type="varchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.tbPaymentsNotes' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tbPaymentsNotes">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="landpricenotes" Type="varchar" MaxLength="1500" />
-          <Property Name="workfeenotes" Type="varchar" MaxLength="1500" />
-          <Property Name="vatnotes" Type="varchar" MaxLength="1500" />
-          <Property Name="discountnotes" Type="varchar" MaxLength="1500" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.tbPicture' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tbPicture">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="ParentGuid" Type="uniqueidentifier" />
-          <Property Name="Pic" Type="image" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.tbPlanInfo' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+warning 6013: The table/view 'realestatebrokermanagement.dbo.tbPlanInfo' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="tbPlanInfo">
           <Property Name="guid" Type="uniqueidentifier" />
           <Property Name="name" Type="varchar" MaxLength="255" />
@@ -265,115 +46,7 @@ warning 6013: The table/view 'test2024.dbo.tbPlanInfo' does not have a primary k
           <Property Name="number" Type="varchar" MaxLength="255" />
         </EntityType>-->
         <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.tbPriceLog' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tbPriceLog">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="parentguid" Type="uniqueidentifier" />
-          <Property Name="username" Type="varchar" MaxLength="255" />
-          <Property Name="changedate" Type="datetime" />
-          <Property Name="oldprice" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="newprice" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="actno" Type="int" />
-          <Property Name="actdate" Type="datetime" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.tbReportCustomView' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tbReportCustomView">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="name" Type="varchar" MaxLength="255" />
-          <Property Name="ColumnView" Type="text" />
-          <Property Name="AutoFillColumn" Type="bit" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.tbSaleOrder' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tbSaleOrder">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="regdate" Type="datetime" />
-          <Property Name="number" Type="int" />
-          <Property Name="buyerguid" Type="uniqueidentifier" />
-          <Property Name="buyerdata" Type="varchar" MaxLength="255" />
-          <Property Name="total" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="totalnet" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="note" Type="varchar" MaxLength="255" />
-          <Property Name="lastaction" Type="varchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.tbSaleOrderBody' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tbSaleOrderBody">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="parentguid" Type="uniqueidentifier" />
-          <Property Name="number" Type="int" />
-          <Property Name="landguid" Type="uniqueidentifier" />
-          <Property Name="price" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="total" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="note" Type="varchar" MaxLength="255" />
-          <Property Name="status" Type="varchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.tbSelectObject' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tbSelectObject">
-          <Property Name="Guid" Type="uniqueidentifier" />
-          <Property Name="Number" Type="int" />
-          <Property Name="Name" Type="varchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.tbSMSsettings' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tbSMSsettings">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="Username" Type="varchar" MaxLength="255" />
-          <Property Name="password" Type="varchar" MaxLength="255" />
-          <Property Name="Sender" Type="varchar" MaxLength="255" />
-          <Property Name="MessageBody" Type="varchar" MaxLength="255" />
-          <Property Name="Mobile" Type="varchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.tbTaxDiscount' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tbTaxDiscount">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="isworkfee" Type="bit" />
-          <Property Name="workfee" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="issalefee" Type="bit" />
-          <Property Name="salesfee" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="isbuildingfee" Type="bit" />
-          <Property Name="buildingfee" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="isvat" Type="bit" />
-          <Property Name="vat" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="isdiscounttotal" Type="bit" />
-          <Property Name="discounttotal" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="discounttotalvalue" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="isdiscountfee" Type="bit" />
-          <Property Name="discountfee" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="discountfeevalue" Type="decimal" Precision="18" Scale="4" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.tbUsers' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tbUsers">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="name" Type="varchar" MaxLength="255" />
-          <Property Name="password" Type="varchar" MaxLength="255" />
-          <Property Name="IsAdmin" Type="bit" />
-          <Property Name="CanAdd" Type="bit" />
-          <Property Name="CanEdit" Type="bit" />
-          <Property Name="CanDelete" Type="bit" />
-          <Property Name="CanPrint" Type="bit" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.tbUsersPermissions' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tbUsersPermissions">
-          <Property Name="Guid" Type="uniqueidentifier" />
-          <Property Name="UserGuid" Type="uniqueidentifier" />
-          <Property Name="PermissionName" Type="varchar" MaxLength="255" />
-          <Property Name="PermissionValue" Type="bit" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.tbVatSettings' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tbVatSettings">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="companyname" Type="varchar" MaxLength="255" />
-          <Property Name="vatid" Type="varchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'test2024.dbo.vwAccountBalance' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'realestatebrokermanagement.dbo.vwAccountBalance' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwAccountBalance">
           <Key>
             <PropertyRef Name="amountin" />
@@ -387,187 +60,7 @@ warning 6002: The table/view 'test2024.dbo.vwAccountBalance' does not have a pri
           <Property Name="balance" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.vwAccountStatement' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vwAccountStatement">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="accountguid" Type="uniqueidentifier" />
-          <Property Name="paydate" Type="datetime" />
-          <Property Name="number" Type="int" />
-          <Property Name="name" Type="varchar" MaxLength="255" />
-          <Property Name="amountin" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="amountout" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="note" Type="varchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.vwAddAmountToAgentStatement' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vwAddAmountToAgentStatement">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="buyerguid" Type="uniqueidentifier" />
-          <Property Name="regdate" Type="datetime" />
-          <Property Name="code" Type="int" />
-          <Property Name="land" Type="varchar" MaxLength="265" />
-          <Property Name="contractno" Type="int" />
-          <Property Name="agent" Type="varchar" MaxLength="255" />
-          <Property Name="totalnet" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="payments" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="addpay" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="remain" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="remainafterpay" Type="decimal" Precision="19" Scale="4" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.vwAgentData' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vwAgentData">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="number" Type="int" />
-          <Property Name="name" Type="varchar" MaxLength="255" />
-          <Property Name="civilid" Type="varchar" MaxLength="255" />
-          <Property Name="mobile" Type="varchar" MaxLength="255" />
-          <Property Name="email" Type="varchar" MaxLength="255" />
-          <Property Name="vatid" Type="varchar" MaxLength="255" />
-          <Property Name="agencynumber" Type="varchar" MaxLength="255" />
-          <Property Name="publicnumber" Type="varchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.vwAgentStatement' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vwAgentStatement">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="buyerguid" Type="uniqueidentifier" />
-          <Property Name="regdate" Type="datetime" />
-          <Property Name="code" Type="int" />
-          <Property Name="land" Type="varchar" MaxLength="265" />
-          <Property Name="contractno" Type="int" />
-          <Property Name="agent" Type="varchar" MaxLength="255" />
-          <Property Name="totalnet" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="payments" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="remain" Type="decimal" Precision="18" Scale="4" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.vwAgentStatementDetails' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vwAgentStatementDetails">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="buyerguid" Type="uniqueidentifier" />
-          <Property Name="number" Type="int" />
-          <Property Name="regdate" Type="datetime" />
-          <Property Name="code" Type="int" />
-          <Property Name="land" Type="varchar" MaxLength="265" />
-          <Property Name="contractno" Type="int" />
-          <Property Name="agent" Type="varchar" MaxLength="255" />
-          <Property Name="payin" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="payout" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="note" Type="varchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.vwBillBody' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vwBillBody">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="parentguid" Type="uniqueidentifier" />
-          <Property Name="landguid" Type="uniqueidentifier" />
-          <Property Name="number" Type="int" />
-          <Property Name="contractno" Type="int" />
-          <Property Name="code" Type="int" />
-          <Property Name="land" Type="varchar" MaxLength="265" />
-          <Property Name="price" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="discounttotaltext" Type="varchar" MaxLength="255" />
-          <Property Name="discounttotal" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="discounttotalvalue" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="buildingfeevalue" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="workfeevalue" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="vatvalue" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="discountfeetext" Type="varchar" MaxLength="255" />
-          <Property Name="discountfee" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="discountfeevalue" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="netprice" Type="decimal" Precision="19" Scale="4" />
-          <Property Name="networkfee" Type="decimal" Precision="19" Scale="4" />
-          <Property Name="vatworkfee" Type="decimal" Precision="19" Scale="4" />
-          <Property Name="total" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="totalnet" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="note" Type="varchar" MaxLength="255" />
-          <Property Name="status" Type="varchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.vwBuildingFee' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vwBuildingFee">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="buyerguid" Type="uniqueidentifier" />
-          <Property Name="regdate" Type="datetime" />
-          <Property Name="code" Type="int" />
-          <Property Name="blocknumber" Type="varchar" MaxLength="255" />
-          <Property Name="number" Type="int" />
-          <Property Name="land" Type="varchar" MaxLength="265" />
-          <Property Name="price" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="netprice" Type="decimal" Precision="19" Scale="4" />
-          <Property Name="buildingfeevalue" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="agent" Type="varchar" MaxLength="255" />
-          <Property Name="mobile" Type="varchar" MaxLength="255" />
-          <Property Name="vatid" Type="varchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.vwBuildingFeeNumbers' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vwBuildingFeeNumbers">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="buyerguid" Type="uniqueidentifier" />
-          <Property Name="regdate" Type="datetime" />
-          <Property Name="contractno" Type="int" />
-          <Property Name="blocknumber" Type="varchar" MaxLength="255" />
-          <Property Name="number" Type="int" />
-          <Property Name="land" Type="varchar" MaxLength="265" />
-          <Property Name="price" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="netprice" Type="decimal" Precision="19" Scale="4" />
-          <Property Name="buildingnumber" Type="varchar" MaxLength="255" />
-          <Property Name="buildingfeevalue" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="agent" Type="varchar" MaxLength="255" />
-          <Property Name="mobile" Type="varchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.vwContractInfo' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vwContractInfo">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="landguid" Type="uniqueidentifier" />
-          <Property Name="buyerguid" Type="uniqueidentifier" />
-          <Property Name="regdate" Type="datetime" />
-          <Property Name="contractno" Type="int" />
-          <Property Name="code" Type="int" />
-          <Property Name="land" Type="varchar" MaxLength="265" />
-          <Property Name="agent" Type="varchar" MaxLength="255" />
-          <Property Name="mobile" Type="varchar" MaxLength="255" />
-          <Property Name="civilid" Type="varchar" MaxLength="255" />
-          <Property Name="totalnet" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="remain" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="landprice" Type="decimal" Precision="19" Scale="4" />
-          <Property Name="landpriceremain" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="workfeevalue" Type="decimal" Precision="19" Scale="4" />
-          <Property Name="workfeevalueremain" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="vatvalue" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="vatvalueremain" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="status" Type="varchar" MaxLength="255" />
-          <Property Name="billtype" Type="int" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.vwContractRpt' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vwContractRpt">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="landguid" Type="uniqueidentifier" />
-          <Property Name="buyerguid" Type="uniqueidentifier" />
-          <Property Name="regdate" Type="datetime" />
-          <Property Name="contractno" Type="int" />
-          <Property Name="code" Type="int" />
-          <Property Name="land" Type="varchar" MaxLength="265" />
-          <Property Name="agent" Type="varchar" MaxLength="255" />
-          <Property Name="mobile" Type="varchar" MaxLength="255" />
-          <Property Name="civilid" Type="varchar" MaxLength="255" />
-          <Property Name="totalnet" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="remain" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="landprice" Type="decimal" Precision="19" Scale="4" />
-          <Property Name="landpriceremain" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="workfeevalue" Type="decimal" Precision="19" Scale="4" />
-          <Property Name="workfeevalueremain" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="vatvalue" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="vatvalueremain" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="status" Type="varchar" MaxLength="255" />
-          <Property Name="billtype" Type="int" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'test2024.dbo.vwDailSells' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'realestatebrokermanagement.dbo.vwDailSells' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwDailSells">
           <Key>
             <PropertyRef Name="payguid" />
@@ -597,23 +90,7 @@ warning 6002: The table/view 'test2024.dbo.vwDailSells' does not have a primary 
           <Property Name="status" Type="varchar" MaxLength="255" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.vwDailySalesGrouped' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vwDailySalesGrouped">
-          <Property Name="PayDate" Type="date" />
-          <Property Name="cash" Type="decimal" Precision="38" Scale="4" />
-          <Property Name="bank" Type="decimal" Precision="38" Scale="4" />
-          <Property Name="Total" Type="decimal" Precision="38" Scale="4" />
-          <Property Name="x" Type="varchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.vwGeneralAccountInfo' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vwGeneralAccountInfo">
-          <Property Name="totalsales" Type="decimal" Precision="38" Scale="4" />
-          <Property Name="payments" Type="decimal" Precision="38" Scale="4" />
-          <Property Name="remain" Type="decimal" Precision="38" Scale="4" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'test2024.dbo.vwGeneralAccountLandSales' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'realestatebrokermanagement.dbo.vwGeneralAccountLandSales' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwGeneralAccountLandSales">
           <Key>
             <PropertyRef Name="title" />
@@ -628,122 +105,7 @@ warning 6002: The table/view 'test2024.dbo.vwGeneralAccountLandSales' does not h
           <Property Name="remain" Type="decimal" Precision="38" Scale="4" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.vwGeneralSales' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vwGeneralSales">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="contractno" Type="int" />
-          <Property Name="buyerguid" Type="uniqueidentifier" />
-          <Property Name="regdate" Type="datetime" />
-          <Property Name="code" Type="int" />
-          <Property Name="blocknumber" Type="varchar" MaxLength="255" />
-          <Property Name="number" Type="int" />
-          <Property Name="land" Type="varchar" MaxLength="265" />
-          <Property Name="price" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="netprice" Type="decimal" Precision="19" Scale="4" />
-          <Property Name="buildingfeevalue" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="workfeevalue" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="networkfeevalue" Type="decimal" Precision="19" Scale="4" />
-          <Property Name="vatvalue" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="networkfeevaluewithvat" Type="decimal" Precision="20" Scale="4" />
-          <Property Name="totalnet" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="Payments" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="remain" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="agent" Type="varchar" MaxLength="255" />
-          <Property Name="mobile" Type="varchar" MaxLength="255" />
-          <Property Name="vatid" Type="varchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.vwGetBillBodyStatus' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vwGetBillBodyStatus">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="landguid" Type="uniqueidentifier" />
-          <Property Name="parentguid" Type="uniqueidentifier" />
-          <Property Name="billtype" Type="int" />
-          <Property Name="contractno" Type="int" />
-          <Property Name="status" Type="varchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.vwLand' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vwLand">
-          <Property Name="PlanGuid" Type="uniqueidentifier" />
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="code" Type="int" />
-          <Property Name="number" Type="int" />
-          <Property Name="blocknumber" Type="varchar" MaxLength="255" />
-          <Property Name="landtype" Type="varchar" MaxLength="255" />
-          <Property Name="area" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="deednumber" Type="varchar" MaxLength="255" />
-          <Property Name="amount" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="isworkfee" Type="bit" />
-          <Property Name="workfee" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="issalefee" Type="bit" />
-          <Property Name="salesfee" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="isbuildingfee" Type="bit" />
-          <Property Name="buildingfee" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="isvat" Type="bit" />
-          <Property Name="vat" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="isdiscounttotal" Type="bit" />
-          <Property Name="discounttotal" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="discounttotalvalue" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="isdiscountfee" Type="bit" />
-          <Property Name="discountfee" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="discountfeevalue" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="total" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="south" Type="varchar" MaxLength="255" />
-          <Property Name="southdesc" Type="varchar" MaxLength="255" />
-          <Property Name="north" Type="varchar" MaxLength="255" />
-          <Property Name="northdesc" Type="varchar" MaxLength="255" />
-          <Property Name="east" Type="varchar" MaxLength="255" />
-          <Property Name="eastdesc" Type="varchar" MaxLength="255" />
-          <Property Name="west" Type="varchar" MaxLength="255" />
-          <Property Name="westdesc" Type="varchar" MaxLength="255" />
-          <Property Name="status" Type="varchar" MaxLength="255" />
-          <Property Name="reservereason" Type="varchar" MaxLength="255" />
-          <Property Name="note" Type="varchar" MaxLength="255" />
-          <Property Name="lastaction" Type="varchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.vwLandMainFiller' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vwLandMainFiller">
-          <Property Name="PlanGuid" Type="uniqueidentifier" />
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="code" Type="int" />
-          <Property Name="number" Type="int" />
-          <Property Name="blocknumber" Type="varchar" MaxLength="255" />
-          <Property Name="landtype" Type="varchar" MaxLength="255" />
-          <Property Name="area" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="deednumber" Type="varchar" MaxLength="255" />
-          <Property Name="amount" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="isworkfee" Type="bit" />
-          <Property Name="workfee" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="issalefee" Type="bit" />
-          <Property Name="salesfee" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="isbuildingfee" Type="bit" />
-          <Property Name="buildingfee" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="isvat" Type="bit" />
-          <Property Name="vat" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="isdiscounttotal" Type="bit" />
-          <Property Name="discounttotal" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="discounttotalvalue" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="isdiscountfee" Type="bit" />
-          <Property Name="discountfee" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="discountfeevalue" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="total" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="south" Type="varchar" MaxLength="255" />
-          <Property Name="southdesc" Type="varchar" MaxLength="255" />
-          <Property Name="north" Type="varchar" MaxLength="255" />
-          <Property Name="northdesc" Type="varchar" MaxLength="255" />
-          <Property Name="east" Type="varchar" MaxLength="255" />
-          <Property Name="eastdesc" Type="varchar" MaxLength="255" />
-          <Property Name="west" Type="varchar" MaxLength="255" />
-          <Property Name="westdesc" Type="varchar" MaxLength="255" />
-          <Property Name="status" Type="varchar" MaxLength="255" />
-          <Property Name="reservereason" Type="varchar" MaxLength="255" />
-          <Property Name="note" Type="varchar" MaxLength="255" />
-          <Property Name="lastaction" Type="varchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'test2024.dbo.vwLandQty' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'realestatebrokermanagement.dbo.vwLandQty' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwLandQty">
           <Key>
             <PropertyRef Name="qty" />
@@ -759,32 +121,7 @@ warning 6002: The table/view 'test2024.dbo.vwLandQty' does not have a primary ke
           <Property Name="status" Type="varchar" MaxLength="255" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.vwLandSales' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vwLandSales">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="buyerguid" Type="uniqueidentifier" />
-          <Property Name="regdate" Type="datetime" />
-          <Property Name="code" Type="int" />
-          <Property Name="blocknumber" Type="varchar" MaxLength="255" />
-          <Property Name="number" Type="int" />
-          <Property Name="land" Type="varchar" MaxLength="265" />
-          <Property Name="price" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="netprice" Type="decimal" Precision="19" Scale="4" />
-          <Property Name="workfeevalue" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="payments" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="remain" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="agent" Type="varchar" MaxLength="255" />
-          <Property Name="mobile" Type="varchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.vwLandsType' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vwLandsType">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="landtype" Type="varchar" MaxLength="255" />
-          <Property Name="c" Type="int" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'test2024.dbo.vwLandTrans' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'realestatebrokermanagement.dbo.vwLandTrans' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwLandTrans">
           <Key>
             <PropertyRef Name="guid" />
@@ -805,168 +142,7 @@ warning 6002: The table/view 'test2024.dbo.vwLandTrans' does not have a primary 
           <Property Name="remain" Type="decimal" Precision="18" Scale="4" />
           <Property Name="note" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.vwOfficeRptFull' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vwOfficeRptFull">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="buyerguid" Type="uniqueidentifier" />
-          <Property Name="regdate" Type="datetime" />
-          <Property Name="contractno" Type="int" />
-          <Property Name="code" Type="int" />
-          <Property Name="number" Type="int" />
-          <Property Name="land" Type="varchar" MaxLength="265" />
-          <Property Name="price" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="discounttotalvalue" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="netprice" Type="decimal" Precision="19" Scale="4" />
-          <Property Name="workfeevalue" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="discountfeevalue" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="networkfeevalue" Type="decimal" Precision="19" Scale="4" />
-          <Property Name="Payments" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="remain" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="landPayments" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="landremain" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="feePayments" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="feeremain" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="vatPayments" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="vatremain" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="vatvalue" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="agent" Type="varchar" MaxLength="255" />
-          <Property Name="mobile" Type="varchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.vwPayRpt' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vwPayRpt">
-          <Property Name="Guid" Type="uniqueidentifier" />
-          <Property Name="number" Type="int" />
-          <Property Name="RefNumber" Type="int" />
-          <Property Name="paymenttype" Type="varchar" MaxLength="7" />
-          <Property Name="paydate" Type="datetime" />
-          <Property Name="contractno" Type="int" />
-          <Property Name="land" Type="varchar" MaxLength="265" />
-          <Property Name="agent" Type="varchar" MaxLength="255" />
-          <Property Name="AmountFor" Type="varchar" MaxLength="255" />
-          <Property Name="paytype" Type="varchar" MaxLength="255" />
-          <Property Name="bank" Type="varchar" MaxLength="255" />
-          <Property Name="checkno" Type="varchar" MaxLength="255" />
-          <Property Name="amount" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="note" Type="varchar" MaxLength="255" />
-          <Property Name="status" Type="varchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.vwPaysGrouped' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vwPaysGrouped">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="paytype" Type="varchar" MaxLength="255" />
-          <Property Name="Amount" Type="decimal" Precision="38" Scale="4" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.vwSaleOrderBody' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vwSaleOrderBody">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="parentguid" Type="uniqueidentifier" />
-          <Property Name="landguid" Type="uniqueidentifier" />
-          <Property Name="number" Type="int" />
-          <Property Name="code" Type="int" />
-          <Property Name="land" Type="varchar" MaxLength="265" />
-          <Property Name="price" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="total" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="note" Type="varchar" MaxLength="255" />
-          <Property Name="status" Type="varchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.vwSalesOrderRpt' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vwSalesOrderRpt">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="buyerguid" Type="uniqueidentifier" />
-          <Property Name="number" Type="int" />
-          <Property Name="regdate" Type="datetime" />
-          <Property Name="code" Type="int" />
-          <Property Name="blocknumber" Type="varchar" MaxLength="255" />
-          <Property Name="landnumber" Type="int" />
-          <Property Name="land" Type="varchar" MaxLength="265" />
-          <Property Name="price" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="total" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="agent" Type="varchar" MaxLength="255" />
-          <Property Name="note" Type="varchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.vwSelectLand' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vwSelectLand">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="code" Type="int" />
-          <Property Name="number" Type="int" />
-          <Property Name="blocknumber" Type="varchar" MaxLength="255" />
-          <Property Name="land" Type="varchar" MaxLength="265" />
-          <Property Name="landtype" Type="varchar" MaxLength="255" />
-          <Property Name="deednumber" Type="varchar" MaxLength="255" />
-          <Property Name="total" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="status" Type="varchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.vwStatic' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vwStatic">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="blocknumber" Type="varchar" MaxLength="255" />
-          <Property Name="status" Type="varchar" MaxLength="255" />
-          <Property Name="c" Type="int" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.vwWorkFee' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vwWorkFee">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="buyerguid" Type="uniqueidentifier" />
-          <Property Name="regdate" Type="datetime" />
-          <Property Name="code" Type="int" />
-          <Property Name="blocknumber" Type="varchar" MaxLength="255" />
-          <Property Name="number" Type="int" />
-          <Property Name="land" Type="varchar" MaxLength="265" />
-          <Property Name="price" Type="decimal" Precision="19" Scale="4" />
-          <Property Name="workfeevalue" Type="decimal" Precision="19" Scale="4" />
-          <Property Name="Payments" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="remain" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="agent" Type="varchar" MaxLength="255" />
-          <Property Name="mobile" Type="varchar" MaxLength="255" />
-          <Property Name="vatid" Type="varchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.vwWorkFeeTotals' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vwWorkFeeTotals">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="buyerguid" Type="uniqueidentifier" />
-          <Property Name="regdate" Type="datetime" />
-          <Property Name="code" Type="int" />
-          <Property Name="blocknumber" Type="varchar" MaxLength="255" />
-          <Property Name="number" Type="int" />
-          <Property Name="land" Type="varchar" MaxLength="265" />
-          <Property Name="price" Type="decimal" Precision="19" Scale="4" />
-          <Property Name="workfeevalue" Type="decimal" Precision="19" Scale="4" />
-          <Property Name="vatvalue" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="totalvat" Type="decimal" Precision="20" Scale="4" />
-          <Property Name="Payments" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="remain" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="agent" Type="varchar" MaxLength="255" />
-          <Property Name="mobile" Type="varchar" MaxLength="255" />
-          <Property Name="vatid" Type="varchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'test2024.dbo.vwWorkFeeVat' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vwWorkFeeVat">
-          <Property Name="guid" Type="uniqueidentifier" />
-          <Property Name="buyerguid" Type="uniqueidentifier" />
-          <Property Name="regdate" Type="datetime" />
-          <Property Name="code" Type="int" />
-          <Property Name="blocknumber" Type="varchar" MaxLength="255" />
-          <Property Name="number" Type="int" />
-          <Property Name="land" Type="varchar" MaxLength="265" />
-          <Property Name="price" Type="decimal" Precision="19" Scale="4" />
-          <Property Name="workfeevalue" Type="decimal" Precision="19" Scale="4" />
-          <Property Name="vatvalue" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="Payments" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="remain" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="agent" Type="varchar" MaxLength="255" />
-          <Property Name="mobile" Type="varchar" MaxLength="255" />
-          <Property Name="vatid" Type="varchar" MaxLength="255" />
-        </EntityType>-->
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="fnAccountBalance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="startdate" Type="datetime" Mode="In" />
           <Parameter Name="enddate" Type="datetime" Mode="In" />
@@ -1044,7 +220,39 @@ warning 6013: The table/view 'test2024.dbo.vwWorkFeeVat' does not have a primary
         <Function Name="prcupdatelandstatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="landguid" Type="uniqueidentifier" Mode="In" />
         </Function>
-        <EntityContainer Name="test2024ModelStoreContainer">
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="Real_Estate_Management_ModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbLawyer" EntityType="Self.tbLawyer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="vwAccountBalance" EntityType="Self.vwAccountBalance" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [vwAccountBalance].[guid] AS [guid], 
@@ -1115,11 +323,10 @@ warning 6013: The table/view 'test2024.dbo.vwWorkFeeVat' does not have a primary
     FROM [dbo].[vwLandTrans] AS [vwLandTrans]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="test2024Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="Real_Estate_Management_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <ComplexType Name="fnAccountBalance_Result">
           <Property Name="guid" Type="Guid" />
           <Property Name="number" Type="Int32" />
@@ -1153,6 +360,16 @@ warning 6013: The table/view 'test2024.dbo.vwWorkFeeVat' does not have a primary
           <Property Name="paytype" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Amount" Type="Decimal" Precision="38" Scale="4" />
         </ComplexType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
         <EntityType Name="vwAccountBalance">
           <Key>
             <PropertyRef Name="amountin" />
@@ -1240,41 +457,132 @@ warning 6013: The table/view 'test2024.dbo.vwWorkFeeVat' does not have a primary
           <Property Name="remain" Type="Decimal" Precision="18" Scale="4" />
           <Property Name="note" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="test2024Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Real_Estate_Management_Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="vwAccountBalances" EntityType="Self.vwAccountBalance" />
           <EntitySet Name="vwDailSells" EntityType="Self.vwDailSell" />
           <EntitySet Name="vwGeneralAccountLandSales" EntityType="Self.vwGeneralAccountLandSale" />
           <EntitySet Name="vwLandQties" EntityType="Self.vwLandQty" />
           <EntitySet Name="vwLandTrans" EntityType="Self.vwLandTran" />
-          <FunctionImport Name="fnAccountBalance" IsComposable="true" ReturnType="Collection(test2024Model.fnAccountBalance_Result)">
+          <FunctionImport Name="fnAccountBalance" IsComposable="true" ReturnType="Collection(Real_Estate_Management_Model.fnAccountBalance_Result)">
             <Parameter Name="startdate" Mode="In" Type="DateTime" />
             <Parameter Name="enddate" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <FunctionImport Name="fnDailySalesGrouped" IsComposable="true" ReturnType="Collection(test2024Model.fnDailySalesGrouped_Result)">
+          <FunctionImport Name="fnDailySalesGrouped" IsComposable="true" ReturnType="Collection(Real_Estate_Management_Model.fnDailySalesGrouped_Result)">
             <Parameter Name="startdate" Mode="In" Type="DateTime" />
             <Parameter Name="enddate" Mode="In" Type="DateTime" />
             <Parameter Name="status" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="fnGetAgentData" IsComposable="true" ReturnType="Collection(test2024Model.fnGetAgentData_Result)">
+          <FunctionImport Name="fnGetAgentData" IsComposable="true" ReturnType="Collection(Real_Estate_Management_Model.fnGetAgentData_Result)">
             <Parameter Name="agenttype" Mode="In" Type="Int32" />
             <Parameter Name="datatype" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="fnPaysGrouped" IsComposable="true" ReturnType="Collection(test2024Model.fnPaysGrouped_Result)">
+          <FunctionImport Name="fnPaysGrouped" IsComposable="true" ReturnType="Collection(Real_Estate_Management_Model.fnPaysGrouped_Result)">
             <Parameter Name="startdate" Mode="In" Type="DateTime" />
             <Parameter Name="enddate" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="prcupdatelandstatus">
-            <Parameter Name="landguid" Mode="In" Type="Guid" />
+          <Parameter Name="landguid" Mode="In" Type="Guid" />
           </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(Real_Estate_Management_Model.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(Real_Estate_Management_Model.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="tbPlanInfoes" EntityType="Real_Estate_Management_Model.tbPlanInfo" />
+          <EntitySet Name="tbLawyers" EntityType="Real_Estate_Management_Model.tbLawyer" />
         </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="tbPlanInfo">
+          <Key>
+            <PropertyRef Name="OwnerGuid" />
+            <PropertyRef Name="Guid" />
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="OwnerGuid" Type="Guid" Nullable="false" />
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Number" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Location" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Note" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LastAction" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbLawyer">
+          <Key>
+            <PropertyRef Name="PlanGuid" />
+            <PropertyRef Name="Guid" />
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="PlanGuid" Type="Guid" Nullable="false" />
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Statues" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Number" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IDNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="VatNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PublicNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Note" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LastAction" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="test2024ModelStoreContainer" CdmEntityContainer="test2024Entities">
+        <EntityContainerMapping StorageEntityContainer="Real_Estate_Management_ModelStoreContainer" CdmEntityContainer="Real_Estate_Management_Entities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Real_Estate_Management_Model.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="vwAccountBalances">
-            <EntityTypeMapping TypeName="test2024Model.vwAccountBalance">
+            <EntityTypeMapping TypeName="Real_Estate_Management_Model.vwAccountBalance">
               <MappingFragment StoreEntitySet="vwAccountBalance">
                 <ScalarProperty Name="guid" ColumnName="guid" />
                 <ScalarProperty Name="number" ColumnName="number" />
@@ -1286,7 +594,7 @@ warning 6013: The table/view 'test2024.dbo.vwWorkFeeVat' does not have a primary
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="vwDailSells">
-            <EntityTypeMapping TypeName="test2024Model.vwDailSell">
+            <EntityTypeMapping TypeName="Real_Estate_Management_Model.vwDailSell">
               <MappingFragment StoreEntitySet="vwDailSells">
                 <ScalarProperty Name="guid" ColumnName="guid" />
                 <ScalarProperty Name="payguid" ColumnName="payguid" />
@@ -1308,7 +616,7 @@ warning 6013: The table/view 'test2024.dbo.vwWorkFeeVat' does not have a primary
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="vwGeneralAccountLandSales">
-            <EntityTypeMapping TypeName="test2024Model.vwGeneralAccountLandSale">
+            <EntityTypeMapping TypeName="Real_Estate_Management_Model.vwGeneralAccountLandSale">
               <MappingFragment StoreEntitySet="vwGeneralAccountLandSales">
                 <ScalarProperty Name="guid" ColumnName="guid" />
                 <ScalarProperty Name="c" ColumnName="c" />
@@ -1321,7 +629,7 @@ warning 6013: The table/view 'test2024.dbo.vwWorkFeeVat' does not have a primary
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="vwLandQties">
-            <EntityTypeMapping TypeName="test2024Model.vwLandQty">
+            <EntityTypeMapping TypeName="Real_Estate_Management_Model.vwLandQty">
               <MappingFragment StoreEntitySet="vwLandQty">
                 <ScalarProperty Name="Guid" ColumnName="Guid" />
                 <ScalarProperty Name="code" ColumnName="code" />
@@ -1336,7 +644,7 @@ warning 6013: The table/view 'test2024.dbo.vwWorkFeeVat' does not have a primary
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="vwLandTrans">
-            <EntityTypeMapping TypeName="test2024Model.vwLandTran">
+            <EntityTypeMapping TypeName="Real_Estate_Management_Model.vwLandTran">
               <MappingFragment StoreEntitySet="vwLandTrans">
                 <ScalarProperty Name="guid" ColumnName="guid" />
                 <ScalarProperty Name="landguid" ColumnName="landguid" />
@@ -1352,9 +660,9 @@ warning 6013: The table/view 'test2024.dbo.vwWorkFeeVat' does not have a primary
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionName="test2024Model.Store.fnAccountBalance" FunctionImportName="fnAccountBalance">
+          <FunctionImportMapping FunctionName="Real_Estate_Management_Model.Store.fnAccountBalance" FunctionImportName="fnAccountBalance">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="test2024Model.fnAccountBalance_Result">
+              <ComplexTypeMapping TypeName="Real_Estate_Management_Model.fnAccountBalance_Result">
                 <ScalarProperty Name="guid" ColumnName="guid" />
                 <ScalarProperty Name="number" ColumnName="number" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1364,9 +672,9 @@ warning 6013: The table/view 'test2024.dbo.vwWorkFeeVat' does not have a primary
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionName="test2024Model.Store.fnDailySalesGrouped" FunctionImportName="fnDailySalesGrouped">
+          <FunctionImportMapping FunctionName="Real_Estate_Management_Model.Store.fnDailySalesGrouped" FunctionImportName="fnDailySalesGrouped">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="test2024Model.fnDailySalesGrouped_Result">
+              <ComplexTypeMapping TypeName="Real_Estate_Management_Model.fnDailySalesGrouped_Result">
                 <ScalarProperty Name="paydate" ColumnName="paydate" />
                 <ScalarProperty Name="land" ColumnName="land" />
                 <ScalarProperty Name="cash" ColumnName="cash" />
@@ -1377,9 +685,9 @@ warning 6013: The table/view 'test2024.dbo.vwWorkFeeVat' does not have a primary
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionName="test2024Model.Store.fnGetAgentData" FunctionImportName="fnGetAgentData">
+          <FunctionImportMapping FunctionName="Real_Estate_Management_Model.Store.fnGetAgentData" FunctionImportName="fnGetAgentData">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="test2024Model.fnGetAgentData_Result">
+              <ComplexTypeMapping TypeName="Real_Estate_Management_Model.fnGetAgentData_Result">
                 <ScalarProperty Name="guid" ColumnName="guid" />
                 <ScalarProperty Name="number" ColumnName="number" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1392,16 +700,59 @@ warning 6013: The table/view 'test2024.dbo.vwWorkFeeVat' does not have a primary
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionName="test2024Model.Store.fnPaysGrouped" FunctionImportName="fnPaysGrouped">
+          <FunctionImportMapping FunctionName="Real_Estate_Management_Model.Store.fnPaysGrouped" FunctionImportName="fnPaysGrouped">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="test2024Model.fnPaysGrouped_Result">
+              <ComplexTypeMapping TypeName="Real_Estate_Management_Model.fnPaysGrouped_Result">
                 <ScalarProperty Name="guid" ColumnName="guid" />
                 <ScalarProperty Name="paytype" ColumnName="paytype" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="prcupdatelandstatus" FunctionName="test2024Model.Store.prcupdatelandstatus" />
+          <FunctionImportMapping FunctionImportName="prcupdatelandstatus" FunctionName="Real_Estate_Management_Model.Store.prcupdatelandstatus" />
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Real_Estate_Management_Model.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Real_Estate_Management_Model.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Real_Estate_Management_Model.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Real_Estate_Management_Model.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Real_Estate_Management_Model.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Real_Estate_Management_Model.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Real_Estate_Management_Model.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Real_Estate_Management_Model.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Real_Estate_Management_Model.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="tbLawyers">
+            <EntityTypeMapping TypeName="Real_Estate_Management_Model.tbLawyer">
+              <MappingFragment StoreEntitySet="tbLawyer">
+                <ScalarProperty Name="LastAction" ColumnName="LastAction" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="PublicNumber" ColumnName="PublicNumber" />
+                <ScalarProperty Name="VatNumber" ColumnName="VatNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="IDNumber" ColumnName="IDNumber" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Statues" ColumnName="Statues" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="PlanGuid" ColumnName="PlanGuid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

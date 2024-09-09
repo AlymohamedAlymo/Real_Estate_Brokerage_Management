@@ -15,10 +15,10 @@ namespace Real_Estate_Management.Data
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class test2024Entities : DbContext
+    public partial class Real_Estate_Management_Entities : DbContext
     {
-        public test2024Entities()
-            : base("name=test2024Entities")
+        public Real_Estate_Management_Entities()
+            : base("name=Real_Estate_Management_Entities")
         {
         }
     
@@ -27,13 +27,15 @@ namespace Real_Estate_Management.Data
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<tbLawyer> tbLawyers { get; set; }
         public virtual DbSet<vwAccountBalance> vwAccountBalances { get; set; }
         public virtual DbSet<vwDailSell> vwDailSells { get; set; }
         public virtual DbSet<vwGeneralAccountLandSale> vwGeneralAccountLandSales { get; set; }
         public virtual DbSet<vwLandQty> vwLandQties { get; set; }
         public virtual DbSet<vwLandTran> vwLandTrans { get; set; }
     
-        [DbFunction("test2024Entities", "fnAccountBalance")]
+        [DbFunction("Real_Estate_Management_Entities", "fnAccountBalance")]
         public virtual IQueryable<fnAccountBalance_Result> fnAccountBalance(Nullable<System.DateTime> startdate, Nullable<System.DateTime> enddate)
         {
             var startdateParameter = startdate.HasValue ?
@@ -44,10 +46,10 @@ namespace Real_Estate_Management.Data
                 new ObjectParameter("enddate", enddate) :
                 new ObjectParameter("enddate", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnAccountBalance_Result>("[test2024Entities].[fnAccountBalance](@startdate, @enddate)", startdateParameter, enddateParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnAccountBalance_Result>("[Real_Estate_Management_Entities].[fnAccountBalance](@startdate, @enddate)", startdateParameter, enddateParameter);
         }
     
-        [DbFunction("test2024Entities", "fnDailySalesGrouped")]
+        [DbFunction("Real_Estate_Management_Entities", "fnDailySalesGrouped")]
         public virtual IQueryable<fnDailySalesGrouped_Result> fnDailySalesGrouped(Nullable<System.DateTime> startdate, Nullable<System.DateTime> enddate, string status)
         {
             var startdateParameter = startdate.HasValue ?
@@ -62,10 +64,10 @@ namespace Real_Estate_Management.Data
                 new ObjectParameter("status", status) :
                 new ObjectParameter("status", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnDailySalesGrouped_Result>("[test2024Entities].[fnDailySalesGrouped](@startdate, @enddate, @status)", startdateParameter, enddateParameter, statusParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnDailySalesGrouped_Result>("[Real_Estate_Management_Entities].[fnDailySalesGrouped](@startdate, @enddate, @status)", startdateParameter, enddateParameter, statusParameter);
         }
     
-        [DbFunction("test2024Entities", "fnGetAgentData")]
+        [DbFunction("Real_Estate_Management_Entities", "fnGetAgentData")]
         public virtual IQueryable<fnGetAgentData_Result> fnGetAgentData(Nullable<int> agenttype, string datatype)
         {
             var agenttypeParameter = agenttype.HasValue ?
@@ -76,10 +78,10 @@ namespace Real_Estate_Management.Data
                 new ObjectParameter("datatype", datatype) :
                 new ObjectParameter("datatype", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnGetAgentData_Result>("[test2024Entities].[fnGetAgentData](@agenttype, @datatype)", agenttypeParameter, datatypeParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnGetAgentData_Result>("[Real_Estate_Management_Entities].[fnGetAgentData](@agenttype, @datatype)", agenttypeParameter, datatypeParameter);
         }
     
-        [DbFunction("test2024Entities", "fnPaysGrouped")]
+        [DbFunction("Real_Estate_Management_Entities", "fnPaysGrouped")]
         public virtual IQueryable<fnPaysGrouped_Result> fnPaysGrouped(Nullable<System.DateTime> startdate, Nullable<System.DateTime> enddate)
         {
             var startdateParameter = startdate.HasValue ?
@@ -90,7 +92,7 @@ namespace Real_Estate_Management.Data
                 new ObjectParameter("enddate", enddate) :
                 new ObjectParameter("enddate", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnPaysGrouped_Result>("[test2024Entities].[fnPaysGrouped](@startdate, @enddate)", startdateParameter, enddateParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnPaysGrouped_Result>("[Real_Estate_Management_Entities].[fnPaysGrouped](@startdate, @enddate)", startdateParameter, enddateParameter);
         }
     
         public virtual int prcupdatelandstatus(Nullable<System.Guid> landguid)
@@ -100,6 +102,109 @@ namespace Real_Estate_Management.Data
                 new ObjectParameter("landguid", typeof(System.Guid));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("prcupdatelandstatus", landguidParameter);
+        }
+    
+        public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var versionParameter = version.HasValue ?
+                new ObjectParameter("version", version) :
+                new ObjectParameter("version", typeof(int));
+    
+            var definitionParameter = definition != null ?
+                new ObjectParameter("definition", definition) :
+                new ObjectParameter("definition", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+        }
+    
+        public virtual int sp_creatediagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var versionParameter = version.HasValue ?
+                new ObjectParameter("version", version) :
+                new ObjectParameter("version", typeof(int));
+    
+            var definitionParameter = definition != null ?
+                new ObjectParameter("definition", definition) :
+                new ObjectParameter("definition", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_creatediagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+        }
+    
+        public virtual int sp_dropdiagram(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var new_diagramnameParameter = new_diagramname != null ?
+                new ObjectParameter("new_diagramname", new_diagramname) :
+                new ObjectParameter("new_diagramname", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
+        }
+    
+        public virtual int sp_upgraddiagrams()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
     }
 }

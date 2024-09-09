@@ -12,6 +12,21 @@
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -164,6 +179,7 @@
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Data.SQLite">
       <HintPath>..\..\..\Programing\Deve Tools\SQLite\DotNet4.0 1.0.92.0 win32 vc2010\System.Data.SQLite.dll</HintPath>
     </Reference>
@@ -335,6 +351,18 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Real_Estate_Management_Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Real_Estate_Management_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\sp_helpdiagrams_Result.cs">
+      <DependentUpon>Real_Estate_Management_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\sysdiagram.cs">
+      <DependentUpon>Real_Estate_Management_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tbLawyer.cs">
+      <DependentUpon>Real_Estate_Management_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\vwAccountBalance.cs">
       <DependentUpon>Real_Estate_Management_Model.tt</DependentUpon>
@@ -873,6 +901,7 @@
     <Compile Include="CustomElements\Flyout\FlyoutTransferData.Designer.cs">
       <DependentUpon>FlyoutTransferData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Repositry\tbLawyer.cs" />
     <Compile Include="UserControls\UCClientCards.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1357,6 +1386,7 @@
     <None Include="Resources\db.sql" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
@@ -1364,6 +1394,18 @@
       <Project>{a61e2475-f9bf-40d9-8519-217497c625f5}</Project>
       <Name>DoctorHelper</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

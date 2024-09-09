@@ -1842,12 +1842,12 @@ namespace DoctorERP
                     Text = "بطاقة محامي"
                 };
 
-                DoctorERP.User_Controls.UCLawyer uCLands = new User_Controls.UCLawyer(Guid.Empty)
+                DoctorERP.User_Controls.UCLawyer uCLawyer = new User_Controls.UCLawyer(Guid.Empty)
                 {
                     Dock = DockStyle.Fill
                 };
 
-                radPageViewPage.Controls.Add(uCLands);
+                radPageViewPage.Controls.Add(uCLawyer);
                 PageViewCardsHome.Pages.Add(radPageViewPage);
                 PageViewCardsHome.SelectedPage = radPageViewPage;
             }

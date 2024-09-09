@@ -1,5 +1,6 @@
-
+USE [realestatebrokermanagement]
 GO
+
 SET ANSI_NULLS ON
 GO
 
@@ -7,20 +8,33 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[tbLawyer](
-	[guid] [uniqueidentifier] NULL,
-	[number] [int] NULL,
-	[name] [varchar](255) NULL,
-	[civilid] [varchar](255) NULL,
-	[mobile] [varchar](255) NULL,
-	[email] [varchar](255) NULL,
-	[vatid] [varchar](255) NULL,
-	[publicnumber] [varchar](255) NULL,
-	[note] [varchar](255) NULL,
-	[lastaction] [varchar](255) NULL
+	[PlanGuid] [uniqueidentifier] NOT NULL,
+	[Guid] [uniqueidentifier] ROWGUIDCOL  NOT NULL,
+	[Code] [int] IDENTITY(1,1) NOT NULL,
+	[Statues] [varchar](10) NULL,
+	[Number] [int] NULL,
+	[Name] [varchar](255) NULL,
+	[IDNumber] [varchar](255) NULL,
+	[Mobile] [varchar](255) NULL,
+	[Email] [varchar](255) NULL,
+	[VatNumber] [varchar](255) NULL,
+	[PublicNumber] [varchar](255) NULL,
+	[Note] [varchar](255) NULL,
+	[LastAction] [varchar](255) NULL,
+ CONSTRAINT [PK_tbLawyer] PRIMARY KEY CLUSTERED 
+(
+	[PlanGuid] ASC,
+	[Guid] ASC,
+	[Code] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
 
+UPDATE [realestatebrokermanagement].[dbo].[tbLawyer] set 
+[PlanGuid] = (SELECT TOP(1) [guid] FROM realestatebrokermanagement.[dbo].[tbPlanInfo]),
+[Statues] = '‰‘ÿ'
 GO
+
 DELETE FROM realestatebrokermanagement.[dbo].tbAccount
 INSERT INTO realestatebrokermanagement.[dbo].tbAccount
 SELECT * FROM data2024Restore.[dbo].tbAccount
@@ -28,7 +42,7 @@ Go
 
 DELETE FROM realestatebrokermanagement.[dbo].tbLog
 INSERT INTO realestatebrokermanagement.[dbo].tbLog
-SELECT * FROM data2024.[dbo].tbLog
+SELECT * FROM data2024Restore.[dbo].tbLog
 Go
 
 DELETE FROM realestatebrokermanagement.[dbo].tbAgent

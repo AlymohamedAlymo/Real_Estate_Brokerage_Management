@@ -26,22 +26,11 @@ namespace Real_Estate_Management.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-56J42HN;Initial Catalog=almalqa2023abha;Integrated Security=T" +
-            "rue;TrustServerCertificate=True")]
-        public string dbConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-56J42HN;Initial Catalog=realestatebrokermanagement;Integrated" +
+            " Security=True;TrustServerCertificate=True")]
+        public string realestatebrokermanagementConnectionString {
             get {
-                return ((string)(this["dbConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=test2024;Integrated Security=True;TrustServerCertif" +
-            "icate=True")]
-        public string test2024ConnectionString {
-            get {
-                return ((string)(this["test2024ConnectionString"]));
+                return ((string)(this["realestatebrokermanagementConnectionString"]));
             }
         }
     }
