@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'F:\Devolpment\C#\Freelance\Real_Estate_Management\Real_Estate_Management\Data\Real_Estate_Management_Model.edmx'. 
+﻿// T4 code generation is enabled for model 'F:\Devolpment\C#\Freelance\Real_Estate_Management\Real_Estate_Management\Data\DataBase\Real_Estate_Management_Model.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

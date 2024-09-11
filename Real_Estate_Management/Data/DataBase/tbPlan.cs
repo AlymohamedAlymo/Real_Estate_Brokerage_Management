@@ -7,24 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Real_Estate_Management.Data
+namespace Real_Estate_Management.Data.DataBase
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class tbLawyer
+    public partial class tbPlan
     {
-        public System.Guid PlanGuid { get; set; }
+        public System.Guid OwnerGuid { get; set; }
         public System.Guid Guid { get; set; }
         public int Code { get; set; }
-        public Nullable<int> Number { get; set; }
+        public string Number { get; set; }
         public string Name { get; set; }
-        public string IDNumber { get; set; }
-        public string Mobile { get; set; }
-        public string Email { get; set; }
-        public string VatNumber { get; set; }
-        public string PublicNumber { get; set; }
+        public string City { get; set; }
+        public string Location { get; set; }
         public string Note { get; set; }
-        public string Lastaction { get; set; }
+        public string LastAction { get; set; }
     }
 }

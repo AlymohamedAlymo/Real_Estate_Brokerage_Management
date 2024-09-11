@@ -320,65 +320,33 @@
     <Compile Include="DAL\vwWorkFee.cs" />
     <Compile Include="DAL\vwWorkFeeVAT.cs" />
     <Compile Include="DAL\vwWorkFeeVatTotals.cs" />
-    <Compile Include="Data\fnAccountBalance_Result.cs">
-      <DependentUpon>Real_Estate_Management_Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\fnDailySalesGrouped_Result.cs">
-      <DependentUpon>Real_Estate_Management_Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\fnGetAgentData_Result.cs">
-      <DependentUpon>Real_Estate_Management_Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\fnPaysGrouped_Result.cs">
-      <DependentUpon>Real_Estate_Management_Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Real_Estate_Management_DataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Real_Estate_Management_DataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Real_Estate_Management_Model.Context.cs">
+    <Compile Include="Data\DataBase\Real_Estate_Management_Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Real_Estate_Management_Model.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\Real_Estate_Management_Model.cs">
+    <Compile Include="Data\DataBase\Real_Estate_Management_Model.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Real_Estate_Management_Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\Real_Estate_Management_Model.Designer.cs">
+    <Compile Include="Data\DataBase\Real_Estate_Management_Model.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Real_Estate_Management_Model.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Data\sp_helpdiagramdefinition_Result.cs">
+    <Compile Include="Data\DataBase\tbLawyer.cs">
       <DependentUpon>Real_Estate_Management_Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\sp_helpdiagrams_Result.cs">
+    <Compile Include="Data\DataBase\tbLog.cs">
       <DependentUpon>Real_Estate_Management_Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\sysdiagram.cs">
+    <Compile Include="Data\DataBase\tbPlan.cs">
       <DependentUpon>Real_Estate_Management_Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\tbLawyer.cs">
-      <DependentUpon>Real_Estate_Management_Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\vwAccountBalance.cs">
-      <DependentUpon>Real_Estate_Management_Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\vwDailSell.cs">
-      <DependentUpon>Real_Estate_Management_Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\vwGeneralAccountLandSale.cs">
-      <DependentUpon>Real_Estate_Management_Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\vwLandQty.cs">
-      <DependentUpon>Real_Estate_Management_Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\vwLandTran.cs">
-      <DependentUpon>Real_Estate_Management_Model.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Data\Repositories\TbLawyer_Rep.cs" />
+    <Compile Include="Data\Repositories\TbLog_Rep.cs" />
+    <Compile Include="Data\Repositories\TbPlans_Rep.cs" />
     <Compile Include="Forms\FrmAccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -901,7 +869,6 @@
     <Compile Include="CustomElements\Flyout\FlyoutTransferData.Designer.cs">
       <DependentUpon>FlyoutTransferData.cs</DependentUpon>
     </Compile>
-    <Compile Include="Repositry\tbLawyer.cs" />
     <Compile Include="UserControls\UCClientCards.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1202,22 +1169,11 @@
     <EmbeddedResource Include="UserControls\UCLawyer.resx">
       <DependentUpon>UCLawyer.cs</DependentUpon>
     </EmbeddedResource>
-    <EntityDeploy Include="Data\Real_Estate_Management_Model.edmx">
+    <EntityDeploy Include="Data\DataBase\Real_Estate_Management_Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Real_Estate_Management_Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Data\Real_Estate_Management_DataSet.xsc">
-      <DependentUpon>Real_Estate_Management_DataSet.xsd</DependentUpon>
-    </None>
-    <None Include="Data\Real_Estate_Management_DataSet.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>Real_Estate_Management_DataSet.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Data\Real_Estate_Management_DataSet.xss">
-      <DependentUpon>Real_Estate_Management_DataSet.xsd</DependentUpon>
-    </None>
-    <None Include="Data\Real_Estate_Management_Model.edmx.diagram">
+    <None Include="Data\DataBase\Real_Estate_Management_Model.edmx.diagram">
       <DependentUpon>Real_Estate_Management_Model.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
@@ -1237,12 +1193,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Data\Real_Estate_Management_Model.Context.tt">
+    <Content Include="Data\DataBase\Real_Estate_Management_Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Real_Estate_Management_Model.edmx</DependentUpon>
       <LastGenOutput>Real_Estate_Management_Model.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Data\Real_Estate_Management_Model.tt">
+    <Content Include="Data\DataBase\Real_Estate_Management_Model.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Real_Estate_Management_Model.edmx</DependentUpon>
       <LastGenOutput>Real_Estate_Management_Model.cs</LastGenOutput>
@@ -1407,6 +1363,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

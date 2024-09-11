@@ -228,7 +228,7 @@ class DBConnect
         }
     }
 
-    public static DateTime GetServerTime()
+    public static DateTime GetServerDate()
     {
         DBCommand.CommandText = "SELECT GETDATE()";
 

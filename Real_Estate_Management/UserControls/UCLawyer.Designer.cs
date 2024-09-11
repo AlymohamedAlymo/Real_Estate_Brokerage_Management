@@ -46,17 +46,20 @@
             Telerik.RadToastNotificationManager.RadToastNotification radToastNotification3 = new Telerik.RadToastNotificationManager.RadToastNotification();
             this.materialTheme1 = new Telerik.WinControls.Themes.MaterialTheme();
             this.TxtNote = new Telerik.WinControls.UI.RadTextBox();
+            this.tbLawyerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.TxtName = new Telerik.WinControls.UI.RadTextBox();
             this.radLabel23 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel19 = new Telerik.WinControls.UI.RadLabel();
             this.radPageView1 = new Telerik.WinControls.UI.RadPageView();
             this.PageHome = new Telerik.WinControls.UI.RadPageViewPage();
             this.MainContainer = new Telerik.WinControls.UI.RadPanel();
+            this.radlabelBookings = new Telerik.WinControls.UI.RadLabel();
             this.radLabel5 = new Telerik.WinControls.UI.RadLabel();
             this.TxtPublicNumber = new Telerik.WinControls.UI.RadTextBox();
             this.radLabel8 = new Telerik.WinControls.UI.RadLabel();
             this.TxtNumber = new Telerik.WinControls.UI.RadLabel();
             this.CmbPlanGuid = new Telerik.WinControls.UI.RadMultiColumnComboBox();
+            this.tbPlanInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.TxtStatues = new Telerik.WinControls.UI.RadLabel();
             this.TxtIDNumber = new Telerik.WinControls.UI.RadTextBox();
             this.TxtMobile = new Telerik.WinControls.UI.RadTextBox();
@@ -120,11 +123,8 @@
             this.MenuDeleteAttachment = new Telerik.WinControls.UI.RadMenuItem();
             this.radCallout1 = new Telerik.WinControls.UI.RadCallout();
             this.AlertTimer = new System.Windows.Forms.Timer(this.components);
-            this.tbLawyerBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.real_Estate_Management_DataSet = new Real_Estate_Management.Data.Real_Estate_Management_DataSet();
-            this.tbPlanInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tbPlanInfoTableAdapter = new Real_Estate_Management.Data.Real_Estate_Management_DataSetTableAdapters.tbPlanInfoTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.TxtNote)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbLawyerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel23)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel19)).BeginInit();
@@ -133,6 +133,7 @@
             this.PageHome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainContainer)).BeginInit();
             this.MainContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radlabelBookings)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtPublicNumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel8)).BeginInit();
@@ -140,6 +141,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.CmbPlanGuid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CmbPlanGuid.EditorControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CmbPlanGuid.EditorControl.MasterTemplate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbPlanInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtStatues)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtIDNumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtMobile)).BeginInit();
@@ -154,9 +156,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.BtnScanner)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BtnAttachment)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BindingNavigatorClient)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbLawyerBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.real_Estate_Management_DataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbPlanInfoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // TxtNote
@@ -233,6 +232,7 @@
             this.radPageView1.Controls.Add(this.PageHome);
             this.radPageView1.Controls.Add(this.PageAttachments);
             this.radPageView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.radPageView1.Font = new System.Drawing.Font("Tahoma", 8F);
             this.radPageView1.Location = new System.Drawing.Point(0, 48);
             this.radPageView1.Name = "radPageView1";
             this.radPageView1.PageBackColor = System.Drawing.SystemColors.Control;
@@ -247,15 +247,17 @@
             this.PageHome.AutoScroll = true;
             this.PageHome.Controls.Add(this.MainContainer);
             this.PageHome.Description = null;
-            this.PageHome.ItemSize = new System.Drawing.SizeF(30F, 32F);
+            this.PageHome.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PageHome.ItemSize = new System.Drawing.SizeF(46F, 49F);
             this.PageHome.Location = new System.Drawing.Point(6, 6);
             this.PageHome.Name = "PageHome";
-            this.PageHome.Size = new System.Drawing.Size(1165, 620);
+            this.PageHome.Size = new System.Drawing.Size(1165, 603);
             this.PageHome.Text = "عام";
             this.PageHome.Title = "البيانات العامة لبطاقة الأرض";
             // 
             // MainContainer
             // 
+            this.MainContainer.Controls.Add(this.radlabelBookings);
             this.MainContainer.Controls.Add(this.radLabel5);
             this.MainContainer.Controls.Add(this.TxtPublicNumber);
             this.MainContainer.Controls.Add(this.TxtNote);
@@ -272,8 +274,21 @@
             this.MainContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainContainer.Location = new System.Drawing.Point(0, 0);
             this.MainContainer.Name = "MainContainer";
-            this.MainContainer.Size = new System.Drawing.Size(1165, 620);
+            this.MainContainer.Size = new System.Drawing.Size(1165, 603);
             this.MainContainer.TabIndex = 11512122;
+            // 
+            // radlabelBookings
+            // 
+            this.radlabelBookings.AutoSize = false;
+            this.radlabelBookings.Dock = System.Windows.Forms.DockStyle.Top;
+            this.radlabelBookings.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radlabelBookings.ForeColor = System.Drawing.Color.Black;
+            this.radlabelBookings.Location = new System.Drawing.Point(0, 0);
+            this.radlabelBookings.Name = "radlabelBookings";
+            this.radlabelBookings.Size = new System.Drawing.Size(1165, 47);
+            this.radlabelBookings.TabIndex = 11512122;
+            this.radlabelBookings.Text = "بطاقة محامي";
+            this.radlabelBookings.TextAlignment = System.Drawing.ContentAlignment.TopRight;
             // 
             // radLabel5
             // 
@@ -283,13 +298,13 @@
             this.radLabel5.BackColor = System.Drawing.Color.White;
             this.radLabel5.BorderVisible = true;
             this.radLabel5.Font = new System.Drawing.Font("Arial", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel5.Location = new System.Drawing.Point(1022, 17);
+            this.radLabel5.Location = new System.Drawing.Point(1022, 53);
             this.radLabel5.Name = "radLabel5";
             // 
             // 
             // 
             this.radLabel5.RootElement.BorderHighlightThickness = 0;
-            this.radLabel5.Size = new System.Drawing.Size(130, 127);
+            this.radLabel5.Size = new System.Drawing.Size(130, 118);
             this.radLabel5.TabIndex = 1411;
             this.radLabel5.Text = "رقم \r\nالملف";
             this.radLabel5.TextAlignment = System.Drawing.ContentAlignment.TopRight;
@@ -323,9 +338,9 @@
             this.radLabel8.BackColor = System.Drawing.Color.White;
             this.radLabel8.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radLabel8.ForeColor = System.Drawing.Color.Gray;
-            this.radLabel8.Location = new System.Drawing.Point(1024, 152);
+            this.radLabel8.Location = new System.Drawing.Point(1101, 177);
             this.radLabel8.Name = "radLabel8";
-            this.radLabel8.Size = new System.Drawing.Size(128, 26);
+            this.radLabel8.Size = new System.Drawing.Size(51, 38);
             this.radLabel8.TabIndex = 1992;
             this.radLabel8.Text = "المخطط";
             this.radLabel8.TextAlignment = System.Drawing.ContentAlignment.TopRight;
@@ -341,13 +356,13 @@
             this.TxtNumber.BorderVisible = true;
             this.TxtNumber.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbLawyerBindingSource, "Number", true));
             this.TxtNumber.Font = new System.Drawing.Font("Arial", 60F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtNumber.Location = new System.Drawing.Point(732, 17);
+            this.TxtNumber.Location = new System.Drawing.Point(732, 53);
             this.TxtNumber.Name = "TxtNumber";
             // 
             // 
             // 
             this.TxtNumber.RootElement.BorderHighlightThickness = 0;
-            this.TxtNumber.Size = new System.Drawing.Size(292, 127);
+            this.TxtNumber.Size = new System.Drawing.Size(292, 118);
             this.TxtNumber.TabIndex = 1412;
             this.TxtNumber.Text = "10";
             this.TxtNumber.TextAlignment = System.Drawing.ContentAlignment.TopRight;
@@ -445,7 +460,7 @@
             this.CmbPlanGuid.EditorControl.Size = new System.Drawing.Size(240, 150);
             this.CmbPlanGuid.EditorControl.TabIndex = 0;
             this.CmbPlanGuid.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmbPlanGuid.Location = new System.Drawing.Point(1024, 173);
+            this.CmbPlanGuid.Location = new System.Drawing.Point(975, 177);
             this.CmbPlanGuid.Name = "CmbPlanGuid";
             this.CmbPlanGuid.NullText = "اختر المخطط";
             this.CmbPlanGuid.Size = new System.Drawing.Size(128, 38);
@@ -462,13 +477,13 @@
             this.TxtStatues.AutoSize = false;
             this.TxtStatues.BackColor = System.Drawing.Color.White;
             this.TxtStatues.Font = new System.Drawing.Font("Arial", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtStatues.Location = new System.Drawing.Point(536, 17);
+            this.TxtStatues.Location = new System.Drawing.Point(536, 53);
             this.TxtStatues.Name = "TxtStatues";
             // 
             // 
             // 
             this.TxtStatues.RootElement.BorderHighlightThickness = 0;
-            this.TxtStatues.Size = new System.Drawing.Size(190, 127);
+            this.TxtStatues.Size = new System.Drawing.Size(190, 118);
             this.TxtStatues.TabIndex = 1413;
             this.TxtStatues.Text = "الحالة";
             this.TxtStatues.TextAlignment = System.Drawing.ContentAlignment.TopRight;
@@ -584,7 +599,7 @@
             // PageAttachments
             // 
             this.PageAttachments.Controls.Add(this.radPanel2);
-            this.PageAttachments.ItemSize = new System.Drawing.SizeF(50F, 32F);
+            this.PageAttachments.ItemSize = new System.Drawing.SizeF(66F, 49F);
             this.PageAttachments.Location = new System.Drawing.Point(6, 6);
             this.PageAttachments.Name = "PageAttachments";
             this.PageAttachments.Size = new System.Drawing.Size(1165, 603);
@@ -1241,25 +1256,6 @@
             // 
             this.AlertTimer.Tick += new System.EventHandler(this.AlertTimer_Tick);
             // 
-            // tbLawyerBindingSource
-            // 
-            this.tbLawyerBindingSource.DataMember = "tbLawyer";
-            this.tbLawyerBindingSource.DataSource = this.real_Estate_Management_DataSet;
-            // 
-            // real_Estate_Management_DataSet
-            // 
-            this.real_Estate_Management_DataSet.DataSetName = "Real_Estate_Management_DataSet";
-            this.real_Estate_Management_DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tbPlanInfoBindingSource
-            // 
-            this.tbPlanInfoBindingSource.DataMember = "tbPlanInfo";
-            this.tbPlanInfoBindingSource.DataSource = this.real_Estate_Management_DataSet;
-            // 
-            // tbPlanInfoTableAdapter
-            // 
-            this.tbPlanInfoTableAdapter.ClearBeforeFill = true;
-            // 
             // UCLawyer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1272,6 +1268,7 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.Size = new System.Drawing.Size(1177, 713);
             ((System.ComponentModel.ISupportInitialize)(this.TxtNote)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbLawyerBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel23)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel19)).EndInit();
@@ -1281,6 +1278,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.MainContainer)).EndInit();
             this.MainContainer.ResumeLayout(false);
             this.MainContainer.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radlabelBookings)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtPublicNumber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel8)).EndInit();
@@ -1288,6 +1286,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.CmbPlanGuid.EditorControl.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CmbPlanGuid.EditorControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CmbPlanGuid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbPlanInfoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtStatues)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtIDNumber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtMobile)).EndInit();
@@ -1302,9 +1301,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.BtnScanner)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BtnAttachment)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BindingNavigatorClient)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbLawyerBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.real_Estate_Management_DataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbPlanInfoBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1388,8 +1384,7 @@
         private Telerik.WinControls.UI.RadPanel MainContainer;
         private Telerik.WinControls.UI.RadPanel radPanel2;
         private System.Windows.Forms.BindingSource tbLawyerBindingSource;
-        private Real_Estate_Management.Data.Real_Estate_Management_DataSet real_Estate_Management_DataSet;
         private System.Windows.Forms.BindingSource tbPlanInfoBindingSource;
-        private Real_Estate_Management.Data.Real_Estate_Management_DataSetTableAdapters.tbPlanInfoTableAdapter tbPlanInfoTableAdapter;
+        private Telerik.WinControls.UI.RadLabel radlabelBookings;
     }
 }

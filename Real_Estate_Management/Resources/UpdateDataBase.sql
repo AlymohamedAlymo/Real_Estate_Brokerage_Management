@@ -1,6 +1,7 @@
 USE [realestatebrokermanagement]
 GO
 
+/****** Object:  Table [dbo].[tbLawyer]    Script Date: 9/11/2024 6:26:38 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -13,14 +14,14 @@ CREATE TABLE [dbo].[tbLawyer](
 	[Code] [int] IDENTITY(1,1) NOT NULL,
 	[Statues] [varchar](10) NULL,
 	[Number] [int] NULL,
-	[Name] [varchar](255) NULL,
-	[IDNumber] [varchar](255) NULL,
-	[Mobile] [varchar](255) NULL,
-	[Email] [varchar](255) NULL,
-	[VatNumber] [varchar](255) NULL,
-	[PublicNumber] [varchar](255) NULL,
+	[Name] [varchar](25) NULL,
+	[IDNumber] [varchar](50) NULL,
+	[Mobile] [varchar](25) NULL,
+	[Email] [varchar](25) NULL,
+	[VatNumber] [varchar](50) NULL,
+	[PublicNumber] [varchar](25) NULL,
 	[Note] [varchar](255) NULL,
-	[LastAction] [varchar](255) NULL,
+	[LastAction] [varchar](200) NULL,
  CONSTRAINT [PK_tbLawyer] PRIMARY KEY CLUSTERED 
 (
 	[PlanGuid] ASC,
@@ -34,6 +35,67 @@ UPDATE [realestatebrokermanagement].[dbo].[tbLawyer] set
 [PlanGuid] = (SELECT TOP(1) [guid] FROM realestatebrokermanagement.[dbo].[tbPlanInfo]),
 [Statues] = '‰‘ÿ'
 GO
+
+/****** Object:  Table [dbo].[tbPlans]    Script Date: 9/11/2024 6:28:12 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[tbPlans](
+	[OwnerGuid] [uniqueidentifier] NOT NULL,
+	[Guid] [uniqueidentifier] ROWGUIDCOL  NOT NULL,
+	[Code] [int] IDENTITY(1,1) NOT NULL,
+	[Number] [int] NULL,
+	[Name] [varchar](25) NULL,
+	[City] [varchar](25) NULL,
+	[Location] [varchar](200) NULL,
+	[Note] [varchar](255) NULL,
+	[LastAction] [varchar](200) NULL,
+ CONSTRAINT [PK_tbPlans] PRIMARY KEY CLUSTERED 
+(
+	[OwnerGuid] ASC,
+	[Guid] ASC,
+	[Code] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+DELETE FROM realestatebrokermanagement.[dbo].[tbPlans]
+INSERT INTO [dbo].[tbPlans]
+SELECT ownerguid as [OwnerGuid], [guid] as [Guid], number as [Number],[name] as [Name],
+		   city as [City], [location] as [Location], '' as [Note],'' as [LastAction] 
+		   FROM data2024Restore.[dbo].tbPlanInfo
+GO
+
+
+/****** Object:  Table [dbo].[tbLog]    Script Date: 9/11/2024 6:27:21 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[tbLog](
+	[PlanGuid] [uniqueidentifier] NOT NULL,
+	[Guid] [uniqueidentifier] ROWGUIDCOL  NOT NULL,
+	[Code] [int] IDENTITY(1,1) NOT NULL,
+	[RegDate] [date] NULL,
+	[UserName] [varchar](100) NULL,
+	[ActionType] [varchar](10) NULL,
+	[Action] [varchar](25) NULL,
+	[Note] [varchar](255) NULL,
+ CONSTRAINT [PK_tbLog] PRIMARY KEY CLUSTERED 
+(
+	[PlanGuid] ASC,
+	[Guid] ASC,
+	[Code] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
 
 DELETE FROM realestatebrokermanagement.[dbo].tbAccount
 INSERT INTO realestatebrokermanagement.[dbo].tbAccount

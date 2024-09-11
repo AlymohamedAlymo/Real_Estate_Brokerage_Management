@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="realestatebrokermanagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbLawyer">
+          <Key>
+            <PropertyRef Name="PlanGuid" />
+            <PropertyRef Name="Guid" />
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="PlanGuid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Statues" Type="varchar" MaxLength="10" />
+          <Property Name="Number" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="25" />
+          <Property Name="IDNumber" Type="varchar" MaxLength="50" />
+          <Property Name="Mobile" Type="varchar" MaxLength="25" />
+          <Property Name="Email" Type="varchar" MaxLength="25" />
+          <Property Name="VatNumber" Type="varchar" MaxLength="50" />
+          <Property Name="PublicNumber" Type="varchar" MaxLength="25" />
+          <Property Name="Note" Type="varchar" MaxLength="255" />
+          <Property Name="LastAction" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tbLog">
+          <Key>
+            <PropertyRef Name="PlanGuid" />
+            <PropertyRef Name="Guid" />
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="PlanGuid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RegDate" Type="date" />
+          <Property Name="UserName" Type="varchar" MaxLength="100" />
+          <Property Name="ActionType" Type="varchar" MaxLength="10" />
+          <Property Name="Action" Type="varchar" MaxLength="25" />
+          <Property Name="Note" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tbPlans">
+          <Key>
+            <PropertyRef Name="OwnerGuid" />
+            <PropertyRef Name="Guid" />
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="OwnerGuid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Number" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="25" />
+          <Property Name="City" Type="varchar" MaxLength="25" />
+          <Property Name="Location" Type="varchar" MaxLength="200" />
+          <Property Name="Note" Type="varchar" MaxLength="255" />
+          <Property Name="LastAction" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityContainer Name="realestatebrokermanagementModelStoreContainer">
+          <EntitySet Name="tbLawyer" EntityType="Self.tbLawyer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbLog" EntityType="Self.tbLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbPlans" EntityType="Self.tbPlans" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="realestatebrokermanagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="realestatebrokermanagementEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbLawyers" EntityType="realestatebrokermanagementModel.tbLawyer" />
+          <EntitySet Name="tbLogs" EntityType="realestatebrokermanagementModel.tbLog" />
+          <EntitySet Name="tbPlans" EntityType="realestatebrokermanagementModel.tbPlan" />
+        </EntityContainer>
+        <EntityType Name="tbLawyer">
+          <Key>
+            <PropertyRef Name="PlanGuid" />
+            <PropertyRef Name="Guid" />
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="PlanGuid" Type="Guid" Nullable="false" />
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Statues" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Number" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="IDNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="VatNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PublicNumber" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Note" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LastAction" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbLog">
+          <Key>
+            <PropertyRef Name="PlanGuid" />
+            <PropertyRef Name="Guid" />
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="PlanGuid" Type="Guid" Nullable="false" />
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RegDate" Type="DateTime" Precision="0" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ActionType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Action" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Note" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbPlan">
+          <Key>
+            <PropertyRef Name="OwnerGuid" />
+            <PropertyRef Name="Guid" />
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="OwnerGuid" Type="Guid" Nullable="false" />
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Location" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Note" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LastAction" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="realestatebrokermanagementModelStoreContainer" CdmEntityContainer="realestatebrokermanagementEntities">
+          <EntitySetMapping Name="tbLawyers">
+            <EntityTypeMapping TypeName="realestatebrokermanagementModel.tbLawyer">
+              <MappingFragment StoreEntitySet="tbLawyer">
+                <ScalarProperty Name="LastAction" ColumnName="LastAction" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="PublicNumber" ColumnName="PublicNumber" />
+                <ScalarProperty Name="VatNumber" ColumnName="VatNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="IDNumber" ColumnName="IDNumber" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Statues" ColumnName="Statues" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="PlanGuid" ColumnName="PlanGuid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbLogs">
+            <EntityTypeMapping TypeName="realestatebrokermanagementModel.tbLog">
+              <MappingFragment StoreEntitySet="tbLog">
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="ActionType" ColumnName="ActionType" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="RegDate" ColumnName="RegDate" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="PlanGuid" ColumnName="PlanGuid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbPlans">
+            <EntityTypeMapping TypeName="realestatebrokermanagementModel.tbPlan">
+              <MappingFragment StoreEntitySet="tbPlans">
+                <ScalarProperty Name="LastAction" ColumnName="LastAction" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="OwnerGuid" ColumnName="OwnerGuid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

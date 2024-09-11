@@ -7,18 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Real_Estate_Management.Data
+namespace Real_Estate_Management.Data.DataBase
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class vwAccountBalance
+    public partial class tbLog
     {
-        public Nullable<System.Guid> guid { get; set; }
-        public Nullable<int> number { get; set; }
-        public string name { get; set; }
-        public int amountin { get; set; }
-        public Nullable<decimal> amountout { get; set; }
-        public int balance { get; set; }
+        public System.Guid PlanGuid { get; set; }
+        public System.Guid Guid { get; set; }
+        public int Code { get; set; }
+        public Nullable<System.DateTime> RegDate { get; set; }
+        public string UserName { get; set; }
+        public string ActionType { get; set; }
+        public string Action { get; set; }
+        public string Note { get; set; }
     }
 }

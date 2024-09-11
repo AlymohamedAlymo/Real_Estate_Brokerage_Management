@@ -73,7 +73,7 @@ namespace DoctorERP
 
                 dbBackup.Devices.AddDevice(TxtBackupPath.Text, DeviceType.File);
                 dbBackup.BackupSetName = string.Empty;
-                dbBackup.BackupSetDescription = DBConnect.GetServerTime().ToString("dd/MM/yyyy HH:mm");
+                dbBackup.BackupSetDescription = DBConnect.GetServerDate().ToString("dd/MM/yyyy HH:mm");
                 dbBackup.PercentComplete += DbBackupRestore_PercentComplete;
                 dbBackup.Complete += DbBackupRestore_Complete;
                 dbBackup.Information += DbBackupRestore_Information;
