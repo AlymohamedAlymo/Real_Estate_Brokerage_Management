@@ -27,20 +27,22 @@ public class TbLawyer_Rep
             {
                 tbLawyer lawer = new tbLawyer
                 {
-                    PlanGuid = (Guid)reader["PlanGuid"],
-                    Guid = (Guid)reader["Guid"],
-                    Number = (int)reader["Number"],
-                    Code = (int)reader["Code"],
-                    Email = (string)reader["Email"],
-                    Note = (string)reader["Note"],
-                    IDNumber = (string)reader["IDNumber"],
-                    VatNumber = (string)reader["VatNumber"],
-                    LastAction = (string)reader["LastAction"],
-                    Mobile = (string)reader["Mobile"],
-                    Name = (string)reader["Name"],
-                    PublicNumber = (string)reader["PublicNumber"]
+                    PlanGuid = reader["PlanGuid"].Equals(DBNull.Value) ? Guid.Empty : (Guid)reader["PlanGuid"] ,
+                    Guid = reader["Guid"].Equals(DBNull.Value) ? Guid.Empty : (Guid)reader["Guid"],
+                    Number = reader["Number"].Equals(DBNull.Value) ? 0 : (int)reader["Number"],
+                    Code = reader["Code"].Equals(DBNull.Value) ? 0 : (int)reader["Code"],
+                    Email = reader["Email"].Equals(DBNull.Value) ? string.Empty : (string)reader["Email"],
+                    Note = reader["Note"].Equals(DBNull.Value) ? string.Empty : (string)reader["Note"],
+                    IDNumber = reader["IDNumber"].Equals(DBNull.Value) ? string.Empty : (string)reader["IDNumber"],
+                    VatNumber = reader["VatNumber"].Equals(DBNull.Value) ? string.Empty : (string)reader["VatNumber"],
+                    LastAction = reader["LastAction"].Equals(DBNull.Value) ? string.Empty : (string)reader["LastAction"],
+                    Mobile = reader["Mobile"].Equals(DBNull.Value) ? string.Empty : (string)reader["Mobile"],
+                    MobileAdd = reader["MobileAdd"].Equals(DBNull.Value) ? string.Empty : (string)reader["MobileAdd"],
+                    Name = reader["Name"].Equals(DBNull.Value) ? string.Empty : (string)reader["Name"],
+                    OfficeName = reader["OfficeName"].Equals(DBNull.Value) ? string.Empty : (string)reader["OfficeName"],
+                    Statues = reader["Statues"].Equals(DBNull.Value) ? string.Empty : (string)reader["Statues"],
+                    
                 };
-
                 lstData.Add(lawer);
             }
         }
@@ -77,7 +79,7 @@ public class TbLawyer_Rep
     }
 
 
-    public static void AddLawyer(Guid _PlanGuid, Guid _Guid, int _Number, string _Name, string _Mobile, string _IDNumber, string _VatNumber, string _PublicNumber, string _Email, string _Note, string _LastAction)
+    public static void AddLawyer(Guid _PlanGuid, Guid _Guid, int _Number, string _Name, string _Mobile, string _MobileAdd, string _IDNumber, string _VatNumber, string _OfficeName, string _Email, string _Note, string _LastAction)
     {
         tbLawyer lawer = new tbLawyer
         {
@@ -87,12 +89,14 @@ public class TbLawyer_Rep
             Statues = "نشط",
             Name = _Name,
             Mobile = _Mobile,
+            MobileAdd = _MobileAdd,
             IDNumber = _IDNumber,
             VatNumber = _VatNumber,
-            PublicNumber = _PublicNumber,
+            OfficeName = _OfficeName,
             Email = _Email,
             Note = _Note,
             LastAction = _LastAction,
+            
         };
         Insert(lawer);
     }
@@ -107,9 +111,10 @@ public class TbLawyer_Rep
            ,[Name]
            ,[IDNumber]
            ,[Mobile]
+           ,[MobileAdd]
            ,[Email]
            ,[VatNumber]
-           ,[PublicNumber]
+           ,[OfficeName]
            ,[Note]
            ,[LastAction])
      VALUES
@@ -120,9 +125,10 @@ public class TbLawyer_Rep
            ,@Name
            ,@IDNumber
            ,@Mobile
+           ,@MobileAdd
            ,@Email
            ,@VatNumber
-           ,@PublicNumber
+           ,@OfficeName
            ,@Note
            ,@LastAction)";
 
@@ -133,9 +139,10 @@ public class TbLawyer_Rep
         DBConnect.DBCommand.Parameters.AddWithValue("@Statues", Row.Statues);
         DBConnect.DBCommand.Parameters.AddWithValue("@Name", Row.Name);
         DBConnect.DBCommand.Parameters.AddWithValue("@Mobile", Row.Mobile);
+        DBConnect.DBCommand.Parameters.AddWithValue("@MobileAdd", Row.MobileAdd);
         DBConnect.DBCommand.Parameters.AddWithValue("@IDNumber", Row.IDNumber);
         DBConnect.DBCommand.Parameters.AddWithValue("@VatNumber", Row.VatNumber);
-        DBConnect.DBCommand.Parameters.AddWithValue("@PublicNumber", Row.PublicNumber);
+        DBConnect.DBCommand.Parameters.AddWithValue("@OfficeName", Row.OfficeName);
         DBConnect.DBCommand.Parameters.AddWithValue("@Email", Row.Email);
         DBConnect.DBCommand.Parameters.AddWithValue("@LastAction", Row.LastAction);
         DBConnect.DBCommand.Parameters.AddWithValue("@Note", Row.Note);
@@ -145,108 +152,53 @@ public class TbLawyer_Rep
 
     }
 
+    public static void Update(tbLawyer Row)
+    {
+        string script = @"UPDATE [dbo].[tbLawyer] SET
+           [PlanGuid] = @PlanGuid
+           ,[Statues] = @Statues
+           ,[Name] = @Name
+           ,[IDNumber] = @IDNumber
+           ,[Mobile] = @Mobile
+           ,[MobileAdd] = @MobileAdd
+           ,[Email] = @Email
+           ,[VatNumber] = @VatNumber
+           ,[OfficeName] = @OfficeName
+           ,[Note] = @Note
+           ,[LastAction] = @LastAction
+         WHERE [Guid] = @guid";
+
+        DBConnect.DBCommand = new SqlCommand(script, DBConnect.DBConnection, DBConnect.DBTrans);
+        DBConnect.DBCommand.Parameters.AddWithValue("@PlanGuid", Row.PlanGuid);
+        DBConnect.DBCommand.Parameters.AddWithValue("@Guid", Row.Guid);
+        DBConnect.DBCommand.Parameters.AddWithValue("@Number", Row.Number);
+        DBConnect.DBCommand.Parameters.AddWithValue("@Statues", Row.Statues);
+        DBConnect.DBCommand.Parameters.AddWithValue("@Name", Row.Name);
+        DBConnect.DBCommand.Parameters.AddWithValue("@Mobile", Row.Mobile);
+        DBConnect.DBCommand.Parameters.AddWithValue("@MobileAdd", Row.MobileAdd);
+        DBConnect.DBCommand.Parameters.AddWithValue("@IDNumber", Row.IDNumber);
+        DBConnect.DBCommand.Parameters.AddWithValue("@VatNumber", Row.VatNumber);
+        DBConnect.DBCommand.Parameters.AddWithValue("@OfficeName", Row.OfficeName);
+        DBConnect.DBCommand.Parameters.AddWithValue("@Email", Row.Email);
+        DBConnect.DBCommand.Parameters.AddWithValue("@LastAction", Row.LastAction);
+        DBConnect.DBCommand.Parameters.AddWithValue("@Note", Row.Note);
+
+        DBConnect.DBCommand.ExecuteNonQuery();
+        DBConnect.DBCommand.Parameters.Clear();
+    }
+
+    public static void Delete(Guid _Guid)
+    {
+        DBConnect.DBCommand = new SqlCommand("DELETE FROM tbLawyer WHERE Guid = @Guid", DBConnect.DBConnection, DBConnect.DBTrans);
+        DBConnect.DBCommand.Parameters.AddWithValue("@Guid", _Guid);
+        DBConnect.DBCommand.ExecuteNonQuery();
+        DBConnect.DBCommand.Parameters.Clear();
+    }
+
+
 
 
     //#region Database
-    //public void Insert()
-    //{
-    //    DBConnect.DBCommand.CommandText = "INSERT INTO tbLand VALUES (@PlanGuid, @guid, @number , @code, @blocknumber, @landtype , @area, @deednumber, @amount, @isworkfee, @workfee, @issalefee, @salesfee, @isbuildingfee, @buildingfee, @isvat, @vat, @isdiscounttotal, @discounttotal, @discounttotalvalue, @isdiscountfee, @discountfee, @discountfeevalue, @total, @south, @southdesc, @north, @northdesc, @east, @eastdesc, @west, @westdesc, @status, @reservereason , @note , @lastaction)";
-
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@PlanGuid", planguid);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@guid", guid);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@number", number);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@code", code);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@blocknumber", blocknumber);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@landtype", landtype);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@area", area);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@deednumber", deednumber);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@amount", amount);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@isworkfee", isworkfee);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@workfee", workfee);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@issalefee", issalefee);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@salesfee", salesfee);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@isbuildingfee", isbuildingfee);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@buildingfee", buildingfee);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@isvat", isvat);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@vat", vat);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@isdiscounttotal", isdiscounttotal);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@discounttotal", discounttotal);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@discounttotalvalue", discounttotalvalue);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@isdiscountfee", isdiscountfee);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@discountfee", discountfee);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@discountfeevalue", discountfeevalue);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@total", total);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@south", south);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@southdesc", southdesc);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@north", north);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@northdesc", northdesc);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@east", east);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@eastdesc", eastdesc);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@west", west);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@westdesc", westdesc);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@status", status);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@reservereason", reservereason);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@note", note);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@lastaction", lastaction);
-
-    //    DBConnect.DBCommand.ExecuteNonQuery();
-    //    DBConnect.DBCommand.Parameters.Clear();
-    //}
-
-    //public void Update()
-    //{
-    //    DBConnect.DBCommand.CommandText = "UPDATE tbLand SET number = @number , code = @code,  blocknumber = @blocknumber, landtype = @landtype,  area = @area, deednumber = @deednumber, amount = @amount, isworkfee = @isworkfee, workfee = @workfee, issalefee = @issalefee, salesfee = @salesfee, isbuildingfee = @isbuildingfee, buildingfee = @buildingfee, isvat = @isvat, vat = @vat, isdiscounttotal = @isdiscounttotal, discounttotal = @discounttotal, discounttotalvalue = @discounttotalvalue, isdiscountfee = @isdiscountfee, discountfee = @discountfee, discountfeevalue = @discountfeevalue, total = @total, south = @south, southdesc = @southdesc, north = @north, northdesc = @northdesc, east = @east, eastdesc = @eastdesc, west = @west, westdesc = @westdesc, status = @status, reservereason = @reservereason , note = @note , lastaction = @lastaction WHERE guid = @guid";
-
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@number", number);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@code", code);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@blocknumber", blocknumber);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@landtype", landtype);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@area", area);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@deednumber", deednumber);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@amount", amount);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@isworkfee", isworkfee);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@workfee", workfee);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@issalefee", issalefee);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@salesfee", salesfee);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@isbuildingfee", isbuildingfee);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@buildingfee", buildingfee);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@isvat", isvat);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@vat", vat);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@isdiscounttotal", isdiscounttotal);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@discounttotal", discounttotal);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@discounttotalvalue", discounttotalvalue);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@isdiscountfee", isdiscountfee);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@discountfee", discountfee);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@discountfeevalue", discountfeevalue);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@total", total);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@south", south);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@southdesc", southdesc);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@north", north);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@northdesc", northdesc);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@east", east);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@eastdesc", eastdesc);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@west", west);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@westdesc", westdesc);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@status", status);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@reservereason", reservereason);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@note", note);
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@lastaction", lastaction);
-
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@guid", guid);
-
-    //    DBConnect.DBCommand.ExecuteNonQuery();
-    //    DBConnect.DBCommand.Parameters.Clear();
-    //}
-
-    //public void Delete()
-    //{
-    //    DBConnect.DBCommand.CommandText = "DELETE FROM tbLand WHERE guid = @guid";
-
-    //    DBConnect.DBCommand.Parameters.AddWithValue("@guid", guid);
-
-    //    DBConnect.DBCommand.ExecuteNonQuery();
-    //    DBConnect.DBCommand.Parameters.Clear();
-    //}
 
     //public void DeleteBy(string dbcolumn, object val)
     //{

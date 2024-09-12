@@ -5,9 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="c06b7a4941c14a14a591e21092809e68" Name="Diagram1">
-        <EntityTypeShape EntityType="realestatebrokermanagementModel.tbLawyer" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="realestatebrokermanagementModel.tbLog" Width="1.5" PointX="2.75" PointY="0.75" />
         <EntityTypeShape EntityType="realestatebrokermanagementModel.tbPlan" Width="1.5" PointX="2.75" PointY="3.625" />
+        <EntityTypeShape EntityType="realestatebrokermanagementModel.tbLawyer" Width="1.5" PointX="5.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

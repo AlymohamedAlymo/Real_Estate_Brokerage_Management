@@ -645,11 +645,9 @@ namespace DoctorERP
                     PageViewCardsHome.SelectedPage = enumerableIterator;
 
                 }
-                this.TopMost = true;
                 RadOverlayManager.Close();
                 LandsListView.SelectedItems.Clear();
-                this.TopMost = false;
-
+                this.Activate();
             }
             else if (e.ClickedItem.Name == "MenuShowCalc")
             {
@@ -1085,11 +1083,9 @@ namespace DoctorERP
                 PageViewCardsHome.SelectedPage = enumerableIterator;
 
             }
-            this.TopMost = true;
 
             RadOverlayManager.Close();
-            this.TopMost = false;
-
+            this.Activate();
 
         }
 
@@ -1136,11 +1132,9 @@ namespace DoctorERP
                 PageViewCardsHome.SelectedPage = enumerableIterator;
 
             }
-            this.TopMost = true;
 
             RadOverlayManager.Close();
-            this.TopMost = false;
-
+            this.Activate();
         }
 
         private void MenuPlanInfo_Click(object sender, EventArgs e)
@@ -1857,11 +1851,9 @@ namespace DoctorERP
                 PageViewCardsHome.SelectedPage = enumerableIterator;
 
             }
-            this.TopMost = true;
 
             RadOverlayManager.Close();
-            this.TopMost = false;
-
+            this.Activate();
 
 
         }

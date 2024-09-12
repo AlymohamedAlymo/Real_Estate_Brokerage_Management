@@ -9,8 +9,11 @@ namespace DoctorERP.CustomElements
         public FlyoutReserveContent()
         {
             InitializeComponent();
-            radLabel3.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            radLabelHeader.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            radLabelTxt.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+
             this.Result = DialogResult.Cancel;
+
         }
 
         public DialogResult Result
@@ -20,7 +23,7 @@ namespace DoctorERP.CustomElements
 
         public string ReserveReason
         {
-            get { return this.RadTextboxReserveReason.Text; }
+            get { return this.RadTxtReserveReason.Text; }
         }
         private bool ValidateData()
         {

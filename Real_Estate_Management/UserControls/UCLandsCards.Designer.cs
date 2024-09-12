@@ -936,7 +936,7 @@
             this.radPageView1.Location = new System.Drawing.Point(0, 48);
             this.radPageView1.Name = "radPageView1";
             this.radPageView1.PageBackColor = System.Drawing.SystemColors.Control;
-            this.radPageView1.SelectedPage = this.PagePricingLog;
+            this.radPageView1.SelectedPage = this.PageAttachments;
             this.radPageView1.Size = new System.Drawing.Size(1177, 665);
             this.radPageView1.TabIndex = 72;
             this.radPageView1.ThemeName = "Material";

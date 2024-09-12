@@ -22,9 +22,10 @@ namespace Real_Estate_Management.Data.DataBase
         public string Name { get; set; }
         public string IDNumber { get; set; }
         public string Mobile { get; set; }
+        public string MobileAdd { get; set; }
         public string Email { get; set; }
         public string VatNumber { get; set; }
-        public string PublicNumber { get; set; }
+        public string OfficeName { get; set; }
         public string Note { get; set; }
         public string LastAction { get; set; }
     }

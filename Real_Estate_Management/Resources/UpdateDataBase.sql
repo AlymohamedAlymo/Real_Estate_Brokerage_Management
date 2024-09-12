@@ -47,7 +47,7 @@ CREATE TABLE [dbo].[tbPlans](
 	[OwnerGuid] [uniqueidentifier] NOT NULL,
 	[Guid] [uniqueidentifier] ROWGUIDCOL  NOT NULL,
 	[Code] [int] IDENTITY(1,1) NOT NULL,
-	[Number] [int] NULL,
+	[Number] [varchar](25) NULL,
 	[Name] [varchar](25) NULL,
 	[City] [varchar](25) NULL,
 	[Location] [varchar](200) NULL,
@@ -63,7 +63,7 @@ CREATE TABLE [dbo].[tbPlans](
 GO
 
 DELETE FROM realestatebrokermanagement.[dbo].[tbPlans]
-INSERT INTO [dbo].[tbPlans]
+INSERT INTO realestatebrokermanagement.[dbo].[tbPlans]
 SELECT ownerguid as [OwnerGuid], [guid] as [Guid], number as [Number],[name] as [Name],
 		   city as [City], [location] as [Location], '' as [Note],'' as [LastAction] 
 		   FROM data2024Restore.[dbo].tbPlanInfo

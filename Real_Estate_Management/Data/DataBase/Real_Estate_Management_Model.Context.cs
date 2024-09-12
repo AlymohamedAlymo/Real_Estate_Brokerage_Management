@@ -25,8 +25,8 @@ namespace Real_Estate_Management.Data.DataBase
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<tbLawyer> tbLawyers { get; set; }
         public virtual DbSet<tbLog> tbLogs { get; set; }
         public virtual DbSet<tbPlan> tbPlans { get; set; }
+        public virtual DbSet<tbLawyer> tbLawyers { get; set; }
     }
 }

@@ -28,46 +28,43 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.RadTextboxReserveReason = new Telerik.WinControls.UI.RadTextBox();
-            this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
+            this.RadTxtReserveReason = new Telerik.WinControls.UI.RadTextBox();
+            this.radLabelTxt = new Telerik.WinControls.UI.RadLabel();
             this.radButtonOK = new Telerik.WinControls.UI.RadButton();
             this.radButtonCancel = new Telerik.WinControls.UI.RadButton();
-            this.radLabel3 = new Telerik.WinControls.UI.RadLabel();
-            this.doubleBufferedTableLayoutPanel1 = new Telerik.WinControls.UI.DoubleBufferedTableLayoutPanel();
-            ((System.ComponentModel.ISupportInitialize)(this.RadTextboxReserveReason)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
+            this.radLabelHeader = new Telerik.WinControls.UI.RadLabel();
+            ((System.ComponentModel.ISupportInitialize)(this.RadTxtReserveReason)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabelTxt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButtonOK)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButtonCancel)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).BeginInit();
-            this.doubleBufferedTableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabelHeader)).BeginInit();
             this.SuspendLayout();
             // 
-            // RadTextboxReserveReason
+            // RadTxtReserveReason
             // 
-            this.RadTextboxReserveReason.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.doubleBufferedTableLayoutPanel1.SetColumnSpan(this.RadTextboxReserveReason, 2);
-            this.RadTextboxReserveReason.Location = new System.Drawing.Point(10, 95);
-            this.RadTextboxReserveReason.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
-            this.RadTextboxReserveReason.Name = "RadTextboxReserveReason";
-            this.RadTextboxReserveReason.NullText = "ادخل سبب الحجز";
-            this.RadTextboxReserveReason.Size = new System.Drawing.Size(176, 20);
-            this.RadTextboxReserveReason.TabIndex = 0;
+            this.RadTxtReserveReason.Dock = System.Windows.Forms.DockStyle.Top;
+            this.RadTxtReserveReason.Location = new System.Drawing.Point(0, 95);
+            this.RadTxtReserveReason.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
+            this.RadTxtReserveReason.Name = "RadTxtReserveReason";
+            this.RadTxtReserveReason.NullText = "ادخل سبب الحجز";
+            this.RadTxtReserveReason.Size = new System.Drawing.Size(347, 20);
+            this.RadTxtReserveReason.TabIndex = 0;
             // 
-            // radLabel1
+            // radLabelTxt
             // 
-            this.radLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.radLabel1.AutoSize = false;
-            this.radLabel1.Location = new System.Drawing.Point(192, 96);
-            this.radLabel1.Name = "radLabel1";
-            this.radLabel1.Size = new System.Drawing.Size(75, 18);
-            this.radLabel1.TabIndex = 2;
-            this.radLabel1.Text = "سبب الحجز : ";
-            this.radLabel1.TextAlignment = System.Drawing.ContentAlignment.TopRight;
+            this.radLabelTxt.AutoSize = false;
+            this.radLabelTxt.Dock = System.Windows.Forms.DockStyle.Top;
+            this.radLabelTxt.Location = new System.Drawing.Point(0, 60);
+            this.radLabelTxt.Name = "radLabelTxt";
+            this.radLabelTxt.Padding = new System.Windows.Forms.Padding(0, 0, 15, 0);
+            this.radLabelTxt.Size = new System.Drawing.Size(347, 35);
+            this.radLabelTxt.TabIndex = 2;
+            this.radLabelTxt.Text = "سبب الحجز : ";
+            this.radLabelTxt.TextAlignment = System.Drawing.ContentAlignment.TopRight;
             // 
             // radButtonOK
             // 
-            this.radButtonOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.radButtonOK.Location = new System.Drawing.Point(98, 153);
+            this.radButtonOK.Location = new System.Drawing.Point(110, 147);
             this.radButtonOK.Name = "radButtonOK";
             this.radButtonOK.Size = new System.Drawing.Size(88, 24);
             this.radButtonOK.TabIndex = 4;
@@ -76,8 +73,7 @@
             // 
             // radButtonCancel
             // 
-            this.radButtonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.radButtonCancel.Location = new System.Drawing.Point(10, 153);
+            this.radButtonCancel.Location = new System.Drawing.Point(15, 147);
             this.radButtonCancel.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
             this.radButtonCancel.Name = "radButtonCancel";
             this.radButtonCancel.Size = new System.Drawing.Size(82, 24);
@@ -85,69 +81,47 @@
             this.radButtonCancel.Text = "إلغاء";
             this.radButtonCancel.Click += new System.EventHandler(this.RadButtonCancel_Click);
             // 
-            // radLabel3
+            // radLabelHeader
             // 
-            this.radLabel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.radLabel3.AutoSize = false;
-            this.doubleBufferedTableLayoutPanel1.SetColumnSpan(this.radLabel3, 3);
-            this.radLabel3.Font = new System.Drawing.Font("Segoe UI Semilight", 15F);
-            this.radLabel3.Location = new System.Drawing.Point(3, 3);
-            this.radLabel3.Margin = new System.Windows.Forms.Padding(1, 3, 3, 3);
-            this.radLabel3.Name = "radLabel3";
-            this.radLabel3.Size = new System.Drawing.Size(266, 64);
-            this.radLabel3.TabIndex = 3;
-            this.radLabel3.Text = "تأكيد حجز بطاقة الأرض";
-            this.radLabel3.TextAlignment = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // doubleBufferedTableLayoutPanel1
-            // 
-            this.doubleBufferedTableLayoutPanel1.ColumnCount = 3;
-            this.doubleBufferedTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.doubleBufferedTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
-            this.doubleBufferedTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
-            this.doubleBufferedTableLayoutPanel1.Controls.Add(this.RadTextboxReserveReason, 1, 1);
-            this.doubleBufferedTableLayoutPanel1.Controls.Add(this.radButtonCancel, 2, 2);
-            this.doubleBufferedTableLayoutPanel1.Controls.Add(this.radLabel3, 0, 0);
-            this.doubleBufferedTableLayoutPanel1.Controls.Add(this.radButtonOK, 1, 2);
-            this.doubleBufferedTableLayoutPanel1.Controls.Add(this.radLabel1, 0, 1);
-            this.doubleBufferedTableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.doubleBufferedTableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.doubleBufferedTableLayoutPanel1.Name = "doubleBufferedTableLayoutPanel1";
-            this.doubleBufferedTableLayoutPanel1.RowCount = 3;
-            this.doubleBufferedTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.doubleBufferedTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.doubleBufferedTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.doubleBufferedTableLayoutPanel1.Size = new System.Drawing.Size(270, 190);
-            this.doubleBufferedTableLayoutPanel1.TabIndex = 6;
+            this.radLabelHeader.AutoSize = false;
+            this.radLabelHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.radLabelHeader.Font = new System.Drawing.Font("Segoe UI Semilight", 15F);
+            this.radLabelHeader.Location = new System.Drawing.Point(0, 0);
+            this.radLabelHeader.Margin = new System.Windows.Forms.Padding(1, 3, 3, 3);
+            this.radLabelHeader.Name = "radLabelHeader";
+            this.radLabelHeader.Padding = new System.Windows.Forms.Padding(0, 0, 25, 0);
+            this.radLabelHeader.Size = new System.Drawing.Size(347, 60);
+            this.radLabelHeader.TabIndex = 3;
+            this.radLabelHeader.Text = "تأكيد حجز بطاقة الأرض";
+            this.radLabelHeader.TextAlignment = System.Drawing.ContentAlignment.TopRight;
             // 
             // FlyoutReserveContent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.doubleBufferedTableLayoutPanel1);
+            this.Controls.Add(this.radButtonCancel);
+            this.Controls.Add(this.RadTxtReserveReason);
+            this.Controls.Add(this.radButtonOK);
+            this.Controls.Add(this.radLabelTxt);
+            this.Controls.Add(this.radLabelHeader);
             this.Name = "FlyoutReserveContent";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.Size = new System.Drawing.Size(270, 190);
-            ((System.ComponentModel.ISupportInitialize)(this.RadTextboxReserveReason)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
+            this.Size = new System.Drawing.Size(347, 193);
+            ((System.ComponentModel.ISupportInitialize)(this.RadTxtReserveReason)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabelTxt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButtonOK)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButtonCancel)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).EndInit();
-            this.doubleBufferedTableLayoutPanel1.ResumeLayout(false);
-            this.doubleBufferedTableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabelHeader)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private Telerik.WinControls.UI.RadTextBox RadTextboxReserveReason;
-        private Telerik.WinControls.UI.RadLabel radLabel1;
         private Telerik.WinControls.UI.RadButton radButtonOK;
         private Telerik.WinControls.UI.RadButton radButtonCancel;
-        private Telerik.WinControls.UI.RadLabel radLabel3;
-        private Telerik.WinControls.UI.DoubleBufferedTableLayoutPanel doubleBufferedTableLayoutPanel1;
+        public Telerik.WinControls.UI.RadTextBox RadTxtReserveReason;
+        public Telerik.WinControls.UI.RadLabel radLabelTxt;
+        public Telerik.WinControls.UI.RadLabel radLabelHeader;
     }
 }

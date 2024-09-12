@@ -29,37 +29,26 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn1 = new Telerik.WinControls.UI.GridViewDecimalColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn5 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn7 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn8 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCLawyer));
             Telerik.RadToastNotificationManager.RadToastNotification radToastNotification1 = new Telerik.RadToastNotificationManager.RadToastNotification();
             Telerik.RadToastNotificationManager.RadToastNotification radToastNotification2 = new Telerik.RadToastNotificationManager.RadToastNotification();
             Telerik.RadToastNotificationManager.RadToastNotification radToastNotification3 = new Telerik.RadToastNotificationManager.RadToastNotification();
-            this.materialTheme1 = new Telerik.WinControls.Themes.MaterialTheme();
             this.TxtNote = new Telerik.WinControls.UI.RadTextBox();
-            this.tbLawyerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.TxtName = new Telerik.WinControls.UI.RadTextBox();
             this.radLabel23 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel19 = new Telerik.WinControls.UI.RadLabel();
             this.radPageView1 = new Telerik.WinControls.UI.RadPageView();
             this.PageHome = new Telerik.WinControls.UI.RadPageViewPage();
             this.MainContainer = new Telerik.WinControls.UI.RadPanel();
+            this.TxtMobileAdd = new Telerik.WinControls.UI.RadTextBox();
             this.radlabelBookings = new Telerik.WinControls.UI.RadLabel();
             this.radLabel5 = new Telerik.WinControls.UI.RadLabel();
-            this.TxtPublicNumber = new Telerik.WinControls.UI.RadTextBox();
+            this.TxtOfficeName = new Telerik.WinControls.UI.RadTextBox();
             this.radLabel8 = new Telerik.WinControls.UI.RadLabel();
             this.TxtNumber = new Telerik.WinControls.UI.RadLabel();
             this.CmbPlanGuid = new Telerik.WinControls.UI.RadMultiColumnComboBox();
-            this.tbPlanInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.TxtStatues = new Telerik.WinControls.UI.RadLabel();
             this.TxtIDNumber = new Telerik.WinControls.UI.RadTextBox();
             this.TxtMobile = new Telerik.WinControls.UI.RadTextBox();
@@ -114,17 +103,10 @@
             this.BtnEdit = new Telerik.WinControls.UI.CommandBarButton();
             this.BtnExit = new Telerik.WinControls.UI.CommandBarButton();
             this.radToastNotificationManager1 = new Telerik.WinControls.UI.RadToastNotificationManager(this.components);
-            this.radDesktopAlert1 = new Telerik.WinControls.UI.RadDesktopAlert(this.components);
             this.radContextMenuManager1 = new Telerik.WinControls.UI.RadContextMenuManager();
-            this.AttachmentsContextMenu = new Telerik.WinControls.UI.RadContextMenu(this.components);
-            this.MenuPreviewAttachment = new Telerik.WinControls.UI.RadMenuItem();
-            this.MenuExtractAttachement = new Telerik.WinControls.UI.RadMenuItem();
-            this.radMenuSeparatorItem1 = new Telerik.WinControls.UI.RadMenuSeparatorItem();
-            this.MenuDeleteAttachment = new Telerik.WinControls.UI.RadMenuItem();
-            this.radCallout1 = new Telerik.WinControls.UI.RadCallout();
             this.AlertTimer = new System.Windows.Forms.Timer(this.components);
+            this.materialTheme1 = new Telerik.WinControls.Themes.MaterialTheme();
             ((System.ComponentModel.ISupportInitialize)(this.TxtNote)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbLawyerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel23)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel19)).BeginInit();
@@ -133,15 +115,15 @@
             this.PageHome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainContainer)).BeginInit();
             this.MainContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtMobileAdd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radlabelBookings)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtPublicNumber)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtOfficeName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtNumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CmbPlanGuid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CmbPlanGuid.EditorControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CmbPlanGuid.EditorControl.MasterTemplate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbPlanInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtStatues)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtIDNumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtMobile)).BeginInit();
@@ -162,10 +144,9 @@
             // 
             this.TxtNote.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtNote.AutoScroll = true;
-            this.TxtNote.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbLawyerBindingSource, "Note", true));
             this.TxtNote.EmbeddedLabelText = "الملاحظات ";
             this.TxtNote.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtNote.Location = new System.Drawing.Point(847, 413);
+            this.TxtNote.Location = new System.Drawing.Point(545, 412);
             this.TxtNote.Multiline = true;
             this.TxtNote.Name = "TxtNote";
             this.TxtNote.NullText = "ادخل الملاحظات إن وجد";
@@ -176,7 +157,7 @@
             this.TxtNote.RootElement.StretchVertically = true;
             this.TxtNote.ShowEmbeddedLabel = true;
             this.TxtNote.ShowNullText = true;
-            this.TxtNote.Size = new System.Drawing.Size(305, 104);
+            this.TxtNote.Size = new System.Drawing.Size(305, 58);
             this.TxtNote.TabIndex = 6;
             this.TxtNote.ThemeName = "Material";
             this.TxtNote.WordWrap = false;
@@ -187,10 +168,9 @@
             // 
             this.TxtName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtName.AutoScroll = true;
-            this.TxtName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbLawyerBindingSource, "Name", true));
             this.TxtName.EmbeddedLabelText = "اسم المحامي";
             this.TxtName.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtName.Location = new System.Drawing.Point(847, 221);
+            this.TxtName.Location = new System.Drawing.Point(856, 221);
             this.TxtName.Name = "TxtName";
             this.TxtName.NullText = "ادخل اسم المحامي";
             this.TxtName.ReadOnly = true;
@@ -236,7 +216,7 @@
             this.radPageView1.Location = new System.Drawing.Point(0, 48);
             this.radPageView1.Name = "radPageView1";
             this.radPageView1.PageBackColor = System.Drawing.SystemColors.Control;
-            this.radPageView1.SelectedPage = this.PageHome;
+            this.radPageView1.SelectedPage = this.PageAttachments;
             this.radPageView1.Size = new System.Drawing.Size(1177, 665);
             this.radPageView1.TabIndex = 72;
             this.radPageView1.ThemeName = "Material";
@@ -257,9 +237,10 @@
             // 
             // MainContainer
             // 
+            this.MainContainer.Controls.Add(this.TxtMobileAdd);
             this.MainContainer.Controls.Add(this.radlabelBookings);
             this.MainContainer.Controls.Add(this.radLabel5);
-            this.MainContainer.Controls.Add(this.TxtPublicNumber);
+            this.MainContainer.Controls.Add(this.TxtOfficeName);
             this.MainContainer.Controls.Add(this.TxtNote);
             this.MainContainer.Controls.Add(this.TxtName);
             this.MainContainer.Controls.Add(this.radLabel8);
@@ -276,6 +257,23 @@
             this.MainContainer.Name = "MainContainer";
             this.MainContainer.Size = new System.Drawing.Size(1165, 603);
             this.MainContainer.TabIndex = 11512122;
+            // 
+            // TxtMobileAdd
+            // 
+            this.TxtMobileAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtMobileAdd.AutoScroll = true;
+            this.TxtMobileAdd.EmbeddedLabelText = "رقم جوال اضافي";
+            this.TxtMobileAdd.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtMobileAdd.Location = new System.Drawing.Point(545, 285);
+            this.TxtMobileAdd.Name = "TxtMobileAdd";
+            this.TxtMobileAdd.NullText = "ادخل رقم جوال اضافي";
+            this.TxtMobileAdd.ReadOnly = true;
+            this.TxtMobileAdd.ShowEmbeddedLabel = true;
+            this.TxtMobileAdd.ShowNullText = true;
+            this.TxtMobileAdd.Size = new System.Drawing.Size(305, 58);
+            this.TxtMobileAdd.TabIndex = 11512123;
+            this.TxtMobileAdd.ThemeName = "Material";
+            this.TxtMobileAdd.WordWrap = false;
             // 
             // radlabelBookings
             // 
@@ -298,7 +296,7 @@
             this.radLabel5.BackColor = System.Drawing.Color.White;
             this.radLabel5.BorderVisible = true;
             this.radLabel5.Font = new System.Drawing.Font("Arial", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel5.Location = new System.Drawing.Point(1022, 53);
+            this.radLabel5.Location = new System.Drawing.Point(1031, 53);
             this.radLabel5.Name = "radLabel5";
             // 
             // 
@@ -311,25 +309,24 @@
             this.radLabel5.TextWrap = false;
             this.radLabel5.ThemeName = "Material";
             // 
-            // TxtPublicNumber
+            // TxtOfficeName
             // 
-            this.TxtPublicNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtPublicNumber.AutoScroll = true;
-            this.TxtPublicNumber.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbLawyerBindingSource, "PublicNumber", true));
-            this.TxtPublicNumber.EmbeddedLabelText = "رقم المعلن";
-            this.TxtPublicNumber.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtPublicNumber.Location = new System.Drawing.Point(536, 349);
-            this.TxtPublicNumber.Name = "TxtPublicNumber";
-            this.TxtPublicNumber.NullText = "ادخل رقم المعلن";
-            this.TxtPublicNumber.ReadOnly = true;
-            this.TxtPublicNumber.ShowEmbeddedLabel = true;
-            this.TxtPublicNumber.ShowNullText = true;
-            this.TxtPublicNumber.Size = new System.Drawing.Size(305, 58);
-            this.TxtPublicNumber.TabIndex = 5;
-            this.TxtPublicNumber.ThemeName = "Material";
-            this.TxtPublicNumber.WordWrap = false;
-            this.TxtPublicNumber.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
-            this.TxtPublicNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReadOnly_KeyPress);
+            this.TxtOfficeName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtOfficeName.AutoScroll = true;
+            this.TxtOfficeName.EmbeddedLabelText = "اسم المكتب";
+            this.TxtOfficeName.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtOfficeName.Location = new System.Drawing.Point(856, 412);
+            this.TxtOfficeName.Name = "TxtOfficeName";
+            this.TxtOfficeName.NullText = "ادخل اسم المكتب";
+            this.TxtOfficeName.ReadOnly = true;
+            this.TxtOfficeName.ShowEmbeddedLabel = true;
+            this.TxtOfficeName.ShowNullText = true;
+            this.TxtOfficeName.Size = new System.Drawing.Size(305, 58);
+            this.TxtOfficeName.TabIndex = 5;
+            this.TxtOfficeName.ThemeName = "Material";
+            this.TxtOfficeName.WordWrap = false;
+            this.TxtOfficeName.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
+            this.TxtOfficeName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReadOnly_KeyPress);
             // 
             // radLabel8
             // 
@@ -338,7 +335,7 @@
             this.radLabel8.BackColor = System.Drawing.Color.White;
             this.radLabel8.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radLabel8.ForeColor = System.Drawing.Color.Gray;
-            this.radLabel8.Location = new System.Drawing.Point(1101, 177);
+            this.radLabel8.Location = new System.Drawing.Point(1110, 177);
             this.radLabel8.Name = "radLabel8";
             this.radLabel8.Size = new System.Drawing.Size(51, 38);
             this.radLabel8.TabIndex = 1992;
@@ -354,9 +351,8 @@
             this.TxtNumber.AutoSize = false;
             this.TxtNumber.BackColor = System.Drawing.Color.White;
             this.TxtNumber.BorderVisible = true;
-            this.TxtNumber.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbLawyerBindingSource, "Number", true));
             this.TxtNumber.Font = new System.Drawing.Font("Arial", 60F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtNumber.Location = new System.Drawing.Point(732, 53);
+            this.TxtNumber.Location = new System.Drawing.Point(741, 53);
             this.TxtNumber.Name = "TxtNumber";
             // 
             // 
@@ -364,7 +360,7 @@
             this.TxtNumber.RootElement.BorderHighlightThickness = 0;
             this.TxtNumber.Size = new System.Drawing.Size(292, 118);
             this.TxtNumber.TabIndex = 1412;
-            this.TxtNumber.Text = "10";
+            this.TxtNumber.Text = "0";
             this.TxtNumber.TextAlignment = System.Drawing.ContentAlignment.TopRight;
             this.TxtNumber.TextWrap = false;
             this.TxtNumber.ThemeName = "Material";
@@ -375,8 +371,6 @@
             this.CmbPlanGuid.AutoFilter = true;
             this.CmbPlanGuid.AutoSizeDropDownHeight = true;
             this.CmbPlanGuid.AutoSizeDropDownToBestFit = true;
-            this.CmbPlanGuid.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.tbLawyerBindingSource, "PlanGuid", true));
-            this.CmbPlanGuid.DataSource = this.tbPlanInfoBindingSource;
             this.CmbPlanGuid.DisplayMember = "Name";
             this.CmbPlanGuid.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
             // 
@@ -392,63 +386,6 @@
             this.CmbPlanGuid.EditorControl.MasterTemplate.AllowAddNewRow = false;
             this.CmbPlanGuid.EditorControl.MasterTemplate.AllowCellContextMenu = false;
             this.CmbPlanGuid.EditorControl.MasterTemplate.AllowColumnChooser = false;
-            gridViewTextBoxColumn1.DataType = typeof(System.Guid);
-            gridViewTextBoxColumn1.FieldName = "OwnerGuid";
-            gridViewTextBoxColumn1.HeaderText = "OwnerGuid";
-            gridViewTextBoxColumn1.IsAutoGenerated = true;
-            gridViewTextBoxColumn1.IsVisible = false;
-            gridViewTextBoxColumn1.Name = "OwnerGuid";
-            gridViewTextBoxColumn2.DataType = typeof(System.Guid);
-            gridViewTextBoxColumn2.FieldName = "Guid";
-            gridViewTextBoxColumn2.HeaderText = "Guid";
-            gridViewTextBoxColumn2.IsAutoGenerated = true;
-            gridViewTextBoxColumn2.IsVisible = false;
-            gridViewTextBoxColumn2.Name = "Guid";
-            gridViewDecimalColumn1.DataType = typeof(int);
-            gridViewDecimalColumn1.FieldName = "Code";
-            gridViewDecimalColumn1.HeaderText = "Code";
-            gridViewDecimalColumn1.IsAutoGenerated = true;
-            gridViewDecimalColumn1.IsVisible = false;
-            gridViewDecimalColumn1.Name = "Code";
-            gridViewDecimalColumn1.ReadOnly = true;
-            gridViewTextBoxColumn3.FieldName = "Number";
-            gridViewTextBoxColumn3.HeaderText = "Number";
-            gridViewTextBoxColumn3.IsAutoGenerated = true;
-            gridViewTextBoxColumn3.IsVisible = false;
-            gridViewTextBoxColumn3.Name = "Number";
-            gridViewTextBoxColumn4.FieldName = "Name";
-            gridViewTextBoxColumn4.HeaderText = "اسم المخطط";
-            gridViewTextBoxColumn4.IsAutoGenerated = true;
-            gridViewTextBoxColumn4.Name = "Name";
-            gridViewTextBoxColumn5.FieldName = "City";
-            gridViewTextBoxColumn5.HeaderText = "المدينة";
-            gridViewTextBoxColumn5.IsAutoGenerated = true;
-            gridViewTextBoxColumn5.Name = "City";
-            gridViewTextBoxColumn6.FieldName = "Location";
-            gridViewTextBoxColumn6.HeaderText = "الموقع";
-            gridViewTextBoxColumn6.IsAutoGenerated = true;
-            gridViewTextBoxColumn6.Name = "Location";
-            gridViewTextBoxColumn7.FieldName = "Note";
-            gridViewTextBoxColumn7.HeaderText = "Note";
-            gridViewTextBoxColumn7.IsAutoGenerated = true;
-            gridViewTextBoxColumn7.IsVisible = false;
-            gridViewTextBoxColumn7.Name = "Note";
-            gridViewTextBoxColumn8.FieldName = "LastAction";
-            gridViewTextBoxColumn8.HeaderText = "LastAction";
-            gridViewTextBoxColumn8.IsAutoGenerated = true;
-            gridViewTextBoxColumn8.IsVisible = false;
-            gridViewTextBoxColumn8.Name = "LastAction";
-            this.CmbPlanGuid.EditorControl.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn1,
-            gridViewTextBoxColumn2,
-            gridViewDecimalColumn1,
-            gridViewTextBoxColumn3,
-            gridViewTextBoxColumn4,
-            gridViewTextBoxColumn5,
-            gridViewTextBoxColumn6,
-            gridViewTextBoxColumn7,
-            gridViewTextBoxColumn8});
-            this.CmbPlanGuid.EditorControl.MasterTemplate.DataSource = this.tbPlanInfoBindingSource;
             this.CmbPlanGuid.EditorControl.MasterTemplate.EnableFiltering = true;
             this.CmbPlanGuid.EditorControl.MasterTemplate.EnableGrouping = false;
             this.CmbPlanGuid.EditorControl.MasterTemplate.ShowFilteringRow = false;
@@ -460,7 +397,7 @@
             this.CmbPlanGuid.EditorControl.Size = new System.Drawing.Size(240, 150);
             this.CmbPlanGuid.EditorControl.TabIndex = 0;
             this.CmbPlanGuid.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmbPlanGuid.Location = new System.Drawing.Point(975, 177);
+            this.CmbPlanGuid.Location = new System.Drawing.Point(984, 177);
             this.CmbPlanGuid.Name = "CmbPlanGuid";
             this.CmbPlanGuid.NullText = "اختر المخطط";
             this.CmbPlanGuid.Size = new System.Drawing.Size(128, 38);
@@ -477,7 +414,7 @@
             this.TxtStatues.AutoSize = false;
             this.TxtStatues.BackColor = System.Drawing.Color.White;
             this.TxtStatues.Font = new System.Drawing.Font("Arial", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtStatues.Location = new System.Drawing.Point(536, 53);
+            this.TxtStatues.Location = new System.Drawing.Point(545, 53);
             this.TxtStatues.Name = "TxtStatues";
             // 
             // 
@@ -495,10 +432,9 @@
             // 
             this.TxtIDNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtIDNumber.AutoScroll = true;
-            this.TxtIDNumber.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbLawyerBindingSource, "IDNumber", true));
             this.TxtIDNumber.EmbeddedLabelText = "رقم الهوية";
             this.TxtIDNumber.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtIDNumber.Location = new System.Drawing.Point(536, 221);
+            this.TxtIDNumber.Location = new System.Drawing.Point(545, 221);
             this.TxtIDNumber.Name = "TxtIDNumber";
             this.TxtIDNumber.NullText = "ادخل رقم الهوية";
             this.TxtIDNumber.ReadOnly = true;
@@ -515,10 +451,9 @@
             // 
             this.TxtMobile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtMobile.AutoScroll = true;
-            this.TxtMobile.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbLawyerBindingSource, "Mobile", true));
             this.TxtMobile.EmbeddedLabelText = "رقم الجوال";
             this.TxtMobile.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtMobile.Location = new System.Drawing.Point(847, 285);
+            this.TxtMobile.Location = new System.Drawing.Point(856, 285);
             this.TxtMobile.Name = "TxtMobile";
             this.TxtMobile.NullText = "ادخل رقم الجوال";
             this.TxtMobile.ReadOnly = true;
@@ -535,10 +470,9 @@
             // 
             this.TxtLastAction.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtLastAction.AutoScroll = true;
-            this.TxtLastAction.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbLawyerBindingSource, "LastAction", true));
             this.TxtLastAction.EmbeddedLabelText = "العملية الاخيرة";
             this.TxtLastAction.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtLastAction.Location = new System.Drawing.Point(536, 413);
+            this.TxtLastAction.Location = new System.Drawing.Point(545, 476);
             this.TxtLastAction.Multiline = true;
             this.TxtLastAction.Name = "TxtLastAction";
             this.TxtLastAction.ReadOnly = true;
@@ -549,7 +483,7 @@
             this.TxtLastAction.RootElement.StretchVertically = true;
             this.TxtLastAction.ShowEmbeddedLabel = true;
             this.TxtLastAction.ShowNullText = true;
-            this.TxtLastAction.Size = new System.Drawing.Size(305, 104);
+            this.TxtLastAction.Size = new System.Drawing.Size(616, 63);
             this.TxtLastAction.TabIndex = 11512121;
             this.TxtLastAction.TabStop = false;
             this.TxtLastAction.ThemeName = "Material";
@@ -560,10 +494,9 @@
             // 
             this.TxtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtEmail.AutoScroll = true;
-            this.TxtEmail.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbLawyerBindingSource, "Email", true));
             this.TxtEmail.EmbeddedLabelText = "البريد الإلكتروني";
             this.TxtEmail.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtEmail.Location = new System.Drawing.Point(536, 285);
+            this.TxtEmail.Location = new System.Drawing.Point(856, 348);
             this.TxtEmail.Name = "TxtEmail";
             this.TxtEmail.NullText = "ادخل البريد الإلكتروني";
             this.TxtEmail.ReadOnly = true;
@@ -580,10 +513,9 @@
             // 
             this.TxtVatNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtVatNumber.AutoScroll = true;
-            this.TxtVatNumber.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbLawyerBindingSource, "VatNumber", true));
             this.TxtVatNumber.EmbeddedLabelText = "الرقم الضريبي";
             this.TxtVatNumber.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtVatNumber.Location = new System.Drawing.Point(847, 349);
+            this.TxtVatNumber.Location = new System.Drawing.Point(545, 348);
             this.TxtVatNumber.Name = "TxtVatNumber";
             this.TxtVatNumber.NullText = "ادخل الرقم الضريبي";
             this.TxtVatNumber.ReadOnly = true;
@@ -618,32 +550,43 @@
             // 
             // DataGridAttachments
             // 
+            this.DataGridAttachments.AllowShowFocusCues = true;
             this.DataGridAttachments.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DataGridAttachments.Font = new System.Drawing.Font("Traditional Arabic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DataGridAttachments.Location = new System.Drawing.Point(28, 17);
+            this.DataGridAttachments.EnableCodedUITests = true;
+            this.DataGridAttachments.EnableCustomDrawing = true;
+            this.DataGridAttachments.EnableKeyMap = true;
+            this.DataGridAttachments.EnableKineticScrolling = true;
+            this.DataGridAttachments.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DataGridAttachments.Location = new System.Drawing.Point(14, 14);
+            this.DataGridAttachments.Margin = new System.Windows.Forms.Padding(20, 3, 20, 3);
             // 
             // 
             // 
             this.DataGridAttachments.MasterTemplate.AllowAddNewRow = false;
-            this.DataGridAttachments.MasterTemplate.AllowCellContextMenu = false;
             this.DataGridAttachments.MasterTemplate.AllowColumnChooser = false;
             this.DataGridAttachments.MasterTemplate.AllowColumnHeaderContextMenu = false;
             this.DataGridAttachments.MasterTemplate.AllowColumnReorder = false;
+            this.DataGridAttachments.MasterTemplate.AllowColumnResize = false;
             this.DataGridAttachments.MasterTemplate.AllowDeleteRow = false;
             this.DataGridAttachments.MasterTemplate.AllowDragToGroup = false;
             this.DataGridAttachments.MasterTemplate.AllowEditRow = false;
+            this.DataGridAttachments.MasterTemplate.AllowRowReorder = true;
+            this.DataGridAttachments.MasterTemplate.AllowRowResize = false;
             this.DataGridAttachments.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
-            this.DataGridAttachments.MasterTemplate.EnableGrouping = false;
+            this.DataGridAttachments.MasterTemplate.EnableAlternatingRowColor = true;
+            this.DataGridAttachments.MasterTemplate.ShowChildViewCaptions = true;
+            this.DataGridAttachments.MasterTemplate.ShowFilteringRow = false;
             this.DataGridAttachments.MasterTemplate.ViewDefinition = tableViewDefinition2;
             this.DataGridAttachments.Name = "DataGridAttachments";
+            this.DataGridAttachments.ShowChildViewCaptions = true;
             this.DataGridAttachments.ShowGroupPanel = false;
             this.DataGridAttachments.ShowGroupPanelScrollbars = false;
-            this.DataGridAttachments.Size = new System.Drawing.Size(1110, 523);
-            this.DataGridAttachments.TabIndex = 0;
+            this.DataGridAttachments.Size = new System.Drawing.Size(1137, 509);
+            this.DataGridAttachments.TabIndex = 6;
             this.DataGridAttachments.TitleText = "المرفقات";
-            this.DataGridAttachments.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DataGridAttachment_MouseDown);
+            this.DataGridAttachments.ContextMenuOpening += new Telerik.WinControls.UI.ContextMenuOpeningEventHandler(this.DataGridAttachments_ContextMenuOpening);
             // 
             // BtnScanner
             // 
@@ -833,7 +776,7 @@
             this.BtnNew2.DisplayName = "جديد";
             this.BtnNew2.DrawText = false;
             this.BtnNew2.EnableRippleAnimation = true;
-            this.BtnNew2.Image = null;
+            this.BtnNew2.Image = ((System.Drawing.Image)(resources.GetObject("BtnNew2.Image")));
             this.BtnNew2.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.BtnNew2.Name = "BtnNew2";
             this.BtnNew2.Text = " ";
@@ -849,7 +792,7 @@
             this.BtnDelete2.CustomFont = "Roboto";
             this.BtnDelete2.DrawText = false;
             this.BtnDelete2.EnableRippleAnimation = true;
-            this.BtnDelete2.Image = null;
+            this.BtnDelete2.Image = ((System.Drawing.Image)(resources.GetObject("BtnDelete2.Image")));
             this.BtnDelete2.Name = "BtnDelete2";
             this.BtnDelete2.Text = " ";
             this.BtnDelete2.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -1194,64 +1137,6 @@
             this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification2);
             this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification3);
             // 
-            // radDesktopAlert1
-            // 
-            this.radDesktopAlert1.AutoSize = true;
-            this.radDesktopAlert1.CanMove = false;
-            this.radDesktopAlert1.ContentImage = ((System.Drawing.Image)(resources.GetObject("radDesktopAlert1.ContentImage")));
-            this.radDesktopAlert1.FadeAnimationFrames = 20;
-            this.radDesktopAlert1.FadeAnimationType = Telerik.WinControls.UI.FadeAnimationType.None;
-            this.radDesktopAlert1.Opacity = 0.9F;
-            this.radDesktopAlert1.PopupAnimation = false;
-            this.radDesktopAlert1.PopupAnimationFrames = 10;
-            this.radDesktopAlert1.ScreenPosition = Telerik.WinControls.UI.AlertScreenPosition.TopCenter;
-            this.radDesktopAlert1.ShowOptionsButton = false;
-            this.radDesktopAlert1.ShowPinButton = false;
-            // 
-            // AttachmentsContextMenu
-            // 
-            this.AttachmentsContextMenu.Items.AddRange(new Telerik.WinControls.RadItem[] {
-            this.MenuPreviewAttachment,
-            this.MenuExtractAttachement,
-            this.radMenuSeparatorItem1,
-            this.MenuDeleteAttachment});
-            // 
-            // MenuPreviewAttachment
-            // 
-            this.MenuPreviewAttachment.CustomFont = "Roboto";
-            this.MenuPreviewAttachment.EnableElementShadow = false;
-            this.MenuPreviewAttachment.EnableRippleAnimation = true;
-            this.MenuPreviewAttachment.Name = "MenuPreviewAttachment";
-            this.MenuPreviewAttachment.RightToLeft = true;
-            this.MenuPreviewAttachment.Text = "معاينة \\ تشغيل";
-            // 
-            // MenuExtractAttachement
-            // 
-            this.MenuExtractAttachement.CustomFont = "Roboto";
-            this.MenuExtractAttachement.EnableElementShadow = false;
-            this.MenuExtractAttachement.EnableRippleAnimation = true;
-            this.MenuExtractAttachement.Name = "MenuExtractAttachement";
-            this.MenuExtractAttachement.RightToLeft = true;
-            this.MenuExtractAttachement.Text = "إستخراج";
-            // 
-            // radMenuSeparatorItem1
-            // 
-            this.radMenuSeparatorItem1.EnableElementShadow = false;
-            this.radMenuSeparatorItem1.EnableRippleAnimation = true;
-            this.radMenuSeparatorItem1.Name = "radMenuSeparatorItem1";
-            this.radMenuSeparatorItem1.Text = "radMenuSeparatorItem1";
-            this.radMenuSeparatorItem1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // MenuDeleteAttachment
-            // 
-            this.MenuDeleteAttachment.CustomFont = "Roboto";
-            this.MenuDeleteAttachment.Enabled = false;
-            this.MenuDeleteAttachment.EnableElementShadow = false;
-            this.MenuDeleteAttachment.EnableRippleAnimation = true;
-            this.MenuDeleteAttachment.Name = "MenuDeleteAttachment";
-            this.MenuDeleteAttachment.RightToLeft = true;
-            this.MenuDeleteAttachment.Text = "حذف";
-            // 
             // AlertTimer
             // 
             this.AlertTimer.Tick += new System.EventHandler(this.AlertTimer_Tick);
@@ -1268,7 +1153,6 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.Size = new System.Drawing.Size(1177, 713);
             ((System.ComponentModel.ISupportInitialize)(this.TxtNote)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbLawyerBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel23)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel19)).EndInit();
@@ -1278,15 +1162,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.MainContainer)).EndInit();
             this.MainContainer.ResumeLayout(false);
             this.MainContainer.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtMobileAdd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radlabelBookings)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtPublicNumber)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtOfficeName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtNumber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CmbPlanGuid.EditorControl.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CmbPlanGuid.EditorControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CmbPlanGuid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbPlanInfoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtStatues)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtIDNumber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtMobile)).EndInit();
@@ -1307,10 +1191,8 @@
         }
 
         #endregion
-        private Telerik.WinControls.Themes.MaterialTheme materialTheme1;
         private Telerik.WinControls.UI.RadPageView radPageView1;
         private Telerik.WinControls.UI.RadPageViewPage PageAttachments;
-        private Telerik.WinControls.UI.RadGridView DataGridAttachments;
         private Telerik.WinControls.UI.RadPageViewPage PageHome;
         private Telerik.WinControls.UI.CommandBarRowElement commandBarRowElement1;
         private Telerik.WinControls.UI.CommandBarStripElement commandBarStripElement1;
@@ -1346,14 +1228,7 @@
         private Telerik.WinControls.UI.RadButton BtnScanner;
         private Telerik.WinControls.UI.RadButton BtnAttachment;
         private Telerik.WinControls.UI.RadToastNotificationManager radToastNotificationManager1;
-        private Telerik.WinControls.UI.RadDesktopAlert radDesktopAlert1;
         private Telerik.WinControls.UI.RadContextMenuManager radContextMenuManager1;
-        private Telerik.WinControls.UI.RadContextMenu AttachmentsContextMenu;
-        private Telerik.WinControls.UI.RadMenuItem MenuPreviewAttachment;
-        private Telerik.WinControls.UI.RadMenuItem MenuExtractAttachement;
-        private Telerik.WinControls.UI.RadMenuSeparatorItem radMenuSeparatorItem1;
-        private Telerik.WinControls.UI.RadMenuItem MenuDeleteAttachment;
-        private Telerik.WinControls.UI.RadCallout radCallout1;
         private Telerik.WinControls.UI.CommandBarSeparator commandBarSeparator5;
         private Telerik.WinControls.UI.CommandBarDropDownButton BtnExport;
         private Telerik.WinControls.UI.RadMenuItem BtnEcelExport;
@@ -1377,14 +1252,15 @@
         private Telerik.WinControls.UI.RadTextBox TxtEmail;
         private Telerik.WinControls.UI.RadTextBox TxtMobile;
         private Telerik.WinControls.UI.RadTextBox TxtIDNumber;
-        private Telerik.WinControls.UI.RadTextBox TxtPublicNumber;
+        private Telerik.WinControls.UI.RadTextBox TxtOfficeName;
         private Telerik.WinControls.UI.RadTextBox TxtLastAction;
         private Telerik.WinControls.UI.RadLabel radLabel8;
         private Telerik.WinControls.UI.RadMultiColumnComboBox CmbPlanGuid;
         private Telerik.WinControls.UI.RadPanel MainContainer;
         private Telerik.WinControls.UI.RadPanel radPanel2;
-        private System.Windows.Forms.BindingSource tbLawyerBindingSource;
-        private System.Windows.Forms.BindingSource tbPlanInfoBindingSource;
         private Telerik.WinControls.UI.RadLabel radlabelBookings;
+        private Telerik.WinControls.Themes.MaterialTheme materialTheme1;
+        private Telerik.WinControls.UI.RadTextBox TxtMobileAdd;
+        public Telerik.WinControls.UI.RadGridView DataGridAttachments;
     }
 }
