@@ -1,5 +1,4 @@
-﻿using DoctorHelper.Messages;
-using SmartArabXLSX.Vml.Office;
+﻿using SmartArabXLSX.Vml.Office;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -125,8 +124,7 @@ namespace Contract_Management.Dialogs
                 FrmConnection connection = new FrmConnection();
                 if (connection.ShowDialog() == DialogResult.OK)
                 {
-                    Messages messages = new Messages();
-                    messages.MessageInformation("إعدادات إتصال جديدة", "تغيير إعدادات الإتصال", "سوف يتم إعادة تشغيل البرنامج لتطبيق إعدادات الإتصال الجديدة");
+                    DoctorHelper.Messages.Messages.MessageInformation("إعدادات إتصال جديدة", "تغيير إعدادات الإتصال", "سوف يتم إعادة تشغيل البرنامج لتطبيق إعدادات الإتصال الجديدة");
                     Application.Restart();
 
                 }

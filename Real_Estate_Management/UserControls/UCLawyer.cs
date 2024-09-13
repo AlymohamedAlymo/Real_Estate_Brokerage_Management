@@ -1,8 +1,9 @@
 ﻿using DoctorERP.CustomElements;
 using DoctorERP.Helpers;
 using DoctorHelper.Helpers;
-using Helper.Helpers;
+using DoctorHelper.Messages;
 using Real_Estate_Management.Data.DataBase;
+using Real_Estate_Management.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -24,11 +25,9 @@ namespace DoctorERP.User_Controls
 
         private Guid CurrentGuid;
         private bool IsLoad = true, IsNew = false, IsProgrammatic = false, IsDirty = false, ShowConfirmMSG = true;
-        private BindingSource Bs = new BindingSource();
+        public BindingSource Bs = new BindingSource();
         private int CurrentPosition = 0;
-        private readonly DoctorHelper.Messages.Messages MessagesHelper = new DoctorHelper.Messages.Messages();
         private static readonly RadCallout callout = new RadCallout();
-        private RadContextMenu AttachmentsContextMenu = new RadContextMenu();
         public UCLawyer(Guid _guid)
         {
 
@@ -76,21 +75,7 @@ namespace DoctorERP.User_Controls
             this.MainContainer.PanelElement.PanelFill.Visibility = ElementVisibility.Hidden;
             this.MainContainer.BackgroundImage = Real_Estate_Management.Properties.Resources.Background;
             this.MainContainer.BackgroundImageLayout = ImageLayout.Stretch;
-            this.radPanel2.PanelElement.PanelFill.Visibility = ElementVisibility.Hidden;
-            this.radPanel2.BackgroundImage = Real_Estate_Management.Properties.Resources.Background;
-            this.radPanel2.BackgroundImageLayout = ImageLayout.Stretch;
 
-            //this.DataGridAttachments.AutoGenerateHierarchy = true;
-            this.DataGridAttachments.TableElement.CellSpacing = 10;
-            this.DataGridAttachments.RootElement.EnableElementShadow = false;
-            this.DataGridAttachments.GridViewElement.DrawFill = false;
-            this.DataGridAttachments.TableElement.Margin = new Padding(15, 0, 15, 0);
-            this.DataGridAttachments.BackColor = Color.Transparent;
-            this.DataGridAttachments.GridViewElement.DrawFill = true;
-            this.DataGridAttachments.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;
-
-            RadGridLocalizationProvider.CurrentProvider = new MyArabicRadGridLocalizationProvider();
-            DataGridAttachments.TableElement.UpdateView();
 
             var radBarButton = new[] { BtnResfresh, BtnDelete, BtnNew, BtnEdit, BtnExit };
             radBarButton.ForEach(control =>
@@ -129,37 +114,6 @@ namespace DoctorERP.User_Controls
             callout.AutoClose = true;
             callout.CalloutType = Telerik.WinControls.UI.Callout.CalloutType.RoundedRectangle;
             callout.DropShadow = true;
-
-            RadMenuItem customMenuItem = new RadMenuItem
-            {
-                Text = "معاينة - تشغيل"
-            };
-            AttachmentsContextMenu.Items.Add(customMenuItem);
-            RadMenuItem customMenuItem2 = new RadMenuItem
-            {
-                Text = "إستخراج"
-            };
-            AttachmentsContextMenu.Items.Add(customMenuItem2);
-
-            RadMenuSeparatorItem separator = new RadMenuSeparatorItem();
-            AttachmentsContextMenu.Items.Add(separator);
-            RadMenuItem customMenuItem3 = new RadMenuItem
-            {
-                Text = "حذف",
-                Enabled = false
-            };
-            AttachmentsContextMenu.Items.Add(customMenuItem3);
-
-            customMenuItem.Click -= MenuPreviewAttach_Click;
-            customMenuItem.Click += MenuPreviewAttach_Click;
-            customMenuItem2.Click -= MenuExtractAttachment_Click;
-            customMenuItem2.Click += MenuExtractAttachment_Click;
-            customMenuItem3.Click -= MenuDeleteAttachment_Click;
-            customMenuItem3.Click += MenuDeleteAttachment_Click;
-
-
-
-
 
             #endregion
 
@@ -257,7 +211,7 @@ namespace DoctorERP.User_Controls
 
             }
             BtnReservation.Text = obj.Statues.ToString() == "غير نشط" ? "تنشيط" : "إلغاء التنشيط";
-            FillDataGridAttachments(obj.Guid);
+            attachmentControl1.FillDataGridAttachments(obj.Guid);
             BtnDelete.Enabled = true;
             BtnEdit.Enabled = true;
             SetReadOnly(true);
@@ -286,9 +240,9 @@ namespace DoctorERP.User_Controls
             IsNew = true;
             IsDirty = true;
             CurrentGuid = Guid.Empty;
-            BtnAttachment.Enabled = true;
-            BtnScanner.Enabled = true;
-            AttachmentsContextMenu.Items[3].Enabled = true;
+            attachmentControl1.BtnAttachment.Enabled = true;
+            attachmentControl1.BtnScanner.Enabled = true;
+            attachmentControl1.AttachmentsContextMenu.Items[3].Enabled = true;
 
             BtnDelete.Enabled = false;
             BtnEdit.Enabled = false;
@@ -297,7 +251,7 @@ namespace DoctorERP.User_Controls
             BtnNew.Text = "حفظ";
             BtnNew.ScreenTip.Text = "حفظ بطاقة المحامي الجديدة";
             BtnReservation.Text = "إلغاء التنشيط";
-            FillDataGridAttachments(Guid.Empty);
+            attachmentControl1.FillDataGridAttachments(Guid.Empty);
             SetReadOnly(false);
 
             foreach (RadControl control in MainContainer.Controls)
@@ -316,14 +270,14 @@ namespace DoctorERP.User_Controls
 
         private void Add()
         {
-            if (ShowConfirmMSG && !MessagesHelper.MessageWarning("هل أنت متاكد من الإضافة ؟", "إضافة بطاقة محامي", "إذا ضغط علي زر نعم سوف يتم اضافة بطاقة المحامي \n إذا ضغط علي لا سوف يتم تجاهل التغييرات"))
+            if (ShowConfirmMSG && !Messages.MessageWarning("هل أنت متاكد من الإضافة ؟", "إضافة بطاقة محامي", "إذا ضغط علي زر نعم سوف يتم اضافة بطاقة المحامي \n إذا ضغط علي لا سوف يتم تجاهل التغييرات"))
             {
                 IsDirty = false;
                 IsNew = false;
                 CurrentGuid = Guid.Empty;
-                BtnAttachment.Enabled = false;
-                BtnScanner.Enabled = false;
-                AttachmentsContextMenu.Items[3].Enabled = false;
+                attachmentControl1.BtnAttachment.Enabled = false;
+                attachmentControl1.BtnScanner.Enabled = false;
+                attachmentControl1.AttachmentsContextMenu.Items[3].Enabled = false;
 
                 BtnDelete.Enabled = true;
                 BtnEdit.Enabled = true;
@@ -367,17 +321,17 @@ namespace DoctorERP.User_Controls
             TbLog_Rep.AddLog(_PlanGuid, "إضافة", "بطاقة محامي", $"إضافة بطاقة محامي بأسم {TxtName.Text}");
             TbLawyer_Rep.AddLawyer(_PlanGuid, _Guid, int.Parse(TxtNumber.Text), TxtName.Text, TxtMobile.Text, TxtMobileAdd.Text,
                 TxtIDNumber.Text, TxtVatNumber.Text, TxtOfficeName.Text, TxtEmail.Text, TxtNote.Text, internedLastAction);
-            AddAttachments(_Guid);
+            attachmentControl1.AddAttachments(_Guid);
             if (DBConnect.CommitTransAction())
             {
-                ShowNotification("إضافة بطاقة محامي جديدة", "تمت عملية إضافة بطاقة المحامي بنجاح", internedLastAction);
-                ShowDesktopAlert("إضافة بطاقة محامي جديدة", "تمت العملية", "تمت عملية إضافة بطاقة المحامي بنجاح", "بطاقة المحامي الجديدة تمت إضافتها يمكن القيام بالعمليات عليها الأن.");
+                Notifications.ShowNotification(this.components, "إضافة بطاقة محامي جديدة", "تمت عملية إضافة بطاقة المحامي بنجاح", internedLastAction);
+                Notifications.ShowDesktopAlert(this.components,"إضافة بطاقة محامي جديدة", "تمت العملية", "تمت عملية إضافة بطاقة المحامي بنجاح", "بطاقة المحامي الجديدة تمت إضافتها يمكن القيام بالعمليات عليها الأن.");
                 IsDirty = false;
                 IsNew = false;
                 CurrentGuid = _Guid;
-                BtnAttachment.Enabled = false;
-                BtnScanner.Enabled = false;
-                AttachmentsContextMenu.Items[3].Enabled = false;
+                attachmentControl1.BtnAttachment.Enabled = false;
+                attachmentControl1.BtnScanner.Enabled = false;
+                attachmentControl1.AttachmentsContextMenu.Items[3].Enabled = false;
 
                 BtnDelete.Enabled = true;
                 BtnEdit.Enabled = true;
@@ -399,9 +353,9 @@ namespace DoctorERP.User_Controls
                     BtnEdit.Text = "حفظ";
                     BtnEdit.ScreenTip.Text = "حفظ التعديلات";
                     BtnEdit.Image = Real_Estate_Management.Properties.Resources.BtnConform;
-                    BtnAttachment.Enabled = true;
-                    BtnScanner.Enabled = true;
-                    AttachmentsContextMenu.Items[3].Enabled = true;
+                    attachmentControl1.BtnAttachment.Enabled = true;
+                    attachmentControl1.BtnScanner.Enabled = true;
+                    attachmentControl1.AttachmentsContextMenu.Items[3].Enabled = true;
                     BtnDelete.Enabled = false;
                     BtnNew.Enabled = false;
 
@@ -420,14 +374,14 @@ namespace DoctorERP.User_Controls
         {
             tbLawyer Obj = (tbLawyer)Bs.Current;
 
-            if (ShowConfirmMSG && !MessagesHelper.MessageWarning("هل أنت متاكد من التعديل ؟", "تعديل بطاقة محامي", "إذا ضغط علي زر نعم سوف يتم تعديل بطاقة المحامي \n إذا ضغط علي لا سوف يتم تجاهل التغييرات"))
+            if (ShowConfirmMSG && !Messages.MessageWarning("هل أنت متاكد من التعديل ؟", "تعديل بطاقة محامي", "إذا ضغط علي زر نعم سوف يتم تعديل بطاقة المحامي \n إذا ضغط علي لا سوف يتم تجاهل التغييرات"))
             {
                 BtnEdit.Text = "تعديل";
                 BtnEdit.ScreenTip.Text = "تعديل بيانات بطاقة المحامي";
                 BtnEdit.Image = Real_Estate_Management.Properties.Resources.BtnEdite;
-                BtnAttachment.Enabled = false;
-                BtnScanner.Enabled = false;
-                AttachmentsContextMenu.Items[3].Enabled = false;
+                attachmentControl1.BtnAttachment.Enabled = false;
+                attachmentControl1.BtnScanner.Enabled = false;
+                attachmentControl1.AttachmentsContextMenu.Items[3].Enabled = false;
                 BtnDelete.Enabled = true;
                 BtnNew.Enabled = true;
 
@@ -479,19 +433,19 @@ namespace DoctorERP.User_Controls
             DBConnect.StartTransAction();
             TbLog_Rep.AddLog(_PlanGuid, "تعديل", "بطاقة محامي", $"تعديل بطاقة محامي بأسم {TxtName.Text}");
             TbLawyer_Rep.Update(Obj);
-            AddAttachments(Obj.Guid);
+            attachmentControl1.AddAttachments(Obj.Guid);
 
             if (DBConnect.CommitTransAction())
             {
 
-                ShowNotification("تعديل بطاقة محامي", "تمت عملية تعديل بطاقة المحامي بنجاح", internedLastAction);
-                ShowDesktopAlert("تعديل بطاقة محامي", "تمت العملية", "تمت عملية تعديل بطاقة المحامي بنجاح", "تم تعديل بيانات بطاقة المحامي يمكن القيام بالعمليات عليها الأن.");
+                Notifications.ShowNotification(this.components, "تعديل بطاقة محامي", "تمت عملية تعديل بطاقة المحامي بنجاح", internedLastAction);
+                Notifications.ShowDesktopAlert(this.components,"تعديل بطاقة محامي", "تمت العملية", "تمت عملية تعديل بطاقة المحامي بنجاح", "تم تعديل بيانات بطاقة المحامي يمكن القيام بالعمليات عليها الأن.");
                 BtnEdit.Text = "تعديل";
                 BtnEdit.ScreenTip.Text = "تعديل بيانات بطاقة المحامي";
                 BtnEdit.Image = Real_Estate_Management.Properties.Resources.BtnEdite;
-                BtnAttachment.Enabled = false;
-                BtnScanner.Enabled = false;
-                AttachmentsContextMenu.Items[3].Enabled = false;
+                attachmentControl1.BtnAttachment.Enabled = false;
+                attachmentControl1.BtnScanner.Enabled = false;
+                attachmentControl1.AttachmentsContextMenu.Items[3].Enabled = false;
                 BtnDelete.Enabled = true;
                 BtnNew.Enabled = true;
 
@@ -510,7 +464,7 @@ namespace DoctorERP.User_Controls
 
             if (!Check("حذف بطاقة", "حذف بطاقة المحامي", OperationType.OperationIs.Delete, true)) { return; }
 
-            if (ShowConfirmMSG && !MessagesHelper.MessageWarning("هل أنت متاكد من حذف البطاقة ؟", "حذف بطاقة المحامي", "إذا ضغط علي زر نعم سوف يتم حذف بطاقة المحامي \n إذا ضغط علي لا سوف يتم تجاهل التغييرات"))
+            if (ShowConfirmMSG && !Messages.MessageWarning("هل أنت متاكد من حذف البطاقة ؟", "حذف بطاقة المحامي", "إذا ضغط علي زر نعم سوف يتم حذف بطاقة المحامي \n إذا ضغط علي لا سوف يتم تجاهل التغييرات"))
             {
                 IsDirty = false;
                 IsNew = false;
@@ -536,8 +490,8 @@ namespace DoctorERP.User_Controls
                     CurrentDate.ToString("hh:mm tt"));
                 string internedLastAction = string.Intern(_LastAction);
 
-                ShowNotification("حذف بطاقة محامي", "تمت عملية حذف بطاقة المحامي بنجاح", internedLastAction);
-                ShowDesktopAlert("حذف بطاقة محامي", "تمت العملية", "تمت عملية حذف بطاقة المحامي بنجاح", "تم حذف بطاقة المحامي و لا يوجد لها بيانات في قاعدة البيانات الأن.");
+                Notifications.ShowNotification(this.components, "حذف بطاقة محامي", "تمت عملية حذف بطاقة المحامي بنجاح", internedLastAction);
+                Notifications.ShowDesktopAlert(this.components, "حذف بطاقة محامي", "تمت العملية", "تمت عملية حذف بطاقة المحامي بنجاح", "تم حذف بطاقة المحامي و لا يوجد لها بيانات في قاعدة البيانات الأن.");
                 IsDirty = false;
                 IsNew = false;
                 CurrentGuid = NextGuid;
@@ -549,78 +503,29 @@ namespace DoctorERP.User_Controls
         #endregion
 
         #region Main Events
-        #region Default
-        private void ShowDesktopAlert(string Header, string Content, string ContentHighlight, string Footer)
-        {
-            try
-            {
-                Content = TextHelper.ReverseText(Content);
-                ContentHighlight = TextHelper.ReverseText(ContentHighlight);
-                Footer = TextHelper.ReverseText(Footer);
-
-                RadDesktopAlert MyDesktopAlert = new Telerik.WinControls.UI.RadDesktopAlert(this.components)
-                {
-                    AutoClose = true,
-                    AutoCloseDelay = 3,
-                    ShowCloseButton = true,
-                    AutoSize = true,
-                    ContentImage = Real_Estate_Management.Properties.Resources.information50,
-                    FadeAnimationType = Telerik.WinControls.UI.FadeAnimationType.None,
-                    Opacity = 0.9F,
-                    PopupAnimation = false,
-                    RightToLeft = System.Windows.Forms.RightToLeft.No,
-                    ScreenPosition = Telerik.WinControls.UI.AlertScreenPosition.TopCenter,
-                    ShowOptionsButton = false,
-                    ShowPinButton = false,
-                    //CaptionText = "<html><b>\n" + Header,
-                    ContentText = "<html><i>" +
-                    Content +
-                    "</i><b><span><color=Blue>" +
-                    "\n" + ContentHighlight + "\n" +
-                    "</span></b>" +
-                    Footer
-                };
-                MyDesktopAlert.Popup.RootElement.RightToLeft = true;
-                MyDesktopAlert.Show();
-
-            }
-            catch { }
-
-        }
-        private void ShowNotification(string Header, string Content, string Note)
-        {
-            radToastNotificationManager1.ToastNotifications[0].Xml = "<toast launch=\"readMoreArg\">\r\n  <visual>\r\n    <binding template=\"ToastGeneric\">\r\n   " +
-                "   <text>" + Header + "</text>\r\n   " +
-                "   <text>" + Content + "</text>\r\n  " +
-                "    <text placement=\"attribution\">" + Note + "</text>\r\n    </binding>\r\n  </visual>\r\n</toast>";
-            radToastNotificationManager1.ShowNotification(0);
-
-        }
-
-        #endregion
-        private bool Check(string Operation, string Command, OperationType.OperationIs OperType, bool IsAction)
+        public bool Check(string Operation, string Command, OperationType.OperationIs OperType, bool IsAction)
         {
             if (IsAction && IsDirty) { TackAction(); }
             if (!FrmMain.IsPermissionGranted(Operation))
             {
-                MessagesHelper.MessageException(Operation, "لا تملك صلاحية", "لا تملك صلاحية للقيام ب " + Command + " \n تواصل مع المدير.");
+                Messages.MessageException(Operation, "لا تملك صلاحية", "لا تملك صلاحية للقيام ب " + Command + " \n تواصل مع المدير.");
                 return false;
             }
             if (Bs.Current == null)
             {
-                MessagesHelper.MessageException(Operation, "يجب حفظ البطاقة أولا", "قم بحفظ بطاقة المحامي أولاَ و بعد ذلك يمكنك " + Command);
+                Messages.MessageException(Operation, "يجب حفظ البطاقة أولا", "قم بحفظ بطاقة المحامي أولاَ و بعد ذلك يمكنك " + Command);
                 return false;
             }
             tbLawyer Obj = (tbLawyer)Bs.Current;
             Dictionary<bool, string> Check = CheckifOprAllow(Obj, OperType, IsAction);
             if (!Check.Keys.First() && !Operation.Contains("جديد"))
             {
-                MessagesHelper.MessageException(Operation, "لا يمكن " + Command, Check.Values.First());
+                Messages.MessageException(Operation, "لا يمكن " + Command, Check.Values.First());
                 return false;
             }
             if (Obj is null)
             {
-                MessagesHelper.MessageException(Operation, "يجب حفظ البطاقة أولا", "قم بحفظ بطاقة المحامي أولاَ و بعد ذلك يمكنك " + Command);
+                Messages.MessageException(Operation, "يجب حفظ البطاقة أولا", "قم بحفظ بطاقة المحامي أولاَ و بعد ذلك يمكنك " + Command);
                 return false;
             }
             return true;
@@ -706,7 +611,7 @@ namespace DoctorERP.User_Controls
 
         public void TackAction()
         {
-            bool Confirm = MessagesHelper.MessageWarning("بطاقة المحامي", "هل تريد حفظ التغيرات ؟", "إذا ضغت علي زر نعم سوف يتم حفظ البيان المفتوح");
+            bool Confirm = Messages.MessageWarning("بطاقة المحامي", "هل تريد حفظ التغيرات ؟", "إذا ضغت علي زر نعم سوف يتم حفظ البيان المفتوح");
             if (Confirm)
             {
                 ShowConfirmMSG = false;
@@ -738,9 +643,9 @@ namespace DoctorERP.User_Controls
                     BtnEdit.Text = "تعديل";
                     BtnEdit.ScreenTip.Text = "تعديل بيانات بطاقة محامي";
                     BtnEdit.Image = Real_Estate_Management.Properties.Resources.BtnEdite;
-                    BtnAttachment.Enabled = false;
-                    BtnScanner.Enabled = false;
-                    AttachmentsContextMenu.Items[3].Enabled = false;
+                    attachmentControl1.BtnAttachment.Enabled = false;
+                    attachmentControl1.BtnScanner.Enabled = false;
+                    attachmentControl1.AttachmentsContextMenu.Items[3].Enabled = false;
 
                     SetReadOnly(true);
                     IsProgrammatic = false;
@@ -855,7 +760,7 @@ namespace DoctorERP.User_Controls
                             TbLawyer_Rep.Update(Obj);
                             if (DBConnect.CommitTransAction())
                             {
-                                ShowDesktopAlert("إلغاء تنشيط بطاقة محامي", "إلغاء تنشيط بطاقة المحامي", "تمت عملية إلغاء تنشيط البطاقة بنجاح", "تم إلغاء تنشيط بطاقة المحامي لا يمكن القيام بالعمليات عليها الأن.");
+                                Notifications.ShowDesktopAlert(this.components, "إلغاء تنشيط بطاقة محامي", "إلغاء تنشيط بطاقة المحامي", "تمت عملية إلغاء تنشيط البطاقة بنجاح", "تم إلغاء تنشيط بطاقة المحامي لا يمكن القيام بالعمليات عليها الأن.");
                             }
 
                             string ReserveReason = $"{content.ReserveReason}";
@@ -962,7 +867,7 @@ namespace DoctorERP.User_Controls
             tbLawyer Obj = (tbLawyer)Bs.Current;
             if (Obj.Statues.Equals("غير نشط"))
             {
-                if (ShowConfirmMSG && !MessagesHelper.MessageWarning("تنشيط بطاقة المحامي", "هل أنت متأكد من تنشيط هذه البطاقة ؟", "إذا ضغط علي زر نعم سوف يتم تنشيط بطاقة المحامي \n إذا ضغط علي لا سوف يتم تجاهل التغييرات"))
+                if (ShowConfirmMSG && !Messages.MessageWarning("تنشيط بطاقة المحامي", "هل أنت متأكد من تنشيط هذه البطاقة ؟", "إذا ضغط علي زر نعم سوف يتم تنشيط بطاقة المحامي \n إذا ضغط علي لا سوف يتم تجاهل التغييرات"))
                 {
                     return;
                 }
@@ -973,12 +878,12 @@ namespace DoctorERP.User_Controls
                 TbLawyer_Rep.Update(Obj);
                 if (DBConnect.CommitTransAction())
                 {
-                    ShowDesktopAlert("تنشيط بطاقة المحامي", "تمت العملية", "تمت عملية تنشيط بطاقة المحامي بنجاح", "تم تنشيط بطاقة المحامي لا يمكن القيام بالعمليات عليها الأن.");
+                    Notifications.ShowDesktopAlert(this.components, "تنشيط بطاقة المحامي", "تمت العملية", "تمت عملية تنشيط بطاقة المحامي بنجاح", "تم تنشيط بطاقة المحامي لا يمكن القيام بالعمليات عليها الأن.");
                 }
             }
             else
             {
-                if (ShowConfirmMSG && !MessagesHelper.MessageWarning("تنشيط بطاقة المحامي", "هل أنت متأكد من إلغاء تنشيط هذه البطاقة ؟", "إذا ضغط علي زر نعم سوف يتم إلغاء تنشيط بطاقة المحامي \n إذا ضغط علي لا سوف يتم تجاهل التغييرات"))
+                if (ShowConfirmMSG && !Messages.MessageWarning("تنشيط بطاقة المحامي", "هل أنت متأكد من إلغاء تنشيط هذه البطاقة ؟", "إذا ضغط علي زر نعم سوف يتم إلغاء تنشيط بطاقة المحامي \n إذا ضغط علي لا سوف يتم تجاهل التغييرات"))
                 {
                     return;
                 }
@@ -1113,7 +1018,7 @@ namespace DoctorERP.User_Controls
 
             CurrentGuid = Guid.Empty;
             SetData();
-            ShowDesktopAlert("تحديث البيانات", "تمت العملية", "تمت عملية تحديث البيانات بنجاح", "تم تحديث البيانات و يمكن القيام بالعمليات عليها الأن.");
+            Notifications.ShowDesktopAlert(this.components, "تحديث البيانات", "تمت العملية", "تمت عملية تحديث البيانات بنجاح", "تم تحديث البيانات و يمكن القيام بالعمليات عليها الأن.");
 
             AlertTimer.Start();
             if (RadOverlayManager.IsActive) { RadOverlayManager.Close(); }
@@ -1134,7 +1039,7 @@ namespace DoctorERP.User_Controls
 
             if (Obj is null || Obj.Guid.Equals(Guid.Empty))
             {
-                ShowDesktopAlert("الطباعة", "فشلت العملية", "يجب حفظ البطاقة أولاً", "يجب حفظ البطاقة أولاً ثم يمكنك طباعتها.");
+                Notifications.ShowDesktopAlert(this.components, "الطباعة", "فشلت العملية", "يجب حفظ البطاقة أولاً", "يجب حفظ البطاقة أولاً ثم يمكنك طباعتها.");
                 return false;
             }
 
@@ -1164,7 +1069,6 @@ namespace DoctorERP.User_Controls
                 Reports.DesignReport(report);
 
                 RadOverlayManager.Close();
-                //this.ParentForm.Activate();
 
             }
 
@@ -1216,86 +1120,11 @@ namespace DoctorERP.User_Controls
 
         #endregion
 
-        #region Attach
-
-        private void FillDataGridAttachments(Guid parentguid)
-        {
-
-
-            tbAttachment.Fill("ParentGuid", parentguid);
-            DataGridAttachments.DataSource = tbAttachment.lstData;
-
-            DataGridAttachments.Columns[0].IsVisible = false;
-            DataGridAttachments.Columns[1].IsVisible = false;
-            DataGridAttachments.Columns[2].IsVisible = false;
-            DataGridAttachments.Columns[5].IsVisible = false;
-
-            DataGridAttachments.Columns[3].HeaderText = "اسم الملف";
-            DataGridAttachments.Columns[4].HeaderText = "الحجم";
-
-            this.DataGridAttachments.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;
-
-
-            foreach (GridViewDataColumn col in this.DataGridAttachments.Columns)
-            {
-                col.TextAlignment = ContentAlignment.MiddleCenter;
-                col.HeaderTextAlignment = ContentAlignment.MiddleCenter;
-            }
-
-        }
-        private void AddAttachments(Guid parentguid)
-        {
-
-            foreach (Telerik.WinControls.UI.GridViewRowInfo dr in DataGridAttachments.Rows)
-            {
-                tbAttachment tbAttach = new tbAttachment
-                {
-                    Guid = new Guid(dr.Cells[0].Value.ToString())
-                };
-                if (!tbAttachment.IsExistTrans(tbAttach.Guid, parentguid))
-                {
-                    dr.Cells[0].Value = tbAttach.Guid = Guid.NewGuid();
-                    tbAttach.ParentGuid = parentguid;
-                    tbAttach.Name = dr.Cells[2].Value.ToString();
-                    tbAttach.FileName = dr.Cells[3].Value.ToString();
-                    tbAttach.FileSize = dr.Cells[4].Value.ToString();
-                    tbAttach.FileData = (byte[])dr.Cells[5].Value;
-
-                    tbAttach.Insert();
-                }
-            }
-
-            UpdateAttachments(parentguid);
-        }
-
-        private void UpdateAttachments(Guid parentguid)
-        {
-
-            tbAttachment.FillTrans(parentguid);
-            foreach (tbAttachment attach in tbAttachment.lstData)
-            {
-                if (!IsAttachExist(attach.Guid))
-                {
-                    tbAttachment tbAttach = new tbAttachment();
-                    tbAttach.DeleteBy("Guid", attach.Guid);
-                }
-
-            }
-        }
-
-        bool IsAttachExist(Guid guid)
-        {
-            foreach (Telerik.WinControls.UI.GridViewRowInfo dr in DataGridAttachments.Rows)
-            {
-                Guid AttachGuid = new Guid(dr.Cells[0].Value.ToString());
-                if (AttachGuid.Equals(guid))
-                    return true;
-            }
-            return false;
-        }
+        #region Attachments
 
         private void BtnAddAttachment_Click(object sender, EventArgs e)
         {
+            if (!Check("اضافة مرفق", "تصدير البيانات", OperationType.OperationIs.Edit, false)) { return; }
 
             OpenFileDialog opf = new OpenFileDialog
             {
@@ -1305,7 +1134,6 @@ namespace DoctorERP.User_Controls
 
             if (opf.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-
                 tbAttachment tbattach = new tbAttachment();
                 tbattach.Guid = Guid.NewGuid();
                 tbattach.ParentGuid = ((tbLawyer)Bs.Current).Guid;
@@ -1314,42 +1142,57 @@ namespace DoctorERP.User_Controls
                 tbattach.FileData = FileHelper.FileToByteArray(opf.FileName);
                 if (tbattach.FileData.Length > 10000000)
                 {
-                    ShowDesktopAlert("إضافة المرفقات", "فشلت العملية", "تمت إضافة المرفقات", "لا يمكن إضافة مرفق بحجم أكبر من 10 ميغا بايت.");
+                    DoctorHelper.Messages.Notifications.ShowDesktopAlert(this.components, "إضافة المرفقات", "فشلت العملية",
+                        "تمت إضافة المرفقات", "لا يمكن إضافة مرفق بحجم أكبر من 10 ميغا بايت.");
                     return;
                 }
                 this.Cursor = Cursors.WaitCursor;
-
-
                 tbattach.FileSize = string.Format(new FileSizeFormatProvider(), "{0:fs}", tbattach.FileData.Length);
                 tbAttachment.dtData.Rows.Add(tbattach.Guid, tbattach.ParentGuid, tbattach.Name, tbattach.FileName, tbattach.FileSize, tbattach.FileData);
-                DataGridAttachments.DataSource = tbAttachment.dtData;
+                attachmentControl1.DataGridAttachments.DataSource = tbAttachment.dtData;
                 this.Cursor = Cursors.Arrow;
 
-
             }
-        }
-
-        private void DataGridAttachment_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (BtnEdit.Text == "حفظ") { AttachmentsContextMenu.Items[3].Enabled = true; }
-            else if (BtnEdit.Text != "حفظ") { AttachmentsContextMenu.Items[3].Enabled = false; }
 
         }
 
-        private void DataGridAttachments_ContextMenuOpening(object sender, ContextMenuOpeningEventArgs e)
+        private void BtnScanner_Click(object sender, EventArgs e)
         {
-            if (!(e.ContextMenu is RadDropDownMenu)) { return; }
-            e.ContextMenu = AttachmentsContextMenu.DropDown;
+            if (!Check("جلب من الماسح الضوئي", "تصدير البيانات", OperationType.OperationIs.Add, false)) { return; }
+
+            FrmScanImage2 frmscan = new FrmScanImage2();
+            if (frmscan.ShowDialog() == DialogResult.OK)
+            {
+                if (frmscan.imgSc.fbytes.Length <= 0)
+                {
+                    Notifications.ShowDesktopAlert(this.components, "إضافة مرفقات", "لم يتم إضافة المرفق", "الملف غير صالح", "حدد ملف صالح ثم اعد المحاولة مرة آخرى.");
+                    return;
+                }
+                tbAttachment tbattach = new tbAttachment();
+                tbattach.Guid = Guid.NewGuid();
+                tbattach.ParentGuid = Guid.Empty;
+                tbattach.Name = System.IO.Path.GetFileName(frmscan.imgSc.filename);
+                tbattach.FileName = tbattach.Name;
+
+                tbattach.FileData = frmscan.imgSc.fbytes;
+                tbattach.FileSize = string.Format(new FileSizeFormatProvider(), "{0:fs}", tbattach.FileData.Length);
+                tbAttachment.dtData.Rows.Add(tbattach.Guid, tbattach.ParentGuid, tbattach.Name, tbattach.FileName, tbattach.FileSize, tbattach.FileData);
+                attachmentControl1.DataGridAttachments.DataSource = tbAttachment.lstData;
+            }
+            else
+            {
+                Notifications.ShowDesktopAlert(this.components, "إضافة مرفقات", "لم يتم إضافة المرفق", "تم إلغاء العملية", "قام المستخدم بإلغاء العملية.");
+            }
+
         }
 
         private void MenuPreviewAttach_Click(object sender, EventArgs e)
         {
-            RadMenuItem toolmenu = (RadMenuItem)sender;
-            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Print, false)) { return; }
+            if (!Check("معاينة مرفق", "تصدير البيانات", OperationType.OperationIs.Print, false)) { return; }
 
-            byte[] bfiles = (byte[])DataGridAttachments.CurrentRow.Cells[5].Value;
-            Guid guid = new Guid(DataGridAttachments.CurrentRow.Cells[0].Value.ToString());
-            string filename = DataGridAttachments.CurrentRow.Cells[3].Value.ToString();
+            byte[] bfiles = (byte[])attachmentControl1.DataGridAttachments.CurrentRow.Cells[5].Value;
+            Guid guid = new Guid(attachmentControl1.DataGridAttachments.CurrentRow.Cells[0].Value.ToString());
+            string filename = attachmentControl1.DataGridAttachments.CurrentRow.Cells[3].Value.ToString();
 
             tbAttachment attach = tbAttachment.FindByFull("guid", guid);
 
@@ -1362,18 +1205,20 @@ namespace DoctorERP.User_Controls
 
         private void MenuExtractAttachment_Click(object sender, EventArgs e)
         {
-            RadMenuItem toolmenu = (RadMenuItem)sender;
-            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Print, false)) { return; }
+            if (!Check("استخراج مرفق", "تصدير البيانات", OperationType.OperationIs.Print, false)) { return; }
             SaveFileDialog sfd = new SaveFileDialog
             {
                 RestoreDirectory = true,
                 Filter = "All Files (*.*)|*.*"
             };
 
-            byte[] bfiles = (byte[])DataGridAttachments.CurrentRow.Cells[5].Value;
-            Guid guid = new Guid(DataGridAttachments.CurrentRow.Cells[0].Value.ToString());
+            byte[] bfiles = (byte[])attachmentControl1.DataGridAttachments.CurrentRow.Cells[5].Value;
+            Guid guid = new Guid(attachmentControl1.DataGridAttachments.CurrentRow.Cells[0].Value.ToString());
             tbAttachment attach = tbAttachment.FindByFull("guid", guid);
-            sfd.FileName = attach.Name;
+
+            string filename = attach.Guid == Guid.Empty ? attachmentControl1.DataGridAttachments.CurrentRow.Cells[2].Value.ToString()
+                : attach.Name;
+            sfd.FileName = filename;
 
             if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
@@ -1384,57 +1229,26 @@ namespace DoctorERP.User_Controls
                     else
                         FileHelper.ByteArraytoFile(bfiles, sfd.FileName);
 
-                    ShowDesktopAlert("إستخراج المرفقات", "تمت العملية", "تمت إستخراج المرفقات بنجاح", "تم عملية إستخراج المرفقات بنجاح و يمكن القيام بالعمليات عليها الأن.");
+                    Notifications.ShowDesktopAlert(this.components, "إستخراج المرفقات", "تمت العملية", "تمت إستخراج المرفقات بنجاح", "تم عملية إستخراج المرفقات بنجاح و يمكن القيام بالعمليات عليها الأن.");
 
                 }
                 catch (Exception)
                 {
-                    ShowDesktopAlert("إستخراج المرفقات", "حدث خطأ", "لم يتم إستخراج المرفقات بنجاح", "حدث خطأ عند إستخراج المرفقات.");
+                    Notifications.ShowDesktopAlert(this.components, "إستخراج المرفقات", "حدث خطأ", "لم يتم إستخراج المرفقات بنجاح", "حدث خطأ عند إستخراج المرفقات.");
                 }
             }
         }
 
         private void MenuDeleteAttachment_Click(object sender, EventArgs e)
         {
-            RadMenuItem toolmenu = (RadMenuItem)sender;
-            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Delete, false)) { return; }
+            if (!Check("حذف مرفق", "تصدير البيانات", OperationType.OperationIs.Delete, false)) { return; }
 
-            DataGridAttachments.Rows.RemoveAt(DataGridAttachments.CurrentRow.Index);
+            attachmentControl1.DataGridAttachments.Rows.RemoveAt(attachmentControl1.DataGridAttachments.CurrentRow.Index);
         }
 
-        private void BtnScanner_Click(object sender, EventArgs e)
-        {
-            RadButton toolmenu = (RadButton)sender;
-            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Add, false)) { return; }
-
-            FrmScanImage2 frmscan = new FrmScanImage2();
-            if (frmscan.ShowDialog() == DialogResult.OK)
-            {
-                if (frmscan.imgSc.fbytes.Length <= 0)
-                {
-                    ShowDesktopAlert("إضافة مرفقات", "لم يتم إضافة المرفق", "الملف غير صالح", "حدد ملف صالح ثم اعد المحاولة مرة آخرى.");
-                    return;
-                }
-                tbAttachment tbattach = new tbAttachment();
-                tbattach.Guid = Guid.NewGuid();
-                tbattach.ParentGuid = Guid.Empty;
-                tbattach.Name = System.IO.Path.GetFileName(frmscan.imgSc.filename);
-                tbattach.FileName = tbattach.Name;
-
-                tbattach.FileData = frmscan.imgSc.fbytes;
-                tbattach.FileSize = string.Format(new FileSizeFormatProvider(), "{0:fs}", tbattach.FileData.Length);
-                tbAttachment.dtData.Rows.Add(tbattach.Guid, tbattach.ParentGuid, tbattach.Name, tbattach.FileName, tbattach.FileSize, tbattach.FileData);
-                DataGridAttachments.DataSource = tbAttachment.lstData;
-            }
-            else
-            {
-                ShowDesktopAlert("إضافة مرفقات", "لم يتم إضافة المرفق", "تم إلغاء العملية", "قام المستخدم بإلغاء العملية.");
-            }
-        }
 
 
         #endregion
-
 
     }
 }

@@ -1,7 +1,7 @@
 ﻿using DoctorERP.CustomElements;
 using DoctorERP.Helpers;
 using DoctorHelper.Helpers;
-using Helper.Helpers;
+using Real_Estate_Management.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -247,7 +247,7 @@ namespace DoctorERP.User_Controls
                 "\n" + ContentHighlight + "\n" +
                 "</span></b>" +
                 Footer;
-            radDesktopAlert1.ContentImage = Real_Estate_Management.Properties.Resources.information50;
+            //radDesktopAlert1.ContentImage = Real_Estate_Management.Properties.Resources.information50;
             radDesktopAlert1.Opacity = 0.9f;
             radDesktopAlert1.Show();
 

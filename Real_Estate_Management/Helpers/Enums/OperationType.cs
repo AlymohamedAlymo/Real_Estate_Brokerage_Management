@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DoctorERP.Helpers
+namespace Real_Estate_Management.Helpers
 {
     public class OperationType
     {

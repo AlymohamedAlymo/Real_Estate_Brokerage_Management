@@ -758,16 +758,6 @@ namespace Real_Estate_Management.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap information50 {
-            get {
-                object obj = ResourceManager.GetObject("information50", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to GO
         ///DELETE FROM dataNew.[dbo].tbAccount
         ///INSERT INTO dataNew.[dbo].tbAccount
@@ -1161,14 +1151,26 @@ namespace Real_Estate_Management.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to GO
-        ///
-        ///ALTER TABLE [dbo].[tbSaleOrder]
-        ///ADD lastaction varchar(255);
+        ///   Looks up a localized string similar to USE [realestatebrokermanagement]
         ///GO
         ///
-        ///UPDATE [dbo].[tbSaleOrder] set lastaction = &apos;&apos;
-        ///GO.
+        ////****** Object:  Table [dbo].[tbLawyer]    Script Date: 9/11/2024 6:26:38 PM ******/
+        ///SET ANSI_NULLS ON
+        ///GO
+        ///
+        ///SET QUOTED_IDENTIFIER ON
+        ///GO
+        ///
+        ///CREATE TABLE [dbo].[tbLawyer](
+        ///	[PlanGuid] [uniqueidentifier] NOT NULL,
+        ///	[Guid] [uniqueidentifier] ROWGUIDCOL  NOT NULL,
+        ///	[Code] [int] IDENTITY(1,1) NOT NULL,
+        ///	[Statues] [varchar](10) NULL,
+        ///	[Number] [int] NULL,
+        ///	[Name] [varchar](25) NULL,
+        ///	[IDNumber] [varchar](50) NULL,
+        ///	[Mobile] [varchar](25) NULL,
+        ///	[Email] [varchar] [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string UpdateDataBase {
             get {

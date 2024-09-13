@@ -30,11 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCLawyer));
-            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification1 = new Telerik.RadToastNotificationManager.RadToastNotification();
-            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification2 = new Telerik.RadToastNotificationManager.RadToastNotification();
-            Telerik.RadToastNotificationManager.RadToastNotification radToastNotification3 = new Telerik.RadToastNotificationManager.RadToastNotification();
             this.TxtNote = new Telerik.WinControls.UI.RadTextBox();
             this.TxtName = new Telerik.WinControls.UI.RadTextBox();
             this.radLabel23 = new Telerik.WinControls.UI.RadLabel();
@@ -56,10 +52,6 @@
             this.TxtEmail = new Telerik.WinControls.UI.RadTextBox();
             this.TxtVatNumber = new Telerik.WinControls.UI.RadTextBox();
             this.PageAttachments = new Telerik.WinControls.UI.RadPageViewPage();
-            this.radPanel2 = new Telerik.WinControls.UI.RadPanel();
-            this.DataGridAttachments = new Telerik.WinControls.UI.RadGridView();
-            this.BtnScanner = new Telerik.WinControls.UI.RadButton();
-            this.BtnAttachment = new Telerik.WinControls.UI.RadButton();
             this.BindingNavigatorClient = new Telerik.WinControls.UI.RadBindingNavigator();
             this.commandBarRowElement1 = new Telerik.WinControls.UI.CommandBarRowElement();
             this.commandBarStripElement1 = new Telerik.WinControls.UI.CommandBarStripElement();
@@ -102,9 +94,9 @@
             this.BtnNew = new Telerik.WinControls.UI.CommandBarButton();
             this.BtnEdit = new Telerik.WinControls.UI.CommandBarButton();
             this.BtnExit = new Telerik.WinControls.UI.CommandBarButton();
-            this.radToastNotificationManager1 = new Telerik.WinControls.UI.RadToastNotificationManager(this.components);
             this.AlertTimer = new System.Windows.Forms.Timer(this.components);
             this.materialTheme1 = new Telerik.WinControls.Themes.MaterialTheme();
+            this.attachmentControl1 = new Real_Estate_Management.AttachmentControl();
             ((System.ComponentModel.ISupportInitialize)(this.TxtNote)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel23)).BeginInit();
@@ -130,12 +122,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.TxtEmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtVatNumber)).BeginInit();
             this.PageAttachments.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).BeginInit();
-            this.radPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridAttachments)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridAttachments.MasterTemplate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BtnScanner)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BtnAttachment)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BindingNavigatorClient)).BeginInit();
             this.SuspendLayout();
             // 
@@ -529,87 +515,12 @@
             // 
             // PageAttachments
             // 
-            this.PageAttachments.Controls.Add(this.radPanel2);
+            this.PageAttachments.Controls.Add(this.attachmentControl1);
             this.PageAttachments.ItemSize = new System.Drawing.SizeF(66F, 49F);
             this.PageAttachments.Location = new System.Drawing.Point(6, 6);
             this.PageAttachments.Name = "PageAttachments";
             this.PageAttachments.Size = new System.Drawing.Size(1165, 603);
             this.PageAttachments.Text = "مرفقات";
-            // 
-            // radPanel2
-            // 
-            this.radPanel2.Controls.Add(this.DataGridAttachments);
-            this.radPanel2.Controls.Add(this.BtnScanner);
-            this.radPanel2.Controls.Add(this.BtnAttachment);
-            this.radPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radPanel2.Location = new System.Drawing.Point(0, 0);
-            this.radPanel2.Name = "radPanel2";
-            this.radPanel2.Size = new System.Drawing.Size(1165, 603);
-            this.radPanel2.TabIndex = 11512124;
-            // 
-            // DataGridAttachments
-            // 
-            this.DataGridAttachments.AllowShowFocusCues = true;
-            this.DataGridAttachments.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.DataGridAttachments.EnableCodedUITests = true;
-            this.DataGridAttachments.EnableCustomDrawing = true;
-            this.DataGridAttachments.EnableKeyMap = true;
-            this.DataGridAttachments.EnableKineticScrolling = true;
-            this.DataGridAttachments.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DataGridAttachments.Location = new System.Drawing.Point(20, 63);
-            this.DataGridAttachments.Margin = new System.Windows.Forms.Padding(20, 3, 20, 3);
-            // 
-            // 
-            // 
-            this.DataGridAttachments.MasterTemplate.AllowAddNewRow = false;
-            this.DataGridAttachments.MasterTemplate.AllowColumnChooser = false;
-            this.DataGridAttachments.MasterTemplate.AllowColumnHeaderContextMenu = false;
-            this.DataGridAttachments.MasterTemplate.AllowColumnReorder = false;
-            this.DataGridAttachments.MasterTemplate.AllowColumnResize = false;
-            this.DataGridAttachments.MasterTemplate.AllowDeleteRow = false;
-            this.DataGridAttachments.MasterTemplate.AllowDragToGroup = false;
-            this.DataGridAttachments.MasterTemplate.AllowEditRow = false;
-            this.DataGridAttachments.MasterTemplate.AllowRowReorder = true;
-            this.DataGridAttachments.MasterTemplate.AllowRowResize = false;
-            this.DataGridAttachments.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
-            this.DataGridAttachments.MasterTemplate.EnableAlternatingRowColor = true;
-            this.DataGridAttachments.MasterTemplate.ShowChildViewCaptions = true;
-            this.DataGridAttachments.MasterTemplate.ShowFilteringRow = false;
-            this.DataGridAttachments.MasterTemplate.ViewDefinition = tableViewDefinition2;
-            this.DataGridAttachments.Name = "DataGridAttachments";
-            this.DataGridAttachments.ShowChildViewCaptions = true;
-            this.DataGridAttachments.ShowGroupPanel = false;
-            this.DataGridAttachments.ShowGroupPanelScrollbars = false;
-            this.DataGridAttachments.Size = new System.Drawing.Size(1125, 509);
-            this.DataGridAttachments.TabIndex = 6;
-            this.DataGridAttachments.TitleText = "المرفقات";
-            this.DataGridAttachments.ContextMenuOpening += new Telerik.WinControls.UI.ContextMenuOpeningEventHandler(this.DataGridAttachments_ContextMenuOpening);
-            // 
-            // BtnScanner
-            // 
-            this.BtnScanner.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnScanner.Enabled = false;
-            this.BtnScanner.Location = new System.Drawing.Point(830, 16);
-            this.BtnScanner.Name = "BtnScanner";
-            this.BtnScanner.Size = new System.Drawing.Size(172, 36);
-            this.BtnScanner.TabIndex = 2;
-            this.BtnScanner.Text = "جلب من الماسح الضوئي";
-            this.BtnScanner.ThemeName = "Material";
-            this.BtnScanner.Click += new System.EventHandler(this.BtnScanner_Click);
-            // 
-            // BtnAttachment
-            // 
-            this.BtnAttachment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnAttachment.Enabled = false;
-            this.BtnAttachment.Location = new System.Drawing.Point(1008, 16);
-            this.BtnAttachment.Name = "BtnAttachment";
-            this.BtnAttachment.Size = new System.Drawing.Size(120, 36);
-            this.BtnAttachment.TabIndex = 1;
-            this.BtnAttachment.Text = "إضافة مرفق";
-            this.BtnAttachment.ThemeName = "Material";
-            this.BtnAttachment.Click += new System.EventHandler(this.BtnAddAttachment_Click);
             // 
             // BindingNavigatorClient
             // 
@@ -1111,34 +1022,22 @@
             this.BtnExit.TextOrientation = System.Windows.Forms.Orientation.Horizontal;
             this.BtnExit.Click += new System.EventHandler(this.MenuExit_Click);
             // 
-            // radToastNotificationManager1
-            // 
-            radToastNotification1.BindingData = null;
-            radToastNotification1.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
-            radToastNotification1.Name = "ToastNews1";
-            radToastNotification1.Tag = null;
-            radToastNotification1.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastNews;
-            radToastNotification1.Xml = null;
-            radToastNotification2.BindingData = null;
-            radToastNotification2.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
-            radToastNotification2.Name = "ToastLegacy1";
-            radToastNotification2.Tag = null;
-            radToastNotification2.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastLegacy;
-            radToastNotification2.Xml = null;
-            radToastNotification3.BindingData = null;
-            radToastNotification3.DeliveryTime = new System.DateTimeOffset(1, 1, 1, 0, 0, 0, 0, System.TimeSpan.Parse("00:00:00"));
-            radToastNotification3.Name = "ToastGeneric1";
-            radToastNotification3.Tag = null;
-            radToastNotification3.TemplateType = Telerik.RadToastNotificationManager.RadToastTemplateType.ToastGeneric;
-            radToastNotification3.Xml = "<toast>\n  <visual>\n    <binding template=\"ToastGeneric\"></binding>\n  </visual>\n</" +
-    "toast>";
-            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification1);
-            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification2);
-            this.radToastNotificationManager1.ToastNotifications.Add(radToastNotification3);
-            // 
             // AlertTimer
             // 
             this.AlertTimer.Tick += new System.EventHandler(this.AlertTimer_Tick);
+            // 
+            // attachmentControl1
+            // 
+            this.attachmentControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.attachmentControl1.Location = new System.Drawing.Point(0, 0);
+            this.attachmentControl1.Name = "attachmentControl1";
+            this.attachmentControl1.Size = new System.Drawing.Size(1165, 603);
+            this.attachmentControl1.TabIndex = 0;
+            this.attachmentControl1.MenuPreviewAttach_Click += new System.EventHandler(this.MenuPreviewAttach_Click);
+            this.attachmentControl1.MenuExtractAttachment_Click += new System.EventHandler(this.MenuExtractAttachment_Click);
+            this.attachmentControl1.MenuDeleteAttachment_Click += new System.EventHandler(this.MenuDeleteAttachment_Click);
+            this.attachmentControl1.BtnAddAttachment_Click += new System.EventHandler(this.BtnAddAttachment_Click);
+            this.attachmentControl1.BtnScanner_Click += new System.EventHandler(this.BtnScanner_Click);
             // 
             // UCLawyer
             // 
@@ -1177,12 +1076,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.TxtEmail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtVatNumber)).EndInit();
             this.PageAttachments.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).EndInit();
-            this.radPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridAttachments.MasterTemplate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridAttachments)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BtnScanner)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BtnAttachment)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BindingNavigatorClient)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1224,9 +1117,6 @@
         private Telerik.WinControls.UI.RadMenuItem BtnSentToPrinter;
         private Telerik.WinControls.UI.RadMenuItem BtnPreview;
         private Telerik.WinControls.UI.RadMenuItem BtnDesign;
-        private Telerik.WinControls.UI.RadButton BtnScanner;
-        private Telerik.WinControls.UI.RadButton BtnAttachment;
-        private Telerik.WinControls.UI.RadToastNotificationManager radToastNotificationManager1;
         private Telerik.WinControls.UI.CommandBarSeparator commandBarSeparator5;
         private Telerik.WinControls.UI.CommandBarDropDownButton BtnExport;
         private Telerik.WinControls.UI.RadMenuItem BtnEcelExport;
@@ -1255,10 +1145,9 @@
         private Telerik.WinControls.UI.RadLabel radLabel8;
         private Telerik.WinControls.UI.RadMultiColumnComboBox CmbPlanGuid;
         private Telerik.WinControls.UI.RadPanel MainContainer;
-        private Telerik.WinControls.UI.RadPanel radPanel2;
         private Telerik.WinControls.UI.RadLabel radlabelBookings;
         private Telerik.WinControls.Themes.MaterialTheme materialTheme1;
         private Telerik.WinControls.UI.RadTextBox TxtMobileAdd;
-        public Telerik.WinControls.UI.RadGridView DataGridAttachments;
+        private Real_Estate_Management.AttachmentControl attachmentControl1;
     }
 }
