@@ -9,14 +9,13 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
 using Telerik.WinControls;
 using Telerik.WinControls.UI;
 using Telerik.WinControls.UI.Localization;
 using Telerik.WinControls.UI.SplashScreen;
 using Telerik.Windows.Diagrams.Core;
+using Telerik.Windows.Documents.Spreadsheet.Expressions.Functions;
 
 namespace DoctorERP.User_Controls
 {
@@ -146,7 +145,8 @@ namespace DoctorERP.User_Controls
             AttachmentsContextMenu.Items.Add(separator);
             RadMenuItem customMenuItem3 = new RadMenuItem
             {
-                Text = "حذف"
+                Text = "حذف",
+                Enabled = false
             };
             AttachmentsContextMenu.Items.Add(customMenuItem3);
 
@@ -156,6 +156,10 @@ namespace DoctorERP.User_Controls
             customMenuItem2.Click += MenuExtractAttachment_Click;
             customMenuItem3.Click -= MenuDeleteAttachment_Click;
             customMenuItem3.Click += MenuDeleteAttachment_Click;
+
+
+
+
 
             #endregion
 
@@ -284,6 +288,8 @@ namespace DoctorERP.User_Controls
             CurrentGuid = Guid.Empty;
             BtnAttachment.Enabled = true;
             BtnScanner.Enabled = true;
+            AttachmentsContextMenu.Items[3].Enabled = true;
+
             BtnDelete.Enabled = false;
             BtnEdit.Enabled = false;
             radPageView1.SelectedPage = PageHome;
@@ -291,7 +297,6 @@ namespace DoctorERP.User_Controls
             BtnNew.Text = "حفظ";
             BtnNew.ScreenTip.Text = "حفظ بطاقة المحامي الجديدة";
             BtnReservation.Text = "إلغاء التنشيط";
-
             FillDataGridAttachments(Guid.Empty);
             SetReadOnly(false);
 
@@ -318,6 +323,8 @@ namespace DoctorERP.User_Controls
                 CurrentGuid = Guid.Empty;
                 BtnAttachment.Enabled = false;
                 BtnScanner.Enabled = false;
+                AttachmentsContextMenu.Items[3].Enabled = false;
+
                 BtnDelete.Enabled = true;
                 BtnEdit.Enabled = true;
                 BtnNew.Image = Real_Estate_Management.Properties.Resources.BtnAddNew;
@@ -370,6 +377,8 @@ namespace DoctorERP.User_Controls
                 CurrentGuid = _Guid;
                 BtnAttachment.Enabled = false;
                 BtnScanner.Enabled = false;
+                AttachmentsContextMenu.Items[3].Enabled = false;
+
                 BtnDelete.Enabled = true;
                 BtnEdit.Enabled = true;
                 BtnNew.Image = Real_Estate_Management.Properties.Resources.BtnAddNew;
@@ -392,6 +401,10 @@ namespace DoctorERP.User_Controls
                     BtnEdit.Image = Real_Estate_Management.Properties.Resources.BtnConform;
                     BtnAttachment.Enabled = true;
                     BtnScanner.Enabled = true;
+                    AttachmentsContextMenu.Items[3].Enabled = true;
+                    BtnDelete.Enabled = false;
+                    BtnNew.Enabled = false;
+
                     IsDirty = true;
                     CurrentGuid = ((tbLawyer)Bs.Current).Guid;
                     SetReadOnly(false);
@@ -414,6 +427,10 @@ namespace DoctorERP.User_Controls
                 BtnEdit.Image = Real_Estate_Management.Properties.Resources.BtnEdite;
                 BtnAttachment.Enabled = false;
                 BtnScanner.Enabled = false;
+                AttachmentsContextMenu.Items[3].Enabled = false;
+                BtnDelete.Enabled = true;
+                BtnNew.Enabled = true;
+
                 SetReadOnly(true);
                 IsDirty = false;
                 IsNew = false;
@@ -474,6 +491,10 @@ namespace DoctorERP.User_Controls
                 BtnEdit.Image = Real_Estate_Management.Properties.Resources.BtnEdite;
                 BtnAttachment.Enabled = false;
                 BtnScanner.Enabled = false;
+                AttachmentsContextMenu.Items[3].Enabled = false;
+                BtnDelete.Enabled = true;
+                BtnNew.Enabled = true;
+
                 SetReadOnly(true);
                 IsDirty = false;
                 IsNew = false;
@@ -579,7 +600,7 @@ namespace DoctorERP.User_Controls
         #endregion
         private bool Check(string Operation, string Command, OperationType.OperationIs OperType, bool IsAction)
         {
-            if (IsDirty) { TackAction(); }
+            if (IsAction && IsDirty) { TackAction(); }
             if (!FrmMain.IsPermissionGranted(Operation))
             {
                 MessagesHelper.MessageException(Operation, "لا تملك صلاحية", "لا تملك صلاحية للقيام ب " + Command + " \n تواصل مع المدير.");
@@ -691,6 +712,8 @@ namespace DoctorERP.User_Controls
                 ShowConfirmMSG = false;
                 if (BtnNew.Text == "حفظ") { BtnNew.PerformClick(); }
                 else if (BtnEdit.Text == "حفظ") { BtnEdit.PerformClick(); }
+                ShowConfirmMSG = true;
+
             }
             else if (!Confirm)
             {
@@ -717,6 +740,8 @@ namespace DoctorERP.User_Controls
                     BtnEdit.Image = Real_Estate_Management.Properties.Resources.BtnEdite;
                     BtnAttachment.Enabled = false;
                     BtnScanner.Enabled = false;
+                    AttachmentsContextMenu.Items[3].Enabled = false;
+
                     SetReadOnly(true);
                     IsProgrammatic = false;
                     IsDirty = false;
@@ -851,7 +876,7 @@ namespace DoctorERP.User_Controls
 
                     if (content != null)
                     {
-                        tbAgent Agent = (tbAgent)Bs.Current;
+                        //tbLawyer Obj = (tbLawyer)Bs.Current;
                         if (content.Result == DialogResult.OK)
                         {
                             FastReport.Export.Email.EmailExport email = new FastReport.Export.Email.EmailExport();
@@ -1135,11 +1160,11 @@ namespace DoctorERP.User_Controls
             FastReport.Report report = new FastReport.Report();
             if (Readyreport(report))
             {
-                RadOverlayManager.Close();
-                this.ParentForm.Activate();
 
                 Reports.DesignReport(report);
 
+                RadOverlayManager.Close();
+                //this.ParentForm.Activate();
 
             }
 
@@ -1156,10 +1181,10 @@ namespace DoctorERP.User_Controls
             FastReport.Report report = new FastReport.Report();
             if (Readyreport(report))
             {
+                report.Show();
+
                 RadOverlayManager.Close();
                 this.ParentForm.Activate();
-
-                report.Show();
 
 
             }
@@ -1195,16 +1220,21 @@ namespace DoctorERP.User_Controls
 
         private void FillDataGridAttachments(Guid parentguid)
         {
+
+
             tbAttachment.Fill("ParentGuid", parentguid);
             DataGridAttachments.DataSource = tbAttachment.lstData;
 
             DataGridAttachments.Columns[0].IsVisible = false;
             DataGridAttachments.Columns[1].IsVisible = false;
+            DataGridAttachments.Columns[2].IsVisible = false;
 
-            DataGridAttachments.Columns[2].HeaderText = "الاسم";
             DataGridAttachments.Columns[3].HeaderText = "اسم الملف";
             DataGridAttachments.Columns[4].HeaderText = "الحجم";
-            DataGridAttachments.Columns[5].HeaderText = "الملف";
+            DataGridAttachments.Columns[5].HeaderText = "";
+
+            this.DataGridAttachments.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;
+
 
             foreach (GridViewDataColumn col in this.DataGridAttachments.Columns)
             {
@@ -1301,27 +1331,9 @@ namespace DoctorERP.User_Controls
 
         private void DataGridAttachment_MouseDown(object sender, MouseEventArgs e)
         {
-            try
-            {
-                if (BtnEdit.Text == "حفظ") { AttachmentsContextMenu.Items[2].Enabled = true; }
-                else if (BtnEdit.Text != "حفظ") { AttachmentsContextMenu.Items[2].Enabled = false; }
+            if (BtnEdit.Text == "حفظ") { AttachmentsContextMenu.Items[3].Enabled = true; }
+            else if (BtnEdit.Text != "حفظ") { AttachmentsContextMenu.Items[3].Enabled = false; }
 
-                if (e.Button == MouseButtons.Right)
-                {
-                    if (DataGridAttachments.CurrentCell != null)
-                    {
-                        this.radContextMenuManager1.SetRadContextMenu(this.DataGridAttachments, this.AttachmentsContextMenu);
-                    }
-                    else if (DataGridAttachments.CurrentCell == null)
-                    {
-                        this.radContextMenuManager1.SetRadContextMenu(this.DataGridAttachments, null);
-                    }
-                }
-            }
-            catch
-            {
-                this.radContextMenuManager1.SetRadContextMenu(this.DataGridAttachments, null);
-            }
         }
 
         private void DataGridAttachments_ContextMenuOpening(object sender, ContextMenuOpeningEventArgs e)
@@ -1333,7 +1345,7 @@ namespace DoctorERP.User_Controls
         private void MenuPreviewAttach_Click(object sender, EventArgs e)
         {
             RadMenuItem toolmenu = (RadMenuItem)sender;
-            //if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Print, false)) { return; }
+            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Print, false)) { return; }
 
             byte[] bfiles = (byte[])DataGridAttachments.CurrentRow.Cells[5].Value;
             Guid guid = new Guid(DataGridAttachments.CurrentRow.Cells[0].Value.ToString());
@@ -1351,7 +1363,7 @@ namespace DoctorERP.User_Controls
         private void MenuExtractAttachment_Click(object sender, EventArgs e)
         {
             RadMenuItem toolmenu = (RadMenuItem)sender;
-            //if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Print, false)) { return; }
+            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Print, false)) { return; }
             SaveFileDialog sfd = new SaveFileDialog
             {
                 RestoreDirectory = true,
@@ -1385,7 +1397,7 @@ namespace DoctorERP.User_Controls
         private void MenuDeleteAttachment_Click(object sender, EventArgs e)
         {
             RadMenuItem toolmenu = (RadMenuItem)sender;
-            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Delete, true)) { return; }
+            if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Delete, false)) { return; }
 
             DataGridAttachments.Rows.RemoveAt(DataGridAttachments.CurrentRow.Index);
         }

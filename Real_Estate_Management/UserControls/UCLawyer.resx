@@ -121,7 +121,7 @@
   <data name="BtnFirst.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAAFhJREFUOE9jGAWYoLS09D+UCQdZWVk8RUVFZ6Fc/ADdgOLi4rSSkpIf2AzGCmAK
+        vwAADr8BOAVTJAAAAFhJREFUOE9jGAWYoLS09D+UCQdZWVk8RUVFZ6Fc/ADdgOLi4rSSkpIf2AzGCmAK
         YbaC+DAMVkAIgBQi20qWAUCbsykyAERT5AUoEwzIDkRkQFI0jjjAwAAAhSpW08T8bhsAAAAASUVORK5C
         YII=
 </value>
@@ -129,46 +129,43 @@
   <data name="BtnPerv.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAAE1JREFUOE9jGAXEgaysLJ6ioqKzUC5poLi4OK2kpORHaWnpf6gQcQBmK0gjDEOl
+        vwAADr8BOAVTJAAAAE1JREFUOE9jGAXEgaysLJ6ioqKzUC5poLi4OK2kpORHaWnpf6gQcQBmK0gjDEOl
         CANkW8kyAGhzNkUGgABFXkAGZAciMqAoGoc9YGAAAAi5Q+Ma9oeVAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="BtnNext.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAAExJREFUOE9jGAXYQVFR0dmsrCweKJd0UFpa+r+kpORHcXFxGlSINAAyAIbJcg2y
+        vwAADr8BOAVTJAAAAExJREFUOE9jGAXYQVFR0dmsrCweKJd0UFpa+r+kpORHcXFxGlSINAAyAIbJcg2y
         ASBMsmuwGQB0STZUmjBA1ky2FygKRIqjcUQBBgYAtcBD49fYbFAAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="BtnLast.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAAE5JREFUOE9jGAWYoKio6GxWVhYPlAsHpaWl/6FM/ACksKSk5EdxcXEaVAgMSDIA
+        vwAADr8BOAVTJAAAAE5JREFUOE9jGAWYoKio6GxWVhYPlAsHpaWl/6FM/ACksKSk5EdxcXEaVAgMSDIA
         hpFdQ5YBIAxzDUUGAF2STZYBZHuBokCkOBpHHGBgAAB7OVbT4YlmAgAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="BtnNew2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAADFJREFUOE9jGOagtLT0PwhDuaSDIWgATAMhDFWOCbApxoahygkDkjWgg2FgwFAA
+        vwAADr8BOAVTJAAAADFJREFUOE9jGOagtLT0PwhDuaSDIWgATAMhDFWOCbApxoahygkDkjWgg2FgwFAA
         DAwACtdVOaqh3t0AAAAASUVORK5CYII=
 </value>
   </data>
   <data name="BtnDelete2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAAExJREFUOE9joAkoKSm5W1pa+h+GQXyoFHEApAnKBAN0PlaAbCMhDNWCCrApxIWh
+        vwAADr8BOAVTJAAAAExJREFUOE9joAkoKSm5W1pa+h+GQXyoFHEApAnKBAN0PlaAbCMhDNWCCrApxIWh
         WjABTJIQjROMGjCsDMAFCBqAnonQMcmZijBgYAAADIS8zaGOQHkAAAAASUVORK5CYII=
 </value>
   </data>
   <metadata name="radToastNotificationManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>142, 18</value>
   </metadata>
-  <metadata name="radContextMenuManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>361, 21</value>
-  </metadata>
   <metadata name="AlertTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>563, 18</value>
+    <value>347, 18</value>
   </metadata>
   <metadata name="materialTheme1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>

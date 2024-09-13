@@ -103,7 +103,6 @@
             this.BtnEdit = new Telerik.WinControls.UI.CommandBarButton();
             this.BtnExit = new Telerik.WinControls.UI.CommandBarButton();
             this.radToastNotificationManager1 = new Telerik.WinControls.UI.RadToastNotificationManager(this.components);
-            this.radContextMenuManager1 = new Telerik.WinControls.UI.RadContextMenuManager();
             this.AlertTimer = new System.Windows.Forms.Timer(this.components);
             this.materialTheme1 = new Telerik.WinControls.Themes.MaterialTheme();
             ((System.ComponentModel.ISupportInitialize)(this.TxtNote)).BeginInit();
@@ -559,7 +558,7 @@
             this.DataGridAttachments.EnableKeyMap = true;
             this.DataGridAttachments.EnableKineticScrolling = true;
             this.DataGridAttachments.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DataGridAttachments.Location = new System.Drawing.Point(14, 14);
+            this.DataGridAttachments.Location = new System.Drawing.Point(20, 63);
             this.DataGridAttachments.Margin = new System.Windows.Forms.Padding(20, 3, 20, 3);
             // 
             // 
@@ -583,16 +582,16 @@
             this.DataGridAttachments.ShowChildViewCaptions = true;
             this.DataGridAttachments.ShowGroupPanel = false;
             this.DataGridAttachments.ShowGroupPanelScrollbars = false;
-            this.DataGridAttachments.Size = new System.Drawing.Size(1137, 509);
+            this.DataGridAttachments.Size = new System.Drawing.Size(1125, 509);
             this.DataGridAttachments.TabIndex = 6;
             this.DataGridAttachments.TitleText = "المرفقات";
             this.DataGridAttachments.ContextMenuOpening += new Telerik.WinControls.UI.ContextMenuOpeningEventHandler(this.DataGridAttachments_ContextMenuOpening);
             // 
             // BtnScanner
             // 
-            this.BtnScanner.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnScanner.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnScanner.Enabled = false;
-            this.BtnScanner.Location = new System.Drawing.Point(840, 546);
+            this.BtnScanner.Location = new System.Drawing.Point(830, 16);
             this.BtnScanner.Name = "BtnScanner";
             this.BtnScanner.Size = new System.Drawing.Size(172, 36);
             this.BtnScanner.TabIndex = 2;
@@ -602,9 +601,9 @@
             // 
             // BtnAttachment
             // 
-            this.BtnAttachment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnAttachment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnAttachment.Enabled = false;
-            this.BtnAttachment.Location = new System.Drawing.Point(1018, 546);
+            this.BtnAttachment.Location = new System.Drawing.Point(1008, 16);
             this.BtnAttachment.Name = "BtnAttachment";
             this.BtnAttachment.Size = new System.Drawing.Size(120, 36);
             this.BtnAttachment.TabIndex = 1;
@@ -1228,7 +1227,6 @@
         private Telerik.WinControls.UI.RadButton BtnScanner;
         private Telerik.WinControls.UI.RadButton BtnAttachment;
         private Telerik.WinControls.UI.RadToastNotificationManager radToastNotificationManager1;
-        private Telerik.WinControls.UI.RadContextMenuManager radContextMenuManager1;
         private Telerik.WinControls.UI.CommandBarSeparator commandBarSeparator5;
         private Telerik.WinControls.UI.CommandBarDropDownButton BtnExport;
         private Telerik.WinControls.UI.RadMenuItem BtnEcelExport;
