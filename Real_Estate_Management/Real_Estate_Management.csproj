@@ -250,6 +250,12 @@
     </Compile>
     <Compile Include="CustomElements\Bubble Bar\BubbleBarElement.cs" />
     <Compile Include="CustomElements\Bubble Bar\BubbleBarMouseOverBehavior.cs" />
+    <Compile Include="CustomElements\CustomControls\AttachmentControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomElements\CustomControls\AttachmentControl.Designer.cs">
+      <DependentUpon>AttachmentControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomElements\Flyout\FlyoutUserLogin.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -899,6 +905,9 @@
     <Compile Include="UserControls\UCLawyer.Designer.cs">
       <DependentUpon>UCLawyer.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CustomElements\CustomControls\AttachmentControl.resx">
+      <DependentUpon>AttachmentControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomElements\Flyout\FlyoutUserLogin.resx">
       <DependentUpon>FlyoutUserLogin.cs</DependentUpon>
     </EmbeddedResource>

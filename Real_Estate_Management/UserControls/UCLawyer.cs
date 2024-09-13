@@ -80,7 +80,7 @@ namespace DoctorERP.User_Controls
             this.radPanel2.BackgroundImage = Real_Estate_Management.Properties.Resources.Background;
             this.radPanel2.BackgroundImageLayout = ImageLayout.Stretch;
 
-            this.DataGridAttachments.AutoGenerateHierarchy = true;
+            //this.DataGridAttachments.AutoGenerateHierarchy = true;
             this.DataGridAttachments.TableElement.CellSpacing = 10;
             this.DataGridAttachments.RootElement.EnableElementShadow = false;
             this.DataGridAttachments.GridViewElement.DrawFill = false;
@@ -1228,10 +1228,10 @@ namespace DoctorERP.User_Controls
             DataGridAttachments.Columns[0].IsVisible = false;
             DataGridAttachments.Columns[1].IsVisible = false;
             DataGridAttachments.Columns[2].IsVisible = false;
+            DataGridAttachments.Columns[5].IsVisible = false;
 
             DataGridAttachments.Columns[3].HeaderText = "اسم الملف";
             DataGridAttachments.Columns[4].HeaderText = "الحجم";
-            DataGridAttachments.Columns[5].HeaderText = "";
 
             this.DataGridAttachments.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;
 
