@@ -37,7 +37,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -927,6 +927,12 @@
     <Compile Include="UserControls\UCPlans.Designer.cs">
       <DependentUpon>UCPlans.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UserControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserControl1.Designer.cs">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CustomElements\CustomControls\AttachmentControl.resx">
       <DependentUpon>AttachmentControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -1208,6 +1214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UCPlans.resx">
       <DependentUpon>UCPlans.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UserControl1.resx">
+      <DependentUpon>UserControl1.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Data\DataBase\Real_Estate_Management_Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

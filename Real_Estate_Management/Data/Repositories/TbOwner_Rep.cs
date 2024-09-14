@@ -115,7 +115,7 @@ public class TBOwner_Rep
     {
         DBConnect.DBCommand = new SqlCommand("SELECT MAX(" + dbcolumn + ") FROM tbOwner", DBConnect.DBConnection);
         var result = DBConnect.DBCommand.ExecuteScalar();
-        if (result != null)
+        if (!(result.Equals(DBNull.Value)))
         {
             return (int)result;
         }
@@ -229,20 +229,20 @@ public class TBOwner_Rep
         DBConnect.DBCommand.Parameters.AddWithValue("@IDNumber", Row.IDNumber);
         DBConnect.DBCommand.Parameters.AddWithValue("@Email", Row.Email);
         DBConnect.DBCommand.Parameters.AddWithValue("@VatNumber", Row.VatNumber);
-        DBConnect.DBCommand.Parameters.AddWithValue("@PublicNumber", Row.OfficeName);
-        DBConnect.DBCommand.Parameters.AddWithValue("@AgentName", Row.OfficeName);
-        DBConnect.DBCommand.Parameters.AddWithValue("@AgentID", Row.OfficeName);
-        DBConnect.DBCommand.Parameters.AddWithValue("@AgentMobile", Row.OfficeName);
-        DBConnect.DBCommand.Parameters.AddWithValue("@AgenteMail", Row.OfficeName);
-        DBConnect.DBCommand.Parameters.AddWithValue("@AgentVatNumber", Row.OfficeName);
-        DBConnect.DBCommand.Parameters.AddWithValue("@AgencyNumber", Row.OfficeName);
-        DBConnect.DBCommand.Parameters.AddWithValue("@AgentPublicNumber", Row.OfficeName);
+        DBConnect.DBCommand.Parameters.AddWithValue("@PublicNumber", Row.PublicNumber);
+        DBConnect.DBCommand.Parameters.AddWithValue("@AgentName", Row.AgentName);
+        DBConnect.DBCommand.Parameters.AddWithValue("@AgentID", Row.AgentID);
+        DBConnect.DBCommand.Parameters.AddWithValue("@AgentMobile", Row.AgentMobile);
+        DBConnect.DBCommand.Parameters.AddWithValue("@AgenteMail", Row.AgenteMail);
+        DBConnect.DBCommand.Parameters.AddWithValue("@AgentVatNumber", Row.AgentVatNumber);
+        DBConnect.DBCommand.Parameters.AddWithValue("@AgencyNumber", Row.AgencyNumber);
+        DBConnect.DBCommand.Parameters.AddWithValue("@AgentPublicNumber", Row.AgentPublicNumber);
         DBConnect.DBCommand.Parameters.AddWithValue("@OfficeName", Row.OfficeName);
-        DBConnect.DBCommand.Parameters.AddWithValue("@OfficeCR", Row.OfficeName);
-        DBConnect.DBCommand.Parameters.AddWithValue("@OfficePhone", Row.OfficeName);
-        DBConnect.DBCommand.Parameters.AddWithValue("@OfficeeMail", Row.OfficeName);
-        DBConnect.DBCommand.Parameters.AddWithValue("@OfficeVatNumber", Row.OfficeName);
-        DBConnect.DBCommand.Parameters.AddWithValue("@OfficePublicNumber", Row.OfficeName);
+        DBConnect.DBCommand.Parameters.AddWithValue("@OfficeCR", Row.OfficeCR);
+        DBConnect.DBCommand.Parameters.AddWithValue("@OfficePhone", Row.OfficePhone);
+        DBConnect.DBCommand.Parameters.AddWithValue("@OfficeeMail", Row.OfficeeMail);
+        DBConnect.DBCommand.Parameters.AddWithValue("@OfficeVatNumber", Row.OfficeVatNumber);
+        DBConnect.DBCommand.Parameters.AddWithValue("@OfficePublicNumber", Row.OfficePublicNumber);
         DBConnect.DBCommand.Parameters.AddWithValue("@LastAction", Row.LastAction);
         DBConnect.DBCommand.Parameters.AddWithValue("@Note", Row.Note);
 
@@ -250,6 +250,7 @@ public class TBOwner_Rep
         DBConnect.DBCommand.Parameters.Clear();
 
     }
+
 
     public static void Update(tbOwner Row)
     {
@@ -291,20 +292,20 @@ public class TBOwner_Rep
         DBConnect.DBCommand.Parameters.AddWithValue("@IDNumber", Row.IDNumber);
         DBConnect.DBCommand.Parameters.AddWithValue("@Email", Row.Email);
         DBConnect.DBCommand.Parameters.AddWithValue("@VatNumber", Row.VatNumber);
-        DBConnect.DBCommand.Parameters.AddWithValue("@PublicNumber", Row.OfficeName);
-        DBConnect.DBCommand.Parameters.AddWithValue("@AgentName", Row.OfficeName);
-        DBConnect.DBCommand.Parameters.AddWithValue("@AgentID", Row.OfficeName);
-        DBConnect.DBCommand.Parameters.AddWithValue("@AgentMobile", Row.OfficeName);
-        DBConnect.DBCommand.Parameters.AddWithValue("@AgenteMail", Row.OfficeName);
-        DBConnect.DBCommand.Parameters.AddWithValue("@AgentVatNumber", Row.OfficeName);
-        DBConnect.DBCommand.Parameters.AddWithValue("@AgencyNumber", Row.OfficeName);
-        DBConnect.DBCommand.Parameters.AddWithValue("@AgentPublicNumber", Row.OfficeName);
+        DBConnect.DBCommand.Parameters.AddWithValue("@PublicNumber", Row.PublicNumber);
+        DBConnect.DBCommand.Parameters.AddWithValue("@AgentName", Row.AgentName);
+        DBConnect.DBCommand.Parameters.AddWithValue("@AgentID", Row.AgentID);
+        DBConnect.DBCommand.Parameters.AddWithValue("@AgentMobile", Row.AgentMobile);
+        DBConnect.DBCommand.Parameters.AddWithValue("@AgenteMail", Row.AgenteMail);
+        DBConnect.DBCommand.Parameters.AddWithValue("@AgentVatNumber", Row.AgentVatNumber);
+        DBConnect.DBCommand.Parameters.AddWithValue("@AgencyNumber", Row.AgencyNumber);
+        DBConnect.DBCommand.Parameters.AddWithValue("@AgentPublicNumber", Row.AgentPublicNumber);
         DBConnect.DBCommand.Parameters.AddWithValue("@OfficeName", Row.OfficeName);
-        DBConnect.DBCommand.Parameters.AddWithValue("@OfficeCR", Row.OfficeName);
-        DBConnect.DBCommand.Parameters.AddWithValue("@OfficePhone", Row.OfficeName);
-        DBConnect.DBCommand.Parameters.AddWithValue("@OfficeeMail", Row.OfficeName);
-        DBConnect.DBCommand.Parameters.AddWithValue("@OfficeVatNumber", Row.OfficeName);
-        DBConnect.DBCommand.Parameters.AddWithValue("@OfficePublicNumber", Row.OfficeName);
+        DBConnect.DBCommand.Parameters.AddWithValue("@OfficeCR", Row.OfficeCR);
+        DBConnect.DBCommand.Parameters.AddWithValue("@OfficePhone", Row.OfficePhone);
+        DBConnect.DBCommand.Parameters.AddWithValue("@OfficeeMail", Row.OfficeeMail);
+        DBConnect.DBCommand.Parameters.AddWithValue("@OfficeVatNumber", Row.OfficeVatNumber);
+        DBConnect.DBCommand.Parameters.AddWithValue("@OfficePublicNumber", Row.OfficePublicNumber);
         DBConnect.DBCommand.Parameters.AddWithValue("@LastAction", Row.LastAction);
         DBConnect.DBCommand.Parameters.AddWithValue("@Note", Row.Note);
 

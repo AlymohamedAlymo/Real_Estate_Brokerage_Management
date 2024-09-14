@@ -717,7 +717,7 @@
             this.TxtNumber.RootElement.BorderHighlightThickness = 0;
             this.TxtNumber.Size = new System.Drawing.Size(292, 118);
             this.TxtNumber.TabIndex = 1412;
-            this.TxtNumber.Text = "0";
+            this.TxtNumber.Text = "1";
             this.TxtNumber.TextAlignment = System.Drawing.ContentAlignment.TopRight;
             this.TxtNumber.TextWrap = false;
             this.TxtNumber.ThemeName = "Material";
@@ -962,7 +962,7 @@
             this.radCollapsiblePanel2.PanelContainer.Controls.Add(this.Txtofficephone);
             this.radCollapsiblePanel2.PanelContainer.Controls.Add(this.Txtofficecr);
             this.radCollapsiblePanel2.PanelContainer.Location = new System.Drawing.Point(18, 1);
-            this.radCollapsiblePanel2.PanelContainer.Size = new System.Drawing.Size(276, 351);
+            this.radCollapsiblePanel2.PanelContainer.Size = new System.Drawing.Size(295, 370);
             this.radCollapsiblePanel2.Size = new System.Drawing.Size(314, 427);
             this.radCollapsiblePanel2.TabIndex = 14;
             // 

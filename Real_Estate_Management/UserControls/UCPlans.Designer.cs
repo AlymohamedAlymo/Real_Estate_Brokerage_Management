@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCPlans));
             this.TxtNote = new Telerik.WinControls.UI.RadTextBox();
             this.TxtName = new Telerik.WinControls.UI.RadTextBox();
@@ -345,7 +345,7 @@
             this.TxtNumber.RootElement.BorderHighlightThickness = 0;
             this.TxtNumber.Size = new System.Drawing.Size(292, 118);
             this.TxtNumber.TabIndex = 1412;
-            this.TxtNumber.Text = "0";
+            this.TxtNumber.Text = "1";
             this.TxtNumber.TextAlignment = System.Drawing.ContentAlignment.TopRight;
             this.TxtNumber.TextWrap = false;
             this.TxtNumber.ThemeName = "Material";
@@ -374,7 +374,7 @@
             this.CmbPlanGuid.EditorControl.MasterTemplate.EnableFiltering = true;
             this.CmbPlanGuid.EditorControl.MasterTemplate.EnableGrouping = false;
             this.CmbPlanGuid.EditorControl.MasterTemplate.ShowFilteringRow = false;
-            this.CmbPlanGuid.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition2;
+            this.CmbPlanGuid.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.CmbPlanGuid.EditorControl.Name = "NestedRadGridView";
             this.CmbPlanGuid.EditorControl.ReadOnly = true;
             this.CmbPlanGuid.EditorControl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;

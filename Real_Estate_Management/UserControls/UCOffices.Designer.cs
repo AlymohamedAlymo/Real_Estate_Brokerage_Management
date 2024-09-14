@@ -345,7 +345,7 @@
             this.TxtNumber.RootElement.BorderHighlightThickness = 0;
             this.TxtNumber.Size = new System.Drawing.Size(292, 118);
             this.TxtNumber.TabIndex = 1412;
-            this.TxtNumber.Text = "0";
+            this.TxtNumber.Text = "1";
             this.TxtNumber.TextAlignment = System.Drawing.ContentAlignment.TopRight;
             this.TxtNumber.TextWrap = false;
             this.TxtNumber.ThemeName = "Material";

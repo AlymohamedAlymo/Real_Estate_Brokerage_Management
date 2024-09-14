@@ -90,7 +90,7 @@ public class TbLawyer_Rep
     {
         DBConnect.DBCommand = new SqlCommand("SELECT MAX(" + dbcolumn + ") FROM tbLawyer", DBConnect.DBConnection);
         var result = DBConnect.DBCommand.ExecuteScalar();
-        if (result != null)
+        if (!(result.Equals(DBNull.Value)))
         {
             return (int)result;
         }

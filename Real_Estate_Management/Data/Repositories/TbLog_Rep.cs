@@ -65,7 +65,7 @@ public class TbLog_Rep
         DBConnect.DBAdapter = new SqlDataAdapter(DBConnect.DBCommand);
         DBConnect.DBAdapter.Fill(dtData);
         var result = DBConnect.DBCommand.ExecuteScalar();
-        if (result != null)
+        if (!(result.Equals(DBNull.Value)))
         {
             return (int)result;
         }

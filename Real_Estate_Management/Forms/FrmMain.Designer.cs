@@ -35,10 +35,6 @@ namespace Real_Estate_Management
             this.MenuTest = new System.Windows.Forms.ToolStripMenuItem();
             this.TmrStatic = new System.Windows.Forms.Timer(this.components);
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
-            this.ThemeMaterial = new Telerik.WinControls.Themes.MaterialTheme();
-            this.materialTealTheme1 = new Telerik.WinControls.Themes.MaterialTealTheme();
-            this.materialBlueGreyTheme1 = new Telerik.WinControls.Themes.MaterialBlueGreyTheme();
-            this.materialPinkTheme1 = new Telerik.WinControls.Themes.MaterialPinkTheme();
             this.radStatusStrip1 = new Telerik.WinControls.UI.RadStatusStrip();
             this.radLabelElement1 = new Telerik.WinControls.UI.RadLabelElement();
             this.SplitButtonUSER = new Telerik.WinControls.UI.RadSplitButtonElement();
@@ -103,6 +99,7 @@ namespace Real_Estate_Management
             this.MenuLandTree = new Telerik.WinControls.UI.RadMenuItem();
             this.MenuLandTransRpt = new Telerik.WinControls.UI.RadMenuItem();
             this.MenuLawyerCard = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem3 = new Telerik.WinControls.UI.RadMenuItem();
             this.MenuActions = new Telerik.WinControls.UI.RadMenuItem();
             this.MenuSellBill = new Telerik.WinControls.UI.RadMenuItem();
             this.MenuSaleOrder = new Telerik.WinControls.UI.RadMenuItem();
@@ -188,15 +185,7 @@ namespace Real_Estate_Management
             this.radSparklineElement4 = new Telerik.WinControls.UI.RadSparklineElement();
             this.CompanyNameBarLabel = new Telerik.WinControls.UI.RadLabelElement();
             this.MainMenu = new Telerik.WinControls.UI.RadToolbarFormControl();
-            this.windows11Theme1 = new Telerik.WinControls.Themes.Windows11Theme();
-            this.windows8Theme1 = new Telerik.WinControls.Themes.Windows8Theme();
-            this.visualStudio2022LightTheme1 = new Telerik.WinControls.Themes.VisualStudio2022LightTheme();
-            this.office2019LightTheme1 = new Telerik.WinControls.Themes.Office2019LightTheme();
-            this.fluentTheme1 = new Telerik.WinControls.Themes.FluentTheme();
-            this.fluentDarkTheme1 = new Telerik.WinControls.Themes.FluentDarkTheme();
-            this.telerikMetroTheme1 = new Telerik.WinControls.Themes.TelerikMetroTheme();
-            this.telerikMetroBlueTheme1 = new Telerik.WinControls.Themes.TelerikMetroBlueTheme();
-            this.telerikMetroTouchTheme1 = new Telerik.WinControls.Themes.TelerikMetroTouchTheme();
+            this.ThemeMaterial = new Telerik.WinControls.Themes.MaterialTheme();
             ((System.ComponentModel.ISupportInitialize)(this.radStatusStrip1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PageViewCardsHome)).BeginInit();
             this.PageViewCardsHome.SuspendLayout();
@@ -500,7 +489,7 @@ namespace Real_Estate_Management
             // radRadioButton1
             // 
             this.radRadioButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.radRadioButton1.Location = new System.Drawing.Point(1014, 14);
+            this.radRadioButton1.Location = new System.Drawing.Point(1008, 14);
             this.radRadioButton1.Name = "radRadioButton1";
             this.radRadioButton1.Size = new System.Drawing.Size(95, 22);
             this.radRadioButton1.TabIndex = 23;
@@ -512,7 +501,7 @@ namespace Real_Estate_Management
             // 
             this.RBallLands.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.RBallLands.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.RBallLands.Location = new System.Drawing.Point(1117, 14);
+            this.RBallLands.Location = new System.Drawing.Point(1099, 14);
             this.RBallLands.Name = "RBallLands";
             this.RBallLands.Size = new System.Drawing.Size(134, 22);
             this.RBallLands.TabIndex = 24;
@@ -827,7 +816,8 @@ namespace Real_Estate_Management
             this.MenuLandCard,
             this.MenuLandTree,
             this.MenuLandTransRpt,
-            this.MenuLawyerCard});
+            this.MenuLawyerCard,
+            this.radMenuItem3});
             this.MenuCards.Name = "MenuCards";
             this.MenuCards.Text = "بطاقات ";
             this.MenuCards.Click += new System.EventHandler(this.MenuCards_Click);
@@ -867,6 +857,12 @@ namespace Real_Estate_Management
             this.MenuLawyerCard.Name = "MenuLawyerCard";
             this.MenuLawyerCard.Text = "بطاقة محامي";
             this.MenuLawyerCard.Click += new System.EventHandler(this.MenuLawyerCard_Click);
+            // 
+            // radMenuItem3
+            // 
+            this.radMenuItem3.Name = "radMenuItem3";
+            this.radMenuItem3.Text = "بطاقة مالك";
+            this.radMenuItem3.Click += new System.EventHandler(this.radMenuItem3_Click);
             // 
             // MenuActions
             // 
@@ -1403,7 +1399,6 @@ namespace Real_Estate_Management
             this.BtnRefresh.ScreenTip = this.radOffice2007ScreenTipElement1;
             this.BtnRefresh.Text = "(F5) تحديث";
             this.BtnRefresh.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.BtnRefresh.Visibility = Telerik.WinControls.ElementVisibility.Hidden;
             this.BtnRefresh.Click += new System.EventHandler(this.radMenuButtonItem1_Click);
             // 
             // radOffice2007ScreenTipElement1
@@ -1547,14 +1542,9 @@ namespace Real_Estate_Management
         private System.Windows.Forms.ToolStripMenuItem dataToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem MenuTest;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
-        private Telerik.WinControls.Themes.MaterialTheme ThemeMaterial;
-        private Telerik.WinControls.Themes.MaterialTealTheme materialTealTheme1;
-        private Telerik.WinControls.Themes.MaterialBlueGreyTheme materialBlueGreyTheme1;
-        private Telerik.WinControls.Themes.MaterialPinkTheme materialPinkTheme1;
         private Telerik.WinControls.UI.RadStatusStrip radStatusStrip1;
         private Telerik.WinControls.UI.RadLabelElement radLabelElement1;
         private Telerik.WinControls.UI.CommandBarSeparator commandBarSeparator1;
-        private Telerik.WinControls.UI.RadPageView PageViewCardsHome;
         private Telerik.WinControls.UI.RadPageViewPage radPageViewPage1;
         private Telerik.WinControls.UI.RadRadioButton RBallLands;
         public Telerik.WinControls.UI.RadRadioButton radRadioButton1;
@@ -1575,7 +1565,6 @@ namespace Real_Estate_Management
         private Real_Estate_Management.BubbleBar bubbleBar1;
         private Telerik.WinControls.UI.RadSparklineElement radSparklineElement4;
         private System.Windows.Forms.Label CompanyNameLabel;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private Telerik.WinControls.UI.RadLabelElement LabelServer;
         private Telerik.WinControls.UI.RadLabelElement LabelDataBase;
@@ -1695,21 +1684,16 @@ namespace Real_Estate_Management
         private Telerik.WinControls.UI.RadToolbarFormControl MainMenu;
         private Telerik.WinControls.UI.RadMenuItem MenuAppInfoSettings;
         private Telerik.WinControls.UI.RadMenuSeparatorItem radMenuSeparatorItem6;
-        private Telerik.WinControls.Themes.Windows11Theme windows11Theme1;
-        private Telerik.WinControls.Themes.Windows8Theme windows8Theme1;
-        private Telerik.WinControls.Themes.VisualStudio2022LightTheme visualStudio2022LightTheme1;
-        private Telerik.WinControls.Themes.Office2019LightTheme office2019LightTheme1;
-        private Telerik.WinControls.Themes.FluentTheme fluentTheme1;
-        private Telerik.WinControls.Themes.FluentDarkTheme fluentDarkTheme1;
-        private Telerik.WinControls.Themes.TelerikMetroTheme telerikMetroTheme1;
-        private Telerik.WinControls.Themes.TelerikMetroBlueTheme telerikMetroBlueTheme1;
-        private Telerik.WinControls.Themes.TelerikMetroTouchTheme telerikMetroTouchTheme1;
         private Telerik.WinControls.UI.RadListView LandsListView;
         private System.Windows.Forms.Timer TmrStatic;
         private Telerik.WinControls.UI.RadMenuButtonItem BtnRefresh;
         private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement1;
         private System.Windows.Forms.Label PlanNameLabel;
         private Telerik.WinControls.UI.RadMenuItem MenuLawyerCard;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem3;
+        private Telerik.WinControls.Themes.MaterialTheme ThemeMaterial;
+        public Telerik.WinControls.UI.RadPageView PageViewCardsHome;
+        public System.Windows.Forms.Panel panel1;
     }
 }
 

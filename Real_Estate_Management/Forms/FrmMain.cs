@@ -18,6 +18,9 @@ using Real_Estate_Management.User_Controls;
 using Real_Estate_Management.CustomElements;
 using Telerik.WinControls.UI.SplashScreen;
 using Contract_Management.Dialogs;
+using Real_Estate_Management.UserControls;
+using Telerik.WinControls.Themes;
+using Telerik.WinControls.UI.Barcode.Symbology;
 
 namespace Real_Estate_Management
 {
@@ -33,10 +36,29 @@ namespace Real_Estate_Management
         private ListViewDataItemGroup CurrentBlock = null;
         public static Guid PlanGuid;
 
+        MaterialTheme MaterialTheme;
+        MaterialPinkTheme MaterialPink;
+        MaterialTealTheme MaterialTeal;
+        MaterialBlueGreyTheme MaterialBlue;
+        MaterialBlueGreyTheme MaterialBlueGrey;
+        Windows11Theme Windows11;
+        Windows8Theme Windows8;
+        VisualStudio2022LightTheme VisualStudio2022Light;
+        Office2019LightTheme Office2019Light;
+        FluentTheme Fluent;
+        TelerikMetroTheme TelerikMetro;
+        TelerikMetroBlueTheme TelerikMetroBlue;
+        TelerikMetroTouchTheme TelerikMetroTouchTheme;
+
+        private bool firstShow = true;
+
+
+
         public FrmMain()
         {
 
             InitializeComponent();
+            //LoadThemeComponents();
             this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
 
             IsViewScreen = File.Exists(AppSetting.GetAppPath() + "settings.txt");
@@ -166,6 +188,43 @@ namespace Real_Estate_Management
 
         }
 
+
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+
+            if (firstShow)
+            {
+                //this.Visible = false;
+                this.firstShow = false;
+                this.Opacity = 1;
+            }
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            //e.Cancel = true;
+            this.Hide();
+
+            base.OnClosing(e);
+        }
+        void LoadThemeComponents()
+        {
+            MaterialTheme = new MaterialTheme();
+            MaterialPink = new MaterialPinkTheme();
+            MaterialTeal = new MaterialTealTheme();
+            MaterialBlue = new MaterialBlueGreyTheme();
+            MaterialBlueGrey = new MaterialBlueGreyTheme();
+            Windows11 = new Windows11Theme();
+            Windows8= new Windows8Theme();
+            VisualStudio2022Light = new VisualStudio2022LightTheme();
+            Office2019Light=  new Office2019LightTheme();
+            Fluent = new FluentTheme();
+            TelerikMetro= new TelerikMetroTheme();
+            TelerikMetroBlue = new TelerikMetroBlueTheme();
+            TelerikMetroTouchTheme= new TelerikMetroTouchTheme();
+        }
+
         private void RadFlyoutManager_FlyoutClosed(FlyoutClosedEventArgs e)
         {
             try
@@ -218,6 +277,12 @@ namespace Real_Estate_Management
         #region Main Events
         public void FrmMain_Load(object sender, EventArgs e)
         {
+
+            BackgroundWorker worker = new BackgroundWorker();
+            worker.DoWork += delegate { this.LoadThemeComponents(); };
+            BeginInvoke(new MethodInvoker(worker.RunWorkerAsync));
+
+
             if (!DBConnect.TryToConnect(AppSetting.DataBase))
             {
                 FrmConnection connection = new FrmConnection();
@@ -240,8 +305,8 @@ namespace Real_Estate_Management
 
             bubbleBar1.Visible = panel2.Visible= true;
 
-            this.Size = new System.Drawing.Size(1160, 649);
-
+            //this.Size = new System.Drawing.Size(1160, 649);
+            //this.Activate();
         }
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -280,11 +345,12 @@ namespace Real_Estate_Management
             DataLandList = tbLand.lstData.OrderBy(u => u.number).ToList();
             if (DataHasChanged)
             {
+                LandsListView.BeginUpdate();
                 LandsListView.DataSource = DataLandList;
                 LandsListView.DisplayMember = "number";
                 LandsListView.ValueMember = "guid";
                 LandsListView.SelectedItem = null;
-
+                LandsListView.EndUpdate();
             }
 
         }
@@ -443,6 +509,7 @@ namespace Real_Estate_Management
 
         private void RBallLands_CheckStateChanged(object sender, EventArgs e)
         {
+            LandsListView.BeginUpdate();
             if (radRadioButton1.CheckState == CheckState.Checked)
             {
                 this.LandsListView.DataSource = null;
@@ -471,7 +538,7 @@ namespace Real_Estate_Management
                 this.LandsListView.ShowGroups = false;
 
             }
-
+            LandsListView.EndUpdate();
         }
 
         private void PageViewCardsHome_PageRemoving(object sender, Telerik.WinControls.UI.RadPageViewCancelEventArgs e)
@@ -612,42 +679,8 @@ namespace Real_Estate_Management
 
             if (e.ClickedItem.Name == "MenuShowLandCard")
             {
-                if (!IsPermissionGranted("بطاقات الأراضي"))
-                {
-                    MessageBox.Show("لا تملك صلاحية للقيام بهذا العمل", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    return;
-                }
-                RadOverlayManager.Show(this);
+                OpenUserControl("بطاقات الأراضي", "LandsCard", "بطاقة أرض");
 
-                tbLand land = new tbLand();
-                if (LandsListView.SelectedItem != null) { land = DataLandList.Where(u => u.guid == (Guid)LandsListView.SelectedItem.Value).FirstOrDefault(); }
-                RadPageViewPage enumerableIterator = PageViewCardsHome.Pages.Where(u => u.Name == "LandsCard").FirstOrDefault();
-                if (enumerableIterator == null)
-                {
-                    RadPageViewPage radPageViewPage = new RadPageViewPage();
-                    radPageViewPage.Name = "LandsCard";
-                    radPageViewPage.Text = "بطاقات الأراضي";
-
-                    Real_Estate_Management.User_Controls.UCLandsCards uCLands = new User_Controls.UCLandsCards(land.guid, false, string.Empty);
-                    uCLands.Dock = DockStyle.Fill;
-                    
-                    radPageViewPage.Controls.Add(uCLands);
-                    PageViewCardsHome.Pages.Add(radPageViewPage);
-                    PageViewCardsHome.SelectedPage = radPageViewPage;
-                    radPageViewPage.Item.ButtonsPanel.CloseButton.ToolTipText = "إغلاق الصفحة";
-                    radPageViewPage.Item.ButtonsPanel.PinButton.ToolTipText = "تثبيت الصفحة";
-
-                }
-                else
-                {
-                    UCLandsCards UC = PageViewCardsHome.Pages["LandsCard"].Controls[0] as UCLandsCards;
-                    UC.Bs.Position = land.number - 1;
-                    PageViewCardsHome.SelectedPage = enumerableIterator;
-
-                }
-                RadOverlayManager.Close();
-                LandsListView.SelectedItems.Clear();
-                this.Activate();
             }
             else if (e.ClickedItem.Name == "MenuShowCalc")
             {
@@ -1041,51 +1074,9 @@ namespace Real_Estate_Management
 
         private void MenuAgentBuyCard_Click(object sender, EventArgs e)
         {
-            ////           RadMenuItem toolmenu = (RadMenuItem)sender;
-            ////if (!IsPermissionGranted(toolmenu.Text))
-            ////{
-            ////    MessageBox.Show("لا تملك صلاحية للقيام بهذا العمل", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            ////    return;
-            ////}
-            ////FrmAgent agent = new FrmAgent(Guid.Empty, true, 1, false);
-            ////agent.Owner = this;
-            ////agent.Show();
-            ///
-
-
-
-
             RadMenuItem toolmenu = (RadMenuItem)sender;
-            if (!IsPermissionGranted(toolmenu.Text))
-            {
-                MessageBox.Show("لا تملك صلاحية للقيام بهذا العمل", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
-            RadOverlayManager.Show(this);
+            OpenUserControl(toolmenu.Text, "ClientLandsCard", "بطاقة عميل");
 
-            RadPageViewPage enumerableIterator = PageViewCardsHome.Pages.Where(u => u.Name == "ClientLandsCard").FirstOrDefault();
-            if (enumerableIterator == null)
-            {
-                RadPageViewPage radPageViewPage = new RadPageViewPage();
-                radPageViewPage.Name = "ClientLandsCard";
-                radPageViewPage.Text = "بطاقة عميل";
-
-                Real_Estate_Management.User_Controls.UCClientCards uCLands = new User_Controls.UCClientCards(Guid.Empty, false, 1, false);
-                uCLands.Dock = DockStyle.Fill;
-
-                radPageViewPage.Controls.Add(uCLands);
-                PageViewCardsHome.Pages.Add(radPageViewPage);
-                PageViewCardsHome.SelectedPage = radPageViewPage;
-            }
-            else
-            {
-                UCClientCards UC = PageViewCardsHome.Pages["ClientLandsCard"].Controls[0] as UCClientCards;
-                PageViewCardsHome.SelectedPage = enumerableIterator;
-
-            }
-
-            RadOverlayManager.Close();
-            this.Activate();
 
         }
 
@@ -1105,36 +1096,8 @@ namespace Real_Estate_Management
         private void MenuLandCard_Click(object sender, EventArgs e)
         {
             RadMenuItem toolmenu = (RadMenuItem)sender;
-            if (!IsPermissionGranted(toolmenu.Text))
-            {
-                MessageBox.Show("لا تملك صلاحية للقيام بهذا العمل", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
-            RadOverlayManager.Show(this);
+            OpenUserControl(toolmenu.Text, "LandsCard", "بطاقة أرض");
 
-            RadPageViewPage enumerableIterator = PageViewCardsHome.Pages.Where(u => u.Name == "LandsCard").FirstOrDefault();
-            if (enumerableIterator == null)
-            {
-                RadPageViewPage radPageViewPage = new RadPageViewPage();
-                radPageViewPage.Name = "LandsCard";
-                radPageViewPage.Text = "بطاقات الأراضي";
-
-                Real_Estate_Management.User_Controls.UCLandsCards uCLands = new User_Controls.UCLandsCards(Guid.Empty, false, string.Empty);
-                uCLands.Dock = DockStyle.Fill;
-
-                radPageViewPage.Controls.Add(uCLands);
-                PageViewCardsHome.Pages.Add(radPageViewPage);
-                PageViewCardsHome.SelectedPage = radPageViewPage;
-            }
-            else
-            {
-                UCLandsCards UC = PageViewCardsHome.Pages["LandsCard"].Controls[0] as UCLandsCards;
-                PageViewCardsHome.SelectedPage = enumerableIterator;
-
-            }
-
-            RadOverlayManager.Close();
-            this.Activate();
         }
 
         private void MenuPlanInfo_Click(object sender, EventArgs e)
@@ -1804,10 +1767,14 @@ namespace Real_Estate_Management
 
         private void radMenuButtonItem1_Click(object sender, EventArgs e)
         {
-            RadMessageBox.Show("يرجى إعادة تشغيل البرنامج ليتم تطبيق إعدادات الإتصال الجديدة", Application.ProductName, MessageBoxButtons.OK);
-            RadMessageBoxForm form = new RadMessageBoxForm();
-            form.ShowDialog();
-            form.ShowDetails();
+
+            //RadMenuItem toolmenu = (RadMenuItem)sender;
+            OpenUserControl("", "UserControl1", "بطاقة محامي");
+
+            //RadMessageBox.Show("يرجى إعادة تشغيل البرنامج ليتم تطبيق إعدادات الإتصال الجديدة", Application.ProductName, MessageBoxButtons.OK);
+            //RadMessageBoxForm form = new RadMessageBoxForm();
+            //form.ShowDialog();
+            //form.ShowDetails();
 
         }
 
@@ -1820,34 +1787,63 @@ namespace Real_Estate_Management
         {
 
             RadMenuItem toolmenu = (RadMenuItem)sender;
-            if (!IsPermissionGranted(toolmenu.Text))
+            OpenUserControl(toolmenu.Text, "UCLawyer", "بطاقة محامي");
+
+        }
+
+        private void OpenUserControl(string Permission, string ControlName, string PageName)
+        {
+            if (!IsPermissionGranted(Permission))
             {
                 MessageBox.Show("لا تملك صلاحية للقيام بهذا العمل", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
+            if (RadOverlayManager.IsActive) { RadOverlayManager.Close(); }
             RadOverlayManager.Show(this);
 
-            RadPageViewPage enumerableIterator = PageViewCardsHome.Pages.Where(u => u.Name == "UCLawyer").FirstOrDefault();
+            RadPageViewPage enumerableIterator = PageViewCardsHome.Pages.Where(u => u.Name == ControlName).FirstOrDefault();
             if (enumerableIterator == null)
             {
                 RadPageViewPage radPageViewPage = new RadPageViewPage
                 {
-                    Name = "UCLawyer",
-                    Text = "بطاقة محامي"
+                    Name = ControlName,
+                    Text = PageName
                 };
 
-                Real_Estate_Management.User_Controls.UCLawyer uCLawyer = new User_Controls.UCLawyer(Guid.Empty)
+                UserControl UCControl = new UserControl();
+
+                switch (ControlName)
                 {
-                    Dock = DockStyle.Fill
-                };
+                    case "UCLawyer":
+                        UCControl = new User_Controls.UCLawyer(Guid.Empty);
+                        break;
+                    case "UCOwner":
+                        UCControl = new User_Controls.UCOwner(Guid.Empty);
+                        break;
+                    case "LandsCard":
+                        UCControl = new User_Controls.UCLandsCards(Guid.Empty, false, string.Empty);
+                        break;
+                    case "ClientLandsCard":
+                        UCControl = new User_Controls.UCClientCards(Guid.Empty, false, 1, false);
+                        break;
+                    case "UserControl1":
+                        UCControl = new Real_Estate_Management.UserControls.UserControl1();
+                        break;
 
-                radPageViewPage.Controls.Add(uCLawyer);
+                    default:
+                        break;
+                }
+
+                UCControl.Dock = DockStyle.Fill;
+                radPageViewPage.Controls.Add(UCControl);
                 PageViewCardsHome.Pages.Add(radPageViewPage);
                 PageViewCardsHome.SelectedPage = radPageViewPage;
+
             }
             else
             {
-                UCClientCards UC = PageViewCardsHome.Pages["UCLawyer"].Controls[0] as UCClientCards;
+
+                UserControl UC = PageViewCardsHome.Pages[ControlName].Controls[0] as UserControl;
                 PageViewCardsHome.SelectedPage = enumerableIterator;
 
             }
@@ -1855,6 +1851,12 @@ namespace Real_Estate_Management
             RadOverlayManager.Close();
             this.Activate();
 
+        }
+
+        private void radMenuItem3_Click(object sender, EventArgs e)
+        {
+            RadMenuItem toolmenu = (RadMenuItem)sender;
+            OpenUserControl(toolmenu.Text, "UCOwner", "بطاقة مالك");
 
         }
     }

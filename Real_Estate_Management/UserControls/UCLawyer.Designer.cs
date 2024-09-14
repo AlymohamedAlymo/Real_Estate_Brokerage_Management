@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCLawyer));
             this.TxtNote = new Telerik.WinControls.UI.RadTextBox();
             this.TxtName = new Telerik.WinControls.UI.RadTextBox();
@@ -130,7 +130,7 @@
             this.TxtNote.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtNote.AutoScroll = true;
             this.TxtNote.EmbeddedLabelText = "الملاحظات ";
-            this.TxtNote.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtNote.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold);
             this.TxtNote.Location = new System.Drawing.Point(545, 412);
             this.TxtNote.Multiline = true;
             this.TxtNote.Name = "TxtNote";
@@ -143,7 +143,7 @@
             this.TxtNote.ShowEmbeddedLabel = true;
             this.TxtNote.ShowNullText = true;
             this.TxtNote.Size = new System.Drawing.Size(305, 58);
-            this.TxtNote.TabIndex = 6;
+            this.TxtNote.TabIndex = 7;
             this.TxtNote.ThemeName = "Material";
             this.TxtNote.WordWrap = false;
             this.TxtNote.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
@@ -256,7 +256,7 @@
             this.TxtMobileAdd.ShowEmbeddedLabel = true;
             this.TxtMobileAdd.ShowNullText = true;
             this.TxtMobileAdd.Size = new System.Drawing.Size(305, 58);
-            this.TxtMobileAdd.TabIndex = 11512123;
+            this.TxtMobileAdd.TabIndex = 3;
             this.TxtMobileAdd.ThemeName = "Material";
             this.TxtMobileAdd.WordWrap = false;
             // 
@@ -307,7 +307,7 @@
             this.TxtOfficeName.ShowEmbeddedLabel = true;
             this.TxtOfficeName.ShowNullText = true;
             this.TxtOfficeName.Size = new System.Drawing.Size(305, 58);
-            this.TxtOfficeName.TabIndex = 5;
+            this.TxtOfficeName.TabIndex = 6;
             this.TxtOfficeName.ThemeName = "Material";
             this.TxtOfficeName.WordWrap = false;
             this.TxtOfficeName.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
@@ -345,7 +345,7 @@
             this.TxtNumber.RootElement.BorderHighlightThickness = 0;
             this.TxtNumber.Size = new System.Drawing.Size(292, 118);
             this.TxtNumber.TabIndex = 1412;
-            this.TxtNumber.Text = "0";
+            this.TxtNumber.Text = "1";
             this.TxtNumber.TextAlignment = System.Drawing.ContentAlignment.TopRight;
             this.TxtNumber.TextWrap = false;
             this.TxtNumber.ThemeName = "Material";
@@ -374,7 +374,7 @@
             this.CmbPlanGuid.EditorControl.MasterTemplate.EnableFiltering = true;
             this.CmbPlanGuid.EditorControl.MasterTemplate.EnableGrouping = false;
             this.CmbPlanGuid.EditorControl.MasterTemplate.ShowFilteringRow = false;
-            this.CmbPlanGuid.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition1;
+            this.CmbPlanGuid.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition2;
             this.CmbPlanGuid.EditorControl.Name = "NestedRadGridView";
             this.CmbPlanGuid.EditorControl.ReadOnly = true;
             this.CmbPlanGuid.EditorControl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -456,7 +456,7 @@
             this.TxtLastAction.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtLastAction.AutoScroll = true;
             this.TxtLastAction.EmbeddedLabelText = "العملية الاخيرة";
-            this.TxtLastAction.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtLastAction.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold);
             this.TxtLastAction.Location = new System.Drawing.Point(545, 476);
             this.TxtLastAction.Multiline = true;
             this.TxtLastAction.Name = "TxtLastAction";
@@ -469,7 +469,7 @@
             this.TxtLastAction.ShowEmbeddedLabel = true;
             this.TxtLastAction.ShowNullText = true;
             this.TxtLastAction.Size = new System.Drawing.Size(616, 63);
-            this.TxtLastAction.TabIndex = 11512121;
+            this.TxtLastAction.TabIndex = 115151512;
             this.TxtLastAction.TabStop = false;
             this.TxtLastAction.ThemeName = "Material";
             this.TxtLastAction.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
@@ -488,7 +488,7 @@
             this.TxtEmail.ShowEmbeddedLabel = true;
             this.TxtEmail.ShowNullText = true;
             this.TxtEmail.Size = new System.Drawing.Size(305, 58);
-            this.TxtEmail.TabIndex = 3;
+            this.TxtEmail.TabIndex = 4;
             this.TxtEmail.ThemeName = "Material";
             this.TxtEmail.WordWrap = false;
             this.TxtEmail.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
@@ -507,7 +507,7 @@
             this.TxtVatNumber.ShowEmbeddedLabel = true;
             this.TxtVatNumber.ShowNullText = true;
             this.TxtVatNumber.Size = new System.Drawing.Size(305, 58);
-            this.TxtVatNumber.TabIndex = 4;
+            this.TxtVatNumber.TabIndex = 5;
             this.TxtVatNumber.ThemeName = "Material";
             this.TxtVatNumber.WordWrap = false;
             this.TxtVatNumber.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
@@ -1033,7 +1033,7 @@
             this.BtnExit.Text = "خروج";
             this.BtnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.BtnExit.TextOrientation = System.Windows.Forms.Orientation.Horizontal;
-            this.BtnExit.Click += new System.EventHandler(this.MenuExit_Click);
+            this.BtnExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
             // AlertTimer
             // 

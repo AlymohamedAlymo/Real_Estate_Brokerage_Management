@@ -123,6 +123,37 @@ namespace Real_Estate_Management.User_Controls
 
         }
 
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.F1)
+            {
+                BtnAdd_Click(new object(), new EventArgs());
+            }
+            else if (keyData == Keys.F2)
+            {
+                BtnEdit_Click(new object(), new EventArgs());
+            }
+            else if (keyData == Keys.F3)
+            {
+                BtnDelete_Click(new object(), new EventArgs());
+            }
+            else if (keyData == Keys.F5)
+            {
+                BtnResfresh_Click(new object(), new EventArgs());
+            }
+            else if (keyData == Keys.Enter)
+            {
+                if (IsDirty) { TackAction(); }
+            }
+            else if (keyData == Keys.Escape)
+            {
+                BtnExit_Click(new object(), new EventArgs());
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+
         #region Binding
 
         private void SetData()
@@ -846,7 +877,7 @@ namespace Real_Estate_Management.User_Controls
 
         }
 
-        private void MenuExit_Click(object sender, EventArgs e)
+        private void BtnExit_Click(object sender, EventArgs e)
         {
 
             RadPageViewPage parent = this.Parent as RadPageViewPage;
