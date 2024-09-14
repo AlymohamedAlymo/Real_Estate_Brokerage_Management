@@ -14,10 +14,11 @@ using FastReport.Data;
 using static System.Runtime.CompilerServices.RuntimeHelpers;
 using System.Diagnostics.Contracts;
 using FastReport;
-using DoctorERP.Helpers;
+using Real_Estate_Management.Helpers;
 using DoctorHelper.Helpers;
+using DoctorERP.Helpers;
 
-namespace DoctorERP
+namespace Real_Estate_Management
 {
     public partial class FrmAddAmountoAgent : KryptonForm
     {

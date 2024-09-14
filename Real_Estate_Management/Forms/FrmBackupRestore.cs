@@ -11,7 +11,7 @@ using ComponentFactory.Krypton.Toolkit;
 using Microsoft.SqlServer.Management.Smo;
 using Microsoft.SqlServer.Management.Common;
 
-namespace DoctorERP
+namespace Real_Estate_Management
 {
     public partial class FrmBackupRestore : KryptonForm
     {

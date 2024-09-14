@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DoctorERP.User_Controls
+namespace Real_Estate_Management.User_Controls
 {
     public partial class UCLands : UserControl
     {

@@ -5,7 +5,7 @@ using System;
 using System.Windows.Forms;
 using Telerik.WinControls.UI;
 
-namespace DoctorERP.CustomElements
+namespace Real_Estate_Management.CustomElements
 {
     public partial class FlyoutTransferData : UserControl
     {

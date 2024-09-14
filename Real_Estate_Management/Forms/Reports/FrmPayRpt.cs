@@ -12,7 +12,7 @@ using System.Xml.Serialization;
 using System.IO;
 using FastReport.Data;
 
-namespace DoctorERP
+namespace Real_Estate_Management
 {
     public partial class FrmPayRpt : KryptonForm
     {

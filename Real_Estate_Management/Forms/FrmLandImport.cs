@@ -15,7 +15,7 @@ using ComponentFactory.Krypton.Toolkit;
 using iTextSharp.text.pdf;
 using OfficeOpenXml;
 
-namespace DoctorERP
+namespace Real_Estate_Management
 {
     public partial class FrmLandImport : KryptonForm
     {

@@ -1,7 +1,8 @@
-﻿using System.ComponentModel;
+﻿using Real_Estate_Management.CustomElements;
+using System.ComponentModel;
 using Telerik.WinControls;
 
-namespace DoctorERP.CustomElements
+namespace Real_Estate_Management
 {
     public class BubbleBar : RadControl
     {

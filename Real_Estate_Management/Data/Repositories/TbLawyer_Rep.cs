@@ -2,10 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Collections.Generic;
-using System.Linq;
-using Real_Estate_Management.Data;
 using Real_Estate_Management.Data.DataBase;
-using DoctorERP;
 
 public class TbLawyer_Rep
 {
@@ -48,23 +45,45 @@ public class TbLawyer_Rep
         }
     }
 
-    public static void Fill(string dbcolumn, object keyword)
+
+    public static void Fill(string dbcolumn, object val)
     {
+        lstData = new List<tbLawyer>();
+        dtData = new DataTable();
+        DBConnect.DBCommand = new SqlCommand(string.Format("SELECT * FROM tbLawyer  WHERE {0} = @val order by Code", dbcolumn), DBConnect.DBConnection);
+        DBConnect.DBCommand.Parameters.AddWithValue("@val", val);
+        DBConnect.DBAdapter = new SqlDataAdapter(DBConnect.DBCommand);
+        DBConnect.DBAdapter.Fill(dtData);
+        using (SqlDataReader reader = DBConnect.DBCommand.ExecuteReader())
+        {
+            while (reader.Read())
+            {
+                tbLawyer lawer = new tbLawyer
+                {
+                    PlanGuid = reader["PlanGuid"].Equals(DBNull.Value) ? Guid.Empty : (Guid)reader["PlanGuid"],
+                    Guid = reader["Guid"].Equals(DBNull.Value) ? Guid.Empty : (Guid)reader["Guid"],
+                    Number = reader["Number"].Equals(DBNull.Value) ? 0 : (int)reader["Number"],
+                    Code = reader["Code"].Equals(DBNull.Value) ? 0 : (int)reader["Code"],
+                    Email = reader["Email"].Equals(DBNull.Value) ? string.Empty : (string)reader["Email"],
+                    Note = reader["Note"].Equals(DBNull.Value) ? string.Empty : (string)reader["Note"],
+                    IDNumber = reader["IDNumber"].Equals(DBNull.Value) ? string.Empty : (string)reader["IDNumber"],
+                    VatNumber = reader["VatNumber"].Equals(DBNull.Value) ? string.Empty : (string)reader["VatNumber"],
+                    LastAction = reader["LastAction"].Equals(DBNull.Value) ? string.Empty : (string)reader["LastAction"],
+                    Mobile = reader["Mobile"].Equals(DBNull.Value) ? string.Empty : (string)reader["Mobile"],
+                    MobileAdd = reader["MobileAdd"].Equals(DBNull.Value) ? string.Empty : (string)reader["MobileAdd"],
+                    Name = reader["Name"].Equals(DBNull.Value) ? string.Empty : (string)reader["Name"],
+                    OfficeName = reader["OfficeName"].Equals(DBNull.Value) ? string.Empty : (string)reader["OfficeName"],
+                    Statues = reader["Statues"].Equals(DBNull.Value) ? string.Empty : (string)reader["Statues"],
+                    
+                };
+                lstData.Add(lawer);
+            }
+            DBConnect.DBCommand.Parameters.Clear();
 
-
-
-
-
-
-        //lawyerTableAdapter.Adapter.SelectCommand.CommandText = string.Format("SELECT * FROM tbLawyer WHERE {0} LIKE '%{1}%'", dbcolumn, keyword);
-        //SqlDataReader yy = lawyerTableAdapter.Adapter.SelectCommand.ExecuteReader();
-        //DataSet dataSet = new DataSet();
-        //DataTable dataTable = new DataTable(yy.GetName(0));
-        //dataTable.Load(yy);
-        //dataSet.Tables.Add(dataTable);
-        //return (tbLawyerDataTable)dataTable;
+        }
 
     }
+
 
 
     public static int GetMaxNumber(string dbcolumn)
@@ -79,7 +98,7 @@ public class TbLawyer_Rep
     }
 
 
-    public static void AddLawyer(Guid _PlanGuid, Guid _Guid, int _Number, string _Name, string _Mobile, string _MobileAdd, string _IDNumber, string _VatNumber, string _OfficeName, string _Email, string _Note, string _LastAction)
+    public static void AddNew(Guid _PlanGuid, Guid _Guid, int _Number, string _Name, string _Mobile, string _MobileAdd, string _IDNumber, string _VatNumber, string _OfficeName, string _Email, string _Note, string _LastAction)
     {
         tbLawyer lawer = new tbLawyer
         {

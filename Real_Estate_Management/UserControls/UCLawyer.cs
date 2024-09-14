@@ -1,5 +1,5 @@
-﻿using DoctorERP.CustomElements;
-using DoctorERP.Helpers;
+﻿using Real_Estate_Management.CustomElements;
+using Real_Estate_Management.Helpers;
 using DoctorHelper.Helpers;
 using DoctorHelper.Messages;
 using Real_Estate_Management.Data.DataBase;
@@ -18,7 +18,7 @@ using Telerik.WinControls.UI.SplashScreen;
 using Telerik.Windows.Diagrams.Core;
 using Telerik.Windows.Documents.Spreadsheet.Expressions.Functions;
 
-namespace DoctorERP.User_Controls
+namespace Real_Estate_Management.User_Controls
 {
     public partial class UCLawyer : System.Windows.Forms.UserControl
     {
@@ -146,7 +146,16 @@ namespace DoctorERP.User_Controls
             CmbPlanGuid.ValueMember = "Guid";
             CmbPlanGuid.DisplayMember = "Name";
             CmbPlanGuid.SelectedValue = FrmMain.PlanGuid;
+            CmbPlanGuid.Columns[0].IsVisible = false;
+            CmbPlanGuid.Columns[1].IsVisible = false;
+            CmbPlanGuid.Columns[2].IsVisible = false;
+            CmbPlanGuid.Columns[7].IsVisible = false;
+            CmbPlanGuid.Columns[8].IsVisible = false;
 
+            CmbPlanGuid.Columns[3].HeaderText = "رقم الصك";
+            CmbPlanGuid.Columns[4].HeaderText = "اسم المخطط";
+            CmbPlanGuid.Columns[5].HeaderText = "المدينة";
+            CmbPlanGuid.Columns[6].HeaderText = "الموقع";
 
             var controls = MainContainer.Controls.OfType<RadControl>().Where(control => !control.Name.StartsWith("rad"));
             foreach (var control in controls)
@@ -318,8 +327,8 @@ namespace DoctorERP.User_Controls
 
 
             DBConnect.StartTransAction();
-            TbLog_Rep.AddLog(_PlanGuid, "إضافة", "بطاقة محامي", $"إضافة بطاقة محامي بأسم {TxtName.Text}");
-            TbLawyer_Rep.AddLawyer(_PlanGuid, _Guid, int.Parse(TxtNumber.Text), TxtName.Text, TxtMobile.Text, TxtMobileAdd.Text,
+            TbLog_Rep.AddNew(_PlanGuid, "إضافة", "بطاقة محامي", $"إضافة بطاقة محامي بأسم {TxtName.Text}");
+            TbLawyer_Rep.AddNew(_PlanGuid, _Guid, int.Parse(TxtNumber.Text), TxtName.Text, TxtMobile.Text, TxtMobileAdd.Text,
                 TxtIDNumber.Text, TxtVatNumber.Text, TxtOfficeName.Text, TxtEmail.Text, TxtNote.Text, internedLastAction);
             attachmentControl1.AddAttachments(_Guid);
             if (DBConnect.CommitTransAction())
@@ -431,7 +440,7 @@ namespace DoctorERP.User_Controls
             Obj.LastAction = internedLastAction;
 
             DBConnect.StartTransAction();
-            TbLog_Rep.AddLog(_PlanGuid, "تعديل", "بطاقة محامي", $"تعديل بطاقة محامي بأسم {TxtName.Text}");
+            TbLog_Rep.AddNew(_PlanGuid, "تعديل", "بطاقة محامي", $"تعديل بطاقة محامي بأسم {TxtName.Text}");
             TbLawyer_Rep.Update(Obj);
             attachmentControl1.AddAttachments(Obj.Guid);
 
@@ -477,7 +486,7 @@ namespace DoctorERP.User_Controls
             var ListData = Bs.DataSource as List<tbLawyer>;
             Guid NextGuid = ListData[NextPosition].Guid;
             DBConnect.StartTransAction();
-            TbLog_Rep.AddLog(Obj.PlanGuid, "حذف", "بطاقة محامي", $"حذف بطاقة محامي بأسم {TxtName.Text}");
+            TbLog_Rep.AddNew(Obj.PlanGuid, "حذف", "بطاقة محامي", $"حذف بطاقة محامي بأسم {TxtName.Text}");
             new tbAttachment().DeleteBy("ParentGuid", Obj.Guid);
             TbLawyer_Rep.Delete(Obj.Guid);
 

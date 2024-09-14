@@ -1,4 +1,4 @@
-﻿namespace DoctorERP.Forms
+﻿namespace Real_Estate_Management.Forms
 {
     partial class TransferData
     {

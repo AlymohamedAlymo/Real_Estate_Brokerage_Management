@@ -12,7 +12,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DoctorERP.Forms
+namespace Real_Estate_Management.Forms
 {
     public partial class TransferData : Form
     {

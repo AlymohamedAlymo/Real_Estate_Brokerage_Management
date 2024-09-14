@@ -18,7 +18,7 @@ using WinformsDirtyTracking;
 using DevExpress.Utils.Design;
 using Org.BouncyCastle.Bcpg.OpenPgp;
 
-namespace DoctorERP
+namespace Real_Estate_Management
 {
     public partial class FrmLandTree : KryptonForm
     {

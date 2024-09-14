@@ -11,7 +11,7 @@ using DgvFilterPopup;
 using System.Xml.Serialization;
 using System.IO;
 
-namespace DoctorERP
+namespace Real_Estate_Management
 {
     public partial class FrmLandReport : KryptonForm
     {

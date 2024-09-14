@@ -25,9 +25,10 @@ using OfficeOpenXml.FormulaParsing.Excel.Functions.Text;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using Microsoft.SqlServer.Management.Smo;
 using DoctorHelper.Helpers;
+using Real_Estate_Management.Helpers;
 using DoctorERP.Helpers;
 
-namespace DoctorERP
+namespace Real_Estate_Management
 {
     public partial class FrmLand : KryptonForm
     {

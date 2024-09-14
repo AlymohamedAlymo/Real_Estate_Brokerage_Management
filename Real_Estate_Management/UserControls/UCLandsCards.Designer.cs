@@ -1,4 +1,4 @@
-﻿namespace DoctorERP.User_Controls
+﻿namespace Real_Estate_Management.User_Controls
 {
     partial class UCLandsCards
     {

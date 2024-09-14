@@ -1,4 +1,4 @@
-﻿namespace DoctorERP.CustomElements
+﻿namespace Real_Estate_Management.CustomElements
 {
     partial class FlyoutTransferData
     {

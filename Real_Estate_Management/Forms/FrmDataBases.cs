@@ -13,7 +13,7 @@ using ComponentFactory.Krypton.Toolkit;
 using Microsoft.SqlServer.Management.Smo;
 
 
-namespace DoctorERP
+namespace Real_Estate_Management
 {
     public partial class FrmDataBases : KryptonForm
     {

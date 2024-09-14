@@ -5,7 +5,7 @@ using Telerik.WinControls.UI;
 using System.Drawing;
 using Telerik.WinControls.Layouts;
 
-namespace DoctorERP.CustomElements
+namespace Real_Estate_Management.CustomElements
 {
     public class BubbleBarElement : RadElement
     {

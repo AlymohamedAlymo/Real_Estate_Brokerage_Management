@@ -1,4 +1,4 @@
-﻿using DoctorERP;
+﻿using Real_Estate_Management;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Mask;
 using DevExpress.XtraGrid.Columns;
@@ -39,11 +39,12 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using FastReport;
 using OfficeOpenXml.FormulaParsing.Excel.Functions.Text;
 using DoctorHelper.Helpers;
-using DoctorERP.Helpers;
+using Real_Estate_Management.Helpers;
 using OfficeOpenXml.FormulaParsing.Excel.Functions.Numeric;
+using DoctorERP.Helpers;
 
 
-namespace DoctorERP
+namespace Real_Estate_Management
 {
     public partial class FrmSaleOrder : XtraForm
     {

@@ -12,10 +12,11 @@ using SmartArabXLSX.Packaging;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using FastReport;
 using FastReport.Data;
-using DoctorERP.Helpers;
+using Real_Estate_Management.Helpers;
 using DoctorHelper.Helpers;
+using DoctorERP.Helpers;
 
-namespace DoctorERP
+namespace Real_Estate_Management
 {
     public partial class FrmPayContractOne : KryptonForm
     {

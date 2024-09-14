@@ -11,7 +11,7 @@ using ComponentFactory.Krypton.Toolkit;
 using System.Threading;
 using System.IO;
 
-namespace DoctorERP
+namespace Real_Estate_Management
 {
     public partial class FrmSendMail : KryptonForm
     {

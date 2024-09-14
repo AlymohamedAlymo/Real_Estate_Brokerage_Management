@@ -6,7 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DoctorERP
+namespace Real_Estate_Management
 {
     static class Program
     {
@@ -18,7 +18,7 @@ namespace DoctorERP
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DoctorERP.FrmMain());
+            Application.Run(new Real_Estate_Management.FrmMain());
         }
     }
 }

@@ -9,7 +9,7 @@ using TouchlessLib;
 using System.Drawing.Imaging;
 using ComponentFactory.Krypton.Toolkit;
 
-namespace DoctorERP
+namespace Real_Estate_Management
 {
     public partial class FrmWebCam : KryptonForm
     {

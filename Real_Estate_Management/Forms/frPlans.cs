@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using Telerik.WinControls;
 
-namespace DoctorERP.Forms
+namespace Real_Estate_Management.Forms
 {
     public partial class frPlans : Telerik.WinControls.UI.RadForm
     {

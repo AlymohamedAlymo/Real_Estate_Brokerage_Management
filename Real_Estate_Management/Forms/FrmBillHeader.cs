@@ -1,4 +1,4 @@
-﻿using DoctorERP;
+﻿using Real_Estate_Management;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Mask;
 using DevExpress.XtraGrid.Columns;
@@ -38,10 +38,11 @@ using SmartArabXLSX.Office2010.CustomUI;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using FastReport;
 using OfficeOpenXml.FormulaParsing.Excel.Functions.Text;
-using DoctorERP.Helpers;
+using Real_Estate_Management.Helpers;
 using DoctorHelper.Helpers;
 using OfficeOpenXml.FormulaParsing.Excel.Functions.Numeric;
-namespace DoctorERP
+using DoctorERP.Helpers;
+namespace Real_Estate_Management
 {
     public partial class FrmBillHeader : XtraForm
     {

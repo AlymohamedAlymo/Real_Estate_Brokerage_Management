@@ -1,5 +1,5 @@
-﻿using DoctorERP.CustomElements;
-using DoctorERP.Helpers;
+﻿using Real_Estate_Management.CustomElements;
+using Real_Estate_Management.Helpers;
 using DoctorHelper.Helpers;
 using Real_Estate_Management.Helpers;
 using System;
@@ -14,7 +14,7 @@ using Telerik.WinControls.UI;
 using Telerik.WinControls.UI.Localization;
 using Telerik.WinControls.UI.SplashScreen;
 
-namespace DoctorERP.User_Controls
+namespace Real_Estate_Management.User_Controls
 {
     public partial class UCClientCards : UserControl
     {

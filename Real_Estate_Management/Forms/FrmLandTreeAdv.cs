@@ -15,7 +15,7 @@ using SmartArabXLSX.Presentation;
 using SmartArabXLSX.Drawing.Diagrams;
 using DevExpress.XtraTreeList;
 
-namespace DoctorERP
+namespace Real_Estate_Management
 {
     public partial class FrmLandTreeAdv : KryptonForm
     {

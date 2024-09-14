@@ -1,5 +1,5 @@
-﻿using DoctorERP.CustomElements;
-using DoctorERP.Helpers;
+﻿using Real_Estate_Management.CustomElements;
+using Real_Estate_Management.Helpers;
 using DoctorHelper.Helpers;
 using Real_Estate_Management.Helpers;
 using System;
@@ -11,8 +11,9 @@ using System.Windows.Forms;
 using Telerik.WinControls;
 using Telerik.WinControls.UI;
 using Telerik.WinControls.UI.SplashScreen;
+using DoctorERP.Helpers;
 
-namespace DoctorERP.User_Controls
+namespace Real_Estate_Management.User_Controls
 {
     public partial class UCLandsCards : UserControl
     {

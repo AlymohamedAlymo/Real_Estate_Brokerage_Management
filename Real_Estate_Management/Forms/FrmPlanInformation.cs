@@ -12,7 +12,7 @@ using OfficeOpenXml.FormulaParsing.Excel.Functions.Math;
 using WinformsDirtyTracking;
 
 
-namespace DoctorERP
+namespace Real_Estate_Management
 {
     public partial class FrmPlanInformation : KryptonForm
     {

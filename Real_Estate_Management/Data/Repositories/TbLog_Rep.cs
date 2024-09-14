@@ -2,10 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Collections.Generic;
-using System.Linq;
-using Real_Estate_Management.Data;
-using Real_Estate_Management.Data.DataBase;
-using DoctorERP;
+using Real_Estate_Management;
 
 public class TbLog_Rep
 {
@@ -75,7 +72,7 @@ public class TbLog_Rep
         return 0;
     }
 
-    public static void AddLog(Guid PlanGuid, string ActionType, string Action, string Note)
+    public static void AddNew(Guid PlanGuid, string ActionType, string Action, string Note)
     {
         Real_Estate_Management.Data.DataBase.tbLog log = new Real_Estate_Management.Data.DataBase.tbLog
         {

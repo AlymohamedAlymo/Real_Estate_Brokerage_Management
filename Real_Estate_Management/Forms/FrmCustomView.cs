@@ -10,7 +10,7 @@ using ComponentFactory.Krypton.Toolkit;
 using System.Xml.Serialization;
 using System.IO;
 
-namespace DoctorERP
+namespace Real_Estate_Management
 {
     public partial class FrmCustomView : KryptonForm
     {

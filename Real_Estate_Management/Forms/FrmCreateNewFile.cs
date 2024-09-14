@@ -11,7 +11,7 @@ using ComponentFactory.Krypton.Toolkit;
 using System.IO;
 using System.Text.RegularExpressions;
 
-namespace DoctorERP
+namespace Real_Estate_Management
 {
     public partial class FrmCreateNewFile : KryptonForm
     {

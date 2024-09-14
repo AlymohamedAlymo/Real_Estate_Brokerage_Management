@@ -1208,7 +1208,7 @@
     <value>Telerik.WinControls.UI.RadScrollablePanel, Telerik.WinControls.UI, Version=2023.1.117.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e</value>
   </data>
   <data name="&gt;&gt;dbDataSet.Type" xml:space="preserve">
-    <value>DoctorERP.dbDataSet, dbDataSet.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Real_Estate_Management.dbDataSet, dbDataSet.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;radSpinEditor19.Type" xml:space="preserve">
     <value>Telerik.WinControls.UI.RadSpinEditor, Telerik.WinControls.UI, Version=2023.1.117.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e</value>
@@ -1617,7 +1617,7 @@
     <value>Telerik.WinControls.UI.CommandBarButton, Telerik.WinControls.UI, Version=2023.1.117.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e</value>
   </data>
   <data name="&gt;&gt;tbLandTableAdapter.Type" xml:space="preserve">
-    <value>DoctorERP.dbDataSetTableAdapters.tbLandTableAdapter, dbDataSet.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Real_Estate_Management.dbDataSetTableAdapters.tbLandTableAdapter, dbDataSet.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="radTextBox25.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>

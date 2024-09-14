@@ -10,7 +10,7 @@ using ComponentFactory.Krypton.Toolkit;
 using System.Diagnostics;
 
 
-namespace DoctorERP
+namespace Real_Estate_Management
 {
     public partial class FrmSMSSettings : KryptonForm
     {

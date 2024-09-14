@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using Telerik.WinControls;
 
-namespace DoctorERP.CustomElements
+namespace Real_Estate_Management.CustomElements
 {
     /// <summary>
     /// Behavior class defining the OnMouseOver behavior of the BubbleBar

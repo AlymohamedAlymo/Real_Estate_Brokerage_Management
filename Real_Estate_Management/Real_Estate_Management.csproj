@@ -347,9 +347,13 @@
     <Compile Include="Data\DataBase\tbLog.cs">
       <DependentUpon>Real_Estate_Management_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\DataBase\tbOwner.cs">
+      <DependentUpon>Real_Estate_Management_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\DataBase\tbPlan.cs">
       <DependentUpon>Real_Estate_Management_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\Repositories\TbOwner_Rep.cs" />
     <Compile Include="Data\Repositories\TbLawyer_Rep.cs" />
     <Compile Include="Data\Repositories\TbLog_Rep.cs" />
     <Compile Include="Data\Repositories\TbPlans_Rep.cs" />
@@ -905,6 +909,24 @@
     <Compile Include="UserControls\UCLawyer.Designer.cs">
       <DependentUpon>UCLawyer.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UCOffices.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCOffices.Designer.cs">
+      <DependentUpon>UCOffices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UCOwner.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCOwner.Designer.cs">
+      <DependentUpon>UCOwner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UCPlans.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCPlans.Designer.cs">
+      <DependentUpon>UCPlans.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CustomElements\CustomControls\AttachmentControl.resx">
       <DependentUpon>AttachmentControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -1177,6 +1199,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UCLawyer.resx">
       <DependentUpon>UCLawyer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UCOffices.resx">
+      <DependentUpon>UCOffices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UCOwner.resx">
+      <DependentUpon>UCOwner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UCPlans.resx">
+      <DependentUpon>UCPlans.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Data\DataBase\Real_Estate_Management_Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

@@ -21,10 +21,11 @@ using DevExpress.XtraEditors;
 using System.Reflection.Emit;
 using System.Windows.Forms.VisualStyles;
 using Org.BouncyCastle.Crypto;
-using DoctorERP.Helpers;
+using Real_Estate_Management.Helpers;
 using DoctorHelper.Helpers;
+using DoctorERP.Helpers;
 
-namespace DoctorERP
+namespace Real_Estate_Management
 {
     public partial class FrmCalc : KryptonForm
     {

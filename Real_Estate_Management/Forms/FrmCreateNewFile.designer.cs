@@ -1,4 +1,4 @@
-﻿namespace DoctorERP
+﻿namespace Real_Estate_Management
 {
     partial class FrmCreateNewFile
     {

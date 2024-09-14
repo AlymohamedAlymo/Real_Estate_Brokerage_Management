@@ -1,4 +1,4 @@
-﻿namespace DoctorERP.User_Controls
+﻿namespace Real_Estate_Management.User_Controls
 {
     partial class UCLawyer
     {
@@ -52,6 +52,7 @@
             this.TxtEmail = new Telerik.WinControls.UI.RadTextBox();
             this.TxtVatNumber = new Telerik.WinControls.UI.RadTextBox();
             this.PageAttachments = new Telerik.WinControls.UI.RadPageViewPage();
+            this.attachmentControl1 = new Real_Estate_Management.AttachmentControl();
             this.BindingNavigatorClient = new Telerik.WinControls.UI.RadBindingNavigator();
             this.commandBarRowElement1 = new Telerik.WinControls.UI.CommandBarRowElement();
             this.commandBarStripElement1 = new Telerik.WinControls.UI.CommandBarStripElement();
@@ -96,7 +97,6 @@
             this.BtnExit = new Telerik.WinControls.UI.CommandBarButton();
             this.AlertTimer = new System.Windows.Forms.Timer(this.components);
             this.materialTheme1 = new Telerik.WinControls.Themes.MaterialTheme();
-            this.attachmentControl1 = new Real_Estate_Management.AttachmentControl();
             ((System.ComponentModel.ISupportInitialize)(this.TxtNote)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel23)).BeginInit();
@@ -201,7 +201,7 @@
             this.radPageView1.Location = new System.Drawing.Point(0, 48);
             this.radPageView1.Name = "radPageView1";
             this.radPageView1.PageBackColor = System.Drawing.SystemColors.Control;
-            this.radPageView1.SelectedPage = this.PageAttachments;
+            this.radPageView1.SelectedPage = this.PageHome;
             this.radPageView1.Size = new System.Drawing.Size(1177, 665);
             this.radPageView1.TabIndex = 72;
             this.radPageView1.ThemeName = "Material";
@@ -289,7 +289,7 @@
             this.radLabel5.RootElement.BorderHighlightThickness = 0;
             this.radLabel5.Size = new System.Drawing.Size(130, 118);
             this.radLabel5.TabIndex = 1411;
-            this.radLabel5.Text = "رقم \r\nالملف";
+            this.radLabel5.Text = "رقم\r\nالبطاقة";
             this.radLabel5.TextAlignment = System.Drawing.ContentAlignment.TopRight;
             this.radLabel5.TextWrap = false;
             this.radLabel5.ThemeName = "Material";
@@ -521,6 +521,19 @@
             this.PageAttachments.Name = "PageAttachments";
             this.PageAttachments.Size = new System.Drawing.Size(1165, 603);
             this.PageAttachments.Text = "مرفقات";
+            // 
+            // attachmentControl1
+            // 
+            this.attachmentControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.attachmentControl1.Location = new System.Drawing.Point(0, 0);
+            this.attachmentControl1.Name = "attachmentControl1";
+            this.attachmentControl1.Size = new System.Drawing.Size(1165, 603);
+            this.attachmentControl1.TabIndex = 0;
+            this.attachmentControl1.MenuPreviewAttach_Click += new System.EventHandler(this.MenuPreviewAttach_Click);
+            this.attachmentControl1.MenuExtractAttachment_Click += new System.EventHandler(this.MenuExtractAttachment_Click);
+            this.attachmentControl1.MenuDeleteAttachment_Click += new System.EventHandler(this.MenuDeleteAttachment_Click);
+            this.attachmentControl1.BtnAddAttachment_Click += new System.EventHandler(this.BtnAddAttachment_Click);
+            this.attachmentControl1.BtnScanner_Click += new System.EventHandler(this.BtnScanner_Click);
             // 
             // BindingNavigatorClient
             // 
@@ -1025,19 +1038,6 @@
             // AlertTimer
             // 
             this.AlertTimer.Tick += new System.EventHandler(this.AlertTimer_Tick);
-            // 
-            // attachmentControl1
-            // 
-            this.attachmentControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.attachmentControl1.Location = new System.Drawing.Point(0, 0);
-            this.attachmentControl1.Name = "attachmentControl1";
-            this.attachmentControl1.Size = new System.Drawing.Size(1165, 603);
-            this.attachmentControl1.TabIndex = 0;
-            this.attachmentControl1.MenuPreviewAttach_Click += new System.EventHandler(this.MenuPreviewAttach_Click);
-            this.attachmentControl1.MenuExtractAttachment_Click += new System.EventHandler(this.MenuExtractAttachment_Click);
-            this.attachmentControl1.MenuDeleteAttachment_Click += new System.EventHandler(this.MenuDeleteAttachment_Click);
-            this.attachmentControl1.BtnAddAttachment_Click += new System.EventHandler(this.BtnAddAttachment_Click);
-            this.attachmentControl1.BtnScanner_Click += new System.EventHandler(this.BtnScanner_Click);
             // 
             // UCLawyer
             // 

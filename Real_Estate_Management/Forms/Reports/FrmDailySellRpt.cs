@@ -12,9 +12,10 @@ using System.Xml.Serialization;
 using System.IO;
 using FastReport.Data;
 using DoctorHelper.Helpers;
+using Real_Estate_Management.Helpers;
 using DoctorERP.Helpers;
 
-namespace DoctorERP
+namespace Real_Estate_Management
 {
     public partial class FrmDailySellRpt : KryptonForm
     {

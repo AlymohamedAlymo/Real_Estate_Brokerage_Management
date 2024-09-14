@@ -10,7 +10,7 @@ using System.IO;
 using System.Windows.Forms;
 
 
-namespace DoctorERP
+namespace Real_Estate_Management
 {
     public partial class FrmScanImage2 : KryptonForm, IAcquireCallback
     {

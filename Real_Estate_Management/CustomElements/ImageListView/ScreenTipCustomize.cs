@@ -3,7 +3,7 @@ using Telerik.WinControls.UI;
 using Telerik.WinControls;
 using System.Drawing;
 
-namespace DoctorERP.CustomElements
+namespace Real_Estate_Management.CustomElements
 {
     public class ScreenTipCustomize : RadScreenTipElement
     {

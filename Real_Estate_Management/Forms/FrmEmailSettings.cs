@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
 
-namespace DoctorERP
+namespace Real_Estate_Management
 {
     public partial class FrmEmailSettings : KryptonForm
     {

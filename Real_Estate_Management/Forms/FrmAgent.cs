@@ -16,7 +16,7 @@ using SmartArabXLSX.Wordprocessing;
 using DevExpress.XtraPrinting.Export.Pdf;
 using System.Reflection;
 
-namespace DoctorERP
+namespace Real_Estate_Management
 {
     public partial class FrmAgent : KryptonForm
     {

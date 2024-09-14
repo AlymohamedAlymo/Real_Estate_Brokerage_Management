@@ -11,10 +11,10 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
-using DoctorERP.Forms;
+using Real_Estate_Management.Forms;
 using Microsoft.SqlServer.Management.Smo;
 
-namespace DoctorERP
+namespace Real_Estate_Management
 {
     public partial class FrmLogin : KryptonForm
     {

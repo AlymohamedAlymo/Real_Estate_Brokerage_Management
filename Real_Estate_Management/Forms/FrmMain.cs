@@ -14,12 +14,12 @@ using Telerik.Windows.Diagrams.Core;
 using System.Threading;
 using System.ComponentModel;
 using Telerik.WinControls.Data;
-using DoctorERP.User_Controls;
-using DoctorERP.CustomElements;
+using Real_Estate_Management.User_Controls;
+using Real_Estate_Management.CustomElements;
 using Telerik.WinControls.UI.SplashScreen;
 using Contract_Management.Dialogs;
 
-namespace DoctorERP
+namespace Real_Estate_Management
 {
     public partial class FrmMain : Telerik.WinControls.UI.RadToolbarForm
     {
@@ -628,7 +628,7 @@ namespace DoctorERP
                     radPageViewPage.Name = "LandsCard";
                     radPageViewPage.Text = "بطاقات الأراضي";
 
-                    DoctorERP.User_Controls.UCLandsCards uCLands = new User_Controls.UCLandsCards(land.guid, false, string.Empty);
+                    Real_Estate_Management.User_Controls.UCLandsCards uCLands = new User_Controls.UCLandsCards(land.guid, false, string.Empty);
                     uCLands.Dock = DockStyle.Fill;
                     
                     radPageViewPage.Controls.Add(uCLands);
@@ -1070,7 +1070,7 @@ namespace DoctorERP
                 radPageViewPage.Name = "ClientLandsCard";
                 radPageViewPage.Text = "بطاقة عميل";
 
-                DoctorERP.User_Controls.UCClientCards uCLands = new User_Controls.UCClientCards(Guid.Empty, false, 1, false);
+                Real_Estate_Management.User_Controls.UCClientCards uCLands = new User_Controls.UCClientCards(Guid.Empty, false, 1, false);
                 uCLands.Dock = DockStyle.Fill;
 
                 radPageViewPage.Controls.Add(uCLands);
@@ -1119,7 +1119,7 @@ namespace DoctorERP
                 radPageViewPage.Name = "LandsCard";
                 radPageViewPage.Text = "بطاقات الأراضي";
 
-                DoctorERP.User_Controls.UCLandsCards uCLands = new User_Controls.UCLandsCards(Guid.Empty, false, string.Empty);
+                Real_Estate_Management.User_Controls.UCLandsCards uCLands = new User_Controls.UCLandsCards(Guid.Empty, false, string.Empty);
                 uCLands.Dock = DockStyle.Fill;
 
                 radPageViewPage.Controls.Add(uCLands);
@@ -1836,7 +1836,7 @@ namespace DoctorERP
                     Text = "بطاقة محامي"
                 };
 
-                DoctorERP.User_Controls.UCLawyer uCLawyer = new User_Controls.UCLawyer(Guid.Empty)
+                Real_Estate_Management.User_Controls.UCLawyer uCLawyer = new User_Controls.UCLawyer(Guid.Empty)
                 {
                     Dock = DockStyle.Fill
                 };

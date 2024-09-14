@@ -22,7 +22,7 @@ public class SendEmail
         mailmesaage.To.Add(CCEmail);
 
         mailmesaage.Subject = Subject;
-        mailmesaage.Body = MessageBody + Environment.NewLine + string.Format("أرسلت بواسطة المستخدم:" + DoctorERP.FrmMain.CurrentUser.name);
+        mailmesaage.Body = MessageBody + Environment.NewLine + string.Format("أرسلت بواسطة المستخدم:" + Real_Estate_Management.FrmMain.CurrentUser.name);
         mailmesaage.IsBodyHtml = false;
 
 

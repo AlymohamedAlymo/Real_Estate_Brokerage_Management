@@ -13,7 +13,7 @@ using System.IO;
 using FastReport.Data;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace DoctorERP
+namespace Real_Estate_Management
 {
     public partial class FrmAgentStatment : KryptonForm
     {

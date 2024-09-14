@@ -2,7 +2,7 @@
 using System.Drawing;
 using Telerik.WinControls.UI;
 
-namespace DoctorERP.CustomElements
+namespace Real_Estate_Management.CustomElements
 {
     public class IconListViewVisualItemCustomize : IconListViewVisualItem
     {

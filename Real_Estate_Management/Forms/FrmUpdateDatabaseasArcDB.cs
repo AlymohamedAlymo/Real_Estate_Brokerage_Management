@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
 using System.IO;
 
-namespace DoctorERP
+namespace Real_Estate_Management
 {
     public partial class FrmUpdateDatabaseasArcDB : KryptonForm
     {

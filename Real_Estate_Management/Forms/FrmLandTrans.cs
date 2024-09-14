@@ -28,7 +28,7 @@ using System.Data.SqlTypes;
 using Microsoft.SqlServer.Management.Smo;
 using DgvFilterPopup;
 
-namespace DoctorERP
+namespace Real_Estate_Management
 {
     public partial class FrmLandTrans : KryptonForm
     {

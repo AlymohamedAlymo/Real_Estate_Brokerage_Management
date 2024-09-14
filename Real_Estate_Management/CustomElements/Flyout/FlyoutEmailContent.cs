@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using Telerik.WinControls.UI;
 
-namespace DoctorERP.CustomElements
+namespace Real_Estate_Management.CustomElements
 {
     public partial class FlyoutEmailContent : UserControl
     {

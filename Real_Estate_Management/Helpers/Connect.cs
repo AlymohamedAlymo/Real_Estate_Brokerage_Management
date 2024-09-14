@@ -366,7 +366,7 @@ class DBConnect
     {
         string DataBaseName = DBConnect.DBConnection.Database;
 
-        string RestoreScript = string.Empty;// global::DoctorERP.Properties.Resources.Restore;
+        string RestoreScript = string.Empty;// global::Real_Estate_Management.Properties.Resources.Restore;
 
         RestoreScript = RestoreScript.Replace("%DBName%", DataBaseName).Replace("%BackupPath%", BackupFile);
         DBConnect.DBCommand = new SqlCommand(RestoreScript, DBConnect.DBConnection);

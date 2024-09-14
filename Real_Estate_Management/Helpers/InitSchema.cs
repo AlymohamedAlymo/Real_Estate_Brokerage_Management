@@ -10,7 +10,7 @@ using System.Windows;
 class InitSchema
 {
     private static string strScript = global::Real_Estate_Management.Properties.Resources.db;
-    private static string strJobScript = string.Empty;// global::DoctorERP.Properties.Resources.backjob;
+    private static string strJobScript = string.Empty;// global::Real_Estate_Management.Properties.Resources.backjob;
 
     public static void InitSchemaScript(string DataBase, string Description)
     {
