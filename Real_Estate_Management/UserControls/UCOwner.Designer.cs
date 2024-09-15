@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition4 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCOwner));
             this.TxtName = new Telerik.WinControls.UI.RadTextBox();
             this.radLabel23 = new Telerik.WinControls.UI.RadLabel();
@@ -73,18 +73,20 @@
             this.TxtAgentName = new Telerik.WinControls.UI.RadTextBox();
             this.TxtAgencyNumber = new Telerik.WinControls.UI.RadTextBox();
             this.radCollapsiblePanel2 = new Telerik.WinControls.UI.RadCollapsiblePanel();
+            this.radPanel2 = new Telerik.WinControls.UI.RadPanel();
             this.TxtOfficeVatNumber = new Telerik.WinControls.UI.RadTextBox();
-            this.TxtOfficePublicNumber = new Telerik.WinControls.UI.RadTextBox();
-            this.TxtOfficeeMail = new Telerik.WinControls.UI.RadTextBox();
             this.TxtOfficeName = new Telerik.WinControls.UI.RadTextBox();
-            this.TxtOfficePhone = new Telerik.WinControls.UI.RadTextBox();
+            this.TxtOfficePublicNumber = new Telerik.WinControls.UI.RadTextBox();
             this.TxtOfficeCR = new Telerik.WinControls.UI.RadTextBox();
+            this.TxtOfficeeMail = new Telerik.WinControls.UI.RadTextBox();
+            this.TxtOfficePhone = new Telerik.WinControls.UI.RadTextBox();
             this.TxtAgentVatNumber = new Telerik.WinControls.UI.RadTextBox();
             this.TxtAgentID = new Telerik.WinControls.UI.RadTextBox();
             this.TxtAgenteMail = new Telerik.WinControls.UI.RadTextBox();
             this.TxtAgentMobile = new Telerik.WinControls.UI.RadTextBox();
             this.TxtAgentPublicNumber = new Telerik.WinControls.UI.RadTextBox();
             this.PageAttachments = new Telerik.WinControls.UI.RadPageViewPage();
+            this.attachmentControl1 = new Real_Estate_Management.AttachmentControl();
             this.BindingNavigatorClient = new Telerik.WinControls.UI.RadBindingNavigator();
             this.commandBarRowElement1 = new Telerik.WinControls.UI.CommandBarRowElement();
             this.commandBarStripElement1 = new Telerik.WinControls.UI.CommandBarStripElement();
@@ -129,8 +131,6 @@
             this.BtnExit = new Telerik.WinControls.UI.CommandBarButton();
             this.AlertTimer = new System.Windows.Forms.Timer(this.components);
             this.materialTheme1 = new Telerik.WinControls.Themes.MaterialTheme();
-            this.attachmentControl1 = new Real_Estate_Management.AttachmentControl();
-            this.radPanel2 = new Telerik.WinControls.UI.RadPanel();
             ((System.ComponentModel.ISupportInitialize)(this.TxtName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel23)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel19)).BeginInit();
@@ -188,12 +188,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.radCollapsiblePanel2)).BeginInit();
             this.radCollapsiblePanel2.PanelContainer.SuspendLayout();
             this.radCollapsiblePanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).BeginInit();
+            this.radPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TxtOfficeVatNumber)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtOfficePublicNumber)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtOfficeeMail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtOfficeName)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtOfficePhone)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtOfficePublicNumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtOfficeCR)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtOfficeeMail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtOfficePhone)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtAgentVatNumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtAgentID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtAgenteMail)).BeginInit();
@@ -201,8 +203,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.TxtAgentPublicNumber)).BeginInit();
             this.PageAttachments.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BindingNavigatorClient)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).BeginInit();
-            this.radPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // TxtName
@@ -258,7 +258,7 @@
             this.radPageView1.Location = new System.Drawing.Point(0, 48);
             this.radPageView1.Name = "radPageView1";
             this.radPageView1.PageBackColor = System.Drawing.SystemColors.Control;
-            this.radPageView1.SelectedPage = this.radPageViewPage1;
+            this.radPageView1.SelectedPage = this.PageHome;
             this.radPageView1.Size = new System.Drawing.Size(1177, 665);
             this.radPageView1.TabIndex = 72;
             this.radPageView1.ThemeName = "Material";
@@ -270,10 +270,10 @@
             this.PageHome.Controls.Add(this.MainContainer);
             this.PageHome.Description = null;
             this.PageHome.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PageHome.ItemSize = new System.Drawing.SizeF(30F, 32F);
+            this.PageHome.ItemSize = new System.Drawing.SizeF(46F, 49F);
             this.PageHome.Location = new System.Drawing.Point(6, 6);
             this.PageHome.Name = "PageHome";
-            this.PageHome.Size = new System.Drawing.Size(1165, 620);
+            this.PageHome.Size = new System.Drawing.Size(1165, 603);
             this.PageHome.Text = "عام";
             this.PageHome.Title = "البيانات العامة لبطاقة الأرض";
             // 
@@ -302,7 +302,7 @@
             this.MainContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainContainer.Location = new System.Drawing.Point(0, 0);
             this.MainContainer.Name = "MainContainer";
-            this.MainContainer.Size = new System.Drawing.Size(1165, 620);
+            this.MainContainer.Size = new System.Drawing.Size(1165, 603);
             this.MainContainer.TabIndex = 11512122;
             // 
             // TxtNote
@@ -341,7 +341,7 @@
             this.radCollapsiblePanelParenter2.PanelContainer.Controls.Add(this.radTextBox5);
             this.radCollapsiblePanelParenter2.PanelContainer.Controls.Add(this.radTextBox6);
             this.radCollapsiblePanelParenter2.PanelContainer.Location = new System.Drawing.Point(18, 1);
-            this.radCollapsiblePanelParenter2.PanelContainer.Size = new System.Drawing.Size(0, 0);
+            this.radCollapsiblePanelParenter2.PanelContainer.Size = new System.Drawing.Size(296, 0);
             this.radCollapsiblePanelParenter2.Size = new System.Drawing.Size(315, 25);
             this.radCollapsiblePanelParenter2.TabIndex = 11512126;
             this.radCollapsiblePanelParenter2.Visible = false;
@@ -381,11 +381,11 @@
             // radTextBox6
             // 
             this.radTextBox6.AutoScroll = true;
-            this.radTextBox6.EmbeddedLabelText = "اسم العميل";
+            this.radTextBox6.EmbeddedLabelText = "اسم الشريك";
             this.radTextBox6.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radTextBox6.Location = new System.Drawing.Point(931, 3);
             this.radTextBox6.Name = "radTextBox6";
-            this.radTextBox6.NullText = "ادخل اسم العميل";
+            this.radTextBox6.NullText = "ادخل اسم الشريك";
             this.radTextBox6.ReadOnly = true;
             this.radTextBox6.ShowEmbeddedLabel = true;
             this.radTextBox6.ShowNullText = true;
@@ -411,7 +411,7 @@
             this.radCollapsiblePanelParenter3.PanelContainer.Controls.Add(this.radTextBox8);
             this.radCollapsiblePanelParenter3.PanelContainer.Controls.Add(this.radTextBox9);
             this.radCollapsiblePanelParenter3.PanelContainer.Location = new System.Drawing.Point(18, 1);
-            this.radCollapsiblePanelParenter3.PanelContainer.Size = new System.Drawing.Size(0, 0);
+            this.radCollapsiblePanelParenter3.PanelContainer.Size = new System.Drawing.Size(296, 0);
             this.radCollapsiblePanelParenter3.Size = new System.Drawing.Size(315, 25);
             this.radCollapsiblePanelParenter3.TabIndex = 11512127;
             this.radCollapsiblePanelParenter3.Visible = false;
@@ -451,11 +451,11 @@
             // radTextBox9
             // 
             this.radTextBox9.AutoScroll = true;
-            this.radTextBox9.EmbeddedLabelText = "اسم العميل";
+            this.radTextBox9.EmbeddedLabelText = "اسم الشريك";
             this.radTextBox9.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radTextBox9.Location = new System.Drawing.Point(931, 3);
             this.radTextBox9.Name = "radTextBox9";
-            this.radTextBox9.NullText = "ادخل اسم العميل";
+            this.radTextBox9.NullText = "ادخل اسم الشريك";
             this.radTextBox9.ReadOnly = true;
             this.radTextBox9.ShowEmbeddedLabel = true;
             this.radTextBox9.ShowNullText = true;
@@ -481,7 +481,7 @@
             this.radCollapsiblePanelParenter4.PanelContainer.Controls.Add(this.radTextBox11);
             this.radCollapsiblePanelParenter4.PanelContainer.Controls.Add(this.radTextBox12);
             this.radCollapsiblePanelParenter4.PanelContainer.Location = new System.Drawing.Point(18, 1);
-            this.radCollapsiblePanelParenter4.PanelContainer.Size = new System.Drawing.Size(0, 0);
+            this.radCollapsiblePanelParenter4.PanelContainer.Size = new System.Drawing.Size(296, 0);
             this.radCollapsiblePanelParenter4.Size = new System.Drawing.Size(315, 25);
             this.radCollapsiblePanelParenter4.TabIndex = 11512128;
             this.radCollapsiblePanelParenter4.Visible = false;
@@ -521,11 +521,11 @@
             // radTextBox12
             // 
             this.radTextBox12.AutoScroll = true;
-            this.radTextBox12.EmbeddedLabelText = "اسم العميل";
+            this.radTextBox12.EmbeddedLabelText = "اسم الشريك";
             this.radTextBox12.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radTextBox12.Location = new System.Drawing.Point(931, 3);
             this.radTextBox12.Name = "radTextBox12";
-            this.radTextBox12.NullText = "ادخل اسم العميل";
+            this.radTextBox12.NullText = "ادخل اسم الشريك";
             this.radTextBox12.ReadOnly = true;
             this.radTextBox12.ShowEmbeddedLabel = true;
             this.radTextBox12.ShowNullText = true;
@@ -589,11 +589,11 @@
             // radTextBox3
             // 
             this.radTextBox3.AutoScroll = true;
-            this.radTextBox3.EmbeddedLabelText = "اسم العميل";
+            this.radTextBox3.EmbeddedLabelText = "اسم الشريك";
             this.radTextBox3.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radTextBox3.Location = new System.Drawing.Point(4, 3);
             this.radTextBox3.Name = "radTextBox3";
-            this.radTextBox3.NullText = "ادخل اسم العميل";
+            this.radTextBox3.NullText = "ادخل اسم الشريك";
             this.radTextBox3.ReadOnly = true;
             this.radTextBox3.ShowEmbeddedLabel = true;
             this.radTextBox3.ShowNullText = true;
@@ -748,7 +748,7 @@
             this.CmbPlanGuid.EditorControl.MasterTemplate.EnableFiltering = true;
             this.CmbPlanGuid.EditorControl.MasterTemplate.EnableGrouping = false;
             this.CmbPlanGuid.EditorControl.MasterTemplate.ShowFilteringRow = false;
-            this.CmbPlanGuid.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition4;
+            this.CmbPlanGuid.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.CmbPlanGuid.EditorControl.Name = "NestedRadGridView";
             this.CmbPlanGuid.EditorControl.ReadOnly = true;
             this.CmbPlanGuid.EditorControl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -890,10 +890,10 @@
             // radPageViewPage1
             // 
             this.radPageViewPage1.Controls.Add(this.radPanel1);
-            this.radPageViewPage1.ItemSize = new System.Drawing.SizeF(44F, 32F);
+            this.radPageViewPage1.ItemSize = new System.Drawing.SizeF(60F, 49F);
             this.radPageViewPage1.Location = new System.Drawing.Point(6, 6);
             this.radPageViewPage1.Name = "radPageViewPage1";
-            this.radPageViewPage1.Size = new System.Drawing.Size(1165, 620);
+            this.radPageViewPage1.Size = new System.Drawing.Size(1165, 603);
             this.radPageViewPage1.Text = "الوكيل";
             // 
             // radPanel1
@@ -909,7 +909,7 @@
             this.radPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radPanel1.Location = new System.Drawing.Point(0, 0);
             this.radPanel1.Name = "radPanel1";
-            this.radPanel1.Size = new System.Drawing.Size(1165, 620);
+            this.radPanel1.Size = new System.Drawing.Size(1165, 603);
             this.radPanel1.TabIndex = 11512124;
             // 
             // TxtAgentName
@@ -967,6 +967,20 @@
             this.radCollapsiblePanel2.TabIndex = 465654;
             this.radCollapsiblePanel2.TabStop = false;
             // 
+            // radPanel2
+            // 
+            this.radPanel2.Controls.Add(this.TxtOfficeVatNumber);
+            this.radPanel2.Controls.Add(this.TxtOfficeName);
+            this.radPanel2.Controls.Add(this.TxtOfficePublicNumber);
+            this.radPanel2.Controls.Add(this.TxtOfficeCR);
+            this.radPanel2.Controls.Add(this.TxtOfficeeMail);
+            this.radPanel2.Controls.Add(this.TxtOfficePhone);
+            this.radPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.radPanel2.Location = new System.Drawing.Point(0, 0);
+            this.radPanel2.Name = "radPanel2";
+            this.radPanel2.Size = new System.Drawing.Size(312, 387);
+            this.radPanel2.TabIndex = 465655;
+            // 
             // TxtOfficeVatNumber
             // 
             this.TxtOfficeVatNumber.AutoScroll = true;
@@ -984,42 +998,6 @@
             this.TxtOfficeVatNumber.WordWrap = false;
             this.TxtOfficeVatNumber.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
             this.TxtOfficeVatNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReadOnly_KeyPress);
-            // 
-            // TxtOfficePublicNumber
-            // 
-            this.TxtOfficePublicNumber.AutoScroll = true;
-            this.TxtOfficePublicNumber.EmbeddedLabelText = "رقم المعلن";
-            this.TxtOfficePublicNumber.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtOfficePublicNumber.Location = new System.Drawing.Point(3, 324);
-            this.TxtOfficePublicNumber.Name = "TxtOfficePublicNumber";
-            this.TxtOfficePublicNumber.NullText = "ادخل رقم المعلن";
-            this.TxtOfficePublicNumber.ReadOnly = true;
-            this.TxtOfficePublicNumber.ShowEmbeddedLabel = true;
-            this.TxtOfficePublicNumber.ShowNullText = true;
-            this.TxtOfficePublicNumber.Size = new System.Drawing.Size(305, 58);
-            this.TxtOfficePublicNumber.TabIndex = 13;
-            this.TxtOfficePublicNumber.ThemeName = "Material";
-            this.TxtOfficePublicNumber.WordWrap = false;
-            this.TxtOfficePublicNumber.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
-            this.TxtOfficePublicNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReadOnly_KeyPress);
-            // 
-            // TxtOfficeeMail
-            // 
-            this.TxtOfficeeMail.AutoScroll = true;
-            this.TxtOfficeeMail.EmbeddedLabelText = "البريد الإلكتروني";
-            this.TxtOfficeeMail.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtOfficeeMail.Location = new System.Drawing.Point(3, 196);
-            this.TxtOfficeeMail.Name = "TxtOfficeeMail";
-            this.TxtOfficeeMail.NullText = "ادخل البريد الإلكتروني";
-            this.TxtOfficeeMail.ReadOnly = true;
-            this.TxtOfficeeMail.ShowEmbeddedLabel = true;
-            this.TxtOfficeeMail.ShowNullText = true;
-            this.TxtOfficeeMail.Size = new System.Drawing.Size(305, 58);
-            this.TxtOfficeeMail.TabIndex = 11;
-            this.TxtOfficeeMail.ThemeName = "Material";
-            this.TxtOfficeeMail.WordWrap = false;
-            this.TxtOfficeeMail.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
-            this.TxtOfficeeMail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReadOnly_KeyPress);
             // 
             // TxtOfficeName
             // 
@@ -1039,23 +1017,23 @@
             this.TxtOfficeName.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
             this.TxtOfficeName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReadOnly_KeyPress);
             // 
-            // TxtOfficePhone
+            // TxtOfficePublicNumber
             // 
-            this.TxtOfficePhone.AutoScroll = true;
-            this.TxtOfficePhone.EmbeddedLabelText = "رقم الهاتف";
-            this.TxtOfficePhone.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtOfficePhone.Location = new System.Drawing.Point(3, 132);
-            this.TxtOfficePhone.Name = "TxtOfficePhone";
-            this.TxtOfficePhone.NullText = "ادخل رقم الهاتف";
-            this.TxtOfficePhone.ReadOnly = true;
-            this.TxtOfficePhone.ShowEmbeddedLabel = true;
-            this.TxtOfficePhone.ShowNullText = true;
-            this.TxtOfficePhone.Size = new System.Drawing.Size(305, 58);
-            this.TxtOfficePhone.TabIndex = 10;
-            this.TxtOfficePhone.ThemeName = "Material";
-            this.TxtOfficePhone.WordWrap = false;
-            this.TxtOfficePhone.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
-            this.TxtOfficePhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReadOnly_KeyPress);
+            this.TxtOfficePublicNumber.AutoScroll = true;
+            this.TxtOfficePublicNumber.EmbeddedLabelText = "رقم المعلن";
+            this.TxtOfficePublicNumber.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtOfficePublicNumber.Location = new System.Drawing.Point(3, 324);
+            this.TxtOfficePublicNumber.Name = "TxtOfficePublicNumber";
+            this.TxtOfficePublicNumber.NullText = "ادخل رقم المعلن";
+            this.TxtOfficePublicNumber.ReadOnly = true;
+            this.TxtOfficePublicNumber.ShowEmbeddedLabel = true;
+            this.TxtOfficePublicNumber.ShowNullText = true;
+            this.TxtOfficePublicNumber.Size = new System.Drawing.Size(305, 58);
+            this.TxtOfficePublicNumber.TabIndex = 13;
+            this.TxtOfficePublicNumber.ThemeName = "Material";
+            this.TxtOfficePublicNumber.WordWrap = false;
+            this.TxtOfficePublicNumber.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
+            this.TxtOfficePublicNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReadOnly_KeyPress);
             // 
             // TxtOfficeCR
             // 
@@ -1074,6 +1052,42 @@
             this.TxtOfficeCR.WordWrap = false;
             this.TxtOfficeCR.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
             this.TxtOfficeCR.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReadOnly_KeyPress);
+            // 
+            // TxtOfficeeMail
+            // 
+            this.TxtOfficeeMail.AutoScroll = true;
+            this.TxtOfficeeMail.EmbeddedLabelText = "البريد الإلكتروني";
+            this.TxtOfficeeMail.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtOfficeeMail.Location = new System.Drawing.Point(3, 196);
+            this.TxtOfficeeMail.Name = "TxtOfficeeMail";
+            this.TxtOfficeeMail.NullText = "ادخل البريد الإلكتروني";
+            this.TxtOfficeeMail.ReadOnly = true;
+            this.TxtOfficeeMail.ShowEmbeddedLabel = true;
+            this.TxtOfficeeMail.ShowNullText = true;
+            this.TxtOfficeeMail.Size = new System.Drawing.Size(305, 58);
+            this.TxtOfficeeMail.TabIndex = 11;
+            this.TxtOfficeeMail.ThemeName = "Material";
+            this.TxtOfficeeMail.WordWrap = false;
+            this.TxtOfficeeMail.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
+            this.TxtOfficeeMail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReadOnly_KeyPress);
+            // 
+            // TxtOfficePhone
+            // 
+            this.TxtOfficePhone.AutoScroll = true;
+            this.TxtOfficePhone.EmbeddedLabelText = "رقم الهاتف";
+            this.TxtOfficePhone.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtOfficePhone.Location = new System.Drawing.Point(3, 132);
+            this.TxtOfficePhone.Name = "TxtOfficePhone";
+            this.TxtOfficePhone.NullText = "ادخل رقم الهاتف";
+            this.TxtOfficePhone.ReadOnly = true;
+            this.TxtOfficePhone.ShowEmbeddedLabel = true;
+            this.TxtOfficePhone.ShowNullText = true;
+            this.TxtOfficePhone.Size = new System.Drawing.Size(305, 58);
+            this.TxtOfficePhone.TabIndex = 10;
+            this.TxtOfficePhone.ThemeName = "Material";
+            this.TxtOfficePhone.WordWrap = false;
+            this.TxtOfficePhone.TextChanged += new System.EventHandler(this.TxtClearButtonVisible_TextChanged);
+            this.TxtOfficePhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReadOnly_KeyPress);
             // 
             // TxtAgentVatNumber
             // 
@@ -1173,11 +1187,24 @@
             // PageAttachments
             // 
             this.PageAttachments.Controls.Add(this.attachmentControl1);
-            this.PageAttachments.ItemSize = new System.Drawing.SizeF(50F, 32F);
+            this.PageAttachments.ItemSize = new System.Drawing.SizeF(66F, 49F);
             this.PageAttachments.Location = new System.Drawing.Point(6, 6);
             this.PageAttachments.Name = "PageAttachments";
             this.PageAttachments.Size = new System.Drawing.Size(1165, 603);
             this.PageAttachments.Text = "مرفقات";
+            // 
+            // attachmentControl1
+            // 
+            this.attachmentControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.attachmentControl1.Location = new System.Drawing.Point(0, 0);
+            this.attachmentControl1.Name = "attachmentControl1";
+            this.attachmentControl1.Size = new System.Drawing.Size(1165, 603);
+            this.attachmentControl1.TabIndex = 0;
+            this.attachmentControl1.MenuPreviewAttach_Click += new System.EventHandler(this.MenuPreviewAttach_Click);
+            this.attachmentControl1.MenuExtractAttachment_Click += new System.EventHandler(this.MenuExtractAttachment_Click);
+            this.attachmentControl1.MenuDeleteAttachment_Click += new System.EventHandler(this.MenuDeleteAttachment_Click);
+            this.attachmentControl1.BtnAddAttachment_Click += new System.EventHandler(this.BtnAddAttachment_Click);
+            this.attachmentControl1.BtnScanner_Click += new System.EventHandler(this.BtnScanner_Click);
             // 
             // BindingNavigatorClient
             // 
@@ -1683,33 +1710,6 @@
             // 
             this.AlertTimer.Tick += new System.EventHandler(this.AlertTimer_Tick);
             // 
-            // attachmentControl1
-            // 
-            this.attachmentControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.attachmentControl1.Location = new System.Drawing.Point(0, 0);
-            this.attachmentControl1.Name = "attachmentControl1";
-            this.attachmentControl1.Size = new System.Drawing.Size(1165, 603);
-            this.attachmentControl1.TabIndex = 0;
-            this.attachmentControl1.MenuPreviewAttach_Click += new System.EventHandler(this.MenuPreviewAttach_Click);
-            this.attachmentControl1.MenuExtractAttachment_Click += new System.EventHandler(this.MenuExtractAttachment_Click);
-            this.attachmentControl1.MenuDeleteAttachment_Click += new System.EventHandler(this.MenuDeleteAttachment_Click);
-            this.attachmentControl1.BtnAddAttachment_Click += new System.EventHandler(this.BtnAddAttachment_Click);
-            this.attachmentControl1.BtnScanner_Click += new System.EventHandler(this.BtnScanner_Click);
-            // 
-            // radPanel2
-            // 
-            this.radPanel2.Controls.Add(this.TxtOfficeVatNumber);
-            this.radPanel2.Controls.Add(this.TxtOfficeName);
-            this.radPanel2.Controls.Add(this.TxtOfficePublicNumber);
-            this.radPanel2.Controls.Add(this.TxtOfficeCR);
-            this.radPanel2.Controls.Add(this.TxtOfficeeMail);
-            this.radPanel2.Controls.Add(this.TxtOfficePhone);
-            this.radPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radPanel2.Location = new System.Drawing.Point(0, 0);
-            this.radPanel2.Name = "radPanel2";
-            this.radPanel2.Size = new System.Drawing.Size(312, 387);
-            this.radPanel2.TabIndex = 465655;
-            // 
             // UCOwner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1784,12 +1784,15 @@
             this.radCollapsiblePanel2.PanelContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radCollapsiblePanel2)).EndInit();
             this.radCollapsiblePanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).EndInit();
+            this.radPanel2.ResumeLayout(false);
+            this.radPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TxtOfficeVatNumber)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtOfficePublicNumber)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtOfficeeMail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtOfficeName)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtOfficePhone)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtOfficePublicNumber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtOfficeCR)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtOfficeeMail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtOfficePhone)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtAgentVatNumber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtAgentID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtAgenteMail)).EndInit();
@@ -1797,9 +1800,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.TxtAgentPublicNumber)).EndInit();
             this.PageAttachments.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.BindingNavigatorClient)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).EndInit();
-            this.radPanel2.ResumeLayout(false);
-            this.radPanel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

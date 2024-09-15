@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCLawyer));
             this.TxtNote = new Telerik.WinControls.UI.RadTextBox();
             this.TxtName = new Telerik.WinControls.UI.RadTextBox();
@@ -132,14 +132,9 @@
             this.TxtNote.EmbeddedLabelText = "الملاحظات ";
             this.TxtNote.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold);
             this.TxtNote.Location = new System.Drawing.Point(545, 412);
-            this.TxtNote.Multiline = true;
             this.TxtNote.Name = "TxtNote";
             this.TxtNote.NullText = "ادخل الملاحظات إن وجد";
             this.TxtNote.ReadOnly = true;
-            // 
-            // 
-            // 
-            this.TxtNote.RootElement.StretchVertically = true;
             this.TxtNote.ShowEmbeddedLabel = true;
             this.TxtNote.ShowNullText = true;
             this.TxtNote.Size = new System.Drawing.Size(305, 58);
@@ -374,7 +369,7 @@
             this.CmbPlanGuid.EditorControl.MasterTemplate.EnableFiltering = true;
             this.CmbPlanGuid.EditorControl.MasterTemplate.EnableGrouping = false;
             this.CmbPlanGuid.EditorControl.MasterTemplate.ShowFilteringRow = false;
-            this.CmbPlanGuid.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition2;
+            this.CmbPlanGuid.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.CmbPlanGuid.EditorControl.Name = "NestedRadGridView";
             this.CmbPlanGuid.EditorControl.ReadOnly = true;
             this.CmbPlanGuid.EditorControl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
