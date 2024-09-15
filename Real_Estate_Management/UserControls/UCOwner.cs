@@ -3,7 +3,6 @@ using Real_Estate_Management.Helpers;
 using DoctorHelper.Helpers;
 using DoctorHelper.Messages;
 using Real_Estate_Management.Data.DataBase;
-using Real_Estate_Management.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -71,11 +70,20 @@ namespace Real_Estate_Management.User_Controls
             radlabelBookings.TextAlignment = ContentAlignment.MiddleCenter;
             radLabel8.TextAlignment = ContentAlignment.MiddleCenter;
 
-            radPageView1.RootElement.Children[0].Children[0].Children[0].Children[2].Visibility = ElementVisibility.Hidden;
+            radPageView1.RootElement.Children[0].Children[0].Children[0].Children[3].Visibility = ElementVisibility.Hidden;
             this.MainContainer.PanelElement.PanelFill.Visibility = ElementVisibility.Hidden;
             this.MainContainer.BackgroundImage = Real_Estate_Management.Properties.Resources.Background;
             this.MainContainer.BackgroundImageLayout = ImageLayout.Stretch;
 
+            this.radPanel1.PanelElement.PanelFill.Visibility = ElementVisibility.Hidden;
+            this.radPanel1.BackgroundImage = Real_Estate_Management.Properties.Resources.Background;
+            this.radPanel1.BackgroundImageLayout = ImageLayout.Stretch;
+
+            //this.radCollapsiblePanel2.PanelElement.PanelFill.Visibility = ElementVisibility.Hidden;
+            this.radCollapsiblePanel2.BackgroundImage = Real_Estate_Management.Properties.Resources.Background;
+            this.radCollapsiblePanel2.BackgroundImageLayout = ImageLayout.Stretch;
+
+            
 
             var radBarButton = new[] { BtnResfresh, BtnDelete, BtnNew, BtnEdit, BtnExit };
             radBarButton.ForEach(control =>
@@ -123,6 +131,38 @@ namespace Real_Estate_Management.User_Controls
 
         }
 
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Escape)
+            {
+                BtnExit_Click(new object(), new EventArgs());
+            }
+            else if (keyData == Keys.Enter)
+            {
+                if (IsDirty) { TackAction(); }
+            }
+            else if (keyData == Keys.F1)
+            {
+                BtnAdd_Click(new object(), new EventArgs());
+            }
+            else if (keyData == Keys.F2)
+            {
+                BtnEdit_Click(new object(), new EventArgs());
+            }
+            else if (keyData == Keys.F3)
+            {
+                BtnDelete_Click(new object(), new EventArgs());
+            }
+            else if (keyData == Keys.F5)
+            {
+                BtnResfresh_Click(new object(), new EventArgs());
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+
+
         #region Binding
 
         private void SetData()
@@ -157,18 +197,23 @@ namespace Real_Estate_Management.User_Controls
             CmbPlanGuid.Columns[5].HeaderText = "المدينة";
             CmbPlanGuid.Columns[6].HeaderText = "الموقع";
 
-
-            var controls = MainContainer.Controls.OfType<RadControl>().Where(control => !control.Name.StartsWith("rad"));
-            foreach (var control in controls)
+            List<RadPanel> panels = new List<RadPanel>() { radPanel1, MainContainer, radPanel2 };
+            foreach (var panel in panels)
             {
+                var controls = panel.Controls.OfType<RadControl>().Where(control => !control.Name.StartsWith("rad"));
+                foreach (var control in controls)
+                {
 
-                control.DataBindings.Clear();
-                string dataMember = control.Name.Remove(0, 3);
-                string propertyName = control is RadSpinEditor ? "Value" : control is RadCheckBox ? "Checked"
-                    : control is RadMultiColumnComboBox ? "SelectedValue" : "Text";
-                Binding ControlBinding = new System.Windows.Forms.Binding(propertyName, Bs, dataMember);
-                control.DataBindings.Add(ControlBinding);
+                    control.DataBindings.Clear();
+                    string dataMember = control.Name.Remove(0, 3);
+                    string propertyName = control is RadSpinEditor ? "Value" : control is RadCheckBox ? "Checked"
+                        : control is RadMultiColumnComboBox ? "SelectedValue" : "Text";
+                    Binding ControlBinding = new System.Windows.Forms.Binding(propertyName, Bs, dataMember);
+                    control.DataBindings.Add(ControlBinding);
+                }
+
             }
+
 
             BtnReservation.Text = "تنشيط";
             IsLoad = false;
@@ -186,25 +231,25 @@ namespace Real_Estate_Management.User_Controls
                 {
                     var index = TBOwner_Rep.lstData.IndexOf(ObjLawer.First());
                     Bs.Position = index;
-                    BtnReservation.Text = ObjLawer.First().Statues.ToString() == "غير نشط" ? "تنشيط" : "إلغاء تنشيط";
+                    BtnReservation.Text = (ObjLawer.First().Statues.Equals(DBNull.Value)) ? "إلغاء تنشيط" : ObjLawer.First().Statues.ToString() == "غير نشط" ? "تنشيط" : "إلغاء تنشيط";
                     return;
                 }
             }
 
             Bs.MoveLast();
 
-            tbLawyer Obj = (tbLawyer)Bs.Current;
-            BtnReservation.Text = Obj.Statues.ToString() == "غير نشط" ? "تنشيط" : "إلغاء تنشيط";
+            tbOwner Obj = (tbOwner)Bs.Current;
+            BtnReservation.Text = (Obj.Statues.Equals(DBNull.Value)) ? "إلغاء تنشيط" : Obj.Statues.ToString() == "غير نشط" ? "تنشيط" : "إلغاء تنشيط";
 
         }
 
         private void Bs_PositionChanged(object sender, EventArgs e)
         {
             if (IsLoad) { return; }
-            tbLawyer obj = (tbLawyer)Bs.Current;
+            tbOwner Obj = (tbOwner)Bs.Current;
 
             if (Bs.Current == null) { return; }
-            if (obj.Guid.Equals(Guid.Empty)) { return; }
+            if (Obj.Guid.Equals(Guid.Empty)) { return; }
             CurrentPosition = Bs.Position;
 
             if (IsDirty && !IsProgrammatic)
@@ -220,8 +265,8 @@ namespace Real_Estate_Management.User_Controls
                 IsProgrammatic = false;
 
             }
-            BtnReservation.Text = obj.Statues.ToString() == "غير نشط" ? "تنشيط" : "إلغاء التنشيط";
-            attachmentControl1.FillDataGridAttachments(obj.Guid);
+            BtnReservation.Text = (Obj.Statues.Equals(DBNull.Value)) ? "إلغاء تنشيط" : Obj.Statues.ToString() == "غير نشط" ? "تنشيط" : "إلغاء تنشيط";
+            attachmentControl1.FillDataGridAttachments(Obj.Guid);
             BtnDelete.Enabled = true;
             BtnEdit.Enabled = true;
             SetReadOnly(true);
@@ -329,8 +374,11 @@ namespace Real_Estate_Management.User_Controls
 
             DBConnect.StartTransAction();
             TbLog_Rep.AddNew(_PlanGuid, "إضافة", "بطاقة مالك", $"إضافة بطاقة مالك بأسم {TxtName.Text}");
-            TBOwner_Rep.AddNew(_PlanGuid, _Guid, int.Parse(TxtNumber.Text), TxtName.Text, TxtMobile.Text, TxtMobileAdd.Text,
-                TxtIDNumber.Text, TxtVatNumber.Text, TxtOfficeName.Text, TxtEmail.Text, TxtNote.Text, internedLastAction);
+            TBOwner_Rep.AddNew(_PlanGuid, _Guid, int.Parse(TxtNumber.Text), TxtName.Text, TxtIDNumber.Text, TxtMobile.Text,
+                TxtMobileAdd.Text, TxtEmail.Text, TxtVatNumber.Text, TxtPublicNumber.Text, TxtAgentName.Text, TxtAgentID.Text,
+                TxtAgentMobile.Text, TxtAgenteMail.Text, TxtAgentVatNumber.Text, TxtAgencyNumber.Text,TxtAgentPublicNumber.Text,
+                TxtOfficeName.Text, TxtOfficeCR.Text, TxtOfficePhone.Text, TxtOfficeeMail.Text, TxtOfficeVatNumber.Text, 
+                TxtOfficePublicNumber.Text, TxtNote.Text, internedLastAction);
             attachmentControl1.AddAttachments(_Guid);
             if (DBConnect.CommitTransAction())
             {
@@ -370,7 +418,7 @@ namespace Real_Estate_Management.User_Controls
                     BtnNew.Enabled = false;
 
                     IsDirty = true;
-                    CurrentGuid = ((tbLawyer)Bs.Current).Guid;
+                    CurrentGuid = ((tbOwner)Bs.Current).Guid;
                     SetReadOnly(false);
                     break;
                 case "حفظ":
@@ -382,7 +430,7 @@ namespace Real_Estate_Management.User_Controls
 
         private void Edit()
         {
-            tbLawyer Obj = (tbLawyer)Bs.Current;
+            tbOwner Obj = (tbOwner)Bs.Current;
 
             if (ShowConfirmMSG && !Messages.MessageWarning("هل أنت متاكد من التعديل ؟", "تعديل بطاقة مالك", "إذا ضغط علي زر نعم سوف يتم تعديل بطاقة المالك \n إذا ضغط علي لا سوف يتم تجاهل التغييرات"))
             {
@@ -436,7 +484,7 @@ namespace Real_Estate_Management.User_Controls
             Obj.MobileAdd = TxtMobileAdd.Text;
             Obj.Email = TxtEmail.Text;
             Obj.VatNumber = TxtVatNumber.Text;
-            Obj.OfficeName = TxtOfficeName.Text;
+            Obj.OfficeName = TxtPublicNumber.Text;
             Obj.Note = TxtNote.Text;
             Obj.LastAction = internedLastAction;
 
@@ -470,7 +518,7 @@ namespace Real_Estate_Management.User_Controls
 
         private void BtnDelete_Click(object sender, EventArgs e)
         {
-            tbLawyer Obj = (tbLawyer)Bs.Current;
+            tbOwner Obj = (tbOwner)Bs.Current;
 
             if (!Check("حذف بطاقة", "حذف بطاقة المالك", OperationType.OperationIs.Delete, true)) { return; }
 
@@ -484,7 +532,7 @@ namespace Real_Estate_Management.User_Controls
                 return;
             }
             int NextPosition = Bs.Position + 1 > Bs.Count - 1 ? Bs.Count - 1 : Bs.Position + 1;
-            var ListData = Bs.DataSource as List<tbLawyer>;
+            var ListData = Bs.DataSource as List<tbOwner>;
             Guid NextGuid = ListData[NextPosition].Guid;
             DBConnect.StartTransAction();
             TbLog_Rep.AddNew(Obj.PlanGuid, "حذف", "بطاقة مالك", $"حذف بطاقة مالك بأسم {TxtName.Text}");
@@ -526,7 +574,7 @@ namespace Real_Estate_Management.User_Controls
                 Messages.MessageException(Operation, "يجب حفظ البطاقة أولا", "قم بحفظ بطاقة المالك أولاَ و بعد ذلك يمكنك " + Command);
                 return false;
             }
-            tbLawyer Obj = (tbLawyer)Bs.Current;
+            tbOwner Obj = (tbOwner)Bs.Current;
             Dictionary<bool, string> Check = CheckifOprAllow(Obj, OperType, IsAction);
             if (!Check.Keys.First() && !Operation.Contains("جديد"))
             {
@@ -542,7 +590,7 @@ namespace Real_Estate_Management.User_Controls
 
         }
 
-        private Dictionary<bool, string> CheckifOprAllow(tbLawyer DataRow, OperationType.OperationIs operation, bool IsAction)
+        private Dictionary<bool, string> CheckifOprAllow(tbOwner DataRow, OperationType.OperationIs operation, bool IsAction)
         {
             bool GoHead = false, IsSoldorInOrder = false;
             Dictionary<bool, string> Pair = new Dictionary<bool, string>();
@@ -589,34 +637,39 @@ namespace Real_Estate_Management.User_Controls
         private void SetReadOnly(bool isReadOnly)
         {
             HashSet<RadControl> notUsedControls = new HashSet<RadControl> { TxtNumber, TxtLastAction };
-
-            foreach (var control in MainContainer.Controls)
+            List<RadPanel> panels = new List<RadPanel>() { radPanel1, MainContainer, radPanel2 };
+            foreach (var panel in panels)
             {
-                if (notUsedControls.Contains(control))
+                foreach (var control in panel.Controls)
                 {
-                    continue;
+                    if (notUsedControls.Contains(control))
+                    {
+                        continue;
+                    }
+
+                    switch (control)
+                    {
+                        case RadTextBox radTextControl:
+                            radTextControl.ReadOnly = isReadOnly;
+                            radTextControl.AutoCompleteMode = isReadOnly ? AutoCompleteMode.None : AutoCompleteMode.SuggestAppend;
+                            break;
+
+                        case RadSpinEditor radSpinControl:
+                            radSpinControl.ReadOnly = isReadOnly;
+                            break;
+
+                        case RadMultiColumnComboBox radCmbControl:
+                            radCmbControl.ReadOnly = isReadOnly;
+                            break;
+
+                        case RadCheckBox radChkControl:
+                            radChkControl.ReadOnly = isReadOnly;
+                            break;
+                    }
                 }
 
-                switch (control)
-                {
-                    case RadTextBox radTextControl:
-                        radTextControl.ReadOnly = isReadOnly;
-                        radTextControl.AutoCompleteMode = isReadOnly ? AutoCompleteMode.None : AutoCompleteMode.SuggestAppend;
-                        break;
-
-                    case RadSpinEditor radSpinControl:
-                        radSpinControl.ReadOnly = isReadOnly;
-                        break;
-
-                    case RadMultiColumnComboBox radCmbControl:
-                        radCmbControl.ReadOnly = isReadOnly;
-                        break;
-
-                    case RadCheckBox radChkControl:
-                        radChkControl.ReadOnly = isReadOnly;
-                        break;
-                }
             }
+
         }
 
         public void TackAction()
@@ -761,7 +814,7 @@ namespace Real_Estate_Management.User_Controls
                     FlyoutReserveContent content = e.Content as FlyoutReserveContent;
                     if (content != null)
                     {
-                        tbLawyer Obj = (tbLawyer)Bs.Current;
+                        tbOwner Obj = (tbOwner)Bs.Current;
                         if (content.Result == DialogResult.OK)
                         {
                             DBConnect.StartTransAction();
@@ -791,7 +844,7 @@ namespace Real_Estate_Management.User_Controls
 
                     if (content != null)
                     {
-                        //tbLawyer Obj = (tbLawyer)Bs.Current;
+                        //tbOwner Obj = (tbOwner)Bs.Current;
                         if (content.Result == DialogResult.OK)
                         {
                             FastReport.Export.Email.EmailExport email = new FastReport.Export.Email.EmailExport();
@@ -836,7 +889,7 @@ namespace Real_Estate_Management.User_Controls
 
         #region Buttons
 
-        private void MenuExit_Click(object sender, EventArgs e)
+        private void BtnExit_Click(object sender, EventArgs e)
         {
 
             RadPageViewPage parent = this.Parent as RadPageViewPage;
@@ -848,6 +901,53 @@ namespace Real_Estate_Management.User_Controls
 
 
 
+        private void BtnAddParenter_Click(object sender, EventArgs e)
+        {
+            if (!IsDirty)
+            {
+                RadCallout callout = new RadCallout
+                {
+                    ArrowType = Telerik.WinControls.UI.Callout.CalloutArrowType.Triangle,
+                    ArrowDirection = Telerik.WinControls.ArrowDirection.Right,
+                    AutoClose = true,
+                    CalloutType = Telerik.WinControls.UI.Callout.CalloutType.RoundedRectangle,
+                    DropShadow = true
+                };
+                RadControl cn = sender as RadControl;
+                RadCallout.Show(callout, cn, "لا يمكن تعديل بيانات البطاقة قبل الضغط علي زر تعديل أولاً", "تعديل البيانات", "ثم الضغط علي زر حفظ لحفظ التغييرات");
+                return;
+            }
+            if (!radCollapsiblePanelParenter1.Visible)
+            {
+                radCollapsiblePanelParenter1.IsExpanded = true;
+                radCollapsiblePanelParenter1.Visible = true;
+                return;
+            }
+            if (radCollapsiblePanelParenter1.Visible && !radCollapsiblePanelParenter2.Visible)
+            {
+                radCollapsiblePanelParenter2.IsExpanded = true;
+
+                radCollapsiblePanelParenter2.Visible = true;
+                return;
+            }
+            if (radCollapsiblePanelParenter2.Visible && !radCollapsiblePanelParenter3.Visible)
+            {
+                radCollapsiblePanelParenter2.IsExpanded = false;
+                radCollapsiblePanelParenter3.IsExpanded = true;
+
+                radCollapsiblePanelParenter3.Visible = true;
+                return;
+            }
+            if (radCollapsiblePanelParenter3.Visible)
+            {
+                radCollapsiblePanelParenter3.IsExpanded = false;
+                radCollapsiblePanelParenter4.IsExpanded = true;
+
+                radCollapsiblePanelParenter4.Visible = true;
+                return;
+            }
+
+        }
 
 
         private void MenuSaleOrder_Click(object sender, EventArgs e)
@@ -863,7 +963,7 @@ namespace Real_Estate_Management.User_Controls
         {
             RadMenuItem toolmenu = (RadMenuItem)sender;
             if (!Check(toolmenu.Text, "تنشيط بطاقة المالك", OperationType.OperationIs.Edit, false)) { return; }
-            tbLawyer Obj = (tbLawyer)Bs.Current;
+            tbOwner Obj = (tbOwner)Bs.Current;
             if (Obj.Statues.Equals("غير نشط"))
             {
                 if (ShowConfirmMSG && !Messages.MessageWarning("تنشيط بطاقة المالك", "هل أنت متأكد من تنشيط هذه البطاقة ؟", "إذا ضغط علي زر نعم سوف يتم تنشيط بطاقة المالك \n إذا ضغط علي لا سوف يتم تجاهل التغييرات"))
@@ -943,7 +1043,7 @@ namespace Real_Estate_Management.User_Controls
             RadMenuItem toolmenu = (RadMenuItem)sender;
             if (!Check(toolmenu.Text, "تصدير البيانات", OperationType.OperationIs.Print, false)) { return; }
 
-            tbLawyer Obj = (tbLawyer)Bs.Current;
+            tbOwner Obj = (tbOwner)Bs.Current;
             var Row = TBOwner_Rep.dtData.AsEnumerable().Where(u => u.ItemArray[1].Equals(Obj.Guid)).CopyToDataTable();
             ExcelXLSX.ExportToExcelFromDataTable(Row);
 
@@ -1034,7 +1134,7 @@ namespace Real_Estate_Management.User_Controls
 
         private bool Readyreport(FastReport.Report rpt)
         {
-            tbLawyer Obj = (tbLawyer)Bs.Current;
+            tbOwner Obj = (tbOwner)Bs.Current;
 
             if (Obj is null || Obj.Guid.Equals(Guid.Empty))
             {
@@ -1135,7 +1235,7 @@ namespace Real_Estate_Management.User_Controls
             {
                 tbAttachment tbattach = new tbAttachment();
                 tbattach.Guid = Guid.NewGuid();
-                tbattach.ParentGuid = ((tbLawyer)Bs.Current).Guid;
+                tbattach.ParentGuid = ((tbOwner)Bs.Current).Guid;
                 tbattach.Name = System.IO.Path.GetFileName(opf.FileName);
                 tbattach.FileName = tbattach.Name;
                 tbattach.FileData = FileHelper.FileToByteArray(opf.FileName);
