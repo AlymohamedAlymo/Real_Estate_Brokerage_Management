@@ -350,9 +350,13 @@
     <Compile Include="Data\DataBase\tbOwner.cs">
       <DependentUpon>Real_Estate_Management_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\DataBase\tbParenter.cs">
+      <DependentUpon>Real_Estate_Management_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\DataBase\tbPlan.cs">
       <DependentUpon>Real_Estate_Management_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\Repositories\TbParenters_Rep.cs" />
     <Compile Include="Data\Repositories\TbOwner_Rep.cs" />
     <Compile Include="Data\Repositories\TbLawyer_Rep.cs" />
     <Compile Include="Data\Repositories\TbLog_Rep.cs" />
@@ -927,12 +931,6 @@
     <Compile Include="UserControls\UCPlans.Designer.cs">
       <DependentUpon>UCPlans.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UserControl1.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\UserControl1.Designer.cs">
-      <DependentUpon>UserControl1.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="CustomElements\CustomControls\AttachmentControl.resx">
       <DependentUpon>AttachmentControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -1214,9 +1212,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UCPlans.resx">
       <DependentUpon>UCPlans.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UserControl1.resx">
-      <DependentUpon>UserControl1.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Data\DataBase\Real_Estate_Management_Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

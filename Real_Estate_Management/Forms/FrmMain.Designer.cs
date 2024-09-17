@@ -376,13 +376,13 @@ namespace Real_Estate_Management
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(0))).ToolTipText = "إغلاق الصفحات المفتوحة";
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(0))).Enabled = true;
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(0))).Visibility = Telerik.WinControls.ElementVisibility.Visible;
-            ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(1))).ToolTipText = "إغلاق جميع الصفحات المفتوحة";
+            ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(1))).ToolTipText = "انتقل الي الصفحة اليمني";
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(1))).Enabled = true;
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(1))).Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
-            ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(2))).ToolTipText = "إغلاق الصفحات المفتوحة";
+            ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(2))).ToolTipText = "إغلاق جميع الصفحات المفتوحة";
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(2))).Enabled = false;
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(2))).Visibility = Telerik.WinControls.ElementVisibility.Visible;
-            ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(3))).ToolTipText = "انتقل الي الصفحة اليمني";
+            ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(3))).ToolTipText = "إغلاق الصفحات المفتوحة";
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(3))).Enabled = false;
             ((Telerik.WinControls.UI.RadPageViewStripButtonElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(0).GetChildAt(1).GetChildAt(3))).Visibility = Telerik.WinControls.ElementVisibility.Visible;
             ((Telerik.WinControls.UI.RadPageViewLabelElement)(this.PageViewCardsHome.GetChildAt(0).GetChildAt(2))).Text = "الرئيسية";
@@ -1399,6 +1399,7 @@ namespace Real_Estate_Management
             this.BtnRefresh.ScreenTip = this.radOffice2007ScreenTipElement1;
             this.BtnRefresh.Text = "(F5) تحديث";
             this.BtnRefresh.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.BtnRefresh.Visibility = Telerik.WinControls.ElementVisibility.Hidden;
             this.BtnRefresh.Click += new System.EventHandler(this.radMenuButtonItem1_Click);
             // 
             // radOffice2007ScreenTipElement1

@@ -52,7 +52,6 @@
             this.TxtEmail = new Telerik.WinControls.UI.RadTextBox();
             this.TxtVatNumber = new Telerik.WinControls.UI.RadTextBox();
             this.PageAttachments = new Telerik.WinControls.UI.RadPageViewPage();
-            this.attachmentControl1 = new Real_Estate_Management.AttachmentControl();
             this.BindingNavigatorClient = new Telerik.WinControls.UI.RadBindingNavigator();
             this.commandBarRowElement1 = new Telerik.WinControls.UI.CommandBarRowElement();
             this.commandBarStripElement1 = new Telerik.WinControls.UI.CommandBarStripElement();
@@ -97,6 +96,7 @@
             this.BtnExit = new Telerik.WinControls.UI.CommandBarButton();
             this.AlertTimer = new System.Windows.Forms.Timer(this.components);
             this.materialTheme1 = new Telerik.WinControls.Themes.MaterialTheme();
+            this.attachmentControl1 = new Real_Estate_Management.AttachmentControl();
             ((System.ComponentModel.ISupportInitialize)(this.TxtNote)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel23)).BeginInit();
@@ -208,10 +208,10 @@
             this.PageHome.Controls.Add(this.MainContainer);
             this.PageHome.Description = null;
             this.PageHome.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PageHome.ItemSize = new System.Drawing.SizeF(46F, 49F);
+            this.PageHome.ItemSize = new System.Drawing.SizeF(30F, 32F);
             this.PageHome.Location = new System.Drawing.Point(6, 6);
             this.PageHome.Name = "PageHome";
-            this.PageHome.Size = new System.Drawing.Size(1165, 603);
+            this.PageHome.Size = new System.Drawing.Size(1165, 620);
             this.PageHome.Text = "عام";
             this.PageHome.Title = "البيانات العامة لبطاقة الأرض";
             // 
@@ -235,7 +235,7 @@
             this.MainContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainContainer.Location = new System.Drawing.Point(0, 0);
             this.MainContainer.Name = "MainContainer";
-            this.MainContainer.Size = new System.Drawing.Size(1165, 603);
+            this.MainContainer.Size = new System.Drawing.Size(1165, 620);
             this.MainContainer.TabIndex = 11512122;
             // 
             // TxtMobileAdd
@@ -511,24 +511,11 @@
             // PageAttachments
             // 
             this.PageAttachments.Controls.Add(this.attachmentControl1);
-            this.PageAttachments.ItemSize = new System.Drawing.SizeF(66F, 49F);
+            this.PageAttachments.ItemSize = new System.Drawing.SizeF(50F, 32F);
             this.PageAttachments.Location = new System.Drawing.Point(6, 6);
             this.PageAttachments.Name = "PageAttachments";
             this.PageAttachments.Size = new System.Drawing.Size(1165, 603);
             this.PageAttachments.Text = "مرفقات";
-            // 
-            // attachmentControl1
-            // 
-            this.attachmentControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.attachmentControl1.Location = new System.Drawing.Point(0, 0);
-            this.attachmentControl1.Name = "attachmentControl1";
-            this.attachmentControl1.Size = new System.Drawing.Size(1165, 603);
-            this.attachmentControl1.TabIndex = 0;
-            this.attachmentControl1.MenuPreviewAttach_Click += new System.EventHandler(this.MenuPreviewAttach_Click);
-            this.attachmentControl1.MenuExtractAttachment_Click += new System.EventHandler(this.MenuExtractAttachment_Click);
-            this.attachmentControl1.MenuDeleteAttachment_Click += new System.EventHandler(this.MenuDeleteAttachment_Click);
-            this.attachmentControl1.BtnAddAttachment_Click += new System.EventHandler(this.BtnAddAttachment_Click);
-            this.attachmentControl1.BtnScanner_Click += new System.EventHandler(this.BtnScanner_Click);
             // 
             // BindingNavigatorClient
             // 
@@ -1033,6 +1020,19 @@
             // AlertTimer
             // 
             this.AlertTimer.Tick += new System.EventHandler(this.AlertTimer_Tick);
+            // 
+            // attachmentControl1
+            // 
+            this.attachmentControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.attachmentControl1.Location = new System.Drawing.Point(0, 0);
+            this.attachmentControl1.Name = "attachmentControl1";
+            this.attachmentControl1.Size = new System.Drawing.Size(1165, 603);
+            this.attachmentControl1.TabIndex = 0;
+            this.attachmentControl1.MenuPreviewAttach_Click += new System.EventHandler(this.MenuPreviewAttach_Click);
+            this.attachmentControl1.MenuExtractAttachment_Click += new System.EventHandler(this.MenuExtractAttachment_Click);
+            this.attachmentControl1.MenuDeleteAttachment_Click += new System.EventHandler(this.MenuDeleteAttachment_Click);
+            this.attachmentControl1.BtnAddAttachment_Click += new System.EventHandler(this.BtnAddAttachment_Click);
+            this.attachmentControl1.BtnScanner_Click += new System.EventHandler(this.BtnScanner_Click);
             // 
             // UCLawyer
             // 

@@ -224,7 +224,7 @@ namespace Real_Estate_Management.User_Controls
             Bs.MoveLast();
 
             tbLawyer Obj = (tbLawyer)Bs.Current;
-            BtnReservation.Text = Obj.Statues.ToString() == "غير نشط" ? "تنشيط" : "إلغاء تنشيط";
+            //BtnReservation.Text = Obj.Statues.ToString() == "غير نشط" ? "تنشيط" : "إلغاء تنشيط";
 
         }
 

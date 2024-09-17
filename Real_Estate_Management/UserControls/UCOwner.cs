@@ -1,6 +1,5 @@
 ﻿using Real_Estate_Management.CustomElements;
 using Real_Estate_Management.Helpers;
-using DoctorHelper.Helpers;
 using DoctorHelper.Messages;
 using Real_Estate_Management.Data.DataBase;
 using System;
@@ -12,10 +11,8 @@ using System.Linq;
 using System.Windows.Forms;
 using Telerik.WinControls;
 using Telerik.WinControls.UI;
-using Telerik.WinControls.UI.Localization;
 using Telerik.WinControls.UI.SplashScreen;
 using Telerik.Windows.Diagrams.Core;
-using Telerik.Windows.Documents.Spreadsheet.Expressions.Functions;
 
 namespace Real_Estate_Management.User_Controls
 {
@@ -52,12 +49,6 @@ namespace Real_Estate_Management.User_Controls
             BtnWordExport.Click += BtnExportWord_Click;
             BtnExportExcelData.Click -= BtnExportExcelData_Click;
             BtnExportExcelData.Click += BtnExportExcelData_Click;
-            BtnSaleOrder.Click -= MenuSaleOrder_Click;
-            BtnSaleOrder.Click += MenuSaleOrder_Click;
-            BtnContract.Click -= BtnContract_Click;
-            BtnContract.Click += BtnContract_Click;
-            BtnReservation.Click -= BtnReservation_Click;
-            BtnReservation.Click += BtnReservation_Click;
             Bs.PositionChanged += Bs_PositionChanged;
             RadFlyoutManager.FlyoutClosed -= this.RadFlyoutManager_FlyoutClosed;
             RadFlyoutManager.FlyoutClosed += this.RadFlyoutManager_FlyoutClosed;
@@ -66,11 +57,10 @@ namespace Real_Estate_Management.User_Controls
 
             radLabel5.TextAlignment = ContentAlignment.MiddleCenter;
             TxtNumber.TextAlignment = ContentAlignment.MiddleCenter;
-            TxtStatues.TextAlignment = ContentAlignment.MiddleCenter;
             radlabelBookings.TextAlignment = ContentAlignment.MiddleCenter;
             radLabel8.TextAlignment = ContentAlignment.MiddleCenter;
 
-            radPageView1.RootElement.Children[0].Children[0].Children[0].Children[3].Visibility = ElementVisibility.Hidden;
+            radPageView1.RootElement.Children[0].Children[0].Children[0].Children[4].Visibility = ElementVisibility.Hidden;
             this.MainContainer.PanelElement.PanelFill.Visibility = ElementVisibility.Hidden;
             this.MainContainer.BackgroundImage = Real_Estate_Management.Properties.Resources.Background;
             this.MainContainer.BackgroundImageLayout = ImageLayout.Stretch;
@@ -79,11 +69,10 @@ namespace Real_Estate_Management.User_Controls
             this.radPanel1.BackgroundImage = Real_Estate_Management.Properties.Resources.Background;
             this.radPanel1.BackgroundImageLayout = ImageLayout.Stretch;
 
-            //this.radCollapsiblePanel2.PanelElement.PanelFill.Visibility = ElementVisibility.Hidden;
-            this.radCollapsiblePanel2.BackgroundImage = Real_Estate_Management.Properties.Resources.Background;
-            this.radCollapsiblePanel2.BackgroundImageLayout = ImageLayout.Stretch;
+            this.radPanel2.PanelElement.PanelFill.Visibility = ElementVisibility.Hidden;
+            this.radPanel2.BackgroundImage = Real_Estate_Management.Properties.Resources.Background;
+            this.radPanel2.BackgroundImageLayout = ImageLayout.Stretch;
 
-            
 
             var radBarButton = new[] { BtnResfresh, BtnDelete, BtnNew, BtnEdit, BtnExit };
             radBarButton.ForEach(control =>
@@ -95,7 +84,7 @@ namespace Real_Estate_Management.User_Controls
                 };
             });
 
-            var radDropDownButton = new[] { BtnImport, BtnExport, BtnPrint, BtnOperation };
+            var radDropDownButton = new[] { BtnImport, BtnExport, BtnPrint };
             radDropDownButton.ForEach(control =>
             {
                 control.ScreenTip = new RadOffice2007ScreenTipElement
@@ -105,7 +94,7 @@ namespace Real_Estate_Management.User_Controls
                 };
             });
 
-            var radMenuItem = new[] { BtnImportExcel, BtnExportExcelData, BtnEcelExport, BtnEmailExport, BtnPdfExport, BtnWordExport, BtnSentToPrinter, BtnDesign, BtnPreview, BtnContract, BtnSaleOrder, BtnReservation, BtnPriceOffer };
+            var radMenuItem = new[] { BtnImportExcel, BtnExportExcelData, BtnEcelExport, BtnEmailExport, BtnPdfExport, BtnWordExport, BtnSentToPrinter, BtnDesign, BtnPreview };
             radMenuItem.ForEach(control =>
             {
                 control.ScreenTip = new RadOffice2007ScreenTipElement
@@ -139,7 +128,7 @@ namespace Real_Estate_Management.User_Controls
             }
             else if (keyData == Keys.Enter)
             {
-                if (IsDirty) { TackAction(); }
+                if (IsDirty && !(GridViewParenter.Focus())) { TackAction(); }
             }
             else if (keyData == Keys.F1)
             {
@@ -197,7 +186,7 @@ namespace Real_Estate_Management.User_Controls
             CmbPlanGuid.Columns[5].HeaderText = "المدينة";
             CmbPlanGuid.Columns[6].HeaderText = "الموقع";
 
-            List<RadPanel> panels = new List<RadPanel>() { radPanel1, MainContainer, radPanel2 };
+            List<RadPanel> panels = new List<RadPanel>() { radPanel1, MainContainer };
             foreach (var panel in panels)
             {
                 var controls = panel.Controls.OfType<RadControl>().Where(control => !control.Name.StartsWith("rad"));
@@ -214,8 +203,6 @@ namespace Real_Estate_Management.User_Controls
 
             }
 
-
-            BtnReservation.Text = "تنشيط";
             IsLoad = false;
 
             if (IsNew)
@@ -229,17 +216,14 @@ namespace Real_Estate_Management.User_Controls
                 var ObjLawer = TBOwner_Rep.lstData.Where(u => u.Guid == CurrentGuid).ToList();
                 if (ObjLawer.Any())
                 {
+                    FillDataGridParenters(CurrentGuid);
                     var index = TBOwner_Rep.lstData.IndexOf(ObjLawer.First());
                     Bs.Position = index;
-                    BtnReservation.Text = (ObjLawer.First().Statues.Equals(DBNull.Value)) ? "إلغاء تنشيط" : ObjLawer.First().Statues.ToString() == "غير نشط" ? "تنشيط" : "إلغاء تنشيط";
                     return;
                 }
             }
 
             Bs.MoveLast();
-
-            tbOwner Obj = (tbOwner)Bs.Current;
-            BtnReservation.Text = (Obj.Statues.Equals(DBNull.Value)) ? "إلغاء تنشيط" : Obj.Statues.ToString() == "غير نشط" ? "تنشيط" : "إلغاء تنشيط";
 
         }
 
@@ -265,8 +249,8 @@ namespace Real_Estate_Management.User_Controls
                 IsProgrammatic = false;
 
             }
-            BtnReservation.Text = (Obj.Statues.Equals(DBNull.Value)) ? "إلغاء تنشيط" : Obj.Statues.ToString() == "غير نشط" ? "تنشيط" : "إلغاء تنشيط";
             attachmentControl1.FillDataGridAttachments(Obj.Guid);
+            FillDataGridParenters(Obj.Guid);
             BtnDelete.Enabled = true;
             BtnEdit.Enabled = true;
             SetReadOnly(true);
@@ -305,8 +289,9 @@ namespace Real_Estate_Management.User_Controls
             BtnNew.Image = Real_Estate_Management.Properties.Resources.BtnConform;
             BtnNew.Text = "حفظ";
             BtnNew.ScreenTip.Text = "حفظ بطاقة المالك الجديدة";
-            BtnReservation.Text = "إلغاء التنشيط";
             attachmentControl1.FillDataGridAttachments(Guid.Empty);
+            FillDataGridParenters(Guid.Empty);
+
             SetReadOnly(false);
 
             foreach (RadControl control in MainContainer.Controls)
@@ -314,9 +299,6 @@ namespace Real_Estate_Management.User_Controls
                 control.DataBindings.Clear();
             }
 
-
-
-            TxtStatues.Text = "نشط";
             TxtNumber.Text = (TBOwner_Rep.GetMaxNumber("Number") + 1).ToString();
             CmbPlanGuid.SelectedValue = FrmMain.PlanGuid;
 
@@ -339,7 +321,6 @@ namespace Real_Estate_Management.User_Controls
                 BtnNew.Image = Real_Estate_Management.Properties.Resources.BtnAddNew;
                 BtnNew.Text = "جديد";
                 BtnNew.ScreenTip.Text = "إضافة بطاقة مالك جديدة";
-                BtnReservation.Text = "إلغاء التنشيط";
                 SetReadOnly(true);
                 SetData();
 
@@ -374,14 +355,17 @@ namespace Real_Estate_Management.User_Controls
 
             DBConnect.StartTransAction();
             TbLog_Rep.AddNew(_PlanGuid, "إضافة", "بطاقة مالك", $"إضافة بطاقة مالك بأسم {TxtName.Text}");
+            AddParenter(_Guid);
+
             TBOwner_Rep.AddNew(_PlanGuid, _Guid, int.Parse(TxtNumber.Text), TxtName.Text, TxtIDNumber.Text, TxtMobile.Text,
-                TxtMobileAdd.Text, TxtEmail.Text, TxtVatNumber.Text, TxtPublicNumber.Text, TxtAgentName.Text, TxtAgentID.Text,
+                TxtMobileAdd.Text, TxtEmail.Text, TxtVatNumber.Text, TxtOfficeName.Text, TxtAgentName.Text, TxtAgentID.Text,
                 TxtAgentMobile.Text, TxtAgenteMail.Text, TxtAgentVatNumber.Text, TxtAgencyNumber.Text,TxtAgentPublicNumber.Text,
-                TxtOfficeName.Text, TxtOfficeCR.Text, TxtOfficePhone.Text, TxtOfficeeMail.Text, TxtOfficeVatNumber.Text, 
-                TxtOfficePublicNumber.Text, TxtNote.Text, internedLastAction);
+                TxtNote.Text, internedLastAction);
             attachmentControl1.AddAttachments(_Guid);
+
             if (DBConnect.CommitTransAction())
             {
+
                 Notifications.ShowNotification(this.components, "إضافة بطاقة مالك جديدة", "تمت عملية إضافة بطاقة المالك بنجاح", internedLastAction);
                 Notifications.ShowDesktopAlert(this.components, "إضافة بطاقة مالك جديدة", "تمت العملية", "تمت عملية إضافة بطاقة المالك بنجاح", "بطاقة المالك الجديدة تمت إضافتها يمكن القيام بالعمليات عليها الأن.");
                 IsDirty = false;
@@ -396,7 +380,6 @@ namespace Real_Estate_Management.User_Controls
                 BtnNew.Image = Real_Estate_Management.Properties.Resources.BtnAddNew;
                 BtnNew.Text = "جديد";
                 BtnNew.ScreenTip.Text = "إضافة بطاقة مالك جديدة";
-                BtnReservation.Text = "إلغاء التنشيط";
                 SetReadOnly(true);
                 SetData();
             }
@@ -477,14 +460,13 @@ namespace Real_Estate_Management.User_Controls
             string internedLastAction = string.Intern(_LastAction);
 
             Obj.PlanGuid = _PlanGuid;
-            Obj.Statues = TxtStatues.Text;
             Obj.Name = TxtName.Text;
             Obj.IDNumber = TxtIDNumber.Text;
             Obj.Mobile = TxtMobile.Text;
             Obj.MobileAdd = TxtMobileAdd.Text;
             Obj.Email = TxtEmail.Text;
             Obj.VatNumber = TxtVatNumber.Text;
-            Obj.OfficeName = TxtPublicNumber.Text;
+            Obj.OfficeName = TxtOfficeName.Text;
             Obj.Note = TxtNote.Text;
             Obj.LastAction = internedLastAction;
 
@@ -492,6 +474,7 @@ namespace Real_Estate_Management.User_Controls
             TbLog_Rep.AddNew(_PlanGuid, "تعديل", "بطاقة مالك", $"تعديل بطاقة مالك بأسم {TxtName.Text}");
             TBOwner_Rep.Update(Obj);
             attachmentControl1.AddAttachments(Obj.Guid);
+            AddParenter(Obj.Guid);
 
             if (DBConnect.CommitTransAction())
             {
@@ -538,7 +521,7 @@ namespace Real_Estate_Management.User_Controls
             TbLog_Rep.AddNew(Obj.PlanGuid, "حذف", "بطاقة مالك", $"حذف بطاقة مالك بأسم {TxtName.Text}");
             new tbAttachment().DeleteBy("ParentGuid", Obj.Guid);
             TBOwner_Rep.Delete(Obj.Guid);
-
+            TbParenters_Rep.DeleteByParent(Obj.Guid);
             if (DBConnect.CommitTransAction())
             {
                 DateTime CurrentDate = DBConnect.GetServerDate();
@@ -638,6 +621,7 @@ namespace Real_Estate_Management.User_Controls
         {
             HashSet<RadControl> notUsedControls = new HashSet<RadControl> { TxtNumber, TxtLastAction };
             List<RadPanel> panels = new List<RadPanel>() { radPanel1, MainContainer, radPanel2 };
+            GridViewParenter.ReadOnly = isReadOnly;
             foreach (var panel in panels)
             {
                 foreach (var control in panel.Controls)
@@ -777,12 +761,6 @@ namespace Real_Estate_Management.User_Controls
             }
 
         }
-        private void Txtstatus_TextChanged(object sender, EventArgs e)
-        {
-            if (TxtStatues.Text == "نشط") { TxtStatues.BackColor = Color.FromArgb(0, 255, 1); }
-            else if (TxtStatues.Text == "غير نشط") { TxtStatues.BackColor = Color.FromArgb(254, 0, 0); }
-            else if (TxtStatues.Text == "محجوز") { TxtStatues.BackColor = Color.FromArgb(255, 255, 0); }
-        }
         private void RadFlyoutManager_ContentCreated(ContentCreatedEventArgs e)
         {
             try
@@ -808,35 +786,7 @@ namespace Real_Estate_Management.User_Controls
         {
             Action action = new Action(() =>
             {
-                if (e.Content is FlyoutReserveContent)
-                {
-
-                    FlyoutReserveContent content = e.Content as FlyoutReserveContent;
-                    if (content != null)
-                    {
-                        tbOwner Obj = (tbOwner)Bs.Current;
-                        if (content.Result == DialogResult.OK)
-                        {
-                            DBConnect.StartTransAction();
-                            TxtStatues.Text = Obj.Statues = "غير نشط";
-                            BtnReservation.Text = "تنشيط";
-                            TBOwner_Rep.Update(Obj);
-                            if (DBConnect.CommitTransAction())
-                            {
-                                Notifications.ShowDesktopAlert(this.components, "إلغاء تنشيط بطاقة مالك", "إلغاء تنشيط بطاقة المالك", "تمت عملية إلغاء تنشيط البطاقة بنجاح", "تم إلغاء تنشيط بطاقة المالك لا يمكن القيام بالعمليات عليها الأن.");
-                            }
-
-                            string ReserveReason = $"{content.ReserveReason}";
-                            RadCallout.Show(callout, this.BtnReservation, $"عملية إلغاء تنشيط بطاقة المالك بسبب{ReserveReason} تمت!", "تمت العملية بنجاح");
-                        }
-                        else
-                        {
-                            RadCallout.Show(callout, this.BtnReservation, "فشلت عملية إلغاء تنشيط بطاقة المالك!", "فشلت العملية");
-                        }
-                    }
-
-                }
-                else if (e.Content is FlyoutEmailContent)
+                if (e.Content is FlyoutEmailContent)
                 {
 
                     FlyoutEmailContent content = e.Content as FlyoutEmailContent;
@@ -876,7 +826,7 @@ namespace Real_Estate_Management.User_Controls
                         }
                         else
                         {
-                            RadCallout.Show(callout, this.BtnReservation, "فشلت عملية تنشيط بطاقة المالك!", "فشلت العملية");
+                            RadCallout.Show(callout, this.BtnEmailExport, "فشلت عملية إرسال بطاقة المالك!", "فشلت العملية");
                         }
                     }
                 }
@@ -898,110 +848,6 @@ namespace Real_Estate_Management.User_Controls
             GC.Collect();
 
         }
-
-
-
-        private void BtnAddParenter_Click(object sender, EventArgs e)
-        {
-            if (!IsDirty)
-            {
-                RadCallout callout = new RadCallout
-                {
-                    ArrowType = Telerik.WinControls.UI.Callout.CalloutArrowType.Triangle,
-                    ArrowDirection = Telerik.WinControls.ArrowDirection.Right,
-                    AutoClose = true,
-                    CalloutType = Telerik.WinControls.UI.Callout.CalloutType.RoundedRectangle,
-                    DropShadow = true
-                };
-                RadControl cn = sender as RadControl;
-                RadCallout.Show(callout, cn, "لا يمكن تعديل بيانات البطاقة قبل الضغط علي زر تعديل أولاً", "تعديل البيانات", "ثم الضغط علي زر حفظ لحفظ التغييرات");
-                return;
-            }
-            if (!radCollapsiblePanelParenter1.Visible)
-            {
-                radCollapsiblePanelParenter1.IsExpanded = true;
-                radCollapsiblePanelParenter1.Visible = true;
-                return;
-            }
-            if (radCollapsiblePanelParenter1.Visible && !radCollapsiblePanelParenter2.Visible)
-            {
-                radCollapsiblePanelParenter2.IsExpanded = true;
-
-                radCollapsiblePanelParenter2.Visible = true;
-                return;
-            }
-            if (radCollapsiblePanelParenter2.Visible && !radCollapsiblePanelParenter3.Visible)
-            {
-                radCollapsiblePanelParenter2.IsExpanded = false;
-                radCollapsiblePanelParenter3.IsExpanded = true;
-
-                radCollapsiblePanelParenter3.Visible = true;
-                return;
-            }
-            if (radCollapsiblePanelParenter3.Visible)
-            {
-                radCollapsiblePanelParenter3.IsExpanded = false;
-                radCollapsiblePanelParenter4.IsExpanded = true;
-
-                radCollapsiblePanelParenter4.Visible = true;
-                return;
-            }
-
-        }
-
-
-        private void MenuSaleOrder_Click(object sender, EventArgs e)
-        {
-            RadMenuItem toolmenu = (RadMenuItem)sender;
-            if (!Check(toolmenu.Text, "إنشاء أمر بيع", OperationType.OperationIs.Add, true)) { return; }
-            tbAgent client = (tbAgent)Bs.Current;
-            FrmSaleOrder frm = new FrmSaleOrder(Guid.Empty, true, client);
-            frm.Show(this);
-        }
-
-        private void BtnReservation_Click(object sender, EventArgs e)
-        {
-            RadMenuItem toolmenu = (RadMenuItem)sender;
-            if (!Check(toolmenu.Text, "تنشيط بطاقة المالك", OperationType.OperationIs.Edit, false)) { return; }
-            tbOwner Obj = (tbOwner)Bs.Current;
-            if (Obj.Statues.Equals("غير نشط"))
-            {
-                if (ShowConfirmMSG && !Messages.MessageWarning("تنشيط بطاقة المالك", "هل أنت متأكد من تنشيط هذه البطاقة ؟", "إذا ضغط علي زر نعم سوف يتم تنشيط بطاقة المالك \n إذا ضغط علي لا سوف يتم تجاهل التغييرات"))
-                {
-                    return;
-                }
-
-                DBConnect.StartTransAction();
-                TxtStatues.Text = Obj.Statues = "نشط";
-                BtnReservation.Text = "إلغاء تنشيط";
-                TBOwner_Rep.Update(Obj);
-                if (DBConnect.CommitTransAction())
-                {
-                    Notifications.ShowDesktopAlert(this.components, "تنشيط بطاقة المالك", "تمت العملية", "تمت عملية تنشيط بطاقة المالك بنجاح", "تم تنشيط بطاقة المالك لا يمكن القيام بالعمليات عليها الأن.");
-                }
-            }
-            else
-            {
-                if (ShowConfirmMSG && !Messages.MessageWarning("تنشيط بطاقة المالك", "هل أنت متأكد من إلغاء تنشيط هذه البطاقة ؟", "إذا ضغط علي زر نعم سوف يتم إلغاء تنشيط بطاقة المالك \n إذا ضغط علي لا سوف يتم تجاهل التغييرات"))
-                {
-                    return;
-                }
-                RadFlyoutManager.Show(this, typeof(FlyoutReserveContent));
-            }
-
-
-        }
-
-        private void BtnContract_Click(object sender, EventArgs e)
-        {
-            RadMenuItem toolmenu = (RadMenuItem)sender;
-            if (!Check(toolmenu.Text, "إنشاء عقد بيع", OperationType.OperationIs.Add, true)) { return; }
-            tbAgent client = (tbAgent)Bs.Current;
-            //FrmBillHeader frm = new FrmBillHeader(Guid.Empty, true, 0, new List<tbLand>(), client);
-            //frm.Show();
-
-        }
-
 
         private void BtnImport_Click(object sender, EventArgs e)
         {
@@ -1346,6 +1192,137 @@ namespace Real_Estate_Management.User_Controls
         }
 
 
+
+
+        #endregion
+
+        #region Parenters
+
+        public void FillDataGridParenters(Guid parentguid)
+        {
+
+            TbParenters_Rep.Fill(parentguid);
+            GridViewParenter.DataSource = TbParenters_Rep.lstData;
+
+            GridViewParenter.Columns[0].IsVisible = false;
+            GridViewParenter.Columns[1].IsVisible = false;
+            GridViewParenter.Columns[2].IsVisible = false;
+            GridViewParenter.Columns[3].IsVisible = false;
+
+            GridViewParenter.Columns[4].HeaderText = "اسم الشريك";
+            GridViewParenter.Columns[5].HeaderText = "الرقم القومي";
+            GridViewParenter.Columns[6].HeaderText = "الموبايل";
+            GridViewParenter.Columns[7].HeaderText = "ملاحظات";
+
+            this.GridViewParenter.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;
+
+
+            foreach (GridViewDataColumn col in this.GridViewParenter.Columns)
+            {
+                col.TextAlignment = ContentAlignment.MiddleCenter;
+                col.HeaderTextAlignment = ContentAlignment.MiddleCenter;
+            }
+
+        }
+        public void AddParenter(Guid parentguid)
+        {
+            if (!Check("اضافة شريك", "اضافة شريك جديد", OperationType.OperationIs.Add, false)) { return; }
+
+            UpdateParenters(parentguid);
+
+            foreach (Telerik.WinControls.UI.GridViewRowInfo dr in GridViewParenter.Rows)
+            {
+                tbParenter tbParenter = new tbParenter
+                {
+                    Guid = new Guid(dr.Cells[2].Value.ToString())
+                };
+                if (!TbParenters_Rep.IsExistTrans(tbParenter.Guid, parentguid))
+                {
+                    Guid _PlanGuid = Guid.Empty;
+                    if (CmbPlanGuid.SelectedValue != null)
+                    {
+                        _PlanGuid = (Guid)CmbPlanGuid.SelectedValue;
+
+                    }
+                    else
+                    {
+                        _PlanGuid = TbPlans_Rep.lstData.Where(u => u.Name == CmbPlanGuid.Text).FirstOrDefault().Guid;
+                    }
+                    dr.Cells[2].Value = tbParenter.Guid = Guid.NewGuid();
+
+                    TbParenters_Rep.AddNew(_PlanGuid, parentguid, Guid.NewGuid(), dr.Cells[4].Value != null ? dr.Cells[4].Value.ToString() : "", dr.Cells[5].Value != null ? dr.Cells[5].Value.ToString() : "",
+                        dr.Cells[6].Value != null ? dr.Cells[6].Value.ToString() : "", dr.Cells[7].Value != null? dr.Cells[7].Value.ToString() : "");
+                }
+            }
+
+        }
+
+        private void UpdateParenters(Guid parentguid)
+        {
+
+            TbParenters_Rep.Fill(parentguid);
+            foreach (tbParenter parent in TbParenters_Rep.lstData)
+            {
+                if (!IsParentExist(parent.Guid))
+                {
+                    TbParenters_Rep.Delete(parent.Guid);
+                }
+
+            }
+        }
+
+        bool IsParentExist(Guid guid)
+        {
+            foreach (Telerik.WinControls.UI.GridViewRowInfo dr in GridViewParenter.Rows)
+            {
+                Guid ParentGuid = new Guid(dr.Cells[2].Value.ToString());
+                if (ParentGuid.Equals(guid))
+                    return true;
+            }
+            return false;
+        }
+
+
+        //private void BtnAddAttachment_Click(object sender, EventArgs e)
+        //{
+        //    if (!Check("اضافة مرفق", "تصدير البيانات", OperationType.OperationIs.Edit, false)) { return; }
+
+        //    OpenFileDialog opf = new OpenFileDialog
+        //    {
+        //        RestoreDirectory = true,
+        //        Filter = "All Files (*.*)|*.*"
+        //    };
+
+        //    if (opf.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+        //    {
+        //        tbAttachment tbattach = new tbAttachment();
+        //        tbattach.Guid = Guid.NewGuid();
+        //        tbattach.ParentGuid = ((tbOwner)Bs.Current).Guid;
+        //        tbattach.Name = System.IO.Path.GetFileName(opf.FileName);
+        //        tbattach.FileName = tbattach.Name;
+        //        tbattach.FileData = FileHelper.FileToByteArray(opf.FileName);
+        //        if (tbattach.FileData.Length > 10000000)
+        //        {
+        //            DoctorHelper.Messages.Notifications.ShowDesktopAlert(this.components, "إضافة المرفقات", "فشلت العملية",
+        //                "تمت إضافة المرفقات", "لا يمكن إضافة مرفق بحجم أكبر من 10 ميغا بايت.");
+        //            return;
+        //        }
+        //        this.Cursor = Cursors.WaitCursor;
+        //        tbattach.FileSize = string.Format(new FileSizeFormatProvider(), "{0:fs}", tbattach.FileData.Length);
+        //        tbAttachment.dtData.Rows.Add(tbattach.Guid, tbattach.ParentGuid, tbattach.Name, tbattach.FileName, tbattach.FileSize, tbattach.FileData);
+        //        attachmentControl1.DataGridAttachments.DataSource = tbAttachment.dtData;
+        //        this.Cursor = Cursors.Arrow;
+
+        //    }
+
+        //}
+
+        //private void MenuDeleteAttachment_Click(object sender, EventArgs e)
+        //{
+        //    if (!Check("حذف مرفق", "تصدير البيانات", OperationType.OperationIs.Delete, false)) { return; }
+
+        //    attachmentControl1.DataGridAttachments.Rows.RemoveAt(attachmentControl1.DataGridAttachments.CurrentRow.Index);
+        //}
 
         #endregion
 

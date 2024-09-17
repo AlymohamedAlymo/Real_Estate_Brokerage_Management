@@ -50,7 +50,6 @@
           <Property Name="PlanGuid" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Code" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Statues" Type="varchar" MaxLength="10" />
           <Property Name="Number" Type="int" />
           <Property Name="Name" Type="varchar" MaxLength="255" />
           <Property Name="IDNumber" Type="varchar" MaxLength="255" />
@@ -58,7 +57,7 @@
           <Property Name="MobileAdd" Type="varchar" MaxLength="255" />
           <Property Name="Email" Type="varchar" MaxLength="255" />
           <Property Name="VatNumber" Type="varchar" MaxLength="255" />
-          <Property Name="PublicNumber" Type="varchar" MaxLength="255" />
+          <Property Name="OfficeName" Type="varchar" MaxLength="255" />
           <Property Name="AgentName" Type="varchar" MaxLength="255" />
           <Property Name="AgentID" Type="varchar" MaxLength="255" />
           <Property Name="AgentMobile" Type="varchar" MaxLength="255" />
@@ -66,14 +65,24 @@
           <Property Name="AgentVatNumber" Type="varchar" MaxLength="255" />
           <Property Name="AgencyNumber" Type="varchar" MaxLength="255" />
           <Property Name="AgentPublicNumber" Type="varchar" MaxLength="255" />
-          <Property Name="OfficeName" Type="varchar" MaxLength="255" />
-          <Property Name="OfficeCR" Type="varchar" MaxLength="255" />
-          <Property Name="OfficePhone" Type="varchar" MaxLength="255" />
-          <Property Name="OfficeeMail" Type="varchar" MaxLength="255" />
-          <Property Name="OfficeVatNumber" Type="varchar" MaxLength="255" />
-          <Property Name="OfficePublicNumber" Type="varchar" MaxLength="255" />
           <Property Name="Note" Type="varchar" MaxLength="255" />
           <Property Name="LastAction" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tbParenters">
+          <Key>
+            <PropertyRef Name="PlanGuid" />
+            <PropertyRef Name="ParentGuid" />
+            <PropertyRef Name="Guid" />
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="PlanGuid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ParentGuid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+          <Property Name="IDNumber" Type="varchar" MaxLength="255" />
+          <Property Name="Mobile" Type="varchar" MaxLength="255" />
+          <Property Name="Note" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="tbPlans">
           <Key>
@@ -95,6 +104,7 @@
           <EntitySet Name="tbLawyer" EntityType="Self.tbLawyer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbLog" EntityType="Self.tbLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbOwner" EntityType="Self.tbOwner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbParenters" EntityType="Self.tbParenters" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbPlans" EntityType="Self.tbPlans" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -106,6 +116,7 @@
           <EntitySet Name="tbPlans" EntityType="realestatebrokermanagementModel.tbPlan" />
           <EntitySet Name="tbLawyers" EntityType="realestatebrokermanagementModel.tbLawyer" />
           <EntitySet Name="tbOwners" EntityType="realestatebrokermanagementModel.tbOwner" />
+          <EntitySet Name="tbParenters" EntityType="realestatebrokermanagementModel.tbParenter" />
         </EntityContainer>
         <EntityType Name="tbLog">
           <Key>
@@ -168,7 +179,6 @@
           <Property Name="PlanGuid" Type="Guid" Nullable="false" />
           <Property Name="Guid" Type="Guid" Nullable="false" />
           <Property Name="Code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Statues" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="Number" Type="Int32" />
           <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="IDNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
@@ -176,7 +186,7 @@
           <Property Name="MobileAdd" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="VatNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="PublicNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OfficeName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="AgentName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="AgentID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="AgentMobile" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
@@ -184,14 +194,24 @@
           <Property Name="AgentVatNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="AgencyNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="AgentPublicNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="OfficeName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="OfficeCR" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="OfficePhone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="OfficeeMail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="OfficeVatNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="OfficePublicNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Note" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="LastAction" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbParenter">
+          <Key>
+            <PropertyRef Name="PlanGuid" />
+            <PropertyRef Name="ParentGuid" />
+            <PropertyRef Name="Guid" />
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="PlanGuid" Type="Guid" Nullable="false" />
+          <Property Name="ParentGuid" Type="Guid" Nullable="false" />
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IDNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Note" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -253,12 +273,6 @@
               <MappingFragment StoreEntitySet="tbOwner">
                 <ScalarProperty Name="LastAction" ColumnName="LastAction" />
                 <ScalarProperty Name="Note" ColumnName="Note" />
-                <ScalarProperty Name="OfficePublicNumber" ColumnName="OfficePublicNumber" />
-                <ScalarProperty Name="OfficeVatNumber" ColumnName="OfficeVatNumber" />
-                <ScalarProperty Name="OfficeeMail" ColumnName="OfficeeMail" />
-                <ScalarProperty Name="OfficePhone" ColumnName="OfficePhone" />
-                <ScalarProperty Name="OfficeCR" ColumnName="OfficeCR" />
-                <ScalarProperty Name="OfficeName" ColumnName="OfficeName" />
                 <ScalarProperty Name="AgentPublicNumber" ColumnName="AgentPublicNumber" />
                 <ScalarProperty Name="AgencyNumber" ColumnName="AgencyNumber" />
                 <ScalarProperty Name="AgentVatNumber" ColumnName="AgentVatNumber" />
@@ -266,7 +280,7 @@
                 <ScalarProperty Name="AgentMobile" ColumnName="AgentMobile" />
                 <ScalarProperty Name="AgentID" ColumnName="AgentID" />
                 <ScalarProperty Name="AgentName" ColumnName="AgentName" />
-                <ScalarProperty Name="PublicNumber" ColumnName="PublicNumber" />
+                <ScalarProperty Name="OfficeName" ColumnName="OfficeName" />
                 <ScalarProperty Name="VatNumber" ColumnName="VatNumber" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="MobileAdd" ColumnName="MobileAdd" />
@@ -274,9 +288,22 @@
                 <ScalarProperty Name="IDNumber" ColumnName="IDNumber" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Number" ColumnName="Number" />
-                <ScalarProperty Name="Statues" ColumnName="Statues" />
                 <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="PlanGuid" ColumnName="PlanGuid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbParenters">
+            <EntityTypeMapping TypeName="realestatebrokermanagementModel.tbParenter">
+              <MappingFragment StoreEntitySet="tbParenters">
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="IDNumber" ColumnName="IDNumber" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="ParentGuid" ColumnName="ParentGuid" />
                 <ScalarProperty Name="PlanGuid" ColumnName="PlanGuid" />
               </MappingFragment>
             </EntityTypeMapping>

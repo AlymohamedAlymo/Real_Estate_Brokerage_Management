@@ -12,27 +12,15 @@ namespace Real_Estate_Management.Data.DataBase
     using System;
     using System.Collections.Generic;
     
-    public partial class tbOwner
+    public partial class tbParenter
     {
         public System.Guid PlanGuid { get; set; }
+        public System.Guid ParentGuid { get; set; }
         public System.Guid Guid { get; set; }
         public int Code { get; set; }
-        public Nullable<int> Number { get; set; }
         public string Name { get; set; }
         public string IDNumber { get; set; }
         public string Mobile { get; set; }
-        public string MobileAdd { get; set; }
-        public string Email { get; set; }
-        public string VatNumber { get; set; }
-        public string OfficeName { get; set; }
-        public string AgentName { get; set; }
-        public string AgentID { get; set; }
-        public string AgentMobile { get; set; }
-        public string AgenteMail { get; set; }
-        public string AgentVatNumber { get; set; }
-        public string AgencyNumber { get; set; }
-        public string AgentPublicNumber { get; set; }
         public string Note { get; set; }
-        public string LastAction { get; set; }
     }
 }

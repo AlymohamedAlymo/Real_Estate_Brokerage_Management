@@ -39,6 +39,22 @@ public class vwGeneralSales
     [DataGUIAttribute(GUIName = "ضريبة عمولة السعي", Formatting = "N2", Visibility = true, Width = 100, ControlName = "Txtvatvalue")]
     public decimal vatvalue { get; set; }
     [DataGUIAttribute(GUIName = "صافي عمولة السعي مع الضريبة", Formatting = "N2", Visibility = true, Width = 100, ControlName = "Txtnetworkfeevaluewithvat")]
+
+    public decimal discountfee { get; set; }
+    [DataGUIAttribute(GUIName = "نسبة الخصم", Formatting = "N2", Visibility = true, Width = 100, ControlName = "Txtdiscountfee")]
+    public decimal discounttotalvalue { get; set; }
+    [DataGUIAttribute(GUIName = "اجمالي الخصم", Formatting = "N2", Visibility = true, Width = 100, ControlName = "Txtdiscounttotalvalue")]
+
+    
+    public decimal discountfeevalue { get; set; }
+    [DataGUIAttribute(GUIName = "الخصم", Formatting = "N2", Visibility = true, Width = 100, ControlName = "Txtdiscountfeevalue")]
+
+    public decimal safyValafterKhasm { get; set; }
+    [DataGUIAttribute(GUIName = "صافي القيمة بعد الخصم", Formatting = "N2", Visibility = true, Width = 100, ControlName = "TxtsafyValafterKhasm")]
+
+    public decimal total { get; set; }
+    [DataGUIAttribute(GUIName = "المطلوب", Formatting = "N2", Visibility = true, Width = 100, ControlName = "Txttotal")]
+
     public decimal networkfeevaluewithvat { get; set; }
     [DataGUIAttribute(GUIName = "الإجمالي", Formatting = "N2", Visibility = true, Width = 100, ControlName = "Txttotalnet")]
     public decimal totalnet { get; set; }

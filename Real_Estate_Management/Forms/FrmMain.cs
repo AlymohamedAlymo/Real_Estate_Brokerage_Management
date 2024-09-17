@@ -18,9 +18,7 @@ using Real_Estate_Management.User_Controls;
 using Real_Estate_Management.CustomElements;
 using Telerik.WinControls.UI.SplashScreen;
 using Contract_Management.Dialogs;
-using Real_Estate_Management.UserControls;
 using Telerik.WinControls.Themes;
-using Telerik.WinControls.UI.Barcode.Symbology;
 
 namespace Real_Estate_Management
 {
@@ -195,18 +193,22 @@ namespace Real_Estate_Management
 
             if (firstShow)
             {
-                //this.Visible = false;
+                this.Visible = false;
                 this.firstShow = false;
                 this.Opacity = 1;
+                this.Visible = true;
+
             }
         }
 
         protected override void OnClosing(CancelEventArgs e)
         {
-            //e.Cancel = true;
+            e.Cancel = true;
             this.Hide();
 
             base.OnClosing(e);
+            e.Cancel = false;
+
         }
         void LoadThemeComponents()
         {
@@ -1827,7 +1829,7 @@ namespace Real_Estate_Management
                         UCControl = new User_Controls.UCClientCards(Guid.Empty, false, 1, false);
                         break;
                     case "UserControl1":
-                        UCControl = new Real_Estate_Management.UserControls.UserControl1();
+                        //UCControl = new Real_Estate_Management.UserControls.UserControl1();
                         break;
 
                     default:

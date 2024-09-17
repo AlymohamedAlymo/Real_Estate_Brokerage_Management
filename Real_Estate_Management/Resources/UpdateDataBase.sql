@@ -1,6 +1,52 @@
 USE [realestatebrokermanagement]
 GO
 
+/****** Object:  Table [dbo].[tbOwner]    Script Date: 9/15/2024 8:57:23 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[tbOwner](
+	[PlanGuid] [uniqueidentifier] NOT NULL,
+	[Guid] [uniqueidentifier] ROWGUIDCOL  NOT NULL,
+	[Code] [int] IDENTITY(1,1) NOT NULL,
+	[Statues] [varchar](10) NULL,
+	[Number] [int] NULL,
+	[Name] [varchar](255) NULL,
+	[IDNumber] [varchar](255) NULL,
+	[Mobile] [varchar](255) NULL,
+	[MobileAdd] [varchar](255) NULL,
+	[Email] [varchar](255) NULL,
+	[VatNumber] [varchar](255) NULL,
+	[PublicNumber] [varchar](255) NULL,
+	[AgentName] [varchar](255) NULL,
+	[AgentID] [varchar](255) NULL,
+	[AgentMobile] [varchar](255) NULL,
+	[AgenteMail] [varchar](255) NULL,
+	[AgentVatNumber] [varchar](255) NULL,
+	[AgencyNumber] [varchar](255) NULL,
+	[AgentPublicNumber] [varchar](255) NULL,
+	[OfficeName] [varchar](255) NULL,
+	[OfficeCR] [varchar](255) NULL,
+	[OfficePhone] [varchar](255) NULL,
+	[OfficeeMail] [varchar](255) NULL,
+	[OfficeVatNumber] [varchar](255) NULL,
+	[OfficePublicNumber] [varchar](255) NULL,
+	[Note] [varchar](255) NULL,
+	[LastAction] [varchar](255) NULL,
+ CONSTRAINT [PK_tbOwner] PRIMARY KEY CLUSTERED 
+(
+	[PlanGuid] ASC,
+	[Guid] ASC,
+	[Code] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+
 /****** Object:  Table [dbo].[tbLawyer]    Script Date: 9/11/2024 6:26:38 PM ******/
 SET ANSI_NULLS ON
 GO
