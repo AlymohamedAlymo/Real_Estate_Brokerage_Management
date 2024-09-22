@@ -1143,7 +1143,10 @@ namespace Real_Estate_Management
 
         private void MenuSellBill_Click(object sender, EventArgs e)
         {
-                       RadMenuItem toolmenu = (RadMenuItem)sender;
+            RadMenuItem toolmenu = (RadMenuItem)sender;
+            OpenUserControl(toolmenu.Text, "UCBills", "عقد بيع أرض");
+
+            //RadMenuItem toolmenu = (RadMenuItem)sender;
             if (!IsPermissionGranted(toolmenu.Text))
             {
                 MessageBox.Show("لا تملك صلاحية للقيام بهذا العمل", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -1817,19 +1820,19 @@ namespace Real_Estate_Management
                 switch (ControlName)
                 {
                     case "UCLawyer":
-                        UCControl = new User_Controls.UCLawyer(Guid.Empty);
+                        UCControl = new UCLawyer(Guid.Empty);
                         break;
                     case "UCOwner":
-                        UCControl = new User_Controls.UCOwner(Guid.Empty);
+                        UCControl = new UCOwner(Guid.Empty);
                         break;
                     case "LandsCard":
-                        UCControl = new User_Controls.UCLandsCards(Guid.Empty, false, string.Empty);
+                        UCControl = new UCLandsCards(Guid.Empty, false, string.Empty);
                         break;
                     case "ClientLandsCard":
-                        UCControl = new User_Controls.UCClientCards(Guid.Empty, false, 1, false);
+                        UCControl = new UCClientCards(Guid.Empty, false, 1, false);
                         break;
-                    case "UserControl1":
-                        //UCControl = new Real_Estate_Management.UserControls.UserControl1();
+                    case "UCBills":
+                        UCControl = new UCBills(Guid.Empty, null, null, 0);
                         break;
 
                     default:

@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition3 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition4 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition9 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition10 = new Telerik.WinControls.UI.TableViewDefinition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCOwner));
             this.TxtName = new Telerik.WinControls.UI.RadTextBox();
             this.radLabel23 = new Telerik.WinControls.UI.RadLabel();
@@ -221,6 +221,7 @@
             // 
             // MainContainer
             // 
+            this.MainContainer.AutoScroll = true;
             this.MainContainer.Controls.Add(this.TxtNote);
             this.MainContainer.Controls.Add(this.TxtMobileAdd);
             this.MainContainer.Controls.Add(this.radlabelBookings);
@@ -299,17 +300,17 @@
             this.radLabel5.AutoSize = false;
             this.radLabel5.BackColor = System.Drawing.Color.White;
             this.radLabel5.BorderVisible = true;
-            this.radLabel5.Font = new System.Drawing.Font("Arial", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel5.Location = new System.Drawing.Point(1031, 81);
+            this.radLabel5.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel5.Location = new System.Drawing.Point(1056, 97);
             this.radLabel5.Name = "radLabel5";
             // 
             // 
             // 
             this.radLabel5.RootElement.BorderHighlightThickness = 0;
-            this.radLabel5.Size = new System.Drawing.Size(130, 90);
+            this.radLabel5.Size = new System.Drawing.Size(105, 74);
             this.radLabel5.TabIndex = 1411;
             this.radLabel5.Text = "رقم\r\nالبطاقة";
-            this.radLabel5.TextAlignment = System.Drawing.ContentAlignment.TopRight;
+            this.radLabel5.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.radLabel5.TextWrap = false;
             this.radLabel5.ThemeName = "Material";
             // 
@@ -355,17 +356,17 @@
             this.TxtNumber.AutoSize = false;
             this.TxtNumber.BackColor = System.Drawing.Color.White;
             this.TxtNumber.BorderVisible = true;
-            this.TxtNumber.Font = new System.Drawing.Font("Arial", 60F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtNumber.Location = new System.Drawing.Point(741, 81);
+            this.TxtNumber.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtNumber.Location = new System.Drawing.Point(856, 97);
             this.TxtNumber.Name = "TxtNumber";
             // 
             // 
             // 
             this.TxtNumber.RootElement.BorderHighlightThickness = 0;
-            this.TxtNumber.Size = new System.Drawing.Size(292, 90);
+            this.TxtNumber.Size = new System.Drawing.Size(204, 74);
             this.TxtNumber.TabIndex = 1412;
             this.TxtNumber.Text = "1";
-            this.TxtNumber.TextAlignment = System.Drawing.ContentAlignment.TopRight;
+            this.TxtNumber.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.TxtNumber.TextWrap = false;
             this.TxtNumber.ThemeName = "Material";
             // 
@@ -393,7 +394,7 @@
             this.CmbPlanGuid.EditorControl.MasterTemplate.EnableFiltering = true;
             this.CmbPlanGuid.EditorControl.MasterTemplate.EnableGrouping = false;
             this.CmbPlanGuid.EditorControl.MasterTemplate.ShowFilteringRow = false;
-            this.CmbPlanGuid.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition3;
+            this.CmbPlanGuid.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition9;
             this.CmbPlanGuid.EditorControl.Name = "NestedRadGridView";
             this.CmbPlanGuid.EditorControl.ReadOnly = true;
             this.CmbPlanGuid.EditorControl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -522,6 +523,7 @@
             // 
             // radPanel2
             // 
+            this.radPanel2.AutoScroll = true;
             this.radPanel2.Controls.Add(this.GridViewParenter);
             this.radPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radPanel2.Location = new System.Drawing.Point(0, 0);
@@ -553,7 +555,7 @@
             this.GridViewParenter.MasterTemplate.EnableGrouping = false;
             this.GridViewParenter.MasterTemplate.ShowChildViewCaptions = true;
             this.GridViewParenter.MasterTemplate.ShowFilteringRow = false;
-            this.GridViewParenter.MasterTemplate.ViewDefinition = tableViewDefinition4;
+            this.GridViewParenter.MasterTemplate.ViewDefinition = tableViewDefinition10;
             this.GridViewParenter.Name = "GridViewParenter";
             this.GridViewParenter.ReadOnly = true;
             this.GridViewParenter.ShowChildViewCaptions = true;
@@ -570,11 +572,12 @@
             this.AgenctPage.ItemSize = new System.Drawing.SizeF(44F, 32F);
             this.AgenctPage.Location = new System.Drawing.Point(6, 6);
             this.AgenctPage.Name = "AgenctPage";
-            this.AgenctPage.Size = new System.Drawing.Size(1165, 603);
+            this.AgenctPage.Size = new System.Drawing.Size(1165, 620);
             this.AgenctPage.Text = "الوكيل";
             // 
             // radPanel1
             // 
+            this.radPanel1.AutoScroll = true;
             this.radPanel1.Controls.Add(this.TxtAgentName);
             this.radPanel1.Controls.Add(this.TxtAgencyNumber);
             this.radPanel1.Controls.Add(this.TxtAgentVatNumber);
@@ -585,7 +588,7 @@
             this.radPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radPanel1.Location = new System.Drawing.Point(0, 0);
             this.radPanel1.Name = "radPanel1";
-            this.radPanel1.Size = new System.Drawing.Size(1165, 603);
+            this.radPanel1.Size = new System.Drawing.Size(1165, 620);
             this.radPanel1.TabIndex = 11512124;
             // 
             // TxtAgentName
@@ -727,7 +730,7 @@
             this.PageAttachments.ItemSize = new System.Drawing.SizeF(50F, 32F);
             this.PageAttachments.Location = new System.Drawing.Point(6, 6);
             this.PageAttachments.Name = "PageAttachments";
-            this.PageAttachments.Size = new System.Drawing.Size(1165, 603);
+            this.PageAttachments.Size = new System.Drawing.Size(1165, 620);
             this.PageAttachments.Text = "مرفقات";
             // 
             // BindingNavigatorClient
@@ -1189,10 +1192,11 @@
             // 
             // attachmentControl1
             // 
+            this.attachmentControl1.AutoScroll = true;
             this.attachmentControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.attachmentControl1.Location = new System.Drawing.Point(0, 0);
             this.attachmentControl1.Name = "attachmentControl1";
-            this.attachmentControl1.Size = new System.Drawing.Size(1165, 603);
+            this.attachmentControl1.Size = new System.Drawing.Size(1165, 620);
             this.attachmentControl1.TabIndex = 0;
             this.attachmentControl1.MenuPreviewAttach_Click += new System.EventHandler(this.MenuPreviewAttach_Click);
             this.attachmentControl1.MenuExtractAttachment_Click += new System.EventHandler(this.MenuExtractAttachment_Click);

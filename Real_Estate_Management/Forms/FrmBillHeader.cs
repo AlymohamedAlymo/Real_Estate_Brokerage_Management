@@ -42,9 +42,10 @@ using Real_Estate_Management.Helpers;
 using DoctorHelper.Helpers;
 using OfficeOpenXml.FormulaParsing.Excel.Functions.Numeric;
 using DoctorERP.Helpers;
+using Telerik.WinControls.UI.Localization;
 namespace Real_Estate_Management
 {
-    public partial class FrmBillHeader : XtraForm
+    public partial class FrmBillHeader : UserControl
     {
 
         BindingSource bs;
@@ -62,16 +63,14 @@ namespace Real_Estate_Management
         {
             InitializeComponent();
 
-            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
 
             this.SellLand = SellLand;
 
             dirtytracker = new WinformsDirtyTracking.DirtyTracker(this);
-            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
             this.guid = guid;
 
-            BtnEdit.Visible = true;
-            BtnAdd.Visible = false;
+            BtnEdit.Enabled = true;
+            BtnAdd.Enabled = false;
 
             this.isNew = isNew;
 
@@ -81,25 +80,25 @@ namespace Real_Estate_Management
             tbAgent.Fill("AgentType", 0);
             DefOwner = tbAgent.lstData[0];
 
-            TxtSelectOwner.Tag = DefOwner;
+            //TxtSelectOwner.Tag = DefOwner;
 
             if (billtype == 0)
             {
                 this.Text = "عقد بيع";
-                LblHint.Text = "عقد بيع أرض";
+                radLblHint.Text = "عقد بيع أرض";
             }
             else if (billtype == 1)
             {
                 this.Text = "مرتجع بيع";
-                LblHint.Text = "عقد مرتجع بيع أرض";
+                radLblHint.Text = "عقد مرتجع بيع أرض";
             }
             else if (billtype == 2)
             {
-                LblAgent.Text = "المشتري";
-                LblOwner.Text = "البائع";
-                CmbBuyerData.Visible = CmbOwnerData.Visible = false;
+                //LblAgent.Text = "المشتري";
+                //LblOwner.Text = "البائع";
+                CmbBuyerData.Enabled = CmbOwnerData.Enabled = false;
                 this.Text = "عقد بيع خارجي (صوري)";
-                LblHint.Text = "عقد بيع خارجي (صوري)";
+                radLblHint.Text = "عقد بيع خارجي (صوري)";
             }
 
             InitReadyGrid();
@@ -114,16 +113,14 @@ namespace Real_Estate_Management
         {
             InitializeComponent();
 
-            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
 
             this.SellLand = SellLand;
 
             dirtytracker = new WinformsDirtyTracking.DirtyTracker(this);
-            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
             this.guid = guid;
 
-            BtnEdit.Visible = true;
-            BtnAdd.Visible = false;
+            BtnEdit.Enabled = true;
+            BtnAdd.Enabled = false;
 
             this.isNew = isNew;
 
@@ -132,26 +129,26 @@ namespace Real_Estate_Management
             tbAgent.Fill("AgentType", 0);
             DefOwner = tbAgent.lstData[0];
 
-            TxtSelectBuyer.Tag = new tbAgent();
-            TxtSelectOwner.Tag = DefOwner;
+            //TxtSelectBuyer.Tag = new tbAgent();
+            CmbOwnerData.SelectedItem = DefOwner;
 
             if (billtype == 0)
             {
                  this.Text = "عقد بيع";
-                LblHint.Text = "عقد بيع أرض";
+                radLblHint.Text = "عقد بيع أرض";
             }
             else if (billtype == 1)
             {
                 this.Text = "مرتجع بيع";
-                LblHint.Text = "عقد مرتجع بيع أرض";
+                radLblHint.Text = "عقد مرتجع بيع أرض";
             }
             else if (billtype == 2)
             {
-                LblAgent.Text = "المشتري";
-                LblOwner.Text = "البائع";
-                CmbBuyerData.Visible = CmbOwnerData.Visible = false;
+                //LblAgent.Text = "المشتري";
+                //LblOwner.Text = "البائع";
+                CmbBuyerData.Enabled = CmbOwnerData.Enabled = false;
                 this.Text = "عقد بيع خارجي (صوري)";
-                LblHint.Text = "عقد بيع خارجي (صوري)";
+                radLblHint.Text = "عقد بيع خارجي (صوري)";
             }
 
             InitReadyGrid();
@@ -166,11 +163,11 @@ namespace Real_Estate_Management
 
             if (isNew)
             {
-                BtnNew.PerformClick();
+                BtnAdd.PerformClick();
 
+                BtnEdit.Enabled = false;
+                BtnAdd.Enabled = true;
 
-                BtnAdd.Visible = true;
-                BtnEdit.Visible = false;
             }
 
             if (SellLand.Count > 0)
@@ -179,8 +176,7 @@ namespace Real_Estate_Management
             }
 
 
-            TxtSelectBuyer.Tag = Client;
-            TxtSelectBuyer.Text = Client.name;
+            CmbBuyerData.SelectedItem = Client;
 
 
             dirtytracker.MarkAsClean();
@@ -191,7 +187,9 @@ namespace Real_Estate_Management
         {
             tbBillheader.Fill("billtype", billtype);
             bs = new BindingSource(tbBillheader.lstData, string.Empty);
-            dataNavigator1.DataSource = bs;
+
+            dataNavigator1.BindingSource = bs;
+
             bs.PositionChanged += new EventHandler(bs_PositionChanged);
             FillForm();
             bs.MoveLast();
@@ -215,9 +213,10 @@ namespace Real_Estate_Management
 
                 if (obj.guid.Equals(Guid.Empty))
                 {
-                    BtnAdd.Visible = true;
-                    BtnEdit.Visible = false;
+                    BtnAdd.Enabled = true;
+                    BtnEdit.Enabled = false;
                     BtnDelete.Enabled = false;
+
                 }
 
                 FillForm();
@@ -240,13 +239,13 @@ namespace Real_Estate_Management
                 tbBillheader obj = (tbBillheader)bs.Current;
 
 
-                TxtNote.Text = obj.note;
+                //TxtNote.Text = obj.note;
 
                 tbAgent owner = tbAgent.FindBy("Guid", obj.ownerguid);
                 tbAgent buyer = tbAgent.FindBy("Guid", obj.buyerguid);
 
-                TxtSelectBuyer.Tag = buyer;
-                TxtSelectOwner.Tag = owner;
+                CmbBuyerData.SelectedItem = buyer;
+                CmbOwnerData.SelectedItem = owner;
 
 
                 if (obj.buyerdata == "الوكيل")
@@ -275,57 +274,57 @@ namespace Real_Estate_Management
 
                 if (CmbBuyerData.SelectedIndex == 0)
                 {
-                    TxtSelectBuyer.Text = buyer.name;
+                    CmbBuyerData.DisplayMember = "name";
                 }
                 else if (CmbBuyerData.SelectedIndex == 1)
                 {
-                    TxtSelectBuyer.Text = buyer.agentname;
+                    CmbBuyerData.DisplayMember = "agentname";
+
                 }
 
                 if (CmbOwnerData.SelectedIndex == 0)
                 {
-                    TxtSelectOwner.Text = owner.name;
+                    CmbOwnerData.DisplayMember = "name";
+
                 }
                 else if (CmbOwnerData.SelectedIndex == 1)
                 {
-                    TxtSelectOwner.Text = owner.agentname;
+                    CmbOwnerData.DisplayMember = "agentname";
+
                 }
 
                 Txtlastaction.Text = obj.lastaction;
 
                 FillGrid(obj.guid);
-                dtRegDate.DateTime = obj.regdate;
+                dtRegDate.Value = obj.regdate;
 
                 if (obj is null || obj.guid.Equals(Guid.Empty))
                 {
-                    TxtSelectBuyer.Tag = new tbAgent();
 
                     if (billtype == 0)
                     {
-                        TxtSelectOwner.Tag = DefOwner;
-                        TxtSelectOwner.Text = DefOwner.name;
+                        CmbOwnerData.SelectedItem = DefOwner;
                     }
                     else if (billtype == 2)
                     {
-                        TxtSelectOwner.Tag = new tbAgent();
-                        TxtSelectOwner.Text = string.Empty;
-                    }
 
-                    TxtSelectBuyer.Text = string.Empty;
+                        CmbOwnerData.SelectedItem = null;
+                    }
+                    CmbBuyerData.SelectedItem = null;
                     CmbOwnerData.SelectedIndex = 0;
                     CmbBuyerData.SelectedIndex = 0;
                     BtnDelete.Enabled = false;
-                    BtnEdit.Visible = false;
+                    BtnEdit.Enabled = false;
                     Txtlastaction.Text = string.Empty;
 
-                    BtnAdd.Visible = true;
-                    dtRegDate.DateTime = DateTime.Now;
+                    BtnAdd.Enabled = true;
+                    dtRegDate.Value = DateTime.Now;
                 }
                 else
                 {
                     BtnDelete.Enabled = true;
-                    BtnEdit.Visible = true;
-                    BtnAdd.Visible = false;
+                    BtnEdit.Enabled = true;
+                    BtnAdd.Enabled = false;
 
 
                 }
@@ -338,8 +337,8 @@ namespace Real_Estate_Management
 
 
                 BtnDelete.Enabled = false;
-                BtnEdit.Visible = false;
-                BtnAdd.Visible = true;
+                BtnEdit.Enabled = false;
+                BtnAdd.Enabled = true;
 
                 isNew = true;
 
@@ -350,21 +349,17 @@ namespace Real_Estate_Management
 
         private void NewFill()
         {
-            DataGUIAttribute.AssignFormValues<tbBillheader>(this, new tbBillheader());
-            DataGUIAttribute.ClearFormControls<tbBillheader>(this, new tbBillheader());
+            DataGUIAttribute.Assign_UC_Values<tbBillheader>(this, new tbBillheader());
+            DataGUIAttribute.Clear_UC_Controls<tbBillheader>(this, new tbBillheader());
 
-            TxtSelectBuyer.Tag = new tbAgent();
-            TxtSelectBuyer.Text = string.Empty;
-
+            CmbBuyerData.SelectedItem = null;
             if (billtype == 0)
             {
-                TxtSelectOwner.Tag = DefOwner;
-                TxtSelectOwner.Text = DefOwner.name;
+                CmbOwnerData.SelectedItem = DefOwner;
             }
             else if (billtype == 2)
             {
-                TxtSelectOwner.Tag = new tbAgent();
-                TxtSelectOwner.Text = string.Empty;
+                CmbOwnerData.SelectedItem = null;
             }
 
             CalcBillBody();
@@ -403,21 +398,21 @@ namespace Real_Estate_Management
                 Enable = false;
 
 
-            if (Enable)
-            {
-                BtnAddBuyer.Enabled = BtnAddOwner.Enabled = ComponentFactory.Krypton.Toolkit.ButtonEnabled.True;
-                BtnSearchBuyer.Enabled = BtnSearchOwner.Enabled = ComponentFactory.Krypton.Toolkit.ButtonEnabled.True;
-            }
-            else
-            {
-                BtnAddBuyer.Enabled = BtnAddOwner.Enabled = ComponentFactory.Krypton.Toolkit.ButtonEnabled.False;
-                BtnSearchBuyer.Enabled = BtnSearchOwner.Enabled = ComponentFactory.Krypton.Toolkit.ButtonEnabled.False;
-            }
+            //if (Enable)
+            //{
+            //    BtnAddBuyer.Enabled = BtnAddOwner.Enabled = ComponentFactory.Krypton.Toolkit.ButtonEnabled.True;
+            //    BtnSearchBuyer.Enabled = BtnSearchOwner.Enabled = ComponentFactory.Krypton.Toolkit.ButtonEnabled.True;
+            //}
+            //else
+            //{
+            //    BtnAddBuyer.Enabled = BtnAddOwner.Enabled = ComponentFactory.Krypton.Toolkit.ButtonEnabled.False;
+            //    BtnSearchBuyer.Enabled = BtnSearchOwner.Enabled = ComponentFactory.Krypton.Toolkit.ButtonEnabled.False;
+            //}
 
-            TxtSelectOwner.Enabled = TxtSelectBuyer.ReadOnly = !Enable;
+            CmbOwnerData.Enabled = CmbBuyerData.ReadOnly = !Enable;
 
-            TxtNote.ReadOnly = !Enable;
-            GridView1.OptionsBehavior.Editable = Enable;
+            //TxtNote.ReadOnly = !Enable;
+            GridView1.ReadOnly = Enable;
 
             dtRegDate.Enabled = Enable;
             BtnAddFromBlock.Enabled = Enable;
@@ -431,18 +426,18 @@ namespace Real_Estate_Management
 
         #region grid
 
-        protected override void OnShown(EventArgs e)
-        {
-            base.OnShown(e);
+        //protected override void OnShown(EventArgs e)
+        //{
+        //    base.OnShown(e);
 
-            FindControl findControl = MainGridReadyItems.Controls.OfType<FindControl>().FirstOrDefault();
-            if (billtype == 0)
-                findControl.BackColor = Color.LightSteelBlue;
-            else if (billtype == 1)
-                findControl.BackColor = Color.LightPink;
-            else if (billtype == 2)
-                findControl.BackColor = Color.LightGreen;
-        }
+        //    FindControl findControl = MainGridReadyItems.Controls.OfType<FindControl>().FirstOrDefault();
+        //    if (billtype == 0)
+        //        findControl.BackColor = Color.LightSteelBlue;
+        //    else if (billtype == 1)
+        //        findControl.BackColor = Color.LightPink;
+        //    else if (billtype == 2)
+        //        findControl.BackColor = Color.LightGreen;
+        //}
 
         GridFormatRule FormatRuleDuplicate = new GridFormatRule();
         FormatConditionRuleUniqueDuplicate formatConditionRule;
@@ -452,96 +447,32 @@ namespace Real_Estate_Management
 
         void InitReadyGrid()
         {
-            GridLocalizer.Active = new MyGridLocalizer();
-            DevExpress.Utils.Paint.TextRendererHelper.UseScriptAnalyse = false;
-            GridView1.OptionsFind.AllowFindPanel = false;
-            GridView1.OptionsFind.FindNullPrompt = "أدخل كلمة للبحث";
-            GridView1.OptionsFind.Behavior = FindPanelBehavior.Filter;
-            GridView1.OptionsFind.AlwaysVisible = true;
+            RadGridLocalizationProvider.CurrentProvider = new MyArabicRadGridLocalizationProvider();
+            GridView1.TableElement.UpdateView();
 
-            GridView1.OptionsView.ShowGroupPanel = false;
-            GridView1.OptionsCustomization.AllowFilter = false;
-            GridView1.OptionsCustomization.AllowColumnMoving = false;
-            GridView1.OptionsMenu.EnableColumnMenu = false;
-            GridView1.OptionsCustomization.AllowSort = false;
+            //FormatConditionRuleExpression formatConditionRuleExpression = new FormatConditionRuleExpression();
+            //FormatRuleValue.Column = ColStatus;
+            //FormatRuleValue.ApplyToRow = true;
+            //FormatRuleValue.Name = "Format1";
+            //formatConditionRuleExpression.Appearance.Font = new Font(this.Font, FontStyle.Strikeout);
+            //formatConditionRuleExpression.Expression = "[status] = 'مرتجع'";
+            //FormatRuleValue.Rule = formatConditionRuleExpression;
+            //GridView1.Columns[1].ConditionalFormattingObjectList.Add(formatConditionRuleExpression);
 
-            GridView1.OptionsView.NewItemRowPosition = NewItemRowPosition.None;
-            GridView1.OptionsNavigation.EnterMoveNextColumn = true;
-            GridView1.OptionsBehavior.AllowAddRows = DefaultBoolean.False;
-            GridView1.OptionsView.ShowFooter = true;
-            GridView1.OptionsView.ColumnHeaderAutoHeight = DefaultBoolean.True;
-            GridView1.RowHeight = 35;
-
-            GridView1.Appearance.Row.Font = new Font(GridView1.Appearance.Row.Font.FontFamily, 12F, FontStyle.Regular);
-
-            foreach (GridBand item in GridView1.Bands)
-            {
-                item.AppearanceHeader.ForeColor = Color.Black;
-                item.AppearanceHeader.Font = new Font(item.AppearanceHeader.Font.FontFamily, 9.75F, FontStyle.Bold);
-                item.AppearanceHeader.FontStyleDelta = FontStyle.Bold;
-            }
-
-            foreach (GridColumn item in GridView1.Columns)
-            {
-
-
-                if (item.FieldName.Equals("price") ||
-                item.FieldName.Equals("total") || item.FieldName.Equals("totalnet") || item.FieldName.Equals("vatvalue") ||
-                item.FieldName.Equals("workfeevalue") || item.FieldName.Equals("discounttotalvalue") || item.FieldName.Equals("buildingfeevalue") ||
-                item.FieldName.Equals("discountfeevalue") || item.FieldName.Equals("discounttotal") || item.FieldName.Equals("discountfee") ||
-                item.FieldName.Equals("networkfee") || item.FieldName.Equals("vatworkfee") || item.FieldName.Equals("netprice"))
-                {
-                    item.DisplayFormat.FormatType = FormatType.Numeric;
-                    item.DisplayFormat.FormatString = "N2";
-                    item.AppearanceCell.TextOptions.HAlignment = HorzAlignment.Center;
-
-                    RepositoryItemTextEdit editor = new RepositoryItemTextEdit();
-                    editor.Mask.MaskType = MaskType.Numeric;
-                    editor.Mask.EditMask = "N2";
-                    item.ColumnEdit = editor;
-                }
-                else if (item.FieldName.Equals("contractno"))
-                {
-                    item.DisplayFormat.FormatType = FormatType.Numeric;
-                    item.DisplayFormat.FormatString = "N0";
-                    item.AppearanceCell.TextOptions.HAlignment = HorzAlignment.Near;
-                }
-                else
-                {
-
-                    item.AppearanceCell.TextOptions.HAlignment = HorzAlignment.Near;
-                }
-
-                item.AppearanceHeader.ForeColor = Color.Black;
-                item.AppearanceHeader.Font = new Font(item.AppearanceHeader.Font.FontFamily, 9.75F, FontStyle.Bold);
-                item.AppearanceHeader.FontStyleDelta = FontStyle.Bold;
-            }
-
-
-
-            FormatConditionRuleExpression formatConditionRuleExpression = new FormatConditionRuleExpression();
-            FormatRuleValue.Column = ColStatus;
-            FormatRuleValue.ApplyToRow = true;
-            FormatRuleValue.Name = "Format1";
-            formatConditionRuleExpression.Appearance.Font = new Font(this.Font, FontStyle.Strikeout);
-            formatConditionRuleExpression.Expression = "[status] = 'مرتجع'";
-            FormatRuleValue.Rule = formatConditionRuleExpression;
-            GridView1.FormatRules.Add(FormatRuleValue);
-
-            formatConditionRule = new FormatConditionRuleUniqueDuplicate();
+            //formatConditionRule = new FormatConditionRuleUniqueDuplicate();
 
 
 
 
-            FormatRuleDuplicate.Column = ColLandGuid;
-            FormatRuleDuplicate.ColumnApplyTo = ColLand;
+            //FormatRuleDuplicate.Column = ColLandGuid;
+            //FormatRuleDuplicate.ColumnApplyTo = ColLand;
             FormatRuleDuplicate.Name = "Format0";
             formatConditionRule.Appearance.BackColor = Color.LightPink;
             formatConditionRule.Appearance.Options.UseBackColor = true;
 
             FormatRuleDuplicate.Rule = formatConditionRule;
 
-            GridView1.FormatRules.Add(FormatRuleDuplicate);
+            //GridView1.FormatRules.Add(FormatRuleDuplicate);
         }
 
         private void gridView1_ShowingEditor(object sender, CancelEventArgs e)
@@ -588,22 +519,22 @@ namespace Real_Estate_Management
 
         private void gridView1_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)
         {
-            if (GridView1.IsNewItemRow(e.RowHandle))
-            {
-                BeginInvoke(new Action(() =>
-                {
-                    GridView1.FocusedColumn = ColLand;
-                    ReNumberGrid();
-                    //GridView1.ShowEditor();
-                }));
-            }
+            //if (GridView1.IsNewItemRow(e.RowHandle))
+            //{
+            //    BeginInvoke(new Action(() =>
+            //    {
+            //        GridView1.FocusedColumn = ColLand;
+            //        ReNumberGrid();
+            //        //GridView1.ShowEditor();
+            //    }));
+            //}
         }
 
         void ReNumberGrid()
         {
             for (int i = 0; i <= GridView1.RowCount; i++)
             {
-                GridView1.SetRowCellValue(i, ColNumber, i + 1);
+                GridView1.Rows[i].Cells[0].Value = i + 1;
             }
         }
 
@@ -611,28 +542,28 @@ namespace Real_Estate_Management
         {
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
-                if (GridView1.FocusedColumn == ColNote)
-                {
-                    AddNewRow();
-                }
+                //if (GridView1.FocusedColumn == ColNote)
+                //{
+                //    AddNewRow();
+                //}
 
-                else if (GridView1.FocusedColumn == ColDiscountFeeText)
-                {
-
-
-                }
-                else if (GridView1.FocusedColumn == ColDiscountTotalText)
-                {
+                //else if (GridView1.FocusedColumn == ColDiscountFeeText)
+                //{
 
 
-                }
+                //}
+                //else if (GridView1.FocusedColumn == ColDiscountTotalText)
+                //{
+
+
+                //}
             }
             else if (e.KeyCode == Keys.Down)
             {
-                if (GridView1.FocusedColumn == ColLand)
-                {
-                    AddNewRow();
-                }
+                //if (GridView1.FocusedColumn == ColLand)
+                //{
+                //    AddNewRow();
+                //}
             }
             else if (e.KeyCode == Keys.Escape)
             {
@@ -641,78 +572,78 @@ namespace Real_Estate_Management
             }
             else if (e.KeyCode == Keys.Delete)
             {
-                if (GridView1.FocusedColumn == ColLand)
-                {
-                    int contractno;
-                    int.TryParse(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColContractNo).ToString(), out contractno);
-                    string status = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColStatus).ToString();
+                //if (GridView1.FocusedColumn == ColLand)
+                //{
+                //    int contractno;
+                //    int.TryParse(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColContractNo).ToString(), out contractno);
+                //    string status = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColStatus).ToString();
 
-                    if (billtype == 0)
-                    {
-                        if (contractno > 0)
-                        {
-                            if (FrmMain.CurrentUser.IsAdmin)
-                            {
-                                if (status.Equals("مرتجع"))
-                                {
-                                    if (MessageBox.Show("هل أنت متأكد من حذف العقد ؟ إن حذفه قد يؤدي إلى إخفاءه من النظام بشكل كامل", Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                                    {
-                                        e.Handled = true;
-                                        return;
-                                    }
-                                }
-                                else
-                                {
-                                    if (MessageBox.Show("هل أنت متأكد من حذف العقد ؟ إن حذفه قد يؤدي إلى إخفاءه من النظام بشكل كامل ، يفضل تحويله إلى مرتجع بضغط زر الفأرة الأيمن على العقد بدل حذفه", Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                                    {
-                                        e.Handled = true;
-                                        return;
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                MessageBox.Show("لا يمكن حذف العقد المحفوظ إلا من قبل مدير النظام", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                e.Handled = true;
-                                return;
-                            }
-                        }
-                    }
+                //    if (billtype == 0)
+                //    {
+                //        if (contractno > 0)
+                //        {
+                //            if (FrmMain.CurrentUser.IsAdmin)
+                //            {
+                //                if (status.Equals("مرتجع"))
+                //                {
+                //                    if (MessageBox.Show("هل أنت متأكد من حذف العقد ؟ إن حذفه قد يؤدي إلى إخفاءه من النظام بشكل كامل", Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                //                    {
+                //                        e.Handled = true;
+                //                        return;
+                //                    }
+                //                }
+                //                else
+                //                {
+                //                    if (MessageBox.Show("هل أنت متأكد من حذف العقد ؟ إن حذفه قد يؤدي إلى إخفاءه من النظام بشكل كامل ، يفضل تحويله إلى مرتجع بضغط زر الفأرة الأيمن على العقد بدل حذفه", Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                //                    {
+                //                        e.Handled = true;
+                //                        return;
+                //                    }
+                //                }
+                //            }
+                //            else
+                //            {
+                //                MessageBox.Show("لا يمكن حذف العقد المحفوظ إلا من قبل مدير النظام", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                //                e.Handled = true;
+                //                return;
+                //            }
+                //        }
+                //    }
 
 
-                    GridView1.DeleteSelectedRows();
+                //    GridView1.DeleteSelectedRows();
 
-                    if (GridView1.RowCount <= 0)
-                        AddNewRow();
+                //    if (GridView1.RowCount <= 0)
+                //        AddNewRow();
 
-                    if (GridView1.RowCount > 0)
-                    {
-                        if (billtype == 1)
-                        {
-                            Guid firstlandguid = new Guid(GridView1.GetRowCellValue(0, ColLandGuid).ToString());
-                            if (firstlandguid != Guid.Empty)
-                            {
-                                tbBillBody billbody = tbBillBody.FindBy("LandGuid", firstlandguid, "مباع");
-                                tbBillheader bill = tbBillheader.FindBy("Guid", billbody.parentguid);
-                                tbAgent agent = tbAgent.FindBy("Guid", bill.buyerguid);
-                                TxtSelectBuyer.Text = agent.name;
-                                TxtSelectBuyer.Tag = agent;
-                            }
-                            else
-                            {
-                                TxtSelectBuyer.Text = string.Empty;
-                                TxtSelectBuyer.Tag = new tbAgent();
-                            }
-                        }
-                    }
+                //    if (GridView1.RowCount > 0)
+                //    {
+                //        if (billtype == 1)
+                //        {
+                //            Guid firstlandguid = new Guid(GridView1.GetRowCellValue(0, ColLandGuid).ToString());
+                //            if (firstlandguid != Guid.Empty)
+                //            {
+                //                tbBillBody billbody = tbBillBody.FindBy("LandGuid", firstlandguid, "مباع");
+                //                tbBillheader bill = tbBillheader.FindBy("Guid", billbody.parentguid);
+                //                tbAgent agent = tbAgent.FindBy("Guid", bill.buyerguid);
+                //                TxtSelectBuyer.Text = agent.name;
+                //                TxtSelectBuyer.Tag = agent;
+                //            }
+                //            else
+                //            {
+                //                TxtSelectBuyer.Text = string.Empty;
+                //                TxtSelectBuyer.Tag = new tbAgent();
+                //            }
+                //        }
+                //    }
 
-                    ReNumberGrid();
-                    CalcBillBody();
-                }
-                else
-                {
-                    e.Handled = true;
-                }
+                //    ReNumberGrid();
+                //    CalcBillBody();
+                //}
+                //else
+                //{
+                //    e.Handled = true;
+                //}
             }
         }
 
@@ -767,9 +698,9 @@ namespace Real_Estate_Management
                             string.Empty,  // Note
                             string.Empty); // status
 
-                GridView1.UpdateCurrentRow();
-                GridView1.MoveNext();
-                GridView1.FocusedColumn = ColLand;
+                //GridView1.UpdateCurrentRow();
+                //GridView1.MoveNext();
+                //GridView1.FocusedColumn = ColLand;
                 ReNumberGrid();
             }
 
@@ -803,7 +734,7 @@ namespace Real_Estate_Management
             tbBillheader billheader = tbBillheader.FindBy("guid", guid);
             privatebillBody = new DataTable();
             vwBillBody.Fill("parentguid", billheader.guid, privatebillBody);
-            MainGridReadyItems.DataSource = privatebillBody;
+            //MainGridReadyItems.DataSource = privatebillBody;
             if (privatebillBody.Rows.Count <= 0)
             {
                 privatebillBody.Rows.Add(
@@ -832,7 +763,7 @@ namespace Real_Estate_Management
                             string.Empty,  // Note
                             string.Empty); // status
 
-                GridView1.FocusedColumn = ColLand;
+                //GridView1.FocusedColumn = ColLand;
             }
             CalcBillBody();
         }
@@ -882,7 +813,7 @@ namespace Real_Estate_Management
 
             if (!selectland.guid.Equals(Guid.Empty))
             {
-                GridView1.CellValueChanged -= gridView1_CellValueChanged;
+                //GridView1.CellValueChanged -= gridView1_CellValueChanged;
 
                 tbLand land = tbLand.FindBy("Guid", selectland.guid);
                 FillLandInfo(rowhandle, land);
@@ -897,7 +828,7 @@ namespace Real_Estate_Management
 
                 GridView1.CloseEditor();
 
-                GridView1.CellValueChanged += gridView1_CellValueChanged;
+                //GridView1.CellValueChanged += gridView1_CellValueChanged;
                 AddNewRow();
 
 
@@ -905,12 +836,12 @@ namespace Real_Estate_Management
             }
             else
             {
-                Guid matguid = new Guid(GridView1.GetRowCellValue(rowhandle, ColLandGuid).ToString());
+                Guid matguid = new Guid(GridView1.Rows[rowhandle].Cells[2].Value.ToString());
 
                 if (!matguid.Equals(Guid.Empty))
                 {
                     vwSelectLand imat = vwSelectLand.FindBy("Guid", matguid);
-                    GridView1.SetRowCellValue(rowhandle, ColLand, "الأرض رقم " + imat.code);
+                    //GridView1.SetRowCellValue(rowhandle, ColLand, "الأرض رقم " + imat.code);
 
 
                 }
@@ -926,7 +857,7 @@ namespace Real_Estate_Management
 
                 ButtonEdit buttonEdit = sender as ButtonEdit;
 
-                SelectMat(buttonEdit.Text, GridView1.FocusedRowHandle);
+                SelectMat(buttonEdit.Text, GridView1.CurrentRow.Index);
             }
         }
 
@@ -935,7 +866,7 @@ namespace Real_Estate_Management
         {
             ButtonEdit buttonEdit = sender as ButtonEdit;
 
-            SelectMat(buttonEdit.Text, GridView1.FocusedRowHandle);
+            SelectMat(buttonEdit.Text, GridView1.CurrentRow.Index);
         }
 
         void FillLandInfo(int rowhandle, tbLand land)
@@ -1168,10 +1099,13 @@ namespace Real_Estate_Management
         {
             for (int i = 0; i < GridView1.RowCount; i++)
             {
-                Guid landguid = new Guid(GridView1.GetRowCellValue(i, "landguid").ToString());
-                string state = GridView1.GetRowCellValue(i, ColStatus).ToString();
+                //Guid landguid = new Guid(GridView1.GetRowCellValue(i, "landguid").ToString());
+                //string state = GridView1.GetRowCellValue(i, ColStatus).ToString();
+                Guid landguid = new Guid(GridView1.Rows[i].Cells["ColLandGuid"].Value.ToString());
 
-                if (landguid.Equals(guid) && status == state)
+                string CurrentStatus = GridView1.Rows[i].Cells["ColStatus"].Value.ToString();
+
+                if (landguid.Equals(guid) && status == CurrentStatus)
                     return true;
             }
 
@@ -1183,16 +1117,16 @@ namespace Real_Estate_Management
         {
             isNew = true;
 
-            BtnAdd.Visible = true;
-            BtnEdit.Visible = false;
+            BtnAdd.Enabled = true;
+            BtnEdit.Enabled = false;
             BtnDelete.Enabled = false;
 
 
 
-            TxtNote.Text = string.Empty;
+            //TxtNote.Text = string.Empty;
 
 
-            dtRegDate.EditValue = DateTime.Now;
+            dtRegDate.Value = DateTime.Now;
 
             FillCmb();
             FillGrid(Guid.Empty);
@@ -1216,11 +1150,11 @@ namespace Real_Estate_Management
                     {
                         if (frm.printtype == 0)
                         {
-                            BtnPrint.PerformClick();
+                            //BtnPrint.PerformClick();
                         }
                         else if (frm.printtype == 1)
                         {
-                            MenuPrintOnebyOne.PerformClick();
+                            //MenuPrintOnebyOne.PerformClick();
                         }
                     }
                 }
@@ -1233,14 +1167,14 @@ namespace Real_Estate_Management
         {
             tbBillheader billheader = new tbBillheader();
 
-            tbAgent owner = (tbAgent)TxtSelectOwner.Tag;
+            tbAgent owner = (tbAgent)CmbOwnerData.SelectedItem;
             if (owner.guid.Equals(Guid.Empty))
             {
                 MessageBox.Show("يجب إختيار المالك", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
             }
 
-            tbAgent buyer = (tbAgent)TxtSelectBuyer.Tag;
+            tbAgent buyer = (tbAgent)CmbBuyerData.SelectedItem;
             if (buyer.guid.Equals(Guid.Empty))
             {
                 MessageBox.Show("يجب إختيار العميل", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -1252,8 +1186,11 @@ namespace Real_Estate_Management
             bool IsDuplicateFound = false;
             for (int i = 0; i < GridView1.RowCount; i++)
             {
-                Guid landguid = new Guid(GridView1.GetRowCellValue(i, ColLandGuid).ToString());
-                string status = GridView1.GetRowCellValue(i, ColStatus).ToString();
+                //Guid landguid = new Guid(GridView1.GetRowCellValue(i, ColLandGuid).ToString());
+                //string status = GridView1.GetRowCellValue(i, ColStatus).ToString();
+                Guid landguid = new Guid(GridView1.Rows[i].Cells["ColLandGuid"].Value.ToString());
+
+                string status = GridView1.Rows[i].Cells["ColStatus"].Value.ToString();
 
                 if (!landguid.Equals(Guid.Empty) && !status.Equals("مرتجع"))
                     IsDuplicateFound = IsDuplicate(landguid);
@@ -1292,8 +1229,8 @@ namespace Real_Estate_Management
             billheader.ownerguid = owner.guid;
             billheader.buyerguid = buyer.guid;
             billheader.billtype = billtype;
-            billheader.regdate = dtRegDate.DateTime;
-            billheader.note = TxtNote.Text;
+            billheader.regdate = dtRegDate.Value;
+            //billheader.note = TxtNote.Text;
 
             CalcBillBody();
 
@@ -1361,8 +1298,8 @@ namespace Real_Estate_Management
                 FillGrid(billheader.guid);
             }
 
-            BtnAdd.Visible = false;
-            BtnEdit.Visible = true;
+            BtnAdd.Enabled = false;
+            BtnEdit.Enabled = true;
 
 
 
@@ -1382,14 +1319,14 @@ namespace Real_Estate_Management
 
 
 
-            tbAgent owner = (tbAgent)TxtSelectOwner.Tag;
+            tbAgent owner = (tbAgent)CmbOwnerData.SelectedItem;
             if (owner.guid.Equals(Guid.Empty))
             {
                 MessageBox.Show("يجب إختيار المالك", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
             }
 
-            tbAgent buyer = (tbAgent)TxtSelectBuyer.Tag;
+            tbAgent buyer = (tbAgent)CmbBuyerData.SelectedItem;
             if (buyer.guid.Equals(Guid.Empty))
             {
                 MessageBox.Show("يجب إختيار العميل", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -1399,8 +1336,10 @@ namespace Real_Estate_Management
             bool IsDuplicateFound = false;
             for (int i = 0; i < GridView1.RowCount; i++)
             {
-                Guid landguid = new Guid(GridView1.GetRowCellValue(i, ColLandGuid).ToString());
-                string status = GridView1.GetRowCellValue(i, ColStatus).ToString();
+                //Guid landguid = new Guid(GridView1.GetRowCellValue(i, ColLandGuid).ToString());
+                Guid landguid = new Guid(GridView1.Rows[i].Cells["ColLandGuid"].Value.ToString());
+
+                string status = GridView1.Rows[i].Cells["ColStatus"].Value.ToString();
 
                 if (!landguid.Equals(Guid.Empty) && status.Equals("مباع"))
                     IsDuplicateFound = IsDuplicate(landguid);
@@ -1438,8 +1377,8 @@ namespace Real_Estate_Management
             billheader.ownerguid = owner.guid;
             billheader.buyerguid = buyer.guid;
             billheader.billtype = billtype;
-            billheader.regdate = dtRegDate.DateTime;
-            billheader.note = TxtNote.Text;
+            billheader.regdate = dtRegDate.Value;
+            //billheader.note = TxtNote.Text;
             CalcBillBody();
 
             decimal total;
@@ -1523,7 +1462,7 @@ namespace Real_Estate_Management
             {
                 int contract;
 
-                int.TryParse(GridView1.GetRowCellValue(i, ColContractNo).ToString(), out contract);
+                int.TryParse(GridView1.Rows[i].Cells["ColContractNo"].Value.ToString(), out contract);
 
                 tbPayContract pay = tbPayContract.FindBy("contractno", contract);
                 if (!pay.guid.Equals(Guid.Empty))
@@ -1577,7 +1516,7 @@ namespace Real_Estate_Management
 
                 CalcBillBody();
 
-                BtnNew.PerformClick();
+                BtnAdd.PerformClick();
                 dirtytracker.MarkAsClean();
             }
         }
@@ -1585,7 +1524,7 @@ namespace Real_Estate_Management
 
         private void BtnCancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            //this.Close();
         }
         #endregion
 
@@ -1614,14 +1553,14 @@ namespace Real_Estate_Management
                 if (msgboxres == DialogResult.Yes)
                 {
 
-                    if (BtnAdd.Visible)
+                    if (BtnAdd.Enabled)
                     {
                         if (!Add())
                         {
                             return true;
                         }
                     }
-                    else if (BtnEdit.Visible)
+                    else if (BtnEdit.Enabled)
                     {
                         if (!Edit())
                         {
@@ -1638,13 +1577,6 @@ namespace Real_Estate_Management
 
             return false;
         }
-
-        private void BtnImportFromByMonth_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
 
 
 
@@ -1921,14 +1853,14 @@ namespace Real_Estate_Management
                             GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotalValue, 0);
                         }
 
-                        CalcRowPrices(GridView1.FocusedRowHandle, land, false, 0, false);
+                        CalcRowPrices(GridView1.CurrentRow.Index, land, false, 0, false);
                     }
                     break;
 
                 default:
                     break;
             }
-            GridView1.CellValueChanged += gridView1_CellValueChanged;
+            //GridView1.CellValueChanged += gridView1_CellValueChanged;
 
             CalcBillBody();
         }
@@ -1936,22 +1868,28 @@ namespace Real_Estate_Management
         void CalcRowPrices(int rowhandle, tbLand land, bool newworkfee, decimal custworkfee, bool ReCalcNetWorkFee)
         {
             decimal amount;
-            decimal.TryParse(GridView1.GetRowCellValue(rowhandle, ColPrice).ToString(), out amount);
+            //decimal.TryParse(GridView1.GetRowCellValue(rowhandle, ColPrice).ToString(), out amount);
+            decimal.TryParse(GridView1.Rows[rowhandle].Cells["ColPrice"].Value.ToString(), out amount);
 
             decimal discountotal;
-            decimal.TryParse(GridView1.GetRowCellValue(rowhandle, ColDiscountTotal).ToString(), out discountotal);
+            //decimal.TryParse(GridView1.GetRowCellValue(rowhandle, ColDiscountTotal).ToString(), out discountotal);
+            decimal.TryParse(GridView1.Rows[rowhandle].Cells["ColDiscountTotal"].Value.ToString(), out discountotal);
 
             decimal discountotalvalue;
-            decimal.TryParse(GridView1.GetRowCellValue(rowhandle, ColDiscountTotalValue).ToString(), out discountotalvalue);
+            //decimal.TryParse(GridView1.GetRowCellValue(rowhandle, ColDiscountTotalValue).ToString(), out discountotalvalue);
+            decimal.TryParse(GridView1.Rows[rowhandle].Cells["ColDiscountTotalValue"].Value.ToString(), out discountotalvalue);
 
             decimal discountfee;
-            decimal.TryParse(GridView1.GetRowCellValue(rowhandle, ColDiscountFee).ToString(), out discountfee);
+            //decimal.TryParse(GridView1.GetRowCellValue(rowhandle, ColDiscountFee).ToString(), out discountfee);
+            decimal.TryParse(GridView1.Rows[rowhandle].Cells["ColDiscountFee"].Value.ToString(), out discountfee);
 
             decimal discountfeevalue;
-            decimal.TryParse(GridView1.GetRowCellValue(rowhandle, ColDiscountFeeValue).ToString(), out discountfeevalue);
+            //decimal.TryParse(GridView1.GetRowCellValue(rowhandle, ColDiscountFeeValue).ToString(), out discountfeevalue);
+            decimal.TryParse(GridView1.Rows[rowhandle].Cells["ColDiscountFeeValue"].Value.ToString(), out discountfeevalue);
 
             decimal workfeevalue;
-            decimal.TryParse(GridView1.GetRowCellValue(rowhandle, ColWorkFeeValue).ToString(), out workfeevalue);
+            //decimal.TryParse(GridView1.GetRowCellValue(rowhandle, ColWorkFeeValue).ToString(), out workfeevalue);
+            decimal.TryParse(GridView1.Rows[rowhandle].Cells["ColWorkFeeValue"].Value.ToString(), out workfeevalue);
 
             if ((amount - discountotalvalue) <= 0)
             {
@@ -1968,7 +1906,9 @@ namespace Real_Estate_Management
 
             bool isDiscountFeePercent;
 
-            string DiscountFeePercentText = GridView1.GetRowCellValue(rowhandle, ColDiscountFeeText).ToString();
+            string DiscountFeePercentText = GridView1.Rows[rowhandle].Cells["ColDiscountFeeText"].Value.ToString();
+
+            //GridView1.GetRowCellValue(rowhandle, ColDiscountFeeText).ToString();
 
             if (DiscountFeePercentText.Contains("%"))
                 isDiscountFeePercent = true;
@@ -1990,14 +1930,18 @@ namespace Real_Estate_Management
                     networkfeevalue = networkfeevalue - discountfeevalue;
 
 
-                    GridView1.SetRowCellValue(rowhandle, ColNetWorkFee, networkfeevalue);
+                    //GridView1.SetRowCellValue(rowhandle, ColNetWorkFee, networkfeevalue);
+                    GridView1.Rows[rowhandle].Cells["ColNetWorkFee"].Value = networkfeevalue;
 
-                    GridView1.SetRowCellValue(rowhandle, ColDiscountFeeValue, discountfeevalue);
+                    //GridView1.SetRowCellValue(rowhandle, ColDiscountFeeValue, discountfeevalue);
+                    GridView1.Rows[rowhandle].Cells["ColDiscountFeeValue"].Value = discountfeevalue;
+
                 }
                 else
                 {
 
-                    decimal.TryParse(GridView1.GetRowCellValue(rowhandle, ColDiscountFeeValue).ToString(), out discountfeevalue);
+                    //decimal.TryParse(GridView1.GetRowCellValue(rowhandle, ColDiscountFeeValue).ToString(), out discountfeevalue);
+                    decimal.TryParse(GridView1.Rows[rowhandle].Cells["ColDiscountFeeValue"].Value.ToString(), out discountfeevalue);
 
                     if (discountfeevalue == 0)
                     {
@@ -2010,7 +1954,9 @@ namespace Real_Estate_Management
                     {
                         networkfeevalue = (workfeevalue - discountfeevalue);
                     }
-                    GridView1.SetRowCellValue(rowhandle, ColNetWorkFee, networkfeevalue);
+                    //GridView1.SetRowCellValue(rowhandle, ColNetWorkFee, networkfeevalue);
+                    GridView1.Rows[rowhandle].Cells["ColNetWorkFee"].Value = networkfeevalue;
+
                 }
 
                 // GridView1.SetRowCellValue(rowhandle, ColVatValue, (networkfeevalue) * land.vat / 100);
@@ -2018,12 +1964,23 @@ namespace Real_Estate_Management
             }
             else
             {
-                GridView1.SetRowCellValue(rowhandle, ColNetPrice, amount - discountotalvalue);
-                GridView1.SetRowCellValue(rowhandle, ColBuildingFeeValue, (amount - discountotalvalue) * land.buildingfee / 100);
+                //GridView1.SetRowCellValue(rowhandle, ColNetPrice, amount - discountotalvalue);
+                GridView1.Rows[rowhandle].Cells["ColNetPrice"].Value = amount - discountotalvalue;
+
+                //GridView1.SetRowCellValue(rowhandle, ColBuildingFeeValue, (amount - discountotalvalue) * land.buildingfee / 100);
+                GridView1.Rows[rowhandle].Cells["ColBuildingFeeValue"].Value = (amount - discountotalvalue) * land.buildingfee / 100;
+
                 if (newworkfee)
-                    GridView1.SetRowCellValue(rowhandle, ColWorkFeeValue, (amount - discountotalvalue) * custworkfee / 100);
-                else
-                    GridView1.SetRowCellValue(rowhandle, ColWorkFeeValue, (amount - discountotalvalue) * land.workfee / 100);
+                    GridView1.Rows[rowhandle].Cells["ColWorkFeeValue"].Value = (amount - discountotalvalue) * custworkfee / 100;
+
+                //GridView1.SetRowCellValue(rowhandle, ColWorkFeeValue, (amount - discountotalvalue) * custworkfee / 100);
+                else 
+                {
+                    GridView1.Rows[rowhandle].Cells["ColWorkFeeValue"].Value = (amount - discountotalvalue) * land.workfee / 100;
+
+                }
+
+                //GridView1.SetRowCellValue(rowhandle, ColWorkFeeValue, (amount - discountotalvalue) * land.workfee / 100);
 
                 if (isDiscountFeePercent)
                 {
@@ -2037,11 +1994,14 @@ namespace Real_Estate_Management
                     networkfeevalue = networkfeevalue - discountfeevalue;
 
 
-                    GridView1.SetRowCellValue(rowhandle, ColDiscountFeeValue, discountfeevalue);
+                    //GridView1.SetRowCellValue(rowhandle, ColDiscountFeeValue, discountfeevalue);
+                    GridView1.Rows[rowhandle].Cells["ColDiscountFeeValue"].Value = discountfeevalue;
+
                 }
                 else
                 {
-                    decimal.TryParse(GridView1.GetRowCellValue(rowhandle, ColDiscountFeeValue).ToString(), out discountfeevalue);
+                    //decimal.TryParse(GridView1.GetRowCellValue(rowhandle, ColDiscountFeeValue).ToString(), out discountfeevalue);
+                    decimal.TryParse(GridView1.Rows[rowhandle].Cells["ColDiscountFeeValue"].Value.ToString(), out discountfeevalue);
 
                     if (newworkfee)
                         networkfeevalue = ((amount - discountotalvalue) * custworkfee / 100) - discountfeevalue;
@@ -2052,29 +2012,37 @@ namespace Real_Estate_Management
                 }
 
 
-                GridView1.SetRowCellValue(rowhandle, ColNetWorkFee, networkfeevalue);
+                //GridView1.SetRowCellValue(rowhandle, ColNetWorkFee, networkfeevalue);
+                GridView1.Rows[rowhandle].Cells["ColNetWorkFee"].Value = networkfeevalue;
+
             }
 
 
-            GridView1.SetRowCellValue(rowhandle, ColVatValue, networkfeevalue * land.vat / 100);
+            //GridView1.SetRowCellValue(rowhandle, ColVatValue, networkfeevalue * land.vat / 100);
+            GridView1.Rows[rowhandle].Cells["ColVatValue"].Value = networkfeevalue * land.vat / 100;
 
             decimal netamount;
-            decimal.TryParse(GridView1.GetRowCellValue(rowhandle, ColNetPrice).ToString(), out netamount);
+            //decimal.TryParse(GridView1.GetRowCellValue(rowhandle, ColNetPrice).ToString(), out netamount);
+            decimal.TryParse(GridView1.Rows[rowhandle].Cells["ColNetPrice"].Value.ToString(), out netamount);
 
 
-            decimal.TryParse(GridView1.GetRowCellValue(rowhandle, ColNetWorkFee).ToString(), out networkfeevalue);
+            //decimal.TryParse(GridView1.GetRowCellValue(rowhandle, ColNetWorkFee).ToString(), out networkfeevalue);
+            decimal.TryParse(GridView1.Rows[rowhandle].Cells["ColNetWorkFee"].Value.ToString(), out networkfeevalue);
 
             decimal buildingfeevalue;
-            decimal.TryParse(GridView1.GetRowCellValue(rowhandle, ColBuildingFeeValue).ToString(), out buildingfeevalue);
+            //decimal.TryParse(GridView1.GetRowCellValue(rowhandle, ColBuildingFeeValue).ToString(), out buildingfeevalue);
+            decimal.TryParse(GridView1.Rows[rowhandle].Cells["ColBuildingFeeValue"].Value.ToString(), out buildingfeevalue);
 
             //GridView1.SetRowCellValue(rowhandle, ColVatValue, networkfeevalue * land.vat / 100);
 
             decimal vatvalue;
-            decimal.TryParse(GridView1.GetRowCellValue(rowhandle, ColVatValue).ToString(), out vatvalue);
+            //decimal.TryParse(GridView1.GetRowCellValue(rowhandle, ColVatValue).ToString(), out vatvalue);
 
+            decimal.TryParse(GridView1.Rows[rowhandle].Cells["ColVatValue"].Value.ToString(), out vatvalue);
 
-            GridView1.SetRowCellValue(rowhandle, ColVatWorkFee, networkfeevalue + vatvalue);
+            //GridView1.SetRowCellValue(rowhandle, ColVatWorkFee, networkfeevalue + vatvalue);
 
+            GridView1.Rows[rowhandle].Cells["ColVatWorkFee"].Value = networkfeevalue + vatvalue;
 
             decimal total;
             total = amount;
@@ -2082,9 +2050,11 @@ namespace Real_Estate_Management
             decimal totalnet;
             totalnet = total + workfeevalue + vatvalue - (discountfeevalue + discountotalvalue);
 
-            GridView1.SetRowCellValue(rowhandle, ColTotal, total);
-            GridView1.SetRowCellValue(rowhandle, ColTotalNet, totalnet);
+            //GridView1.SetRowCellValue(rowhandle, ColTotal, total);
+            GridView1.Rows[rowhandle].Cells["ColTotal"].Value = total;
 
+            //GridView1.SetRowCellValue(rowhandle, ColTotalNet, totalnet);
+            GridView1.Rows[rowhandle].Cells["ColTotalNet"].Value = totalnet;
             CalcBillBody();
 
 
@@ -2116,39 +2086,47 @@ namespace Real_Estate_Management
 
             for (int i = 0; i < GridView1.RowCount; i++)
             {
-                Guid landguid = new Guid(GridView1.GetRowCellValue(i, ColLandGuid).ToString());
-
+                Guid landguid = new Guid(GridView1.Rows[i].Cells["ColLandGuid"].Value.ToString());
 
                 decimal bodytotal;
-                decimal.TryParse(GridView1.GetRowCellValue(i, ColTotal).ToString(), out bodytotal);
+                //decimal.TryParse(GridView1.GetRowCellValue(i, ColTotal).ToString(), out bodytotal);
+                decimal.TryParse(GridView1.Rows[i].Cells["ColTotal"].Value.ToString(), out bodytotal);
 
                 decimal bodynettotal;
-                decimal.TryParse(GridView1.GetRowCellValue(i, ColTotalNet).ToString(), out bodynettotal);
+                //decimal.TryParse(GridView1.GetRowCellValue(i, ColTotalNet).ToString(), out bodynettotal);
+                decimal.TryParse(GridView1.Rows[i].Cells["ColTotalNet"].Value.ToString(), out bodynettotal);
 
 
                 decimal bodydiscounttotalvalue;
-                decimal.TryParse(GridView1.GetRowCellValue(i, ColDiscountTotalValue).ToString(), out bodydiscounttotalvalue);
+                //decimal.TryParse(GridView1.GetRowCellValue(i, ColDiscountTotalValue).ToString(), out bodydiscounttotalvalue);
+                decimal.TryParse(GridView1.Rows[i].Cells["ColDiscountTotalValue"].Value.ToString(), out bodydiscounttotalvalue);
 
                 decimal bodydiscountfeevalue;
-                decimal.TryParse(GridView1.GetRowCellValue(i, ColDiscountFeeValue).ToString(), out bodydiscountfeevalue);
+                //decimal.TryParse(GridView1.GetRowCellValue(i, ColDiscountFeeValue).ToString(), out bodydiscountfeevalue);
+                decimal.TryParse(GridView1.Rows[i].Cells["ColDiscountFeeValue"].Value.ToString(), out bodydiscountfeevalue);
 
                 decimal bodyvatfeevalue;
-                decimal.TryParse(GridView1.GetRowCellValue(i, ColVatValue).ToString(), out bodyvatfeevalue);
+                //decimal.TryParse(GridView1.GetRowCellValue(i, ColVatValue).ToString(), out bodyvatfeevalue);
+                decimal.TryParse(GridView1.Rows[i].Cells["ColVatValue"].Value.ToString(), out bodyvatfeevalue);
 
                 decimal bodybuildingfeevalue;
-                decimal.TryParse(GridView1.GetRowCellValue(i, ColBuildingFeeValue).ToString(), out bodybuildingfeevalue);
+                //decimal.TryParse(GridView1.GetRowCellValue(i, ColBuildingFeeValue).ToString(), out bodybuildingfeevalue);
+                decimal.TryParse(GridView1.Rows[i].Cells["ColBuildingFeeValue"].Value.ToString(), out bodybuildingfeevalue);
 
                 decimal bodyworkfeevalue;
-                decimal.TryParse(GridView1.GetRowCellValue(i, ColWorkFeeValue).ToString(), out bodyworkfeevalue);
+                //decimal.TryParse(GridView1.GetRowCellValue(i, ColWorkFeeValue).ToString(), out bodyworkfeevalue);
+                decimal.TryParse(GridView1.Rows[i].Cells["ColWorkFeeValue"].Value.ToString(), out bodyworkfeevalue);
 
                 decimal bodynetworkfeevalue;
-                decimal.TryParse(GridView1.GetRowCellValue(i, ColNetWorkFee).ToString(), out bodynetworkfeevalue);
+                //decimal.TryParse(GridView1.GetRowCellValue(i, ColNetWorkFee).ToString(), out bodynetworkfeevalue);
+                decimal.TryParse(GridView1.Rows[i].Cells["ColNetWorkFee"].Value.ToString(), out bodynetworkfeevalue);
 
                 decimal bodypricetotal;
-                decimal.TryParse(GridView1.GetRowCellValue(i, ColPrice).ToString(), out bodypricetotal);
+                //decimal.TryParse(GridView1.GetRowCellValue(i, ColPrice).ToString(), out bodypricetotal);
+                decimal.TryParse(GridView1.Rows[i].Cells["ColPrice"].Value.ToString(), out bodypricetotal);
 
 
-                string status = GridView1.GetRowCellValue(i, ColStatus).ToString();
+                string status = GridView1.Rows[i].Cells["ColStatus"].Value.ToString();
                 if (!landguid.Equals(Guid.Empty) && !status.Equals("مرتجع"))
                 {
                     total += bodytotal;
@@ -2199,26 +2177,38 @@ namespace Real_Estate_Management
         {
             if (e.KeyCode == Keys.Enter)
             {
-                tbAgent.Fill("name", TxtSelectBuyer.Text, 1);
+                tbAgent.Fill("name", CmbBuyerData.Text, 1);
                 if (tbAgent.dtData.Rows.Count == 1)
                 {
                     tbAgent selectedobject = tbAgent.FindBy("guid", new Guid(tbAgent.dtData.Rows[0]["guid"].ToString()));
-                    TxtSelectBuyer.Tag = selectedobject;
-                    TxtSelectBuyer.Text = selectedobject.name;
+                    //TxtSelectBuyer.Tag = selectedobject;
+                    //TxtSelectBuyer.Text = selectedobject.name;
+                    CmbBuyerData.DisplayMember = "name";
+                    CmbBuyerData.SelectedItem = selectedobject;
+
                     if (CmbBuyerData.SelectedIndex == 0)
                     {
-                        TxtSelectBuyer.Tag = selectedobject;
-                        TxtSelectBuyer.Text = selectedobject.name;
+                        //TxtSelectBuyer.Tag = selectedobject;
+                        //TxtSelectBuyer.Text = selectedobject.name;
+                        CmbBuyerData.DisplayMember = "name";
+                        CmbBuyerData.SelectedItem = selectedobject;
+
                     }
                     else if (CmbBuyerData.SelectedIndex == 1)
                     {
-                        TxtSelectBuyer.Tag = selectedobject;
-                        TxtSelectBuyer.Text = selectedobject.agentname;
+                        //TxtSelectBuyer.Tag = selectedobject;
+                        //TxtSelectBuyer.Text = selectedobject.agentname;
+                        CmbBuyerData.DisplayMember = "agentname";
+                        CmbBuyerData.SelectedItem = selectedobject;
+
                         if (selectedobject.agentname.Equals(string.Empty))
                         {
                             MessageBox.Show("لم يتم إدخال معلومات الوكيل للعميل", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             CmbBuyerData.Text = "العميل";
-                            TxtSelectBuyer.Text = selectedobject.name;
+                            CmbBuyerData.DisplayMember = "name";
+                            CmbBuyerData.SelectedItem = selectedobject;
+
+                            //TxtSelectBuyer.Text = selectedobject.name;
                         }
                     }
                 }
@@ -2234,8 +2224,8 @@ namespace Real_Estate_Management
             }
             else if (e.KeyCode == Keys.Delete)
             {
-                TxtSelectBuyer.Tag = new tbAgent();
-                TxtSelectBuyer.Text = string.Empty;
+                CmbBuyerData.SelectedItem = null;
+
             }
         }
 
@@ -2246,43 +2236,58 @@ namespace Real_Estate_Management
             if (frmselect.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 tbAgent selectedobject = tbAgent.FindBy("guid", frmselect.guid);
-                TxtSelectBuyer.Tag = selectedobject;
-                TxtSelectBuyer.Text = selectedobject.name;
+
+                CmbBuyerData.DisplayMember = "name";
+                CmbBuyerData.SelectedItem = selectedobject;
+
 
                 if (CmbBuyerData.SelectedIndex == 0)
                 {
-                    TxtSelectBuyer.Tag = selectedobject;
-                    TxtSelectBuyer.Text = selectedobject.name;
+                    //TxtSelectBuyer.Tag = selectedobject;
+                    //TxtSelectBuyer.Text = selectedobject.name;
+                    CmbBuyerData.DisplayMember = "name";
+                    CmbBuyerData.SelectedItem = selectedobject;
+
                 }
                 else if (CmbBuyerData.SelectedIndex == 1)
                 {
-                    TxtSelectBuyer.Tag = selectedobject;
-                    TxtSelectBuyer.Text = selectedobject.agentname;
+                    //TxtSelectBuyer.Tag = selectedobject;
+                    //TxtSelectBuyer.Text = selectedobject.agentname;
+                    CmbBuyerData.DisplayMember = "agentname";
+                    CmbBuyerData.SelectedItem = selectedobject;
+
                     if (selectedobject.agentname.Equals(string.Empty))
                     {
                         MessageBox.Show("لم يتم إدخال معلومات الوكيل للعميل", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         CmbBuyerData.Text = "العميل";
-                        TxtSelectBuyer.Text = selectedobject.name;
+                        //TxtSelectBuyer.Text = selectedobject.name;
+                        CmbBuyerData.DisplayMember = "name";
+                        CmbBuyerData.SelectedItem = selectedobject;
+
                     }
                 }
             }
             else
             {
-                TxtSelectBuyer.Tag = new tbAgent();
-                TxtSelectBuyer.Text = string.Empty;
+                //TxtSelectBuyer.Tag = new tbAgent();
+                //TxtSelectBuyer.Text = string.Empty;
+                CmbBuyerData.SelectedItem = null;
+
             }
         }
 
 
         private void BtnShowBuyerCard_Click(object sender, EventArgs e)
         {
-            tbAgent selectedobject = (tbAgent)TxtSelectBuyer.Tag;
+            tbAgent selectedobject = (tbAgent)CmbBuyerData.SelectedItem;
             if (!selectedobject.guid.Equals(Guid.Empty))
             {
                 FrmAgent frmtable = new FrmAgent(selectedobject.guid, false, selectedobject.agenttype, false);
                 frmtable.ShowDialog();
                 selectedobject = tbAgent.FindBy("Guid", selectedobject.guid);
-                TxtSelectBuyer.Tag = selectedobject;
+                //TxtSelectBuyer.Tag = selectedobject;
+                CmbBuyerData.DisplayMember = "name";
+                CmbBuyerData.SelectedItem = selectedobject;
 
             }
             else
@@ -2301,24 +2306,34 @@ namespace Real_Estate_Management
             FrmAgent frm = new FrmAgent(Guid.Empty, true, 1, true);
             if (frm.ShowDialog() == DialogResult.OK)
             {
-                TxtSelectBuyer.Tag = frm.AddedAgents;
-                TxtSelectBuyer.Text = frm.AddedAgents.name;
+                //TxtSelectBuyer.Tag = frm.AddedAgents;
+                //TxtSelectBuyer.Text = frm.AddedAgents.name;
+                CmbBuyerData.DisplayMember = "name";
+                CmbBuyerData.SelectedItem = frm.AddedAgents;
 
                 if (CmbBuyerData.SelectedIndex == 0)
                 {
-                    TxtSelectBuyer.Tag = frm.AddedAgents;
-                    TxtSelectBuyer.Text = frm.AddedAgents.name;
+                    //TxtSelectBuyer.Tag = frm.AddedAgents;
+                    //TxtSelectBuyer.Text = frm.AddedAgents.name;
+                    CmbBuyerData.DisplayMember = "name";
+                    CmbBuyerData.SelectedItem = frm.AddedAgents;
+
                 }
                 else if (CmbBuyerData.SelectedIndex == 1)
                 {
-                    TxtSelectBuyer.Tag = frm.AddedAgents;
-                    TxtSelectBuyer.Text = frm.AddedAgents.agentname;
+                    //TxtSelectBuyer.Tag = frm.AddedAgents;
+                    //TxtSelectBuyer.Text = frm.AddedAgents.agentname;
+                    CmbBuyerData.DisplayMember = "agentname";
+                    CmbBuyerData.SelectedItem = frm.AddedAgents;
 
                     if (frm.AddedAgents.agentname.Equals(string.Empty))
                     {
                         MessageBox.Show("لم يتم إدخال معلومات الوكيل للعميل", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         CmbBuyerData.Text = "العميل";
-                        TxtSelectBuyer.Text = frm.AddedAgents.name;
+                        //TxtSelectBuyer.Text = frm.AddedAgents.name;
+                        CmbBuyerData.DisplayMember = "name";
+                        CmbBuyerData.SelectedItem = frm.AddedAgents;
+
                     }
                 }
             }
@@ -2332,44 +2347,61 @@ namespace Real_Estate_Management
             {
                 if (billtype == 2)
                 {
-                    tbAgent.Fill("name", TxtSelectOwner.Text);
+                    tbAgent.Fill("name", CmbOwnerData.Text);
                 }
                 else
                 {
-                    tbAgent.Fill("name", TxtSelectOwner.Text, 0);
+                    tbAgent.Fill("name", CmbOwnerData.Text, 0);
                 }
 
                 if (tbAgent.dtData.Rows.Count == 1)
                 {
                     tbAgent selectedobject = tbAgent.FindBy("guid", new Guid(tbAgent.dtData.Rows[0]["guid"].ToString()));
-                    TxtSelectOwner.Tag = selectedobject;
-                    TxtSelectOwner.Text = selectedobject.name;
+                    //TxtSelectOwner.Tag = selectedobject;
+                    //TxtSelectOwner.Text = selectedobject.name;
+                    CmbOwnerData.DisplayMember = "name";
+                    CmbOwnerData.SelectedItem = selectedobject;
 
                     if (CmbOwnerData.SelectedIndex == 0)
                     {
-                        TxtSelectOwner.Tag = selectedobject;
-                        TxtSelectOwner.Text = selectedobject.name;
+                        //TxtSelectOwner.Tag = selectedobject;
+                        //TxtSelectOwner.Text = selectedobject.name;
+                        CmbOwnerData.DisplayMember = "name";
+                        CmbOwnerData.SelectedItem = selectedobject;
+
                     }
                     else if (CmbOwnerData.SelectedIndex == 1)
                     {
-                        TxtSelectOwner.Tag = selectedobject;
-                        TxtSelectOwner.Text = selectedobject.agentname;
+                        //TxtSelectOwner.Tag = selectedobject;
+                        //TxtSelectOwner.Text = selectedobject.agentname;
+                        CmbOwnerData.DisplayMember = "agentname";
+                        CmbOwnerData.SelectedItem = selectedobject;
+
                         if (selectedobject.agentname.Equals(string.Empty))
                         {
                             MessageBox.Show("لم يتم إدخال معلومات الوكيل للمالك", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             CmbOwnerData.Text = "المالك";
-                            TxtSelectOwner.Text = selectedobject.name;
+                            //TxtSelectOwner.Text = selectedobject.name;
+                            CmbOwnerData.DisplayMember = "name";
+                            CmbOwnerData.SelectedItem = selectedobject;
+
                         }
                     }
                     else if (CmbOwnerData.SelectedIndex == 2)
                     {
-                        TxtSelectOwner.Tag = selectedobject;
-                        TxtSelectOwner.Text = selectedobject.officename;
+                        //TxtSelectOwner.Tag = selectedobject;
+                        //TxtSelectOwner.Text = selectedobject.officename;
+                        CmbOwnerData.DisplayMember = "officename";
+                        CmbOwnerData.SelectedItem = selectedobject;
+
                         if (selectedobject.officename.Equals(string.Empty))
                         {
                             MessageBox.Show("لم يتم إدخال معلومات المكتب للمالك", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             CmbOwnerData.Text = "المالك";
-                            TxtSelectOwner.Text = selectedobject.name;
+                            //TxtSelectOwner.Text = selectedobject.name;
+                            CmbOwnerData.DisplayMember = "name";
+                            CmbOwnerData.SelectedItem = selectedobject;
+
                         }
                     }
                 }
@@ -2393,8 +2425,10 @@ namespace Real_Estate_Management
             }
             else if (e.KeyCode == Keys.Delete)
             {
-                TxtSelectOwner.Tag = new tbAgent();
-                TxtSelectOwner.Text = string.Empty;
+                //TxtSelectOwner.Tag = new tbAgent();
+                //TxtSelectOwner.Text = string.Empty;
+                CmbOwnerData.SelectedItem = null;
+
             }
         }
 
@@ -2405,55 +2439,72 @@ namespace Real_Estate_Management
             if (frmselect.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 tbAgent selectedobject = tbAgent.FindBy("guid", frmselect.guid);
-                TxtSelectOwner.Tag = selectedobject;
-                TxtSelectOwner.Text = selectedobject.name;
+                //TxtSelectOwner.Tag = selectedobject;
+                //TxtSelectOwner.Text = selectedobject.name;
+                CmbOwnerData.DisplayMember = "name";
+                CmbOwnerData.SelectedItem = selectedobject;
 
                 if (CmbOwnerData.SelectedIndex == 0)
                 {
-                    TxtSelectOwner.Tag = selectedobject;
-                    TxtSelectOwner.Text = selectedobject.name;
+                    //TxtSelectOwner.Tag = selectedobject;
+                    //TxtSelectOwner.Text = selectedobject.name;
+                    CmbOwnerData.DisplayMember = "name";
+                    CmbOwnerData.SelectedItem = selectedobject;
+
                 }
                 else if (CmbOwnerData.SelectedIndex == 1)
                 {
-                    TxtSelectOwner.Tag = selectedobject;
-                    TxtSelectOwner.Text = selectedobject.agentname;
+                    //TxtSelectOwner.Tag = selectedobject;
+                    //TxtSelectOwner.Text = selectedobject.agentname;
+                    CmbOwnerData.DisplayMember = "agentname";
+                    CmbOwnerData.SelectedItem = selectedobject;
+
                     if (selectedobject.agentname.Equals(string.Empty))
                     {
                         MessageBox.Show("لم يتم إدخال معلومات الوكيل للمالك", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         CmbOwnerData.Text = "المالك";
-                        TxtSelectOwner.Text = selectedobject.name;
+                        //TxtSelectOwner.Text = selectedobject.name;
+                        CmbOwnerData.DisplayMember = "name";
+                        CmbOwnerData.SelectedItem = selectedobject;
+
                     }
                 }
                 else if (CmbOwnerData.SelectedIndex == 2)
                 {
-                    TxtSelectOwner.Tag = selectedobject;
-                    TxtSelectOwner.Text = selectedobject.officename;
+                    //TxtSelectOwner.Tag = selectedobject;
+                    //TxtSelectOwner.Text = selectedobject.officename;
+
+                    CmbOwnerData.DisplayMember = "officename";
+                    CmbOwnerData.SelectedItem = selectedobject;
 
                     if (selectedobject.officename.Equals(string.Empty))
                     {
                         MessageBox.Show("لم يتم إدخال معلومات المكتب للمالك", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         CmbOwnerData.Text = "المالك";
-                        TxtSelectOwner.Text = selectedobject.name;
+                        //TxtSelectOwner.Text = selectedobject.name;
+                        CmbOwnerData.DisplayMember = "name";
+                        CmbOwnerData.SelectedItem = selectedobject;
+
                     }
                 }
             }
             else
             {
-                TxtSelectOwner.Tag = new tbAgent();
-                TxtSelectOwner.Text = string.Empty;
+                //TxtSelectOwner.Tag = new tbAgent();
+                CmbOwnerData.SelectedItem = null;
             }
         }
 
 
         private void BtnShowOwnerCard_Click(object sender, EventArgs e)
         {
-            tbAgent selectedobject = (tbAgent)TxtSelectOwner.Tag;
+            tbAgent selectedobject = (tbAgent)CmbOwnerData.SelectedItem;
             if (!selectedobject.guid.Equals(Guid.Empty))
             {
                 FrmAgent frmtable = new FrmAgent(selectedobject.guid, false, selectedobject.agenttype, false);
                 frmtable.ShowDialog();
                 selectedobject = tbAgent.FindBy("Guid", selectedobject.guid);
-                TxtSelectOwner.Tag = selectedobject;
+                CmbOwnerData.SelectedItem = selectedobject;
             }
             else
             {
@@ -2471,35 +2522,52 @@ namespace Real_Estate_Management
             FrmAgent frm = new FrmAgent(Guid.Empty, true, 0, true);
             if (frm.ShowDialog() == DialogResult.OK)
             {
-                TxtSelectOwner.Tag = frm.AddedAgents;
-                TxtSelectOwner.Text = frm.AddedAgents.name;
+                //TxtSelectOwner.Tag = frm.AddedAgents;
+                //TxtSelectOwner.Text = frm.AddedAgents.name;
+
+                CmbOwnerData.DisplayMember = "name";
+                CmbOwnerData.SelectedItem = frm.AddedAgents;
 
                 if (CmbOwnerData.SelectedIndex == 0)
                 {
-                    TxtSelectOwner.Tag = frm.AddedAgents;
-                    TxtSelectOwner.Text = frm.AddedAgents.name;
+                    //TxtSelectOwner.Tag = frm.AddedAgents;
+                    //TxtSelectOwner.Text = frm.AddedAgents.name;
+                    CmbOwnerData.DisplayMember = "name";
+                    CmbOwnerData.SelectedItem = frm.AddedAgents;
+
                 }
                 else if (CmbOwnerData.SelectedIndex == 1)
                 {
-                    TxtSelectOwner.Tag = frm.AddedAgents;
-                    TxtSelectOwner.Text = frm.AddedAgents.agentname;
+                    //TxtSelectOwner.Tag = frm.AddedAgents;
+                    //TxtSelectOwner.Text = frm.AddedAgents.agentname;
+                    CmbOwnerData.DisplayMember = "agentname";
+                    CmbOwnerData.SelectedItem = frm.AddedAgents;
+
                     if (frm.AddedAgents.agentname.Equals(string.Empty))
                     {
                         MessageBox.Show("لم يتم إدخال معلومات الوكيل للمالك", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         CmbOwnerData.Text = "المالك";
-                        TxtSelectOwner.Text = frm.AddedAgents.name;
+                        //TxtSelectOwner.Text = frm.AddedAgents.name;
+                        CmbOwnerData.DisplayMember = "name";
+                        CmbOwnerData.SelectedItem = frm.AddedAgents;
+
                     }
                 }
                 else if (CmbOwnerData.SelectedIndex == 2)
                 {
-                    TxtSelectOwner.Tag = frm.AddedAgents;
-                    TxtSelectOwner.Text = frm.AddedAgents.officename;
+                    //TxtSelectOwner.Tag = frm.AddedAgents;
+                    //TxtSelectOwner.Text = frm.AddedAgents.officename;
+                    CmbOwnerData.DisplayMember = "officename";
+                    CmbOwnerData.SelectedItem = frm.AddedAgents;
 
                     if (frm.AddedAgents.officename.Equals(string.Empty))
                     {
                         MessageBox.Show("لم يتم إدخال معلومات المكتب للمالك", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         CmbOwnerData.Text = "المالك";
-                        TxtSelectOwner.Text = frm.AddedAgents.name;
+                        //TxtSelectOwner.Text = frm.AddedAgents.name;
+                        CmbOwnerData.DisplayMember = "name";
+                        CmbOwnerData.SelectedItem = frm.AddedAgents;
+
                     }
                 }
             }
@@ -2513,12 +2581,16 @@ namespace Real_Estate_Management
         {
             if (CmbOwnerData.Focused)
             {
-                tbAgent agent = (tbAgent)TxtSelectOwner.Tag;
+                tbAgent agent = (tbAgent)CmbOwnerData.SelectedItem;
                 if (CmbOwnerData.SelectedIndex == 0)
                 {
                     if (!agent.guid.Equals(Guid.Empty))
+                    {
+                        CmbOwnerData.DisplayMember = "name";
+                        CmbOwnerData.SelectedItem = agent;
 
-                        TxtSelectOwner.Text = agent.name;
+                    }
+
                 }
                 else if (CmbOwnerData.SelectedIndex == 1)
                 {
@@ -2530,7 +2602,9 @@ namespace Real_Estate_Management
                         }
                         else
                         {
-                            TxtSelectOwner.Text = agent.agentname;
+                            CmbOwnerData.DisplayMember = "agentname";
+                            CmbOwnerData.SelectedItem = agent;
+
                         }
                 }
                 else if (CmbOwnerData.SelectedIndex == 2)
@@ -2543,7 +2617,9 @@ namespace Real_Estate_Management
                         }
                         else
                         {
-                            TxtSelectOwner.Text = agent.officename;
+                            CmbOwnerData.DisplayMember = "officename";
+                            CmbOwnerData.SelectedItem = agent;
+
                         }
                 }
 
@@ -2556,11 +2632,16 @@ namespace Real_Estate_Management
 
             if (CmbBuyerData.Focused)
             {
-                tbAgent agent = (tbAgent)TxtSelectBuyer.Tag;
+                tbAgent agent = (tbAgent)CmbBuyerData.SelectedItem;
                 if (CmbBuyerData.SelectedIndex == 0)
                 {
                     if (!agent.guid.Equals(Guid.Empty))
-                        TxtSelectBuyer.Text = agent.name;
+                    {
+                        CmbBuyerData.DisplayMember = "name";
+                        CmbBuyerData.SelectedItem = agent;
+
+                    }
+                    //TxtSelectBuyer.Text = agent.name;
                 }
                 else if (CmbBuyerData.SelectedIndex == 1)
                 {
@@ -2572,7 +2653,9 @@ namespace Real_Estate_Management
                         }
                         else
                         {
-                            TxtSelectBuyer.Text = agent.agentname;
+                            //TxtSelectBuyer.Text = agent.agentname;
+                            CmbBuyerData.DisplayMember = "agentname";
+                            CmbBuyerData.SelectedItem = agent;
                         }
 
                 }
@@ -2585,7 +2668,8 @@ namespace Real_Estate_Management
             int idx = 0;
             for (int i = 0; i < GridView1.RowCount; i++)
             {
-                Guid landguid = new Guid(GridView1.GetRowCellValue(i, ColLandGuid).ToString());
+                Guid landguid = new Guid(GridView1.CurrentRow.Cells[2].Value.ToString());
+
                 if (landguid.Equals(currlandguid))
                 {
                     idx++;
@@ -2915,14 +2999,13 @@ namespace Real_Estate_Management
             rpt.Prepare(true);
         }
 
-
         private void MenuPreviewOneByOne_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             FastReport.Report report = new FastReport.Report();
 
             for (int i = 0; i < GridView1.RowCount; i++)
             {
-                Guid guid = new Guid(GridView1.GetRowCellValue(i, ColGuid).ToString());
+                Guid guid = new Guid(GridView1.CurrentRow.Cells[0].Value.ToString());
 
                 if (!guid.Equals(Guid.Empty))
                     ReadyreportOneByOne(report, guid);
@@ -2938,7 +3021,7 @@ namespace Real_Estate_Management
             FastReport.Report report = new FastReport.Report();
 
 
-            Guid guid = new Guid(GridView1.GetRowCellValue(0, ColGuid).ToString());
+            Guid guid = new Guid(GridView1.CurrentRow.Cells[0].Value.ToString());
 
             if (!guid.Equals(Guid.Empty))
             {
@@ -2952,7 +3035,7 @@ namespace Real_Estate_Management
             FastReport.Report report = new FastReport.Report();
             for (int i = 0; i < GridView1.RowCount; i++)
             {
-                Guid guid = new Guid(GridView1.GetRowCellValue(i, ColGuid).ToString());
+                Guid guid = new Guid(GridView1.CurrentRow.Cells[0].Value.ToString());
 
                 if (!guid.Equals(Guid.Empty))
                     ReadyreportOneByOne(report, guid);
@@ -2965,40 +3048,41 @@ namespace Real_Estate_Management
         #endregion
 
 
-
         private void GridView1_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
         {
             if (e.HitInfo.InRow)
             {
                 GridView view = sender as GridView;
                 view.FocusedRowHandle = e.HitInfo.RowHandle;
-                Guid landguid = new Guid(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColLandGuid).ToString());
+                //Guid landguid = new Guid(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColLandGuid).ToString());
+                Guid landguid = new Guid(GridView1.CurrentRow.Cells[2].Value.ToString());
 
-                string status = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColStatus).ToString();
+                string status = GridView1.CurrentRow.Cells[10].Value.ToString();
 
 
 
                 if (billtype == 0 && status != "مرتجع")
                 {
 
-                    MenuConvertToReturn.Caption = "تحويل إلى مرتجع";
+                    //MenuConvertToReturn.Caption = "تحويل إلى مرتجع";
 
                 }
                 else
                 {
-                    MenuConvertToReturn.Caption = "تحويل إلى مباع";
+                    //MenuConvertToReturn.Caption = "تحويل إلى مباع";
                 }
 
-                if (!landguid.Equals(Guid.Empty))
-                {
-                    MenuGrid.ShowPopup(Control.MousePosition);
-                }
+                //if (!landguid.Equals(Guid.Empty))
+                //{
+                //    MenuGrid.ShowPopup(Control.MousePosition);
+                //}
             }
         }
 
         private void MenuLand_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Guid landguid = new Guid(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColLandGuid).ToString());
+            //Guid landguid = new Guid(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColLandGuid).ToString());
+            Guid landguid = new Guid(GridView1.CurrentRow.Cells[2].Value.ToString());
 
             FrmLand frm = new FrmLand(landguid, false, string.Empty);
             frm.Show(this);
@@ -3018,12 +3102,17 @@ namespace Real_Estate_Management
 
 
             int contractno;
-            int.TryParse(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColContractNo).ToString(), out contractno);
+            int.TryParse(Txtnumber.Text, out contractno);
+
+            //int.TryParse(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColContractNo).ToString(), out contractno);
 
             string status;
-            status = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColStatus).ToString();
+            status = GridView1.CurrentRow.Cells[10].Value.ToString();
+            // GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColStatus).ToString();
 
-            Guid guid = new Guid(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColGuid).ToString());
+            //Guid guid = new Guid(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColGuid).ToString());
+            Guid guid = new Guid(GridView1.CurrentRow.Cells[0].Value.ToString());
+
             if (!tbBillBody.IsExist("Guid", guid))
             {
                 MessageBox.Show("يجب حفظ بيانات العقد أولا", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -3038,7 +3127,8 @@ namespace Real_Estate_Management
                     if (MessageBox.Show(string.Format("هل أنت متأكد من تحويل العقد رقم {0} المحدد إلى مرتجع ؟", contractno), Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.No)
                         return;
 
-                    Guid landguid = new Guid(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColLandGuid).ToString());
+                    //Guid landguid = new Guid(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColLandGuid).ToString());
+                    Guid landguid = new Guid(GridView1.CurrentRow.Cells[2].Value.ToString());
 
                     vwGetBillBodyStatus billbodystate = vwGetBillBodyStatus.FindBy("contractno", contractno, 0);
                     tbBillBody billbodyreturn = tbBillBody.FindBy("Guid", billbodystate.guid);
@@ -3051,7 +3141,7 @@ namespace Real_Estate_Management
 
                         ShowConfirm();
                         FillGrid(bill.guid);
-                        BtnNew.PerformClick();
+                        BtnAdd.PerformClick();
                     }
                 }
                 else
@@ -3059,7 +3149,8 @@ namespace Real_Estate_Management
                     if (MessageBox.Show(string.Format("هل أنت متأكد من تحويل العقد رقم {0} المحدد إلى مباع ؟", contractno), Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.No)
                         return;
 
-                    Guid landguid = new Guid(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColLandGuid).ToString());
+                    //Guid landguid = new Guid(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColLandGuid).ToString());
+                    Guid landguid = new Guid(GridView1.CurrentRow.Cells[2].Value.ToString());
 
                     vwGetBillBodyStatus billbodystate = vwGetBillBodyStatus.FindBy("contractno", contractno, 0);
                     tbBillBody billbodyreturn = tbBillBody.FindBy("Guid", billbodystate.guid);
@@ -3085,8 +3176,9 @@ namespace Real_Estate_Management
         {
             FastReport.Report report = new FastReport.Report();
 
+            Guid guid = new Guid(GridView1.CurrentRow.Cells[0].Value.ToString());
 
-            Guid guid = new Guid(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColGuid).ToString());
+            //Guid guid = new Guid(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColGuid).ToString());
             if (!tbBillBody.IsExist("Guid", guid))
             {
                 MessageBox.Show("يجب حفظ بيانات العقد أولا", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -3106,7 +3198,9 @@ namespace Real_Estate_Management
             FastReport.Report report = new FastReport.Report();
 
 
-            Guid guid = new Guid(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColGuid).ToString());
+            //Guid guid = new Guid(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColGuid).ToString());
+            Guid guid = new Guid(GridView1.CurrentRow.Cells[0].Value.ToString());
+
             if (!tbBillBody.IsExist("Guid", guid))
             {
                 MessageBox.Show("يجب حفظ بيانات العقد أولا", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -3123,7 +3217,8 @@ namespace Real_Estate_Management
 
         private void MenuPrintLandInfo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Guid landguid = new Guid(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColLandGuid).ToString());
+            //Guid landguid = new Guid(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColLandGuid).ToString());
+            Guid landguid = new Guid(GridView1.CurrentRow.Cells[2].Value.ToString());
             tbLand land = tbLand.FindBy("Guid", landguid);
 
             if (land is null || land.guid.Equals(Guid.Empty))
@@ -3231,7 +3326,8 @@ namespace Real_Estate_Management
 
                     for (int i = startidx; i < GridView1.RowCount; i++)
                     {
-                        Guid guid = new Guid(GridView1.GetRowCellValue(i, ColLandGuid).ToString());
+                        //Guid guid = new Guid(GridView1.GetRowCellValue(i, ColLandGuid).ToString());
+                        Guid guid = new Guid(GridView1.Rows[i].Cells[2].Value.ToString());
                         tbLand land = tbLand.FindBy("Guid", guid);
                         FillLandInfo(i, land);
                         CalcRowPrices(i, land, false, 0, true);
@@ -3240,7 +3336,8 @@ namespace Real_Estate_Management
 
                     for (int i = 0; i < GridView1.RowCount; i++)
                     {
-                        Guid guid = new Guid(GridView1.GetRowCellValue(i, ColLandGuid).ToString());
+                        //Guid guid = new Guid(GridView1.GetRowCellValue(i, ColLandGuid).ToString());
+                        Guid guid = new Guid(GridView1.Rows[i].Cells[2].Value.ToString());
                         if (guid.Equals(Guid.Empty))
                         {
                             privatebillBody.Rows[i].Delete();
@@ -3294,7 +3391,8 @@ namespace Real_Estate_Management
 
                     for (int i = startidx; i < GridView1.RowCount; i++)
                     {
-                        Guid guid = new Guid(GridView1.GetRowCellValue(i, ColLandGuid).ToString());
+                        //Guid guid = new Guid(GridView1.GetRowCellValue(i, ColLandGuid).ToString());
+                        Guid guid = new Guid(GridView1.Rows[i].Cells[2].Value.ToString());
                         tbLand land = tbLand.FindBy("Guid", guid);
                         FillLandInfo(i, land);
                         CalcRowPrices(i, land, false, 0, true);
@@ -3303,7 +3401,9 @@ namespace Real_Estate_Management
 
                     for (int i = 0; i < GridView1.RowCount; i++)
                     {
-                        Guid guid = new Guid(GridView1.GetRowCellValue(i, ColLandGuid).ToString());
+                        //Guid guid = new Guid(GridView1.GetRowCellValue(i, ColLandGuid).ToString());
+                        Guid guid = new Guid(GridView1.Rows[i].Cells[2].Value.ToString());
+
                         if (guid.Equals(Guid.Empty))
                         {
                             privatebillBody.Rows[i].Delete();
@@ -3336,9 +3436,5 @@ namespace Real_Estate_Management
             }
         }
 
-        private void TxtSelectBuyer_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

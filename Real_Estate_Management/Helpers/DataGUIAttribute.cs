@@ -41,6 +41,94 @@ public class DataGUIAttribute : Attribute
     }
 
     #region Binding Controls
+
+    public static void Assign_UC_Values<T>(UserControl form, T obj)
+    {
+        foreach (PropertyInfo prop in obj.GetType().GetProperties())
+        {
+            string controlname = DataGUIAttribute.GetAttributeValue(typeof(T), prop.Name, DataGUIAttribute.AttributeName.ControlName).ToString();
+            dynamic value = prop.GetValue(obj, null);
+            string formatting = DataGUIAttribute.GetAttributeValue(typeof(T), prop.Name, DataGUIAttribute.AttributeName.Formating).ToString();
+
+            if (formatting == "N2")
+                formatting = CurrencyFormat;
+            else if (formatting == "N0")
+                formatting = QtyFormat;
+
+            Set_UC_Control(form, controlname, value, formatting);
+        }
+    }
+    private static void Set_UC_Control(UserControl form, string controlname, dynamic value, string formatting)
+    {
+        if (controlname.Equals(string.Empty))
+            return;
+
+        Control[] control = form.Controls.Find(controlname, true);
+        if (control == null && control.Length < 0)
+            return;
+
+        try
+        {
+            Control ctl = control[0];
+
+            if (ctl.GetType().Equals(typeof(RadDateTimePicker)))
+            {
+                try
+                {
+                    ((RadDateTimePicker)ctl).Value = value;
+                }
+                catch
+                {
+                    ((RadDateTimePicker)ctl).Value = DateTime.Now;
+                }
+            }
+            else if (ctl.GetType().Equals(typeof(RadCheckBox)))
+                ((RadCheckBox)ctl).Checked = value;
+            else
+                ctl.Text = string.Format("{0:" + formatting + "}", value, formatting);
+        }
+        catch
+        {
+            MessageBox.Show("Control Name Not Found : " + controlname, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
+    }
+    public static void Clear_UC_Controls<T>(UserControl form, T obj)
+    {
+        foreach (PropertyInfo prop in obj.GetType().GetProperties())
+        {
+            string controlname = DataGUIAttribute.GetAttributeValue(typeof(T), prop.Name, DataGUIAttribute.AttributeName.ControlName).ToString();
+            Clear_UC_Controls(form, controlname);
+        }
+    }
+    private static void Clear_UC_Controls(UserControl form, string controlname)
+    {
+        if (controlname.Equals(string.Empty))
+            return;
+
+        Control[] control = form.Controls.Find(controlname, true);
+        if (control == null && control.Length < 0)
+            return;
+
+        Control ctl = control[0];
+
+        if (ctl.GetType().Equals(typeof(RadDateTimePicker)))
+            ((RadDateTimePicker)ctl).Value = DateTime.Now;
+        else if (ctl.GetType().Equals(typeof(RadCheckBox)))
+            ((RadCheckBox)ctl).Checked = false;
+        else
+            ctl.Text = string.Empty;
+    }
+
+
+
+
+
+
+
+
+
+
+
     public static void AssignFormValues<T>(Form form, T obj)
     {
         foreach (PropertyInfo prop in obj.GetType().GetProperties())

@@ -155,7 +155,7 @@
             this.LblFileLocation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LblFileLocation.Location = new System.Drawing.Point(197, 57);
             this.LblFileLocation.Name = "LblFileLocation";
-            this.LblFileLocation.Size = new System.Drawing.Size(69, 77);
+            this.LblFileLocation.Size = new System.Drawing.Size(69, 78);
             this.LblFileLocation.TabIndex = 1;
             this.LblFileLocation.Text = "موقع الملف:";
             this.LblFileLocation.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -488,7 +488,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.00001F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(269, 134);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(269, 135);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // FrmDataBases

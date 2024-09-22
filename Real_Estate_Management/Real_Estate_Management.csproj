@@ -662,7 +662,7 @@
       <DependentUpon>FrmActivate.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FrmBillHeader.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Forms\FrmBillHeader.designer.cs">
       <DependentUpon>FrmBillHeader.cs</DependentUpon>
@@ -882,6 +882,17 @@
     </Compile>
     <Compile Include="CustomElements\Flyout\FlyoutTransferData.Designer.cs">
       <DependentUpon>FlyoutTransferData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="realestatebrokermanagementDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>realestatebrokermanagementDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UCBills.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCBills.Designer.cs">
+      <DependentUpon>UCBills.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UCClientCards.cs">
       <SubType>UserControl</SubType>
@@ -1186,6 +1197,9 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UCBills.resx">
+      <DependentUpon>UCBills.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UCClientCards.resx">
       <DependentUpon>UCClientCards.cs</DependentUpon>
     </EmbeddedResource>
@@ -1248,6 +1262,17 @@
       <LastGenOutput>Real_Estate_Management_Model.cs</LastGenOutput>
     </Content>
     <Content Include="Map-icon.svg.ico" />
+    <None Include="realestatebrokermanagementDataSet.xsc">
+      <DependentUpon>realestatebrokermanagementDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="realestatebrokermanagementDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>realestatebrokermanagementDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="realestatebrokermanagementDataSet.xss">
+      <DependentUpon>realestatebrokermanagementDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Resources\data-migration.png" />
     <None Include="Resources\UpdateDataBase.sql" />
     <None Include="Resources\BtnDelete.png" />

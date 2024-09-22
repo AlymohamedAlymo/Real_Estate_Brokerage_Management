@@ -224,7 +224,7 @@ public class tbBillheader
             Billheader.totaldiscountfee = decimal.Parse(dr["totaldiscountfee"].ToString());
             Billheader.totalnet = decimal.Parse(dr["totalnet"].ToString());
             Billheader.note = (string)dr["note"];
-            Billheader.lastaction = (string)dr["lastaction"];
+            //Billheader.lastaction = (string)dr["lastaction"];
 
             lstData.Add(Billheader);
         }
