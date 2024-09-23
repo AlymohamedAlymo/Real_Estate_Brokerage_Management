@@ -1112,7 +1112,7 @@ namespace Real_Estate_Management.User_Controls
             RadMenuItem toolmenu = (RadMenuItem)sender;
             if (!Check(toolmenu.Text, "إنشاء عقد بيع", OperationType.OperationIs.Add, true)) { return; }
             tbAgent client = (tbAgent)Bs.Current;
-            FrmBillHeader frm = new FrmBillHeader(Guid.Empty, true, 0, new List<tbLand>(), client);
+            FrmBillHeader frm = new FrmBillHeader(Guid.Empty, 0, new List<tbLand>(), client);
             frm.Show();
 
         }

@@ -1400,7 +1400,7 @@ namespace Real_Estate_Management
             }
             List<tbLand> lst = new List<tbLand>();
             lst.Add(land);
-            FrmBillHeader frm = new FrmBillHeader(Guid.Empty, true, 0, lst);
+            FrmBillHeader frm = new FrmBillHeader(Guid.Empty, 0, lst, null);
             frm.Show();
 
         }

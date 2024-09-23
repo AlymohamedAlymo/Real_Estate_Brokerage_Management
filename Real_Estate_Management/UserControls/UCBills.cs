@@ -69,10 +69,10 @@ namespace Real_Estate_Management.User_Controls
             callout.DropShadow = true;
 
 
-            radLabel5.TextAlignment = ContentAlignment.MiddleCenter;
-            TxtNumber.TextAlignment = ContentAlignment.MiddleCenter;
+            //radLabel5.TextAlignment = ContentAlignment.MiddleCenter;
+            //TxtNumber.TextAlignment = ContentAlignment.MiddleCenter;
             radHeaderLabel.TextAlignment = ContentAlignment.MiddleCenter;
-            radLabel8.TextAlignment = ContentAlignment.MiddleCenter;
+            //radLabel8.TextAlignment = ContentAlignment.MiddleCenter;
 
             //radPageView1.RootElement.Children[0].Children[0].Children[0].Children[1].Visibility = ElementVisibility.Hidden;
             MainContainer.PanelElement.PanelFill.Visibility = ElementVisibility.Hidden;
@@ -197,30 +197,30 @@ namespace Real_Estate_Management.User_Controls
             radDGVBills.DataSource = tbBillBody.lstData;
 
             TbPlans_Rep.Fill();
-            radCmbPlanGuid.DataSource = TbPlans_Rep.lstData;
-            radCmbPlanGuid.ValueMember = "Guid";
-            radCmbPlanGuid.DisplayMember = "Name";
-            radCmbPlanGuid.SelectedValue = FrmMain.PlanGuid;
-            radCmbPlanGuid.Columns[0].IsVisible = false;
-            radCmbPlanGuid.Columns[1].IsVisible = false;
-            radCmbPlanGuid.Columns[2].IsVisible = false;
-            radCmbPlanGuid.Columns[7].IsVisible = false;
-            radCmbPlanGuid.Columns[8].IsVisible = false;
+            //radCmbPlanGuid.DataSource = TbPlans_Rep.lstData;
+            //radCmbPlanGuid.ValueMember = "Guid";
+            //radCmbPlanGuid.DisplayMember = "Name";
+            //radCmbPlanGuid.SelectedValue = FrmMain.PlanGuid;
+            //radCmbPlanGuid.Columns[0].IsVisible = false;
+            //radCmbPlanGuid.Columns[1].IsVisible = false;
+            //radCmbPlanGuid.Columns[2].IsVisible = false;
+            //radCmbPlanGuid.Columns[7].IsVisible = false;
+            //radCmbPlanGuid.Columns[8].IsVisible = false;
 
-            radCmbPlanGuid.Columns[3].HeaderText = "رقم الصك";
-            radCmbPlanGuid.Columns[4].HeaderText = "اسم المخطط";
-            radCmbPlanGuid.Columns[5].HeaderText = "المدينة";
-            radCmbPlanGuid.Columns[6].HeaderText = "الموقع";
+            //radCmbPlanGuid.Columns[3].HeaderText = "رقم الصك";
+            //radCmbPlanGuid.Columns[4].HeaderText = "اسم المخطط";
+            //radCmbPlanGuid.Columns[5].HeaderText = "المدينة";
+            //radCmbPlanGuid.Columns[6].HeaderText = "الموقع";
 
-            TBOwner_Rep.Fill();
-            radCmbPlanGuid.DataSource = TBOwner_Rep.lstData;
-            radCmbPlanGuid.ValueMember = "Guid";
-            radCmbPlanGuid.DisplayMember = "Name";
+            //TBOwner_Rep.Fill();
+            //radCmbPlanGuid.DataSource = TBOwner_Rep.lstData;
+            //radCmbPlanGuid.ValueMember = "Guid";
+            //radCmbPlanGuid.DisplayMember = "Name";
 
-            tbAgent.Fill();
-            radCmbPlanGuid.DataSource = tbAgent.lstData;
-            radCmbPlanGuid.ValueMember = "Guid";
-            radCmbPlanGuid.DisplayMember = "Name";
+            //tbAgent.Fill();
+            //radCmbPlanGuid.DataSource = tbAgent.lstData;
+            //radCmbPlanGuid.ValueMember = "Guid";
+            //radCmbPlanGuid.DisplayMember = "Name";
 
 
             List<RadPanel> panels = new List<RadPanel>() { MainContainer };
@@ -332,10 +332,10 @@ namespace Real_Estate_Management.User_Controls
                 control.DataBindings.Clear();
             }
 
-            TxtNumber.Text = (tbBillheader.GetMaxNumber("Number") + 1).ToString();
-            radCmbPlanGuid.SelectedValue = FrmMain.PlanGuid;
+            //TxtNumber.Text = (tbBillheader.GetMaxNumber("Number") + 1).ToString();
+            //radCmbPlanGuid.SelectedValue = FrmMain.PlanGuid;
 
-            radCmbOwner.Focus();
+            //radCmbOwner.Focus();
         }
 
         private void Add()
@@ -356,22 +356,22 @@ namespace Real_Estate_Management.User_Controls
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(radCmbOwner.Text))
-            {
-                RadCallout.Show(callout, radCmbOwner, "ادخل اسم المالك أولاً", "اسم المالك غير مدخل", "ثم إضغط علي زر حفظ لحفظ الملف");
-                return;
-            }
+            //if (string.IsNullOrWhiteSpace(radCmbOwner.Text))
+            //{
+            //    RadCallout.Show(callout, radCmbOwner, "ادخل اسم المالك أولاً", "اسم المالك غير مدخل", "ثم إضغط علي زر حفظ لحفظ الملف");
+            //    return;
+            //}
 
-            Guid _PlanGuid = Guid.Empty;
-            if (radCmbPlanGuid.SelectedValue != null)
-            {
-                _PlanGuid = (Guid)radCmbPlanGuid.SelectedValue;
+            //Guid _PlanGuid = Guid.Empty;
+            //if (radCmbPlanGuid.SelectedValue != null)
+            //{
+            //    _PlanGuid = (Guid)radCmbPlanGuid.SelectedValue;
 
-            }
-            else
-            {
-                _PlanGuid = TbPlans_Rep.lstData.Where(u => u.Name == radCmbPlanGuid.Text).FirstOrDefault().Guid;
-            }
+            //}
+            //else
+            //{
+            //    _PlanGuid = TbPlans_Rep.lstData.Where(u => u.Name == radCmbPlanGuid.Text).FirstOrDefault().Guid;
+            //}
 
             Guid _Guid = Guid.NewGuid();
             DateTime CurrentDate = DBConnect.GetServerDate();
@@ -470,16 +470,16 @@ namespace Real_Estate_Management.User_Controls
             //    return;
             //}
 
-            Guid _PlanGuid = Guid.Empty;
-            if (radCmbPlanGuid.SelectedValue != null)
-            {
-                _PlanGuid = (Guid)radCmbPlanGuid.SelectedValue;
+            //Guid _PlanGuid = Guid.Empty;
+            //if (radCmbPlanGuid.SelectedValue != null)
+            //{
+            //    _PlanGuid = (Guid)radCmbPlanGuid.SelectedValue;
 
-            }
-            else
-            {
-                _PlanGuid = TbPlans_Rep.lstData.Where(u => u.Name == radCmbPlanGuid.Text).FirstOrDefault().Guid;
-            }
+            //}
+            //else
+            //{
+            //    _PlanGuid = TbPlans_Rep.lstData.Where(u => u.Name == radCmbPlanGuid.Text).FirstOrDefault().Guid;
+            //}
 
             DateTime CurrentDate = DBConnect.GetServerDate();
             string _LastAction = string.Format("عملية تعديل بواسطة المستخدم : {0} -  بتاريخ : {1} - الساعة : {2}",
@@ -488,7 +488,7 @@ namespace Real_Estate_Management.User_Controls
                 CurrentDate.ToString("hh:mm tt"));
             string internedLastAction = string.Intern(_LastAction);
 
-            Obj.PlanGuid = _PlanGuid;
+            //Obj.PlanGuid = _PlanGuid;
             //Obj.Name = TxtName.Text;
             //Obj.IDNumber = TxtIDNumber.Text;
             //Obj.Mobile = TxtMobile.Text;

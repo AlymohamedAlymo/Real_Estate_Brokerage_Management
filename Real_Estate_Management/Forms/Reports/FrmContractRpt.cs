@@ -107,7 +107,7 @@ namespace Real_Estate_Management
 
                 tbBillheader bill = tbBillheader.FindBy("Guid", guid);
 
-                FrmBillHeader frm = new FrmBillHeader(bill.guid, false, bill.billtype, new List<tbLand>());
+                FrmBillHeader frm = new FrmBillHeader(bill.guid, bill.billtype, new List<tbLand>(), null);
 
                 frm.Show();
 

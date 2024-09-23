@@ -727,8 +727,8 @@ namespace Real_Estate_Management
 
 
 
-                FrmBillHeader frm = new FrmBillHeader(Guid.Empty, true, 0, lst);
-                frm.Owner = this;
+                FrmBillHeader frm = new FrmBillHeader(Guid.Empty, 0, lst, null);
+                //frm.Owner = this;
                 frm.Show();
                 LandsListView.SelectedItems.Clear();
 
@@ -748,8 +748,8 @@ namespace Real_Estate_Management
                     lst.Add(CurrentLand);
                 }
 
-                FrmBillHeader frm = new FrmBillHeader(Guid.Empty, true, 2, lst);
-                frm.Owner = this;
+                FrmBillHeader frm = new FrmBillHeader(Guid.Empty, 2, lst, null);
+                //frm.Owner = this;
                 frm.Show();
                 LandsListView.SelectedItems.Clear();
 
@@ -1144,7 +1144,7 @@ namespace Real_Estate_Management
         private void MenuSellBill_Click(object sender, EventArgs e)
         {
             RadMenuItem toolmenu = (RadMenuItem)sender;
-            OpenUserControl(toolmenu.Text, "UCBills", "عقد بيع أرض");
+            OpenUserControl(toolmenu.Text, "FrmBillHeader", "عقد بيع أرض");
 
             //RadMenuItem toolmenu = (RadMenuItem)sender;
             if (!IsPermissionGranted(toolmenu.Text))
@@ -1152,8 +1152,8 @@ namespace Real_Estate_Management
                 MessageBox.Show("لا تملك صلاحية للقيام بهذا العمل", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            FrmBillHeader frm = new FrmBillHeader(Guid.Empty, true, 0, new List<tbLand>());
-            frm.Show(this);
+            FrmBillHeader frm = new FrmBillHeader(Guid.Empty, 0, new List<tbLand>(), null);
+            frm.Show();
         }
 
         private void MenuImportBuyer_Click(object sender, EventArgs e)
@@ -1188,8 +1188,8 @@ namespace Real_Estate_Management
                 MessageBox.Show("لا تملك صلاحية للقيام بهذا العمل", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            FrmBillHeader frm = new FrmBillHeader(Guid.Empty, true, 1, new List<tbLand>());
-            frm.Show(this);
+            FrmBillHeader frm = new FrmBillHeader(Guid.Empty, 1, new List<tbLand>(), null);
+            frm.Show();
         }
 
         private void MenuDelayBill_Click(object sender, EventArgs e)
@@ -1200,8 +1200,8 @@ namespace Real_Estate_Management
                 MessageBox.Show("لا تملك صلاحية للقيام بهذا العمل", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            FrmBillHeader frm = new FrmBillHeader(Guid.Empty, true, 2, new List<tbLand>());
-            frm.Show(this);
+            FrmBillHeader frm = new FrmBillHeader(Guid.Empty, 2, new List<tbLand>(), null);
+            frm.Show();
         }
         private void MenuAgentStatement_Click(object sender, EventArgs e)
         {
@@ -1833,6 +1833,9 @@ namespace Real_Estate_Management
                         break;
                     case "UCBills":
                         UCControl = new UCBills(Guid.Empty, null, null, 0);
+                        break;
+                    case "FrmBillHeader":
+                        UCControl = new FrmBillHeader(Guid.Empty, 0, null, null);
                         break;
 
                     default:

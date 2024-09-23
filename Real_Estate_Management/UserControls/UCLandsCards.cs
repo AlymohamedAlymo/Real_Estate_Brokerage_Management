@@ -1,7 +1,6 @@
 ﻿using Real_Estate_Management.CustomElements;
 using Real_Estate_Management.Helpers;
 using DoctorHelper.Helpers;
-using Real_Estate_Management.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -999,7 +998,7 @@ namespace Real_Estate_Management.User_Controls
             if (!Check(toolmenu.Text, "إنشاء عقد بيع", OperationType.OperationIs.Add, true)) { return; }
             tbLand land = (tbLand)Bs.Current;
             List<tbLand> lst = new List<tbLand> { land };
-            FrmBillHeader frm = new FrmBillHeader(Guid.Empty, true, 0, lst);
+            FrmBillHeader frm = new FrmBillHeader(Guid.Empty, 0, lst, null);
             frm.Show();
 
         }

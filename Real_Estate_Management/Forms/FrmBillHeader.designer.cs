@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn1 = new Telerik.WinControls.UI.GridViewDecimalColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
@@ -80,22 +81,28 @@
             Telerik.WinControls.UI.DescriptionTextListDataItem descriptionTextListDataItem4 = new Telerik.WinControls.UI.DescriptionTextListDataItem();
             Telerik.WinControls.UI.DescriptionTextListDataItem descriptionTextListDataItem5 = new Telerik.WinControls.UI.DescriptionTextListDataItem();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition3 = new Telerik.WinControls.UI.TableViewDefinition();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmBillHeader));
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn41 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewMultiComboBoxColumn gridViewMultiComboBoxColumn1 = new Telerik.WinControls.UI.GridViewMultiComboBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn42 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn43 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn5 = new Telerik.WinControls.UI.GridViewDecimalColumn();
             Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn6 = new Telerik.WinControls.UI.GridViewDecimalColumn();
             Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn7 = new Telerik.WinControls.UI.GridViewDecimalColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn44 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn8 = new Telerik.WinControls.UI.GridViewDecimalColumn();
             Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn9 = new Telerik.WinControls.UI.GridViewDecimalColumn();
             Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn10 = new Telerik.WinControls.UI.GridViewDecimalColumn();
             Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn11 = new Telerik.WinControls.UI.GridViewDecimalColumn();
             Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn12 = new Telerik.WinControls.UI.GridViewDecimalColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn45 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn13 = new Telerik.WinControls.UI.GridViewDecimalColumn();
             Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn14 = new Telerik.WinControls.UI.GridViewDecimalColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn42 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn43 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn15 = new Telerik.WinControls.UI.GridViewDecimalColumn();
+            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn16 = new Telerik.WinControls.UI.GridViewDecimalColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn46 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn47 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewSummaryItem gridViewSummaryItem1 = new Telerik.WinControls.UI.GridViewSummaryItem();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition4 = new Telerik.WinControls.UI.TableViewDefinition();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmBillHeader));
             this.radPanel1 = new Telerik.WinControls.UI.RadPanel();
             this.radLabel5 = new Telerik.WinControls.UI.RadLabel();
             this.Txtnumber = new Telerik.WinControls.UI.RadLabel();
@@ -103,38 +110,41 @@
             this.CmbBuyerData = new Telerik.WinControls.UI.RadMultiColumnComboBox();
             this.radDropDownList1 = new Telerik.WinControls.UI.RadDropDownList();
             this.radDropDownList2 = new Telerik.WinControls.UI.RadDropDownList();
-            this.dtRegDate = new Telerik.WinControls.UI.RadDateTimePicker();
+            this.Dtpregdate = new Telerik.WinControls.UI.RadDateTimePicker();
             this.radLabel8 = new Telerik.WinControls.UI.RadLabel();
             this.radCmbPlanGuid = new Telerik.WinControls.UI.RadMultiColumnComboBox();
-            this.BtnAddFromBlock = new Telerik.WinControls.UI.RadButton();
-            this.GridView1 = new Telerik.WinControls.UI.RadGridView();
+            this.radBtnAddFromBlock = new Telerik.WinControls.UI.RadButton();
+            this.tbBillBodyBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.realestatebrokermanagementDataSet = new Real_Estate_Management.realestatebrokermanagementDataSet();
             this.radPanel2 = new Telerik.WinControls.UI.RadPanel();
             this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
             this.TxtTotalNet = new Telerik.WinControls.UI.RadSpinEditor();
-            this.TxtPrice = new Telerik.WinControls.UI.RadSpinEditor();
+            this.radTxtPrice = new Telerik.WinControls.UI.RadSpinEditor();
             this.Txtlastaction = new Telerik.WinControls.UI.RadTextBox();
             this.TxtTotal = new Telerik.WinControls.UI.RadSpinEditor();
             this.Txttotaldiscounttotal = new Telerik.WinControls.UI.RadSpinEditor();
             this.radLabel13 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel2 = new Telerik.WinControls.UI.RadLabel();
             this.Txttotalworkfee = new Telerik.WinControls.UI.RadSpinEditor();
-            this.TxtNetPrice = new Telerik.WinControls.UI.RadSpinEditor();
+            this.radTxtNetPrice = new Telerik.WinControls.UI.RadSpinEditor();
             this.radLabel11 = new Telerik.WinControls.UI.RadLabel();
             this.Txttotaldiscountfee = new Telerik.WinControls.UI.RadSpinEditor();
             this.radLabel9 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel4 = new Telerik.WinControls.UI.RadLabel();
-            this.TxtNetPiceNetWorkFeeVAT = new Telerik.WinControls.UI.RadSpinEditor();
+            this.radTxtNetPiceNetWorkFeeVAT = new Telerik.WinControls.UI.RadSpinEditor();
             this.radLabel7 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel6 = new Telerik.WinControls.UI.RadLabel();
-            this.TxtotalworkfeeDiscount = new Telerik.WinControls.UI.RadSpinEditor();
+            this.radTxttotalworkfeeDiscount = new Telerik.WinControls.UI.RadSpinEditor();
             this.radLabel12 = new Telerik.WinControls.UI.RadLabel();
             this.TxtTotalVat = new Telerik.WinControls.UI.RadSpinEditor();
-            this.TxtNetPrice2 = new Telerik.WinControls.UI.RadSpinEditor();
+            this.radTxtNetPrice2 = new Telerik.WinControls.UI.RadSpinEditor();
             this.Txttotalbuidlingfee = new Telerik.WinControls.UI.RadSpinEditor();
-            this.TxtNetPiceNetWorkFee = new Telerik.WinControls.UI.RadSpinEditor();
+            this.radTxtNetPiceNetWorkFee = new Telerik.WinControls.UI.RadSpinEditor();
             this.radLabel10 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel3 = new Telerik.WinControls.UI.RadLabel();
-            this.dataNavigator1 = new Telerik.WinControls.UI.RadBindingNavigator();
+            this.radLblHint = new Telerik.WinControls.UI.RadLabel();
+            this.MainContainer = new Telerik.WinControls.UI.RadPanel();
+            this.BindingNavigatorClient = new Telerik.WinControls.UI.RadBindingNavigator();
             this.commandBarRowElement1 = new Telerik.WinControls.UI.CommandBarRowElement();
             this.commandBarStripElement1 = new Telerik.WinControls.UI.CommandBarStripElement();
             this.BtnFirst = new Telerik.WinControls.UI.CommandBarButton();
@@ -157,13 +167,14 @@
             this.commandBarSeparator8 = new Telerik.WinControls.UI.CommandBarSeparator();
             this.BtnDelete = new Telerik.WinControls.UI.CommandBarButton();
             this.commandBarSeparator9 = new Telerik.WinControls.UI.CommandBarSeparator();
-            this.commandBarDropDownButton1 = new Telerik.WinControls.UI.CommandBarDropDownButton();
+            this.BtnPrint = new Telerik.WinControls.UI.CommandBarDropDownButton();
             this.commandBarSeparator7 = new Telerik.WinControls.UI.CommandBarSeparator();
-            this.BtnAdd = new Telerik.WinControls.UI.CommandBarButton();
+            this.BtnNew = new Telerik.WinControls.UI.CommandBarButton();
             this.BtnEdit = new Telerik.WinControls.UI.CommandBarButton();
             this.BtnExit = new Telerik.WinControls.UI.CommandBarButton();
-            this.radLblHint = new Telerik.WinControls.UI.RadLabel();
-            this.MainContainer = new Telerik.WinControls.UI.RadPanel();
+            this.materialTheme1 = new Telerik.WinControls.Themes.MaterialTheme();
+            this.tbBillBodyTableAdapter = new Real_Estate_Management.realestatebrokermanagementDataSetTableAdapters.tbBillBodyTableAdapter();
+            this.DataGridBillBody = new Telerik.WinControls.UI.RadGridView();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).BeginInit();
             this.radPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).BeginInit();
@@ -176,45 +187,47 @@
             ((System.ComponentModel.ISupportInitialize)(this.CmbBuyerData.EditorControl.MasterTemplate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radDropDownList1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radDropDownList2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtRegDate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dtpregdate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radCmbPlanGuid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radCmbPlanGuid.EditorControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radCmbPlanGuid.EditorControl.MasterTemplate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BtnAddFromBlock)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GridView1.MasterTemplate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radBtnAddFromBlock)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbBillBodyBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.realestatebrokermanagementDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).BeginInit();
             this.radPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtTotalNet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtPrice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radTxtPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txtlastaction)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtTotal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txttotaldiscounttotal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txttotalworkfee)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtNetPrice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radTxtNetPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txttotaldiscountfee)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtNetPiceNetWorkFeeVAT)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radTxtNetPiceNetWorkFeeVAT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtotalworkfeeDiscount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radTxttotalworkfeeDiscount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtTotalVat)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtNetPrice2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radTxtNetPrice2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txttotalbuidlingfee)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtNetPiceNetWorkFee)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radTxtNetPiceNetWorkFee)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataNavigator1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLblHint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainContainer)).BeginInit();
             this.MainContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BindingNavigatorClient)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridBillBody)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridBillBody.MasterTemplate)).BeginInit();
             this.SuspendLayout();
             // 
             // radPanel1
@@ -225,10 +238,10 @@
             this.radPanel1.Controls.Add(this.CmbBuyerData);
             this.radPanel1.Controls.Add(this.radDropDownList1);
             this.radPanel1.Controls.Add(this.radDropDownList2);
-            this.radPanel1.Controls.Add(this.dtRegDate);
+            this.radPanel1.Controls.Add(this.Dtpregdate);
             this.radPanel1.Controls.Add(this.radLabel8);
             this.radPanel1.Controls.Add(this.radCmbPlanGuid);
-            this.radPanel1.Controls.Add(this.BtnAddFromBlock);
+            this.radPanel1.Controls.Add(this.radBtnAddFromBlock);
             this.radPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.radPanel1.Location = new System.Drawing.Point(0, 106);
             this.radPanel1.Name = "radPanel1";
@@ -627,18 +640,18 @@
             this.radDropDownList2.Text = "المالك";
             this.radDropDownList2.ThemeName = "Material";
             // 
-            // dtRegDate
+            // Dtpregdate
             // 
-            this.dtRegDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtRegDate.CalendarSize = new System.Drawing.Size(290, 320);
-            this.dtRegDate.Location = new System.Drawing.Point(597, 3);
-            this.dtRegDate.Name = "dtRegDate";
-            this.dtRegDate.Size = new System.Drawing.Size(241, 36);
-            this.dtRegDate.TabIndex = 11512123;
-            this.dtRegDate.TabStop = false;
-            this.dtRegDate.Text = "Saturday, September 21, 2024";
-            this.dtRegDate.ThemeName = "Material";
-            this.dtRegDate.Value = new System.DateTime(2024, 9, 21, 18, 2, 2, 486);
+            this.Dtpregdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Dtpregdate.CalendarSize = new System.Drawing.Size(290, 320);
+            this.Dtpregdate.Location = new System.Drawing.Point(597, 3);
+            this.Dtpregdate.Name = "Dtpregdate";
+            this.Dtpregdate.Size = new System.Drawing.Size(241, 36);
+            this.Dtpregdate.TabIndex = 11512123;
+            this.Dtpregdate.TabStop = false;
+            this.Dtpregdate.Text = "Saturday, September 21, 2024";
+            this.Dtpregdate.ThemeName = "Material";
+            this.Dtpregdate.Value = new System.DateTime(2024, 9, 21, 18, 2, 2, 486);
             // 
             // radLabel8
             // 
@@ -697,134 +710,51 @@
             this.radCmbPlanGuid.ThemeName = "Material";
             this.radCmbPlanGuid.ValueMember = "Guid";
             // 
-            // BtnAddFromBlock
+            // radBtnAddFromBlock
             // 
-            this.BtnAddFromBlock.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnAddFromBlock.Location = new System.Drawing.Point(6, 3);
-            this.BtnAddFromBlock.Name = "BtnAddFromBlock";
-            this.BtnAddFromBlock.Size = new System.Drawing.Size(120, 80);
-            this.BtnAddFromBlock.TabIndex = 11512132;
-            this.BtnAddFromBlock.Text = "تحديد الأراضي\r\nمن البلوكات";
-            this.BtnAddFromBlock.ThemeName = "Material";
+            this.radBtnAddFromBlock.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.radBtnAddFromBlock.Location = new System.Drawing.Point(6, 3);
+            this.radBtnAddFromBlock.Name = "radBtnAddFromBlock";
+            this.radBtnAddFromBlock.Size = new System.Drawing.Size(120, 80);
+            this.radBtnAddFromBlock.TabIndex = 11512132;
+            this.radBtnAddFromBlock.Text = "تحديد الأراضي\r\nمن البلوكات";
+            this.radBtnAddFromBlock.ThemeName = "Material";
             // 
-            // GridView1
+            // tbBillBodyBindingSource
             // 
-            this.GridView1.AllowShowFocusCues = true;
-            this.GridView1.AutoScroll = true;
-            this.GridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GridView1.EnableCodedUITests = true;
-            this.GridView1.EnableCustomDrawing = true;
-            this.GridView1.EnableCustomFiltering = true;
-            this.GridView1.EnableCustomGrouping = true;
-            this.GridView1.EnableCustomSorting = true;
-            this.GridView1.EnableKeyMap = true;
-            this.GridView1.EnableKineticScrolling = true;
-            this.GridView1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GridView1.Location = new System.Drawing.Point(0, 196);
-            this.GridView1.Margin = new System.Windows.Forms.Padding(20, 3, 20, 3);
+            this.tbBillBodyBindingSource.DataMember = "tbBillBody";
+            this.tbBillBodyBindingSource.DataSource = this.realestatebrokermanagementDataSet;
             // 
+            // realestatebrokermanagementDataSet
             // 
-            // 
-            this.GridView1.MasterTemplate.AllowRowReorder = true;
-            this.GridView1.MasterTemplate.AllowSearchRow = true;
-            gridViewTextBoxColumn41.HeaderText = "م";
-            gridViewTextBoxColumn41.Name = "column1";
-            gridViewTextBoxColumn41.Width = 22;
-            gridViewMultiComboBoxColumn1.HeaderText = "الأرض";
-            gridViewMultiComboBoxColumn1.Name = "column2";
-            gridViewMultiComboBoxColumn1.Width = 60;
-            gridViewDecimalColumn5.HeaderText = "القيمة الدفترية";
-            gridViewDecimalColumn5.Name = "column3";
-            gridViewDecimalColumn5.Width = 129;
-            gridViewDecimalColumn6.HeaderText = "خصم الارض";
-            gridViewDecimalColumn6.Name = "column4";
-            gridViewDecimalColumn6.Width = 108;
-            gridViewDecimalColumn7.HeaderText = "صافي قيمة الارض";
-            gridViewDecimalColumn7.Name = "column5";
-            gridViewDecimalColumn7.Width = 159;
-            gridViewDecimalColumn8.HeaderText = "ضريبة التصرفات العقارية";
-            gridViewDecimalColumn8.Name = "column6";
-            gridViewDecimalColumn8.Width = 211;
-            gridViewDecimalColumn9.HeaderText = "عمولة السعي";
-            gridViewDecimalColumn9.Name = "column7";
-            gridViewDecimalColumn9.Width = 121;
-            gridViewDecimalColumn10.HeaderText = "خصم عمولة السعي";
-            gridViewDecimalColumn10.Name = "column8";
-            gridViewDecimalColumn10.Width = 169;
-            gridViewDecimalColumn11.HeaderText = "صافي عمولة السعي";
-            gridViewDecimalColumn11.Name = "column9";
-            gridViewDecimalColumn11.Width = 177;
-            gridViewDecimalColumn12.HeaderText = "ضريبة السعي";
-            gridViewDecimalColumn12.Name = "column10";
-            gridViewDecimalColumn12.Width = 122;
-            gridViewDecimalColumn13.HeaderText = "صافي السعي مع الضريبة";
-            gridViewDecimalColumn13.Name = "column11";
-            gridViewDecimalColumn13.Width = 218;
-            gridViewDecimalColumn14.HeaderText = "المجموع";
-            gridViewDecimalColumn14.Name = "column12";
-            gridViewDecimalColumn14.Width = 78;
-            gridViewTextBoxColumn42.HeaderText = "ملاحظات";
-            gridViewTextBoxColumn42.Name = "column13";
-            gridViewTextBoxColumn42.Width = 84;
-            gridViewTextBoxColumn43.HeaderText = "الحالة";
-            gridViewTextBoxColumn43.Name = "ColStatus";
-            this.GridView1.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn41,
-            gridViewMultiComboBoxColumn1,
-            gridViewDecimalColumn5,
-            gridViewDecimalColumn6,
-            gridViewDecimalColumn7,
-            gridViewDecimalColumn8,
-            gridViewDecimalColumn9,
-            gridViewDecimalColumn10,
-            gridViewDecimalColumn11,
-            gridViewDecimalColumn12,
-            gridViewDecimalColumn13,
-            gridViewDecimalColumn14,
-            gridViewTextBoxColumn42,
-            gridViewTextBoxColumn43});
-            this.GridView1.MasterTemplate.EnableAlternatingRowColor = true;
-            this.GridView1.MasterTemplate.EnableCustomFiltering = true;
-            this.GridView1.MasterTemplate.EnableCustomGrouping = true;
-            this.GridView1.MasterTemplate.EnableCustomSorting = true;
-            this.GridView1.MasterTemplate.EnableFiltering = true;
-            this.GridView1.MasterTemplate.EnablePaging = true;
-            this.GridView1.MasterTemplate.ShowChildViewCaptions = true;
-            this.GridView1.MasterTemplate.ShowFilteringRow = false;
-            this.GridView1.MasterTemplate.ShowGroupedColumns = true;
-            this.GridView1.MasterTemplate.ViewDefinition = tableViewDefinition4;
-            this.GridView1.Name = "GridView1";
-            this.GridView1.ShowChildViewCaptions = true;
-            this.GridView1.Size = new System.Drawing.Size(1152, 369);
-            this.GridView1.TabIndex = 54;
-            this.GridView1.TitleText = "تفاصيل العقد";
-            this.GridView1.Visible = false;
+            this.realestatebrokermanagementDataSet.DataSetName = "realestatebrokermanagementDataSet";
+            this.realestatebrokermanagementDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // radPanel2
             // 
             this.radPanel2.Controls.Add(this.radLabel1);
             this.radPanel2.Controls.Add(this.TxtTotalNet);
-            this.radPanel2.Controls.Add(this.TxtPrice);
+            this.radPanel2.Controls.Add(this.radTxtPrice);
             this.radPanel2.Controls.Add(this.Txtlastaction);
             this.radPanel2.Controls.Add(this.TxtTotal);
             this.radPanel2.Controls.Add(this.Txttotaldiscounttotal);
             this.radPanel2.Controls.Add(this.radLabel13);
             this.radPanel2.Controls.Add(this.radLabel2);
             this.radPanel2.Controls.Add(this.Txttotalworkfee);
-            this.radPanel2.Controls.Add(this.TxtNetPrice);
+            this.radPanel2.Controls.Add(this.radTxtNetPrice);
             this.radPanel2.Controls.Add(this.radLabel11);
             this.radPanel2.Controls.Add(this.Txttotaldiscountfee);
             this.radPanel2.Controls.Add(this.radLabel9);
             this.radPanel2.Controls.Add(this.radLabel4);
-            this.radPanel2.Controls.Add(this.TxtNetPiceNetWorkFeeVAT);
+            this.radPanel2.Controls.Add(this.radTxtNetPiceNetWorkFeeVAT);
             this.radPanel2.Controls.Add(this.radLabel7);
             this.radPanel2.Controls.Add(this.radLabel6);
-            this.radPanel2.Controls.Add(this.TxtotalworkfeeDiscount);
+            this.radPanel2.Controls.Add(this.radTxttotalworkfeeDiscount);
             this.radPanel2.Controls.Add(this.radLabel12);
             this.radPanel2.Controls.Add(this.TxtTotalVat);
-            this.radPanel2.Controls.Add(this.TxtNetPrice2);
+            this.radPanel2.Controls.Add(this.radTxtNetPrice2);
             this.radPanel2.Controls.Add(this.Txttotalbuidlingfee);
-            this.radPanel2.Controls.Add(this.TxtNetPiceNetWorkFee);
+            this.radPanel2.Controls.Add(this.radTxtNetPiceNetWorkFee);
             this.radPanel2.Controls.Add(this.radLabel10);
             this.radPanel2.Controls.Add(this.radLabel3);
             this.radPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -857,7 +787,7 @@
             // 
             this.TxtTotalNet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtTotalNet.DecimalPlaces = 2;
-            this.TxtTotalNet.Location = new System.Drawing.Point(323, 55);
+            this.TxtTotalNet.Location = new System.Drawing.Point(323, 54);
             this.TxtTotalNet.Maximum = new decimal(new int[] {
             -1,
             -1,
@@ -876,28 +806,28 @@
             this.TxtTotalNet.ThousandsSeparator = true;
             this.TxtTotalNet.UseCompatibleTextRendering = false;
             // 
-            // TxtPrice
+            // radTxtPrice
             // 
-            this.TxtPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtPrice.DecimalPlaces = 2;
-            this.TxtPrice.Location = new System.Drawing.Point(850, 15);
-            this.TxtPrice.Maximum = new decimal(new int[] {
+            this.radTxtPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.radTxtPrice.DecimalPlaces = 2;
+            this.radTxtPrice.Location = new System.Drawing.Point(850, 14);
+            this.radTxtPrice.Maximum = new decimal(new int[] {
             -1,
             -1,
             -1,
             0});
-            this.TxtPrice.Minimum = new decimal(new int[] {
+            this.radTxtPrice.Minimum = new decimal(new int[] {
             -1,
             -1,
             -1,
             -2147483648});
-            this.TxtPrice.Name = "TxtPrice";
-            this.TxtPrice.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.TxtPrice.Size = new System.Drawing.Size(134, 36);
-            this.TxtPrice.TabIndex = 11512133;
-            this.TxtPrice.ThemeName = "Material";
-            this.TxtPrice.ThousandsSeparator = true;
-            this.TxtPrice.UseCompatibleTextRendering = false;
+            this.radTxtPrice.Name = "radTxtPrice";
+            this.radTxtPrice.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.radTxtPrice.Size = new System.Drawing.Size(134, 36);
+            this.radTxtPrice.TabIndex = 11512133;
+            this.radTxtPrice.ThemeName = "Material";
+            this.radTxtPrice.ThousandsSeparator = true;
+            this.radTxtPrice.UseCompatibleTextRendering = false;
             // 
             // Txtlastaction
             // 
@@ -925,7 +855,7 @@
             // 
             this.TxtTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtTotal.DecimalPlaces = 2;
-            this.TxtTotal.Location = new System.Drawing.Point(453, 55);
+            this.TxtTotal.Location = new System.Drawing.Point(453, 54);
             this.TxtTotal.Maximum = new decimal(new int[] {
             -1,
             -1,
@@ -948,7 +878,7 @@
             // 
             this.Txttotaldiscounttotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Txttotaldiscounttotal.DecimalPlaces = 2;
-            this.Txttotaldiscounttotal.Location = new System.Drawing.Point(850, 57);
+            this.Txttotaldiscounttotal.Location = new System.Drawing.Point(850, 56);
             this.Txttotaldiscounttotal.Maximum = new decimal(new int[] {
             -1,
             -1,
@@ -1003,7 +933,7 @@
             // 
             this.Txttotalworkfee.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Txttotalworkfee.DecimalPlaces = 2;
-            this.Txttotalworkfee.Location = new System.Drawing.Point(585, 14);
+            this.Txttotalworkfee.Location = new System.Drawing.Point(585, 13);
             this.Txttotalworkfee.Maximum = new decimal(new int[] {
             -1,
             -1,
@@ -1022,28 +952,28 @@
             this.Txttotalworkfee.ThousandsSeparator = true;
             this.Txttotalworkfee.UseCompatibleTextRendering = false;
             // 
-            // TxtNetPrice
+            // radTxtNetPrice
             // 
-            this.TxtNetPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtNetPrice.DecimalPlaces = 2;
-            this.TxtNetPrice.Location = new System.Drawing.Point(850, 99);
-            this.TxtNetPrice.Maximum = new decimal(new int[] {
+            this.radTxtNetPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.radTxtNetPrice.DecimalPlaces = 2;
+            this.radTxtNetPrice.Location = new System.Drawing.Point(850, 98);
+            this.radTxtNetPrice.Maximum = new decimal(new int[] {
             -1,
             -1,
             -1,
             0});
-            this.TxtNetPrice.Minimum = new decimal(new int[] {
+            this.radTxtNetPrice.Minimum = new decimal(new int[] {
             -1,
             -1,
             -1,
             -2147483648});
-            this.TxtNetPrice.Name = "TxtNetPrice";
-            this.TxtNetPrice.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.TxtNetPrice.Size = new System.Drawing.Size(134, 36);
-            this.TxtNetPrice.TabIndex = 11512137;
-            this.TxtNetPrice.ThemeName = "Material";
-            this.TxtNetPrice.ThousandsSeparator = true;
-            this.TxtNetPrice.UseCompatibleTextRendering = false;
+            this.radTxtNetPrice.Name = "radTxtNetPrice";
+            this.radTxtNetPrice.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.radTxtNetPrice.Size = new System.Drawing.Size(134, 36);
+            this.radTxtNetPrice.TabIndex = 11512137;
+            this.radTxtNetPrice.ThemeName = "Material";
+            this.radTxtNetPrice.ThousandsSeparator = true;
+            this.radTxtNetPrice.UseCompatibleTextRendering = false;
             // 
             // radLabel11
             // 
@@ -1065,7 +995,7 @@
             // 
             this.Txttotaldiscountfee.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Txttotaldiscountfee.DecimalPlaces = 2;
-            this.Txttotaldiscountfee.Location = new System.Drawing.Point(585, 98);
+            this.Txttotaldiscountfee.Location = new System.Drawing.Point(585, 97);
             this.Txttotaldiscountfee.Maximum = new decimal(new int[] {
             -1,
             -1,
@@ -1116,28 +1046,28 @@
             this.radLabel4.TextWrap = false;
             this.radLabel4.ThemeName = "Material";
             // 
-            // TxtNetPiceNetWorkFeeVAT
+            // radTxtNetPiceNetWorkFeeVAT
             // 
-            this.TxtNetPiceNetWorkFeeVAT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtNetPiceNetWorkFeeVAT.DecimalPlaces = 2;
-            this.TxtNetPiceNetWorkFeeVAT.Location = new System.Drawing.Point(6, 96);
-            this.TxtNetPiceNetWorkFeeVAT.Maximum = new decimal(new int[] {
+            this.radTxtNetPiceNetWorkFeeVAT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.radTxtNetPiceNetWorkFeeVAT.DecimalPlaces = 2;
+            this.radTxtNetPiceNetWorkFeeVAT.Location = new System.Drawing.Point(6, 95);
+            this.radTxtNetPiceNetWorkFeeVAT.Maximum = new decimal(new int[] {
             -1,
             -1,
             -1,
             0});
-            this.TxtNetPiceNetWorkFeeVAT.Minimum = new decimal(new int[] {
+            this.radTxtNetPiceNetWorkFeeVAT.Minimum = new decimal(new int[] {
             -1,
             -1,
             -1,
             -2147483648});
-            this.TxtNetPiceNetWorkFeeVAT.Name = "TxtNetPiceNetWorkFeeVAT";
-            this.TxtNetPiceNetWorkFeeVAT.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.TxtNetPiceNetWorkFeeVAT.Size = new System.Drawing.Size(134, 36);
-            this.TxtNetPiceNetWorkFeeVAT.TabIndex = 11512147;
-            this.TxtNetPiceNetWorkFeeVAT.ThemeName = "Material";
-            this.TxtNetPiceNetWorkFeeVAT.ThousandsSeparator = true;
-            this.TxtNetPiceNetWorkFeeVAT.UseCompatibleTextRendering = false;
+            this.radTxtNetPiceNetWorkFeeVAT.Name = "radTxtNetPiceNetWorkFeeVAT";
+            this.radTxtNetPiceNetWorkFeeVAT.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.radTxtNetPiceNetWorkFeeVAT.Size = new System.Drawing.Size(134, 36);
+            this.radTxtNetPiceNetWorkFeeVAT.TabIndex = 11512147;
+            this.radTxtNetPiceNetWorkFeeVAT.ThemeName = "Material";
+            this.radTxtNetPiceNetWorkFeeVAT.ThousandsSeparator = true;
+            this.radTxtNetPiceNetWorkFeeVAT.UseCompatibleTextRendering = false;
             // 
             // radLabel7
             // 
@@ -1171,28 +1101,28 @@
             this.radLabel6.TextWrap = false;
             this.radLabel6.ThemeName = "Material";
             // 
-            // TxtotalworkfeeDiscount
+            // radTxttotalworkfeeDiscount
             // 
-            this.TxtotalworkfeeDiscount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtotalworkfeeDiscount.DecimalPlaces = 2;
-            this.TxtotalworkfeeDiscount.Location = new System.Drawing.Point(585, 56);
-            this.TxtotalworkfeeDiscount.Maximum = new decimal(new int[] {
+            this.radTxttotalworkfeeDiscount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.radTxttotalworkfeeDiscount.DecimalPlaces = 2;
+            this.radTxttotalworkfeeDiscount.Location = new System.Drawing.Point(585, 55);
+            this.radTxttotalworkfeeDiscount.Maximum = new decimal(new int[] {
             -1,
             -1,
             -1,
             0});
-            this.TxtotalworkfeeDiscount.Minimum = new decimal(new int[] {
+            this.radTxttotalworkfeeDiscount.Minimum = new decimal(new int[] {
             -1,
             -1,
             -1,
             -2147483648});
-            this.TxtotalworkfeeDiscount.Name = "TxtotalworkfeeDiscount";
-            this.TxtotalworkfeeDiscount.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.TxtotalworkfeeDiscount.Size = new System.Drawing.Size(134, 36);
-            this.TxtotalworkfeeDiscount.TabIndex = 11512139;
-            this.TxtotalworkfeeDiscount.ThemeName = "Material";
-            this.TxtotalworkfeeDiscount.ThousandsSeparator = true;
-            this.TxtotalworkfeeDiscount.UseCompatibleTextRendering = false;
+            this.radTxttotalworkfeeDiscount.Name = "radTxttotalworkfeeDiscount";
+            this.radTxttotalworkfeeDiscount.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.radTxttotalworkfeeDiscount.Size = new System.Drawing.Size(134, 36);
+            this.radTxttotalworkfeeDiscount.TabIndex = 11512139;
+            this.radTxttotalworkfeeDiscount.ThemeName = "Material";
+            this.radTxttotalworkfeeDiscount.ThousandsSeparator = true;
+            this.radTxttotalworkfeeDiscount.UseCompatibleTextRendering = false;
             // 
             // radLabel12
             // 
@@ -1214,7 +1144,7 @@
             // 
             this.TxtTotalVat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtTotalVat.DecimalPlaces = 2;
-            this.TxtTotalVat.Location = new System.Drawing.Point(323, 97);
+            this.TxtTotalVat.Location = new System.Drawing.Point(323, 96);
             this.TxtTotalVat.Maximum = new decimal(new int[] {
             -1,
             -1,
@@ -1233,34 +1163,34 @@
             this.TxtTotalVat.ThousandsSeparator = true;
             this.TxtTotalVat.UseCompatibleTextRendering = false;
             // 
-            // TxtNetPrice2
+            // radTxtNetPrice2
             // 
-            this.TxtNetPrice2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtNetPrice2.DecimalPlaces = 2;
-            this.TxtNetPrice2.Location = new System.Drawing.Point(6, 12);
-            this.TxtNetPrice2.Maximum = new decimal(new int[] {
+            this.radTxtNetPrice2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.radTxtNetPrice2.DecimalPlaces = 2;
+            this.radTxtNetPrice2.Location = new System.Drawing.Point(6, 11);
+            this.radTxtNetPrice2.Maximum = new decimal(new int[] {
             -1,
             -1,
             -1,
             0});
-            this.TxtNetPrice2.Minimum = new decimal(new int[] {
+            this.radTxtNetPrice2.Minimum = new decimal(new int[] {
             -1,
             -1,
             -1,
             -2147483648});
-            this.TxtNetPrice2.Name = "TxtNetPrice2";
-            this.TxtNetPrice2.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.TxtNetPrice2.Size = new System.Drawing.Size(134, 36);
-            this.TxtNetPrice2.TabIndex = 11512147;
-            this.TxtNetPrice2.ThemeName = "Material";
-            this.TxtNetPrice2.ThousandsSeparator = true;
-            this.TxtNetPrice2.UseCompatibleTextRendering = false;
+            this.radTxtNetPrice2.Name = "radTxtNetPrice2";
+            this.radTxtNetPrice2.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.radTxtNetPrice2.Size = new System.Drawing.Size(134, 36);
+            this.radTxtNetPrice2.TabIndex = 11512147;
+            this.radTxtNetPrice2.ThemeName = "Material";
+            this.radTxtNetPrice2.ThousandsSeparator = true;
+            this.radTxtNetPrice2.UseCompatibleTextRendering = false;
             // 
             // Txttotalbuidlingfee
             // 
             this.Txttotalbuidlingfee.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Txttotalbuidlingfee.DecimalPlaces = 2;
-            this.Txttotalbuidlingfee.Location = new System.Drawing.Point(323, 12);
+            this.Txttotalbuidlingfee.Location = new System.Drawing.Point(323, 11);
             this.Txttotalbuidlingfee.Maximum = new decimal(new int[] {
             -1,
             -1,
@@ -1279,28 +1209,28 @@
             this.Txttotalbuidlingfee.ThousandsSeparator = true;
             this.Txttotalbuidlingfee.UseCompatibleTextRendering = false;
             // 
-            // TxtNetPiceNetWorkFee
+            // radTxtNetPiceNetWorkFee
             // 
-            this.TxtNetPiceNetWorkFee.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtNetPiceNetWorkFee.DecimalPlaces = 2;
-            this.TxtNetPiceNetWorkFee.Location = new System.Drawing.Point(6, 54);
-            this.TxtNetPiceNetWorkFee.Maximum = new decimal(new int[] {
+            this.radTxtNetPiceNetWorkFee.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.radTxtNetPiceNetWorkFee.DecimalPlaces = 2;
+            this.radTxtNetPiceNetWorkFee.Location = new System.Drawing.Point(6, 53);
+            this.radTxtNetPiceNetWorkFee.Maximum = new decimal(new int[] {
             -1,
             -1,
             -1,
             0});
-            this.TxtNetPiceNetWorkFee.Minimum = new decimal(new int[] {
+            this.radTxtNetPiceNetWorkFee.Minimum = new decimal(new int[] {
             -1,
             -1,
             -1,
             -2147483648});
-            this.TxtNetPiceNetWorkFee.Name = "TxtNetPiceNetWorkFee";
-            this.TxtNetPiceNetWorkFee.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.TxtNetPiceNetWorkFee.Size = new System.Drawing.Size(134, 36);
-            this.TxtNetPiceNetWorkFee.TabIndex = 11512145;
-            this.TxtNetPiceNetWorkFee.ThemeName = "Material";
-            this.TxtNetPiceNetWorkFee.ThousandsSeparator = true;
-            this.TxtNetPiceNetWorkFee.UseCompatibleTextRendering = false;
+            this.radTxtNetPiceNetWorkFee.Name = "radTxtNetPiceNetWorkFee";
+            this.radTxtNetPiceNetWorkFee.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.radTxtNetPiceNetWorkFee.Size = new System.Drawing.Size(134, 36);
+            this.radTxtNetPiceNetWorkFee.TabIndex = 11512145;
+            this.radTxtNetPiceNetWorkFee.ThemeName = "Material";
+            this.radTxtNetPiceNetWorkFee.ThousandsSeparator = true;
+            this.radTxtNetPiceNetWorkFee.UseCompatibleTextRendering = false;
             // 
             // radLabel10
             // 
@@ -1334,18 +1264,45 @@
             this.radLabel3.TextWrap = false;
             this.radLabel3.ThemeName = "Material";
             // 
-            // dataNavigator1
+            // radLblHint
             // 
-            this.dataNavigator1.AutoHandleAddNew = false;
-            this.dataNavigator1.AutoScroll = true;
-            this.dataNavigator1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dataNavigator1.Location = new System.Drawing.Point(0, 58);
-            this.dataNavigator1.Name = "dataNavigator1";
-            this.dataNavigator1.Rows.AddRange(new Telerik.WinControls.UI.CommandBarRowElement[] {
+            this.radLblHint.AutoSize = false;
+            this.radLblHint.Dock = System.Windows.Forms.DockStyle.Top;
+            this.radLblHint.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLblHint.ForeColor = System.Drawing.Color.Black;
+            this.radLblHint.Location = new System.Drawing.Point(0, 0);
+            this.radLblHint.Name = "radLblHint";
+            this.radLblHint.Size = new System.Drawing.Size(1152, 58);
+            this.radLblHint.TabIndex = 11512157;
+            this.radLblHint.Text = "عقد بيع أرض";
+            this.radLblHint.TextAlignment = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // MainContainer
+            // 
+            this.MainContainer.AutoScroll = true;
+            this.MainContainer.Controls.Add(this.DataGridBillBody);
+            this.MainContainer.Controls.Add(this.radPanel1);
+            this.MainContainer.Controls.Add(this.radPanel2);
+            this.MainContainer.Controls.Add(this.BindingNavigatorClient);
+            this.MainContainer.Controls.Add(this.radLblHint);
+            this.MainContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainContainer.Location = new System.Drawing.Point(0, 0);
+            this.MainContainer.Name = "MainContainer";
+            this.MainContainer.Size = new System.Drawing.Size(1152, 764);
+            this.MainContainer.TabIndex = 11512158;
+            // 
+            // BindingNavigatorClient
+            // 
+            this.BindingNavigatorClient.AutoHandleAddNew = false;
+            this.BindingNavigatorClient.AutoScroll = true;
+            this.BindingNavigatorClient.Dock = System.Windows.Forms.DockStyle.Top;
+            this.BindingNavigatorClient.Location = new System.Drawing.Point(0, 58);
+            this.BindingNavigatorClient.Name = "BindingNavigatorClient";
+            this.BindingNavigatorClient.Rows.AddRange(new Telerik.WinControls.UI.CommandBarRowElement[] {
             this.commandBarRowElement1});
-            this.dataNavigator1.Size = new System.Drawing.Size(1152, 48);
-            this.dataNavigator1.TabIndex = 11512156;
-            this.dataNavigator1.ThemeName = "Material";
+            this.BindingNavigatorClient.Size = new System.Drawing.Size(1152, 48);
+            this.BindingNavigatorClient.TabIndex = 11512158;
+            this.BindingNavigatorClient.ThemeName = "Material";
             // 
             // commandBarRowElement1
             // 
@@ -1505,9 +1462,9 @@
             this.commandBarSeparator8,
             this.BtnDelete,
             this.commandBarSeparator9,
-            this.commandBarDropDownButton1,
+            this.BtnPrint,
             this.commandBarSeparator7,
-            this.BtnAdd,
+            this.BtnNew,
             this.BtnEdit,
             this.BtnExit});
             this.commandBarStripElement2.MinSize = new System.Drawing.Size(0, 0);
@@ -1669,26 +1626,26 @@
             this.commandBarSeparator9.UseCompatibleTextRendering = false;
             this.commandBarSeparator9.VisibleInOverflowMenu = false;
             // 
-            // commandBarDropDownButton1
+            // BtnPrint
             // 
-            this.commandBarDropDownButton1.AutoEllipsis = true;
-            this.commandBarDropDownButton1.CustomFont = "None";
-            this.commandBarDropDownButton1.DisabledTextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.commandBarDropDownButton1.DisplayName = "commandBarDropDownButton2";
-            this.commandBarDropDownButton1.DrawBorder = false;
-            this.commandBarDropDownButton1.DrawText = true;
-            this.commandBarDropDownButton1.EnableBorderHighlight = true;
-            this.commandBarDropDownButton1.EnableFocusBorder = true;
-            this.commandBarDropDownButton1.EnableHighlight = true;
-            this.commandBarDropDownButton1.EnableRippleAnimation = true;
-            this.commandBarDropDownButton1.Font = new System.Drawing.Font("Traditional Arabic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.commandBarDropDownButton1.Image = null;
-            this.commandBarDropDownButton1.Name = "commandBarDropDownButton1";
-            this.commandBarDropDownButton1.Tag = "طباعة بيانات البطاقة";
-            this.commandBarDropDownButton1.Text = "طباعة";
-            this.commandBarDropDownButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.commandBarDropDownButton1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.commandBarDropDownButton1.UseCompatibleTextRendering = false;
+            this.BtnPrint.AutoEllipsis = true;
+            this.BtnPrint.CustomFont = "None";
+            this.BtnPrint.DisabledTextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            this.BtnPrint.DisplayName = "commandBarDropDownButton2";
+            this.BtnPrint.DrawBorder = false;
+            this.BtnPrint.DrawText = true;
+            this.BtnPrint.EnableBorderHighlight = true;
+            this.BtnPrint.EnableFocusBorder = true;
+            this.BtnPrint.EnableHighlight = true;
+            this.BtnPrint.EnableRippleAnimation = true;
+            this.BtnPrint.Font = new System.Drawing.Font("Traditional Arabic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnPrint.Image = null;
+            this.BtnPrint.Name = "BtnPrint";
+            this.BtnPrint.Tag = "طباعة بيانات البطاقة";
+            this.BtnPrint.Text = "طباعة";
+            this.BtnPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.BtnPrint.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            this.BtnPrint.UseCompatibleTextRendering = false;
             // 
             // commandBarSeparator7
             // 
@@ -1699,28 +1656,28 @@
             this.commandBarSeparator7.UseCompatibleTextRendering = false;
             this.commandBarSeparator7.VisibleInOverflowMenu = false;
             // 
-            // BtnAdd
+            // BtnNew
             // 
-            this.BtnAdd.AutoEllipsis = true;
-            this.BtnAdd.CustomFont = "None";
-            this.BtnAdd.DisabledTextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.BtnAdd.DisplayName = "commandBarButton5";
-            this.BtnAdd.DrawBorder = false;
-            this.BtnAdd.DrawText = true;
-            this.BtnAdd.EnableBorderHighlight = true;
-            this.BtnAdd.EnableElementShadow = false;
-            this.BtnAdd.EnableFocusBorder = true;
-            this.BtnAdd.EnableHighlight = true;
-            this.BtnAdd.EnableRippleAnimation = true;
-            this.BtnAdd.Font = new System.Drawing.Font("Traditional Arabic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnAdd.Image = global::Real_Estate_Management.Properties.Resources.BtnAddNew;
-            this.BtnAdd.Name = "BtnAdd";
-            this.BtnAdd.Tag = "إنشاء بطاقة جديدة";
-            this.BtnAdd.Text = "جديد";
-            this.BtnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.BtnAdd.TextOrientation = System.Windows.Forms.Orientation.Horizontal;
-            this.BtnAdd.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.BtnAdd.UseCompatibleTextRendering = false;
+            this.BtnNew.AutoEllipsis = true;
+            this.BtnNew.CustomFont = "None";
+            this.BtnNew.DisabledTextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            this.BtnNew.DisplayName = "commandBarButton5";
+            this.BtnNew.DrawBorder = false;
+            this.BtnNew.DrawText = true;
+            this.BtnNew.EnableBorderHighlight = true;
+            this.BtnNew.EnableElementShadow = false;
+            this.BtnNew.EnableFocusBorder = true;
+            this.BtnNew.EnableHighlight = true;
+            this.BtnNew.EnableRippleAnimation = true;
+            this.BtnNew.Font = new System.Drawing.Font("Traditional Arabic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnNew.Image = global::Real_Estate_Management.Properties.Resources.BtnAddNew;
+            this.BtnNew.Name = "BtnNew";
+            this.BtnNew.Tag = "إنشاء بطاقة جديدة";
+            this.BtnNew.Text = "جديد";
+            this.BtnNew.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.BtnNew.TextOrientation = System.Windows.Forms.Orientation.Horizontal;
+            this.BtnNew.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            this.BtnNew.UseCompatibleTextRendering = false;
             // 
             // BtnEdit
             // 
@@ -1766,32 +1723,153 @@
             this.BtnExit.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
             this.BtnExit.UseCompatibleTextRendering = false;
             // 
-            // radLblHint
+            // tbBillBodyTableAdapter
             // 
-            this.radLblHint.AutoSize = false;
-            this.radLblHint.Dock = System.Windows.Forms.DockStyle.Top;
-            this.radLblHint.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLblHint.ForeColor = System.Drawing.Color.Black;
-            this.radLblHint.Location = new System.Drawing.Point(0, 0);
-            this.radLblHint.Name = "radLblHint";
-            this.radLblHint.Size = new System.Drawing.Size(1152, 58);
-            this.radLblHint.TabIndex = 11512157;
-            this.radLblHint.Text = "عقد بيع أرض";
-            this.radLblHint.TextAlignment = System.Drawing.ContentAlignment.TopRight;
+            this.tbBillBodyTableAdapter.ClearBeforeFill = true;
             // 
-            // MainContainer
+            // DataGridBillBody
             // 
-            this.MainContainer.AutoScroll = true;
-            this.MainContainer.Controls.Add(this.GridView1);
-            this.MainContainer.Controls.Add(this.radPanel1);
-            this.MainContainer.Controls.Add(this.radPanel2);
-            this.MainContainer.Controls.Add(this.dataNavigator1);
-            this.MainContainer.Controls.Add(this.radLblHint);
-            this.MainContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainContainer.Location = new System.Drawing.Point(0, 0);
-            this.MainContainer.Name = "MainContainer";
-            this.MainContainer.Size = new System.Drawing.Size(1152, 764);
-            this.MainContainer.TabIndex = 11512158;
+            this.DataGridBillBody.AllowShowFocusCues = true;
+            this.DataGridBillBody.AutoGenerateHierarchy = true;
+            this.DataGridBillBody.AutoScroll = true;
+            this.DataGridBillBody.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DataGridBillBody.EnableCodedUITests = true;
+            this.DataGridBillBody.EnableCustomDrawing = true;
+            this.DataGridBillBody.EnableCustomGrouping = true;
+            this.DataGridBillBody.EnableCustomSorting = true;
+            this.DataGridBillBody.EnableKeyMap = true;
+            this.DataGridBillBody.EnableKineticScrolling = true;
+            this.DataGridBillBody.Location = new System.Drawing.Point(0, 196);
+            // 
+            // 
+            // 
+            this.DataGridBillBody.MasterTemplate.AllowRowReorder = true;
+            this.DataGridBillBody.MasterTemplate.AllowSearchRow = true;
+            this.DataGridBillBody.MasterTemplate.AutoExpandGroups = true;
+            gridViewTextBoxColumn41.DataType = typeof(System.Guid);
+            gridViewTextBoxColumn41.FieldName = "guid";
+            gridViewTextBoxColumn41.HeaderText = "guid";
+            gridViewTextBoxColumn41.IsAutoGenerated = true;
+            gridViewTextBoxColumn41.Name = "guid";
+            gridViewTextBoxColumn42.DataType = typeof(System.Guid);
+            gridViewTextBoxColumn42.FieldName = "parentguid";
+            gridViewTextBoxColumn42.HeaderText = "parentguid";
+            gridViewTextBoxColumn42.IsAutoGenerated = true;
+            gridViewTextBoxColumn42.Name = "parentguid";
+            gridViewTextBoxColumn43.DataType = typeof(System.Guid);
+            gridViewTextBoxColumn43.FieldName = "landguid";
+            gridViewTextBoxColumn43.HeaderText = "landguid";
+            gridViewTextBoxColumn43.IsAutoGenerated = true;
+            gridViewTextBoxColumn43.Name = "landguid";
+            gridViewDecimalColumn5.DataType = typeof(int);
+            gridViewDecimalColumn5.FieldName = "number";
+            gridViewDecimalColumn5.HeaderText = "number";
+            gridViewDecimalColumn5.IsAutoGenerated = true;
+            gridViewDecimalColumn5.Name = "number";
+            gridViewDecimalColumn6.DataType = typeof(int);
+            gridViewDecimalColumn6.FieldName = "contractno";
+            gridViewDecimalColumn6.HeaderText = "contractno";
+            gridViewDecimalColumn6.IsAutoGenerated = true;
+            gridViewDecimalColumn6.Name = "contractno";
+            gridViewDecimalColumn7.FieldName = "price";
+            gridViewDecimalColumn7.HeaderText = "price";
+            gridViewDecimalColumn7.IsAutoGenerated = true;
+            gridViewDecimalColumn7.Name = "price";
+            gridViewTextBoxColumn44.FieldName = "discounttotaltext";
+            gridViewTextBoxColumn44.HeaderText = "discounttotaltext";
+            gridViewTextBoxColumn44.IsAutoGenerated = true;
+            gridViewTextBoxColumn44.Name = "discounttotaltext";
+            gridViewDecimalColumn8.FieldName = "discounttotal";
+            gridViewDecimalColumn8.HeaderText = "discounttotal";
+            gridViewDecimalColumn8.IsAutoGenerated = true;
+            gridViewDecimalColumn8.Name = "discounttotal";
+            gridViewDecimalColumn9.FieldName = "discounttotalvalue";
+            gridViewDecimalColumn9.HeaderText = "discounttotalvalue";
+            gridViewDecimalColumn9.IsAutoGenerated = true;
+            gridViewDecimalColumn9.Name = "discounttotalvalue";
+            gridViewDecimalColumn10.FieldName = "buildingfeevalue";
+            gridViewDecimalColumn10.HeaderText = "buildingfeevalue";
+            gridViewDecimalColumn10.IsAutoGenerated = true;
+            gridViewDecimalColumn10.Name = "buildingfeevalue";
+            gridViewDecimalColumn11.FieldName = "workfeevalue";
+            gridViewDecimalColumn11.HeaderText = "workfeevalue";
+            gridViewDecimalColumn11.IsAutoGenerated = true;
+            gridViewDecimalColumn11.Name = "workfeevalue";
+            gridViewDecimalColumn12.FieldName = "vatvalue";
+            gridViewDecimalColumn12.HeaderText = "vatvalue";
+            gridViewDecimalColumn12.IsAutoGenerated = true;
+            gridViewDecimalColumn12.Name = "vatvalue";
+            gridViewTextBoxColumn45.FieldName = "discountfeetext";
+            gridViewTextBoxColumn45.HeaderText = "discountfeetext";
+            gridViewTextBoxColumn45.IsAutoGenerated = true;
+            gridViewTextBoxColumn45.Name = "discountfeetext";
+            gridViewDecimalColumn13.FieldName = "discountfee";
+            gridViewDecimalColumn13.HeaderText = "discountfee";
+            gridViewDecimalColumn13.IsAutoGenerated = true;
+            gridViewDecimalColumn13.Name = "discountfee";
+            gridViewDecimalColumn14.FieldName = "discountfeevalue";
+            gridViewDecimalColumn14.HeaderText = "discountfeevalue";
+            gridViewDecimalColumn14.IsAutoGenerated = true;
+            gridViewDecimalColumn14.Name = "discountfeevalue";
+            gridViewDecimalColumn15.FieldName = "total";
+            gridViewDecimalColumn15.HeaderText = "total";
+            gridViewDecimalColumn15.IsAutoGenerated = true;
+            gridViewDecimalColumn15.Name = "total";
+            gridViewDecimalColumn16.FieldName = "totalnet";
+            gridViewDecimalColumn16.HeaderText = "totalnet";
+            gridViewDecimalColumn16.IsAutoGenerated = true;
+            gridViewDecimalColumn16.Name = "totalnet";
+            gridViewTextBoxColumn46.FieldName = "note";
+            gridViewTextBoxColumn46.HeaderText = "note";
+            gridViewTextBoxColumn46.IsAutoGenerated = true;
+            gridViewTextBoxColumn46.Name = "note";
+            gridViewTextBoxColumn47.FieldName = "status";
+            gridViewTextBoxColumn47.HeaderText = "status";
+            gridViewTextBoxColumn47.IsAutoGenerated = true;
+            gridViewTextBoxColumn47.Name = "status";
+            this.DataGridBillBody.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
+            gridViewTextBoxColumn41,
+            gridViewTextBoxColumn42,
+            gridViewTextBoxColumn43,
+            gridViewDecimalColumn5,
+            gridViewDecimalColumn6,
+            gridViewDecimalColumn7,
+            gridViewTextBoxColumn44,
+            gridViewDecimalColumn8,
+            gridViewDecimalColumn9,
+            gridViewDecimalColumn10,
+            gridViewDecimalColumn11,
+            gridViewDecimalColumn12,
+            gridViewTextBoxColumn45,
+            gridViewDecimalColumn13,
+            gridViewDecimalColumn14,
+            gridViewDecimalColumn15,
+            gridViewDecimalColumn16,
+            gridViewTextBoxColumn46,
+            gridViewTextBoxColumn47});
+            this.DataGridBillBody.MasterTemplate.DataSource = this.tbBillBodyBindingSource;
+            this.DataGridBillBody.MasterTemplate.EnableAlternatingRowColor = true;
+            this.DataGridBillBody.MasterTemplate.EnableCustomGrouping = true;
+            this.DataGridBillBody.MasterTemplate.EnableCustomSorting = true;
+            this.DataGridBillBody.MasterTemplate.ShowChildViewCaptions = true;
+            this.DataGridBillBody.MasterTemplate.ShowGroupedColumns = true;
+            this.DataGridBillBody.MasterTemplate.ShowHeaderCellButtons = true;
+            gridViewSummaryItem1.Aggregate = Telerik.WinControls.UI.GridAggregateFunction.Sum;
+            gridViewSummaryItem1.AggregateExpression = null;
+            gridViewSummaryItem1.FormatString = "{0}";
+            gridViewSummaryItem1.Name = "total";
+            this.DataGridBillBody.MasterTemplate.SummaryRowsBottom.Add(new Telerik.WinControls.UI.GridViewSummaryRowItem(new Telerik.WinControls.UI.GridViewSummaryItem[] {
+                gridViewSummaryItem1}));
+            this.DataGridBillBody.MasterTemplate.ViewDefinition = tableViewDefinition4;
+            this.DataGridBillBody.Name = "DataGridBillBody";
+            this.DataGridBillBody.ShowChildViewCaptions = true;
+            this.DataGridBillBody.ShowHeaderCellButtons = true;
+            this.DataGridBillBody.Size = new System.Drawing.Size(1152, 369);
+            this.DataGridBillBody.SynchronizeCurrentRowInSplitMode = true;
+            this.DataGridBillBody.TabIndex = 11512160;
+            this.DataGridBillBody.ThemeName = "Material";
+            this.DataGridBillBody.TitleText = "بيانات العقد";
+            this.DataGridBillBody.UseScrollbarsInHierarchy = true;
             // 
             // FrmBillHeader
             // 
@@ -1815,47 +1893,49 @@
             ((System.ComponentModel.ISupportInitialize)(this.CmbBuyerData)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radDropDownList1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radDropDownList2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtRegDate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dtpregdate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radCmbPlanGuid.EditorControl.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radCmbPlanGuid.EditorControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radCmbPlanGuid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BtnAddFromBlock)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GridView1.MasterTemplate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radBtnAddFromBlock)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbBillBodyBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.realestatebrokermanagementDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).EndInit();
             this.radPanel2.ResumeLayout(false);
             this.radPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtTotalNet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtPrice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radTxtPrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txtlastaction)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtTotal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txttotaldiscounttotal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txttotalworkfee)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtNetPrice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radTxtNetPrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txttotaldiscountfee)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtNetPiceNetWorkFeeVAT)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radTxtNetPiceNetWorkFeeVAT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtotalworkfeeDiscount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radTxttotalworkfeeDiscount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtTotalVat)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtNetPrice2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radTxtNetPrice2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Txttotalbuidlingfee)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtNetPiceNetWorkFee)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radTxtNetPiceNetWorkFee)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataNavigator1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLblHint)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainContainer)).EndInit();
             this.MainContainer.ResumeLayout(false);
             this.MainContainer.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BindingNavigatorClient)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridBillBody.MasterTemplate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridBillBody)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1868,38 +1948,43 @@
         private Telerik.WinControls.UI.RadMultiColumnComboBox CmbBuyerData;
         private Telerik.WinControls.UI.RadDropDownList radDropDownList1;
         private Telerik.WinControls.UI.RadDropDownList radDropDownList2;
-        private Telerik.WinControls.UI.RadDateTimePicker dtRegDate;
+        private Telerik.WinControls.UI.RadDateTimePicker Dtpregdate;
         private Telerik.WinControls.UI.RadLabel radLabel8;
         private Telerik.WinControls.UI.RadMultiColumnComboBox radCmbPlanGuid;
-        private Telerik.WinControls.UI.RadButton BtnAddFromBlock;
-        public Telerik.WinControls.UI.RadGridView GridView1;
+        private Telerik.WinControls.UI.RadButton radBtnAddFromBlock;
         private Telerik.WinControls.UI.RadPanel radPanel2;
         private Telerik.WinControls.UI.RadLabel radLabel1;
         private Telerik.WinControls.UI.RadSpinEditor TxtTotalNet;
-        private Telerik.WinControls.UI.RadSpinEditor TxtPrice;
+        private Telerik.WinControls.UI.RadSpinEditor radTxtPrice;
         private Telerik.WinControls.UI.RadTextBox Txtlastaction;
         private Telerik.WinControls.UI.RadSpinEditor TxtTotal;
         private Telerik.WinControls.UI.RadSpinEditor Txttotaldiscounttotal;
         private Telerik.WinControls.UI.RadLabel radLabel13;
         private Telerik.WinControls.UI.RadLabel radLabel2;
         private Telerik.WinControls.UI.RadSpinEditor Txttotalworkfee;
-        private Telerik.WinControls.UI.RadSpinEditor TxtNetPrice;
+        private Telerik.WinControls.UI.RadSpinEditor radTxtNetPrice;
         private Telerik.WinControls.UI.RadLabel radLabel11;
         private Telerik.WinControls.UI.RadSpinEditor Txttotaldiscountfee;
         private Telerik.WinControls.UI.RadLabel radLabel9;
         private Telerik.WinControls.UI.RadLabel radLabel4;
-        private Telerik.WinControls.UI.RadSpinEditor TxtNetPiceNetWorkFeeVAT;
+        private Telerik.WinControls.UI.RadSpinEditor radTxtNetPiceNetWorkFeeVAT;
         private Telerik.WinControls.UI.RadLabel radLabel7;
         private Telerik.WinControls.UI.RadLabel radLabel6;
-        private Telerik.WinControls.UI.RadSpinEditor TxtotalworkfeeDiscount;
+        private Telerik.WinControls.UI.RadSpinEditor radTxttotalworkfeeDiscount;
         private Telerik.WinControls.UI.RadLabel radLabel12;
         private Telerik.WinControls.UI.RadSpinEditor TxtTotalVat;
-        private Telerik.WinControls.UI.RadSpinEditor TxtNetPrice2;
+        private Telerik.WinControls.UI.RadSpinEditor radTxtNetPrice2;
         private Telerik.WinControls.UI.RadSpinEditor Txttotalbuidlingfee;
-        private Telerik.WinControls.UI.RadSpinEditor TxtNetPiceNetWorkFee;
+        private Telerik.WinControls.UI.RadSpinEditor radTxtNetPiceNetWorkFee;
         private Telerik.WinControls.UI.RadLabel radLabel10;
         private Telerik.WinControls.UI.RadLabel radLabel3;
-        private Telerik.WinControls.UI.RadBindingNavigator dataNavigator1;
+        private Telerik.WinControls.UI.RadLabel radLblHint;
+        private Telerik.WinControls.UI.RadPanel MainContainer;
+        private Telerik.WinControls.Themes.MaterialTheme materialTheme1;
+        private System.Windows.Forms.BindingSource tbBillBodyBindingSource;
+        private realestatebrokermanagementDataSet realestatebrokermanagementDataSet;
+        private realestatebrokermanagementDataSetTableAdapters.tbBillBodyTableAdapter tbBillBodyTableAdapter;
+        private Telerik.WinControls.UI.RadBindingNavigator BindingNavigatorClient;
         private Telerik.WinControls.UI.CommandBarRowElement commandBarRowElement1;
         private Telerik.WinControls.UI.CommandBarStripElement commandBarStripElement1;
         private Telerik.WinControls.UI.CommandBarButton BtnFirst;
@@ -1922,12 +2007,11 @@
         private Telerik.WinControls.UI.CommandBarSeparator commandBarSeparator8;
         private Telerik.WinControls.UI.CommandBarButton BtnDelete;
         private Telerik.WinControls.UI.CommandBarSeparator commandBarSeparator9;
-        private Telerik.WinControls.UI.CommandBarDropDownButton commandBarDropDownButton1;
+        private Telerik.WinControls.UI.CommandBarDropDownButton BtnPrint;
         private Telerik.WinControls.UI.CommandBarSeparator commandBarSeparator7;
-        private Telerik.WinControls.UI.CommandBarButton BtnAdd;
+        private Telerik.WinControls.UI.CommandBarButton BtnNew;
         private Telerik.WinControls.UI.CommandBarButton BtnEdit;
         private Telerik.WinControls.UI.CommandBarButton BtnExit;
-        private Telerik.WinControls.UI.RadLabel radLblHint;
-        private Telerik.WinControls.UI.RadPanel MainContainer;
+        private Telerik.WinControls.UI.RadGridView DataGridBillBody;
     }
 }

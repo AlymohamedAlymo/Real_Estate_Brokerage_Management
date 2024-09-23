@@ -96,8 +96,8 @@ namespace Real_Estate_Management
             {
                 Guid guid = (Guid)DataGridMain["guid", DataGridMain.CurrentRow.Index].Value;
                 tbBillheader mat = tbBillheader.FindBy("Guid", guid);
-                FrmBillHeader frm = new FrmBillHeader(guid, false, mat.billtype, new List<tbLand>());
-                frm.ShowDialog();
+                FrmBillHeader frm = new FrmBillHeader(guid, mat.billtype, new List<tbLand>(), null);
+                frm.Show();
             }
             catch
             {
@@ -394,7 +394,7 @@ namespace Real_Estate_Management
         {
             Guid guid = (Guid)DataGridMain["guid", DataGridMain.CurrentRow.Index].Value;
             tbBillheader bill = tbBillheader.FindBy("Guid", guid);
-            FrmBillHeader frm = new FrmBillHeader(guid, false, bill.billtype, new List<tbLand>());
+            FrmBillHeader frm = new FrmBillHeader(guid, bill.billtype, new List<tbLand>(), null);
             frm.Show();
         }
 

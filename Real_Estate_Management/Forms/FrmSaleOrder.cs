@@ -1643,8 +1643,8 @@ namespace Real_Estate_Management
                 tbLand land = tbLand.FindBy("Guid", guid);
                 lstland.Add(land);
             }
-            FrmBillHeader frm = new FrmBillHeader(Guid.Empty, true, 0, lstland);
-            frm.Show(this);
+            FrmBillHeader frm = new FrmBillHeader(Guid.Empty, 0, lstland, null);
+            frm.Show();
         }
 
         private void TxtSelectBuyer_TextChanged(object sender, EventArgs e)

@@ -1,48 +1,19 @@
-﻿using Real_Estate_Management;
-using DevExpress.XtraEditors;
-using DevExpress.XtraEditors.Mask;
-using DevExpress.XtraGrid.Columns;
-using DevExpress.XtraGrid;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.Utils;
-using DevExpress.XtraGrid.Views.Grid;
-using DevExpress.XtraExport.Helpers;
-using DevExpress.XtraGrid.Views.Base;
-using DevExpress.XtraEditors.Controls;
-using DevExpress.Utils.Drawing.Helpers;
-using DevExpress.Data;
-using DevExpress.XtraBars.Navigation;
-using System.Windows.Forms.VisualStyles;
-using DevExpress.XtraGrid.Localization;
-using DevExpress.XtraGrid.Views.BandedGrid;
-using SmartArabXLSX.Drawing.Diagrams;
-using DevExpress.Printing.Core.PdfExport.Metafile;
-using DevExpress.XtraGrid.Controls;
-using DevExpress.XtraEditors.Repository;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.Database;
-using DevExpress.XtraEditors.Frames;
-using System.Collections.ObjectModel;
-using Microsoft.SqlServer.Management.Smo;
-using DevExpress.XtraGrid.Views.Grid.ViewInfo;
-using DevExpress.XtraGrid.Views.BandedGrid.ViewInfo;
-using DevExpress.Utils.Menu;
-using SmartArabXLSX.Office2010.CustomUI;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using FastReport;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.Text;
-using Real_Estate_Management.Helpers;
 using DoctorHelper.Helpers;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.Numeric;
 using DoctorERP.Helpers;
 using Telerik.WinControls.UI.Localization;
+using Telerik.WinControls.UI;
+using Telerik.WinControls;
+using Telerik.Windows.Diagrams.Core;
+using Real_Estate_Management.Data.DataBase;
+using DevExpress.XtraEditors;
+using DoctorHelper.Messages;
 namespace Real_Estate_Management
 {
     public partial class FrmBillHeader : UserControl
@@ -50,187 +21,552 @@ namespace Real_Estate_Management
 
         BindingSource bs;
         Guid guid;
-
         public WinformsDirtyTracking.DirtyTracker dirtytracker;
         bool isNew;
-
-
-        int billtype;
-        tbAgent DefOwner = new tbAgent();
+        //int BillType;
+        tbOwner DefOwner = new tbOwner();
         List<tbLand> SellLand;
         tbAgent Client = new tbAgent();
-        public FrmBillHeader(Guid guid, bool isNew, int billtype, List<tbLand> SellLand, tbAgent _Client)
+        bool AllowEditPrice = false;
+
+        private Guid CurrentGuid;
+        private bool IsLoad = true, IsNew = false, IsProgrammatic = false, IsDirty = false, ShowConfirmMSG = true;
+        public BindingSource Bs = new BindingSource();
+        private int CurrentPosition = 0, BillType;
+        private static readonly RadCallout callout = new RadCallout();
+
+        public FrmBillHeader(Guid _Guid, int _BillType, List<tbLand> _SellLand, tbAgent _Client)
         {
+
             InitializeComponent();
 
+            #region Initialize
 
-            this.SellLand = SellLand;
+            //BtnSentToPrinter.Click -= BtnPrint_Click;
+            //BtnSentToPrinter.Click += BtnPrint_Click;
+            //BtnPreview.Click -= MenuPreview_Click;
+            //BtnPreview.Click += MenuPreview_Click;
+            //BtnDesign.Click -= MenuDesign_Click;
+            //BtnDesign.Click += MenuDesign_Click;
+            //BtnImportExcel.Click -= BtnImport_Click;
+            //BtnImportExcel.Click += BtnImport_Click;
+            //BtnEcelExport.Click -= BtnExportExcel_Click;
+            //BtnEcelExport.Click += BtnExportExcel_Click;
+            //BtnPdfExport.Click -= BtnExportPdf_Click;
+            //BtnPdfExport.Click += BtnExportPdf_Click;
+            //BtnEmailExport.Click -= BtnSendEmail_Click;
+            //BtnEmailExport.Click += BtnSendEmail_Click;
+            //BtnWordExport.Click -= BtnExportWord_Click;
+            //BtnWordExport.Click += BtnExportWord_Click;
+            //BtnExportExcelData.Click -= BtnExportExcelData_Click;
+            //BtnExportExcelData.Click += BtnExportExcelData_Click;
+            Bs.PositionChanged += Bs_PositionChanged;
+            //RadFlyoutManager.FlyoutClosed -= this.RadFlyoutManager_FlyoutClosed;
+            //RadFlyoutManager.FlyoutClosed += this.RadFlyoutManager_FlyoutClosed;
+            //RadFlyoutManager.ContentCreated -= this.RadFlyoutManager_ContentCreated;
+            //RadFlyoutManager.ContentCreated += this.RadFlyoutManager_ContentCreated;
 
-            dirtytracker = new WinformsDirtyTracking.DirtyTracker(this);
-            this.guid = guid;
+            radLabel5.TextAlignment = ContentAlignment.MiddleCenter;
+            radLabel8.TextAlignment = ContentAlignment.MiddleCenter;
 
-            BtnEdit.Enabled = true;
-            BtnAdd.Enabled = false;
+            this.MainContainer.PanelElement.PanelFill.Visibility = ElementVisibility.Hidden;
+            this.MainContainer.BackgroundImage = Real_Estate_Management.Properties.Resources.Background;
+            this.MainContainer.BackgroundImageLayout = ImageLayout.Stretch;
 
-            this.isNew = isNew;
+            //this.radPanel1.PanelElement.PanelFill.Visibility = ElementVisibility.Hidden;
+            //this.radPanel1.BackgroundImage = Real_Estate_Management.Properties.Resources.Background;
+            //this.radPanel1.BackgroundImageLayout = ImageLayout.Stretch;
 
-            this.billtype = billtype;
+            //this.radPanel2.PanelElement.PanelFill.Visibility = ElementVisibility.Hidden;
+            //this.radPanel2.BackgroundImage = Real_Estate_Management.Properties.Resources.Background;
+            //this.radPanel2.BackgroundImageLayout = ImageLayout.Stretch;
+
+
+            var radBarButton = new[] { BtnResfresh, BtnDelete, BtnNew, BtnEdit, BtnExit };
+            radBarButton.ForEach(control =>
+            {
+                control.ScreenTip = new RadOffice2007ScreenTipElement
+                {
+                    CaptionLabel = { Text = control.Text },
+                    MainTextLabel = { Text = control.Tag.ToString() }
+                };
+            });
+
+            var radDropDownButton = new[] { BtnImport, BtnExport, BtnPrint };
+            radDropDownButton.ForEach(control =>
+            {
+                control.ScreenTip = new RadOffice2007ScreenTipElement
+                {
+                    CaptionLabel = { Text = control.Text },
+                    MainTextLabel = { Text = control.Tag.ToString() }
+                };
+            });
+
+            //var radMenuItem = new[] { BtnImportExcel, BtnExportExcelData, BtnEcelExport, BtnEmailExport, BtnPdfExport, BtnWordExport, BtnSentToPrinter, BtnDesign, BtnPreview };
+            //radMenuItem.ForEach(control =>
+            //{
+            //    control.ScreenTip = new RadOffice2007ScreenTipElement
+            //    {
+            //        CaptionLabel = { Text = control.Text },
+            //        MainTextLabel = { Text = control.Tag.ToString() }
+            //    };
+            //});
+            //radPageView1.SelectedPage = PageHome;
+
+
+            callout.ArrowType = Telerik.WinControls.UI.Callout.CalloutArrowType.Triangle;
+            callout.ArrowDirection = Telerik.WinControls.ArrowDirection.Right;
+            callout.AutoClose = true;
+            callout.CalloutType = Telerik.WinControls.UI.Callout.CalloutType.RoundedRectangle;
+            callout.DropShadow = true;
+
+
+            RadGridLocalizationProvider.CurrentProvider = new MyArabicRadGridLocalizationProvider();
+            DataGridBillBody.TableElement.UpdateView();
+
+
+            #endregion
+
+            CurrentGuid = _Guid;
+            SellLand = _SellLand;
+            BillType = _BillType;
             Client = _Client;
 
-            tbAgent.Fill("AgentType", 0);
-            DefOwner = tbAgent.lstData[0];
-
-            //TxtSelectOwner.Tag = DefOwner;
-
-            if (billtype == 0)
-            {
-                this.Text = "عقد بيع";
-                radLblHint.Text = "عقد بيع أرض";
-            }
-            else if (billtype == 1)
-            {
-                this.Text = "مرتجع بيع";
-                radLblHint.Text = "عقد مرتجع بيع أرض";
-            }
-            else if (billtype == 2)
-            {
-                //LblAgent.Text = "المشتري";
-                //LblOwner.Text = "البائع";
-                CmbBuyerData.Enabled = CmbOwnerData.Enabled = false;
-                this.Text = "عقد بيع خارجي (صوري)";
-                radLblHint.Text = "عقد بيع خارجي (صوري)";
-            }
-
-            InitReadyGrid();
-
-            FillCmb();
-
+            SetData();
 
 
         }
 
-        public FrmBillHeader(Guid guid, bool isNew, int billtype, List<tbLand> SellLand)
+        private void SetData()
         {
-            InitializeComponent();
+            IsLoad = true;
 
-
-            this.SellLand = SellLand;
-
-            dirtytracker = new WinformsDirtyTracking.DirtyTracker(this);
-            this.guid = guid;
-
-            BtnEdit.Enabled = true;
-            BtnAdd.Enabled = false;
-
-            this.isNew = isNew;
-
-            this.billtype = billtype;
-
-            tbAgent.Fill("AgentType", 0);
-            DefOwner = tbAgent.lstData[0];
-
-            //TxtSelectBuyer.Tag = new tbAgent();
-            CmbOwnerData.SelectedItem = DefOwner;
-
-            if (billtype == 0)
+            if (BillType == 0)
             {
-                 this.Text = "عقد بيع";
+                Text = "عقد بيع";
                 radLblHint.Text = "عقد بيع أرض";
             }
-            else if (billtype == 1)
+            else if (BillType == 1)
             {
-                this.Text = "مرتجع بيع";
+                Text = "مرتجع بيع";
                 radLblHint.Text = "عقد مرتجع بيع أرض";
             }
-            else if (billtype == 2)
+            else if (BillType == 2)
             {
                 //LblAgent.Text = "المشتري";
                 //LblOwner.Text = "البائع";
                 CmbBuyerData.Enabled = CmbOwnerData.Enabled = false;
-                this.Text = "عقد بيع خارجي (صوري)";
+                Text = "عقد بيع خارجي (صوري)";
                 radLblHint.Text = "عقد بيع خارجي (صوري)";
             }
 
-            InitReadyGrid();
 
-            FillCmb();
+            if (FrmMain.PlanGuid != Guid.Empty)
+            {
+                //tbBillheader.Fill("PlanGuid", FrmMain.PlanGuid);
+                //TBOwner_Rep.Fill("PlanGuid", FrmMain.PlanGuid);
+            }
+            else
+            {
+                tbBillheader.Fill("BillType", BillType);
+                //TBOwner_Rep.Fill();
+            }
+
+            Bs.DataSource = tbBillheader.lstData;
+            BindingNavigatorClient.BindingSource = Bs;
+            Bs.AddNew();
+            Bs.MoveLast();
+
+
+            TbPlans_Rep.Fill();
+            radCmbPlanGuid.DataSource = TbPlans_Rep.lstData;
+            radCmbPlanGuid.ValueMember = "Guid";
+            radCmbPlanGuid.DisplayMember = "Name";
+            radCmbPlanGuid.SelectedValue = FrmMain.PlanGuid;
+            radCmbPlanGuid.Columns[0].IsVisible = false;
+            radCmbPlanGuid.Columns[1].IsVisible = false;
+            radCmbPlanGuid.Columns[2].IsVisible = false;
+            radCmbPlanGuid.Columns[7].IsVisible = false;
+            radCmbPlanGuid.Columns[8].IsVisible = false;
+
+            radCmbPlanGuid.Columns[3].HeaderText = "رقم الصك";
+            radCmbPlanGuid.Columns[4].HeaderText = "اسم المخطط";
+            radCmbPlanGuid.Columns[5].HeaderText = "المدينة";
+            radCmbPlanGuid.Columns[6].HeaderText = "الموقع";
+
+            TBOwner_Rep.Fill();
+            CmbOwnerData.DataSource = TBOwner_Rep.lstData;
+            CmbOwnerData.ValueMember = "Guid";
+            CmbOwnerData.DisplayMember = "Name";
+            DefOwner = TBOwner_Rep.lstData[0];
+
+            tbAgent.Fill();
+            CmbBuyerData.DataSource = tbAgent.lstData;
+            CmbBuyerData.ValueMember = "Guid";
+            CmbBuyerData.DisplayMember = "Name";
+
+            List<RadPanel> panels = new List<RadPanel>() { radPanel1, radPanel2 };
+            foreach (var panel in panels)
+            {
+                var controls = panel.Controls.OfType<RadControl>().Where(control => !control.Name.StartsWith("rad"));
+                foreach (var control in controls)
+                {
+
+                    control.DataBindings.Clear();
+                    string dataMember = control.Name.Remove(0, 3);
+                    string propertyName = control is RadSpinEditor ? "Value" : control is RadCheckBox ? "Checked"
+                        : control is RadMultiColumnComboBox ? "SelectedValue" : "Text";
+                    Binding ControlBinding = new System.Windows.Forms.Binding(propertyName, Bs, dataMember);
+                    control.DataBindings.Add(ControlBinding);
+                }
+
+            }
+
+            IsLoad = false;
+
+            if (IsNew)
+            {
+                BtnNew.PerformClick();
+                return;
+            }
+
+            if (SellLand != null && SellLand.Count > 0)
+            {
+                radBtnAddFromBlock.PerformClick();
+                return;
+            }
+
+            if (!CurrentGuid.Equals(Guid.Empty))
+            {
+                var Obj = tbBillheader.lstData.Where(u => u.guid == CurrentGuid).ToList();
+                if (Obj.Any())
+                {
+                    FillDataGridBillBody(CurrentGuid);
+                    var index = tbBillheader.lstData.IndexOf(Obj.First());
+                    Bs.Position = index;
+                    return;
+                }
+            }
+
+            Bs.MoveLast();
 
         }
+
+        public void FillDataGridBillBody(Guid ParentGuid)
+        {
+
+            tbBillBody.Fill("ParentGuid", ParentGuid);
+
+            DataGridBillBody.DataSource = tbBillBody.lstData;
+
+            //DataGridBillBody.Columns[0].IsVisible = false;
+            //DataGridBillBody.Columns[1].IsVisible = false;
+            //DataGridBillBody.Columns[2].IsVisible = false;
+            //DataGridBillBody.Columns[3].IsVisible = false;
+
+            //DataGridBillBody.Columns[4].HeaderText = "اسم الشريك";
+            //DataGridBillBody.Columns[5].HeaderText = "الرقم القومي";
+            //DataGridBillBody.Columns[6].HeaderText = "الموبايل";
+            //DataGridBillBody.Columns[7].HeaderText = "ملاحظات";
+
+            DataGridBillBody.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;
+
+
+            foreach (GridViewDataColumn col in this.DataGridBillBody.Columns)
+            {
+                col.TextAlignment = ContentAlignment.MiddleCenter;
+                col.HeaderTextAlignment = ContentAlignment.MiddleCenter;
+            }
+
+        }
+
+
+        //public FrmBillHeader(Guid guid, bool isNew, int BillType, List<tbLand> SellLand, tbAgent _Client)
+        //{
+        //    InitializeComponent();
+
+
+        //    this.SellLand = SellLand;
+
+        //    dirtytracker = new WinformsDirtyTracking.DirtyTracker(this);
+        //    this.guid = guid;
+
+        //    BtnEdit.Enabled = true;
+        //    BtnNew.Enabled = false;
+
+        //    this.isNew = isNew;
+
+        //    this.BillType = BillType;
+        //    Client = _Client;
+
+        //    tbAgent.Fill("AgentType", 0);
+        //    //DefOwner = tbAgent.lstData[0];
+
+        //    //TxtSelectOwner.Tag = DefOwner;
+
+        //    if (BillType == 0)
+        //    {
+        //        this.Text = "عقد بيع";
+        //        radLblHint.Text = "عقد بيع أرض";
+        //    }
+        //    else if (BillType == 1)
+        //    {
+        //        this.Text = "مرتجع بيع";
+        //        radLblHint.Text = "عقد مرتجع بيع أرض";
+        //    }
+        //    else if (BillType == 2)
+        //    {
+        //        //LblAgent.Text = "المشتري";
+        //        //LblOwner.Text = "البائع";
+        //        CmbBuyerData.Enabled = CmbOwnerData.Enabled = false;
+        //        this.Text = "عقد بيع خارجي (صوري)";
+        //        radLblHint.Text = "عقد بيع خارجي (صوري)";
+        //    }
+
+        //    //InitReadyGrid();
+
+        //    //FillCmb();
+
+
+
+        //}
+
+        //public FrmBillHeader(Guid guid, bool isNew, int BillType, List<tbLand> SellLand)
+        //{
+        //    InitializeComponent();
+
+
+        //    this.SellLand = SellLand;
+
+        //    dirtytracker = new WinformsDirtyTracking.DirtyTracker(this);
+        //    this.guid = guid;
+
+        //    BtnEdit.Enabled = true;
+        //    BtnNew.Enabled = false;
+
+        //    this.isNew = isNew;
+
+        //    this.BillType = BillType;
+
+        //    tbAgent.Fill("AgentType", 0);
+        //    DefOwner = tbAgent.lstData[0];
+
+        //    //TxtSelectBuyer.Tag = new tbAgent();
+        //    CmbOwnerData.SelectedItem = DefOwner;
+
+        //    if (BillType == 0)
+        //    {
+        //         this.Text = "عقد بيع";
+        //        radLblHint.Text = "عقد بيع أرض";
+        //    }
+        //    else if (BillType == 1)
+        //    {
+        //        this.Text = "مرتجع بيع";
+        //        radLblHint.Text = "عقد مرتجع بيع أرض";
+        //    }
+        //    else if (BillType == 2)
+        //    {
+        //        //LblAgent.Text = "المشتري";
+        //        //LblOwner.Text = "البائع";
+        //        CmbBuyerData.Enabled = CmbOwnerData.Enabled = false;
+        //        this.Text = "عقد بيع خارجي (صوري)";
+        //        radLblHint.Text = "عقد بيع خارجي (صوري)";
+        //    }
+
+        //    InitReadyGrid();
+
+        //    FillCmb();
+
+        //}
 
         private void FrmReadyItems_Load(object sender, EventArgs e)
         {
-            InitBinding();
+            //InitBinding();
 
-            if (isNew)
-            {
-                BtnAdd.PerformClick();
+            //if (isNew)
+            //{
+            //    BtnNew.PerformClick();
 
-                BtnEdit.Enabled = false;
-                BtnAdd.Enabled = true;
+            //    BtnEdit.Enabled = false;
+            //    BtnNew.Enabled = true;
 
-            }
+            //}
 
-            if (SellLand.Count > 0)
-            {
-                BtnAddFromBlock.PerformClick();
-            }
-
-
-            CmbBuyerData.SelectedItem = Client;
+            //if (SellLand.Count > 0)
+            //{
+            //    BtnAddFromBlock.PerformClick();
+            //}
 
 
-            dirtytracker.MarkAsClean();
+            //CmbBuyerData.SelectedItem = Client;
+
+
+            //dirtytracker.MarkAsClean();
         }
 
         #region Binding
-        private void InitBinding()
+        //private void InitBinding()
+        //{
+        //    tbBillheader.Fill("BillType", BillType);
+        //    bs = new BindingSource(tbBillheader.lstData, string.Empty);
+
+        //    dataNavigator1.BindingSource = bs;
+
+        //    bs.PositionChanged += new EventHandler(bs_PositionChanged);
+        //    FillForm();
+        //    bs.MoveLast();
+
+        //    //tbBillBody billbody = tbBillBody.FindBy("LandGuid", firstlandguid, "مباع");
+        //    //tbBillheader bill = tbBillheader.FindBy("Guid", billbody.parentguid);
+        //    //tbAgent agent = tbAgent.FindBy("Guid", bill.buyerguid);
+
+
+        //    if (!guid.Equals(Guid.Empty))
+        //    {
+        //        bs.Position = tbBillheader.lstData.FindIndex(delegate (tbBillheader obj) { return obj.guid == guid; });
+        //    }
+
+
+
+        //}
+        private void Bs_PositionChanged(object sender, EventArgs e)
         {
-            tbBillheader.Fill("billtype", billtype);
-            bs = new BindingSource(tbBillheader.lstData, string.Empty);
+            if (IsLoad) { return; }
+            tbBillheader Obj = (tbBillheader)Bs.Current;
 
-            dataNavigator1.BindingSource = bs;
+            if (Bs.Current == null) { return; }
+            if (Obj.guid.Equals(Guid.Empty)) { return; }
+            CurrentPosition = Bs.Position;
 
-            bs.PositionChanged += new EventHandler(bs_PositionChanged);
-            FillForm();
-            bs.MoveLast();
-
-
-
-            if (!guid.Equals(Guid.Empty))
+            if (IsDirty && !IsProgrammatic)
             {
-                bs.Position = tbBillheader.lstData.FindIndex(delegate (tbBillheader obj) { return obj.guid == guid; });
-            }
-
-
-
-        }
-
-        private void bs_PositionChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                tbBillheader obj = (tbBillheader)bs.Current;
-
-                if (obj.guid.Equals(Guid.Empty))
+                if (IsNew)
                 {
-                    BtnAdd.Enabled = true;
-                    BtnEdit.Enabled = false;
-                    BtnDelete.Enabled = false;
-
+                    Bs.MoveLast();
                 }
 
-                FillForm();
-
-                dirtytracker.MarkAsClean();
-
+                IsProgrammatic = true;
+                Bs.Position = CurrentPosition - 1;
+                TackAction();
+                IsProgrammatic = false;
 
             }
-            catch
+            FillDataGridBillBody(Obj.guid);
+            BtnDelete.Enabled = true;
+            BtnEdit.Enabled = true;
+            SetReadOnly(true);
+
+        }
+
+        public void TackAction()
+        {
+            bool Confirm = Messages.MessageWarning("بطاقة المالك", "هل تريد حفظ التغيرات ؟", "إذا ضغت علي زر نعم سوف يتم حفظ البيان المفتوح");
+            if (Confirm)
             {
-                CheckAllow(new tbBillheader());
-                dirtytracker.MarkAsClean();
+                ShowConfirmMSG = false;
+                if (BtnNew.Text == "حفظ") { BtnNew.PerformClick(); }
+                else if (BtnEdit.Text == "حفظ") { BtnEdit.PerformClick(); }
+                ShowConfirmMSG = true;
+
+            }
+            else if (!Confirm)
+            {
+                if (BtnNew.Text == "حفظ")
+                {
+                    IsProgrammatic = true;
+                    Bs.MoveLast();
+                    BtnNew.Text = "جديد";
+                    BtnNew.ScreenTip.Text = "إضافة بطاقة مالك جديدة";
+                    BtnNew.Image = Real_Estate_Management.Properties.Resources.BtnAddNew;
+                    SetReadOnly(true);
+                    IsProgrammatic = false;
+                    IsDirty = false;
+                    IsNew = false;
+                    SetData();
+
+                }
+                else if (BtnEdit.Text == "حفظ")
+                {
+                    IsProgrammatic = true;
+                    Bs.CancelEdit();
+                    BtnEdit.Text = "تعديل";
+                    BtnEdit.ScreenTip.Text = "تعديل بيانات بطاقة مالك";
+                    BtnEdit.Image = Real_Estate_Management.Properties.Resources.BtnEdite;
+
+                    SetReadOnly(true);
+                    IsProgrammatic = false;
+                    IsDirty = false;
+                    IsNew = false;
+                    SetData();
+                }
             }
         }
+
+        private void SetReadOnly(bool isReadOnly)
+        {
+            HashSet<RadControl> notUsedControls = new HashSet<RadControl> { Txtlastaction };
+            List<RadPanel> panels = new List<RadPanel>() { radPanel1, radPanel2 };
+            DataGridBillBody.ReadOnly = isReadOnly;
+            foreach (var panel in panels)
+            {
+                foreach (var control in panel.Controls)
+                {
+                    if (notUsedControls.Contains(control))
+                    {
+                        continue;
+                    }
+
+                    switch (control)
+                    {
+                        case RadTextBox radTextControl:
+                            radTextControl.ReadOnly = isReadOnly;
+                            radTextControl.AutoCompleteMode = isReadOnly ? AutoCompleteMode.None : AutoCompleteMode.SuggestAppend;
+                            break;
+
+                        case RadSpinEditor radSpinControl:
+                            radSpinControl.ReadOnly = isReadOnly;
+                            break;
+
+                        case RadMultiColumnComboBox radCmbControl:
+                            radCmbControl.ReadOnly = isReadOnly;
+                            break;
+
+                        case RadCheckBox radChkControl:
+                            radChkControl.ReadOnly = isReadOnly;
+                            break;
+                    }
+                }
+
+            }
+
+        }
+
+        //private void bs_PositionChanged(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        tbBillheader obj = (tbBillheader)bs.Current;
+
+        //        if (obj.guid.Equals(Guid.Empty))
+        //        {
+        //            BtnNew.Enabled = true;
+        //            BtnEdit.Enabled = false;
+        //            BtnDelete.Enabled = false;
+
+        //        }
+
+        //        FillForm();
+
+        //        dirtytracker.MarkAsClean();
+
+
+        //    }
+        //    catch
+        //    {
+        //        CheckAllow(new tbBillheader());
+        //        dirtytracker.MarkAsClean();
+        //    }
+        //}
 
         private void FillForm()
         {
@@ -296,16 +632,16 @@ namespace Real_Estate_Management
                 Txtlastaction.Text = obj.lastaction;
 
                 FillGrid(obj.guid);
-                dtRegDate.Value = obj.regdate;
+                Dtpregdate.Value = obj.regdate;
 
                 if (obj is null || obj.guid.Equals(Guid.Empty))
                 {
 
-                    if (billtype == 0)
+                    if (BillType == 0)
                     {
                         CmbOwnerData.SelectedItem = DefOwner;
                     }
-                    else if (billtype == 2)
+                    else if (BillType == 2)
                     {
 
                         CmbOwnerData.SelectedItem = null;
@@ -317,14 +653,14 @@ namespace Real_Estate_Management
                     BtnEdit.Enabled = false;
                     Txtlastaction.Text = string.Empty;
 
-                    BtnAdd.Enabled = true;
-                    dtRegDate.Value = DateTime.Now;
+                    BtnNew.Enabled = true;
+                    Dtpregdate.Value = DateTime.Now;
                 }
                 else
                 {
                     BtnDelete.Enabled = true;
                     BtnEdit.Enabled = true;
-                    BtnAdd.Enabled = false;
+                    BtnNew.Enabled = false;
 
 
                 }
@@ -338,7 +674,7 @@ namespace Real_Estate_Management
 
                 BtnDelete.Enabled = false;
                 BtnEdit.Enabled = false;
-                BtnAdd.Enabled = true;
+                BtnNew.Enabled = true;
 
                 isNew = true;
 
@@ -353,11 +689,11 @@ namespace Real_Estate_Management
             DataGUIAttribute.Clear_UC_Controls<tbBillheader>(this, new tbBillheader());
 
             CmbBuyerData.SelectedItem = null;
-            if (billtype == 0)
+            if (BillType == 0)
             {
                 CmbOwnerData.SelectedItem = DefOwner;
             }
-            else if (billtype == 2)
+            else if (BillType == 2)
             {
                 CmbOwnerData.SelectedItem = null;
             }
@@ -412,10 +748,10 @@ namespace Real_Estate_Management
             CmbOwnerData.Enabled = CmbBuyerData.ReadOnly = !Enable;
 
             //TxtNote.ReadOnly = !Enable;
-            GridView1.ReadOnly = Enable;
+            DataGridBillBody.ReadOnly = Enable;
 
-            dtRegDate.Enabled = Enable;
-            BtnAddFromBlock.Enabled = Enable;
+            Dtpregdate.Enabled = Enable;
+            radBtnAddFromBlock.Enabled = Enable;
             CmbBuyerData.Enabled = Enable;
             CmbOwnerData.Enabled = Enable;
             BtnEdit.Enabled = Enable;
@@ -431,89 +767,89 @@ namespace Real_Estate_Management
         //    base.OnShown(e);
 
         //    FindControl findControl = MainGridReadyItems.Controls.OfType<FindControl>().FirstOrDefault();
-        //    if (billtype == 0)
+        //    if (BillType == 0)
         //        findControl.BackColor = Color.LightSteelBlue;
-        //    else if (billtype == 1)
+        //    else if (BillType == 1)
         //        findControl.BackColor = Color.LightPink;
-        //    else if (billtype == 2)
+        //    else if (BillType == 2)
         //        findControl.BackColor = Color.LightGreen;
         //}
 
-        GridFormatRule FormatRuleDuplicate = new GridFormatRule();
-        FormatConditionRuleUniqueDuplicate formatConditionRule;
+        //GridFormatRule FormatRuleDuplicate = new GridFormatRule();
+        //FormatConditionRuleUniqueDuplicate formatConditionRule;
 
-        GridFormatRule FormatRuleValue = new GridFormatRule();
+        //GridFormatRule FormatRuleValue = new GridFormatRule();
         //FormatConditionRuleExpression formatConditionValue;
 
-        void InitReadyGrid()
-        {
-            RadGridLocalizationProvider.CurrentProvider = new MyArabicRadGridLocalizationProvider();
-            GridView1.TableElement.UpdateView();
+        //void InitReadyGrid()
+        //{
+        //    RadGridLocalizationProvider.CurrentProvider = new MyArabicRadGridLocalizationProvider();
+        //    GridView1.TableElement.UpdateView();
 
-            //FormatConditionRuleExpression formatConditionRuleExpression = new FormatConditionRuleExpression();
-            //FormatRuleValue.Column = ColStatus;
-            //FormatRuleValue.ApplyToRow = true;
-            //FormatRuleValue.Name = "Format1";
-            //formatConditionRuleExpression.Appearance.Font = new Font(this.Font, FontStyle.Strikeout);
-            //formatConditionRuleExpression.Expression = "[status] = 'مرتجع'";
-            //FormatRuleValue.Rule = formatConditionRuleExpression;
-            //GridView1.Columns[1].ConditionalFormattingObjectList.Add(formatConditionRuleExpression);
+        //    //FormatConditionRuleExpression formatConditionRuleExpression = new FormatConditionRuleExpression();
+        //    //FormatRuleValue.Column = ColStatus;
+        //    //FormatRuleValue.ApplyToRow = true;
+        //    //FormatRuleValue.Name = "Format1";
+        //    //formatConditionRuleExpression.Appearance.Font = new Font(this.Font, FontStyle.Strikeout);
+        //    //formatConditionRuleExpression.Expression = "[status] = 'مرتجع'";
+        //    //FormatRuleValue.Rule = formatConditionRuleExpression;
+        //    //GridView1.Columns[1].ConditionalFormattingObjectList.Add(formatConditionRuleExpression);
 
-            //formatConditionRule = new FormatConditionRuleUniqueDuplicate();
-
-
+        //    //formatConditionRule = new FormatConditionRuleUniqueDuplicate();
 
 
-            //FormatRuleDuplicate.Column = ColLandGuid;
-            //FormatRuleDuplicate.ColumnApplyTo = ColLand;
-            FormatRuleDuplicate.Name = "Format0";
-            formatConditionRule.Appearance.BackColor = Color.LightPink;
-            formatConditionRule.Appearance.Options.UseBackColor = true;
-
-            FormatRuleDuplicate.Rule = formatConditionRule;
-
-            //GridView1.FormatRules.Add(FormatRuleDuplicate);
-        }
-
-        private void gridView1_ShowingEditor(object sender, CancelEventArgs e)
-        {
-            GridView view = sender as GridView;
-
-            if (billtype == 0)
-            {
 
 
-                if (view.FocusedColumn.FieldName == "price" && !AllowEditPrice)
-                {
-                    e.Cancel = true;
-                }
+        //    //FormatRuleDuplicate.Column = ColLandGuid;
+        //    //FormatRuleDuplicate.ColumnApplyTo = ColLand;
+        //    //FormatRuleDuplicate.Name = "Format0";
+        //    //formatConditionRule.Appearance.BackColor = Color.LightPink;
+        //    //formatConditionRule.Appearance.Options.UseBackColor = true;
+
+        //    //FormatRuleDuplicate.Rule = formatConditionRule;
+
+        //    //GridView1.FormatRules.Add(FormatRuleDuplicate);
+        //}
+
+        //private void gridView1_ShowingEditor(object sender, CancelEventArgs e)
+        //{
+        //    GridView view = sender as GridView;
+
+        //    if (BillType == 0)
+        //    {
 
 
-                if (view.FocusedColumn.FieldName == "number" || view.FocusedColumn.FieldName == "contractno" || view.FocusedColumn.FieldName == "code" || view.FocusedColumn.FieldName == "total" || view.FocusedColumn.FieldName == "buildingfeevalue" ||
-                    view.FocusedColumn.FieldName == "networkfee" || view.FocusedColumn.FieldName == "netprice" || view.FocusedColumn.FieldName == "vatvalue" || view.FocusedColumn.FieldName == "totalnet")
-                {
-                    e.Cancel = true;
-                }
-                else
-                {
+        //        if (view.FocusedColumn.FieldName == "price" && !AllowEditPrice)
+        //        {
+        //            e.Cancel = true;
+        //        }
 
 
-                }
-            }
-            else
-            {
-                if (view.FocusedColumn.FieldName == "number" || view.FocusedColumn.FieldName == "code" || view.FocusedColumn.FieldName == "total" || view.FocusedColumn.FieldName == "buildingfeevalue" ||
-                        view.FocusedColumn.FieldName == "networkfee" || view.FocusedColumn.FieldName == "netprice" || view.FocusedColumn.FieldName == "vatvalue" || view.FocusedColumn.FieldName == "totalnet" || view.FocusedColumn.FieldName == "workfeevalue")
-                {
-                    e.Cancel = true;
-                }
-                else
-                {
+        //        if (view.FocusedColumn.FieldName == "number" || view.FocusedColumn.FieldName == "contractno" || view.FocusedColumn.FieldName == "code" || view.FocusedColumn.FieldName == "total" || view.FocusedColumn.FieldName == "buildingfeevalue" ||
+        //            view.FocusedColumn.FieldName == "networkfee" || view.FocusedColumn.FieldName == "netprice" || view.FocusedColumn.FieldName == "vatvalue" || view.FocusedColumn.FieldName == "totalnet")
+        //        {
+        //            e.Cancel = true;
+        //        }
+        //        else
+        //        {
 
 
-                }
-            }
-        }
+        //        }
+        //    }
+        //    else
+        //    {
+        //        if (view.FocusedColumn.FieldName == "number" || view.FocusedColumn.FieldName == "code" || view.FocusedColumn.FieldName == "total" || view.FocusedColumn.FieldName == "buildingfeevalue" ||
+        //                view.FocusedColumn.FieldName == "networkfee" || view.FocusedColumn.FieldName == "netprice" || view.FocusedColumn.FieldName == "vatvalue" || view.FocusedColumn.FieldName == "totalnet" || view.FocusedColumn.FieldName == "workfeevalue")
+        //        {
+        //            e.Cancel = true;
+        //        }
+        //        else
+        //        {
+
+
+        //        }
+        //    }
+        //}
 
 
 
@@ -532,9 +868,9 @@ namespace Real_Estate_Management
 
         void ReNumberGrid()
         {
-            for (int i = 0; i <= GridView1.RowCount; i++)
+            for (int i = 0; i <= DataGridBillBody.RowCount; i++)
             {
-                GridView1.Rows[i].Cells[0].Value = i + 1;
+                DataGridBillBody.Rows[i].Cells[0].Value = i + 1;
             }
         }
 
@@ -578,7 +914,7 @@ namespace Real_Estate_Management
                 //    int.TryParse(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColContractNo).ToString(), out contractno);
                 //    string status = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColStatus).ToString();
 
-                //    if (billtype == 0)
+                //    if (BillType == 0)
                 //    {
                 //        if (contractno > 0)
                 //        {
@@ -618,7 +954,7 @@ namespace Real_Estate_Management
 
                 //    if (GridView1.RowCount > 0)
                 //    {
-                //        if (billtype == 1)
+                //        if (BillType == 1)
                 //        {
                 //            Guid firstlandguid = new Guid(GridView1.GetRowCellValue(0, ColLandGuid).ToString());
                 //            if (firstlandguid != Guid.Empty)
@@ -768,12 +1104,12 @@ namespace Real_Estate_Management
             CalcBillBody();
         }
 
-        void FillCmb()
-        {
-            CmbOwnerData.SelectedIndex = 0;
-            CmbBuyerData.SelectedIndex = 0;
+        //void FillCmb()
+        //{
+        //    //CmbOwnerData.SelectedIndex = 0;
+        //    //CmbBuyerData.SelectedIndex = 0;
 
-        }
+        //}
 
         #region Select Mat 
         private void SelectMat(string keyword, int row)
@@ -782,11 +1118,11 @@ namespace Real_Estate_Management
 
             int rowhandle = row;
 
-            if (billtype == 0)
+            if (BillType == 0)
                 vwSelectLand.Fill("code", (object)keyword, "متاح");
-            else if (billtype == 1)
+            else if (BillType == 1)
                 vwSelectLand.Fill("code", (object)keyword, "مباع");
-            else if (billtype == 2)
+            else if (BillType == 2)
                 vwSelectLand.Fill("code", keyword);
 
             if (vwSelectLand.dtData.Rows.Count == 1)
@@ -795,11 +1131,11 @@ namespace Real_Estate_Management
             }
             else
             {
-                if (billtype == 0)
+                if (BillType == 0)
                     vwSelectLand.Fill("code", " ", "متاح");
-                else if (billtype == 1)
+                else if (BillType == 1)
                     vwSelectLand.Fill("code", " ", "مباع");
-                else if (billtype == 2)
+                else if (BillType == 2)
                     vwSelectLand.Fill("code", " ");
 
                 //tbLand.Fill(" ");
@@ -826,7 +1162,7 @@ namespace Real_Estate_Management
                 //    return;
                 //}
 
-                GridView1.CloseEditor();
+                DataGridBillBody.CloseEditor();
 
                 //GridView1.CellValueChanged += gridView1_CellValueChanged;
                 AddNewRow();
@@ -836,7 +1172,7 @@ namespace Real_Estate_Management
             }
             else
             {
-                Guid matguid = new Guid(GridView1.Rows[rowhandle].Cells[2].Value.ToString());
+                Guid matguid = new Guid(DataGridBillBody.Rows[rowhandle].Cells[2].Value.ToString());
 
                 if (!matguid.Equals(Guid.Empty))
                 {
@@ -857,7 +1193,7 @@ namespace Real_Estate_Management
 
                 ButtonEdit buttonEdit = sender as ButtonEdit;
 
-                SelectMat(buttonEdit.Text, GridView1.CurrentRow.Index);
+                SelectMat(buttonEdit.Text, DataGridBillBody.CurrentRow.Index);
             }
         }
 
@@ -866,51 +1202,79 @@ namespace Real_Estate_Management
         {
             ButtonEdit buttonEdit = sender as ButtonEdit;
 
-            SelectMat(buttonEdit.Text, GridView1.CurrentRow.Index);
+            SelectMat(buttonEdit.Text, DataGridBillBody.CurrentRow.Index);
         }
 
         void FillLandInfo(int rowhandle, tbLand land)
         {
 
-            GridView1.SetRowCellValue(rowhandle, ColLand, "الأرض رقم " + land.number);
-            GridView1.SetRowCellValue(rowhandle, ColLandGuid, land.guid);
+            //GridView1.SetRowCellValue(rowhandle, ColLand, "الأرض رقم " + land.number);
+            //GridView1.SetRowCellValue(rowhandle, ColLandGuid, land.guid);
 
-            GridView1.SetRowCellValue(rowhandle, ColPrice, land.amount);
-            GridView1.SetRowCellValue(rowhandle, ColCode, land.code);
+            DataGridBillBody.Rows[rowhandle].Cells["ColLand"].Value = "الأرض رقم " + land.number;
+            DataGridBillBody.Rows[rowhandle].Cells["ColLandGuid"].Value = land.guid;
+
+            //GridView1.SetRowCellValue(rowhandle, ColPrice, land.amount);
+            //GridView1.SetRowCellValue(rowhandle, ColCode, land.code);
+
+            DataGridBillBody.Rows[rowhandle].Cells["ColPrice"].Value = land.amount;
+            DataGridBillBody.Rows[rowhandle].Cells["ColCode"].Value = land.code;
 
             decimal workfeevalue;
             workfeevalue = land.amount * land.workfee / 100;
-            GridView1.SetRowCellValue(rowhandle, ColWorkFeeValue, workfeevalue);
+            //GridView1.SetRowCellValue(rowhandle, ColWorkFeeValue, workfeevalue);
+
+            DataGridBillBody.Rows[rowhandle].Cells["ColWorkFeeValue"].Value = workfeevalue;
 
             decimal buildingvalue;
             buildingvalue = land.amount * land.buildingfee / 100;
-            GridView1.SetRowCellValue(rowhandle, ColBuildingFeeValue, buildingvalue);
+            //GridView1.SetRowCellValue(rowhandle, ColBuildingFeeValue, buildingvalue);
+
+            DataGridBillBody.Rows[rowhandle].Cells["ColBuildingFeeValue"].Value = buildingvalue;
 
             decimal vatvalue;
             vatvalue = workfeevalue * land.vat / 100;
-            GridView1.SetRowCellValue(rowhandle, ColVatValue, vatvalue);
+            //GridView1.SetRowCellValue(rowhandle, ColVatValue, vatvalue);
+            DataGridBillBody.Rows[rowhandle].Cells["ColVatValue"].Value = vatvalue;
 
-            GridView1.SetRowCellValue(rowhandle, ColDiscountTotal, 0);
-            GridView1.SetRowCellValue(rowhandle, ColDiscountTotalValue, 0);
-            GridView1.SetRowCellValue(rowhandle, ColDiscountTotalText, string.Empty);
+            //GridView1.SetRowCellValue(rowhandle, ColDiscountTotal, 0);
+            //GridView1.SetRowCellValue(rowhandle, ColDiscountTotalValue, 0);
+            //GridView1.SetRowCellValue(rowhandle, ColDiscountTotalText, string.Empty);
 
-            GridView1.SetRowCellValue(rowhandle, ColDiscountFee, 0);
-            GridView1.SetRowCellValue(rowhandle, ColDiscountFeeValue, 0);
-            GridView1.SetRowCellValue(rowhandle, ColDiscountFeeText, string.Empty);
+            DataGridBillBody.Rows[rowhandle].Cells["ColDiscountTotal"].Value = 0;
+            DataGridBillBody.Rows[rowhandle].Cells["ColDiscountTotalValue"].Value = 0;
+            DataGridBillBody.Rows[rowhandle].Cells["ColDiscountTotalText"].Value = string.Empty;
 
-            GridView1.SetRowCellValue(rowhandle, ColNetWorkFee, workfeevalue);
-            GridView1.SetRowCellValue(rowhandle, ColNetPrice, land.amount);
+            //GridView1.SetRowCellValue(rowhandle, ColDiscountFee, 0);
+            //GridView1.SetRowCellValue(rowhandle, ColDiscountFeeValue, 0);
+            //GridView1.SetRowCellValue(rowhandle, ColDiscountFeeText, string.Empty);
+            DataGridBillBody.Rows[rowhandle].Cells["ColDiscountFee"].Value = 0;
+            DataGridBillBody.Rows[rowhandle].Cells["ColDiscountFeeValue"].Value = 0;
+            DataGridBillBody.Rows[rowhandle].Cells["ColDiscountFeeText"].Value = string.Empty;
+
+            //GridView1.SetRowCellValue(rowhandle, ColNetWorkFee, workfeevalue);
+            DataGridBillBody.Rows[rowhandle].Cells["ColNetWorkFee"].Value = workfeevalue;
+
+            //GridView1.SetRowCellValue(rowhandle, ColNetPrice, land.amount);
+            DataGridBillBody.Rows[rowhandle].Cells["ColNetPrice"].Value = land.amount;
 
 
-            GridView1.SetRowCellValue(rowhandle, ColTotal, workfeevalue + vatvalue + buildingvalue + land.amount);
+            //GridView1.SetRowCellValue(rowhandle, ColTotal, workfeevalue + vatvalue + buildingvalue + land.amount);
+            DataGridBillBody.Rows[rowhandle].Cells["ColTotal"].Value = workfeevalue + vatvalue + buildingvalue + land.amount;
 
-            if (billtype == 1)
+
+            if (BillType == 1)
             {
                 tbBillBody billbody = tbBillBody.FindBy("LandGuid", land.guid, "مباع");
                 tbBillheader bill = tbBillheader.FindBy("Guid", billbody.parentguid);
                 tbAgent agent = tbAgent.FindBy("Guid", bill.buyerguid);
-                TxtSelectBuyer.Text = agent.name;
-                TxtSelectBuyer.Tag = agent;
+                //TxtSelectBuyer.Text = agent.name;
+                //TxtSelectBuyer.Tag = agent;
+
+                CmbBuyerData.DisplayMember = "name";
+                CmbBuyerData.SelectedItem = agent;
+
+
             }
 
         }
@@ -922,7 +1286,7 @@ namespace Real_Estate_Management
 
             vwBillBody.Fill("ParentGuid", parentguid, tbOldBillBody, true);
 
-            if (billtype == 2)
+            if (BillType == 2)
             {
 
                 tbBillBody itemsbodydelete = new tbBillBody();
@@ -930,50 +1294,66 @@ namespace Real_Estate_Management
             }
 
             int idx = 1;
-            for (int i = 0; i < GridView1.RowCount; i++)
+            for (int i = 0; i < DataGridBillBody.RowCount; i++)
             {
-                Guid guid = new Guid(GridView1.GetRowCellValue(i, ColGuid).ToString());
-                Guid landguid = new Guid(GridView1.GetRowCellValue(i, ColLandGuid).ToString());
+                //Guid guid = new Guid(GridView1.GetRowCellValue(i, ColGuid).ToString());
+                //Guid landguid = new Guid(GridView1.GetRowCellValue(i, ColLandGuid).ToString());
+
+                Guid guid = new Guid(DataGridBillBody.Rows[i].Cells["ColGuid"].Value.ToString());
+                Guid landguid = new Guid(DataGridBillBody.Rows[i].Cells["ColLandGuid"].Value.ToString());
+
+
                 //Guid manguid = new Guid(GridView1.GetRowCellValue(i, ColManFactorGuid).ToString());
                 decimal bodytotal;
-                decimal.TryParse(GridView1.GetRowCellValue(i, ColTotal).ToString(), out bodytotal);
+                //decimal.TryParse(GridView1.GetRowCellValue(i, ColTotal).ToString(), out bodytotal);
+                decimal.TryParse(DataGridBillBody.Rows[i].Cells["ColTotal"].Value.ToString(), out bodytotal);
 
                 decimal bodytotalnet;
-                decimal.TryParse(GridView1.GetRowCellValue(i, ColTotalNet).ToString(), out bodytotalnet);
+                //decimal.TryParse(GridView1.GetRowCellValue(i, ColTotalNet).ToString(), out bodytotalnet);
+                decimal.TryParse(DataGridBillBody.Rows[i].Cells["ColTotalNet"].Value.ToString(), out bodytotalnet);
 
                 int contractno;
-                int.TryParse(GridView1.GetRowCellValue(i, ColContractNo).ToString(), out contractno);
+                //int.TryParse(GridView1.GetRowCellValue(i, ColContractNo).ToString(), out contractno);
+                int.TryParse(DataGridBillBody.Rows[i].Cells["ColContractNo"].Value.ToString(), out contractno);
 
 
                 decimal bodydiscounttotalvalue;
-                decimal.TryParse(GridView1.GetRowCellValue(i, ColDiscountTotalValue).ToString(), out bodydiscounttotalvalue);
+                //decimal.TryParse(GridView1.GetRowCellValue(i, ColDiscountTotalValue).ToString(), out bodydiscounttotalvalue);
+                decimal.TryParse(DataGridBillBody.Rows[i].Cells["ColDiscountTotalValue"].Value.ToString(), out bodydiscounttotalvalue);
 
                 decimal bodydiscountfeevalue;
-                decimal.TryParse(GridView1.GetRowCellValue(i, ColDiscountFeeValue).ToString(), out bodydiscountfeevalue);
+                //decimal.TryParse(GridView1.GetRowCellValue(i, ColDiscountFeeValue).ToString(), out bodydiscountfeevalue);
+                decimal.TryParse(DataGridBillBody.Rows[i].Cells["ColDiscountFeeValue"].Value.ToString(), out bodydiscountfeevalue);
 
                 decimal bodydiscounttotal;
-                decimal.TryParse(GridView1.GetRowCellValue(i, ColDiscountTotal).ToString(), out bodydiscounttotal);
+                //decimal.TryParse(GridView1.GetRowCellValue(i, ColDiscountTotal).ToString(), out bodydiscounttotal);
+                decimal.TryParse(DataGridBillBody.Rows[i].Cells["ColDiscountTotal"].Value.ToString(), out bodydiscounttotal);
 
                 decimal bodydiscountfee;
-                decimal.TryParse(GridView1.GetRowCellValue(i, ColDiscountFee).ToString(), out bodydiscountfee);
+                //decimal.TryParse(GridView1.GetRowCellValue(i, ColDiscountFee).ToString(), out bodydiscountfee);
+                decimal.TryParse(DataGridBillBody.Rows[i].Cells["ColDiscountFee"].Value.ToString(), out bodydiscountfee);
 
 
                 decimal bodyvatfeevalue;
-                decimal.TryParse(GridView1.GetRowCellValue(i, ColVatValue).ToString(), out bodyvatfeevalue);
+                //decimal.TryParse(GridView1.GetRowCellValue(i, ColVatValue).ToString(), out bodyvatfeevalue);
+                decimal.TryParse(DataGridBillBody.Rows[i].Cells["ColVatValue"].Value.ToString(), out bodyvatfeevalue);
 
                 decimal bodybuildingfeevalue;
-                decimal.TryParse(GridView1.GetRowCellValue(i, ColBuildingFeeValue).ToString(), out bodybuildingfeevalue);
+                //decimal.TryParse(GridView1.GetRowCellValue(i, ColBuildingFeeValue).ToString(), out bodybuildingfeevalue);
+                decimal.TryParse(DataGridBillBody.Rows[i].Cells["ColBuildingFeeValue"].Value.ToString(), out bodybuildingfeevalue);
 
                 decimal bodyworkfeevalue;
-                decimal.TryParse(GridView1.GetRowCellValue(i, ColWorkFeeValue).ToString(), out bodyworkfeevalue);
+                //decimal.TryParse(GridView1.GetRowCellValue(i, ColWorkFeeValue).ToString(), out bodyworkfeevalue);
+                decimal.TryParse(DataGridBillBody.Rows[i].Cells["ColWorkFeeValue"].Value.ToString(), out bodyworkfeevalue);
 
                 decimal bodyprice;
-                decimal.TryParse(GridView1.GetRowCellValue(i, ColPrice).ToString(), out bodyprice);
+                decimal.TryParse(DataGridBillBody.Rows[i].Cells["ColPrice"].Value.ToString(), out bodyprice);
 
-                string discounttotaltext = GridView1.GetRowCellValue(i, ColDiscountTotalText).ToString();
-                string discountfeetext = GridView1.GetRowCellValue(i, ColDiscountFeeText).ToString();
-                string note = GridView1.GetRowCellValue(i, ColNote).ToString();
-                string status = GridView1.GetRowCellValue(i, ColStatus).ToString();
+
+                string discounttotaltext = DataGridBillBody.Rows[i].Cells["ColDiscountTotalText"].Value.ToString();
+                string discountfeetext = DataGridBillBody.Rows[i].Cells["ColDiscountFeeText"].Value.ToString();
+                string note = DataGridBillBody.Rows[i].Cells["ColNote"].Value.ToString();
+                string status = DataGridBillBody.Rows[i].Cells["ColStatus"].Value.ToString();
 
                 if (!landguid.Equals(Guid.Empty))
                 {
@@ -998,7 +1378,7 @@ namespace Real_Estate_Management
                     billbody.note = note;
 
                     tbLand land = tbLand.FindByTrans("Guid", billbody.landguid);
-                    if (billtype == 0)
+                    if (BillType == 0)
                     {
                         billbody.status = status;
 
@@ -1010,21 +1390,21 @@ namespace Real_Estate_Management
                         land.status = "مباع";
                         land.Update();
                     }
-                    else if (billtype == 1)
+                    else if (BillType == 1)
                     {
                         billbody.status = "متاح";
                     }
-                    else if (billtype == 2)
+                    else if (BillType == 2)
                     {
                         billbody.status = "عقد خارجي";
                     }
 
-                    if (billtype == 0)
+                    if (BillType == 0)
                     {
                         if (guid.Equals(Guid.Empty) && contractno <= 0)
                         {
                             billbody.guid = Guid.NewGuid();
-                            if (billtype == 0)
+                            if (BillType == 0)
                             {
                                 billbody.contractno = tbBillBody.GetMaxNumberTrans("ContractNo", 0) + 1;
                             }
@@ -1044,7 +1424,7 @@ namespace Real_Estate_Management
                             billbody.Update();
                         }
                     }
-                    else if (billtype == 2)
+                    else if (BillType == 2)
                     {
                         //billbody.guid = Guid.NewGuid();
                         //billbody.contractno = contractno;
@@ -1097,13 +1477,13 @@ namespace Real_Estate_Management
 
         bool IsRowExist(Guid guid, string status)
         {
-            for (int i = 0; i < GridView1.RowCount; i++)
+            for (int i = 0; i < DataGridBillBody.RowCount; i++)
             {
                 //Guid landguid = new Guid(GridView1.GetRowCellValue(i, "landguid").ToString());
                 //string state = GridView1.GetRowCellValue(i, ColStatus).ToString();
-                Guid landguid = new Guid(GridView1.Rows[i].Cells["ColLandGuid"].Value.ToString());
+                Guid landguid = new Guid(DataGridBillBody.Rows[i].Cells["ColLandGuid"].Value.ToString());
 
-                string CurrentStatus = GridView1.Rows[i].Cells["ColStatus"].Value.ToString();
+                string CurrentStatus = DataGridBillBody.Rows[i].Cells["ColStatus"].Value.ToString();
 
                 if (landguid.Equals(guid) && status == CurrentStatus)
                     return true;
@@ -1117,7 +1497,7 @@ namespace Real_Estate_Management
         {
             isNew = true;
 
-            BtnAdd.Enabled = true;
+            BtnNew.Enabled = true;
             BtnEdit.Enabled = false;
             BtnDelete.Enabled = false;
 
@@ -1126,40 +1506,14 @@ namespace Real_Estate_Management
             //TxtNote.Text = string.Empty;
 
 
-            dtRegDate.Value = DateTime.Now;
+            Dtpregdate.Value = DateTime.Now;
 
-            FillCmb();
+            //FillCmb();
             FillGrid(Guid.Empty);
 
             Clear();
 
             bs.AddNew();
-
-        }
-
-        private void BtnAdd_Click(object sender, EventArgs e)
-        {
-            if (Add())
-            {
-
-                //BtnNew.PerformClick();
-                if (billtype == 0)
-                {
-                    FrmPrintDialog frm = new FrmPrintDialog();
-                    if (frm.ShowDialog() == DialogResult.OK)
-                    {
-                        if (frm.printtype == 0)
-                        {
-                            //BtnPrint.PerformClick();
-                        }
-                        else if (frm.printtype == 1)
-                        {
-                            //MenuPrintOnebyOne.PerformClick();
-                        }
-                    }
-                }
-                dirtytracker.MarkAsClean();
-            }
 
         }
 
@@ -1184,13 +1538,13 @@ namespace Real_Estate_Management
 
 
             bool IsDuplicateFound = false;
-            for (int i = 0; i < GridView1.RowCount; i++)
+            for (int i = 0; i < DataGridBillBody.RowCount; i++)
             {
                 //Guid landguid = new Guid(GridView1.GetRowCellValue(i, ColLandGuid).ToString());
                 //string status = GridView1.GetRowCellValue(i, ColStatus).ToString();
-                Guid landguid = new Guid(GridView1.Rows[i].Cells["ColLandGuid"].Value.ToString());
+                Guid landguid = new Guid(DataGridBillBody.Rows[i].Cells["ColLandGuid"].Value.ToString());
 
-                string status = GridView1.Rows[i].Cells["ColStatus"].Value.ToString();
+                string status = DataGridBillBody.Rows[i].Cells["ColStatus"].Value.ToString();
 
                 if (!landguid.Equals(Guid.Empty) && !status.Equals("مرتجع"))
                     IsDuplicateFound = IsDuplicate(landguid);
@@ -1202,7 +1556,7 @@ namespace Real_Estate_Management
                 return false;
             }
 
-            if (billtype != 0)
+            if (BillType != 0)
             {
                 //bool IsThereEmptyContract = false;
                 //for (int i = 0; i < GridView1.RowCount; i++)
@@ -1223,13 +1577,13 @@ namespace Real_Estate_Management
             }
 
             billheader.guid = Guid.NewGuid();
-            billheader.number = tbBillheader.GetMaxNumber("number", billtype) + 1;
+            billheader.number = tbBillheader.GetMaxNumber("number", BillType) + 1;
             billheader.ownerdata = CmbOwnerData.Text;
             billheader.buyerdata = CmbBuyerData.Text;
             billheader.ownerguid = owner.guid;
             billheader.buyerguid = buyer.guid;
-            billheader.billtype = billtype;
-            billheader.regdate = dtRegDate.Value;
+            billheader.billtype = BillType;
+            billheader.regdate = Dtpregdate.Value;
             //billheader.note = TxtNote.Text;
 
             CalcBillBody();
@@ -1276,7 +1630,7 @@ namespace Real_Estate_Management
 
             tbLog.AddLog("إضافة", this.Text, billheader.number.ToString());
             AddBillBody(billheader.guid, false);
-            if (billtype == 1)
+            if (BillType == 1)
             {
                 //if (tbLand.IsAgentDiffTrans(billheader.guid))
                 //{
@@ -1293,12 +1647,12 @@ namespace Real_Estate_Management
 
                 Clear();
                 bs.MoveLast();
-                FillCmb();
+                //FillCmb();
 
                 FillGrid(billheader.guid);
             }
 
-            BtnAdd.Enabled = false;
+            BtnNew.Enabled = false;
             BtnEdit.Enabled = true;
 
 
@@ -1334,12 +1688,12 @@ namespace Real_Estate_Management
             }
 
             bool IsDuplicateFound = false;
-            for (int i = 0; i < GridView1.RowCount; i++)
+            for (int i = 0; i < DataGridBillBody.RowCount; i++)
             {
                 //Guid landguid = new Guid(GridView1.GetRowCellValue(i, ColLandGuid).ToString());
-                Guid landguid = new Guid(GridView1.Rows[i].Cells["ColLandGuid"].Value.ToString());
+                Guid landguid = new Guid(DataGridBillBody.Rows[i].Cells["ColLandGuid"].Value.ToString());
 
-                string status = GridView1.Rows[i].Cells["ColStatus"].Value.ToString();
+                string status = DataGridBillBody.Rows[i].Cells["ColStatus"].Value.ToString();
 
                 if (!landguid.Equals(Guid.Empty) && status.Equals("مباع"))
                     IsDuplicateFound = IsDuplicate(landguid);
@@ -1351,7 +1705,7 @@ namespace Real_Estate_Management
                 return false;
             }
 
-            //if (billtype != 0)
+            //if (BillType != 0)
             //{
             //    bool IsThereEmptyContract = false;
             //    for (int i = 0; i < GridView1.RowCount; i++)
@@ -1376,8 +1730,8 @@ namespace Real_Estate_Management
             billheader.buyerdata = CmbBuyerData.Text;
             billheader.ownerguid = owner.guid;
             billheader.buyerguid = buyer.guid;
-            billheader.billtype = billtype;
-            billheader.regdate = dtRegDate.Value;
+            billheader.billtype = BillType;
+            billheader.regdate = Dtpregdate.Value;
             //billheader.note = TxtNote.Text;
             CalcBillBody();
 
@@ -1416,7 +1770,7 @@ namespace Real_Estate_Management
             if (MessageBox.Show("هل أنت متأكد من التعديل ؟", Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.No)
                 return false;
 
-            if (billtype == 0 && tbEditPassword.lstData[0].password.Trim().Length > 0)
+            if (BillType == 0 && tbEditPassword.lstData[0].password.Trim().Length > 0)
             {
                 FrmEditPassWord frm = new FrmEditPassWord(Guid.Empty, true);
                 if (frm.ShowDialog() != DialogResult.OK)
@@ -1452,75 +1806,6 @@ namespace Real_Estate_Management
         }
 
 
-        private void BtnDelete_Click(object sender, EventArgs e)
-        {
-            tbBillheader billheader = (tbBillheader)bs.Current;
-
-            bool IsFound = false;
-
-            for (int i = 0; i < GridView1.RowCount; i++)
-            {
-                int contract;
-
-                int.TryParse(GridView1.Rows[i].Cells["ColContractNo"].Value.ToString(), out contract);
-
-                tbPayContract pay = tbPayContract.FindBy("contractno", contract);
-                if (!pay.guid.Equals(Guid.Empty))
-                {
-                    IsFound = true;
-                }
-            }
-
-            if (IsFound)
-            {
-                MessageBox.Show("لا يمكن حذف العقد لأنه مستخدم في سندات القبض", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
-
-            if (MessageBox.Show("هل أنت متأكد من الحذف ؟", Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                return;
-
-
-            tbBillBody.Fill();
-
-
-            tbBillBody billbody = new tbBillBody();
-
-
-            if (billtype == 0 && tbEditPassword.lstData[0].password.Trim().Length > 0)
-            {
-                FrmEditPassWord frm = new FrmEditPassWord(Guid.Empty, true);
-                if (frm.ShowDialog() != DialogResult.OK)
-                {
-                    MessageBox.Show("لم يتم الحذف", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    return;
-
-                }
-            }
-
-            DBConnect.StartTransAction();
-            billbody.DeleteBy("ParentGuid", billheader.guid);
-            billheader.Delete();
-            tbLog.AddLog("حذف", this.Text, billheader.number.ToString());
-            foreach (var item in tbBillBody.lstData)
-            {
-                tbLand.updatelandstatus(item.landguid);
-            }
-
-            if (DBConnect.CommitTransAction())
-            {
-                bs.RemoveCurrent();
-                bs.MoveLast();
-                ShowConfirm();
-                Clear();
-
-                CalcBillBody();
-
-                BtnAdd.PerformClick();
-                dirtytracker.MarkAsClean();
-            }
-        }
-
 
         private void BtnCancel_Click(object sender, EventArgs e)
         {
@@ -1553,7 +1838,7 @@ namespace Real_Estate_Management
                 if (msgboxres == DialogResult.Yes)
                 {
 
-                    if (BtnAdd.Enabled)
+                    if (BtnNew.Enabled)
                     {
                         if (!Add())
                         {
@@ -1580,316 +1865,405 @@ namespace Real_Estate_Management
 
 
 
-        private void gridView1_CellValueChanged(object sender, CellValueChangedEventArgs e)
-        {
-            GridView view = sender as GridView;
-            if (view == null)
-                return;
+        //private void gridView1_CellValueChanged(object sender, CellValueChangedEventArgs e)
+        //{
+        //    GridView view = sender as GridView;
+        //    if (view == null)
+        //        return;
 
-            Guid landguid = Guid.Empty;
-            if (GridView1.GetRowCellValue(e.RowHandle, ColLandGuid) is null)
-            {
+        //    Guid landguid = Guid.Empty;
+        //    if (DataGridBillBody.Rows[e.RowHandle].Cells["ColLandGuid"].Value is null)
+        //    {
 
-            }
-            else
-            {
-                landguid = new Guid(GridView1.GetRowCellValue(e.RowHandle, ColLandGuid).ToString());
-            }
-
-
-            tbLand land = new tbLand();
-
-            if (landguid.Equals(Guid.Empty))
-            {
-                return;
-            }
-            else
-                land = tbLand.FindBy("Guid", landguid);
-
-            GridView1.CellValueChanged -= gridView1_CellValueChanged;
-
-            switch (e.Column.Name.ToLower())
-            {
-                case "colprice":
-                    {
+        //    }
+        //    else
+        //    {
+        //        landguid = new Guid(DataGridBillBody.Rows[e.RowHandle].Cells["ColLandGuid"].Value.ToString());
+        //    }
 
 
+        //    tbLand land = new tbLand();
 
-                        GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFeeText, string.Empty);
-                        GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFeeValue, 0);
-                        GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFee, 0);
+        //    if (landguid.Equals(Guid.Empty))
+        //    {
+        //        return;
+        //    }
+        //    else
+        //        land = tbLand.FindBy("Guid", landguid);
 
-                        GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotalText, string.Empty);
-                        GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotalValue, 0);
-                        GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotal, 0);
+        //    //GridView1.CellValueChanged -= gridView1_CellValueChanged;
+
+        //    switch (e.Column.Name.ToLower())
+        //    {
+        //        case "colprice":
+        //            {
 
 
 
-                        decimal amount;
-                        decimal.TryParse(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColPrice).ToString(), out amount);
+        //                //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFeeText, string.Empty);
+        //                //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFeeValue, 0);
+        //                //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFee, 0);
 
-                        GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColWorkFeeValue, amount * land.workfee / 100);
-
-                        CalcRowPrices(GridView1.FocusedRowHandle, land, false, 0, false);
-
-                    }
-                    break;
-                case "colworkfeevalue":
-                    {
-
-                        GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFeeText, string.Empty);
-                        GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFeeValue, 0);
-                        GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFee, 0);
-
-                        //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotalText, string.Empty);
-                        //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotalValue, 0);
-                        //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotal, 0);
-                        decimal tmpworkfee;
-                        decimal.TryParse(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColWorkFeeValue).ToString(), out tmpworkfee);
-
-                        CalcRowPrices(GridView1.FocusedRowHandle, land, true, tmpworkfee, true);
-
-                    }
-                    break;
-                case "coldiscountfeetext":
-                    {
-                        decimal discountfeetextvalue;
-                        string discounttext = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFeeText).ToString();
-
-                        if (discounttext.Contains("%"))
-                        {
-                            discounttext = discounttext.Replace("%", "");
-                            decimal.TryParse(discounttext, out discountfeetextvalue);
-                            discounttext = discountfeetextvalue.ToString(DataGUIAttribute.CurrencyFormat) + " %";
-                            GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFeeText, discounttext);
-                        }
-                        else
-                        {
-                            decimal.TryParse(discounttext, out discountfeetextvalue);
-                            GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFeeText, discountfeetextvalue.ToString(DataGUIAttribute.CurrencyFormat));
-                        }
-
-                        if (discountfeetextvalue > 0)
-                        {
-                            decimal workfee;
-                            decimal discount;
-                            decimal discountvalue;
-
-                            decimal.TryParse(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColWorkFeeValue).ToString(), out workfee);
+        //                DataGridBillBody.CurrentRow.Cells["ColDiscountFeeText"].Value = string.Empty;
+        //                DataGridBillBody.CurrentRow.Cells["ColDiscountFeeValue"].Value = 0;
+        //                DataGridBillBody.CurrentRow.Cells["ColDiscountFee"].Value = 0;
 
 
-                            if (discounttext.Contains("%"))
-                            {
-                                discount = discountfeetextvalue;
-                                discountvalue = workfee * discountfeetextvalue / 100;
-                            }
-                            else
-                            {
-                                if (workfee > 0)
-                                {
-                                    discountvalue = discountfeetextvalue;
-                                    discount = (workfee - discountvalue) / workfee * 100;
-                                }
-                                else
-                                {
-                                    discountvalue = 0;
-                                    discount = 0;
-                                }
-                            }
+        //                //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotalText, string.Empty);
+        //                //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotalValue, 0);
+        //                //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotal, 0);
 
-                            if (land.isdiscountfee)
-                            {
-                                if (land.discountfeevalue > 0 && discountvalue > land.discountfeevalue)
-                                {
-                                    MessageBox.Show("الحسم أكبر من القيمة المسموح بها" + Environment.NewLine + "القيمة المسموح بها " + land.discountfeevalue.ToString(DataGUIAttribute.CurrencyFormat), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                    GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFee, 0);
-                                    GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFeeValue, 0);
-                                    GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFeeText, string.Empty);
-                                    CalcRowPrices(GridView1.FocusedRowHandle, land, false, 0, true);
-                                    GridView1.CellValueChanged += gridView1_CellValueChanged;
-                                    return;
-                                }
-                                else if (land.discountfee > 0 && discount > land.discountfee)
-                                {
-                                    MessageBox.Show("الحسم أكبر من النسبة المسموح بها" + Environment.NewLine + "النسبة المسموح بها " + land.discountfee.ToString(DataGUIAttribute.CurrencyFormat), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                    GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFee, 0);
-                                    GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFeeValue, 0);
-                                    GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFeeText, string.Empty);
-                                    CalcRowPrices(GridView1.FocusedRowHandle, land, false, 0, true);
-                                    GridView1.CellValueChanged += gridView1_CellValueChanged;
-                                    return;
-                                }
-                            }
-
-                            if (discountvalue > workfee)
-                            {
-                                MessageBox.Show("لا يمكن أن يكون الحسم أكبر من قيمة العمولة", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFee, 0);
-                                GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFeeValue, 0);
-                                GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFeeText, string.Empty);
-                                GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColVatWorkFee, 0);
-
-                                CalcRowPrices(GridView1.FocusedRowHandle, land, false, 0, true);
-                                GridView1.CellValueChanged += gridView1_CellValueChanged;
-                                return;
-                            }
-
-                            GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFee, Math.Round(discount, 2));
-                            GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFeeValue, discountvalue);
-                        }
-                        else
-                        {
-
-                            GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFee, 0);
-                            GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFeeValue, 0);
-                        }
-
-                        decimal tmpworkfee;
-                        decimal.TryParse(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColWorkFeeValue).ToString(), out tmpworkfee);
+        //                DataGridBillBody.CurrentRow.Cells["ColDiscountTotalText"].Value = string.Empty;
+        //                DataGridBillBody.CurrentRow.Cells["ColDiscountTotalValue"].Value = 0;
+        //                DataGridBillBody.CurrentRow.Cells["ColDiscountTotal"].Value = 0;
 
 
-                        CalcRowPrices(GridView1.FocusedRowHandle, land, true, tmpworkfee, true);
-                    }
-                    break;
 
-                case "coldiscounttotaltext":
-                    {
-                        decimal discounttotaltextvalue;
-                        string discounttext = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotalText).ToString();
+        //                decimal amount;
+        //                //decimal.TryParse(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColPrice).ToString(), out amount);
 
-                        if (discounttext.Contains("%"))
-                        {
-                            discounttext = discounttext.Replace("%", "");
-                            decimal.TryParse(discounttext, out discounttotaltextvalue);
-                            discounttext = discounttotaltextvalue.ToString(DataGUIAttribute.CurrencyFormat) + " %";
+        //                decimal.TryParse(DataGridBillBody.CurrentRow.Cells["ColPrice"].Value.ToString(), out amount);
 
-                            GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotalText, discounttext);
+        //                //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColWorkFeeValue, amount * land.workfee / 100);
 
-                        }
-                        else
-                        {
-                            decimal.TryParse(discounttext, out discounttotaltextvalue);
+        //                DataGridBillBody.CurrentRow.Cells["ColWorkFeeValue"].Value = amount * land.workfee / 100;
 
-                            GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotalText, discounttotaltextvalue.ToString(DataGUIAttribute.CurrencyFormat));
+        //                CalcRowPrices(DataGridBillBody.CurrentRow.Index, land, false, 0, false);
 
-                        }
+        //            }
+        //            break;
+        //        case "colworkfeevalue":
+        //            {
 
-                        if (discounttotaltextvalue > 0)
-                        {
-                            decimal price;
-                            decimal discount;
-                            decimal discountvalue;
+        //                //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFeeText, string.Empty);
+        //                //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFeeValue, 0);
+        //                //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFee, 0);
 
-                            decimal.TryParse(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColPrice).ToString(), out price);
-                            if (discounttext.Contains("%"))
-                            {
-                                discount = discounttotaltextvalue;
-                                discountvalue = price * discounttotaltextvalue / 100;
-                            }
-                            else
-                            {
-
-                                discountvalue = discounttotaltextvalue;
-                                discount = (price - discountvalue) / price * 100;
-                            }
-
-                            if (land.isdiscounttotal)
-                            {
-                                if (land.discounttotalvalue > 0 && discountvalue > land.discounttotalvalue)
-                                {
-                                    MessageBox.Show("الحسم أكبر من القيمة المسموح بها" + Environment.NewLine + "القيمة المسموح بها " + land.discounttotalvalue.ToString(DataGUIAttribute.CurrencyFormat), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                    GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotal, 0);
-                                    GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotalValue, 0);
-                                    GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotalText, string.Empty);
-                                    CalcRowPrices(GridView1.FocusedRowHandle, land, false, 0, false);
-                                    GridView1.CellValueChanged += gridView1_CellValueChanged;
-                                    return;
-                                }
-                                else if (land.discounttotal > 0 && discount > land.discounttotal)
-                                {
-                                    MessageBox.Show("الحسم أكبر من النسبة المسموح بها" + Environment.NewLine + "النسبة المسموح بها " + land.discounttotal.ToString(DataGUIAttribute.CurrencyFormat), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                    GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotal, 0);
-                                    GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotalValue, 0);
-                                    GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotalText, string.Empty);
-                                    CalcRowPrices(GridView1.FocusedRowHandle, land, false, 0, false);
-                                    GridView1.CellValueChanged += gridView1_CellValueChanged;
-                                    return;
-                                }
-                            }
-
-                            if (discountvalue > price)
-                            {
-                                MessageBox.Show("لا يمكن أن يكون الحسم أكبر من قيمة الأرض", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotal, 0);
-                                GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotalValue, 0);
-                                GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotalText, string.Empty);
-                                CalcRowPrices(GridView1.FocusedRowHandle, land, false, 0, false);
-                                GridView1.CellValueChanged += gridView1_CellValueChanged;
-                                return;
-                            }
-
-                            GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotal, Math.Round(discount, 2));
-                            GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotalValue, discountvalue);
-
-                            decimal newamount = price - discountvalue;
+        //                DataGridBillBody.CurrentRow.Cells["ColDiscountFeeText"].Value = string.Empty;
+        //                DataGridBillBody.CurrentRow.Cells["ColDiscountFeeValue"].Value = 0;
+        //                DataGridBillBody.CurrentRow.Cells["ColDiscountFee"].Value = 0;
 
 
-                            decimal newworkfeevalue = newamount * land.workfee / 100;
-                            GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColWorkFeeValue, newworkfeevalue);
+        //                //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotalText, string.Empty);
+        //                //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotalValue, 0);
+        //                //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotal, 0);
+        //                decimal tmpworkfee;
+        //                //decimal.TryParse(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColWorkFeeValue).ToString(), out tmpworkfee);
 
-                            //decimal.TryParse(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColWorkFeeValue).ToString(), out workfeevalue);
-
-                        }
-                        else
-                        {
+        //                decimal.TryParse(DataGridBillBody.CurrentRow.Cells["ColWorkFeeValue"].Value.ToString(), out tmpworkfee);
 
 
-                            decimal amount;
-                            decimal.TryParse(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColPrice).ToString(), out amount);
+        //                CalcRowPrices(DataGridBillBody.CurrentRow.Index, land, true, tmpworkfee, true);
 
-                            GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColWorkFeeValue, amount * land.workfee / 100);
+        //            }
+        //            break;
+        //        case "coldiscountfeetext":
+        //            {
+        //                decimal discountfeetextvalue;
+        //                string discounttext = DataGridBillBody.CurrentRow.Cells["ColDiscountFeeText"].Value.ToString();
 
-                            GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotal, 0);
-                            GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotalValue, 0);
-                        }
+        //                if (discounttext.Contains("%"))
+        //                {
+        //                    discounttext = discounttext.Replace("%", "");
+        //                    decimal.TryParse(discounttext, out discountfeetextvalue);
+        //                    discounttext = discountfeetextvalue.ToString(DataGUIAttribute.CurrencyFormat) + " %";
+        //                    //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFeeText, discounttext);
 
-                        CalcRowPrices(GridView1.CurrentRow.Index, land, false, 0, false);
-                    }
-                    break;
+        //                    DataGridBillBody.CurrentRow.Cells["ColDiscountFeeText"].Value = discounttext;
 
-                default:
-                    break;
-            }
-            //GridView1.CellValueChanged += gridView1_CellValueChanged;
+        //                }
+        //                else
+        //                {
+        //                    decimal.TryParse(discounttext, out discountfeetextvalue);
+        //                    //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFeeText, discountfeetextvalue.ToString(DataGUIAttribute.CurrencyFormat));
 
-            CalcBillBody();
-        }
+        //                    DataGridBillBody.CurrentRow.Cells["ColDiscountFeeText"].Value = discountfeetextvalue.ToString(DataGUIAttribute.CurrencyFormat);
+
+
+        //                }
+
+        //                if (discountfeetextvalue > 0)
+        //                {
+        //                    decimal workfee;
+        //                    decimal discount;
+        //                    decimal discountvalue;
+
+        //                    //decimal.TryParse(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColWorkFeeValue).ToString(), out workfee);
+
+        //                    decimal.TryParse(DataGridBillBody.CurrentRow.Cells["ColWorkFeeValue"].Value.ToString(), out workfee);
+
+
+        //                    if (discounttext.Contains("%"))
+        //                    {
+        //                        discount = discountfeetextvalue;
+        //                        discountvalue = workfee * discountfeetextvalue / 100;
+        //                    }
+        //                    else
+        //                    {
+        //                        if (workfee > 0)
+        //                        {
+        //                            discountvalue = discountfeetextvalue;
+        //                            discount = (workfee - discountvalue) / workfee * 100;
+        //                        }
+        //                        else
+        //                        {
+        //                            discountvalue = 0;
+        //                            discount = 0;
+        //                        }
+        //                    }
+
+        //                    if (land.isdiscountfee)
+        //                    {
+        //                        if (land.discountfeevalue > 0 && discountvalue > land.discountfeevalue)
+        //                        {
+        //                            MessageBox.Show("الحسم أكبر من القيمة المسموح بها" + Environment.NewLine + "القيمة المسموح بها " + land.discountfeevalue.ToString(DataGUIAttribute.CurrencyFormat), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        //                            //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFee, 0);
+        //                            //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFeeValue, 0);
+        //                            //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFeeText, string.Empty);
+
+        //                            DataGridBillBody.CurrentRow.Cells["ColDiscountFee"].Value = 0;
+        //                            DataGridBillBody.CurrentRow.Cells["ColDiscountFeeValue"].Value = 0;
+        //                            DataGridBillBody.CurrentRow.Cells["ColDiscountFeeText"].Value = string.Empty;
+
+
+        //                            CalcRowPrices(DataGridBillBody.CurrentRow.Index, land, false, 0, true);
+        //                            //GridView1.CellValueChanged += gridView1_CellValueChanged;
+        //                            return;
+        //                        }
+        //                        else if (land.discountfee > 0 && discount > land.discountfee)
+        //                        {
+        //                            MessageBox.Show("الحسم أكبر من النسبة المسموح بها" + Environment.NewLine + "النسبة المسموح بها " + land.discountfee.ToString(DataGUIAttribute.CurrencyFormat), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        //                            //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFee, 0);
+        //                            //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFeeValue, 0);
+        //                            //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFeeText, string.Empty);
+
+        //                            DataGridBillBody.CurrentRow.Cells["ColDiscountFee"].Value = 0;
+        //                            DataGridBillBody.CurrentRow.Cells["ColDiscountFeeValue"].Value = 0;
+        //                            DataGridBillBody.CurrentRow.Cells["ColDiscountFeeText"].Value = string.Empty;
+
+
+        //                            CalcRowPrices(DataGridBillBody.CurrentRow.Index, land, false, 0, true);
+        //                            //GridView1.CellValueChanged += gridView1_CellValueChanged;
+        //                            return;
+        //                        }
+        //                    }
+
+        //                    if (discountvalue > workfee)
+        //                    {
+        //                        MessageBox.Show("لا يمكن أن يكون الحسم أكبر من قيمة العمولة", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        //                        //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFee, 0);
+        //                        //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFeeValue, 0);
+        //                        //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFeeText, string.Empty);
+        //                        //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColVatWorkFee, 0);
+
+        //                        DataGridBillBody.CurrentRow.Cells["ColDiscountFee"].Value = 0;
+        //                        DataGridBillBody.CurrentRow.Cells["ColDiscountFeeValue"].Value = 0;
+        //                        DataGridBillBody.CurrentRow.Cells["ColDiscountFeeText"].Value = string.Empty;
+        //                        DataGridBillBody.CurrentRow.Cells["ColVatWorkFee"].Value = 0;
+
+
+        //                        CalcRowPrices(DataGridBillBody.CurrentRow.Index, land, false, 0, true);
+        //                        //GridView1.CellValueChanged += gridView1_CellValueChanged;
+        //                        return;
+        //                    }
+
+        //                    //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFee, Math.Round(discount, 2));
+        //                    //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFeeValue, discountvalue);
+
+
+        //                    DataGridBillBody.CurrentRow.Cells["ColDiscountFee"].Value = Math.Round(discount, 2);
+        //                    DataGridBillBody.CurrentRow.Cells["ColDiscountFeeValue"].Value = discountvalue;
+
+        //                }
+        //                else
+        //                {
+
+        //                    //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFee, 0);
+        //                    //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountFeeValue, 0);
+
+        //                    DataGridBillBody.CurrentRow.Cells["ColDiscountFee"].Value = 0;
+        //                    DataGridBillBody.CurrentRow.Cells["ColDiscountFeeValue"].Value = 0;
+
+        //                }
+
+        //                decimal tmpworkfee;
+        //                //decimal.TryParse(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColWorkFeeValue).ToString(), out tmpworkfee);
+        //                decimal.TryParse(DataGridBillBody.CurrentRow.Cells["ColWorkFeeValue"].Value.ToString(), out tmpworkfee);
+
+
+        //                CalcRowPrices(DataGridBillBody.CurrentRow.Index, land, true, tmpworkfee, true);
+        //            }
+        //            break;
+
+        //        case "coldiscounttotaltext":
+        //            {
+        //                decimal discounttotaltextvalue;
+        //                string discounttext = DataGridBillBody.CurrentRow.Cells["ColDiscountTotalText"].Value.ToString();
+
+        //                if (discounttext.Contains("%"))
+        //                {
+        //                    discounttext = discounttext.Replace("%", "");
+        //                    decimal.TryParse(discounttext, out discounttotaltextvalue);
+        //                    discounttext = discounttotaltextvalue.ToString(DataGUIAttribute.CurrencyFormat) + " %";
+
+        //                    //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotalText, discounttext);
+        //                    DataGridBillBody.CurrentRow.Cells["ColDiscountTotalText"].Value = discounttext;
+
+        //                }
+        //                else
+        //                {
+        //                    decimal.TryParse(discounttext, out discounttotaltextvalue);
+
+        //                    //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotalText, discounttotaltextvalue.ToString(DataGUIAttribute.CurrencyFormat));
+        //                    DataGridBillBody.CurrentRow.Cells["ColDiscountTotalText"].Value = discounttotaltextvalue.ToString(DataGUIAttribute.CurrencyFormat);
+
+        //                }
+
+        //                if (discounttotaltextvalue > 0)
+        //                {
+        //                    decimal price;
+        //                    decimal discount;
+        //                    decimal discountvalue;
+
+        //                    //decimal.TryParse(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColPrice).ToString(), out price);
+        //                    decimal.TryParse(DataGridBillBody.CurrentRow.Cells["ColPrice"].Value.ToString(), out price);
+
+        //                    if (discounttext.Contains("%"))
+        //                    {
+        //                        discount = discounttotaltextvalue;
+        //                        discountvalue = price * discounttotaltextvalue / 100;
+        //                    }
+        //                    else
+        //                    {
+
+        //                        discountvalue = discounttotaltextvalue;
+        //                        discount = (price - discountvalue) / price * 100;
+        //                    }
+
+        //                    if (land.isdiscounttotal)
+        //                    {
+        //                        if (land.discounttotalvalue > 0 && discountvalue > land.discounttotalvalue)
+        //                        {
+        //                            MessageBox.Show("الحسم أكبر من القيمة المسموح بها" + Environment.NewLine + "القيمة المسموح بها " + land.discounttotalvalue.ToString(DataGUIAttribute.CurrencyFormat), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        //                            //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotal, 0);
+        //                            //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotalValue, 0);
+        //                            //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotalText, string.Empty);
+
+        //                            DataGridBillBody.CurrentRow.Cells["ColDiscountTotal"].Value = 0;
+        //                            DataGridBillBody.CurrentRow.Cells["ColDiscountTotalValue"].Value = 0;
+        //                            DataGridBillBody.CurrentRow.Cells["ColDiscountTotalText"].Value = string.Empty;
+
+        //                            CalcRowPrices(DataGridBillBody.CurrentRow.Index, land, false, 0, false);
+        //                            //GridView1.CellValueChanged += gridView1_CellValueChanged;
+        //                            return;
+        //                        }
+        //                        else if (land.discounttotal > 0 && discount > land.discounttotal)
+        //                        {
+        //                            MessageBox.Show("الحسم أكبر من النسبة المسموح بها" + Environment.NewLine + "النسبة المسموح بها " + land.discounttotal.ToString(DataGUIAttribute.CurrencyFormat), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        //                            //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotal, 0);
+        //                            //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotalValue, 0);
+        //                            //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotalText, string.Empty);
+
+        //                            DataGridBillBody.CurrentRow.Cells["ColDiscountTotal"].Value = 0;
+        //                            DataGridBillBody.CurrentRow.Cells["ColDiscountTotalValue"].Value = 0;
+        //                            DataGridBillBody.CurrentRow.Cells["ColDiscountTotalText"].Value = string.Empty;
+
+
+        //                            CalcRowPrices(DataGridBillBody.CurrentRow.Index, land, false, 0, false);
+        //                            //GridView1.CellValueChanged += gridView1_CellValueChanged;
+        //                            return;
+        //                        }
+        //                    }
+
+        //                    if (discountvalue > price)
+        //                    {
+        //                        MessageBox.Show("لا يمكن أن يكون الحسم أكبر من قيمة الأرض", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        //                        //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotal, 0);
+        //                        //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotalValue, 0);
+        //                        //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotalText, string.Empty);
+
+        //                        DataGridBillBody.CurrentRow.Cells["ColDiscountTotal"].Value = 0;
+        //                        DataGridBillBody.CurrentRow.Cells["ColDiscountTotalValue"].Value = 0;
+        //                        DataGridBillBody.CurrentRow.Cells["ColDiscountTotalText"].Value = string.Empty;
+
+
+        //                        CalcRowPrices(DataGridBillBody.CurrentRow.Index, land, false, 0, false);
+        //                        //GridView1.CellValueChanged += gridView1_CellValueChanged;
+        //                        return;
+        //                    }
+
+        //                    //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotal, Math.Round(discount, 2));
+        //                    //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotalValue, discountvalue);
+        //                    DataGridBillBody.CurrentRow.Cells["ColDiscountTotal"].Value = Math.Round(discount, 2);
+        //                    DataGridBillBody.CurrentRow.Cells["ColDiscountTotalValue"].Value = discountvalue;
+
+        //                    decimal newamount = price - discountvalue;
+
+
+        //                    decimal newworkfeevalue = newamount * land.workfee / 100;
+        //                    //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColWorkFeeValue, newworkfeevalue);
+        //                    DataGridBillBody.CurrentRow.Cells["ColWorkFeeValue"].Value = newworkfeevalue;
+
+        //                    //decimal.TryParse(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColWorkFeeValue).ToString(), out workfeevalue);
+
+        //                }
+        //                else
+        //                {
+
+
+        //                    decimal amount;
+        //                    //decimal.TryParse(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColPrice).ToString(), out amount);
+        //                    decimal.TryParse(DataGridBillBody.CurrentRow.Cells["ColPrice"].Value.ToString(), out amount);
+
+        //                    //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColWorkFeeValue, amount * land.workfee / 100);
+
+        //                    DataGridBillBody.CurrentRow.Cells["ColWorkFeeValue"].Value = amount * land.workfee / 100;
+
+
+        //                    //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotal, 0);
+        //                    //GridView1.SetRowCellValue(GridView1.FocusedRowHandle, ColDiscountTotalValue, 0);
+        //                    DataGridBillBody.CurrentRow.Cells["ColDiscountTotal"].Value = 0;
+        //                    DataGridBillBody.CurrentRow.Cells["ColDiscountTotalValue"].Value = 0;
+
+        //                }
+
+        //                CalcRowPrices(DataGridBillBody.CurrentRow.Index, land, false, 0, false);
+        //            }
+        //            break;
+
+        //        default:
+        //            break;
+        //    }
+        //    //GridView1.CellValueChanged += gridView1_CellValueChanged;
+
+        //    CalcBillBody();
+        //}
 
         void CalcRowPrices(int rowhandle, tbLand land, bool newworkfee, decimal custworkfee, bool ReCalcNetWorkFee)
         {
             decimal amount;
             //decimal.TryParse(GridView1.GetRowCellValue(rowhandle, ColPrice).ToString(), out amount);
-            decimal.TryParse(GridView1.Rows[rowhandle].Cells["ColPrice"].Value.ToString(), out amount);
+            decimal.TryParse(DataGridBillBody.Rows[rowhandle].Cells["ColPrice"].Value.ToString(), out amount);
 
             decimal discountotal;
             //decimal.TryParse(GridView1.GetRowCellValue(rowhandle, ColDiscountTotal).ToString(), out discountotal);
-            decimal.TryParse(GridView1.Rows[rowhandle].Cells["ColDiscountTotal"].Value.ToString(), out discountotal);
+            decimal.TryParse(DataGridBillBody.Rows[rowhandle].Cells["ColDiscountTotal"].Value.ToString(), out discountotal);
 
             decimal discountotalvalue;
             //decimal.TryParse(GridView1.GetRowCellValue(rowhandle, ColDiscountTotalValue).ToString(), out discountotalvalue);
-            decimal.TryParse(GridView1.Rows[rowhandle].Cells["ColDiscountTotalValue"].Value.ToString(), out discountotalvalue);
+            decimal.TryParse(DataGridBillBody.Rows[rowhandle].Cells["ColDiscountTotalValue"].Value.ToString(), out discountotalvalue);
 
             decimal discountfee;
             //decimal.TryParse(GridView1.GetRowCellValue(rowhandle, ColDiscountFee).ToString(), out discountfee);
-            decimal.TryParse(GridView1.Rows[rowhandle].Cells["ColDiscountFee"].Value.ToString(), out discountfee);
+            decimal.TryParse(DataGridBillBody.Rows[rowhandle].Cells["ColDiscountFee"].Value.ToString(), out discountfee);
 
             decimal discountfeevalue;
             //decimal.TryParse(GridView1.GetRowCellValue(rowhandle, ColDiscountFeeValue).ToString(), out discountfeevalue);
-            decimal.TryParse(GridView1.Rows[rowhandle].Cells["ColDiscountFeeValue"].Value.ToString(), out discountfeevalue);
+            decimal.TryParse(DataGridBillBody.Rows[rowhandle].Cells["ColDiscountFeeValue"].Value.ToString(), out discountfeevalue);
 
             decimal workfeevalue;
             //decimal.TryParse(GridView1.GetRowCellValue(rowhandle, ColWorkFeeValue).ToString(), out workfeevalue);
-            decimal.TryParse(GridView1.Rows[rowhandle].Cells["ColWorkFeeValue"].Value.ToString(), out workfeevalue);
+            decimal.TryParse(DataGridBillBody.Rows[rowhandle].Cells["ColWorkFeeValue"].Value.ToString(), out workfeevalue);
 
             if ((amount - discountotalvalue) <= 0)
             {
@@ -1906,7 +2280,7 @@ namespace Real_Estate_Management
 
             bool isDiscountFeePercent;
 
-            string DiscountFeePercentText = GridView1.Rows[rowhandle].Cells["ColDiscountFeeText"].Value.ToString();
+            string DiscountFeePercentText = DataGridBillBody.Rows[rowhandle].Cells["ColDiscountFeeText"].Value.ToString();
 
             //GridView1.GetRowCellValue(rowhandle, ColDiscountFeeText).ToString();
 
@@ -1931,17 +2305,17 @@ namespace Real_Estate_Management
 
 
                     //GridView1.SetRowCellValue(rowhandle, ColNetWorkFee, networkfeevalue);
-                    GridView1.Rows[rowhandle].Cells["ColNetWorkFee"].Value = networkfeevalue;
+                    DataGridBillBody.Rows[rowhandle].Cells["ColNetWorkFee"].Value = networkfeevalue;
 
                     //GridView1.SetRowCellValue(rowhandle, ColDiscountFeeValue, discountfeevalue);
-                    GridView1.Rows[rowhandle].Cells["ColDiscountFeeValue"].Value = discountfeevalue;
+                    DataGridBillBody.Rows[rowhandle].Cells["ColDiscountFeeValue"].Value = discountfeevalue;
 
                 }
                 else
                 {
 
                     //decimal.TryParse(GridView1.GetRowCellValue(rowhandle, ColDiscountFeeValue).ToString(), out discountfeevalue);
-                    decimal.TryParse(GridView1.Rows[rowhandle].Cells["ColDiscountFeeValue"].Value.ToString(), out discountfeevalue);
+                    decimal.TryParse(DataGridBillBody.Rows[rowhandle].Cells["ColDiscountFeeValue"].Value.ToString(), out discountfeevalue);
 
                     if (discountfeevalue == 0)
                     {
@@ -1955,7 +2329,7 @@ namespace Real_Estate_Management
                         networkfeevalue = (workfeevalue - discountfeevalue);
                     }
                     //GridView1.SetRowCellValue(rowhandle, ColNetWorkFee, networkfeevalue);
-                    GridView1.Rows[rowhandle].Cells["ColNetWorkFee"].Value = networkfeevalue;
+                    DataGridBillBody.Rows[rowhandle].Cells["ColNetWorkFee"].Value = networkfeevalue;
 
                 }
 
@@ -1965,18 +2339,18 @@ namespace Real_Estate_Management
             else
             {
                 //GridView1.SetRowCellValue(rowhandle, ColNetPrice, amount - discountotalvalue);
-                GridView1.Rows[rowhandle].Cells["ColNetPrice"].Value = amount - discountotalvalue;
+                DataGridBillBody.Rows[rowhandle].Cells["ColNetPrice"].Value = amount - discountotalvalue;
 
                 //GridView1.SetRowCellValue(rowhandle, ColBuildingFeeValue, (amount - discountotalvalue) * land.buildingfee / 100);
-                GridView1.Rows[rowhandle].Cells["ColBuildingFeeValue"].Value = (amount - discountotalvalue) * land.buildingfee / 100;
+                DataGridBillBody.Rows[rowhandle].Cells["ColBuildingFeeValue"].Value = (amount - discountotalvalue) * land.buildingfee / 100;
 
                 if (newworkfee)
-                    GridView1.Rows[rowhandle].Cells["ColWorkFeeValue"].Value = (amount - discountotalvalue) * custworkfee / 100;
+                    DataGridBillBody.Rows[rowhandle].Cells["ColWorkFeeValue"].Value = (amount - discountotalvalue) * custworkfee / 100;
 
                 //GridView1.SetRowCellValue(rowhandle, ColWorkFeeValue, (amount - discountotalvalue) * custworkfee / 100);
                 else 
                 {
-                    GridView1.Rows[rowhandle].Cells["ColWorkFeeValue"].Value = (amount - discountotalvalue) * land.workfee / 100;
+                    DataGridBillBody.Rows[rowhandle].Cells["ColWorkFeeValue"].Value = (amount - discountotalvalue) * land.workfee / 100;
 
                 }
 
@@ -1995,13 +2369,13 @@ namespace Real_Estate_Management
 
 
                     //GridView1.SetRowCellValue(rowhandle, ColDiscountFeeValue, discountfeevalue);
-                    GridView1.Rows[rowhandle].Cells["ColDiscountFeeValue"].Value = discountfeevalue;
+                    DataGridBillBody.Rows[rowhandle].Cells["ColDiscountFeeValue"].Value = discountfeevalue;
 
                 }
                 else
                 {
                     //decimal.TryParse(GridView1.GetRowCellValue(rowhandle, ColDiscountFeeValue).ToString(), out discountfeevalue);
-                    decimal.TryParse(GridView1.Rows[rowhandle].Cells["ColDiscountFeeValue"].Value.ToString(), out discountfeevalue);
+                    decimal.TryParse(DataGridBillBody.Rows[rowhandle].Cells["ColDiscountFeeValue"].Value.ToString(), out discountfeevalue);
 
                     if (newworkfee)
                         networkfeevalue = ((amount - discountotalvalue) * custworkfee / 100) - discountfeevalue;
@@ -2013,36 +2387,36 @@ namespace Real_Estate_Management
 
 
                 //GridView1.SetRowCellValue(rowhandle, ColNetWorkFee, networkfeevalue);
-                GridView1.Rows[rowhandle].Cells["ColNetWorkFee"].Value = networkfeevalue;
+                DataGridBillBody.Rows[rowhandle].Cells["ColNetWorkFee"].Value = networkfeevalue;
 
             }
 
 
             //GridView1.SetRowCellValue(rowhandle, ColVatValue, networkfeevalue * land.vat / 100);
-            GridView1.Rows[rowhandle].Cells["ColVatValue"].Value = networkfeevalue * land.vat / 100;
+            DataGridBillBody.Rows[rowhandle].Cells["ColVatValue"].Value = networkfeevalue * land.vat / 100;
 
             decimal netamount;
             //decimal.TryParse(GridView1.GetRowCellValue(rowhandle, ColNetPrice).ToString(), out netamount);
-            decimal.TryParse(GridView1.Rows[rowhandle].Cells["ColNetPrice"].Value.ToString(), out netamount);
+            decimal.TryParse(DataGridBillBody.Rows[rowhandle].Cells["ColNetPrice"].Value.ToString(), out netamount);
 
 
             //decimal.TryParse(GridView1.GetRowCellValue(rowhandle, ColNetWorkFee).ToString(), out networkfeevalue);
-            decimal.TryParse(GridView1.Rows[rowhandle].Cells["ColNetWorkFee"].Value.ToString(), out networkfeevalue);
+            decimal.TryParse(DataGridBillBody.Rows[rowhandle].Cells["ColNetWorkFee"].Value.ToString(), out networkfeevalue);
 
             decimal buildingfeevalue;
             //decimal.TryParse(GridView1.GetRowCellValue(rowhandle, ColBuildingFeeValue).ToString(), out buildingfeevalue);
-            decimal.TryParse(GridView1.Rows[rowhandle].Cells["ColBuildingFeeValue"].Value.ToString(), out buildingfeevalue);
+            decimal.TryParse(DataGridBillBody.Rows[rowhandle].Cells["ColBuildingFeeValue"].Value.ToString(), out buildingfeevalue);
 
             //GridView1.SetRowCellValue(rowhandle, ColVatValue, networkfeevalue * land.vat / 100);
 
             decimal vatvalue;
             //decimal.TryParse(GridView1.GetRowCellValue(rowhandle, ColVatValue).ToString(), out vatvalue);
 
-            decimal.TryParse(GridView1.Rows[rowhandle].Cells["ColVatValue"].Value.ToString(), out vatvalue);
+            decimal.TryParse(DataGridBillBody.Rows[rowhandle].Cells["ColVatValue"].Value.ToString(), out vatvalue);
 
             //GridView1.SetRowCellValue(rowhandle, ColVatWorkFee, networkfeevalue + vatvalue);
 
-            GridView1.Rows[rowhandle].Cells["ColVatWorkFee"].Value = networkfeevalue + vatvalue;
+            DataGridBillBody.Rows[rowhandle].Cells["ColVatWorkFee"].Value = networkfeevalue + vatvalue;
 
             decimal total;
             total = amount;
@@ -2051,10 +2425,10 @@ namespace Real_Estate_Management
             totalnet = total + workfeevalue + vatvalue - (discountfeevalue + discountotalvalue);
 
             //GridView1.SetRowCellValue(rowhandle, ColTotal, total);
-            GridView1.Rows[rowhandle].Cells["ColTotal"].Value = total;
+            DataGridBillBody.Rows[rowhandle].Cells["ColTotal"].Value = total;
 
             //GridView1.SetRowCellValue(rowhandle, ColTotalNet, totalnet);
-            GridView1.Rows[rowhandle].Cells["ColTotalNet"].Value = totalnet;
+            DataGridBillBody.Rows[rowhandle].Cells["ColTotalNet"].Value = totalnet;
             CalcBillBody();
 
 
@@ -2084,49 +2458,49 @@ namespace Real_Estate_Management
             pricetotal = 0;
             workfeediscount = 0;
 
-            for (int i = 0; i < GridView1.RowCount; i++)
+            for (int i = 0; i < DataGridBillBody.RowCount; i++)
             {
-                Guid landguid = new Guid(GridView1.Rows[i].Cells["ColLandGuid"].Value.ToString());
+                Guid landguid = new Guid(DataGridBillBody.Rows[i].Cells["ColLandGuid"].Value.ToString());
 
                 decimal bodytotal;
                 //decimal.TryParse(GridView1.GetRowCellValue(i, ColTotal).ToString(), out bodytotal);
-                decimal.TryParse(GridView1.Rows[i].Cells["ColTotal"].Value.ToString(), out bodytotal);
+                decimal.TryParse(DataGridBillBody.Rows[i].Cells["ColTotal"].Value.ToString(), out bodytotal);
 
                 decimal bodynettotal;
                 //decimal.TryParse(GridView1.GetRowCellValue(i, ColTotalNet).ToString(), out bodynettotal);
-                decimal.TryParse(GridView1.Rows[i].Cells["ColTotalNet"].Value.ToString(), out bodynettotal);
+                decimal.TryParse(DataGridBillBody.Rows[i].Cells["ColTotalNet"].Value.ToString(), out bodynettotal);
 
 
                 decimal bodydiscounttotalvalue;
                 //decimal.TryParse(GridView1.GetRowCellValue(i, ColDiscountTotalValue).ToString(), out bodydiscounttotalvalue);
-                decimal.TryParse(GridView1.Rows[i].Cells["ColDiscountTotalValue"].Value.ToString(), out bodydiscounttotalvalue);
+                decimal.TryParse(DataGridBillBody.Rows[i].Cells["ColDiscountTotalValue"].Value.ToString(), out bodydiscounttotalvalue);
 
                 decimal bodydiscountfeevalue;
                 //decimal.TryParse(GridView1.GetRowCellValue(i, ColDiscountFeeValue).ToString(), out bodydiscountfeevalue);
-                decimal.TryParse(GridView1.Rows[i].Cells["ColDiscountFeeValue"].Value.ToString(), out bodydiscountfeevalue);
+                decimal.TryParse(DataGridBillBody.Rows[i].Cells["ColDiscountFeeValue"].Value.ToString(), out bodydiscountfeevalue);
 
                 decimal bodyvatfeevalue;
                 //decimal.TryParse(GridView1.GetRowCellValue(i, ColVatValue).ToString(), out bodyvatfeevalue);
-                decimal.TryParse(GridView1.Rows[i].Cells["ColVatValue"].Value.ToString(), out bodyvatfeevalue);
+                decimal.TryParse(DataGridBillBody.Rows[i].Cells["ColVatValue"].Value.ToString(), out bodyvatfeevalue);
 
                 decimal bodybuildingfeevalue;
                 //decimal.TryParse(GridView1.GetRowCellValue(i, ColBuildingFeeValue).ToString(), out bodybuildingfeevalue);
-                decimal.TryParse(GridView1.Rows[i].Cells["ColBuildingFeeValue"].Value.ToString(), out bodybuildingfeevalue);
+                decimal.TryParse(DataGridBillBody.Rows[i].Cells["ColBuildingFeeValue"].Value.ToString(), out bodybuildingfeevalue);
 
                 decimal bodyworkfeevalue;
                 //decimal.TryParse(GridView1.GetRowCellValue(i, ColWorkFeeValue).ToString(), out bodyworkfeevalue);
-                decimal.TryParse(GridView1.Rows[i].Cells["ColWorkFeeValue"].Value.ToString(), out bodyworkfeevalue);
+                decimal.TryParse(DataGridBillBody.Rows[i].Cells["ColWorkFeeValue"].Value.ToString(), out bodyworkfeevalue);
 
                 decimal bodynetworkfeevalue;
                 //decimal.TryParse(GridView1.GetRowCellValue(i, ColNetWorkFee).ToString(), out bodynetworkfeevalue);
-                decimal.TryParse(GridView1.Rows[i].Cells["ColNetWorkFee"].Value.ToString(), out bodynetworkfeevalue);
+                decimal.TryParse(DataGridBillBody.Rows[i].Cells["ColNetWorkFee"].Value.ToString(), out bodynetworkfeevalue);
 
                 decimal bodypricetotal;
                 //decimal.TryParse(GridView1.GetRowCellValue(i, ColPrice).ToString(), out bodypricetotal);
-                decimal.TryParse(GridView1.Rows[i].Cells["ColPrice"].Value.ToString(), out bodypricetotal);
+                decimal.TryParse(DataGridBillBody.Rows[i].Cells["ColPrice"].Value.ToString(), out bodypricetotal);
 
 
-                string status = GridView1.Rows[i].Cells["ColStatus"].Value.ToString();
+                string status = DataGridBillBody.Rows[i].Cells["ColStatus"].Value.ToString();
                 if (!landguid.Equals(Guid.Empty) && !status.Equals("مرتجع"))
                 {
                     total += bodytotal;
@@ -2142,12 +2516,12 @@ namespace Real_Estate_Management
                 }
             }
 
-            TxtPrice.Text = pricetotal.ToString(DataGUIAttribute.CurrencyFormat);
-            TxtNetPrice.Text = (pricetotal - discounttotalvalue).ToString(DataGUIAttribute.CurrencyFormat);
-            TxtNetPrice2.Text = (pricetotal - discounttotalvalue).ToString(DataGUIAttribute.CurrencyFormat);
+            radTxtPrice.Text = pricetotal.ToString(DataGUIAttribute.CurrencyFormat);
+            radTxtNetPrice.Text = (pricetotal - discounttotalvalue).ToString(DataGUIAttribute.CurrencyFormat);
+            radTxtNetPrice2.Text = (pricetotal - discounttotalvalue).ToString(DataGUIAttribute.CurrencyFormat);
             TxtTotal.Text = total.ToString(DataGUIAttribute.CurrencyFormat);
             Txttotaldiscounttotal.Text = discounttotalvalue.ToString(DataGUIAttribute.CurrencyFormat);
-            TxtotalworkfeeDiscount.Text = workfeediscount.ToString(DataGUIAttribute.CurrencyFormat);
+            radTxttotalworkfeeDiscount.Text = workfeediscount.ToString(DataGUIAttribute.CurrencyFormat);
 
             Txttotaldiscountfee.Text = (networkfeevalue).ToString(DataGUIAttribute.CurrencyFormat);
             TxtTotalVat.Text = vatfeevalue.ToString(DataGUIAttribute.CurrencyFormat);
@@ -2155,8 +2529,8 @@ namespace Real_Estate_Management
             Txttotalworkfee.Text = (workfeevalue).ToString(DataGUIAttribute.CurrencyFormat);
             TxtTotalNet.Text = totalnet.ToString(DataGUIAttribute.CurrencyFormat);
 
-            TxtNetPiceNetWorkFee.Text = ((pricetotal - discounttotalvalue) + networkfeevalue).ToString(DataGUIAttribute.CurrencyFormat);
-            TxtNetPiceNetWorkFeeVAT.Text = ((pricetotal - discounttotalvalue) + (networkfeevalue + vatfeevalue)).ToString(DataGUIAttribute.CurrencyFormat);
+            radTxtNetPiceNetWorkFee.Text = ((pricetotal - discounttotalvalue) + networkfeevalue).ToString(DataGUIAttribute.CurrencyFormat);
+            radTxtNetPiceNetWorkFeeVAT.Text = ((pricetotal - discounttotalvalue) + (networkfeevalue + vatfeevalue)).ToString(DataGUIAttribute.CurrencyFormat);
 
         }
 
@@ -2345,7 +2719,7 @@ namespace Real_Estate_Management
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (billtype == 2)
+                if (BillType == 2)
                 {
                     tbAgent.Fill("name", CmbOwnerData.Text);
                 }
@@ -2407,7 +2781,7 @@ namespace Real_Estate_Management
                 }
                 else if (tbAgent.dtData.Rows.Count == 0)
                 {
-                    if (billtype == 2)
+                    if (BillType == 2)
                     {
                         tbAgent.Fill("name", " ");
                     }
@@ -2666,9 +3040,9 @@ namespace Real_Estate_Management
         bool IsDuplicate(Guid currlandguid)
         {
             int idx = 0;
-            for (int i = 0; i < GridView1.RowCount; i++)
+            for (int i = 0; i < DataGridBillBody.RowCount; i++)
             {
-                Guid landguid = new Guid(GridView1.CurrentRow.Cells[2].Value.ToString());
+                Guid landguid = new Guid(DataGridBillBody.CurrentRow.Cells[2].Value.ToString());
 
                 if (landguid.Equals(currlandguid))
                 {
@@ -3003,9 +3377,9 @@ namespace Real_Estate_Management
         {
             FastReport.Report report = new FastReport.Report();
 
-            for (int i = 0; i < GridView1.RowCount; i++)
+            for (int i = 0; i < DataGridBillBody.RowCount; i++)
             {
-                Guid guid = new Guid(GridView1.CurrentRow.Cells[0].Value.ToString());
+                Guid guid = new Guid(DataGridBillBody.CurrentRow.Cells[0].Value.ToString());
 
                 if (!guid.Equals(Guid.Empty))
                     ReadyreportOneByOne(report, guid);
@@ -3021,7 +3395,7 @@ namespace Real_Estate_Management
             FastReport.Report report = new FastReport.Report();
 
 
-            Guid guid = new Guid(GridView1.CurrentRow.Cells[0].Value.ToString());
+            Guid guid = new Guid(DataGridBillBody.CurrentRow.Cells[0].Value.ToString());
 
             if (!guid.Equals(Guid.Empty))
             {
@@ -3033,9 +3407,9 @@ namespace Real_Estate_Management
         private void MenuPrintOnebyOne_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             FastReport.Report report = new FastReport.Report();
-            for (int i = 0; i < GridView1.RowCount; i++)
+            for (int i = 0; i < DataGridBillBody.RowCount; i++)
             {
-                Guid guid = new Guid(GridView1.CurrentRow.Cells[0].Value.ToString());
+                Guid guid = new Guid(DataGridBillBody.CurrentRow.Cells[0].Value.ToString());
 
                 if (!guid.Equals(Guid.Empty))
                     ReadyreportOneByOne(report, guid);
@@ -3048,41 +3422,41 @@ namespace Real_Estate_Management
         #endregion
 
 
-        private void GridView1_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
-        {
-            if (e.HitInfo.InRow)
-            {
-                GridView view = sender as GridView;
-                view.FocusedRowHandle = e.HitInfo.RowHandle;
-                //Guid landguid = new Guid(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColLandGuid).ToString());
-                Guid landguid = new Guid(GridView1.CurrentRow.Cells[2].Value.ToString());
+        //private void GridView1_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
+        //{
+        //    if (e.HitInfo.InRow)
+        //    {
+        //        GridView view = sender as GridView;
+        //        view.FocusedRowHandle = e.HitInfo.RowHandle;
+        //        //Guid landguid = new Guid(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColLandGuid).ToString());
+        //        Guid landguid = new Guid(DataGridBillBody.CurrentRow.Cells[2].Value.ToString());
 
-                string status = GridView1.CurrentRow.Cells[10].Value.ToString();
+        //        string status = DataGridBillBody.CurrentRow.Cells[10].Value.ToString();
 
 
 
-                if (billtype == 0 && status != "مرتجع")
-                {
+        //        if (BillType == 0 && status != "مرتجع")
+        //        {
 
-                    //MenuConvertToReturn.Caption = "تحويل إلى مرتجع";
+        //            //MenuConvertToReturn.Caption = "تحويل إلى مرتجع";
 
-                }
-                else
-                {
-                    //MenuConvertToReturn.Caption = "تحويل إلى مباع";
-                }
+        //        }
+        //        else
+        //        {
+        //            //MenuConvertToReturn.Caption = "تحويل إلى مباع";
+        //        }
 
-                //if (!landguid.Equals(Guid.Empty))
-                //{
-                //    MenuGrid.ShowPopup(Control.MousePosition);
-                //}
-            }
-        }
+        //        //if (!landguid.Equals(Guid.Empty))
+        //        //{
+        //        //    MenuGrid.ShowPopup(Control.MousePosition);
+        //        //}
+        //    }
+        //}
 
         private void MenuLand_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             //Guid landguid = new Guid(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColLandGuid).ToString());
-            Guid landguid = new Guid(GridView1.CurrentRow.Cells[2].Value.ToString());
+            Guid landguid = new Guid(DataGridBillBody.CurrentRow.Cells[2].Value.ToString());
 
             FrmLand frm = new FrmLand(landguid, false, string.Empty);
             frm.Show(this);
@@ -3107,11 +3481,11 @@ namespace Real_Estate_Management
             //int.TryParse(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColContractNo).ToString(), out contractno);
 
             string status;
-            status = GridView1.CurrentRow.Cells[10].Value.ToString();
+            status = DataGridBillBody.CurrentRow.Cells[10].Value.ToString();
             // GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColStatus).ToString();
 
             //Guid guid = new Guid(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColGuid).ToString());
-            Guid guid = new Guid(GridView1.CurrentRow.Cells[0].Value.ToString());
+            Guid guid = new Guid(DataGridBillBody.CurrentRow.Cells[0].Value.ToString());
 
             if (!tbBillBody.IsExist("Guid", guid))
             {
@@ -3128,7 +3502,7 @@ namespace Real_Estate_Management
                         return;
 
                     //Guid landguid = new Guid(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColLandGuid).ToString());
-                    Guid landguid = new Guid(GridView1.CurrentRow.Cells[2].Value.ToString());
+                    Guid landguid = new Guid(DataGridBillBody.CurrentRow.Cells[2].Value.ToString());
 
                     vwGetBillBodyStatus billbodystate = vwGetBillBodyStatus.FindBy("contractno", contractno, 0);
                     tbBillBody billbodyreturn = tbBillBody.FindBy("Guid", billbodystate.guid);
@@ -3141,7 +3515,7 @@ namespace Real_Estate_Management
 
                         ShowConfirm();
                         FillGrid(bill.guid);
-                        BtnAdd.PerformClick();
+                        BtnNew.PerformClick();
                     }
                 }
                 else
@@ -3150,7 +3524,7 @@ namespace Real_Estate_Management
                         return;
 
                     //Guid landguid = new Guid(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColLandGuid).ToString());
-                    Guid landguid = new Guid(GridView1.CurrentRow.Cells[2].Value.ToString());
+                    Guid landguid = new Guid(DataGridBillBody.CurrentRow.Cells[2].Value.ToString());
 
                     vwGetBillBodyStatus billbodystate = vwGetBillBodyStatus.FindBy("contractno", contractno, 0);
                     tbBillBody billbodyreturn = tbBillBody.FindBy("Guid", billbodystate.guid);
@@ -3176,7 +3550,7 @@ namespace Real_Estate_Management
         {
             FastReport.Report report = new FastReport.Report();
 
-            Guid guid = new Guid(GridView1.CurrentRow.Cells[0].Value.ToString());
+            Guid guid = new Guid(DataGridBillBody.CurrentRow.Cells[0].Value.ToString());
 
             //Guid guid = new Guid(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColGuid).ToString());
             if (!tbBillBody.IsExist("Guid", guid))
@@ -3199,7 +3573,7 @@ namespace Real_Estate_Management
 
 
             //Guid guid = new Guid(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColGuid).ToString());
-            Guid guid = new Guid(GridView1.CurrentRow.Cells[0].Value.ToString());
+            Guid guid = new Guid(DataGridBillBody.CurrentRow.Cells[0].Value.ToString());
 
             if (!tbBillBody.IsExist("Guid", guid))
             {
@@ -3218,7 +3592,7 @@ namespace Real_Estate_Management
         private void MenuPrintLandInfo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             //Guid landguid = new Guid(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, ColLandGuid).ToString());
-            Guid landguid = new Guid(GridView1.CurrentRow.Cells[2].Value.ToString());
+            Guid landguid = new Guid(DataGridBillBody.CurrentRow.Cells[2].Value.ToString());
             tbLand land = tbLand.FindBy("Guid", landguid);
 
             if (land is null || land.guid.Equals(Guid.Empty))
@@ -3264,9 +3638,9 @@ namespace Real_Estate_Management
             {
                 vwSelectLand selectland = new vwSelectLand();
 
-                if (billtype == 0)
+                if (BillType == 0)
                     vwSelectLand.Fill("code", " ", "متاح");
-                else if (billtype == 2)
+                else if (BillType == 2)
                     vwSelectLand.Fill("code", " ");
 
 
@@ -3275,7 +3649,7 @@ namespace Real_Estate_Management
                 if (frmselect.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     selectland = vwSelectLand.FindBy("guid", frmselect.guid);
-                    if (billtype == 0)
+                    if (BillType == 0)
                     {
                         if (MessageBox.Show(string.Format("هل أنت متأكد من إدراج كافة الأراضي الغير مباعة التابعة للبلوك رقم {0} في العقد ؟", selectland.blocknumber), Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                             return;
@@ -3286,7 +3660,7 @@ namespace Real_Estate_Management
                             return;
                     }
 
-                    if (billtype == 0)
+                    if (BillType == 0)
                         tbLand.FillByBlockState("BlockNumber", selectland.blocknumber.ToString(), "متاح");
                     else
                         tbLand.Fill("BlockNumber", (object)selectland.blocknumber);
@@ -3324,20 +3698,20 @@ namespace Real_Estate_Management
 
                     }
 
-                    for (int i = startidx; i < GridView1.RowCount; i++)
+                    for (int i = startidx; i < DataGridBillBody.RowCount; i++)
                     {
                         //Guid guid = new Guid(GridView1.GetRowCellValue(i, ColLandGuid).ToString());
-                        Guid guid = new Guid(GridView1.Rows[i].Cells[2].Value.ToString());
+                        Guid guid = new Guid(DataGridBillBody.Rows[i].Cells[2].Value.ToString());
                         tbLand land = tbLand.FindBy("Guid", guid);
                         FillLandInfo(i, land);
                         CalcRowPrices(i, land, false, 0, true);
                     }
 
 
-                    for (int i = 0; i < GridView1.RowCount; i++)
+                    for (int i = 0; i < DataGridBillBody.RowCount; i++)
                     {
                         //Guid guid = new Guid(GridView1.GetRowCellValue(i, ColLandGuid).ToString());
-                        Guid guid = new Guid(GridView1.Rows[i].Cells[2].Value.ToString());
+                        Guid guid = new Guid(DataGridBillBody.Rows[i].Cells[2].Value.ToString());
                         if (guid.Equals(Guid.Empty))
                         {
                             privatebillBody.Rows[i].Delete();
@@ -3389,20 +3763,20 @@ namespace Real_Estate_Management
 
                     }
 
-                    for (int i = startidx; i < GridView1.RowCount; i++)
+                    for (int i = startidx; i < DataGridBillBody.RowCount; i++)
                     {
                         //Guid guid = new Guid(GridView1.GetRowCellValue(i, ColLandGuid).ToString());
-                        Guid guid = new Guid(GridView1.Rows[i].Cells[2].Value.ToString());
+                        Guid guid = new Guid(DataGridBillBody.Rows[i].Cells[2].Value.ToString());
                         tbLand land = tbLand.FindBy("Guid", guid);
                         FillLandInfo(i, land);
                         CalcRowPrices(i, land, false, 0, true);
                     }
 
 
-                    for (int i = 0; i < GridView1.RowCount; i++)
+                    for (int i = 0; i < DataGridBillBody.RowCount; i++)
                     {
                         //Guid guid = new Guid(GridView1.GetRowCellValue(i, ColLandGuid).ToString());
-                        Guid guid = new Guid(GridView1.Rows[i].Cells[2].Value.ToString());
+                        Guid guid = new Guid(DataGridBillBody.Rows[i].Cells[2].Value.ToString());
 
                         if (guid.Equals(Guid.Empty))
                         {
@@ -3418,10 +3792,10 @@ namespace Real_Estate_Management
 
         }
 
-        bool AllowEditPrice = false;
+
         private void MenuAllowEditPrice_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (billtype == 0 && tbEditPassword.lstData[0].password.Trim().Length > 0)
+            if (BillType == 0 && tbEditPassword.lstData[0].password.Trim().Length > 0)
             {
                 FrmEditPassWord frm = new FrmEditPassWord(Guid.Empty, true);
                 if (frm.ShowDialog() == DialogResult.OK)

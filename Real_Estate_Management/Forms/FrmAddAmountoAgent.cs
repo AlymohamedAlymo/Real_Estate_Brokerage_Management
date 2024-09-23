@@ -100,7 +100,7 @@ namespace Real_Estate_Management
             {
                 Guid guid = (Guid)DataGridMain["guid", DataGridMain.CurrentRow.Index].Value;
 
-                FrmBillHeader frm = new FrmBillHeader(Guid.Empty, false, 0 , new  List<tbLand>());
+                FrmBillHeader frm = new FrmBillHeader(Guid.Empty, 0 , new  List<tbLand>(), null);
 
                 frm.Show();
 

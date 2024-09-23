@@ -24,6 +24,7 @@ namespace Real_Estate_Management.User_Controls
         public BindingSource Bs = new BindingSource();
         private int CurrentPosition = 0;
         private static readonly RadCallout callout = new RadCallout();
+
         public UCOwner(Guid _guid)
         {
 
